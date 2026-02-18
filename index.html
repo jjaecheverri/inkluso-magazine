@@ -406,6 +406,44 @@ a:hover { color: var(--black); }
   gap: 12px;
 }
 
+.edition-langs {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--warm-gray-5);
+  flex-wrap: wrap;
+}
+
+.edition-langs .lang-label {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--warm-gray-3);
+  margin-right: 14px;
+}
+
+.edition-langs a {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--warm-gray-2);
+  padding: 4px 12px;
+  border-right: 1px solid var(--warm-gray-5);
+  transition: color 0.3s;
+  line-height: 1;
+}
+
+.edition-langs a:last-child {
+  border-right: none;
+}
+
+.edition-langs a:hover {
+  color: var(--orange);
+}
+
 /* ===== ABOUT SECTION ===== */
 .about-section {
   background: var(--cream-dark);
@@ -619,6 +657,12 @@ a:hover { color: var(--black); }
           <span class="edition-section-tag">/Crumbs</span>
         </div>
         <a href="./feb-2026/index.html" class="edition-link">Read →</a>
+        <div class="edition-langs">
+          <span class="lang-label">Language</span>
+          <a href="./feb-2026/index.html">🇺🇸 English</a>
+          <a href="./feb-2026/es/index.html">🇪🇸 Español (España)</a>
+          <a href="./feb-2026/es-latam/index.html">🌎 Español (Latam)</a>
+        </div>
       </div>
     </div>
 
@@ -639,6 +683,12 @@ a:hover { color: var(--black); }
           <span class="edition-section-tag">/Ground</span>
         </div>
         <a href="./jan-2026/index.html" class="edition-link">Read →</a>
+        <div class="edition-langs">
+          <span class="lang-label">Language</span>
+          <a href="./jan-2026/index.html">🇺🇸 English</a>
+          <a href="./jan-2026/es/index.html">🇪🇸 Español (España)</a>
+          <a href="./jan-2026/es-latam/index.html">🌎 Español (Latam)</a>
+        </div>
       </div>
     </div>
   </div>
@@ -663,14 +713,23 @@ a:hover { color: var(--black); }
       <p>Where information becomes immersion. A publication by Xtatik — covering the micro-markets where cultural sparks ignite before the data catches fire.</p>
     </div>
     <div class="footer-links">
-      <h5>Editions</h5>
+      <h5>February 2026</h5>
       <ul>
-        <li><a href="./feb-2026/index.html">February 2026</a></li>
-        <li><a href="./jan-2026/index.html">January 2026</a></li>
+        <li><a href="./feb-2026/index.html">🇺🇸 English</a></li>
+        <li><a href="./feb-2026/es/index.html">🇪🇸 Español (España)</a></li>
+        <li><a href="./feb-2026/es-latam/index.html">🌎 Español (Latam)</a></li>
       </ul>
     </div>
     <div class="footer-links">
-      <h5>Divisions</h5>
+      <h5>January 2026</h5>
+      <ul>
+        <li><a href="./jan-2026/index.html">🇺🇸 English</a></li>
+        <li><a href="./jan-2026/es/index.html">🇪🇸 Español (España)</a></li>
+        <li><a href="./jan-2026/es-latam/index.html">🌎 Español (Latam)</a></li>
+      </ul>
+    </div>
+    <div class="footer-links">
+      <h5>Sections</h5>
       <ul>
         <li><a href="#">/CORE</a></li>
         <li><a href="#">/THRUST</a></li>
