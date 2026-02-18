@@ -3,26 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>IN-KluSo — February 2026 | NWA Is America's #1 City</title>
-<meta name="description" content="IN-KluSo February 2026: Northwest Arkansas named #1 Best-Performing Metro, Colombia's property reset decoded, and the Great Housing Reset signals reshaping markets.">
-<meta property="og:title" content="IN-KluSo — February 2026 Edition">
-<meta property="og:description" content="NWA is officially America's #1 metro. Colombia's property market is resetting. Three signals are reshaping US housing. We break it all down.">
-<meta property="og:type" content="article">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="IN-KluSo — February 2026 | NWA Is America's #1 City">
-<meta name="twitter:description" content="We called NWA two years ago. Now Milken just confirmed it. Plus: Colombia's real numbers, the Great Housing Reset, and where to put capital in Q1.">
-
-<!-- Google Fonts: DM Serif Display (editorial serif) + Inter (geometric sans) -->
+<title>IN-KluSo — Where Information Becomes Immersion</title>
+<meta name="description" content="IN-KluSo: A publication by Xtatik covering micro-markets where cultural sparks ignite before the data catches fire.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
-/* ============================================
-   CSS CUSTOM PROPERTIES — IN-KluSo Brand
-   ============================================ */
 :root {
-  /* Base palette */
   --cream: #FAF6EE;
   --cream-dark: #F0EBDF;
   --black: #1A1A1A;
@@ -31,31 +19,14 @@
   --warm-gray-3: #999999;
   --warm-gray-4: #CCCCCC;
   --warm-gray-5: #E8E4DC;
-
-  /* Accent — signature orange */
   --orange: #E8722A;
   --orange-light: #F4A261;
   --orange-glow: rgba(232, 114, 42, 0.15);
-
-  /* Accent tones */
-  --electric-blue: #3A86FF;
-  --magenta: #E63988;
-  --lilac: #A78BFA;
-  --soft-green: #86EFAC;
-
-  /* Typography */
   --font-serif: 'DM Serif Display', Georgia, serif;
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-
-  /* Spacing */
-  --section-padding: clamp(60px, 10vw, 120px);
-  --content-max: 780px;
-  --wide-max: 1200px;
+  --font-mono: 'JetBrains Mono', monospace;
 }
 
-/* ============================================
-   RESET & BASE
-   ============================================ */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 html {
@@ -80,45 +51,59 @@ body {
 
 a { color: var(--orange); text-decoration: none; transition: color 0.3s; }
 a:hover { color: var(--black); }
-img { max-width: 100%; display: block; }
 
-/* ============================================
-   READING PROGRESS BAR
-   ============================================ */
-.progress-bar {
+/* ===== DIAGONAL STRIPE MOTIFS ===== */
+.stripe-bg {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 0%;
-  height: 3px;
-  background: var(--orange);
-  z-index: 1001;
-  transition: width 0.1s linear;
+  top: -200px;
+  right: -60px;
+  width: 80px;
+  height: 1400px;
+  background: linear-gradient(to bottom, var(--orange), var(--orange-light));
+  transform: rotate(-35deg);
+  opacity: 0.05;
+  pointer-events: none;
+  z-index: 0;
 }
 
-/* ============================================
-   NAVIGATION
-   ============================================ */
+.stripe-bg-2 {
+  position: fixed;
+  bottom: -400px;
+  left: -40px;
+  width: 50px;
+  height: 1000px;
+  background: linear-gradient(to top, var(--orange), transparent);
+  transform: rotate(-35deg);
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ===== ORANGE STRIPE ===== */
+.orange-stripe {
+  width: 100%;
+  height: 6px;
+  background: var(--orange);
+  transform: skewY(-1.5deg);
+  margin: 0;
+}
+
+/* ===== NAV ===== */
 .nav {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 1000;
-  padding: 18px 32px;
+  z-index: 100;
+  padding: 20px 40px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-  background: transparent;
-}
-
-.nav.scrolled {
   background: rgba(250, 246, 238, 0.92);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  box-shadow: 0 1px 0 rgba(0,0,0,0.06);
-  padding: 12px 32px;
+  border-bottom: 1px solid rgba(0,0,0,0.04);
+  transition: all 0.4s;
 }
 
 .nav-logo {
@@ -131,58 +116,22 @@ img { max-width: 100%; display: block; }
 
 .nav-logo span { color: var(--orange); }
 
-.nav-links {
-  display: flex;
-  gap: 28px;
-  list-style: none;
+.nav-tagline {
+  font-family: var(--font-serif);
+  font-style: italic;
   font-size: 0.82rem;
-  font-weight: 500;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
+  color: var(--warm-gray-3);
 }
 
-.nav-links a {
-  color: var(--warm-gray-2);
-  transition: color 0.3s;
-  position: relative;
-}
-
-.nav-links a::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: var(--orange);
-  transition: width 0.3s;
-}
-
-.nav-links a:hover { color: var(--black); }
-.nav-links a:hover::after { width: 100%; }
-
-.nav-section-label {
-  font-family: var(--font-sans);
-  font-size: 0.7rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--orange);
-  opacity: 0;
-  transition: opacity 0.4s;
-}
-
-.nav.scrolled .nav-section-label { opacity: 1; }
-
-/* ============================================
-   HERO
-   ============================================ */
+/* ===== HERO ===== */
 .hero {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  padding: var(--section-padding) 32px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 140px 32px 80px;
   position: relative;
   overflow: hidden;
 }
@@ -190,99 +139,83 @@ img { max-width: 100%; display: block; }
 .hero::before {
   content: '';
   position: absolute;
-  top: -20%;
-  right: -10%;
-  width: 600px;
-  height: 600px;
+  top: -10%;
+  right: -5%;
+  width: 500px;
+  height: 500px;
   background: radial-gradient(circle, var(--orange-glow) 0%, transparent 70%);
   pointer-events: none;
   animation: heroGlow 8s ease-in-out infinite alternate;
 }
 
 .hero::after {
-  content: '#1';
+  content: 'IN-K';
   position: absolute;
-  top: 10%;
-  right: 5%;
-  font-family: var(--font-serif);
-  font-size: clamp(8rem, 20vw, 18rem);
-  color: rgba(232, 114, 42, 0.06);
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-sans);
+  font-weight: 800;
+  font-size: clamp(8rem, 18vw, 16rem);
+  color: rgba(232, 114, 42, 0.04);
   line-height: 1;
   pointer-events: none;
-  font-style: italic;
+  white-space: nowrap;
 }
 
 @keyframes heroGlow {
-  0% { transform: translate(0, 0) scale(1); opacity: 0.6; }
-  100% { transform: translate(-40px, 30px) scale(1.15); opacity: 1; }
+  0% { transform: translate(0, 0) scale(1); opacity: 0.5; }
+  100% { transform: translate(-30px, 20px) scale(1.1); opacity: 1; }
 }
 
-.hero-meta {
-  display: flex;
+.hero-badge {
+  display: inline-flex;
   align-items: center;
-  gap: 16px;
-  margin-bottom: 24px;
-  opacity: 0;
-  animation: fadeUp 0.8s 0.3s forwards;
-}
-
-.hero-section-tag {
-  font-family: var(--font-sans);
-  font-size: 0.7rem;
+  gap: 10px;
+  font-size: 0.68rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.15em;
   color: var(--orange);
-  padding: 6px 14px;
+  padding: 8px 18px;
   border: 1.5px solid var(--orange);
   border-radius: 2px;
-}
-
-.hero-edition {
-  font-size: 0.72rem;
-  color: var(--warm-gray-3);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-weight: 500;
-}
-
-.hero-date {
-  font-size: 0.82rem;
-  color: var(--warm-gray-3);
-  font-weight: 400;
-}
-
-.hero h1 {
-  font-family: var(--font-serif);
-  font-size: clamp(2.8rem, 6.5vw, 5.5rem);
-  line-height: 1.05;
-  letter-spacing: -0.025em;
-  max-width: 900px;
-  margin-bottom: 28px;
+  margin-bottom: 32px;
   opacity: 0;
-  animation: fadeUp 1s 0.5s forwards;
+  animation: fadeUp 0.8s 0.2s forwards;
 }
 
-.hero h1 em {
+.hero-title {
+  font-family: var(--font-serif);
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  max-width: 800px;
+  margin-bottom: 24px;
+  opacity: 0;
+  animation: fadeUp 1s 0.4s forwards;
+}
+
+.hero-title em {
   font-style: italic;
   color: var(--orange);
 }
 
 .hero-subtitle {
-  font-size: clamp(1rem, 1.6vw, 1.25rem);
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
   color: var(--warm-gray-2);
-  max-width: 620px;
+  max-width: 560px;
   line-height: 1.7;
-  margin-bottom: 40px;
+  margin-bottom: 48px;
   opacity: 0;
-  animation: fadeUp 1s 0.7s forwards;
+  animation: fadeUp 1s 0.6s forwards;
 }
 
-.hero-cta {
+.hero-scroll {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -291,56 +224,33 @@ img { max-width: 100%; display: block; }
   border-bottom: 2px solid var(--orange);
   transition: all 0.3s;
   opacity: 0;
-  animation: fadeUp 1s 0.9s forwards;
-  cursor: pointer;
+  animation: fadeUp 1s 0.8s forwards;
 }
 
-.hero-cta:hover { padding-left: 8px; color: var(--orange); }
+.hero-scroll:hover { padding-left: 8px; color: var(--orange); }
 
-.hero-cta svg {
+.hero-scroll svg {
   width: 18px;
   height: 18px;
   transition: transform 0.3s;
 }
 
-.hero-cta:hover svg { transform: translateY(4px); }
+.hero-scroll:hover svg { transform: translateY(4px); }
 
-.hero-scroll-line {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  width: 1px;
-  height: 60px;
-  background: linear-gradient(to bottom, transparent, var(--orange));
-  animation: scrollPulse 2s ease-in-out infinite;
-}
-
-@keyframes scrollPulse {
-  0%, 100% { opacity: 0.3; height: 60px; }
-  50% { opacity: 1; height: 80px; }
-}
-
-/* ============================================
-   DIAGONAL ORANGE STRIPE (brand element)
-   ============================================ */
-.orange-stripe {
-  width: 100%;
-  height: 6px;
-  background: var(--orange);
-  transform: skewY(-1.5deg);
-  margin: 0;
-}
-
-/* ============================================
-   SECTION HEADERS
-   ============================================ */
-.section-header {
-  padding: var(--section-padding) 32px 40px;
-  max-width: var(--wide-max);
+/* ===== EDITIONS ===== */
+.editions-section {
+  padding: clamp(60px, 10vw, 120px) 32px;
+  max-width: 1200px;
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
-.section-tag {
+.editions-header {
+  margin-bottom: 60px;
+}
+
+.editions-tag {
   display: inline-flex;
   align-items: center;
   gap: 10px;
@@ -353,606 +263,191 @@ img { max-width: 100%; display: block; }
   margin-bottom: 20px;
 }
 
-.section-tag::before {
+.editions-tag::before {
   content: '';
   width: 32px;
   height: 2px;
   background: var(--orange);
 }
 
-.section-header h2 {
+.editions-header h2 {
   font-family: var(--font-serif);
-  font-size: clamp(2rem, 4.5vw, 3.5rem);
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
   line-height: 1.1;
   letter-spacing: -0.02em;
-  max-width: 700px;
 }
 
-.section-header h2 em {
+.editions-header h2 em {
   font-style: italic;
   color: var(--orange);
 }
 
-.section-header .section-subtitle {
-  font-size: 1.08rem;
-  color: var(--warm-gray-2);
-  max-width: 600px;
-  line-height: 1.7;
-  margin-top: 16px;
-}
-
-/* ============================================
-   BYLINE
-   ============================================ */
-.byline {
-  max-width: var(--content-max);
-  margin: 0 auto;
-  padding: 0 32px 28px;
-  font-size: 0.82rem;
-  color: var(--warm-gray-3);
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-.byline-author {
-  font-weight: 600;
-  color: var(--warm-gray-1);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  font-size: 0.75rem;
-}
-
-.byline-divider {
-  width: 3px;
-  height: 3px;
-  background: var(--warm-gray-4);
-  border-radius: 50%;
-}
-
-/* ============================================
-   ARTICLE BODY
-   ============================================ */
-.article-body {
-  max-width: var(--content-max);
-  margin: 0 auto;
-  padding: 0 32px 60px;
-}
-
-.article-body p {
-  font-size: 1.08rem;
-  line-height: 1.85;
-  color: var(--warm-gray-1);
-  margin-bottom: 24px;
-}
-
-.article-body p.lead {
-  font-size: 1.28rem;
-  color: var(--black);
-  font-weight: 400;
-  line-height: 1.75;
-}
-
-.article-body h3 {
-  font-family: var(--font-serif);
-  font-size: 1.6rem;
-  margin: 48px 0 16px;
-  color: var(--black);
-}
-
-.article-body h4 {
-  font-family: var(--font-serif);
-  font-size: 1.25rem;
-  margin: 36px 0 12px;
-  color: var(--black);
-}
-
-.article-body ul, .article-body ol {
-  margin: 0 0 24px 20px;
-  font-size: 1.02rem;
-  line-height: 1.85;
-  color: var(--warm-gray-1);
-}
-
-.article-body li {
-  margin-bottom: 8px;
-}
-
-.article-body strong {
-  color: var(--black);
-  font-weight: 600;
-}
-
-.article-body em {
-  font-style: italic;
-}
-
-/* ============================================
-   PULLQUOTE
-   ============================================ */
-.pullquote {
-  max-width: var(--wide-max);
-  margin: 60px auto;
-  padding: 60px 32px;
-  position: relative;
-}
-
-.pullquote-inner {
-  max-width: 700px;
-  margin: 0 auto;
-  padding-left: 32px;
-  border-left: 3px solid var(--orange);
-}
-
-.pullquote blockquote {
-  font-family: var(--font-serif);
-  font-size: clamp(1.5rem, 3vw, 2.2rem);
-  line-height: 1.35;
-  color: var(--black);
-  font-style: italic;
-}
-
-.pullquote cite {
-  display: block;
-  margin-top: 16px;
-  font-family: var(--font-sans);
-  font-size: 0.82rem;
-  font-style: normal;
-  color: var(--warm-gray-3);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-
-/* ============================================
-   DATA HIGHLIGHT STRIP
-   ============================================ */
-.data-strip {
-  background: var(--black);
-  color: white;
-  padding: 48px 32px;
-  overflow: hidden;
-}
-
-.data-strip-inner {
-  max-width: var(--wide-max);
-  margin: 0 auto;
+.editions-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 40px;
-  text-align: center;
+  grid-template-columns: repeat(auto-fit, minmax(440px, 1fr));
+  gap: 32px;
 }
 
-.data-item .value {
-  font-family: var(--font-serif);
-  font-size: clamp(2rem, 4vw, 3.5rem);
-  color: var(--orange);
-  line-height: 1;
-  margin-bottom: 8px;
-}
-
-.data-item .desc {
-  font-size: 0.78rem;
-  color: rgba(255,255,255,0.5);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  line-height: 1.5;
-}
-
-/* ============================================
-   MARKET CARDS (4-city grid)
-   ============================================ */
-.market-grid {
-  max-width: var(--wide-max);
-  margin: 0 auto 80px;
-  padding: 0 32px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 24px;
-}
-
-.market-card {
+.edition-card {
   background: white;
   border-radius: 4px;
-  padding: 36px 28px;
-  position: relative;
   overflow: hidden;
+  position: relative;
   transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s;
 }
 
-.market-card::before {
+.edition-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+}
+
+.edition-card::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 3px;
+  height: 4px;
+  background: var(--orange);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.market-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.08); }
-.market-card:hover::before { transform: scaleX(1); }
-
-.market-card.card-nwa::before { background: var(--soft-green); }
-.market-card.card-mde::before { background: var(--orange); }
-.market-card.card-mad::before { background: var(--magenta); }
-.market-card.card-nyc::before { background: var(--electric-blue); }
-
-.market-card-number {
-  font-family: var(--font-serif);
-  font-size: 3rem;
-  color: var(--warm-gray-5);
-  line-height: 1;
-  margin-bottom: 12px;
+.edition-card:hover::before {
+  transform: scaleX(1);
 }
 
-.market-card h3 {
-  font-family: var(--font-serif);
-  font-size: 1.4rem;
-  margin-bottom: 8px;
-}
-
-.market-card-sub {
-  font-size: 0.85rem;
-  color: var(--warm-gray-2);
-  margin-bottom: 16px;
-  font-style: italic;
-}
-
-.market-card-stat {
-  display: flex;
-  align-items: baseline;
-  gap: 6px;
-  padding-top: 16px;
-  border-top: 1px solid var(--warm-gray-5);
-}
-
-.market-card-stat .number {
-  font-family: var(--font-serif);
-  font-size: 2rem;
-  color: var(--orange);
-}
-
-.market-card-stat .label {
-  font-size: 0.78rem;
-  color: var(--warm-gray-3);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-/* ============================================
-   FULL-WIDTH IMAGE BREAK
-   ============================================ */
-.image-break {
-  width: 100%;
-  height: 420px;
+.edition-card-header {
   background: var(--black);
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.image-break-content {
-  text-align: center;
   color: white;
-  z-index: 2;
-}
-
-.image-break h3 {
-  font-family: var(--font-serif);
-  font-size: clamp(2rem, 4vw, 3.2rem);
-  font-style: italic;
-  margin-bottom: 12px;
-}
-
-.image-break p {
-  font-size: 0.9rem;
-  color: rgba(255,255,255,0.6);
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-}
-
-.image-break .diagonal-line {
-  position: absolute;
-  width: 150%;
-  height: 4px;
-  background: var(--orange);
-  transform: rotate(-25deg);
-  top: 50%;
-  left: -25%;
-  opacity: 0.4;
-}
-
-/* ============================================
-   GUIDE LIST (numbered items)
-   ============================================ */
-.guide-list {
-  max-width: var(--content-max);
-  margin: 0 auto;
-  padding: 0 32px 80px;
-  counter-reset: guide;
-}
-
-.guide-item {
-  padding: 32px 0;
-  border-bottom: 1px solid var(--warm-gray-5);
-  position: relative;
-}
-
-.guide-item::before {
-  counter-increment: guide;
-  content: counter(guide, decimal-leading-zero);
-  font-family: var(--font-serif);
-  font-size: 2.5rem;
-  color: var(--warm-gray-5);
-  position: absolute;
-  right: 0;
-  top: 32px;
-}
-
-.guide-item h4 {
-  font-family: var(--font-serif);
-  font-size: 1.3rem;
-  margin-bottom: 10px;
-  max-width: 85%;
-}
-
-.guide-item p {
-  font-size: 0.98rem;
-  color: var(--warm-gray-2);
-  line-height: 1.75;
-  max-width: 85%;
-}
-
-/* ============================================
-   FIELD NOTES
-   ============================================ */
-.field-notes {
-  max-width: var(--content-max);
-  margin: 0 auto;
-  padding: 0 32px 60px;
-}
-
-.field-note {
-  margin-bottom: 48px;
-  padding-left: 24px;
-  border-left: 2px solid var(--warm-gray-5);
-  transition: border-color 0.3s;
-}
-
-.field-note:hover {
-  border-left-color: var(--orange);
-}
-
-.field-note-location {
-  font-family: var(--font-sans);
-  font-size: 0.7rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--orange);
-  margin-bottom: 8px;
-}
-
-.field-note p {
-  font-size: 1.05rem;
-  line-height: 1.85;
-  color: var(--warm-gray-1);
-  font-style: italic;
-}
-
-/* ============================================
-   INVESTMENT THESIS CARDS
-   ============================================ */
-.thesis-grid {
-  max-width: var(--wide-max);
-  margin: 0 auto 60px;
-  padding: 0 32px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 24px;
-}
-
-.thesis-card {
-  background: white;
-  border-radius: 4px;
-  padding: 36px 28px;
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s;
-}
-
-.thesis-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 16px 48px rgba(0,0,0,0.08);
-}
-
-.thesis-card-market {
-  font-family: var(--font-sans);
-  font-size: 0.65rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  padding: 4px 12px;
-  border-radius: 2px;
-  display: inline-block;
-  margin-bottom: 16px;
-}
-
-.thesis-card-market.tm-nwa {
-  background: rgba(134, 239, 172, 0.15);
-  color: #16a34a;
-  border: 1px solid rgba(134, 239, 172, 0.4);
-}
-
-.thesis-card-market.tm-col {
-  background: rgba(232, 114, 42, 0.1);
-  color: var(--orange);
-  border: 1px solid rgba(232, 114, 42, 0.3);
-}
-
-.thesis-card-market.tm-us {
-  background: rgba(58, 134, 255, 0.08);
-  color: var(--electric-blue);
-  border: 1px solid rgba(58, 134, 255, 0.25);
-}
-
-.thesis-card-market.tm-risk {
-  background: rgba(230, 57, 136, 0.08);
-  color: var(--magenta);
-  border: 1px solid rgba(230, 57, 136, 0.25);
-}
-
-.thesis-card h3 {
-  font-family: var(--font-serif);
-  font-size: 1.25rem;
-  line-height: 1.25;
-  margin-bottom: 14px;
-}
-
-.thesis-card p {
-  font-size: 0.92rem;
-  color: var(--warm-gray-2);
-  line-height: 1.75;
-}
-
-.thesis-card .thesis-action {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-size: 0.95rem;
-  color: var(--black);
-  margin-top: 16px;
-  padding-top: 16px;
-  border-top: 1px solid var(--warm-gray-5);
-}
-
-/* ============================================
-   EXTRAS / READING LIST
-   ============================================ */
-.reading-list {
-  max-width: var(--content-max);
-  margin: 0 auto;
-  padding: 0 32px 80px;
-}
-
-.reading-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 16px;
-  padding: 20px 0;
-  border-bottom: 1px solid var(--warm-gray-5);
-}
-
-.reading-item-number {
-  font-family: var(--font-serif);
-  font-size: 1.8rem;
-  color: var(--warm-gray-5);
-  line-height: 1;
-  flex-shrink: 0;
-  min-width: 36px;
-}
-
-.reading-item-content h4 {
-  font-family: var(--font-serif);
-  font-size: 1.1rem;
-  margin-bottom: 4px;
-}
-
-.reading-item-content p {
-  font-size: 0.88rem;
-  color: var(--warm-gray-2);
-  line-height: 1.6;
-}
-
-.reading-item-content .reading-type {
-  font-size: 0.68rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--orange);
-  margin-bottom: 4px;
-}
-
-/* ============================================
-   AUTHORS SECTION
-   ============================================ */
-.authors-section {
-  background: var(--cream-dark);
-  padding: var(--section-padding) 32px;
-}
-
-.authors-inner {
-  max-width: var(--wide-max);
-  margin: 0 auto;
-}
-
-.authors-header {
-  margin-bottom: 48px;
-}
-
-.authors-header h2 {
-  font-family: var(--font-serif);
-  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-  line-height: 1.1;
-}
-
-.authors-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-  gap: 40px;
-}
-
-.author-card {
-  background: white;
-  padding: 36px 32px;
-  border-radius: 4px;
+  padding: 32px;
   position: relative;
   overflow: hidden;
 }
 
-.author-card::before {
+.edition-card-header::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 3px;
-  background: var(--orange);
+  top: -20px;
+  right: -20px;
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle, var(--orange-glow) 0%, transparent 70%);
+  opacity: 0.5;
 }
 
-.author-card-role {
+.edition-month {
+  font-family: var(--font-mono);
   font-size: 0.68rem;
-  font-weight: 700;
+  letter-spacing: 2px;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
   color: var(--orange);
-  margin-bottom: 10px;
+  margin-bottom: 12px;
+  position: relative;
 }
 
-.author-card h3 {
+.edition-headline {
   font-family: var(--font-serif);
-  font-size: 1.5rem;
-  margin-bottom: 14px;
+  font-size: 1.6rem;
+  line-height: 1.2;
+  color: white;
+  position: relative;
 }
 
-.author-card p {
-  font-size: 0.95rem;
+.edition-headline em {
+  font-style: italic;
+  color: var(--orange-light);
+}
+
+.edition-card-body {
+  padding: 28px 32px 32px;
+}
+
+.edition-desc {
+  font-size: 0.92rem;
   color: var(--warm-gray-2);
-  line-height: 1.75;
+  line-height: 1.7;
+  margin-bottom: 20px;
 }
 
-/* ============================================
-   FOOTER
-   ============================================ */
+.edition-sections {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.edition-section-tag {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  padding: 4px 10px;
+  background: var(--cream);
+  color: var(--warm-gray-2);
+  text-transform: uppercase;
+}
+
+.edition-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--orange);
+  transition: all 0.3s;
+}
+
+.edition-link:hover {
+  color: var(--black);
+  gap: 12px;
+}
+
+/* ===== ABOUT SECTION ===== */
+.about-section {
+  background: var(--cream-dark);
+  padding: clamp(60px, 10vw, 100px) 32px;
+  position: relative;
+  z-index: 1;
+}
+
+.about-inner {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.about-logo {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.about-logo span { color: var(--orange); }
+
+.about-text {
+  font-size: 1.05rem;
+  color: var(--warm-gray-2);
+  line-height: 1.8;
+  margin-bottom: 12px;
+}
+
+.about-text em {
+  font-style: italic;
+  color: var(--warm-gray-1);
+}
+
+/* ===== FOOTER ===== */
 .footer {
   background: var(--black);
   color: white;
-  padding: 80px 32px 40px;
+  padding: 60px 32px 32px;
   position: relative;
+  z-index: 1;
 }
 
 .footer::before {
@@ -966,74 +461,76 @@ img { max-width: 100%; display: block; }
 }
 
 .footer-inner {
-  max-width: var(--wide-max);
+  max-width: 1200px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
-  gap: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 40px;
 }
 
 .footer-brand .footer-logo {
   font-family: var(--font-sans);
   font-weight: 700;
-  font-size: 1.8rem;
-  margin-bottom: 12px;
+  font-size: 1.6rem;
+  margin-bottom: 10px;
 }
 
 .footer-brand .footer-logo span { color: var(--orange); }
 
 .footer-brand p {
-  font-size: 0.88rem;
-  color: rgba(255,255,255,0.45);
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.4);
   line-height: 1.7;
-  max-width: 340px;
+  max-width: 320px;
 }
 
-.footer-col h5 {
-  font-size: 0.7rem;
+.footer-links h5 {
+  font-size: 0.68rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   color: var(--orange);
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
-.footer-col ul { list-style: none; }
-
-.footer-col ul li {
-  margin-bottom: 10px;
+.footer-links ul {
+  list-style: none;
 }
 
-.footer-col ul li a {
-  color: rgba(255,255,255,0.5);
-  font-size: 0.88rem;
+.footer-links ul li {
+  margin-bottom: 8px;
+}
+
+.footer-links ul li a {
+  color: rgba(255,255,255,0.45);
+  font-size: 0.85rem;
   font-style: italic;
   transition: color 0.3s;
 }
 
-.footer-col ul li a:hover { color: var(--orange); }
+.footer-links ul li a:hover { color: var(--orange); }
 
 .footer-bottom {
-  max-width: var(--wide-max);
-  margin: 60px auto 0;
-  padding-top: 24px;
+  max-width: 1200px;
+  margin: 48px auto 0;
+  padding-top: 20px;
   border-top: 1px solid rgba(255,255,255,0.08);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 0.75rem;
-  color: rgba(255,255,255,0.3);
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.25);
   flex-wrap: wrap;
   gap: 12px;
 }
 
 .footer-bottom .xtatik {
   font-weight: 600;
-  color: rgba(255,255,255,0.5);
+  color: rgba(255,255,255,0.4);
 }
 
-/* ============================================
-   ANIMATIONS
-   ============================================ */
+/* ===== ANIMATIONS ===== */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(30px); }
   to { opacity: 1; transform: translateY(0); }
@@ -1053,531 +550,127 @@ img { max-width: 100%; display: block; }
 
 .reveal-delay-1 { transition-delay: 0.1s; }
 .reveal-delay-2 { transition-delay: 0.2s; }
-.reveal-delay-3 { transition-delay: 0.3s; }
-.reveal-delay-4 { transition-delay: 0.4s; }
 
-/* ============================================
-   RESPONSIVE
-   ============================================ */
+/* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
-  .nav-links { display: none; }
-  .footer-inner { grid-template-columns: 1fr; gap: 40px; }
-  .guide-item::before { display: none; }
-  .guide-item h4, .guide-item p { max-width: 100%; }
-  .market-grid { grid-template-columns: 1fr; }
-  .thesis-grid { grid-template-columns: 1fr; }
-  .data-strip-inner { grid-template-columns: repeat(2, 1fr); }
-  .image-break { height: 320px; }
-  .authors-grid { grid-template-columns: 1fr; }
-  .hero::after { font-size: 6rem; top: 5%; right: 2%; }
+  .nav { padding: 16px 24px; }
+  .nav-tagline { display: none; }
+  .editions-grid { grid-template-columns: 1fr; }
+  .footer-inner { flex-direction: column; }
+  .hero::after { font-size: 5rem; }
 }
 
 @media (max-width: 480px) {
-  .hero h1 { font-size: 2.2rem; }
-  .data-strip-inner { grid-template-columns: 1fr; }
+  .hero-title { font-size: 2.4rem; }
+  .edition-card-header { padding: 24px; }
+  .edition-card-body { padding: 20px 24px 28px; }
 }
 </style>
 </head>
 
 <body>
 
-<!-- Progress Bar -->
-<div class="progress-bar" id="progressBar"></div>
+<!-- Diagonal stripe motifs -->
+<div class="stripe-bg"></div>
+<div class="stripe-bg-2"></div>
 
 <!-- Navigation -->
-<nav class="nav" id="mainNav">
+<nav class="nav">
   <div class="nav-logo">IN-<span>K</span>luSo</div>
-  <span class="nav-section-label" id="navSectionLabel"></span>
-  <ul class="nav-links">
-    <li><a href="#core">Core</a></li>
-    <li><a href="#thrust">Thrust</a></li>
-    <li><a href="#pulse">Pulse</a></li>
-    <li><a href="#flow">Flow</a></li>
-    <li><a href="#axis">Axis</a></li>
-    <li><a href="#ground">Ground</a></li>
-    <li><a href="#extras">+Extras</a></li>
-  </ul>
+  <div class="nav-tagline">Where Information Becomes Immersion</div>
 </nav>
 
-<!-- ============================================
-     HERO — Cover Story
-     ============================================ -->
-<section class="hero" id="core">
-  <div class="hero-meta">
-    <span class="hero-section-tag">/CORE</span>
-    <span class="hero-edition">February 2026 Edition</span>
-    <span class="hero-date">February 18, 2026</span>
-  </div>
-  <h1>Northwest Arkansas: America's <em>#1 City</em> — And We Called It First</h1>
-  <p class="hero-subtitle">The Milken Institute just crowned NWA the best-performing large metro in the entire country. Out of 411. We've been writing about this market for two years. <em>Punto y aparte.</em></p>
-  <a href="#core-body" class="hero-cta">
-    Read the Full Story
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-badge">A Xtatik Publication</div>
+  <h1 class="hero-title">IN-<em>K</em>luSo</h1>
+  <p class="hero-subtitle">Where information becomes immersion. We cover the micro-markets where cultural sparks ignite before the data catches fire — from Northwest Arkansas to Medellín, from macro signals to boots-on-ground dispatches.</p>
+  <a href="#editions" class="hero-scroll">
+    Explore Editions
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
   </a>
-  <div class="hero-scroll-line"></div>
 </section>
-
-<!-- ============================================
-     DATA STRIP — NWA Headlines
-     ============================================ -->
-<div class="data-strip">
-  <div class="data-strip-inner">
-    <div class="data-item reveal">
-      <div class="value">#1</div>
-      <div class="desc">Best-Performing Large Metro<br>Milken Institute 2026</div>
-    </div>
-    <div class="data-item reveal reveal-delay-1">
-      <div class="value">411</div>
-      <div class="desc">US Metro Areas<br>Evaluated</div>
-    </div>
-    <div class="data-item reveal reveal-delay-2">
-      <div class="value">Top 13</div>
-      <div class="desc">In Every Single<br>Labor Market Metric</div>
-    </div>
-    <div class="data-item reveal reveal-delay-3">
-      <div class="value">~10%</div>
-      <div class="desc">Construction Employment<br>Growth in 2024</div>
-    </div>
-  </div>
-</div>
 
 <div class="orange-stripe"></div>
 
-<!-- ============================================
-     /CORE — Cover Story Body
-     ============================================ -->
-<section id="core-body">
-  <div class="section-header reveal">
-    <div class="section-tag">/CORE — Cover Story</div>
-    <h2>We told you. <em>Now Milken confirmed it.</em></h2>
+<!-- Editions -->
+<section class="editions-section" id="editions">
+  <div class="editions-header reveal">
+    <div class="editions-tag">Archive</div>
+    <h2>Published <em>Editions</em></h2>
   </div>
 
-  <div class="byline reveal">
-    <span class="byline-author">Juan Camilo Echeverri</span>
-    <span class="byline-divider"></span>
-    <span>February 18, 2026</span>
-    <span class="byline-divider"></span>
-    <span>Editor-in-Chief</span>
-  </div>
-
-  <div class="article-body reveal">
-    <p class="lead">Look, I'm not the type to say "I told you so." But I'm absolutely going to say it this time. Two years ago, when most people still thought of Northwest Arkansas as "that Walmart place," we were here writing about construction cranes, trail systems, and a demographic wave that the big data houses hadn't caught up to yet. On January 27, 2026, the Milken Institute made it official: Fayetteville-Springdale-Rogers is the <strong>#1 Best-Performing Large Metro in America</strong>.</p>
-
-    <p>Number one. Out of four hundred and eleven metro areas. Not top ten. Not "promising." Not "one to watch." <em>The top.</em></p>
-
-    <p>And here's what makes it truly remarkable — this wasn't a fluke spike. NWA has been in Milken's top 15 <em>every single year</em> since 2021. This region has been doing the work quietly, consistently, without the hype cycles that inflate and deflate places like Austin or Boise. No tech bro gold rush. No overnight collapse. Just a steady, almost stubborn ascent.</p>
-
-    <h3>The Numbers Don't Lie — But They Do Surprise</h3>
-
-    <p>The Milken methodology is rigorous. They look at job creation, wage growth, high-tech GDP concentration, housing affordability, and household broadband access, among other indicators. NWA ranked <strong>13th or higher in every single labor market metric</strong>. Every. Single. One. That kind of consistency across categories is almost unheard of for a metro this size.</p>
-
-    <p>Housing affordability? 15th among large cities nationally. In an era where most "best cities" lists are essentially rankings of places nobody can actually afford to live, NWA is doing something radical: growing <em>and</em> staying accessible. Construction employment surged roughly 10% in 2024 alone, which tells you that builders see what the data confirms — demand here isn't theoretical. It's physical. It's lumber and concrete and cranes in the sky.</p>
-
-    <p>Mayor Molly Rawn of Fayetteville put it well: <em>"In Fayetteville, we are intentional about investing in what makes our city thrive."</em> Intentional. That word matters. This isn't an accident of geography or a lucky commodity cycle. This is a region that decided to build something, and then actually built it.</p>
-
-    <h3>The Next Chapter: Hyperscale Is Coming</h3>
-
-    <p>If you think the story peaks at a Milken ranking, you're not paying attention. Arkansas is about to become a hyperscale data center corridor, with facilities expected to be operational by 2027. The implications for NWA are enormous — not just in direct employment, but in the secondary and tertiary economic effects. Tech workers need housing. Their families need schools, restaurants, trails, culture. The infrastructure investments that made NWA livable are about to pay compound interest.</p>
-
-    <p>And that's the thing about NWA that most outsiders still don't get. It's not <em>just</em> Walmart, Tyson, and J.B. Hunt anymore. It's Crystal Bridges and the Momentary. It's 40+ miles of world-class mountain biking trails. It's a food scene that has quietly become one of the best in the mid-South. It's a university town energy blended with corporate resources and — crucially — an affordability floor that gives regular people a real shot at building wealth through real estate.</p>
-
-    <p><em>Así es la cosa.</em> We spotted the signal. The institute confirmed the trend. And the next wave — hyperscale data, continued corporate relocation, quality-of-life migration — is only just beginning. If you're not looking at NWA right now, you're going to be late. Again.</p>
-  </div>
-</section>
-
-<!-- ============================================
-     PULLQUOTE
-     ============================================ -->
-<div class="pullquote reveal">
-  <div class="pullquote-inner">
-    <blockquote>"In Fayetteville, we are intentional about investing in what makes our city thrive."</blockquote>
-    <cite>— Mayor Molly Rawn, City of Fayetteville</cite>
-  </div>
-</div>
-
-<div class="orange-stripe"></div>
-
-<!-- ============================================
-     /THRUST — Colombia's Property Reset
-     ============================================ -->
-<section id="thrust">
-  <div class="section-header reveal">
-    <div class="section-tag">/THRUST — Deep Market Analysis</div>
-    <h2>Colombia's Property Reset: <em>What the Numbers Actually Say</em></h2>
-  </div>
-
-  <div class="byline reveal">
-    <span class="byline-author">Camilo Osorio</span>
-    <span class="byline-divider"></span>
-    <span>February 18, 2026</span>
-    <span class="byline-divider"></span>
-    <span>Contributing Writer / Market Analyst</span>
-  </div>
-
-  <div class="article-body reveal">
-    <p class="lead">Let's kill the fantasy right away: Colombia's real estate market did not boom in 2025. Not in real terms. If you listened to the cheerleaders — the Instagram agents, the "passive income in paradise" crowd — you'd think Medellín was minting millionaires on every corner. The reality is more nuanced, more interesting, and ultimately more useful if you're trying to make actual money here.</p>
-
-    <p>Residential prices across Colombia grew 7-9% in nominal terms last year. Sounds great, right? Except inflation ate most of it. In <em>real</em> terms — the only terms that matter for wealth — growth was a modest 2-4%. That's not nothing. But it's not the gold rush that social media promised you either.</p>
-
-    <h3>Bogotá: The Expensive Anchor</h3>
-
-    <p>The capital remains Colombia's most expensive residential market, with prices averaging around <strong>COP $9.8 million per square meter</strong> — roughly $2,600 USD. That's double the national average. Let that sink in. The gap between Bogotá and the rest of the country isn't narrowing. If anything, it's calcifying into a structural feature of the market.</p>
-
-    <p>What's actually exciting in Bogotá isn't the price level — it's the infrastructure play. The Metro de Bogotá is at <strong>70% completion</strong>, and it's already reshaping demand patterns. Neighborhoods along the planned route that were overlooked two years ago are now seeing buying pressure from investors who understand what transit does to property values. This is the single most important infrastructure story in Colombian real estate right now.</p>
-
-    <h3>The Rate Environment: Painful but Easing</h3>
-
-    <p>Colombia's policy rate sat at <strong>9.25%</strong> in January 2026. That translates to mortgage rates of 12-14% for most borrowers. <em>Ojo con esto</em> — those aren't typos. Colombians are financing homes at rates that would make an American homebuyer faint. This compresses purchasing power dramatically and explains why new-build homes (which come with developer financing and subsidies) are appreciating faster at 8-9% versus 6-8% for resale properties.</p>
-
-    <p>The rate trajectory is downward, but slowly. Banco de la República is cutting, but they're not rushing. Expect mortgage rates to stay in double digits through most of 2026. That's the environment. Plan accordingly.</p>
-
-    <h3>Medellín: Still the Magnet, But the Map Is Shifting</h3>
-
-    <p>El Poblado and Laureles continue to post strong numbers — 9-12% annual growth in prime micro-zones. No surprises there. The foreign buyer demand floor, combined with genuine quality-of-life appeal, keeps these neighborhoods resilient.</p>
-
-    <p>But the real story? <strong>Sabaneta.</strong> This municipality in the southern Aburrá Valley is emerging as the affordable alternative to El Poblado. Younger Colombian families are choosing it for price, metro connectivity, and a neighborhood feel that El Poblado lost years ago. International buyers who can't stomach El Poblado prices are discovering it too. We're watching this closely.</p>
-
-    <p>On the infrastructure side, the <strong>Metro de la 80 expansion</strong> in western Medellín is creating a similar dynamic to Bogotá's metro effect — opening up neighborhoods that were previously disconnected from the city's economic pulse. Transit creates value. Every time. Everywhere.</p>
-
-    <h3>The Five-Year View</h3>
-
-    <p>Here's our forecast: <strong>30-45% nominal growth over five years, with 5-15% real growth</strong>. That's a wide band, deliberately so. The variables — rate policy, remittance flows, political stability, infrastructure execution — create real uncertainty. But the structural thesis is sound: Colombia's middle class is growing, urbanization continues, and housing supply hasn't kept pace with demographic demand.</p>
-
-    <p>The most liquid asset class? <strong>Mid-market 2-3 bedroom apartments</strong>. They rent fast, they sell fast, and they sit in the sweet spot of Colombian demand. Luxury is illiquid. Studios are oversupplied in tourist zones. The middle is where the money is.</p>
-
-    <p>One more signal worth noting: rental demand is structurally rising. More Colombian households are <em>choosing</em> to rent — not because they can't afford to buy, but because high mortgage rates and lifestyle flexibility make renting the rational choice. This is a demand tailwind for rental investors that isn't going away anytime soon.</p>
-  </div>
-</section>
-
-<!-- Data Strip — Colombia -->
-<div class="data-strip">
-  <div class="data-strip-inner">
-    <div class="data-item reveal">
-      <div class="value">9.25%</div>
-      <div class="desc">Colombia Policy Rate<br>January 2026</div>
-    </div>
-    <div class="data-item reveal reveal-delay-1">
-      <div class="value">$2,600</div>
-      <div class="desc">Bogotá Price/SqM<br>in USD</div>
-    </div>
-    <div class="data-item reveal reveal-delay-2">
-      <div class="value">70%</div>
-      <div class="desc">Metro de Bogotá<br>Completion</div>
-    </div>
-    <div class="data-item reveal reveal-delay-3">
-      <div class="value">9-12%</div>
-      <div class="desc">Medellín Prime Zone<br>Annual Growth</div>
-    </div>
-  </div>
-</div>
-
-<div class="orange-stripe"></div>
-
-<!-- ============================================
-     /PULSE — The Great Housing Reset
-     ============================================ -->
-<section id="pulse">
-  <div class="section-header reveal">
-    <div class="section-tag">/PULSE — Macro Signals</div>
-    <h2>The Great Housing Reset: <em>3 Signals Reshaping 2026</em></h2>
-  </div>
-
-  <div class="byline reveal">
-    <span class="byline-author">Juan Camilo Echeverri</span>
-    <span class="byline-divider"></span>
-    <span>February 18, 2026</span>
-    <span class="byline-divider"></span>
-    <span>Editor-in-Chief</span>
-  </div>
-
-  <div class="article-body reveal">
-    <p class="lead">Something is shifting in the American housing market. Not a crash — stop hoping for that. Not a boom either. Something more subtle and, honestly, more interesting. We're in the early innings of what I'm calling the Great Housing Reset: a period where the rules of the game are being quietly rewritten while most people are still arguing about whether rates will hit 5% again. (They won't. Not this year. Move on.)</p>
-
-    <p>Three signals tell the story.</p>
-
-    <h3>Signal 1: Consumer Confidence — Fragile, But Stabilizing</h3>
-
-    <p>2025 was a rollercoaster for consumer sentiment. Inflation anxieties, election uncertainty, and a general sense that <em>everything costs too much</em> kept confidence metrics volatile for most of the year. But as we've entered 2026, the readings are stabilizing. Not soaring — stabilizing. And in a market that's been driven by psychology as much as economics, stability is actually a big deal.</p>
-
-    <p>When people feel like the ground isn't shifting under their feet every month, they make big decisions. They sign leases. They put in offers. They stop refreshing Zillow at 2 AM and start calling their agent. That behavioral shift is the precursor to the spring buying season, and the early signals suggest it's coming.</p>
-
-    <h3>Signal 2: Mortgage Rates — The "Not Great, Not Terrible" Zone</h3>
-
-    <p>Rates are hovering in a band that's uncomfortable but not paralyzing. The 30-year fixed is bouncing between the high 5s and mid 6s. It's the Chernobyl of mortgage markets: <em>not great, not terrible</em>. And the market is adjusting. Slowly, painfully, but adjusting.</p>
-
-    <p>NAR is forecasting a <strong>7-12% increase in existing-home sales</strong> for 2026. That's meaningful volume growth, even if it's coming off a deeply depressed base. The early data, though, has been softer than hoped — existing-home sales actually <strong>dropped 8.4%</strong> to start the year. A reality check? Maybe. A trend reversal? Unlikely. February and March will tell the real story.</p>
-
-    <h3>Signal 3: Federal Policy — Chaos as Catalyst</h3>
-
-    <p>Look, I'm not going to pretend that federal housing policy makes sense right now. It doesn't. There are competing proposals, contradictory signals, and a regulatory environment that seems to change direction every news cycle. But here's the thing about chaos: it creates asymmetric opportunities for people who are paying attention.</p>
-
-    <p>Immigration policy shifts are affecting labor supply in construction. Tariff proposals are hitting materials costs. There's talk of novel mortgage products. Each of these creates localized winners and losers. The question isn't whether policy matters — it's whether you're positioned to benefit from the specific ways it matters in your target market.</p>
-
-    <h3>The Reset Opportunity</h3>
-
-    <p>Here's the thesis in one sentence: <strong>income growth is finally outpacing home price appreciation in many markets</strong>. That's the reset. For years, prices ran ahead of wages, creating an ever-widening affordability gap. Now, in select metros, the gap is closing — not because prices are falling (mostly they're not), but because incomes are catching up.</p>
-
-    <p>Meanwhile, the office market restructuring continues to reshape where people live and work. The WFH shift isn't reversing — it's settling into a permanent new configuration that distributes economic activity differently across metros. Markets that understood this early (hello, NWA) are already winning.</p>
-
-    <p>Inventory is shifting. Buyers are active but disciplined. The spring advantage window is opening. If you've been sitting on the sidelines waiting for the "perfect" moment — <em>ya basta</em>. The reset is now. It's just quieter than you expected.</p>
-  </div>
-</section>
-
-<!-- Image Break -->
-<div class="image-break reveal">
-  <div class="diagonal-line"></div>
-  <div class="image-break-content">
-    <h3>"Income growth is finally outpacing prices."</h3>
-    <p>The Great Housing Reset — Q1 2026</p>
-  </div>
-</div>
-
-<!-- ============================================
-     /FLOW — Four Markets, Four Signals
-     ============================================ -->
-<section id="flow">
-  <div class="section-header reveal">
-    <div class="section-tag">/FLOW — Micro-Market Monitor</div>
-    <h2>Four Markets, <em>Four Signals</em></h2>
-    <p class="section-subtitle">Quick-hit dispatches from the metros we're tracking most closely this quarter. The signal map, distilled.</p>
-  </div>
-</section>
-
-<div class="market-grid">
-  <div class="market-card card-nwa reveal reveal-delay-1">
-    <div class="market-card-number">01</div>
-    <h3>Northwest Arkansas</h3>
-    <p class="market-card-sub">#1 Milken metro. Data centers. Still affordable.</p>
-    <div class="market-card-stat">
-      <span class="number">#1</span>
-      <span class="label">Milken Best-Performing<br>Large Metro 2026</span>
-    </div>
-  </div>
-  <div class="market-card card-mde reveal reveal-delay-2">
-    <div class="market-card-number">02</div>
-    <h3>Medellín</h3>
-    <p class="market-card-sub">9-12% prime growth. Metro expansion. Sabaneta rising.</p>
-    <div class="market-card-stat">
-      <span class="number">9-12%</span>
-      <span class="label">Annual Growth<br>Prime Zones</span>
-    </div>
-  </div>
-  <div class="market-card card-mad reveal reveal-delay-3">
-    <div class="market-card-number">03</div>
-    <h3>Madrid</h3>
-    <p class="market-card-sub">International buyer pressure. Golden visa ripple effects.</p>
-    <div class="market-card-stat">
-      <span class="number">+14%</span>
-      <span class="label">YoY International<br>Buyer Activity</span>
-    </div>
-  </div>
-  <div class="market-card card-nyc reveal reveal-delay-4">
-    <div class="market-card-number">04</div>
-    <h3>New York City</h3>
-    <p class="market-card-sub">Office-to-resi conversion wave. Brooklyn heating up.</p>
-    <div class="market-card-stat">
-      <span class="number">12.6M</span>
-      <span class="label">Sq Ft Approved<br>for Conversion</span>
-    </div>
-  </div>
-</div>
-
-<!-- /FLOW Article Body -->
-<div class="article-body reveal">
-  <h3>NWA — The Confirmation</h3>
-  <p>We covered the headline in /CORE, but the flow signals deserve their own mention. Beyond Milken, NWA is seeing a construction boom that's creating its own momentum. Data center investment is attracting ancillary tech services, which attract talent, which creates housing demand, which funds more construction. It's a virtuous cycle — and it's still early. The affordability story remains intact: NWA ranked 15th nationally for housing affordability among large metros. That's the kicker. Growth <em>plus</em> access. That combination is rare.</p>
-
-  <h3>Medellín — The Shifting Map</h3>
-  <p>El Poblado and Laureles get the magazine covers, but the signal this quarter is Sabaneta. Located in the southern Aburrá Valley, it offers metro connectivity, walkability, and a price point that's 30-40% below El Poblado for comparable quality. The Metro de la 80 expansion in western Medellín is a second major signal — opening up neighborhoods like Belén and Robledo to a new class of transit-oriented development. Medellín isn't a single market anymore. It's a constellation of micro-markets, and the smart money is looking at the edges, not the center.</p>
-
-  <h3>Madrid — The Pressure Cooker</h3>
-  <p>Spain's capital continues to attract international capital at a pace that's straining local affordability. The golden visa changes — restricting real estate investment as a pathway to residency — are sending ripple effects through the market. Some foreign buyers are accelerating purchases before new rules bite. Others are redirecting to secondary Spanish cities. The net effect: continued upward pressure on Madrid prices in the near term, with potential for correction as the policy dust settles. Watch Malasaña and Lavapiés for the sharpest micro-signals.</p>
-
-  <h3>NYC — The Conversion Play</h3>
-  <p>Manhattan's office vacancy problem is becoming Brooklyn's housing opportunity. The office-to-residential conversion wave is gaining real momentum, with millions of square feet approved or in pipeline. Lower Manhattan is leading, but the signal is spreading to Midtown and, increasingly, to downtown Brooklyn. The micro-markets heating fastest are the ones adjacent to conversion projects — new residents create demand for services, retail, and yes, more housing. It's urban regeneration in real time. Messy, expensive, and full of opportunity.</p>
-</div>
-
-<div class="orange-stripe"></div>
-
-<!-- ============================================
-     /AXIS — The Investor's Playbook
-     ============================================ -->
-<section id="axis">
-  <div class="section-header reveal">
-    <div class="section-tag">/AXIS — Investment Thesis</div>
-    <h2>The Investor's Playbook: <em>Where to Put Capital in Q1 2026</em></h2>
-    <p class="section-subtitle">Four actionable theses from the markets we know best. No fluff. No "it depends." Real positions.</p>
-  </div>
-
-  <div class="byline reveal">
-    <span class="byline-author">Juan Camilo Echeverri & Camilo Osorio</span>
-    <span class="byline-divider"></span>
-    <span>February 18, 2026</span>
-  </div>
-</section>
-
-<div class="thesis-grid">
-  <div class="thesis-card reveal reveal-delay-1">
-    <span class="thesis-card-market tm-nwa">NWA Play</span>
-    <h3>Buy Residential Near Data Center Corridors</h3>
-    <p>The hyperscale data center buildout creates a clear geographic thesis: residential within a 15-minute drive of planned facilities. Entry prices remain affordable relative to national benchmarks, and the demand catalyst is real, funded, and on-schedule for 2027 operations. Think workforce housing, not luxury. These workers need 3-bed houses with yards, not downtown lofts.</p>
-    <div class="thesis-action">→ Affordable entry. Massive structural upside. Buy before the cranes arrive.</div>
-  </div>
-
-  <div class="thesis-card reveal reveal-delay-2">
-    <span class="thesis-card-market tm-col">Colombia Play</span>
-    <h3>Mid-Market Apartments in Transit Corridors</h3>
-    <p>The playbook in Colombia is transit-oriented: buy mid-market 2-3 bed apartments along planned or expanding metro lines in Bogotá, Medellín, and emerging Sabaneta. Avoid the luxury segment — it's illiquid and overpriced for the yields. Watch Cajicá (north of Bogotá) as an emerging satellite market with improving connectivity. Rental demand is structurally rising.</p>
-    <div class="thesis-action">→ Follow the metro lines. Buy the middle. Avoid luxury vanity plays.</div>
-  </div>
-
-  <div class="thesis-card reveal reveal-delay-3">
-    <span class="thesis-card-market tm-us">US Broad Play</span>
-    <h3>Target Markets Where Income > Price Growth</h3>
-    <p>The Great Housing Reset creates a specific opportunity: markets where income growth is outpacing home price appreciation. That's the affordability gap closing in your favor. NWA is the flagship example, but look also at Midwest metros, parts of the Southeast, and markets benefiting from remote work migration. The spring buying window is opening now.</p>
-    <div class="thesis-action">→ The reset is your entry. Focus on the income-to-price convergence story.</div>
-  </div>
-
-  <div class="thesis-card reveal reveal-delay-4">
-    <span class="thesis-card-market tm-risk">Risk Management</span>
-    <h3>Cash Flow Over Appreciation Bets</h3>
-    <p>In a high-rate environment, the math changes. Appreciation-only strategies are fragile — they require everything to go right. Cash flow strategies survive bad quarters, policy shifts, and rate surprises. Prioritize properties with day-one positive cash flow or very clear near-term rental demand. If the only way your deal works is 8% annual appreciation, it doesn't work.</p>
-    <div class="thesis-action">→ High rates mean cash flow is king. Be disciplined or be disappointed.</div>
-  </div>
-</div>
-
-<div class="orange-stripe"></div>
-
-<!-- ============================================
-     /GROUND — Boots on the Ground
-     ============================================ -->
-<section id="ground">
-  <div class="section-header reveal">
-    <div class="section-tag">/GROUND — Field Dispatches</div>
-    <h2>From the Field: <em>Boots-on-Ground Notes</em></h2>
-    <p class="section-subtitle">What spreadsheets can't tell you. Personal dispatches from the places where deals happen, lives unfold, and markets reveal their character.</p>
-  </div>
-
-  <div class="byline reveal">
-    <span class="byline-author">Juan Camilo Echeverri</span>
-    <span class="byline-divider"></span>
-    <span>February 18, 2026</span>
-    <span class="byline-divider"></span>
-    <span>Editor-in-Chief</span>
-  </div>
-</section>
-
-<div class="field-notes">
-  <div class="field-note reveal">
-    <div class="field-note-location">📍 Bentonville, Arkansas — Construction Site Visit</div>
-    <p>The mud was February-thick and the air smelled like fresh-cut pine and diesel. I stood at the edge of a 240-unit residential development on the southeast side of Bentonville, watching a crew frame what would become somebody's first home by autumn. The foreman — a guy named Dale who's been building in NWA for nineteen years — told me something that stuck: "Used to be, we'd finish a project and have to sell it. Now we finish a project and it's already sold." He said it casually, like it was obvious. Like the whole country should know. The framing hammers kept their rhythm. The data centers aren't even built yet, and this town already can't build fast enough.</p>
-  </div>
-
-  <div class="field-note reveal">
-    <div class="field-note-location">📍 El Poblado, Medellín — Coffee and Cranes</div>
-    <p>Sitting at Pergamino on a Tuesday morning, third tinto of the day, watching the skyline through the steam. Three cranes visible from my table. Three. In a neighborhood that people keep calling "saturated." The couple next to me — both maybe thirty, both on laptops — were speaking French. The barista switched between Spanish and English without pause. A guy in a Patagonia vest walked past with a golden retriever and a phone call about a closing in Sabaneta. This is the texture of Medellín's market right now: international, caffeinated, relentless. The cranes keep turning. The tinto keeps flowing. The numbers keep climbing, even when the macro says they shouldn't.</p>
-  </div>
-
-  <div class="field-note reveal">
-    <div class="field-note-location">📍 Bogotá — A Conversation About Renting</div>
-    <p>Andrés and Valentina are both 28. He works in fintech; she's a graphic designer. Combined income puts them solidly in Colombia's upper-middle class. They could buy — they've been pre-approved, they've done the math. They're choosing not to. "At 13% interest? <em>No, hermano.</em> We'd rather rent a nice place in Chapinero, save the difference, and wait." Valentina showed me their spreadsheet. It was more sophisticated than half the pro formas I see from investors. They're not anti-homeownership. They're anti-stupid-math. And they're not alone. I talked to four couples under 35 in Bogotá that week. Three of them said some version of the same thing. This is the demand signal that landlords should be paying attention to: a generation of educated, earning renters who are <em>choosing</em> to be tenants. That's not a problem for the rental market. That's a structural tailwind.</p>
-  </div>
-</div>
-
-<div class="orange-stripe"></div>
-
-<!-- ============================================
-     +EXTRAS — What We're Reading / Watching / Tracking
-     ============================================ -->
-<section id="extras">
-  <div class="section-header reveal">
-    <div class="section-tag">+Extras — Curated</div>
-    <h2>What We're Reading, <em>Watching, Tracking</em></h2>
-  </div>
-</section>
-
-<div class="reading-list">
-  <div class="reading-item reveal">
-    <div class="reading-item-number">01</div>
-    <div class="reading-item-content">
-      <div class="reading-type">📊 Report</div>
-      <h4>Milken Institute: Best-Performing Cities 2026</h4>
-      <p>The definitive ranking that crowned NWA #1. Essential methodology, comprehensive metro-by-metro data. If you only read one report this quarter, make it this one.</p>
-    </div>
-  </div>
-  <div class="reading-item reveal">
-    <div class="reading-item-number">02</div>
-    <div class="reading-item-content">
-      <div class="reading-type">🏠 Forecast</div>
-      <h4>TheLatinvestor: Colombia Property Market Forecasts 2026-2030</h4>
-      <p>The most sober, data-grounded analysis of Colombia's residential market we've found. No hype, real numbers, actionable segmentation. Pairs perfectly with our /THRUST analysis this month.</p>
-    </div>
-  </div>
-  <div class="reading-item reveal">
-    <div class="reading-item-number">03</div>
-    <div class="reading-item-content">
-      <div class="reading-type">📈 Data</div>
-      <h4>DANE Housing Price Indices — Colombia</h4>
-      <p>The Colombian national statistics office. Raw data, no spin. Track the IPVN (new housing price index) and IPHVS (secondary housing) monthly. The primary source for anyone serious about Colombian real estate.</p>
-    </div>
-  </div>
-  <div class="reading-item reveal">
-    <div class="reading-item-number">04</div>
-    <div class="reading-item-content">
-      <div class="reading-type">⚡ Watch</div>
-      <h4>Hyperscale Data Centers in Arkansas: The Infrastructure Play</h4>
-      <p>Multiple outlets tracking the buildout of hyperscale data center infrastructure across Arkansas, expected operational by 2027. This is the next economic catalyst for NWA and the broader region. Watch the permits, watch the power grid investments, watch the housing starts.</p>
-    </div>
-  </div>
-</div>
-
-<!-- ============================================
-     ABOUT THE AUTHORS
-     ============================================ -->
-<section class="authors-section" id="authors">
-  <div class="authors-inner">
-    <div class="authors-header reveal">
-      <div class="section-tag">The Team</div>
-      <h2>About the Authors</h2>
-    </div>
-
-    <div class="authors-grid">
-      <div class="author-card reveal reveal-delay-1">
-        <div class="author-card-role">Editor-in-Chief / Lead Writer</div>
-        <h3>Juan Camilo Echeverri</h3>
-        <p>Real estate strategist, market researcher, and founder of IN-KluSo. Based between Northwest Arkansas and Medellín, he covers emerging micro-markets where culture meets capital. His work sits at the intersection of data-driven analysis and the kind of street-level intuition you only get from actually being there — boots on the ground, <em>tinto</em> in hand.</p>
+  <div class="editions-grid">
+    <!-- February 2026 -->
+    <div class="edition-card reveal reveal-delay-1">
+      <div class="edition-card-header">
+        <div class="edition-month">February 2026</div>
+        <div class="edition-headline">Northwest Arkansas: America's <em>#1 City</em></div>
       </div>
-      <div class="author-card reveal reveal-delay-2">
-        <div class="author-card-role">Contributing Writer / Market Analyst</div>
-        <h3>Camilo Osorio</h3>
-        <p>Urban economist and data analyst specializing in Latin American markets. His work bridges quantitative signals with street-level insights across Colombia, Spain, and the US. When the spreadsheet meets the sidewalk, Camilo is the one walking both. His analysis for IN-KluSo turns raw DANE data and Banco de la República reports into actionable intelligence.</p>
+      <div class="edition-card-body">
+        <p class="edition-desc">The Milken Institute crowned NWA the best-performing large metro in America. We called it two years ago. Plus: Colombia's property reset decoded, the Great Housing Reset signals, and the debut of <strong>CRUMBS</strong> — our brand intelligence data signals division.</p>
+        <div class="edition-sections">
+          <span class="edition-section-tag">/Core</span>
+          <span class="edition-section-tag">/Thrust</span>
+          <span class="edition-section-tag">/Pulse</span>
+          <span class="edition-section-tag">/Flow</span>
+          <span class="edition-section-tag">/Axis</span>
+          <span class="edition-section-tag">/Ground</span>
+          <span class="edition-section-tag">/Crumbs</span>
+        </div>
+        <a href="./feb-2026/index.html" class="edition-link">Read →</a>
+      </div>
+    </div>
+
+    <!-- January 2026 -->
+    <div class="edition-card reveal reveal-delay-2">
+      <div class="edition-card-header">
+        <div class="edition-month">January 2026</div>
+        <div class="edition-headline">Little Bangs <em>Before the Boom</em></div>
+      </div>
+      <div class="edition-card-body">
+        <p class="edition-desc">The inaugural edition. Small signals that precede big shifts — emerging market tremors, cultural undercurrents, and the quiet data points that most people miss. The foundation of everything that follows.</p>
+        <div class="edition-sections">
+          <span class="edition-section-tag">/Core</span>
+          <span class="edition-section-tag">/Thrust</span>
+          <span class="edition-section-tag">/Pulse</span>
+          <span class="edition-section-tag">/Flow</span>
+          <span class="edition-section-tag">/Axis</span>
+          <span class="edition-section-tag">/Ground</span>
+        </div>
+        <a href="./jan-2026/index.html" class="edition-link">Read →</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============================================
-     FOOTER
-     ============================================ -->
+<div class="orange-stripe"></div>
+
+<!-- About -->
+<section class="about-section">
+  <div class="about-inner reveal">
+    <div class="about-logo">IN-<span>K</span>luSo</div>
+    <p class="about-text">A publication at the intersection of <em>data, culture, and capital</em>. We track the markets most people aren't watching yet — from emerging US metros to Latin American cities — and translate the signals into intelligence you can actually use.</p>
+    <p class="about-text">Built by people who read balance sheets <em>and</em> walk the streets. <em>Punto y aparte.</em></p>
+  </div>
+</section>
+
+<!-- Footer -->
 <footer class="footer">
   <div class="footer-inner">
     <div class="footer-brand">
       <div class="footer-logo">IN-<span>K</span>luSo</div>
       <p>Where information becomes immersion. A publication by Xtatik — covering the micro-markets where cultural sparks ignite before the data catches fire.</p>
     </div>
-    <div class="footer-col">
-      <h5>This Edition</h5>
+    <div class="footer-links">
+      <h5>Editions</h5>
       <ul>
-        <li><a href="#core">/Core — NWA #1</a></li>
-        <li><a href="#thrust">/Thrust — Colombia Reset</a></li>
-        <li><a href="#pulse">/Pulse — Housing Reset</a></li>
-        <li><a href="#flow">/Flow — Market Monitor</a></li>
-        <li><a href="#axis">/Axis — Playbook</a></li>
-        <li><a href="#ground">/Ground — Field Notes</a></li>
+        <li><a href="./feb-2026/index.html">February 2026</a></li>
+        <li><a href="./jan-2026/index.html">January 2026</a></li>
       </ul>
     </div>
-    <div class="footer-col">
-      <h5>Xtatik Divisions</h5>
+    <div class="footer-links">
+      <h5>Divisions</h5>
       <ul>
         <li><a href="#">/CORE</a></li>
         <li><a href="#">/THRUST</a></li>
@@ -1585,68 +678,22 @@ img { max-width: 100%; display: block; }
         <li><a href="#">/FLOW</a></li>
         <li><a href="#">/AXIS</a></li>
         <li><a href="#">/GROUND</a></li>
+        <li><a href="#">/CRUMBS</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
-    <span>© 2026 IN-KluSo · February Edition · All rights reserved</span>
+    <span>&copy; 2026 IN-KluSo &middot; All rights reserved</span>
     <span class="xtatik">A Xtatik Publication</span>
   </div>
 </footer>
 
-<!-- ============================================
-     JAVASCRIPT
-     ============================================ -->
+<!-- JavaScript -->
 <script>
 (function() {
   'use strict';
 
-  // ---- Reading Progress Bar ----
-  const progressBar = document.getElementById('progressBar');
-  function updateProgress() {
-    const scrollTop = window.scrollY;
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-    progressBar.style.width = progress + '%';
-  }
-
-  // ---- Sticky Nav ----
-  const nav = document.getElementById('mainNav');
-  function updateNav() {
-    if (window.scrollY > 80) {
-      nav.classList.add('scrolled');
-    } else {
-      nav.classList.remove('scrolled');
-    }
-  }
-
-  // ---- Live Section Label ----
-  const navLabel = document.getElementById('navSectionLabel');
-  const sectionMap = [
-    { id: 'core', label: '/CORE — Cover Story' },
-    { id: 'core-body', label: '/CORE — Cover Story' },
-    { id: 'thrust', label: '/THRUST — Colombia Analysis' },
-    { id: 'pulse', label: '/PULSE — Housing Reset' },
-    { id: 'flow', label: '/FLOW — Market Monitor' },
-    { id: 'axis', label: '/AXIS — Investment Playbook' },
-    { id: 'ground', label: '/GROUND — Field Notes' },
-    { id: 'extras', label: '+EXTRAS — Reading List' },
-    { id: 'authors', label: 'About the Authors' }
-  ];
-
-  function updateSectionLabel() {
-    let currentLabel = '';
-    for (let i = sectionMap.length - 1; i >= 0; i--) {
-      const el = document.getElementById(sectionMap[i].id);
-      if (el && el.getBoundingClientRect().top <= 120) {
-        currentLabel = sectionMap[i].label;
-        break;
-      }
-    }
-    navLabel.textContent = currentLabel;
-  }
-
-  // ---- Scroll-Reveal (IntersectionObserver) ----
+  // Scroll-reveal
   const revealElements = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver(function(entries) {
     entries.forEach(function(entry) {
@@ -1664,21 +711,7 @@ img { max-width: 100%; display: block; }
     observer.observe(el);
   });
 
-  // ---- Scroll event (throttled) ----
-  let ticking = false;
-  window.addEventListener('scroll', function() {
-    if (!ticking) {
-      requestAnimationFrame(function() {
-        updateProgress();
-        updateNav();
-        updateSectionLabel();
-        ticking = false;
-      });
-      ticking = true;
-    }
-  });
-
-  // ---- Smooth scroll for anchor links ----
+  // Smooth scroll for anchor links
   document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
     anchor.addEventListener('click', function(e) {
       const target = document.querySelector(this.getAttribute('href'));
@@ -1688,11 +721,6 @@ img { max-width: 100%; display: block; }
       }
     });
   });
-
-  // Init
-  updateProgress();
-  updateNav();
-  updateSectionLabel();
 })();
 </script>
 
