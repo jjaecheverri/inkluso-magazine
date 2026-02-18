@@ -1,0 +1,1654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IN-KluSo — Where Information Becomes Immersion</title>
+
+<!-- Google Fonts: DM Serif Display (editorial serif) + Inter (geometric sans) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================
+   CSS CUSTOM PROPERTIES — IN-KluSo Brand
+   ============================================ */
+:root {
+  /* Base palette */
+  --cream: #FAF6EE;
+  --cream-dark: #F0EBDF;
+  --black: #1A1A1A;
+  --warm-gray-1: #333333;
+  --warm-gray-2: #666666;
+  --warm-gray-3: #999999;
+  --warm-gray-4: #CCCCCC;
+  --warm-gray-5: #E8E4DC;
+
+  /* Accent — signature orange */
+  --orange: #E8722A;
+  --orange-light: #F4A261;
+  --orange-glow: rgba(232, 114, 42, 0.15);
+
+  /* Accent tones (used sparingly) */
+  --electric-blue: #3A86FF;
+  --magenta: #E63988;
+  --lilac: #A78BFA;
+  --soft-green: #86EFAC;
+
+  /* Typography */
+  --font-serif: 'DM Serif Display', 'Playfair Display', Georgia, serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  /* Spacing */
+  --section-padding: clamp(60px, 10vw, 120px);
+  --content-max: 780px;
+  --wide-max: 1200px;
+}
+
+/* ============================================
+   RESET & BASE
+   ============================================ */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--cream);
+  color: var(--black);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--orange);
+  color: white;
+}
+
+a { color: var(--orange); text-decoration: none; transition: color 0.3s; }
+a:hover { color: var(--black); }
+
+img { max-width: 100%; display: block; }
+
+/* ============================================
+   NAVIGATION
+   ============================================ */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 18px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  background: transparent;
+}
+
+.nav.scrolled {
+  background: rgba(250, 246, 238, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 1px 0 rgba(0,0,0,0.06);
+  padding: 12px 32px;
+}
+
+.nav-logo {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 1.4rem;
+  letter-spacing: -0.02em;
+  color: var(--black);
+}
+
+.nav-logo span { color: var(--orange); }
+
+.nav-links {
+  display: flex;
+  gap: 28px;
+  list-style: none;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.nav-links a {
+  color: var(--warm-gray-2);
+  transition: color 0.3s;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--orange);
+  transition: width 0.3s;
+}
+
+.nav-links a:hover { color: var(--black); }
+.nav-links a:hover::after { width: 100%; }
+
+.nav-section-label {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--orange);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.nav.scrolled .nav-section-label { opacity: 1; }
+
+/* ============================================
+   HERO
+   ============================================ */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: var(--section-padding) 32px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, var(--orange-glow) 0%, transparent 70%);
+  pointer-events: none;
+  animation: heroGlow 8s ease-in-out infinite alternate;
+}
+
+@keyframes heroGlow {
+  0% { transform: translate(0, 0) scale(1); opacity: 0.6; }
+  100% { transform: translate(-40px, 30px) scale(1.15); opacity: 1; }
+}
+
+.hero-meta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.3s forwards;
+}
+
+.hero-section-tag {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--orange);
+  padding: 6px 14px;
+  border: 1.5px solid var(--orange);
+  border-radius: 2px;
+}
+
+.hero-date {
+  font-size: 0.82rem;
+  color: var(--warm-gray-3);
+  font-weight: 400;
+}
+
+.hero h1 {
+  font-family: var(--font-serif);
+  font-size: clamp(2.8rem, 6.5vw, 5.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  max-width: 900px;
+  margin-bottom: 28px;
+  opacity: 0;
+  animation: fadeUp 1s 0.5s forwards;
+}
+
+.hero h1 em {
+  font-style: italic;
+  color: var(--orange);
+}
+
+.hero-subtitle {
+  font-size: clamp(1rem, 1.6vw, 1.25rem);
+  color: var(--warm-gray-2);
+  max-width: 600px;
+  line-height: 1.7;
+  margin-bottom: 40px;
+  opacity: 0;
+  animation: fadeUp 1s 0.7s forwards;
+}
+
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--black);
+  padding: 14px 0;
+  border-bottom: 2px solid var(--orange);
+  transition: all 0.3s;
+  opacity: 0;
+  animation: fadeUp 1s 0.9s forwards;
+  cursor: pointer;
+}
+
+.hero-cta:hover { padding-left: 8px; color: var(--orange); }
+
+.hero-cta svg {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.3s;
+}
+
+.hero-cta:hover svg { transform: translateY(4px); }
+
+.hero-scroll-line {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(to bottom, transparent, var(--orange));
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.3; height: 60px; }
+  50% { opacity: 1; height: 80px; }
+}
+
+/* ============================================
+   DIAGONAL ORANGE STRIPE (brand element)
+   ============================================ */
+.orange-stripe {
+  width: 100%;
+  height: 6px;
+  background: var(--orange);
+  transform: skewY(-1.5deg);
+  margin: 0;
+}
+
+/* ============================================
+   SECTION HEADERS
+   ============================================ */
+.section-header {
+  padding: var(--section-padding) 32px 40px;
+  max-width: var(--wide-max);
+  margin: 0 auto;
+}
+
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--orange);
+  margin-bottom: 20px;
+}
+
+.section-tag::before {
+  content: '';
+  width: 32px;
+  height: 2px;
+  background: var(--orange);
+}
+
+.section-header h2 {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  max-width: 700px;
+}
+
+.section-header h2 em {
+  font-style: italic;
+  color: var(--orange);
+}
+
+/* ============================================
+   ARTICLE BODY
+   ============================================ */
+.article-body {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 0 32px 60px;
+}
+
+.article-body p {
+  font-size: 1.08rem;
+  line-height: 1.85;
+  color: var(--warm-gray-1);
+  margin-bottom: 24px;
+}
+
+.article-body p.lead {
+  font-size: 1.28rem;
+  color: var(--black);
+  font-weight: 400;
+  line-height: 1.75;
+}
+
+/* ============================================
+   PULLQUOTE
+   ============================================ */
+.pullquote {
+  max-width: var(--wide-max);
+  margin: 60px auto;
+  padding: 60px 32px;
+  position: relative;
+}
+
+.pullquote-inner {
+  max-width: 700px;
+  margin: 0 auto;
+  padding-left: 32px;
+  border-left: 3px solid var(--orange);
+}
+
+.pullquote blockquote {
+  font-family: var(--font-serif);
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  line-height: 1.35;
+  color: var(--black);
+  font-style: italic;
+}
+
+.pullquote cite {
+  display: block;
+  margin-top: 16px;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-style: normal;
+  color: var(--warm-gray-3);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ============================================
+   MARKET CARDS (4-city grid)
+   ============================================ */
+.market-grid {
+  max-width: var(--wide-max);
+  margin: 0 auto 80px;
+  padding: 0 32px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.market-card {
+  background: white;
+  border-radius: 4px;
+  padding: 36px 28px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s;
+  cursor: pointer;
+}
+
+.market-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--orange);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.market-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.08); }
+.market-card:hover::before { transform: scaleX(1); }
+
+.market-card-number {
+  font-family: var(--font-serif);
+  font-size: 3rem;
+  color: var(--warm-gray-5);
+  line-height: 1;
+  margin-bottom: 12px;
+}
+
+.market-card h3 {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  margin-bottom: 8px;
+}
+
+.market-card-sub {
+  font-size: 0.85rem;
+  color: var(--warm-gray-2);
+  margin-bottom: 16px;
+  font-style: italic;
+}
+
+.market-card-stat {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  padding-top: 16px;
+  border-top: 1px solid var(--warm-gray-5);
+}
+
+.market-card-stat .number {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  color: var(--orange);
+}
+
+.market-card-stat .label {
+  font-size: 0.78rem;
+  color: var(--warm-gray-3);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ============================================
+   FULL-WIDTH IMAGE BREAK
+   ============================================ */
+.image-break {
+  width: 100%;
+  height: 420px;
+  background: var(--black);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-break-content {
+  text-align: center;
+  color: white;
+  z-index: 2;
+}
+
+.image-break h3 {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-style: italic;
+  margin-bottom: 12px;
+}
+
+.image-break p {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.image-break .diagonal-line {
+  position: absolute;
+  width: 150%;
+  height: 4px;
+  background: var(--orange);
+  transform: rotate(-25deg);
+  top: 50%;
+  left: -25%;
+  opacity: 0.4;
+}
+
+/* ============================================
+   DATA HIGHLIGHT STRIP
+   ============================================ */
+.data-strip {
+  background: var(--black);
+  color: white;
+  padding: 48px 32px;
+  overflow: hidden;
+}
+
+.data-strip-inner {
+  max-width: var(--wide-max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 40px;
+  text-align: center;
+}
+
+.data-item .value {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  color: var(--orange);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.data-item .desc {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  line-height: 1.5;
+}
+
+/* ============================================
+   FIELD GUIDE & MVP SECTIONS
+   ============================================ */
+.guide-list {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 0 32px 80px;
+  counter-reset: guide;
+}
+
+.guide-item {
+  padding: 32px 0;
+  border-bottom: 1px solid var(--warm-gray-5);
+  position: relative;
+}
+
+.guide-item::before {
+  counter-increment: guide;
+  content: counter(guide, decimal-leading-zero);
+  font-family: var(--font-serif);
+  font-size: 2.5rem;
+  color: var(--warm-gray-5);
+  position: absolute;
+  right: 0;
+  top: 32px;
+}
+
+.guide-item h4 {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  max-width: 85%;
+}
+
+.guide-item p {
+  font-size: 0.98rem;
+  color: var(--warm-gray-2);
+  line-height: 1.75;
+  max-width: 85%;
+}
+
+/* ============================================
+   LEADERSHIP BRIEF
+   ============================================ */
+.brief-section {
+  background: var(--cream-dark);
+  padding: var(--section-padding) 32px;
+}
+
+.brief-inner {
+  max-width: var(--content-max);
+  margin: 0 auto;
+}
+
+.brief-meta {
+  font-size: 0.82rem;
+  color: var(--warm-gray-3);
+  margin-bottom: 40px;
+  line-height: 1.8;
+  border-left: 2px solid var(--warm-gray-4);
+  padding-left: 20px;
+}
+
+.brief-item {
+  margin-bottom: 36px;
+}
+
+.brief-item h4 {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.brief-item h4 .num {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 0.75rem;
+  background: var(--orange);
+  color: white;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.brief-item p {
+  font-size: 0.95rem;
+  color: var(--warm-gray-2);
+  line-height: 1.75;
+  margin-left: 36px;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.footer {
+  background: var(--black);
+  color: white;
+  padding: 80px 32px 40px;
+  position: relative;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--orange);
+}
+
+.footer-inner {
+  max-width: var(--wide-max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 60px;
+}
+
+.footer-brand .footer-logo {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 1.8rem;
+  margin-bottom: 12px;
+}
+
+.footer-brand .footer-logo span { color: var(--orange); }
+
+.footer-brand p {
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.7;
+  max-width: 340px;
+}
+
+.footer-col h5 {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--orange);
+  margin-bottom: 20px;
+}
+
+.footer-col ul { list-style: none; }
+
+.footer-col ul li {
+  margin-bottom: 10px;
+}
+
+.footer-col ul li a {
+  color: rgba(255,255,255,0.5);
+  font-size: 0.88rem;
+  font-style: italic;
+  transition: color 0.3s;
+}
+
+.footer-col ul li a:hover { color: var(--orange); }
+
+.footer-bottom {
+  max-width: var(--wide-max);
+  margin: 60px auto 0;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.3);
+}
+
+.footer-bottom .xtatik {
+  font-weight: 600;
+  color: rgba(255,255,255,0.5);
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .footer-inner { grid-template-columns: 1fr; gap: 40px; }
+  .guide-item::before { display: none; }
+  .guide-item h4, .guide-item p { max-width: 100%; }
+  .market-grid { grid-template-columns: 1fr; }
+  .data-strip-inner { grid-template-columns: repeat(2, 1fr); }
+  .image-break { height: 320px; }
+}
+
+@media (max-width: 480px) {
+  .hero h1 { font-size: 2.2rem; }
+  .data-strip-inner { grid-template-columns: 1fr; }
+}
+
+/* ============================================
+   READING PROGRESS BAR
+   ============================================ */
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background: var(--orange);
+  z-index: 1001;
+  transition: width 0.1s linear;
+}
+
+/* ============================================
+   CITY SECTION ACCENT COLORS
+   ============================================ */
+.section-nwa .section-tag { color: var(--soft-green); }
+.section-nwa .section-tag::before { background: var(--soft-green); }
+.section-nwa .market-card::before { background: var(--soft-green); }
+
+.section-medellin .section-tag { color: var(--orange); }
+
+.section-madrid .section-tag { color: var(--magenta); }
+.section-madrid .section-tag::before { background: var(--magenta); }
+
+.section-nyc .section-tag { color: var(--electric-blue); }
+.section-nyc .section-tag::before { background: var(--electric-blue); }
+
+/* ============================================
+   LIVE SIGNALS SECTION
+   ============================================ */
+.section-live .section-tag { color: #0066FF; }
+.section-live .section-tag::before { background: #0066FF; }
+
+.live-signals-subtitle {
+  font-size: 1.1rem;
+  color: var(--warm-gray-2);
+  max-width: 600px;
+  line-height: 1.7;
+  font-style: italic;
+  margin-top: 12px;
+}
+
+.live-signals-grid {
+  max-width: var(--wide-max);
+  margin: 0 auto 40px;
+  padding: 0 32px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 28px;
+}
+
+.signal-card {
+  background: white;
+  border-radius: 4px;
+  padding: 36px 28px 28px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s;
+}
+
+.signal-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: #0066FF;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.signal-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.08); }
+.signal-card:hover::before { transform: scaleX(1); }
+
+.signal-card-tag {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding: 4px 12px;
+  border-radius: 2px;
+  margin-bottom: 16px;
+}
+
+.signal-card-tag.tag-nwa {
+  background: rgba(134, 239, 172, 0.15);
+  color: #16a34a;
+  border: 1px solid rgba(134, 239, 172, 0.4);
+}
+
+.signal-card-tag.tag-macro {
+  background: rgba(232, 114, 42, 0.1);
+  color: var(--orange);
+  border: 1px solid rgba(232, 114, 42, 0.3);
+}
+
+.signal-card-tag.tag-flow {
+  background: rgba(0, 102, 255, 0.08);
+  color: #0066FF;
+  border: 1px solid rgba(0, 102, 255, 0.25);
+}
+
+.signal-card h3 {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  line-height: 1.25;
+  margin-bottom: 16px;
+}
+
+.signal-card-body {
+  font-size: 0.92rem;
+  color: var(--warm-gray-2);
+  line-height: 1.75;
+}
+
+.signal-card-body ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 14px;
+}
+
+.signal-card-body ul li {
+  padding: 4px 0 4px 16px;
+  position: relative;
+  font-size: 0.88rem;
+}
+
+.signal-card-body ul li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: #0066FF;
+  font-weight: 700;
+}
+
+.signal-card-body strong {
+  color: var(--black);
+}
+
+.signal-stat-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 14px 0;
+  margin: 14px 0;
+  border-top: 1px solid var(--warm-gray-5);
+  border-bottom: 1px solid var(--warm-gray-5);
+}
+
+.signal-stat {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.signal-stat .val {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  color: #0066FF;
+  line-height: 1;
+}
+
+.signal-stat .lbl {
+  font-size: 0.7rem;
+  color: var(--warm-gray-3);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.signal-card-takeaway {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--black);
+  line-height: 1.5;
+  margin: 14px 0 10px;
+  padding-left: 12px;
+  border-left: 2px solid #0066FF;
+}
+
+.signal-card-source {
+  font-size: 0.72rem;
+  color: var(--warm-gray-3);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-top: 12px;
+}
+
+.live-signals-timestamp {
+  max-width: var(--wide-max);
+  margin: 0 auto;
+  padding: 0 32px 60px;
+  font-size: 0.72rem;
+  color: var(--warm-gray-3);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.live-signals-timestamp::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background: #0066FF;
+  border-radius: 50%;
+  animation: livePulse 2s ease-in-out infinite;
+}
+
+@keyframes livePulse {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.3); }
+}
+
+@media (max-width: 768px) {
+  .live-signals-grid { grid-template-columns: 1fr; }
+  .signal-stat-strip { flex-direction: column; gap: 10px; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Progress Bar -->
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- Navigation -->
+<nav class="nav" id="mainNav">
+  <div class="nav-logo">IN-<span>K</span>luSo</div>
+  <span class="nav-section-label" id="navSectionLabel"></span>
+  <ul class="nav-links">
+    <li><a href="#intro">Core</a></li>
+    <li><a href="#live-signals">Live</a></li>
+    <li><a href="#nwa">Thrust</a></li>
+    <li><a href="#medellin">Pulse</a></li>
+    <li><a href="#madrid">Flow</a></li>
+    <li><a href="#nyc">Axis</a></li>
+    <li><a href="#guide">Ground</a></li>
+  </ul>
+</nav>
+
+<!-- ============================================
+     HERO
+     ============================================ -->
+<section class="hero" id="intro">
+  <div class="hero-meta">
+    <span class="hero-section-tag">/CORE</span>
+    <span class="hero-date">November 10, 2025 · Incluso Editorial</span>
+  </div>
+  <h1>Little Bangs Before <em>the Boom</em></h1>
+  <p class="hero-subtitle">Early trend signals in four micro-markets — where cultural sparks ignite before the data catches fire. This is information you can feel.</p>
+  <a href="#intro-body" class="hero-cta">
+    Dive In
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+  </a>
+  <div class="hero-scroll-line"></div>
+</section>
+
+<!-- ============================================
+     LIVE SIGNALS — February 2026
+     ============================================ -->
+<section id="live-signals" class="article-section section-live">
+  <div class="section-header reveal">
+    <div class="section-tag">/LIVE</div>
+    <h2>Live Signals — <em>February 2026</em></h2>
+    <p class="live-signals-subtitle">Fresh data drops from today’s markets. The signal <em>is</em> the story.</p>
+  </div>
+
+  <div class="live-signals-grid">
+
+    <!-- Card 1: NWA Market Snapshot -->
+    <div class="signal-card reveal reveal-delay-1">
+      <span class="signal-card-tag tag-nwa">NWA / Micro-Data</span>
+      <h3>Northwest Arkansas Opens 2026 with Quiet Confidence</h3>
+
+      <div class="signal-stat-strip">
+        <div class="signal-stat">
+          <span class="val">2,848</span>
+          <span class="lbl">Active<br>Listings</span>
+        </div>
+        <div class="signal-stat">
+          <span class="val">3.24</span>
+          <span class="lbl">Month<br>Supply</span>
+        </div>
+        <div class="signal-stat">
+          <span class="val">$470K</span>
+          <span class="lbl">Avg List<br>Price</span>
+        </div>
+        <div class="signal-stat">
+          <span class="val">98%</span>
+          <span class="lbl">List-to-Sale<br>Ratio</span>
+        </div>
+      </div>
+
+      <div class="signal-card-body">
+        <ul>
+          <li>Average price per square foot: <strong>$227.26</strong> — sellers are getting their ask</li>
+          <li><strong>Benton County</strong> leads with 1,994 listings and 3.57-month supply (avg price $487K)</li>
+          <li><strong>Washington County</strong> is the speed demon: 2.66-month supply, 73 days on market, avg $435K</li>
+        </ul>
+      </div>
+
+      <p class="signal-card-takeaway">“NWA isn’t just surviving post-pandemic — it’s quietly building the next growth chapter.”</p>
+      <div class="signal-card-source">Source: Weichert Griffin · Jan 29, 2026</div>
+    </div>
+
+    <!-- Card 2: Three Signals Shaping 2026 -->
+    <div class="signal-card reveal reveal-delay-2">
+      <span class="signal-card-tag tag-macro">Macro / Housing</span>
+      <h3>3 Big Signals Will Shape the 2026 Housing Market</h3>
+
+      <div class="signal-stat-strip">
+        <div class="signal-stat">
+          <span class="val">5.75–6.6%</span>
+          <span class="lbl">Expected Rate<br>Band 2026</span>
+        </div>
+      </div>
+
+      <div class="signal-card-body">
+        <ul>
+          <li><strong>Consumer Confidence</strong>: Fell to second-lowest reading on record in Dec (U of Michigan index). A few positive jobs reports could shift sentiment.</li>
+          <li><strong>Mortgage Rates</strong>: Expected band of 5.75%–6.6% in 2026. Lower rates alone won’t entice buyers — <em>needs a confidence boost too.</em></li>
+          <li><strong>Federal Policy</strong>: Immigration reform, tariffs, a 50-year mortgage proposal, and builder lot-sitting claims all spilling into 2026.</li>
+        </ul>
+      </div>
+
+      <p class="signal-card-takeaway">“2025 was volatile. 2026 is the year of the slow burn — and the smart read.”</p>
+      <div class="signal-card-source">Source: NewHomeSource / Zonda · Feb 13, 2026</div>
+    </div>
+
+    <!-- Card 3: Office Market Liquidity Shift -->
+    <div class="signal-card reveal reveal-delay-3">
+      <span class="signal-card-tag tag-flow">Flow / Office</span>
+      <h3>Office Markets Find a New, Lower Equilibrium</h3>
+
+      <div class="signal-stat-strip">
+        <div class="signal-stat">
+          <span class="val">2.2M</span>
+          <span class="lbl">Sq Ft Net<br>Absorption '25</span>
+        </div>
+        <div class="signal-stat">
+          <span class="val">18%</span>
+          <span class="lbl">National<br>Vacancy</span>
+        </div>
+        <div class="signal-stat">
+          <span class="val">~27%</span>
+          <span class="lbl">Remote<br>Days</span>
+        </div>
+      </div>
+
+      <div class="signal-card-body">
+        <ul>
+          <li><strong>2.2M sq ft</strong> net absorption in 2025 — second consecutive positive year</li>
+          <li>National vacancy fell to <strong>18%</strong> — first pandemic-era decline</li>
+          <li>But CBD vacancy still at <strong>21.1%</strong> — suburban and gateway markets leading recovery</li>
+          <li>Hybrid work settled at ~27% remote days — creating a <em>persistent demand floor</em></li>
+          <li>Younger CEOs = more remote work. Generational leadership turnover is the catalyst.</li>
+          <li>Rising construction costs (3-yr PPI high) restricting supply — double-edged sword</li>
+        </ul>
+      </div>
+
+      <p class="signal-card-takeaway">“The office isn’t dying. It’s repricing. And younger leadership is writing the next lease.”</p>
+      <div class="signal-card-source">Source: AInvest / CRE Daily · Feb 17, 2026</div>
+    </div>
+
+  </div>
+
+  <div class="live-signals-timestamp reveal">Last Updated: Feb 17, 2026 · 6:43 PM CST</div>
+</section>
+
+<!-- ============================================
+     INTRO BODY
+     ============================================ -->
+<div class="orange-stripe"></div>
+
+<section id="intro-body">
+  <div class="section-header reveal">
+    <div class="section-tag">The Xtatik Spark Perspective</div>
+    <h2>Where strategy turns <em>into story</em></h2>
+  </div>
+
+  <div class="article-body reveal">
+    <p class="lead">Major platforms like Zillow and Redfin often catch on to trends only after they’ve become headlines. But on-the-ground cultural and economic micro-markets spark little bangs of change well before the big data sets recognize them.</p>
+    <p>At Incluso, we call this the <strong>Xtatik Spark</strong> — a blend of cultural sensitivity, scrappy entrepreneurial insight, and forward-thinking analysis that uncovers subtle signals of big shifts to come.</p>
+    <p>In this piece, we explore four such markets — <strong>Northwest Arkansas</strong>, <strong>Medellín</strong>, <strong>Madrid</strong>, and <strong>New York City</strong> — to see how local trends in 2024–2025 presage broader changes. We pair hard data with human stories, and show how a Minimum Viable Product (MVP) mindset can help test and capture these signals before they erupt into full-blown trends.</p>
+  </div>
+</section>
+
+<!-- Market Overview Cards -->
+<div class="market-grid">
+  <div class="market-card reveal reveal-delay-1">
+    <div class="market-card-number">01</div>
+    <h3>Northwest Arkansas</h3>
+    <p class="market-card-sub">Heartland’s Hidden Hotspot</p>
+    <div class="market-card-stat">
+      <span class="number">+49%</span>
+      <span class="label">Rent increase<br>over 5 years</span>
+    </div>
+  </div>
+  <div class="market-card reveal reveal-delay-2">
+    <div class="market-card-number">02</div>
+    <h3>Medellín</h3>
+    <p class="market-card-sub">Nomad Magnet Meets Local Mojo</p>
+    <div class="market-card-stat">
+      <span class="number">8,300</span>
+      <span class="label">Digital nomads<br>arriving monthly</span>
+    </div>
+  </div>
+  <div class="market-card reveal reveal-delay-3">
+    <div class="market-card-number">03</div>
+    <h3>Madrid</h3>
+    <p class="market-card-sub">Old World City, New Wave Signals</p>
+    <div class="market-card-stat">
+      <span class="number">94M</span>
+      <span class="label">International visitors<br>to Spain in 2024</span>
+    </div>
+  </div>
+  <div class="market-card reveal reveal-delay-4">
+    <div class="market-card-number">04</div>
+    <h3>New York City</h3>
+    <p class="market-card-sub">Micro-Market Movements in the Megacity</p>
+    <div class="market-card-stat">
+      <span class="number">$4K+</span>
+      <span class="label">Median Manhattan<br>rent — record high</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================
+     NWA SECTION
+     ============================================ -->
+<div class="image-break">
+  <div class="diagonal-line"></div>
+  <div class="image-break-content">
+    <h3>Where bikes, brews &amp; culture collide</h3>
+    <p>/THRUST — Northwest Arkansas</p>
+  </div>
+</div>
+
+<section id="nwa" class="section-nwa">
+  <div class="section-header reveal">
+    <div class="section-tag">/Thrust</div>
+    <h2>Northwest Arkansas: Heartland’s <em>Hidden Hotspot</em></h2>
+  </div>
+
+  <div class="article-body">
+    <p class="lead reveal">Northwest Arkansas — home to cities like Bentonville, Fayetteville, and Rogers — has quietly transformed from a Walmart company town into a cultural and entrepreneurial hotspot.</p>
+
+    <p class="reveal">Real estate signals are flashing: rents have jumped about <strong>9% in the past year alone</strong>, reaching an average of $1,037 per month. Over five years, apartment lease rates soared nearly <strong>49%</strong>, outpacing income growth and underscoring a housing crunch. With 41% of homes in key counties owned by out-of-towners, it’s clear that outside investors and remote workers have “discovered” NWA.</p>
+
+    <p class="reveal">But numbers tell only part of the story. On the streets of Bentonville, you’ll find cultural signals of a boom: a morning queue of cyclists at a local coffee truck, food trucks serving Colombian arepas next to classic Arkansas BBQ, and a once-sleepy town square now buzzing with entrepreneurs on laptops.</p>
+  </div>
+
+  <div class="pullquote reveal">
+    <div class="pullquote-inner">
+      <blockquote>In 2024, Bentonville hosted a record 310 events — from bike races to film festivals — generating $41 million in economic impact, more than double the previous year.</blockquote>
+      <cite>Bentonville Economic Data, 2024</cite>
+    </div>
+  </div>
+
+  <div class="article-body">
+    <p class="reveal">Signature events like the Big Sugar Classic cycling race and the Bentonville Film Festival drew thousands of visitors, filling Airbnbs and diners for days. This grassroots tourism spike is a micro-market tremor that presaged the region’s real-estate demand: long before Zillow noted rising property values, hoteliers and homeowners saw weekend foot traffic surging.</p>
+
+    <p class="reveal">Small business indicators reinforce the trend. New art galleries and breweries are popping up, bolstered by cultural anchors like the Crystal Bridges Museum of American Art. NWA’s hospitality community has embraced an <strong>MVP mindset</strong>: local bike enthusiasts partnered with city leaders to build a single mountain bike trail years ago as a test. Its wild success — now Oz Trails is a nationally known network — proved the concept, leading to state support for even a ski-lift style bike park signed into law in 2024.</p>
+
+    <p class="reveal">That <em>little bang</em> experiment in outdoor recreation ignited a full-fledged tourism strategy. The mix of tight housing (vacancy still ~3.3%), increased remote-worker inflow, and cultural capital makes this micro-market an early signaler for heartland growth.</p>
+  </div>
+</section>
+
+<!-- Data Strip -->
+<div class="data-strip">
+  <div class="data-strip-inner">
+    <div class="data-item reveal">
+      <div class="value">+49%</div>
+      <div class="desc">NWA rent surge<br>over 5 years</div>
+    </div>
+    <div class="data-item reveal reveal-delay-1">
+      <div class="value">310</div>
+      <div class="desc">Events in Bentonville<br>in 2024</div>
+    </div>
+    <div class="data-item reveal reveal-delay-2">
+      <div class="value">$41M</div>
+      <div class="desc">Economic impact<br>from events</div>
+    </div>
+    <div class="data-item reveal reveal-delay-3">
+      <div class="value">41%</div>
+      <div class="desc">Homes owned by<br>out-of-towners</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================
+     MEDELLÍN SECTION
+     ============================================ -->
+<section id="medellin" class="section-medellin">
+  <div class="section-header reveal">
+    <div class="section-tag">/Pulse</div>
+    <h2>Medellín: Nomad Magnet Meets <em>Local Mojo</em></h2>
+  </div>
+
+  <div class="article-body">
+    <p class="lead reveal">In the verdant Aburrá Valley, Medellín has reinvented itself as a magnet for digital nomads and tourists — and the early signals here come wrapped in both opportunity and tension.</p>
+
+    <p class="reveal">Colombia’s “City of Eternal Spring” saw a surge of foreign arrivals in 2023–2024. Over <strong>677,000 international visitors</strong> came to Medellín’s province in 2023 (22% of all Colombia’s foreign tourists), and digital nomads now arrive at a rate of ~8,300 per month. These remote workers spend heavily — an average of <strong>$1,400 a month each</strong>, more than double a local’s spending — juicing the local economy with cafes, Ubers, and co-working spaces.</p>
+
+    <p class="reveal">Some Medellín rideshare drivers say <strong>70% of their customers are now foreigners</strong> working remotely. It’s the kind of micro-market metric — utterly invisible to Zillow — that screams change: a new class of spenders transforming neighborhood demand.</p>
+  </div>
+
+  <div class="pullquote reveal">
+    <div class="pullquote-inner">
+      <blockquote>A spike in avocado-toast cafés and Zoom-friendly bars today can predict tomorrow’s real estate gold rush — or backlash.</blockquote>
+      <cite>The Xtatik Spark Perspective</cite>
+    </div>
+  </div>
+
+  <div class="article-body">
+    <p class="reveal">The flip side? The city faces a shortage of <strong>50,000 homes</strong> for locals. Short-term rental supply skyrocketed by 119% in 2021 and another 80% in 2022. Rents in some neighborhoods are up as much as 80% due to competition from well-paid foreigners. Many local families have been priced out.</p>
+
+    <p class="reveal">This gentrification pressure was a micro-signal felt on the ground — in community meetings, on protest banners — long before it hit official stats. Medellín authorities responded with new regulations: a crackdown on illegal Airbnbs (over 1,700 unlicensed units identified) and enforcement of tourist registry rules.</p>
+
+    <p class="reveal">Cultural signals are everywhere. Stroll through the cafe-lined streets of Poblado: you’ll hear Spanish, English, French, and Portuguese as remote workers cluster with laptops over third-wave coffee. Salsa bars in Laureles now host “language exchange” nights pairing locals and nomads. Even Medellín’s famed street art in Comuna 13 has taken on themes of digital connectivity and global culture.</p>
+
+    <p class="reveal">Local entrepreneurs are applying an <strong>MVP approach</strong>: one startup launched a “coworking hostel” blending lodging and office amenities to test demand — it quickly sold out. Spanish-language schools rolled out one-week “tasting” classes to attract foreigners, then upsell longer courses. The Colombian Digital Nomad Visa itself was essentially a pilot program — and by 2024, it contributed to Colombia’s 6.2 million international tourist arrivals and over <strong>$9.5 billion</strong> in economic activity.</p>
+  </div>
+</section>
+
+<!-- ============================================
+     MADRID SECTION
+     ============================================ -->
+<div class="image-break">
+  <div class="diagonal-line"></div>
+  <div class="image-break-content">
+    <h3>Heritage meets innovation</h3>
+    <p>/FLOW — Madrid</p>
+  </div>
+</div>
+
+<section id="madrid" class="section-madrid">
+  <div class="section-header reveal">
+    <div class="section-tag">/Flow</div>
+    <h2>Madrid: Old World City, <em>New Wave</em> Signals</h2>
+  </div>
+
+  <div class="article-body">
+    <p class="lead reveal">In Spain’s capital, centuries-old plazas and modern startups coexist — and together they’re sending mixed signals of an urban evolution.</p>
+
+    <p class="reveal">Spain welcomed a record <strong>94 million international visitors</strong> in 2024, eclipsing pre-pandemic highs. Madrid’s famed Prado museum had its busiest year ever: 3.45 million visitors. The country is becoming a hub for expats and remote workers — Spain’s “Startup Law” digital nomad visa and high quality of life drew waves of professionals from the US, UK, and Latin America.</p>
+
+    <p class="reveal">Yet housing affordability forms the other side of the coin. Madrid’s rents in mid-2024 were about <strong>18% higher</strong> than a year before. By late 2024, the strain sparked public outrage: <strong>12,000 Madrileños</strong> marched chanting <em>“Housing is a right, not a business!”</em> They rattled keys in protest of being “locked out” by Airbnb and gentrification.</p>
+  </div>
+
+  <div class="pullquote reveal">
+    <div class="pullquote-inner">
+      <blockquote>The emotional-cultural storytelling in Madrid — locals’ frustration, community activism — anticipated a broader regulatory shift. The savvy observer could foresee it from keychains clacking in Plaza Mayor.</blockquote>
+      <cite>Incluso Editorial Analysis</cite>
+    </div>
+  </div>
+
+  <div class="article-body">
+    <p class="reveal">Spain’s government announced a nationwide crackdown on holiday rentals in mid-2024, requiring online listings to show license numbers. Barcelona aims to phase out all short-term rentals by 2028 — a bold move Madrid is watching closely.</p>
+
+    <p class="reveal">Amid tensions, small business indicators highlight adaptive innovation. In Lavapiés, a collective of artists started a pop-up “Barrio Market” on weekends selling local crafts and foods. Its success signaled a path for sustainable tourism. Savvy hoteliers piloted a <strong>“workation” package</strong> — half-day co-working, half-day guided cultural experiences — targeting remote workers. It sold out.</p>
+
+    <p class="reveal">Madrid’s lesson for trend-spotters: sometimes heritage meets innovation in subtle ways. A sudden rise in vegan tapas bars or English-language bookstore cafés is more than quirky happenstance — <em>it’s a little bang foretelling Madrid’s next chapter as a global, yet livable, city.</em></p>
+  </div>
+</section>
+
+<!-- Data Strip -->
+<div class="data-strip">
+  <div class="data-strip-inner">
+    <div class="data-item reveal">
+      <div class="value">677K</div>
+      <div class="desc">International visitors<br>to Medellín province</div>
+    </div>
+    <div class="data-item reveal reveal-delay-1">
+      <div class="value">94M</div>
+      <div class="desc">Tourists to Spain<br>in 2024 — record</div>
+    </div>
+    <div class="data-item reveal reveal-delay-2">
+      <div class="value">-83%</div>
+      <div class="desc">NYC Airbnb listings<br>post-regulation</div>
+    </div>
+    <div class="data-item reveal reveal-delay-3">
+      <div class="value">$320</div>
+      <div class="desc">Record NYC average<br>hotel rate per night</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================
+     NYC SECTION
+     ============================================ -->
+<section id="nyc" class="section-nyc">
+  <div class="section-header reveal">
+    <div class="section-tag">/Axis</div>
+    <h2>New York City: Micro-Market Movements <em>in the Megacity</em></h2>
+  </div>
+
+  <div class="article-body">
+    <p class="lead reveal">New York City might be the ultimate “big data” town, yet its sheer scale is made up of countless micro-markets — each borough, each block a bellwether in its own right.</p>
+
+    <p class="reveal">By 2024, NYC rents smashed records, with Manhattan’s median rent topping <strong>$4,000 for the first time</strong> (climbing ~4% year-over-year). Tourism rebounded strongly — over 56 million tourists in 2023, nearly back to 2019 levels. But thanks to remote work, visitors aren’t all concentrated in Midtown hotels anymore.</p>
+
+    <p class="reveal">A defining micro-market story: In September 2023, the city implemented <strong>Local Law 18</strong> — a de facto ban on unhosted short Airbnb stays. By mid-2024, Airbnbs for stays under 30 days plunged by over <strong>83%</strong>. Hotels benefited ($320/night average), but outer-borough neighborhoods felt a pinch. Areas like Brooklyn’s Crown Heights and Queens’ Astoria saw foot traffic drop by up to <strong>70%</strong>.</p>
+  </div>
+
+  <div class="pullquote reveal">
+    <div class="pullquote-inner">
+      <blockquote>A sudden dip in weekend bagel sales in Bedford-Stuyvesant or fewer museum-goers at the local art gallery might seem minor — but together they hint at a broader re-centralization of tourism.</blockquote>
+      <cite>Micro-Market Signal Analysis</cite>
+    </div>
+  </div>
+
+  <div class="article-body">
+    <p class="reveal">Yet New York’s DNA is adaptation. Midtown Manhattan’s foot traffic is finally rebounding — pedestrian counts were 8.4% higher in May 2025 vs. the year prior. Downtown Brooklyn and Long Island City are pivoting: community groups started hosting “Open Streets” events and seasonal markets to draw regional visitors as a replacement.</p>
+
+    <p class="reveal">Some ex-Airbnb hosts tried a <strong>minimum viable pivot</strong>: renting month-to-month to digital nomads and visiting nurses. The city government offered tax incentives for office-to-residential conversions as a trial on one downtown block — watch for an uptick in construction filings in 2025.</p>
+
+    <p class="reveal">On the cultural front, the rise of hybrid “bodega-cafés” in residential Queens, the proliferation of electric bikes, and spontaneous outdoor jazz festivals drawing record-breaking crowds — these are the <em>little bangs</em> that forecast where the city is headed. In a sense, New York contains countless micro-markets constantly generating trend signals; the key is tuning in.</p>
+  </div>
+</section>
+
+<!-- ============================================
+     FIELD GUIDE
+     ============================================ -->
+<div class="image-break">
+  <div class="diagonal-line"></div>
+  <div class="image-break-content">
+    <h3>How to spot what’s next</h3>
+    <p>/GROUND — Field Guide</p>
+  </div>
+</div>
+
+<section id="guide">
+  <div class="section-header reveal">
+    <div class="section-tag">/Ground</div>
+    <h2>Field Guide: How to Spot <em>Early Signals</em></h2>
+  </div>
+
+  <div class="guide-list">
+    <div class="guide-item reveal">
+      <h4>Follow Foot Traffic</h4>
+      <p>Notice changes in where people gather. A sudden surge of joggers on a particular riverside trail, or tourists in a once-local park, can presage neighborhood discovery. Track micro-level movement — subway station usage, bike-share dock empties, coffee line lengths — especially at unusual times or places.</p>
+    </div>
+    <div class="guide-item reveal">
+      <h4>Track Small Business Openings &amp; Closings</h4>
+      <p>The mix of storefronts on a street can be a seismograph. Are artisanal bakeries and vintage shops replacing convenience stores? That signals an incoming upscale demographic. In NWA, the explosion of bike shops and breweries was a harbinger of the region’s cultural shift before it showed up in revenue stats.</p>
+    </div>
+    <div class="guide-item reveal">
+      <h4>Eavesdrop on Culture</h4>
+      <p>Listen to what local communities are talking about. Protest slogans, viral social media posts, or popular festival themes reveal pain points and aspirations. Madrid’s keychain-waving protesters preceded a national rental crackdown. A spike in meetup groups for urban gardening could hint at an upcoming sustainability trend.</p>
+    </div>
+    <div class="guide-item reveal">
+      <h4>Watch Regulatory Tweaks</h4>
+      <p>Boring council meeting minutes can hide gold. If a city quietly pilots a new ordinance — caps on Airbnbs, allowances for food trucks, fast-track permits for accessory dwelling units — it can create ripple effects. Fayetteville’s cap of 475 short-term rental licenses reached its max quickly — a clue that STRs were booming.</p>
+    </div>
+    <div class="guide-item reveal">
+      <h4>Data (Small) Before Data (Big)</h4>
+      <p>Keep an eye on hyper-local stats that often lead broader indices: local school enrollment changes, hotel occupancy in secondary cities, Airbnb occupancy rates, or even library card registrations. These micro metrics give you a head start on understanding macro trends.</p>
+    </div>
+    <div class="guide-item reveal">
+      <h4>“First Derivative” Trends</h4>
+      <p>It’s not just the trend, but the rate of change. A neighborhood might still be cheap, but if rents climbed 15% in six months while elsewhere it’s 2%, that acceleration is an early signal. Look for inflection points — the first time something hits a milestone. The little bang often starts at the inflection.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     MVP PLAYBOOK
+     ============================================ -->
+<section id="mvp">
+  <div class="section-header reveal">
+    <div class="section-tag">Playbook</div>
+    <h2>MVP Playbook: <em>Capturing the Spark</em></h2>
+  </div>
+
+  <div class="guide-list">
+    <div class="guide-item reveal">
+      <h4>Prototype in Microcosm</h4>
+      <p>Develop a mini-version of your idea targeted at the niche community driving the trend. If you sense a biking tourism wave, run a one-day guided bike tour as a pop-up rather than launching a full tour company. Bentonville’s first mountain bike trail was a prototype that validated demand for dozens more.</p>
+    </div>
+    <div class="guide-item reveal">
+      <h4>Leverage Existing Platforms</h4>
+      <p>Don’t build from scratch if you can piggyback. To test a Medellín co-living concept, a host might list one room on Airbnb for a month-long stay discount — using the platform as an MVP. Many trends already congregate on platforms; meet them there with a trial offering before investing in your own infrastructure.</p>
+    </div>
+    <div class="guide-item reveal">
+      <h4>Measure the Right Signal</h4>
+      <p>Define what success looks like in the short term. An MVP isn’t just about launch; it’s about learning. The metric for MVP success should align with the signal you’re testing — engagement, sign-ups, repeat usage — not necessarily immediate revenue.</p>
+    </div>
+    <div class="guide-item reveal">
+      <h4>Storytelling as Validation</h4>
+      <p>Pair data with narrative. After launching your MVP, gather qualitative feedback — the stories from users. Often, the emotional-cultural response will tell you if your offering resonates with the trend’s ethos. Incluso’s editorial style itself is about blending business intelligence with emotional storytelling; apply that to your MVP review.</p>
+    </div>
+    <div class="guide-item reveal">
+      <h4>Iterate or Sunset Quickly</h4>
+      <p>If the MVP shows promise, iterate — refine and scale up in stages. If it flops, cut bait fast and capture the lesson. Not every micro-signal leads to a big trend; an MVP’s job is to illuminate which sparks will catch fire. Stay flexible and never marry a hypothesis without evidence.</p>
+    </div>
+    <div class="guide-item reveal">
+      <h4>Share and Network</h4>
+      <p>Early trend arenas often have tight-knit communities. Be active in those circles — share what you’re doing, seek input, and build allies. This boosts your learning curve and positions you as a genuine participant in the emerging trend, not just a late-to-the-party exploiter.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     LEADERSHIP BRIEF
+     ============================================ -->
+<section class="brief-section" id="brief">
+  <div class="section-header reveal" style="padding-left:0; padding-right:0; max-width: var(--content-max); margin: 0 auto;">
+    <div class="section-tag">/+Extras</div>
+    <h2>Internal Leadership <em>Brief</em></h2>
+  </div>
+
+  <div class="brief-inner">
+    <div class="brief-meta reveal">
+      <strong>To:</strong> XT Leadership and Incluso Editorial Team<br>
+      <strong>From:</strong> Head of Research<br>
+      <strong>Date:</strong> September 23, 2025<br>
+      <strong>Subject:</strong> Strategic Takeaways — “Little Bangs” Article &amp; 30-Day Action Plan
+    </div>
+
+    <div class="brief-item reveal">
+      <h4><span class="num">1</span> Micro-Markets as Trend Incubators</h4>
+      <p>Local rent spikes, cultural shifts, and policy tweaks in NWA, Medellín, Madrid, and NYC anticipated larger trends. XT should formalize monitoring of select micro-markets as a predictive tool for client trends and content themes.</p>
+    </div>
+
+    <div class="brief-item reveal">
+      <h4><span class="num">2</span> The Xtatik Spark — Our Distinctive Lens</h4>
+      <p>Incluso’s blend of data and storytelling proved powerful. Double down on this approach — our thought leadership should continue marrying stats with human narratives. Always ask: “What’s the human story behind the data?”</p>
+    </div>
+
+    <div class="brief-item reveal">
+      <h4><span class="num">3</span> MVP Mindset — Validate Early, Pivot Fast</h4>
+      <p>Internally, apply MVP thinking to initiatives (e.g., pilot a micro-market newsletter segment before launching a full series). For clients, position MVP trials as a service.</p>
+    </div>
+
+    <div class="brief-item reveal">
+      <h4><span class="num">4</span> Short-Term Rental Disruption</h4>
+      <p>A recurring theme: STR regulation upheaval (NYC’s 90% Airbnb drop, Spain’s crackdown, NWA’s caps). Incluso should cover second-order effects. For advisory, guide hospitality and real estate clients on adapting.</p>
+    </div>
+
+    <div class="brief-item reveal">
+      <h4><span class="num">5</span> Housing Affordability &amp; Community Pushback</h4>
+      <p>Local resistance to rapid change often precedes government action. Our content and strategy must account for community sentiment as a variable. Proactively engage with local voices.</p>
+    </div>
+
+    <div class="brief-item reveal">
+      <h4><span class="num">6</span> Next 30 Days — Focus Areas</h4>
+      <p>Assemble a Micro-Market Intelligence Hub. Greenlight a “Signals &amp; Spark” editorial series. Launch Client Outreach MVP Workshops. Explore Data Partnerships (AirDNA, Placer.ai). Run internal Xtatik Spark Method training.</p>
+    </div>
+
+    <div class="brief-item reveal">
+      <h4><span class="num">7</span> Longer-Term: Early Signal Index</h4>
+      <p>Develop a composite indicator blending rental growth, social media buzz, STR listings, and more to quantify how “hot” a micro-market’s signals are. This could become both a marketing tool and a revenue stream. Prototype by next quarter.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     FOOTER
+     ============================================ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo">IN-<span>K</span>luSo</div>
+      <p>Where information becomes immersion. A fusion of journalism, design, and brand storytelling — the connective editorial medium for the Xtatik ecosystem.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Explore</h5>
+      <ul>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Archive</a></li>
+        <li><a href="#">Community</a></li>
+        <li><a href="#">Networks</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Sections</h5>
+      <ul>
+        <li><a href="#intro">/Core</a></li>
+        <li><a href="#live-signals">/Live</a></li>
+        <li><a href="#nwa">/Thrust</a></li>
+        <li><a href="#medellin">/Pulse</a></li>
+        <li><a href="#madrid">/Flow</a></li>
+        <li><a href="#nyc">/Axis</a></li>
+        <li><a href="#guide">/Ground</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2025 IN-KluSo. All rights reserved.</span>
+    <span class="xtatik">Xtatik · Strategy for Value Creation</span>
+    <span>Newsletter / subscription / reader mode.</span>
+  </div>
+</footer>
+
+<!-- ============================================
+     JAVASCRIPT
+     ============================================ -->
+<script>
+// Reading Progress Bar
+const progressBar = document.getElementById('progressBar');
+window.addEventListener('scroll', () => {
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const progress = (scrollTop / docHeight) * 100;
+  progressBar.style.width = progress + '%';
+});
+
+// Nav scroll state
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 80);
+});
+
+// Nav section label
+const navLabel = document.getElementById('navSectionLabel');
+const sections = [
+  { id: 'intro', label: '/CORE' },
+  { id: 'live-signals', label: '/LIVE — Signals' },
+  { id: 'nwa', label: '/THRUST — NWA' },
+  { id: 'medellin', label: '/PULSE — Medellín' },
+  { id: 'madrid', label: '/FLOW — Madrid' },
+  { id: 'nyc', label: '/AXIS — NYC' },
+  { id: 'guide', label: '/GROUND — Field Guide' },
+  { id: 'mvp', label: 'MVP PLAYBOOK' },
+  { id: 'brief', label: '/+EXTRAS — Leadership Brief' }
+];
+
+window.addEventListener('scroll', () => {
+  let current = sections[0].label;
+  for (const s of sections) {
+    const el = document.getElementById(s.id);
+    if (el && window.scrollY >= el.offsetTop - 200) {
+      current = s.label;
+    }
+  }
+  navLabel.textContent = current;
+});
+
+// Reveal on scroll (Intersection Observer)
+const revealEls = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+revealEls.forEach(el => observer.observe(el));
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
+
+</body>
+</html>
