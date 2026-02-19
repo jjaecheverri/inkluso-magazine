@@ -52,7 +52,6 @@ body {
 a { color: var(--orange); text-decoration: none; transition: color 0.3s; }
 a:hover { color: var(--black); }
 
-/* ===== DIAGONAL STRIPE MOTIFS ===== */
 .stripe-bg {
   position: fixed;
   top: -200px;
@@ -79,7 +78,6 @@ a:hover { color: var(--black); }
   z-index: 0;
 }
 
-/* ===== ORANGE STRIPE ===== */
 .orange-stripe {
   width: 100%;
   height: 6px;
@@ -88,7 +86,6 @@ a:hover { color: var(--black); }
   margin: 0;
 }
 
-/* ===== NAV ===== */
 .nav {
   position: fixed;
   top: 0;
@@ -123,7 +120,6 @@ a:hover { color: var(--black); }
   color: var(--warm-gray-3);
 }
 
-/* ===== HERO ===== */
 .hero {
   min-height: 100vh;
   display: flex;
@@ -237,7 +233,6 @@ a:hover { color: var(--black); }
 
 .hero-scroll:hover svg { transform: translateY(4px); }
 
-/* ===== EDITIONS ===== */
 .editions-section {
   padding: clamp(60px, 10vw, 120px) 32px;
   max-width: 1200px;
@@ -444,7 +439,6 @@ a:hover { color: var(--black); }
   color: var(--orange);
 }
 
-/* ===== ABOUT SECTION ===== */
 .about-section {
   background: var(--cream-dark);
   padding: clamp(60px, 10vw, 100px) 32px;
@@ -479,7 +473,6 @@ a:hover { color: var(--black); }
   color: var(--warm-gray-1);
 }
 
-/* ===== FOOTER ===== */
 .footer {
   background: var(--black);
   color: white;
@@ -568,7 +561,6 @@ a:hover { color: var(--black); }
   color: rgba(255,255,255,0.4);
 }
 
-/* ===== ANIMATIONS ===== */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(30px); }
   to { opacity: 1; transform: translateY(0); }
@@ -589,7 +581,6 @@ a:hover { color: var(--black); }
 .reveal-delay-1 { transition-delay: 0.1s; }
 .reveal-delay-2 { transition-delay: 0.2s; }
 
-/* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
   .nav { padding: 16px 24px; }
   .nav-tagline { display: none; }
@@ -608,21 +599,18 @@ a:hover { color: var(--black); }
 
 <body>
 
-<!-- Diagonal stripe motifs -->
 <div class="stripe-bg"></div>
 <div class="stripe-bg-2"></div>
 
-<!-- Navigation -->
 <nav class="nav">
   <div class="nav-logo">IN-<span>K</span>luSo</div>
   <div class="nav-tagline">Where Information Becomes Immersion</div>
 </nav>
 
-<!-- Hero -->
 <section class="hero">
   <div class="hero-badge">A Xtatik Publication</div>
   <h1 class="hero-title">IN-<em>K</em>luSo</h1>
-  <p class="hero-subtitle">Where information becomes immersion. We cover the micro-markets where cultural sparks ignite before the data catches fire — from Northwest Arkansas to Medellín, from macro signals to boots-on-ground dispatches.</p>
+  <p class="hero-subtitle">Where information becomes immersion. We cover the micro-markets where cultural sparks ignite before the data catches fire — from Northwest Arkansas to Medell&iacute;n, from macro signals to boots-on-ground dispatches.</p>
   <a href="#editions" class="hero-scroll">
     Explore Editions
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
@@ -631,7 +619,6 @@ a:hover { color: var(--black); }
 
 <div class="orange-stripe"></div>
 
-<!-- Editions -->
 <section class="editions-section" id="editions">
   <div class="editions-header reveal">
     <div class="editions-tag">Archive</div>
@@ -639,14 +626,13 @@ a:hover { color: var(--black); }
   </div>
 
   <div class="editions-grid">
-    <!-- February 2026 -->
     <div class="edition-card reveal reveal-delay-1">
       <div class="edition-card-header">
         <div class="edition-month">February 2026</div>
         <div class="edition-headline">Northwest Arkansas: America's <em>#1 City</em></div>
       </div>
       <div class="edition-card-body">
-        <p class="edition-desc">The Milken Institute crowned NWA the best-performing large metro in America. We called it two years ago. Plus: Colombia's property reset decoded, the Great Housing Reset signals, and the debut of <strong>CRUMBS</strong> — our brand intelligence data signals division.</p>
+        <p class="edition-desc">The Milken Institute crowned NWA the best-performing large metro in America. We called it two years ago. Plus: Colombia's property reset decoded, the Great Housing Reset signals, and the debut of <strong>CRUMBS</strong> &mdash; our brand intelligence data signals division.</p>
         <div class="edition-sections">
           <span class="edition-section-tag">/Core</span>
           <span class="edition-section-tag">/Thrust</span>
@@ -656,24 +642,23 @@ a:hover { color: var(--black); }
           <span class="edition-section-tag">/Ground</span>
           <span class="edition-section-tag">/Crumbs</span>
         </div>
-        <a href="./feb-2026/index.html" class="edition-link">Read →</a>
+        <a href="./feb-2026/index.html" class="edition-link">Read &rarr;</a>
         <div class="edition-langs">
           <span class="lang-label">Language</span>
-          <a href="./feb-2026/index.html">🇺🇸 English</a>
-          <a href="./feb-2026/es/index.html">🇪🇸 Español (España)</a>
-          <a href="./feb-2026/es-latam/index.html">🌎 Español (Latam)</a>
+          <a href="./feb-2026/index.html">&#127482;&#127480; English</a>
+          <a href="./feb-2026/es/index.html">&#127466;&#127480; Espa&ntilde;ol (Espa&ntilde;a)</a>
+          <a href="./feb-2026/es-latam/index.html">&#127758; Espa&ntilde;ol (Latam)</a>
         </div>
       </div>
     </div>
 
-    <!-- January 2026 -->
     <div class="edition-card reveal reveal-delay-2">
       <div class="edition-card-header">
         <div class="edition-month">January 2026</div>
         <div class="edition-headline">Little Bangs <em>Before the Boom</em></div>
       </div>
       <div class="edition-card-body">
-        <p class="edition-desc">The inaugural edition. Small signals that precede big shifts — emerging market tremors, cultural undercurrents, and the quiet data points that most people miss. The foundation of everything that follows.</p>
+        <p class="edition-desc">The inaugural edition. Small signals that precede big shifts &mdash; emerging market tremors, cultural undercurrents, and the quiet data points that most people miss. The foundation of everything that follows.</p>
         <div class="edition-sections">
           <span class="edition-section-tag">/Core</span>
           <span class="edition-section-tag">/Thrust</span>
@@ -682,12 +667,12 @@ a:hover { color: var(--black); }
           <span class="edition-section-tag">/Axis</span>
           <span class="edition-section-tag">/Ground</span>
         </div>
-        <a href="./jan-2026/index.html" class="edition-link">Read →</a>
+        <a href="./jan-2026/index.html" class="edition-link">Read &rarr;</a>
         <div class="edition-langs">
           <span class="lang-label">Language</span>
-          <a href="./jan-2026/index.html">🇺🇸 English</a>
-          <a href="./jan-2026/es/index.html">🇪🇸 Español (España)</a>
-          <a href="./jan-2026/es-latam/index.html">🌎 Español (Latam)</a>
+          <a href="./jan-2026/index.html">&#127482;&#127480; English</a>
+          <a href="./jan-2026/es/index.html">&#127466;&#127480; Espa&ntilde;ol (Espa&ntilde;a)</a>
+          <a href="./jan-2026/es-latam/index.html">&#127758; Espa&ntilde;ol (Latam)</a>
         </div>
       </div>
     </div>
@@ -696,36 +681,34 @@ a:hover { color: var(--black); }
 
 <div class="orange-stripe"></div>
 
-<!-- About -->
 <section class="about-section">
   <div class="about-inner reveal">
     <div class="about-logo">IN-<span>K</span>luSo</div>
-    <p class="about-text">A publication at the intersection of <em>data, culture, and capital</em>. We track the markets most people aren't watching yet — from emerging US metros to Latin American cities — and translate the signals into intelligence you can actually use.</p>
+    <p class="about-text">A publication at the intersection of <em>data, culture, and capital</em>. We track the markets most people aren't watching yet &mdash; from emerging US metros to Latin American cities &mdash; and translate the signals into intelligence you can actually use.</p>
     <p class="about-text">Built by people who read balance sheets <em>and</em> walk the streets. <em>Punto y aparte.</em></p>
   </div>
 </section>
 
-<!-- Footer -->
 <footer class="footer">
   <div class="footer-inner">
     <div class="footer-brand">
       <div class="footer-logo">IN-<span>K</span>luSo</div>
-      <p>Where information becomes immersion. A publication by Xtatik — covering the micro-markets where cultural sparks ignite before the data catches fire.</p>
+      <p>Where information becomes immersion. A publication by Xtatik &mdash; covering the micro-markets where cultural sparks ignite before the data catches fire.</p>
     </div>
     <div class="footer-links">
       <h5>February 2026</h5>
       <ul>
-        <li><a href="./feb-2026/index.html">🇺🇸 English</a></li>
-        <li><a href="./feb-2026/es/index.html">🇪🇸 Español (España)</a></li>
-        <li><a href="./feb-2026/es-latam/index.html">🌎 Español (Latam)</a></li>
+        <li><a href="./feb-2026/index.html">&#127482;&#127480; English</a></li>
+        <li><a href="./feb-2026/es/index.html">&#127466;&#127480; Espa&ntilde;ol (Espa&ntilde;a)</a></li>
+        <li><a href="./feb-2026/es-latam/index.html">&#127758; Espa&ntilde;ol (Latam)</a></li>
       </ul>
     </div>
     <div class="footer-links">
       <h5>January 2026</h5>
       <ul>
-        <li><a href="./jan-2026/index.html">🇺🇸 English</a></li>
-        <li><a href="./jan-2026/es/index.html">🇪🇸 Español (España)</a></li>
-        <li><a href="./jan-2026/es-latam/index.html">🌎 Español (Latam)</a></li>
+        <li><a href="./jan-2026/index.html">&#127482;&#127480; English</a></li>
+        <li><a href="./jan-2026/es/index.html">&#127466;&#127480; Espa&ntilde;ol (Espa&ntilde;a)</a></li>
+        <li><a href="./jan-2026/es-latam/index.html">&#127758; Espa&ntilde;ol (Latam)</a></li>
       </ul>
     </div>
     <div class="footer-links">
@@ -747,12 +730,9 @@ a:hover { color: var(--black); }
   </div>
 </footer>
 
-<!-- JavaScript -->
 <script>
 (function() {
   'use strict';
-
-  // Scroll-reveal
   const revealElements = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver(function(entries) {
     entries.forEach(function(entry) {
@@ -761,23 +741,12 @@ a:hover { color: var(--black); }
         observer.unobserve(entry.target);
       }
     });
-  }, {
-    threshold: 0.1,
-    rootMargin: '0px 0px -40px 0px'
-  });
-
-  revealElements.forEach(function(el) {
-    observer.observe(el);
-  });
-
-  // Smooth scroll for anchor links
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  revealElements.forEach(function(el) { observer.observe(el); });
   document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
     anchor.addEventListener('click', function(e) {
       const target = document.querySelector(this.getAttribute('href'));
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
     });
   });
 })();
