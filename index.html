@@ -1,756 +1,560 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>IN-KluSo — Where Information Becomes Immersion</title>
-<meta name="description" content="IN-KluSo: A publication by Xtatik covering micro-markets where cultural sparks ignite before the data catches fire.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-
-<style>
-:root {
-  --cream: #FAF6EE;
-  --cream-dark: #F0EBDF;
-  --black: #1A1A1A;
-  --warm-gray-1: #333333;
-  --warm-gray-2: #666666;
-  --warm-gray-3: #999999;
-  --warm-gray-4: #CCCCCC;
-  --warm-gray-5: #E8E4DC;
-  --orange: #E8722A;
-  --orange-light: #F4A261;
-  --orange-glow: rgba(232, 114, 42, 0.15);
-  --font-serif: 'DM Serif Display', Georgia, serif;
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
-}
-
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-html {
-  scroll-behavior: smooth;
-  font-size: 16px;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-body {
-  font-family: var(--font-sans);
-  background: var(--cream);
-  color: var(--black);
-  line-height: 1.7;
-  overflow-x: hidden;
-}
-
-::selection {
-  background: var(--orange);
-  color: white;
-}
-
-a { color: var(--orange); text-decoration: none; transition: color 0.3s; }
-a:hover { color: var(--black); }
-
-.stripe-bg {
-  position: fixed;
-  top: -200px;
-  right: -60px;
-  width: 80px;
-  height: 1400px;
-  background: linear-gradient(to bottom, var(--orange), var(--orange-light));
-  transform: rotate(-35deg);
-  opacity: 0.05;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.stripe-bg-2 {
-  position: fixed;
-  bottom: -400px;
-  left: -40px;
-  width: 50px;
-  height: 1000px;
-  background: linear-gradient(to top, var(--orange), transparent);
-  transform: rotate(-35deg);
-  opacity: 0.03;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.orange-stripe {
-  width: 100%;
-  height: 6px;
-  background: var(--orange);
-  transform: skewY(-1.5deg);
-  margin: 0;
-}
-
-.nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 100;
-  padding: 20px 40px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: rgba(250, 246, 238, 0.92);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(0,0,0,0.04);
-  transition: all 0.4s;
-}
-
-.nav-logo {
-  font-family: var(--font-sans);
-  font-weight: 700;
-  font-size: 1.4rem;
-  letter-spacing: -0.02em;
-  color: var(--black);
-}
-
-.nav-logo span { color: var(--orange); }
-
-.nav-tagline {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-size: 0.82rem;
-  color: var(--warm-gray-3);
-}
-
-.hero {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 140px 32px 80px;
-  position: relative;
-  overflow: hidden;
-}
-
-.hero::before {
-  content: '';
-  position: absolute;
-  top: -10%;
-  right: -5%;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, var(--orange-glow) 0%, transparent 70%);
-  pointer-events: none;
-  animation: heroGlow 8s ease-in-out infinite alternate;
-}
-
-.hero::after {
-  content: 'IN-K';
-  position: absolute;
-  top: 15%;
-  left: 50%;
-  transform: translateX(-50%);
-  font-family: var(--font-sans);
-  font-weight: 800;
-  font-size: clamp(8rem, 18vw, 16rem);
-  color: rgba(232, 114, 42, 0.04);
-  line-height: 1;
-  pointer-events: none;
-  white-space: nowrap;
-}
-
-@keyframes heroGlow {
-  0% { transform: translate(0, 0) scale(1); opacity: 0.5; }
-  100% { transform: translate(-30px, 20px) scale(1.1); opacity: 1; }
-}
-
-.hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 0.68rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: var(--orange);
-  padding: 8px 18px;
-  border: 1.5px solid var(--orange);
-  border-radius: 2px;
-  margin-bottom: 32px;
-  opacity: 0;
-  animation: fadeUp 0.8s 0.2s forwards;
-}
-
-.hero-title {
-  font-family: var(--font-serif);
-  font-size: clamp(3rem, 7vw, 5.5rem);
-  line-height: 1.08;
-  letter-spacing: -0.025em;
-  max-width: 800px;
-  margin-bottom: 24px;
-  opacity: 0;
-  animation: fadeUp 1s 0.4s forwards;
-}
-
-.hero-title em {
-  font-style: italic;
-  color: var(--orange);
-}
-
-.hero-subtitle {
-  font-size: clamp(1rem, 1.5vw, 1.2rem);
-  color: var(--warm-gray-2);
-  max-width: 560px;
-  line-height: 1.7;
-  margin-bottom: 48px;
-  opacity: 0;
-  animation: fadeUp 1s 0.6s forwards;
-}
-
-.hero-scroll {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 0.82rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--black);
-  padding: 14px 0;
-  border-bottom: 2px solid var(--orange);
-  transition: all 0.3s;
-  opacity: 0;
-  animation: fadeUp 1s 0.8s forwards;
-}
-
-.hero-scroll:hover { padding-left: 8px; color: var(--orange); }
-
-.hero-scroll svg {
-  width: 18px;
-  height: 18px;
-  transition: transform 0.3s;
-}
-
-.hero-scroll:hover svg { transform: translateY(4px); }
-
-.editions-section {
-  padding: clamp(60px, 10vw, 120px) 32px;
-  max-width: 1200px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 1;
-}
-
-.editions-header {
-  margin-bottom: 60px;
-}
-
-.editions-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-family: var(--font-sans);
-  font-size: 0.7rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: var(--orange);
-  margin-bottom: 20px;
-}
-
-.editions-tag::before {
-  content: '';
-  width: 32px;
-  height: 2px;
-  background: var(--orange);
-}
-
-.editions-header h2 {
-  font-family: var(--font-serif);
-  font-size: clamp(2rem, 4.5vw, 3.2rem);
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-}
-
-.editions-header h2 em {
-  font-style: italic;
-  color: var(--orange);
-}
-
-.editions-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(440px, 1fr));
-  gap: 32px;
-}
-
-.edition-card {
-  background: white;
-  border-radius: 4px;
-  overflow: hidden;
-  position: relative;
-  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s;
-}
-
-.edition-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 60px rgba(0,0,0,0.1);
-}
-
-.edition-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  background: var(--orange);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.edition-card:hover::before {
-  transform: scaleX(1);
-}
-
-.edition-card-header {
-  background: var(--black);
-  color: white;
-  padding: 32px;
-  position: relative;
-  overflow: hidden;
-}
-
-.edition-card-header::before {
-  content: '';
-  position: absolute;
-  top: -20px;
-  right: -20px;
-  width: 120px;
-  height: 120px;
-  background: radial-gradient(circle, var(--orange-glow) 0%, transparent 70%);
-  opacity: 0.5;
-}
-
-.edition-month {
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--orange);
-  margin-bottom: 12px;
-  position: relative;
-}
-
-.edition-headline {
-  font-family: var(--font-serif);
-  font-size: 1.6rem;
-  line-height: 1.2;
-  color: white;
-  position: relative;
-}
-
-.edition-headline em {
-  font-style: italic;
-  color: var(--orange-light);
-}
-
-.edition-card-body {
-  padding: 28px 32px 32px;
-}
-
-.edition-desc {
-  font-size: 0.92rem;
-  color: var(--warm-gray-2);
-  line-height: 1.7;
-  margin-bottom: 20px;
-}
-
-.edition-sections {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 24px;
-}
-
-.edition-section-tag {
-  font-family: var(--font-mono);
-  font-size: 0.62rem;
-  font-weight: 500;
-  letter-spacing: 0.5px;
-  padding: 4px 10px;
-  background: var(--cream);
-  color: var(--warm-gray-2);
-  text-transform: uppercase;
-}
-
-.edition-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--orange);
-  transition: all 0.3s;
-}
-
-.edition-link:hover {
-  color: var(--black);
-  gap: 12px;
-}
-
-.edition-langs {
-  display: flex;
-  align-items: center;
-  gap: 0;
-  margin-top: 16px;
-  padding-top: 16px;
-  border-top: 1px solid var(--warm-gray-5);
-  flex-wrap: wrap;
-}
-
-.edition-langs .lang-label {
-  font-family: var(--font-mono);
-  font-size: 0.62rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--warm-gray-3);
-  margin-right: 14px;
-}
-
-.edition-langs a {
-  font-size: 0.82rem;
-  font-weight: 500;
-  color: var(--warm-gray-2);
-  padding: 4px 12px;
-  border-right: 1px solid var(--warm-gray-5);
-  transition: color 0.3s;
-  line-height: 1;
-}
-
-.edition-langs a:last-child {
-  border-right: none;
-}
-
-.edition-langs a:hover {
-  color: var(--orange);
-}
-
-.about-section {
-  background: var(--cream-dark);
-  padding: clamp(60px, 10vw, 100px) 32px;
-  position: relative;
-  z-index: 1;
-}
-
-.about-inner {
-  max-width: 700px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.about-logo {
-  font-family: var(--font-sans);
-  font-weight: 700;
-  font-size: 2rem;
-  margin-bottom: 20px;
-}
-
-.about-logo span { color: var(--orange); }
-
-.about-text {
-  font-size: 1.05rem;
-  color: var(--warm-gray-2);
-  line-height: 1.8;
-  margin-bottom: 12px;
-}
-
-.about-text em {
-  font-style: italic;
-  color: var(--warm-gray-1);
-}
-
-.footer {
-  background: var(--black);
-  color: white;
-  padding: 60px 32px 32px;
-  position: relative;
-  z-index: 1;
-}
-
-.footer::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  background: var(--orange);
-}
-
-.footer-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  gap: 40px;
-}
-
-.footer-brand .footer-logo {
-  font-family: var(--font-sans);
-  font-weight: 700;
-  font-size: 1.6rem;
-  margin-bottom: 10px;
-}
-
-.footer-brand .footer-logo span { color: var(--orange); }
-
-.footer-brand p {
-  font-size: 0.85rem;
-  color: rgba(255,255,255,0.4);
-  line-height: 1.7;
-  max-width: 320px;
-}
-
-.footer-links h5 {
-  font-size: 0.68rem;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--orange);
-  margin-bottom: 16px;
-}
-
-.footer-links ul {
-  list-style: none;
-}
-
-.footer-links ul li {
-  margin-bottom: 8px;
-}
-
-.footer-links ul li a {
-  color: rgba(255,255,255,0.45);
-  font-size: 0.85rem;
-  font-style: italic;
-  transition: color 0.3s;
-}
-
-.footer-links ul li a:hover { color: var(--orange); }
-
-.footer-bottom {
-  max-width: 1200px;
-  margin: 48px auto 0;
-  padding-top: 20px;
-  border-top: 1px solid rgba(255,255,255,0.08);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 0.72rem;
-  color: rgba(255,255,255,0.25);
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.footer-bottom .xtatik {
-  font-weight: 600;
-  color: rgba(255,255,255,0.4);
-}
-
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.reveal {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
-              transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.reveal-delay-1 { transition-delay: 0.1s; }
-.reveal-delay-2 { transition-delay: 0.2s; }
-
-@media (max-width: 768px) {
-  .nav { padding: 16px 24px; }
-  .nav-tagline { display: none; }
-  .editions-grid { grid-template-columns: 1fr; }
-  .footer-inner { flex-direction: column; }
-  .hero::after { font-size: 5rem; }
-}
-
-@media (max-width: 480px) {
-  .hero-title { font-size: 2.4rem; }
-  .edition-card-header { padding: 24px; }
-  .edition-card-body { padding: 20px 24px 28px; }
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IN-KluSo — Where Information Becomes Immersion</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream: #FAF6EE;
+      --black: #1A1A1A;
+      --orange: #E8722A;
+      --orange-light: #F4A261;
+      --white: #FFFFFF;
+      --gray-mid: #6B7280;
+      --gray-light: #E5E7EB;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--cream);
+      color: var(--black);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+    .diagonal-stripe {
+      position: fixed;
+      top: -20%;
+      right: -20px;
+      width: 80px;
+      height: 140vh;
+      background: var(--orange);
+      opacity: 0.10;
+      transform: rotate(15deg);
+      transform-origin: top right;
+      z-index: 0;
+      pointer-events: none;
+    }
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2.5rem;
+      background: transparent;
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+    nav.scrolled {
+      background: rgba(250, 246, 238, 0.97);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+      backdrop-filter: blur(10px);
+    }
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.5rem;
+      color: var(--black);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+    .nav-logo span { color: var(--orange); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--black);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      opacity: 0.7;
+      transition: opacity 0.2s, color 0.2s;
+    }
+    .nav-links a:hover { opacity: 1; color: var(--orange); }
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 8rem 2rem 5rem;
+      position: relative;
+      overflow: hidden;
+      background: var(--cream);
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(ellipse at 60% 40%, rgba(232, 114, 42, 0.08) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .hero-wordmark {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(4.5rem, 13vw, 11rem);
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      color: var(--black);
+      margin-bottom: 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-wordmark span { color: var(--orange); }
+    .hero-tagline {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.2rem, 3vw, 1.9rem);
+      font-style: italic;
+      color: var(--black);
+      opacity: 0.75;
+      margin-bottom: 1rem;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-subtagline {
+      font-size: 0.95rem;
+      color: var(--gray-mid);
+      max-width: 520px;
+      line-height: 1.7;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-subtagline strong { font-weight: 600; color: var(--black); }
+    .scroll-hint {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      opacity: 0.45;
+      animation: bounce 2.2s ease-in-out infinite;
+      z-index: 1;
+    }
+    .scroll-hint span {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .scroll-arrow {
+      width: 1px;
+      height: 44px;
+      background: linear-gradient(to bottom, transparent, var(--orange));
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(8px); }
+    }
+    section { position: relative; z-index: 1; }
+    .latest-edition { padding: 2rem 2.5rem 5rem; }
+    .section-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 1.5rem;
+      display: block;
+    }
+    .feature-card {
+      background: var(--black);
+      border-radius: 16px;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 520px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.18);
+      position: relative;
+      transition: transform 0.35s, box-shadow 0.35s;
+    }
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 80% 50%, rgba(232, 114, 42, 0.14) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 1;
+    }
+    .feature-card:hover { transform: translateY(-4px); box-shadow: 0 28px 70px rgba(0,0,0,0.24); }
+    .feature-card-content {
+      padding: 3.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+    }
+    .feature-card-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 1.25rem;
+      border-left: 2px solid var(--orange);
+      padding-left: 0.75rem;
+    }
+    .feature-card-headline {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      line-height: 1.15;
+      color: var(--white);
+      margin-bottom: 1.25rem;
+    }
+    .feature-card-desc {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.62);
+      line-height: 1.7;
+      margin-bottom: 2rem;
+      max-width: 420px;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--orange);
+      color: var(--white);
+      font-weight: 600;
+      font-size: 0.9rem;
+      padding: 0.85rem 1.75rem;
+      border-radius: 8px;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+      align-self: flex-start;
+    }
+    .btn-primary:hover {
+      background: #d4641f;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(232,114,42,0.38);
+    }
+    .feature-card-image { position: relative; overflow: hidden; }
+    .feature-card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.55s;
+    }
+    .feature-card:hover .feature-card-image img { transform: scale(1.04); }
+    .feature-card-image::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(26,26,26,0.55) 0%, rgba(26,26,26,0.08) 100%);
+    }
+    .previous-editions { padding: 3rem 2.5rem 5rem; }
+    .section-heading {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.1rem;
+      color: var(--black);
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .section-heading::before {
+      content: '';
+      width: 24px;
+      height: 2px;
+      background: var(--orange);
+      display: block;
+      flex-shrink: 0;
+    }
+    .editions-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.75rem;
+    }
+    .edition-card {
+      background: var(--white);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .edition-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--orange);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+      z-index: 2;
+    }
+    .edition-card:hover::before { transform: scaleX(1); }
+    .edition-card:hover { transform: translateY(-6px); box-shadow: 0 16px 44px rgba(0,0,0,0.13); }
+    .edition-card-image { height: 220px; overflow: hidden; position: relative; }
+    .edition-card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+    .edition-card:hover .edition-card-image img { transform: scale(1.06); }
+    .edition-card-body { padding: 1.75rem; flex: 1; }
+    .edition-card-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+    .edition-card-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.35rem;
+      line-height: 1.25;
+      color: var(--black);
+      margin-bottom: 0.75rem;
+      font-style: italic;
+    }
+    .edition-card-desc { font-size: 0.88rem; color: var(--gray-mid); line-height: 1.65; }
+    .edition-card-footer {
+      padding: 1rem 1.75rem 1.5rem;
+      display: flex;
+      align-items: center;
+    }
+    .read-link {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--orange);
+      letter-spacing: 0.04em;
+    }
+    .about-strip { background: var(--black); padding: 5rem 2.5rem; color: var(--white); }
+    .about-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .about-text h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2.2rem;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+      font-style: italic;
+    }
+    .about-text h2 span { color: var(--orange); }
+    .about-text p { font-size: 0.95rem; color: rgba(255,255,255,0.62); line-height: 1.75; }
+    .xtatik-tag {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--orange);
+      border: 1px solid rgba(232,114,42,0.3);
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+      margin-bottom: 1.25rem;
+    }
+    .authors-list { display: flex; flex-direction: column; gap: 1.25rem; }
+    .author-inline { display: flex; align-items: center; gap: 1rem; }
+    .author-avatar {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      font-size: 0.72rem;
+      flex-shrink: 0;
+      letter-spacing: 0.05em;
+    }
+    .avatar-orange { background: var(--orange); color: var(--white); }
+    .avatar-dark { background: rgba(255,255,255,0.08); color: var(--white); border: 1px solid rgba(255,255,255,0.18); }
+    .author-info strong { display: block; font-size: 0.9rem; font-weight: 600; color: var(--white); margin-bottom: 0.2rem; }
+    .author-info span { font-size: 0.78rem; color: rgba(255,255,255,0.45); font-family: 'JetBrains Mono', monospace; }
+    .authors-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 1.25rem;
+    }
+    footer {
+      background: var(--black);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 2rem 2.5rem;
+      text-align: center;
+      color: rgba(255,255,255,0.38);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+    }
+    footer .footer-logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.7);
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    footer .footer-logo span { color: var(--orange); }
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    @media (max-width: 900px) {
+      .feature-card { grid-template-columns: 1fr; min-height: auto; }
+      .feature-card-image { height: 280px; order: -1; }
+      .feature-card-content { padding: 2.5rem; }
+      .about-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    }
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.25rem; }
+      .nav-links { display: none; }
+      .hero { padding: 6rem 1.25rem 4rem; }
+      .latest-edition, .previous-editions { padding-left: 1.25rem; padding-right: 1.25rem; }
+      .editions-grid { grid-template-columns: 1fr; }
+      .about-strip { padding: 3.5rem 1.25rem; }
+    }
+  </style>
 </head>
-
 <body>
 
-<div class="stripe-bg"></div>
-<div class="stripe-bg-2"></div>
+  <div class="diagonal-stripe"></div>
 
-<nav class="nav">
-  <div class="nav-logo">IN-<span>K</span>luSo</div>
-  <div class="nav-tagline">Where Information Becomes Immersion</div>
-</nav>
+  <nav id="main-nav">
+    <a href="index.html" class="nav-logo">IN-<span>K</span>luSo</a>
+    <ul class="nav-links">
+      <li><a href="mar-2026/index.html">March 2026</a></li>
+      <li><a href="feb-2026/index.html">Feb 2026</a></li>
+      <li><a href="jan-2026/index.html">Jan 2026</a></li>
+      <li><a href="#about">About</a></li>
+    </ul>
+  </nav>
 
-<section class="hero">
-  <div class="hero-badge">A Xtatik Publication</div>
-  <h1 class="hero-title">IN-<em>K</em>luSo</h1>
-  <p class="hero-subtitle">Where information becomes immersion. We cover the micro-markets where cultural sparks ignite before the data catches fire — from Northwest Arkansas to Medell&iacute;n, from macro signals to boots-on-ground dispatches.</p>
-  <a href="#editions" class="hero-scroll">
-    Explore Editions
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-  </a>
-</section>
+  <section class="hero">
+    <h1 class="hero-wordmark">IN-<span>K</span>luSo</h1>
+    <p class="hero-tagline">"Where Information Becomes Immersion"</p>
+    <p class="hero-subtagline">A <strong>Xtatik</strong> publication — Real estate intelligence for operators, investors, and the culturally curious.</p>
+    <div class="scroll-hint">
+      <span>Scroll</span>
+      <div class="scroll-arrow"></div>
+    </div>
+  </section>
 
-<div class="orange-stripe"></div>
-
-<section class="editions-section" id="editions">
-  <div class="editions-header reveal">
-    <div class="editions-tag">Archive</div>
-    <h2>Published <em>Editions</em></h2>
-  </div>
-
-  <div class="editions-grid">
-    <div class="edition-card reveal reveal-delay-1">
-      <div class="edition-card-header">
-        <div class="edition-month">February 2026</div>
-        <div class="edition-headline">Northwest Arkansas: America's <em>#1 City</em></div>
+  <section class="latest-edition">
+    <span class="section-label reveal">Latest Edition</span>
+    <div class="feature-card reveal">
+      <div class="feature-card-content">
+        <div class="feature-card-label">Latest Edition — March 2026</div>
+        <h2 class="feature-card-headline"><em>Spring Has a Stutter:<br>Three Markets Reading Differently</em></h2>
+        <p class="feature-card-desc">Rates paused. Buyers returned... sort of. We break down NWA, Colombia, and Tampa Bay — three markets where spring means something very different in 2026.</p>
+        <a href="mar-2026/index.html" class="btn-primary">Read March 2026 &rarr;</a>
       </div>
-      <div class="edition-card-body">
-        <p class="edition-desc">The Milken Institute crowned NWA the best-performing large metro in America. We called it two years ago. Plus: Colombia's property reset decoded, the Great Housing Reset signals, and the debut of <strong>CRUMBS</strong> &mdash; our brand intelligence data signals division.</p>
-        <div class="edition-sections">
-          <span class="edition-section-tag">/Core</span>
-          <span class="edition-section-tag">/Thrust</span>
-          <span class="edition-section-tag">/Pulse</span>
-          <span class="edition-section-tag">/Flow</span>
-          <span class="edition-section-tag">/Axis</span>
-          <span class="edition-section-tag">/Ground</span>
-          <span class="edition-section-tag">/Crumbs</span>
-        </div>
-        <a href="./feb-2026/index.html" class="edition-link">Read &rarr;</a>
-        <div class="edition-langs">
-          <span class="lang-label">Language</span>
-          <a href="./feb-2026/index.html">&#127482;&#127480; English</a>
-          <a href="./feb-2026/es/index.html">&#127466;&#127480; Espa&ntilde;ol (Espa&ntilde;a)</a>
-          <a href="./feb-2026/es-latam/index.html">&#127758; Espa&ntilde;ol (Latam)</a>
-        </div>
+      <div class="feature-card-image">
+        <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200&q=80&fit=crop" alt="March 2026 Cover" loading="lazy">
       </div>
     </div>
+  </section>
 
-    <div class="edition-card reveal reveal-delay-2">
-      <div class="edition-card-header">
-        <div class="edition-month">January 2026</div>
-        <div class="edition-headline">Little Bangs <em>Before the Boom</em></div>
-      </div>
-      <div class="edition-card-body">
-        <p class="edition-desc">The inaugural edition. Small signals that precede big shifts &mdash; emerging market tremors, cultural undercurrents, and the quiet data points that most people miss. The foundation of everything that follows.</p>
-        <div class="edition-sections">
-          <span class="edition-section-tag">/Core</span>
-          <span class="edition-section-tag">/Thrust</span>
-          <span class="edition-section-tag">/Pulse</span>
-          <span class="edition-section-tag">/Flow</span>
-          <span class="edition-section-tag">/Axis</span>
-          <span class="edition-section-tag">/Ground</span>
+  <section class="previous-editions">
+    <div class="section-heading reveal">Previous Editions</div>
+    <div class="editions-grid">
+      <a href="feb-2026/index.html" class="edition-card reveal">
+        <div class="edition-card-image">
+          <img src="https://images.unsplash.com/photo-1486325212823-c51b7b1e8e81?w=600&q=80&fit=crop" alt="February 2026" loading="lazy">
         </div>
-        <a href="./jan-2026/index.html" class="edition-link">Read &rarr;</a>
-        <div class="edition-langs">
-          <span class="lang-label">Language</span>
-          <a href="./jan-2026/index.html">&#127482;&#127480; English</a>
-          <a href="./jan-2026/es/index.html">&#127466;&#127480; Espa&ntilde;ol (Espa&ntilde;a)</a>
-          <a href="./jan-2026/es-latam/index.html">&#127758; Espa&ntilde;ol (Latam)</a>
+        <div class="edition-card-body">
+          <span class="edition-card-label">February 2026</span>
+          <h3 class="edition-card-title"><em>NWA Is #1. We Called It First.</em></h3>
+          <p class="edition-card-desc">Northwest Arkansas crowned America's best-performing metro. Colombia resets. The Great Housing Restart.</p>
+        </div>
+        <div class="edition-card-footer">
+          <span class="read-link">Read Edition &rarr;</span>
+        </div>
+      </a>
+      <a href="jan-2026/index.html" class="edition-card reveal">
+        <div class="edition-card-image">
+          <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=600&q=80&fit=crop" alt="January 2026" loading="lazy">
+        </div>
+        <div class="edition-card-body">
+          <span class="edition-card-label">January 2026</span>
+          <h3 class="edition-card-title"><em>Little Bangs Before the Boom</em></h3>
+          <p class="edition-card-desc">Early trend signals in four micro-markets. Where cultural sparks ignite before the data catches fire.</p>
+        </div>
+        <div class="edition-card-footer">
+          <span class="read-link">Read Edition &rarr;</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <section class="about-strip" id="about">
+    <div class="about-inner">
+      <div class="about-text">
+        <div class="xtatik-tag">A Xtatik Publication</div>
+        <h2>Real estate reads <span>differently</span> here.</h2>
+        <p>IN-KluSo is where market intelligence meets cultural fluency. We don't chase the consensus — we read the signals before they become headlines. Published monthly for operators, investors, and the people who know that place matters before price does.</p>
+      </div>
+      <div>
+        <p class="authors-label">Contributors</p>
+        <div class="authors-list">
+          <div class="author-inline">
+            <div class="author-avatar avatar-orange">JCE</div>
+            <div class="author-info">
+              <strong>Juan Camilo Echeverri</strong>
+              <span>Executive Broker · Habloft Global · Wesley Chapel, FL</span>
+            </div>
+          </div>
+          <div class="author-inline">
+            <div class="author-avatar avatar-dark">CO</div>
+            <div class="author-info">
+              <strong>Camilo Osorio</strong>
+              <span>Brand Strategist · Madrid, Spain</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<div class="orange-stripe"></div>
+  <footer>
+    <span class="footer-logo">IN-<span>K</span>luSo</span>
+    IN-KluSo by Xtatik &nbsp;&middot;&nbsp; &copy; 2026 &nbsp;&middot;&nbsp; All editions in English
+  </footer>
 
-<section class="about-section">
-  <div class="about-inner reveal">
-    <div class="about-logo">IN-<span>K</span>luSo</div>
-    <p class="about-text">A publication at the intersection of <em>data, culture, and capital</em>. We track the markets most people aren't watching yet &mdash; from emerging US metros to Latin American cities &mdash; and translate the signals into intelligence you can actually use.</p>
-    <p class="about-text">Built by people who read balance sheets <em>and</em> walk the streets. <em>Punto y aparte.</em></p>
-  </div>
-</section>
-
-<footer class="footer">
-  <div class="footer-inner">
-    <div class="footer-brand">
-      <div class="footer-logo">IN-<span>K</span>luSo</div>
-      <p>Where information becomes immersion. A publication by Xtatik &mdash; covering the micro-markets where cultural sparks ignite before the data catches fire.</p>
-    </div>
-    <div class="footer-links">
-      <h5>February 2026</h5>
-      <ul>
-        <li><a href="./feb-2026/index.html">&#127482;&#127480; English</a></li>
-        <li><a href="./feb-2026/es/index.html">&#127466;&#127480; Espa&ntilde;ol (Espa&ntilde;a)</a></li>
-        <li><a href="./feb-2026/es-latam/index.html">&#127758; Espa&ntilde;ol (Latam)</a></li>
-      </ul>
-    </div>
-    <div class="footer-links">
-      <h5>January 2026</h5>
-      <ul>
-        <li><a href="./jan-2026/index.html">&#127482;&#127480; English</a></li>
-        <li><a href="./jan-2026/es/index.html">&#127466;&#127480; Espa&ntilde;ol (Espa&ntilde;a)</a></li>
-        <li><a href="./jan-2026/es-latam/index.html">&#127758; Espa&ntilde;ol (Latam)</a></li>
-      </ul>
-    </div>
-    <div class="footer-links">
-      <h5>Sections</h5>
-      <ul>
-        <li><a href="#">/CORE</a></li>
-        <li><a href="#">/THRUST</a></li>
-        <li><a href="#">/PULSE</a></li>
-        <li><a href="#">/FLOW</a></li>
-        <li><a href="#">/AXIS</a></li>
-        <li><a href="#">/GROUND</a></li>
-        <li><a href="#">/CRUMBS</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span>&copy; 2026 IN-KluSo &middot; All rights reserved</span>
-    <span class="xtatik">A Xtatik Publication</span>
-  </div>
-</footer>
-
-<script>
-(function() {
-  'use strict';
-  const revealElements = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
+  <script>
+    const nav = document.getElementById('main-nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
     });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-  revealElements.forEach(function(el) { observer.observe(el); });
-  document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
-    anchor.addEventListener('click', function(e) {
-      const target = document.querySelector(this.getAttribute('href'));
-      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
-    });
-  });
-})();
-</script>
-
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
 </body>
 </html>
