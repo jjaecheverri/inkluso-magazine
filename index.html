@@ -658,46 +658,47 @@
     </div>
   </section>
 
-  <!-- ABOUT -->
+  <!-- ABOUT STRIP -->
   <section class="about-strip" id="about">
     <div class="about-inner">
       <div class="about-text">
         <div class="xtatik-tag">A Xtatik Publication</div>
         <h2>Real estate reads <span>differently</span> here.</h2>
-        <p>IN-KluSo is where market intelligence meets cultural fluency. We don't chase the consensus — we read the signals before they become headlines. Published monthly for operators, investors, and the people who know that place matters before price does.</p>
+        <p>IN-KluSo is where market intelligence meets cultural fluency. We don’t chase the consensus — we read the signals before they become headlines. Published monthly for operators, investors, and the people who know that place isn’t just property.</p>
       </div>
-      <div>
-        <p class="authors-label">Contributors</p>
-        <div class="authors-list">
-          <div class="author-inline">
-            <div class="author-avatar avatar-orange">JCE</div>
-            <div class="author-info">
-              <strong>Juan Camilo Echeverri</strong>
-              <span>Executive Broker · Habloft Global · Wesley Chapel, FL</span>
-            </div>
+      <div class="authors-list">
+        <div class="author-inline">
+          <div class="author-avatar avatar-orange">JE</div>
+          <div class="author-info">
+            <strong>Juan Echeverri</strong>
+            <span>Co-Founder, Xtatik</span>
           </div>
-          <div class="author-inline">
-            <div class="author-avatar avatar-black">CO</div>
-            <div class="author-info">
-              <strong>Camilo Osorio</strong>
-              <span>Brand Strategist · Madrid, Spain</span>
-            </div>
+        </div>
+        <div class="author-inline">
+          <div class="author-avatar avatar-black">CO</div>
+          <div class="author-info">
+            <strong>Camilo Osorio</strong>
+            <span>Co-Founder, Xtatik</span>
           </div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- FOOTER -->
   <footer>
     <strong>IN-<span>K</span>luSo</strong>
-    IN-KluSo by Xtatik &nbsp;&middot;&nbsp; &copy; 2026 &nbsp;&middot;&nbsp; All editions in English
+    A Xtatik Publication &mdash; Where Information Becomes Immersion
   </footer>
 
   <script>
+    // NAV scroll effect
     const nav = document.getElementById('main-nav');
     window.addEventListener('scroll', () => {
       nav.classList.toggle('scrolled', window.scrollY > 60);
     });
+
+    // Reveal on scroll
     const reveals = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
