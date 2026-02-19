@@ -17,8 +17,11 @@
       --gray-mid: #6B7280;
       --gray-light: #E5E7EB;
     }
+
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
     html { scroll-behavior: smooth; }
+
     body {
       background: var(--cream);
       color: var(--black);
@@ -27,6 +30,8 @@
       line-height: 1.65;
       overflow-x: hidden;
     }
+
+    /* DIAGONAL STRIPE — fixed right side */
     .diagonal-stripe {
       position: fixed;
       top: -20%;
@@ -34,12 +39,14 @@
       width: 80px;
       height: 140vh;
       background: var(--orange);
-      opacity: 0.10;
+      opacity: 0.12;
       transform: rotate(15deg);
       transform-origin: top right;
       z-index: 0;
       pointer-events: none;
     }
+
+    /* NAV */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -64,8 +71,13 @@
       letter-spacing: -0.02em;
     }
     .nav-logo span { color: var(--orange); }
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
     .nav-links a {
+      font-family: 'Inter', sans-serif;
       font-size: 0.85rem;
       font-weight: 500;
       color: var(--black);
@@ -73,9 +85,11 @@
       letter-spacing: 0.05em;
       text-transform: uppercase;
       opacity: 0.7;
-      transition: opacity 0.2s, color 0.2s;
+      transition: opacity 0.2s;
     }
     .nav-links a:hover { opacity: 1; color: var(--orange); }
+
+    /* HERO */
     .hero {
       min-height: 100vh;
       display: flex;
@@ -92,12 +106,12 @@
       content: '';
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: radial-gradient(ellipse at 60% 40%, rgba(232, 114, 42, 0.08) 0%, transparent 65%);
+      background: radial-gradient(ellipse at 60% 40%, rgba(232, 114, 42, 0.07) 0%, transparent 65%);
       pointer-events: none;
     }
     .hero-wordmark {
       font-family: 'DM Serif Display', serif;
-      font-size: clamp(4.5rem, 13vw, 11rem);
+      font-size: clamp(4rem, 12vw, 10rem);
       line-height: 0.95;
       letter-spacing: -0.03em;
       color: var(--black);
@@ -111,12 +125,13 @@
       font-size: clamp(1.2rem, 3vw, 1.9rem);
       font-style: italic;
       color: var(--black);
-      opacity: 0.75;
+      opacity: 0.8;
       margin-bottom: 1rem;
       position: relative;
       z-index: 1;
     }
     .hero-subtagline {
+      font-family: 'Inter', sans-serif;
       font-size: 0.95rem;
       color: var(--gray-mid);
       max-width: 520px;
@@ -124,7 +139,10 @@
       position: relative;
       z-index: 1;
     }
-    .hero-subtagline strong { font-weight: 600; color: var(--black); }
+    .hero-subtagline strong {
+      font-weight: 600;
+      color: var(--black);
+    }
     .scroll-hint {
       position: absolute;
       bottom: 2.5rem;
@@ -134,27 +152,34 @@
       flex-direction: column;
       align-items: center;
       gap: 0.5rem;
-      opacity: 0.45;
-      animation: bounce 2.2s ease-in-out infinite;
+      opacity: 0.5;
+      animation: bounce 2s infinite;
       z-index: 1;
     }
     .scroll-hint span {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.68rem;
-      letter-spacing: 0.12em;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
+      color: var(--black);
     }
     .scroll-arrow {
       width: 1px;
-      height: 44px;
+      height: 40px;
       background: linear-gradient(to bottom, transparent, var(--orange));
     }
     @keyframes bounce {
       0%, 100% { transform: translateX(-50%) translateY(0); }
-      50% { transform: translateX(-50%) translateY(8px); }
+      50% { transform: translateX(-50%) translateY(6px); }
     }
+
+    /* SECTIONS */
     section { position: relative; z-index: 1; }
-    .latest-edition { padding: 2rem 2.5rem 5rem; }
+
+    /* LATEST EDITION FEATURE */
+    .latest-edition {
+      padding: 2rem 2.5rem 5rem;
+    }
     .section-label {
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.7rem;
@@ -173,17 +198,20 @@
       min-height: 520px;
       box-shadow: 0 20px 60px rgba(0,0,0,0.18);
       position: relative;
-      transition: transform 0.35s, box-shadow 0.35s;
+      transition: transform 0.3s, box-shadow 0.3s;
     }
     .feature-card::before {
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse at 80% 50%, rgba(232, 114, 42, 0.14) 0%, transparent 60%);
+      background: radial-gradient(ellipse at 80% 50%, rgba(232, 114, 42, 0.15) 0%, transparent 60%);
       pointer-events: none;
       z-index: 1;
     }
-    .feature-card:hover { transform: translateY(-4px); box-shadow: 0 28px 70px rgba(0,0,0,0.24); }
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 28px 70px rgba(0,0,0,0.24);
+    }
     .feature-card-content {
       padding: 3.5rem;
       display: flex;
@@ -208,10 +236,11 @@
       line-height: 1.15;
       color: var(--white);
       margin-bottom: 1.25rem;
+      font-style: italic;
     }
     .feature-card-desc {
       font-size: 0.95rem;
-      color: rgba(255,255,255,0.62);
+      color: rgba(255,255,255,0.65);
       line-height: 1.7;
       margin-bottom: 2rem;
       max-width: 420px;
@@ -222,6 +251,7 @@
       gap: 0.5rem;
       background: var(--orange);
       color: var(--white);
+      font-family: 'Inter', sans-serif;
       font-weight: 600;
       font-size: 0.9rem;
       padding: 0.85rem 1.75rem;
@@ -232,28 +262,42 @@
       align-self: flex-start;
     }
     .btn-primary:hover {
-      background: #d4641f;
+      background: var(--orange-light);
       transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(232,114,42,0.38);
+      box-shadow: 0 8px 24px rgba(232,114,42,0.35);
     }
-    .feature-card-image { position: relative; overflow: hidden; }
+    .feature-card-image {
+      position: relative;
+      overflow: hidden;
+    }
     .feature-card-image img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.55s;
+      transition: transform 0.5s;
     }
-    .feature-card:hover .feature-card-image img { transform: scale(1.04); }
+    .feature-card:hover .feature-card-image img {
+      transform: scale(1.04);
+    }
     .feature-card-image::after {
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, rgba(26,26,26,0.55) 0%, rgba(26,26,26,0.08) 100%);
+      background: linear-gradient(135deg, rgba(26,26,26,0.6) 0%, rgba(26,26,26,0.1) 100%);
+      transition: opacity 0.3s;
     }
-    .previous-editions { padding: 3rem 2.5rem 5rem; }
+    .feature-card:hover .feature-card-image::after {
+      opacity: 0.7;
+    }
+
+    /* PREVIOUS EDITIONS */
+    .previous-editions {
+      padding: 3rem 2.5rem 5rem;
+    }
     .section-heading {
       font-family: 'DM Serif Display', serif;
       font-size: 1.1rem;
+      letter-spacing: -0.01em;
       color: var(--black);
       margin-bottom: 2rem;
       padding-bottom: 1rem;
@@ -268,7 +312,6 @@
       height: 2px;
       background: var(--orange);
       display: block;
-      flex-shrink: 0;
     }
     .editions-grid {
       display: grid;
@@ -284,8 +327,9 @@
       color: inherit;
       display: flex;
       flex-direction: column;
+      border-top: 3px solid transparent;
+      transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
       position: relative;
-      transition: transform 0.3s, box-shadow 0.3s;
     }
     .edition-card::before {
       content: '';
@@ -295,20 +339,41 @@
       background: var(--orange);
       transform: scaleX(0);
       transform-origin: left;
-      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-      z-index: 2;
+      transition: transform 0.3s;
     }
     .edition-card:hover::before { transform: scaleX(1); }
-    .edition-card:hover { transform: translateY(-6px); box-shadow: 0 16px 44px rgba(0,0,0,0.13); }
-    .edition-card-image { height: 220px; overflow: hidden; position: relative; }
+    .edition-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 14px 40px rgba(0,0,0,0.12);
+    }
+    .edition-card-image {
+      height: 220px;
+      overflow: hidden;
+      position: relative;
+    }
     .edition-card-image img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       transition: transform 0.5s;
     }
-    .edition-card:hover .edition-card-image img { transform: scale(1.06); }
-    .edition-card-body { padding: 1.75rem; flex: 1; }
+    .edition-card:hover .edition-card-image img {
+      transform: scale(1.06);
+    }
+    .edition-card-image::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(26,26,26,0);
+      transition: background 0.3s;
+    }
+    .edition-card:hover .edition-card-image::after {
+      background: rgba(26,26,26,0.2);
+    }
+    .edition-card-body {
+      padding: 1.75rem;
+      flex: 1;
+    }
     .edition-card-label {
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.65rem;
@@ -326,21 +391,33 @@
       margin-bottom: 0.75rem;
       font-style: italic;
     }
-    .edition-card-desc { font-size: 0.88rem; color: var(--gray-mid); line-height: 1.65; }
+    .edition-card-desc {
+      font-size: 0.88rem;
+      color: var(--gray-mid);
+      line-height: 1.65;
+    }
     .edition-card-footer {
       padding: 1rem 1.75rem 1.5rem;
       display: flex;
       align-items: center;
+      gap: 0.5rem;
     }
     .read-link {
+      font-family: 'Inter', sans-serif;
       font-size: 0.82rem;
       font-weight: 600;
       color: var(--orange);
       letter-spacing: 0.04em;
     }
-    .about-strip { background: var(--black); padding: 5rem 2.5rem; color: var(--white); }
+
+    /* ABOUT STRIP */
+    .about-strip {
+      background: var(--black);
+      padding: 5rem 2.5rem;
+      color: var(--white);
+    }
     .about-inner {
-      max-width: 960px;
+      max-width: 900px;
       margin: 0 auto;
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -355,7 +432,48 @@
       font-style: italic;
     }
     .about-text h2 span { color: var(--orange); }
-    .about-text p { font-size: 0.95rem; color: rgba(255,255,255,0.62); line-height: 1.75; }
+    .about-text p {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.75;
+    }
+    .authors-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .author-inline {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .author-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      font-size: 0.75rem;
+      flex-shrink: 0;
+      letter-spacing: 0.05em;
+    }
+    .avatar-orange { background: var(--orange); color: var(--white); }
+    .avatar-black { background: rgba(255,255,255,0.1); color: var(--white); border: 1px solid rgba(255,255,255,0.2); }
+    .author-info strong {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 0.15rem;
+    }
+    .author-info span {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.5);
+      font-family: 'JetBrains Mono', monospace;
+    }
     .xtatik-tag {
       display: inline-block;
       font-family: 'JetBrains Mono', monospace;
@@ -368,62 +486,53 @@
       border-radius: 4px;
       margin-bottom: 1.25rem;
     }
-    .authors-list { display: flex; flex-direction: column; gap: 1.25rem; }
-    .author-inline { display: flex; align-items: center; gap: 1rem; }
-    .author-avatar {
-      width: 46px;
-      height: 46px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'JetBrains Mono', monospace;
-      font-weight: 700;
-      font-size: 0.72rem;
-      flex-shrink: 0;
-      letter-spacing: 0.05em;
-    }
-    .avatar-orange { background: var(--orange); color: var(--white); }
-    .avatar-dark { background: rgba(255,255,255,0.08); color: var(--white); border: 1px solid rgba(255,255,255,0.18); }
-    .author-info strong { display: block; font-size: 0.9rem; font-weight: 600; color: var(--white); margin-bottom: 0.2rem; }
-    .author-info span { font-size: 0.78rem; color: rgba(255,255,255,0.45); font-family: 'JetBrains Mono', monospace; }
-    .authors-label {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.35);
-      margin-bottom: 1.25rem;
-    }
+
+    /* FOOTER */
     footer {
       background: var(--black);
       border-top: 1px solid rgba(255,255,255,0.06);
       padding: 2rem 2.5rem;
       text-align: center;
-      color: rgba(255,255,255,0.38);
+      color: rgba(255,255,255,0.4);
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.75rem;
       letter-spacing: 0.05em;
     }
-    footer .footer-logo {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.1rem;
+    footer strong {
       color: rgba(255,255,255,0.7);
+      font-family: 'DM Serif Display', serif;
+      font-size: 1rem;
       display: block;
       margin-bottom: 0.5rem;
     }
-    footer .footer-logo span { color: var(--orange); }
+    footer strong span { color: var(--orange); }
+
+    /* REVEAL ANIMATION */
     .reveal {
       opacity: 0;
       transform: translateY(28px);
       transition: opacity 0.65s ease, transform 0.65s ease;
     }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* RESPONSIVE */
     @media (max-width: 900px) {
-      .feature-card { grid-template-columns: 1fr; min-height: auto; }
-      .feature-card-image { height: 280px; order: -1; }
+      .feature-card {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+      .feature-card-image {
+        height: 280px;
+        order: -1;
+      }
       .feature-card-content { padding: 2.5rem; }
-      .about-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .about-inner {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
     }
     @media (max-width: 768px) {
       nav { padding: 1rem 1.25rem; }
@@ -437,18 +546,22 @@
 </head>
 <body>
 
+  <!-- DIAGONAL STRIPE -->
   <div class="diagonal-stripe"></div>
 
+  <!-- NAV -->
   <nav id="main-nav">
     <a href="index.html" class="nav-logo">IN-<span>K</span>luSo</a>
     <ul class="nav-links">
       <li><a href="mar-2026/index.html">March 2026</a></li>
-      <li><a href="feb-2026/index.html">Feb 2026</a></li>
-      <li><a href="jan-2026/index.html">Jan 2026</a></li>
+      <li><a href="feb-19-2026/index.html">Feb 19, 2026</a></li>
+      <li><a href="feb-2026/index.html">February 2026</a></li>
+      <li><a href="jan-2026/index.html">January 2026</a></li>
       <li><a href="#about">About</a></li>
     </ul>
   </nav>
 
+  <!-- HERO -->
   <section class="hero">
     <h1 class="hero-wordmark">IN-<span>K</span>luSo</h1>
     <p class="hero-tagline">"Where Information Becomes Immersion"</p>
@@ -459,27 +572,64 @@
     </div>
   </section>
 
+  <!-- LATEST EDITION -->
   <section class="latest-edition">
     <span class="section-label reveal">Latest Edition</span>
     <div class="feature-card reveal">
       <div class="feature-card-content">
         <div class="feature-card-label">Latest Edition — March 2026</div>
-        <h2 class="feature-card-headline"><em>Spring Has a Stutter:<br>Three Markets Reading Differently</em></h2>
+        <h2 class="feature-card-headline"><em>Spring Has a Stutter: Three Markets Reading Differently</em></h2>
         <p class="feature-card-desc">Rates paused. Buyers returned... sort of. We break down NWA, Colombia, and Tampa Bay — three markets where spring means something very different in 2026.</p>
-        <a href="mar-2026/index.html" class="btn-primary">Read March 2026 &rarr;</a>
+        <a href="mar-2026/index.html" class="btn-primary">Read March 2026 →</a>
       </div>
       <div class="feature-card-image">
-        <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200&q=80&fit=crop" alt="March 2026 Cover" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200&q=80&fit=crop" alt="Real estate architecture — March 2026 Cover" loading="lazy">
       </div>
     </div>
   </section>
 
+  <!-- PREVIOUS EDITIONS -->
   <section class="previous-editions">
     <div class="section-heading reveal">Previous Editions</div>
     <div class="editions-grid">
+
+      <a href="feb-19-2026/index.html" class="edition-card reveal">
+        <div class="edition-card-image" style="background:#1a1a1a; display:flex; align-items:center; justify-content:center; overflow:hidden;">
+          <svg viewBox="0 0 600 220" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;object-fit:cover;">
+            <rect width="600" height="220" fill="#1a1a1a"/>
+            <polygon points="480,0 600,0 600,220 520,220" fill="#FF6B35" opacity="0.25"/>
+            <circle cx="300" cy="110" r="70" fill="none" stroke="#FF6B35" stroke-width="3" opacity="0.6"/>
+            <circle cx="300" cy="110" r="45" fill="none" stroke="#FF6B35" stroke-width="1.5" opacity="0.4"/>
+            <rect x="270" y="80" width="60" height="60" fill="none" stroke="#FAF6EE" stroke-width="2" opacity="0.3" transform="rotate(15,300,110)"/>
+            <ellipse cx="300" cy="100" rx="22" ry="26" fill="none" stroke="#FF6B35" stroke-width="2.5"/>
+            <line x1="290" y1="126" x2="310" y2="126" stroke="#FF6B35" stroke-width="2.5"/>
+            <line x1="292" y1="133" x2="308" y2="133" stroke="#FF6B35" stroke-width="2.5"/>
+            <line x1="295" y1="140" x2="305" y2="140" stroke="#FF6B35" stroke-width="2"/>
+            <circle cx="180" cy="60" r="2" fill="#FAF6EE" opacity="0.4"/>
+            <circle cx="200" cy="60" r="2" fill="#FAF6EE" opacity="0.4"/>
+            <circle cx="220" cy="60" r="2" fill="#FAF6EE" opacity="0.4"/>
+            <circle cx="180" cy="80" r="2" fill="#FAF6EE" opacity="0.4"/>
+            <circle cx="200" cy="80" r="2" fill="#FAF6EE" opacity="0.4"/>
+            <circle cx="220" cy="80" r="2" fill="#FAF6EE" opacity="0.4"/>
+            <text x="300" y="185" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#FF6B35" letter-spacing="3" opacity="0.9">IDEAS WORTH EXISTING</text>
+            <text x="300" y="202" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#FAF6EE" letter-spacing="2" opacity="0.5">FEB 19, 2026 · V3.3</text>
+          </svg>
+        </div>
+        <div class="edition-card-body">
+          <span class="edition-card-label">Feb 19, 2026</span>
+          <h3 class="edition-card-title"><em>Ideas Worth Existing</em></h3>
+          <p class="edition-card-desc">Not every idea deserves to exist. Yours might. A structural diagnostic for founders, operators, and anyone still pitching a solution before the problem is real.</p>
+        </div>
+        <div class="edition-card-footer">
+          <span class="read-link">Read Edition →</span>
+          <span style="font-size:0.65rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; background:#FF6B35; color:#fff; padding:0.2rem 0.5rem; border-radius:3px; margin-left:0.5rem;">V3.3</span>
+          <span style="font-size:0.65rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; background:#1a1a1a; color:#FF6B35; padding:0.2rem 0.5rem; border-radius:3px; margin-left:0.25rem;">Cartoon</span>
+        </div>
+      </a>
+
       <a href="feb-2026/index.html" class="edition-card reveal">
         <div class="edition-card-image">
-          <img src="https://images.unsplash.com/photo-1486325212823-c51b7b1e8e81?w=600&q=80&fit=crop" alt="February 2026" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1486325212823-c51b7b1e8e81?w=600&q=80&fit=crop" alt="February 2026 Cover" loading="lazy">
         </div>
         <div class="edition-card-body">
           <span class="edition-card-label">February 2026</span>
@@ -487,12 +637,13 @@
           <p class="edition-card-desc">Northwest Arkansas crowned America's best-performing metro. Colombia resets. The Great Housing Restart.</p>
         </div>
         <div class="edition-card-footer">
-          <span class="read-link">Read Edition &rarr;</span>
+          <span class="read-link">Read Edition →</span>
         </div>
       </a>
+
       <a href="jan-2026/index.html" class="edition-card reveal">
         <div class="edition-card-image">
-          <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=600&q=80&fit=crop" alt="January 2026" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=600&q=80&fit=crop" alt="January 2026 Cover" loading="lazy">
         </div>
         <div class="edition-card-body">
           <span class="edition-card-label">January 2026</span>
@@ -500,12 +651,14 @@
           <p class="edition-card-desc">Early trend signals in four micro-markets. Where cultural sparks ignite before the data catches fire.</p>
         </div>
         <div class="edition-card-footer">
-          <span class="read-link">Read Edition &rarr;</span>
+          <span class="read-link">Read Edition →</span>
         </div>
       </a>
+
     </div>
   </section>
 
+  <!-- ABOUT -->
   <section class="about-strip" id="about">
     <div class="about-inner">
       <div class="about-text">
@@ -524,7 +677,7 @@
             </div>
           </div>
           <div class="author-inline">
-            <div class="author-avatar avatar-dark">CO</div>
+            <div class="author-avatar avatar-black">CO</div>
             <div class="author-info">
               <strong>Camilo Osorio</strong>
               <span>Brand Strategist · Madrid, Spain</span>
@@ -536,7 +689,7 @@
   </section>
 
   <footer>
-    <span class="footer-logo">IN-<span>K</span>luSo</span>
+    <strong>IN-<span>K</span>luSo</strong>
     IN-KluSo by Xtatik &nbsp;&middot;&nbsp; &copy; 2026 &nbsp;&middot;&nbsp; All editions in English
   </footer>
 
