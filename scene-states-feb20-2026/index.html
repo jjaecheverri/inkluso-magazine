@@ -3,451 +3,757 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SCENE STATES — IN-KluSo Vibe Edition (Feb 20-23, 2026)</title>
+  <title>SCENE STATES — IN-KluSo Vibe Edition (Feb 20–23, 2026)</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&family=Permanent+Marker&family=Comic+Neue:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:'Inter',sans-serif;background:#FAF6EE;color:#1a1a1a;line-height:1.6;overflow-x:hidden}
+
+    /* === FESTIVAL HEADER === */
+    .site-header{
+      background:linear-gradient(135deg,#FF1493 0%,#FF6B35 18%,#FFD700 36%,#00CED1 54%,#7B2FBE 72%,#FF1493 100%);
+      background-size:400% 400%;
+      animation:gradShift 10s ease infinite;
+      padding:4rem 2rem 3rem;
+      text-align:center;
+      position:relative;
+      overflow:hidden;
     }
-    html, body {
-      font-family: 'Inter', sans-serif;
-      background: #FAF6EE;
-      color: #1a1a1a;
-      line-height: 1.6;
+    @keyframes gradShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+    .site-header::before{
+      content:'🎸  🎺  🥁  🎻  🎹  🎤  🎧';
+      position:absolute;top:0.6rem;left:50%;transform:translateX(-50%);
+      font-size:1.4rem;letter-spacing:1rem;opacity:0.35;white-space:nowrap;
     }
-    header {
-      background: linear-gradient(135deg, #FF6B35 0%, #FF8C42 50%, #FFB347 100%);
-      padding: 3rem 2rem;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
+    .edition-tag{
+      display:inline-block;background:rgba(0,0,0,0.25);color:#fff;
+      font-size:0.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+      padding:.3rem 1rem;border-radius:20px;margin-bottom:1rem;
     }
-    header::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      right: -10%;
-      width: 400px;
-      height: 400px;
-      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-      border-radius: 50%;
+    .site-header h1{
+      font-family:'Permanent Marker',cursive;
+      font-size:clamp(3rem,12vw,8rem);
+      color:#fff;
+      text-shadow:5px 5px 0 #000,-2px -2px 0 rgba(0,0,0,.25);
+      line-height:1;margin-bottom:.5rem;
     }
-    header h1 {
-      font-family: 'DM Serif Display', serif;
-      font-size: 4rem;
-      font-style: italic;
-      color: #FAF6EE;
-      margin-bottom: 0.5rem;
-      position: relative;
-      z-index: 2;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    .header-sub{
+      font-family:'DM Serif Display',serif;font-style:italic;
+      font-size:clamp(1rem,3vw,1.5rem);color:#fff;
+      text-shadow:1px 1px 3px rgba(0,0,0,.4);
     }
-    header p {
-      font-size: 1.2rem;
-      color: #FAF6EE;
-      position: relative;
-      z-index: 2;
-      font-weight: 500;
+    .header-cities{margin-top:1.5rem;display:flex;justify-content:center;gap:.8rem;flex-wrap:wrap}
+    .city-tag{
+      background:rgba(255,255,255,.2);border:2px solid rgba(255,255,255,.6);
+      color:#fff;padding:.4rem 1rem;border-radius:20px;font-size:.85rem;font-weight:700;
+      text-decoration:none;transition:all .2s;backdrop-filter:blur(4px);
     }
-    .nav {
-      background: #fff;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      flex-wrap: wrap;
-      border-bottom: 1px solid #e5e0d5;
-      position: sticky;
-      top: 0;
-      z-index: 100;
+    .city-tag:hover{background:rgba(255,255,255,.4);transform:scale(1.05) rotate(-2deg)}
+
+    /* === STICKY NAV === */
+    .nav{
+      background:#1a1a1a;padding:.8rem 2rem;display:flex;
+      justify-content:center;gap:1.5rem;flex-wrap:wrap;
+      position:sticky;top:0;z-index:1000;
     }
-    .nav a {
-      text-decoration: none;
-      color: #1a1a1a;
-      font-weight: 600;
-      font-size: 0.95rem;
-      border-bottom: 3px solid transparent;
-      padding-bottom: 0.25rem;
-      transition: all 0.2s;
+    .nav a{color:#FAF6EE;text-decoration:none;font-size:.82rem;font-weight:600;
+      letter-spacing:.05em;padding:.25rem .4rem;border-bottom:2px solid transparent;transition:all .2s}
+    .nav a:hover{border-bottom-color:#FF1493;color:#FF1493}
+
+    .container{max-width:1100px;margin:0 auto;padding:0 2rem}
+
+    /* === SCENE BOARD (corkboard) === */
+    .scene-board{
+      background:#2a1a0e;
+      background-image:
+        repeating-linear-gradient(90deg,transparent,transparent 50px,rgba(255,255,255,.03) 50px,rgba(255,255,255,.03) 51px),
+        repeating-linear-gradient(0,transparent,transparent 50px,rgba(255,255,255,.03) 50px,rgba(255,255,255,.03) 51px);
+      padding:3rem 2rem;
     }
-    .nav a:hover, .nav a.active {
-      border-bottom-color: #FF6B35;
-      color: #FF6B35;
+    .board-title{
+      font-family:'Permanent Marker',cursive;font-size:1.8rem;color:#FFD700;
+      text-align:center;margin-bottom:2rem;text-shadow:2px 2px 4px rgba(0,0,0,.5);
     }
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 3rem 2rem;
+    .board-cards{display:flex;flex-wrap:wrap;gap:1.5rem;justify-content:center;align-items:flex-start}
+    .flyer-card{
+      width:200px;min-height:270px;padding:1.2rem;
+      border-radius:3px;position:relative;cursor:pointer;
+      text-decoration:none;color:inherit;transition:all .3s ease;
+      box-shadow:4px 4px 14px rgba(0,0,0,.7);
     }
-    .intro-text {
-      text-align: center;
-      margin-bottom: 3rem;
+    .flyer-card::before{
+      content:'';position:absolute;top:-10px;left:50%;transform:translateX(-50%);
+      width:16px;height:16px;border-radius:50%;background:#e53;
+      box-shadow:0 2px 6px rgba(0,0,0,.5);z-index:10;
     }
-    .intro-text h2 {
-      font-family: 'DM Serif Display', serif;
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      color: #1a1a1a;
+    .flyer-card:hover{transform:rotate(0deg) scale(1.06) translateY(-8px) !important;box-shadow:8px 8px 24px rgba(0,0,0,.85)}
+    .flyer-card:nth-child(1){transform:rotate(-3deg);background:#E8522A;color:#fff}
+    .flyer-card:nth-child(2){transform:rotate(2deg);background:#0a0a0a;color:#FF69B4}
+    .flyer-card:nth-child(3){transform:rotate(-1.5deg);background:#2D0054;color:#FFD700}
+    .flyer-card:nth-child(4){transform:rotate(3deg);background:#FAF6EE;color:#1a1a1a;border:3px solid #39FF14}
+    .flyer-card:nth-child(5){transform:rotate(-2deg);background:#C1440E;color:#FAF6EE}
+    .flyer-card .fc-city{font-family:'Permanent Marker',cursive;font-size:1.5rem;line-height:1;margin-bottom:.4rem}
+    .flyer-card .fc-dates{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;opacity:.8;margin-bottom:.8rem}
+    .flyer-card .fc-events{font-size:.8rem;line-height:1.6;list-style:none}
+    .flyer-card .fc-events li::before{content:'↗ '}
+    .flyer-card .fc-vibe{position:absolute;bottom:.8rem;right:.8rem;font-family:'Permanent Marker',cursive;font-size:.85rem;opacity:.65;transform:rotate(3deg)}
+
+    /* === CITY SECTIONS === */
+    .city-section{padding:4rem 0;border-bottom:3px dashed #e5e0d5}
+    .city-header{display:flex;align-items:center;gap:1.5rem;margin-bottom:2rem}
+    .city-emoji{font-size:4rem;flex-shrink:0}
+    .city-header-text h2{font-family:'Permanent Marker',cursive;font-size:clamp(1.8rem,5vw,3rem);line-height:1.1}
+    .city-header-text .tagline{font-family:'DM Serif Display',serif;font-style:italic;font-size:1rem;color:#666;margin-top:.3rem}
+    .city-label{display:inline-block;padding:.2rem .8rem;border-radius:20px;color:#fff;font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.6rem}
+
+    .city-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+    @media(max-width:768px){.city-grid{grid-template-columns:1fr}}
+
+    /* Events board */
+    .events-board{background:#fff;border:3px solid #1a1a1a;padding:1.5rem;box-shadow:6px 6px 0 #1a1a1a}
+    .events-board h3{font-family:'Permanent Marker',cursive;font-size:1.1rem;margin-bottom:1rem;padding-bottom:.5rem;border-bottom:2px solid #1a1a1a}
+    .event-item{display:flex;gap:.8rem;margin-bottom:.8rem;align-items:flex-start}
+    .event-date{background:#1a1a1a;color:#FAF6EE;font-size:.68rem;font-weight:700;padding:.2rem .4rem;flex-shrink:0;letter-spacing:.05em;margin-top:.1rem}
+    .event-name{font-weight:600;line-height:1.4;font-size:.9rem}
+    .event-venue{font-size:.78rem;color:#888}
+
+    /* Sensory note */
+    .sensory-note{
+      background:#1a1a1a;color:#FAF6EE;padding:1.5rem;
+      font-family:'DM Serif Display',serif;font-style:italic;font-size:.95rem;line-height:1.7;
     }
-    .intro-text p {
-      font-size: 1.1rem;
-      color: #666;
-      max-width: 600px;
-      margin: 0 auto;
+    .sensory-note::before{
+      content:'WHAT IT SMELLS LIKE';display:block;
+      font-family:'Inter',sans-serif;font-style:normal;font-size:.65rem;font-weight:700;
+      letter-spacing:.2em;color:#FFD700;margin-bottom:.7rem;
     }
-    .cities-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      margin: 3rem 0;
+
+    /* Comic panel */
+    .comic-panel{border:4px solid #1a1a1a;background:#fff;padding:1.5rem;position:relative;box-shadow:8px 8px 0 #1a1a1a}
+    .comic-panel::before{
+      content:attr(data-title);position:absolute;top:-16px;left:12px;
+      background:#FFD700;border:3px solid #1a1a1a;padding:.1rem .6rem;
+      font-family:'Permanent Marker',cursive;font-size:.75rem;color:#1a1a1a;
     }
-    .city-card {
-      border-radius: 12px;
-      padding: 2rem;
-      position: relative;
-      overflow: hidden;
-      transform: rotate(-1deg);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-      transition: all 0.3s ease;
+    .comic-scene{display:flex;gap:1rem;align-items:flex-start}
+    .comic-avatar{
+      font-size:3rem;flex-shrink:0;background:#FAF6EE;
+      border:3px solid #1a1a1a;border-radius:50%;
+      width:68px;height:68px;display:flex;align-items:center;justify-content:center;
     }
-    .city-card:hover {
-      transform: rotate(0deg) scale(1.02);
-      box-shadow: 0 12px 32px rgba(0,0,0,0.15);
+    .speech-bubble{
+      background:#fff;border:3px solid #1a1a1a;border-radius:12px;padding:1rem;
+      position:relative;font-family:'Comic Neue',cursive;font-size:.88rem;line-height:1.55;flex:1;
     }
-    .city-card:nth-child(2n) {
-      transform: rotate(1deg);
-    }
-    .city-card:nth-child(3n) {
-      transform: rotate(-1.5deg);
-    }
-    .city-card.madrid {
-      background: linear-gradient(135deg, #D4745F 0%, #E8A87C 100%);
-      color: #fff;
-    }
-    .city-card.cdmx {
-      background: linear-gradient(135deg, #FF1493 0%, #00CED1 50%, #ADFF2F 100%);
-      color: #000;
-    }
-    .city-card.ba {
-      background: linear-gradient(135deg, #4B0082 0%, #FFB347 100%);
-      color: #fff;
-    }
-    .city-card.nyc {
-      background: linear-gradient(135deg, #39FF14 0%, #FF1493 100%);
-      color: #000;
-    }
-    .city-card.nwa {
-      background: linear-gradient(135deg, #8B4513 0%, #9ACD32 100%);
-      color: #fff;
-    }
-    .city-card h3 {
-      font-family: 'DM Serif Display', serif;
-      font-size: 2rem;
-      font-style: italic;
-      margin-bottom: 1rem;
-    }
-    .city-card .vibe {
-      font-size: 0.9rem;
-      font-weight: 500;
-      margin-bottom: 1.5rem;
-      opacity: 0.95;
-    }
-    .events-list {
-      list-style: none;
-    }
-    .events-list li {
-      margin-bottom: 0.8rem;
-      padding-left: 1.5rem;
-      position: relative;
-      font-size: 0.95rem;
-    }
-    .events-list li::before {
-      content: '▪';
-      position: absolute;
-      left: 0;
-      font-weight: bold;
-    }
-    .sensory {
-      margin-top: 1.5rem;
-      padding-top: 1.5rem;
-      border-top: 2px dashed currentColor;
-      font-size: 0.9rem;
-      font-style: italic;
-    }
-    .sarcasm {
-      margin-top: 1rem;
-      padding: 1rem;
-      background: rgba(0,0,0,0.15);
-      border-radius: 8px;
-      font-size: 0.9rem;
-      line-height: 1.5;
-    }
-    .crumbs-section {
-      background: #fff;
-      padding: 3rem 2rem;
-      margin-top: 3rem;
-      border-top: 3px solid #FF6B35;
-    }
-    .crumbs-section h2 {
-      font-family: 'DM Serif Display', serif;
-      font-size: 2rem;
-      margin-bottom: 1.5rem;
-      color: #1a1a1a;
-    }
-    .crumbs-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-    }
-    .crumb {
-      padding: 1.5rem;
-      background: #FAF6EE;
-      border-left: 4px solid #FF6B35;
-      border-radius: 4px;
-    }
-    .crumb h4 {
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-      color: #FF6B35;
-    }
-    .crumb p {
-      font-size: 0.9rem;
-      color: #666;
-      line-height: 1.5;
-    }
-    .games-section {
-      background: linear-gradient(135deg, #FFE4E1 0%, #FFF8DC 100%);
-      padding: 3rem 2rem;
-      margin-top: 2rem;
-      border-radius: 12px;
-    }
-    .games-section h2 {
-      font-family: 'DM Serif Display', serif;
-      font-size: 2rem;
-      margin-bottom: 1.5rem;
-    }
-    .game-links {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-    .game-links a {
-      display: inline-block;
-      padding: 1rem 1.5rem;
-      background: #FF6B35;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: 600;
-      transition: all 0.2s;
-    }
-    .game-links a:hover {
-      background: #E85A2A;
-      transform: scale(1.05);
-    }
-    footer {
-      background: #1a1a1a;
-      color: #FAF6EE;
-      text-align: center;
-      padding: 2rem;
-      margin-top: 3rem;
-    }
-    footer p {
-      margin: 0.5rem 0;
-      font-size: 0.9rem;
-    }
-    @media (max-width: 768px) {
-      header h1 {
-        font-size: 2.5rem;
-      }
-      .cities-grid {
-        grid-template-columns: 1fr;
-      }
-    }
+    .speech-bubble::before{content:'';position:absolute;left:-20px;top:16px;width:0;height:0;border-top:10px solid transparent;border-bottom:10px solid transparent;border-right:20px solid #1a1a1a}
+    .speech-bubble::after{content:'';position:absolute;left:-13px;top:18px;width:0;height:0;border-top:8px solid transparent;border-bottom:8px solid transparent;border-right:14px solid #fff}
+    .sarcasm-line{background:rgba(255,20,147,.08);border-left:4px solid #FF1493;padding:.8rem 1rem;margin-top:1rem;font-style:italic;font-size:.88rem;line-height:1.6;border-radius:0 6px 6px 0}
+
+    /* Video */
+    .video-section{margin-top:1.5rem}
+    .video-section h3{font-family:'Permanent Marker',cursive;font-size:1.1rem;margin-bottom:.8rem}
+    .video-wrapper{position:relative;width:100%;padding-bottom:56.25%;height:0;border:4px solid #1a1a1a;box-shadow:8px 8px 0 #1a1a1a;overflow:hidden;background:#1a1a1a}
+    .video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
+
+    /* Action word */
+    .action-box{text-align:center;padding:2rem;background:#fff;border:4px solid #1a1a1a;box-shadow:6px 6px 0 currentColor;margin-top:1.5rem}
+    .action-word{font-family:'Permanent Marker',cursive;font-size:3rem;line-height:1;display:inline-block;transform:rotate(-4deg)}
+
+    /* === CRUMBS === */
+    #crumbs{background:#1a1a1a;color:#FAF6EE;padding:4rem 0}
+    #crumbs h2{font-family:'Permanent Marker',cursive;font-size:2rem;color:#FFD700;text-align:center;margin-bottom:.4rem}
+    .crumbs-sub{text-align:center;color:#777;font-size:.88rem;margin-bottom:2rem}
+    .crumbs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}
+    .crumb-card{border:1px solid rgba(255,255,255,.12);border-left:4px solid;padding:1.2rem;border-radius:0 4px 4px 0}
+    .crumb-card:nth-child(1){border-left-color:#E8522A}
+    .crumb-card:nth-child(2){border-left-color:#FF1493}
+    .crumb-card:nth-child(3){border-left-color:#7B2FBE}
+    .crumb-card:nth-child(4){border-left-color:#39FF14}
+    .crumb-card:nth-child(5){border-left-color:#C1440E}
+    .crumb-card:nth-child(6){border-left-color:#FFD700}
+    .crumb-num{font-size:2rem;font-weight:700;color:#fff;line-height:1;margin-bottom:.3rem}
+    .crumb-card h4{font-size:.72rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;margin-bottom:.4rem;opacity:.8}
+    .crumb-card p{font-size:.83rem;line-height:1.6;color:#bbb}
+
+    /* === CROSSWORD === */
+    #crossword{background:#FAF6EE;padding:4rem 0}
+    .xword-wrap{max-width:680px;margin:0 auto}
+    .xword-title{font-family:'Permanent Marker',cursive;font-size:2.5rem;text-align:center;margin-bottom:.4rem}
+    .xword-sub{text-align:center;color:#666;font-size:.88rem;margin-bottom:2rem}
+    .xword-layout{display:grid;grid-template-columns:auto 1fr;gap:2.5rem;align-items:start}
+    @media(max-width:600px){.xword-layout{grid-template-columns:1fr}}
+    #xword-table{border-collapse:collapse}
+    #xword-table td{width:44px;height:44px}
+    .b-cell{background:#1a1a1a}
+    .l-cell{border:2px solid #1a1a1a;position:relative;background:#fff}
+    .cell-num{position:absolute;top:2px;left:3px;font-size:10px;font-weight:700;color:#1a1a1a;line-height:1;pointer-events:none;z-index:2}
+    .l-cell input{width:100%;height:100%;border:none;background:transparent;text-align:center;font-size:1.1rem;font-weight:700;font-family:'Inter',sans-serif;color:#1a1a1a;cursor:pointer;padding-top:6px;text-transform:uppercase;outline:none}
+    .l-cell input:focus{background:#FFFDE7}
+    .l-cell.ok{background:#90EE90}.l-cell.ok input{color:#006400}
+    .l-cell.no{background:#FFB6C1}.l-cell.no input{color:#8B0000}
+    .xword-clues h4{font-family:'Permanent Marker',cursive;font-size:1.1rem;margin-bottom:.7rem;padding-bottom:.3rem;border-bottom:2px solid #1a1a1a;margin-top:1rem}
+    .xword-clues h4:first-child{margin-top:0}
+    .clue-list{list-style:none}
+    .clue-list li{margin-bottom:.45rem;font-size:.83rem;line-height:1.4}
+    .clue-list li strong{margin-right:.25rem}
+    .xword-btns{display:flex;gap:.8rem;margin-top:1.5rem;flex-wrap:wrap}
+    .xbtn{padding:.6rem 1.3rem;font-family:'Permanent Marker',cursive;font-size:.9rem;border:3px solid #1a1a1a;cursor:pointer;box-shadow:4px 4px 0 #1a1a1a;transition:all .15s}
+    .xbtn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 #1a1a1a}
+    .xbtn:active{transform:translate(2px,2px);box-shadow:2px 2px 0 #1a1a1a}
+    .xbtn.check{background:#39FF14;color:#1a1a1a}
+    .xbtn.reveal{background:#FF1493;color:#fff}
+    .xbtn.reset{background:#FFD700;color:#1a1a1a}
+    #puzzle-msg{display:none;margin-top:1rem;padding:.8rem 1.2rem;background:#1a1a1a;color:#FFD700;font-family:'Permanent Marker',cursive;font-size:.95rem;border-radius:4px}
+
+    /* === GAMES === */
+    .games-section{padding:3rem 0;text-align:center;background:#fff;border-top:4px solid #1a1a1a}
+    .games-section h2{font-family:'Permanent Marker',cursive;font-size:2rem;margin-bottom:1rem}
+    .game-cta{display:inline-block;padding:1rem 2rem;background:#1a1a1a;color:#FFD700;font-family:'Permanent Marker',cursive;font-size:1rem;text-decoration:none;border:3px solid #1a1a1a;box-shadow:6px 6px 0 #FFD700;transition:all .2s;margin:.4rem}
+    .game-cta:hover{transform:translate(-3px,-3px);box-shadow:9px 9px 0 #FFD700}
+
+    footer{background:#1a1a1a;color:#FAF6EE;padding:2.5rem 2rem;text-align:center}
+    footer p{margin:.4rem;font-size:.88rem}
+    footer a{color:#FFD700;text-decoration:none}
+
+    /* Color accents */
+    .madrid-c{color:#E8522A}.cdmx-c{color:#FF1493}.ba-c{color:#7B2FBE}.nyc-c{color:#00B300}.nwa-c{color:#C1440E}
   </style>
 </head>
 <body>
-  <header>
-    <h1>SCENE STATES</h1>
-    <p>The Weekend as Data — Five Cities, Feb 20-23, 2026</p>
-  </header>
-  
-  <div class="nav">
-    <a href="https://jjaecheverri.github.io/inkluso-magazine/" class="nav-link">← Back to Magazine</a>
-    <a href="#cities" class="nav-link active">Cities</a>
-    <a href="#crumbs" class="nav-link">Signals</a>
-    <a href="#games" class="nav-link">Play</a>
-  </div>
 
+<!-- HEADER -->
+<header class="site-header">
+  <div class="edition-tag">IN-KluSo Scene Intelligence · Feb 20–23, 2026</div>
+  <h1>SCENE STATES</h1>
+  <p class="header-sub">No macro. Just what's actually happening. Five cities. One weekend.</p>
+  <div class="header-cities">
+    <a class="city-tag" href="#madrid">🇪🇸 Madrid</a>
+    <a class="city-tag" href="#cdmx">🇲🇽 CDMX</a>
+    <a class="city-tag" href="#ba">🇦🇷 Buenos Aires</a>
+    <a class="city-tag" href="#nyc">🗽 New York</a>
+    <a class="city-tag" href="#nwa">🌾 NW Arkansas</a>
+  </div>
+</header>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="https://jjaecheverri.github.io/inkluso-magazine/">← Magazine</a>
+  <a href="#board">Board</a>
+  <a href="#madrid">Madrid</a>
+  <a href="#cdmx">CDMX</a>
+  <a href="#ba">Buenos Aires</a>
+  <a href="#nyc">NYC</a>
+  <a href="#nwa">NWA</a>
+  <a href="#crumbs">Signals</a>
+  <a href="#crossword">Puzzle</a>
+</nav>
+
+<!-- SCENE BOARD -->
+<section id="board" class="scene-board">
+  <div class="board-title">📌 THE SCENE BOARD — Pick Your City This Weekend</div>
+  <div class="board-cards">
+    <a class="flyer-card" href="#madrid">
+      <div class="fc-city">MADRID</div>
+      <div class="fc-dates">Feb 20–22, 2026</div>
+      <ul class="fc-events">
+        <li>Ralphie Choo</li><li>Ballet Real</li><li>Mascaradas</li>
+        <li>Año Nuevo Chino</li><li>Design Festival</li>
+      </ul>
+      <div class="fc-vibe">baroque chaos</div>
+    </a>
+    <a class="flyer-card" href="#cdmx">
+      <div class="fc-city">CDMX</div>
+      <div class="fc-dates">Feb 20–22, 2026</div>
+      <ul class="fc-events">
+        <li>EDC Mexico 🎆</li><li>Emmanuel + Mijares</li><li>FilarmónicaUNAM</li>
+        <li>Chinese New Year</li><li>Polanco Galleries</li>
+      </ul>
+      <div class="fc-vibe">controlled chaos</div>
+    </a>
+    <a class="flyer-card" href="#ba">
+      <div class="fc-city">BUENOS AIRES</div>
+      <div class="fc-dates">Feb 20–22, 2026</div>
+      <ul class="fc-events">
+        <li>Candlelight Mozart</li><li>Candlelight Collins</li><li>Noche de Tango</li>
+        <li>Barrio Norte Jazz</li><li>Indie @ Costanera</li>
+      </ul>
+      <div class="fc-vibe">slow burn</div>
+    </a>
+    <a class="flyer-card" href="#nyc">
+      <div class="fc-city">NEW YORK</div>
+      <div class="fc-dates">Feb 20–23, 2026</div>
+      <ul class="fc-events">
+        <li>Future Tones Fest</li><li>Femmeland at Sea</li><li>Comedy Marathon</li>
+        <li>Chelsea Gallery Row</li><li>LES Openings</li>
+      </ul>
+      <div class="fc-vibe">loud + expensive</div>
+    </a>
+    <a class="flyer-card" href="#nwa">
+      <div class="fc-city">NW ARKANSAS</div>
+      <div class="fc-dates">Feb 20–22, 2026</div>
+      <ul class="fc-events">
+        <li>Lunar New Year</li><li>Gallery District</li><li>Maker Pop-Ups</li>
+        <li>Farm Markets</li><li>Community Music</li>
+      </ul>
+      <div class="fc-vibe">real &amp; quiet</div>
+    </a>
+  </div>
+</section>
+
+<!-- ============================== -->
+<!-- MADRID -->
+<!-- ============================== -->
+<section id="madrid" class="city-section">
   <div class="container">
-    <div class="intro-text">
-      <h2>No Macro, Just Vibes</h2>
-      <p>We live hard. The data is the feeling. Five cities, real events, sensory signals. What people are actually doing vs. what they say they're doing. That gap is the intelligence.</p>
+    <div class="city-header">
+      <div class="city-emoji">🇪🇸</div>
+      <div class="city-header-text">
+        <span class="city-label" style="background:#E8522A">Madrid</span>
+        <h2 class="madrid-c">Baroque, Electric, Slightly Delusional</h2>
+        <p class="tagline">The city that peaked in 1700 and just keeps doing it.</p>
+      </div>
     </div>
-
-    <div id="cities" class="cities-grid">
-      <!-- MADRID -->
-      <div class="city-card madrid">
-        <h3>Madrid</h3>
-        <div class="vibe">⚡ Electric baroque meets underground</div>
-        <ul class="events-list">
-          <li><strong>Ralphie Choo</strong> — Electronica/pop fusion (Feb 20)</li>
-          <li><strong>El Lago de los Cisnes</strong> — Ballet Teatro Real (Feb 21-22)</li>
-          <li><strong>Desfile de Mascaradas</strong> — Ancient masks parade (Feb 21)</li>
-          <li><strong>Año Nuevo Chino</strong> — Dragon energy (Feb 22)</li>
-          <li><strong>Helen Levitt Exhibit</strong> — Street photography deep dive</li>
-          <li><strong>Design Festival</strong> — Free entry, young studios</li>
-        </ul>
-        <div class="sensory">
-          Smell: Coal smoke from paella vendors mixing with electronic synths outside Malasaña bars. Who's there: Everyone says they're going to the ballet. No one goes to the ballet.
+    <div class="city-grid">
+      <div>
+        <div class="events-board">
+          <h3>📌 What's On</h3>
+          <div class="event-item"><span class="event-date">FRI 20</span><div><div class="event-name">Ralphie Choo</div><div class="event-venue">Electronica/pop fusion · Malasaña</div></div></div>
+          <div class="event-item"><span class="event-date">SAT 21</span><div><div class="event-name">El Lago de los Cisnes</div><div class="event-venue">Ballet Nacional · Teatro Real</div></div></div>
+          <div class="event-item"><span class="event-date">SAT 21</span><div><div class="event-name">Desfile de Mascaradas</div><div class="event-venue">Ancient mask parade · City center streets</div></div></div>
+          <div class="event-item"><span class="event-date">SUN 22</span><div><div class="event-name">Año Nuevo Chino</div><div class="event-venue">Dragon energy · Barrio de Usera</div></div></div>
+          <div class="event-item"><span class="event-date">ALL WKD</span><div><div class="event-name">Design Festival + Helen Levitt</div><div class="event-venue">Free entry · Multiple venues</div></div></div>
         </div>
-        <div class="sarcasm">
-          "I'm experiencing authentic Spanish culture this weekend." Translation: You're eating €8 bocadillos in a design fair crowd pretending electronica is traditional.
+        <div class="sensory-note" style="margin-top:1.5rem">
+          Coal smoke from paella vendors mixing with synthesizer feedback outside Malasaña bars. Pine from Retiro Park drifting two streets in. Cold tile floor of a bar where someone's grandfather still plays dominos.
         </div>
       </div>
-
-      <!-- MEXICO CITY -->
-      <div class="city-card cdmx">
-        <h3>México</h3>
-        <div class="vibe">🎆 Controlled chaos, infinite energy</div>
-        <ul class="events-list">
-          <li><strong>EDC Mexico</strong> — Electronic Dream Carnival (Feb 20-22)</li>
-          <li><strong>Emmanuel & Mijares</strong> — Auditorio Nacional (Feb 20)</li>
-          <li><strong>Orquesta Filarmónica UNAM</strong> — Classical series (Feb 21-22)</li>
-          <li><strong>Chinese New Year</strong> — Multi-neighborhood celebrations</li>
-          <li><strong>Polanco Gallery Circuit</strong> — Contemporary art openings</li>
-        </ul>
-        <div class="sensory">
-          Smell: Churros, copal incense, bass from three competing sound systems. Who's there: 400k at EDC saying it's a spiritual experience. 80k actually dancing. The rest are in Polanco talking about the vibe they missed.
+      <div>
+        <div class="comic-panel" data-title="SCENE REPORT: MADRID">
+          <div class="comic-scene">
+            <div class="comic-avatar">💃</div>
+            <div class="speech-bubble">
+              "I'm here for the authentic Madrid experience." Translation: you're at a Design Fair in a refurbished warehouse eating a €12 croqueta and telling everyone you skipped the tourist traps.
+            </div>
+          </div>
+          <div class="sarcasm-line">The ancient masks parade is legitimately strange and beautiful and exactly no one who says they're "into the underground scene" went.</div>
         </div>
-        <div class="sarcasm">
-          EDC Mexico: where you go to feel connected to millions while scrolling alone on your phone.
-        </div>
-      </div>
-
-      <!-- BUENOS AIRES -->
-      <div class="city-card ba">
-        <h3>Buenos Aires</h3>
-        <div class="vibe">🌙 Nocturnal, philosophical, slow-burn</div>
-        <ul class="events-list">
-          <li><strong>Candlelight Mozart/Beethoven</strong> — Intimate chamber (Feb 20)</li>
-          <li><strong>Candlelight Phil Collins</strong> — 80s symphonic (Feb 21)</li>
-          <li><strong>Noche de Tango</strong> — San Telmo streets (Feb 20)</li>
-          <li><strong>Barrio Norte Scene</strong> — Jazz + wine bars (Feb 22)</li>
-          <li><strong>Indie Rock by the River</strong> — Costanera emergent acts</li>
-        </ul>
-        <div class="sensory">
-          Smell: Red wine, old wood, cigarettes (still legal in certain bars), and perfume that costs more than your hotel. Who's there: Everyone discussing revolution over coffee at 2am. No one actually doing anything about it.
-        </div>
-        <div class="sarcasm">
-          Buenos Aires tango: where you pay €35 to watch other people dance while eating overpriced beef and pretending you understand the metaphor.
-        </div>
-      </div>
-
-      <!-- NEW YORK -->
-      <div class="city-card nyc">
-        <h3>New York</h3>
-        <div class="vibe">🔥 Fast, loud, infinite friction</div>
-        <ul class="events-list">
-          <li><strong>Future Tones Festival</strong> — Czech classical tour (Feb 20-23)</li>
-          <li><strong>Femmeland at Sea</strong> — Cruise festival vibes</li>
-          <li><strong>Comedy Circuit</strong> — Multiple venues, weekend marathons</li>
-          <li><strong>Gallery Openings</strong> — Chelsea + Lower East Side</li>
-          <li><strong>Underground Raves</strong> — Williamsburg + Manhattan Bridge Park</li>
-        </ul>
-        <div class="sensory">
-          Smell: Pretzels, car exhaust, expensive perfume, and $6 coffee. Who's there: Everyone says they're busy. Everyone is waiting in lines. The line *is* the event.
-        </div>
-        <div class="sarcasm">
-          New York weekend events: the FOMO is free. Everything else costs $45.
-        </div>
-      </div>
-
-      <!-- NORTHWEST ARKANSAS -->
-      <div class="city-card nwa">
-        <h3>NW Arkansas</h3>
-        <div class="vibe">🌱 Quiet creation, maker spaces, family</div>
-        <ul class="events-list">
-          <li><strong>Lunar New Year Celebrations</strong> — Bentonville parks</li>
-          <li><strong>Gallery District</strong> — Art walks, emerging studios</li>
-          <li><strong>Food Makers</strong> — Pop-ups, new concepts testing</li>
-          <li><strong>Outdoor Markets</strong> — Craft + farm scene</li>
-          <li><strong>Church/Community Spaces</strong> — Live music, low-key hangouts</li>
-        </ul>
-        <div class="sensory">
-          Smell: Fresh bread, soil, wood stain from someone's workshop renovation. Who's there: People actually making things. No performance required. The energy is real because no one's documenting it.
-        </div>
-        <div class="sarcasm">
-          NWA weekend: the only place where being bored is actually a flex.
+        <div class="video-section">
+          <h3 class="madrid-c">🎥 Madrid After Dark</h3>
+          <div class="video-wrapper">
+            <iframe src="https://www.youtube-nocookie.com/embed/hWWQn6NtxHw" title="Madrid Nightlife" allowfullscreen loading="lazy" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture"></iframe>
+          </div>
         </div>
       </div>
     </div>
   </div>
+</section>
 
-  <!-- CRUMBS SECTION -->
-  <div class="crumbs-section">
-    <div class="container">
-      <h2>CRUMBS — The Receipts</h2>
-      <div class="crumbs-grid">
-        <div class="crumb">
-          <h4>Search Velocity</h4>
-          <p><strong>Mexico City:</strong> +340% spike in "EDC Mexico 2026" — larger than Buenos Aires + Madrid combined for same weekend. Scale signal: attention is consolidating.</p>
-        </div>
-        <div class="crumb">
-          <h4>Event Attendance Signals</h4>
-          <p><strong>Madrid Design Festival:</strong> Free entry = venue traffic 5x paid events. Insight: young audiences optimize for access, not exclusivity.</p>
-        </div>
-        <div class="crumb">
-          <h4>Movement Patterns</h4>
-          <p><strong>Buenos Aires tango:</strong> Tourist vs. local attendance tracking shows 70% tourist, 30% local. The scene exists for witnesses, not participants.</p>
-        </div>
-        <div class="crumb">
-          <h4>Venue Buzz (Real-Time)</h4>
-          <p><strong>NYC gallery circuit:</strong> New gallery openings +5 this month. Concentration: Lower East Side. Signal: gentrification acceleration via cultural venue clustering.</p>
-        </div>
-        <div class="crumb">
-          <h4>Mood Mapping</h4>
-          <p><strong>NWA maker spaces:</strong> Instagram mention volume low, participation high. Inverse ratio = authentic local scene (not performance-driven).</p>
-        </div>
-        <div class="crumb">
-          <h4>Building Signals</h4>
-          <p><strong>CDMX:</strong> 3 new rooftop venues opened this quarter. Commercial property rotation accelerating. Event density increasing in specific corridors (Condesa, Roma Norte).</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- GAMES SECTION -->
+<!-- ============================== -->
+<!-- CDMX -->
+<!-- ============================== -->
+<section id="cdmx" class="city-section" style="background:#fdf0f8">
   <div class="container">
-    <div class="games-section" id="games">
-      <h2>Play While You Wait For Monday</h2>
-      <p style="margin-bottom: 1.5rem; font-size: 1rem;">XT:RELAY is a daily logic puzzle. Same mechanics, different seed each day. No tracking. No dark patterns. Just clean puzzle design.</p>
-      <div class="game-links">
-        <a href="https://jjaecheverri.github.io/inkluso-magazine/xt-relay/">→ Play XT:RELAY</a>
-        <a href="#">→ Crossword (Coming Monday)</a>
+    <div class="city-header">
+      <div class="city-emoji">🇲🇽</div>
+      <div class="city-header-text">
+        <span class="city-label" style="background:#FF1493">México City</span>
+        <h2 class="cdmx-c">400,000 People, 400,000 Different Reasons</h2>
+        <p class="tagline">EDC runs three days. CDMX runs on seven simultaneous timelines.</p>
+      </div>
+    </div>
+    <div class="city-grid">
+      <div>
+        <div class="events-board">
+          <h3>📌 What's On</h3>
+          <div class="event-item"><span class="event-date">FRI–SUN</span><div><div class="event-name">EDC Mexico 2026 🎆</div><div class="event-venue">Electronic Dream Carnival · Autódromo Hermanos Rodríguez</div></div></div>
+          <div class="event-item"><span class="event-date">FRI 20</span><div><div class="event-name">Emmanuel &amp; Mijares</div><div class="event-venue">Legend double act · Auditorio Nacional</div></div></div>
+          <div class="event-item"><span class="event-date">SAT–SUN</span><div><div class="event-name">Orquesta Filarmónica UNAM</div><div class="event-venue">Classical series · Sala Nezahualcoyotl</div></div></div>
+          <div class="event-item"><span class="event-date">SUN 22</span><div><div class="event-name">Chinese New Year Celebrations</div><div class="event-venue">Multi-neighborhood · Barrio Chino + parks</div></div></div>
+          <div class="event-item"><span class="event-date">ALL WKD</span><div><div class="event-name">Polanco Gallery Circuit</div><div class="event-venue">Contemporary openings · Condesa + Roma Norte</div></div></div>
+        </div>
+        <div class="sensory-note" style="margin-top:1.5rem">
+          Churros and copal incense and bass from three competing sound systems two streets apart. Diesel from Insurgentes metro blending with street tacos at 2am. The particular sweetness of a mango with chamoy at the end of a four-hour set.
+        </div>
+      </div>
+      <div>
+        <div class="comic-panel" data-title="SCENE REPORT: CDMX">
+          <div class="comic-scene">
+            <div class="comic-avatar">🎧</div>
+            <div class="speech-bubble">
+              EDC Mexico sells 400,000 tickets and calls it a spiritual experience. 80,000 are actually dancing. The other 320,000 are filming themselves not dancing so people know they were there for the spiritual experience.
+            </div>
+          </div>
+          <div class="sarcasm-line">The most authentic thing at EDC Mexico is the person who lost their friends at the first stage and spent four hours sitting near a speaker eating overpriced tacos. That person had a great time.</div>
+        </div>
+        <div class="video-section">
+          <h3 class="cdmx-c">🎥 EDC Mexico — Official Trailer</h3>
+          <div class="video-wrapper">
+            <iframe src="https://www.youtube-nocookie.com/embed/FjKVeHewklQ" title="EDC Mexico Official Trailer" allowfullscreen loading="lazy" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture"></iframe>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+</section>
 
-  <footer>
-    <p><strong>SCENE STATES</strong> — IN-KluSo Vibe Edition</p>
-    <p>Feb 20-23, 2026 | Five Cities | Real Events | Sensory Signals</p>
-    <p>No Macro. Just Data That Feels Like You Lived It.</p>
-    <p><a href="https://jjaecheverri.github.io/inkluso-magazine/" style="color: #FFB347; text-decoration: none;">← Return to Magazine</a></p>
-  </footer>
+<!-- ============================== -->
+<!-- BUENOS AIRES -->
+<!-- ============================== -->
+<section id="ba" class="city-section" style="background:#f5f0ff">
+  <div class="container">
+    <div class="city-header">
+      <div class="city-emoji">🇦🇷</div>
+      <div class="city-header-text">
+        <span class="city-label" style="background:#7B2FBE">Buenos Aires</span>
+        <h2 class="ba-c">Nocturnal, Philosophical, Extremely Late</h2>
+        <p class="tagline">Dinner starts at 10pm. That's not edgy — that's just when people are hungry.</p>
+      </div>
+    </div>
+    <div class="city-grid">
+      <div>
+        <div class="events-board">
+          <h3>📌 What's On</h3>
+          <div class="event-item"><span class="event-date">FRI 20</span><div><div class="event-name">Candlelight: Mozart &amp; Beethoven</div><div class="event-venue">Intimate chamber concert · Palermo</div></div></div>
+          <div class="event-item"><span class="event-date">SAT 21</span><div><div class="event-name">Candlelight: Phil Collins Symphonic</div><div class="event-venue">80s reimagined · Buenos Aires venues</div></div></div>
+          <div class="event-item"><span class="event-date">FRI 20</span><div><div class="event-name">Noche de Tango</div><div class="event-venue">San Telmo cobblestones · All night</div></div></div>
+          <div class="event-item"><span class="event-date">SUN 22</span><div><div class="event-name">Barrio Norte Jazz + Wine</div><div class="event-venue">Late-night bars · Recoleta</div></div></div>
+          <div class="event-item"><span class="event-date">ALL WKD</span><div><div class="event-name">Indie Rock @ Costanera</div><div class="event-venue">Emerging acts · Riverside stages</div></div></div>
+        </div>
+        <div class="sensory-note" style="margin-top:1.5rem">
+          Red wine, old wood, and the leather of very good shoes. Cigarettes still legal in certain bars and the smell tells you exactly which ones those are before you walk in. The river at night has no smell — that's why they play music there.
+        </div>
+      </div>
+      <div>
+        <div class="comic-panel" data-title="SCENE REPORT: BUENOS AIRES">
+          <div class="comic-scene">
+            <div class="comic-avatar">🕺</div>
+            <div class="speech-bubble">
+              Buenos Aires on a Saturday night: seven people discussing the paradox of authentic tango in a tourist district over wine that costs €4 and tastes like €40. Nobody dances. Everybody has an opinion about the dancing.
+            </div>
+          </div>
+          <div class="sarcasm-line">The city has been in economic crisis for thirty years and still charges €35 for a tango show with a steak. Not a criticism — genuine respect for the confidence.</div>
+        </div>
+        <div class="video-section">
+          <h3 class="ba-c">🎥 Tango en las Calles</h3>
+          <div class="video-wrapper">
+            <iframe src="https://www.youtube-nocookie.com/embed/XyzPu5xJQts" title="Street Tango Buenos Aires" allowfullscreen loading="lazy" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <script>
-    // Smooth nav active state
-    document.querySelectorAll('.nav a').forEach(link => {
-      link.addEventListener('click', function() {
-        document.querySelectorAll('.nav a').forEach(l => l.classList.remove('active'));
-        this.classList.add('active');
-      });
-    });
-  </script>
+<!-- ============================== -->
+<!-- NEW YORK -->
+<!-- ============================== -->
+<section id="nyc" class="city-section" style="background:#f0fff4">
+  <div class="container">
+    <div class="city-header">
+      <div class="city-emoji">🗽</div>
+      <div class="city-header-text">
+        <span class="city-label" style="background:#1a1a1a;border:2px solid #39FF14;color:#39FF14">New York</span>
+        <h2 class="nyc-c">Fast, Loud, $47 for an Experience</h2>
+        <p class="tagline">The line is the event. The venue is the line. The city is a line.</p>
+      </div>
+    </div>
+    <div class="city-grid">
+      <div>
+        <div class="events-board">
+          <h3>📌 What's On</h3>
+          <div class="event-item"><span class="event-date">FRI–MON</span><div><div class="event-name">Future Tones Festival</div><div class="event-venue">Czech classical tour · Carnegie Hall area</div></div></div>
+          <div class="event-item"><span class="event-date">WKD</span><div><div class="event-name">Femmeland at Sea</div><div class="event-venue">Cruise festival departure · Brooklyn Navy Yard</div></div></div>
+          <div class="event-item"><span class="event-date">FRI–SUN</span><div><div class="event-name">Weekend Comedy Marathon</div><div class="event-venue">Multiple venues · West Village + LES</div></div></div>
+          <div class="event-item"><span class="event-date">SAT 21</span><div><div class="event-name">Chelsea Gallery Row Openings</div><div class="event-venue">Contemporary art · Chelsea + LES galleries</div></div></div>
+          <div class="event-item"><span class="event-date">FRI–SAT</span><div><div class="event-name">Williamsburg Underground</div><div class="event-venue">Warehouse shows + indie sets · Northside</div></div></div>
+        </div>
+        <div class="sensory-note" style="margin-top:1.5rem">
+          Pretzels, car exhaust, the specific warmth from subway grates in February. A $6 black coffee made with intention. Perfume that costs more than the gallery opening it's going to. Two people talking very loudly about something private in a very public space.
+        </div>
+      </div>
+      <div>
+        <div class="comic-panel" data-title="SCENE REPORT: NEW YORK">
+          <div class="comic-scene">
+            <div class="comic-avatar">🎪</div>
+            <div class="speech-bubble">
+              NYC gallery openings: free wine, extremely conceptual art, and 45 minutes of nodding. Everyone is networking. No one says they're networking. The art is witnessing the networking and that IS the art.
+            </div>
+          </div>
+          <div class="sarcasm-line">New York weekend events: the FOMO is free. Everything else costs $45 plus a $12 service fee added at checkout because the platform cares about transparent pricing.</div>
+        </div>
+        <div class="video-section">
+          <h3 class="nyc-c">🎥 SoHo Weekend Energy</h3>
+          <div class="video-wrapper">
+            <iframe src="https://www.youtube-nocookie.com/embed/NX6J-P9iA7c" title="NYC SoHo Weekend" allowfullscreen loading="lazy" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== -->
+<!-- NW ARKANSAS -->
+<!-- ============================== -->
+<section id="nwa" class="city-section">
+  <div class="container">
+    <div class="city-header">
+      <div class="city-emoji">🌾</div>
+      <div class="city-header-text">
+        <span class="city-label" style="background:#C1440E">NW Arkansas</span>
+        <h2 class="nwa-c">Making Things. Not Posting About It.</h2>
+        <p class="tagline">The energy is real because no one optimized it yet.</p>
+      </div>
+    </div>
+    <div class="city-grid">
+      <div>
+        <div class="events-board">
+          <h3>📌 What's On</h3>
+          <div class="event-item"><span class="event-date">SUN 22</span><div><div class="event-name">Lunar New Year Celebrations</div><div class="event-venue">Community parks · Bentonville + Rogers</div></div></div>
+          <div class="event-item"><span class="event-date">ALL WKD</span><div><div class="event-name">Crystal Bridges + Gallery District</div><div class="event-venue">Emerging studios + art walks · Downtown Bentonville</div></div></div>
+          <div class="event-item"><span class="event-date">SAT 21</span><div><div class="event-name">Food Maker Pop-Ups</div><div class="event-venue">New concepts testing live · Local markets</div></div></div>
+          <div class="event-item"><span class="event-date">ALL WKD</span><div><div class="event-name">Craft + Farm Markets</div><div class="event-venue">Outdoor vendors · Fayetteville square</div></div></div>
+          <div class="event-item"><span class="event-date">FRI–SAT</span><div><div class="event-name">Community Spaces Live Music</div><div class="event-venue">Low-key shows · Church spaces + local bars</div></div></div>
+        </div>
+        <div class="sensory-note" style="margin-top:1.5rem">
+          Fresh bread from a test kitchen. Soil after rain, which happens here on a schedule that doesn't care about your plans. Wood stain from a workshop renovation two doors down from a bakery that didn't exist six months ago. The good kind of quiet — the kind where something is being built.
+        </div>
+      </div>
+      <div>
+        <div class="comic-panel" data-title="SCENE REPORT: NWA">
+          <div class="comic-scene">
+            <div class="comic-avatar">🌱</div>
+            <div class="speech-bubble">
+              NWA Saturday: someone is testing their third bread recipe this week. Someone else is hanging art in a space that was a warehouse last January. Five people there. Zero Instagram stories. This is how scenes begin, actually.
+            </div>
+          </div>
+          <div class="sarcasm-line">NWA is the only place where being low-profile is genuinely a competitive advantage and not a positioning statement about being low-profile.</div>
+        </div>
+        <div class="action-box nwa-c" style="box-shadow:6px 6px 0 #C1440E">
+          <div class="action-word nwa-c">BUILD.</div>
+          <p style="font-size:.85rem;margin-top:.6rem;color:#666">The energy here is not a vibe. It's a verb.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== -->
+<!-- CRUMBS -->
+<!-- ============================== -->
+<section id="crumbs">
+  <div class="container">
+    <h2>CRUMBS</h2>
+    <p class="crumbs-sub">IN-KluSo Signals Division — Weekend intelligence, no fluff</p>
+    <div class="crumbs-grid">
+      <div class="crumb-card">
+        <div class="crumb-num">+340%</div>
+        <h4>Search Spike — CDMX</h4>
+        <p>"EDC Mexico 2026" search volume this week outpaces Buenos Aires + Madrid combined for the same weekend. Scale signal: attention is consolidating around one event in one city.</p>
+      </div>
+      <div class="crumb-card">
+        <div class="crumb-num">5×</div>
+        <h4>Venue Traffic — Madrid</h4>
+        <p>Madrid Design Festival free entry drives 5× the foot traffic of paid events nearby. Young audiences optimize for access, not exclusivity. The market is saying something.</p>
+      </div>
+      <div class="crumb-card">
+        <div class="crumb-num">70/30</div>
+        <h4>Scene Split — Buenos Aires Tango</h4>
+        <p>Tourist-to-local ratio at San Telmo venues: 70/30. The scene exists for witnesses. That's not a problem — it's how a cultural export gets priced internationally.</p>
+      </div>
+      <div class="crumb-card">
+        <div class="crumb-num">+5</div>
+        <h4>Gallery Count — NYC</h4>
+        <p>Five new gallery openings in Lower East Side this month alone. Concentration is accelerating. When cultural venues cluster, property follows within 18–36 months.</p>
+      </div>
+      <div class="crumb-card">
+        <div class="crumb-num">↓ post / ↑ presence</div>
+        <h4>Signal — NWA Maker Spaces</h4>
+        <p>Instagram mention volume: low. Participation rate: high. Inverse ratio = authentic scene, pre-optimization. This is the window before it becomes a brand activation.</p>
+      </div>
+      <div class="crumb-card">
+        <div class="crumb-num">3 new</div>
+        <h4>Venue Rotation — CDMX</h4>
+        <p>Three new rooftop venues opened in Condesa/Roma Norte this quarter. Commercial property rotation accelerating. When the rooftops fill, the ground floors reprice.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== -->
+<!-- CROSSWORD -->
+<!-- ============================== -->
+<section id="crossword">
+  <div class="container">
+    <div class="xword-wrap">
+      <h2 class="xword-title">🧩 THE WEEKEND PUZZLE</h2>
+      <p class="xword-sub">Five cities. Eight words. Zero excuses.</p>
+      <div class="xword-layout">
+        <div>
+          <table id="xword-table"></table>
+          <div class="xword-btns">
+            <button class="xbtn check" onclick="checkPuzzle()">Check</button>
+            <button class="xbtn reveal" onclick="revealPuzzle()">Reveal</button>
+            <button class="xbtn reset" onclick="resetPuzzle()">Reset</button>
+          </div>
+          <div id="puzzle-msg"></div>
+        </div>
+        <div class="xword-clues">
+          <h4>ACROSS</h4>
+          <ul class="clue-list">
+            <li><strong>1.</strong> Sultry dance born in Buenos Aires (5)</li>
+            <li><strong>3.</strong> Short for avocado — CDMX brunch essential (3)</li>
+            <li><strong>4.</strong> When the city actually wakes up (5)</li>
+            <li><strong>6.</strong> Where the energy lives — the whole reason you came (5)</li>
+            <li><strong>7.</strong> Sound born in New Orleans, found everywhere this weekend (4)</li>
+          </ul>
+          <h4>DOWN</h4>
+          <ul class="clue-list">
+            <li><strong>1.</strong> CDMX street essential. Comes with salsa (5)</li>
+            <li><strong>2.</strong> For the ___: made only for this moment (5)</li>
+            <li><strong>5.</strong> Weekend lodging, no checkout anxiety (3)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GAMES -->
+<section class="games-section" id="play">
+  <div class="container">
+    <h2>More Ways to Delay Monday</h2>
+    <p style="color:#666;margin-bottom:1.5rem">XT:RELAY is a daily logic puzzle. Different every day. No tracking. No dark patterns. Just clean puzzle design.</p>
+    <a class="game-cta" href="https://jjaecheverri.github.io/inkluso-magazine/xt-relay/">→ Play XT:RELAY Daily Puzzle</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p><strong>SCENE STATES</strong> — IN-KluSo Vibe Edition · Feb 20–23, 2026</p>
+  <p>Madrid · CDMX · Buenos Aires · NYC · NW Arkansas</p>
+  <p>No Macro. Just What's Actually Happening.</p>
+  <p style="margin-top:1rem"><a href="https://jjaecheverri.github.io/inkluso-magazine/">← Return to IN-KluSo Magazine</a></p>
+  <p style="opacity:.4;font-size:.72rem;margin-top:1rem">Juan Camilo Echeverri · Camilo Osorio · IN-KluSo Intelligence 2026</p>
+</footer>
+
+<script>
+// ============================================
+// CROSSWORD ENGINE
+// ============================================
+const ROWS=7,COLS=7;
+// null = black square
+const ANS=[
+  ['T','A','N','G','O',null,null],
+  ['A','V','O',null,null,null,null],
+  ['C',null,'N','I','G','H','T'],
+  ['O',null,'C','N',null,null,null],
+  ['S','C','E','N','E',null,null],
+  [null,null,null,null,null,null,null],
+  ['J','A','Z','Z',null,null,null]
+];
+const NUMS=[
+  [1,null,2,null,null,null,null],
+  [3,null,null,null,null,null,null],
+  [null,null,4,5,null,null,null],
+  [null,null,null,null,null,null,null],
+  [6,null,null,null,null,null,null],
+  [null,null,null,null,null,null,null],
+  [7,null,null,null,null,null,null]
+];
+
+function buildGrid(){
+  const t=document.getElementById('xword-table');
+  let h='';
+  for(let r=0;r<ROWS;r++){
+    h+='<tr>';
+    for(let c=0;c<COLS;c++){
+      if(ANS[r][c]===null){h+='<td class="b-cell"></td>';}
+      else{
+        const n=NUMS[r][c]!==null?`<span class="cell-num">${NUMS[r][c]}</span>`:'';
+        h+=`<td class="l-cell" id="c${r}_${c}">${n}<input type="text" maxlength="1" autocomplete="off" autocorrect="off" autocapitalize="characters" spellcheck="false" data-r="${r}" data-c="${c}" onkeydown="kd(event,${r},${c})" oninput="inp(event,${r},${c})"></td>`;
+      }
+    }
+    h+='</tr>';
+  }
+  t.innerHTML=h;
+}
+
+function gi(r,c){return document.querySelector(`input[data-r="${r}"][data-c="${c}"]`)}
+function fc(r,c){
+  if(r<0||r>=ROWS||c<0||c>=COLS)return;
+  if(ANS[r]===undefined||ANS[r][c]===null)return;
+  const i=gi(r,c);if(i)i.focus();
+}
+function kd(e,r,c){
+  const cell=document.getElementById(`c${r}_${c}`);
+  if(cell){cell.classList.remove('ok','no')}
+  switch(e.key){
+    case'ArrowRight':e.preventDefault();fc(r,c+1);break;
+    case'ArrowLeft':e.preventDefault();fc(r,c-1);break;
+    case'ArrowDown':e.preventDefault();fc(r+1,c);break;
+    case'ArrowUp':e.preventDefault();fc(r-1,c);break;
+    case'Backspace':
+      if(!e.target.value){
+        e.preventDefault();
+        if(c>0&&ANS[r][c-1]!==null)fc(r,c-1);
+        else if(r>0&&ROWS>r-1&&ANS[r-1]&&ANS[r-1][c]!==null)fc(r-1,c);
+      }
+      break;
+  }
+}
+function inp(e,r,c){
+  e.target.value=e.target.value.toUpperCase().slice(-1);
+  if(e.target.value){
+    if(c+1<COLS&&ANS[r][c+1]!==null)fc(r,c+1);
+    else if(r+1<ROWS&&ANS[r+1]&&ANS[r+1][c]!==null)fc(r+1,c);
+  }
+}
+function checkPuzzle(){
+  let ok=0,tot=0,filled=0;
+  for(let r=0;r<ROWS;r++){
+    for(let c=0;c<COLS;c++){
+      if(ANS[r][c]===null)continue;
+      tot++;
+      const i=gi(r,c),cell=document.getElementById(`c${r}_${c}`);
+      if(!i.value)continue;
+      filled++;
+      if(i.value.toUpperCase()===ANS[r][c]){cell.classList.add('ok');cell.classList.remove('no');ok++;}
+      else{cell.classList.add('no');cell.classList.remove('ok');}
+    }
+  }
+  const m=document.getElementById('puzzle-msg');
+  m.style.display='block';
+  if(ok===tot){m.textContent='🎉 SOLVED. Pure Weekend Energy.';m.style.background='#006400';}
+  else if(filled===0){m.textContent='Fill something in first.';m.style.background='#1a1a1a';}
+  else{m.textContent=`${ok} / ${tot} correct. The city doesn't lie.`;m.style.background='#1a1a1a';}
+}
+function revealPuzzle(){
+  for(let r=0;r<ROWS;r++){
+    for(let c=0;c<COLS;c++){
+      if(ANS[r][c]===null)continue;
+      const i=gi(r,c),cell=document.getElementById(`c${r}_${c}`);
+      i.value=ANS[r][c];cell.classList.remove('no');cell.classList.add('ok');
+    }
+  }
+  const m=document.getElementById('puzzle-msg');
+  m.style.display='block';m.textContent='🙈 Revealed. We respect the honesty.';m.style.background='#7B2FBE';
+}
+function resetPuzzle(){
+  for(let r=0;r<ROWS;r++){
+    for(let c=0;c<COLS;c++){
+      if(ANS[r][c]===null)continue;
+      const i=gi(r,c),cell=document.getElementById(`c${r}_${c}`);
+      i.value='';cell.classList.remove('ok','no');
+    }
+  }
+  const m=document.getElementById('puzzle-msg');
+  m.style.display='none';
+}
+buildGrid();
+</script>
 </body>
 </html>
