@@ -346,6 +346,65 @@
       transform: translateY(-6px);
       box-shadow: 0 14px 40px rgba(0,0,0,0.12);
     }
+    .edition-card.featured {
+      grid-column: 1 / -1;
+      background: linear-gradient(135deg, rgba(217, 118, 52, 0.1), rgba(255, 20, 147, 0.1), rgba(102, 51, 153, 0.1));
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border: 2px solid var(--orange);
+    }
+    .edition-card.featured:hover::before {
+      display: none;
+    }
+    .featured-image {
+      background: linear-gradient(135deg, #D97634 0%, #FF1493 25%, #663399 50%, #39FF14 75%, #B7410E 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-family: 'DM Serif Display', serif;
+      font-size: 3rem;
+      font-style: italic;
+      order: 2;
+    }
+    .featured-content {
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      order: 1;
+    }
+    .featured-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+    .featured-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.8rem;
+      line-height: 1.25;
+      color: var(--black);
+      margin-bottom: 0.75rem;
+      font-style: italic;
+    }
+    .featured-desc {
+      font-size: 0.9rem;
+      color: var(--gray-mid);
+      line-height: 1.65;
+      margin-bottom: 1.5rem;
+    }
+    .featured-cta {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--orange);
+      letter-spacing: 0.04em;
+      text-decoration: none;
+    }
     .edition-card-image {
       height: 220px;
       overflow: hidden;
@@ -529,6 +588,13 @@
         order: -1;
       }
       .feature-card-content { padding: 2.5rem; }
+      .edition-card.featured {
+        grid-template-columns: 1fr;
+      }
+      .featured-image {
+        height: 280px;
+        order: -1;
+      }
       .about-inner {
         grid-template-columns: 1fr;
         gap: 2.5rem;
@@ -540,6 +606,7 @@
       .hero { padding: 6rem 1.25rem 4rem; }
       .latest-edition, .previous-editions { padding-left: 1.25rem; padding-right: 1.25rem; }
       .editions-grid { grid-template-columns: 1fr; }
+      .edition-card.featured { grid-template-columns: 1fr; }
       .about-strip { padding: 3.5rem 1.25rem; }
     }
   </style>
@@ -553,11 +620,10 @@
   <nav id="main-nav">
     <a href="index.html" class="nav-logo">IN-<span>K</span>luSo</a>
     <ul class="nav-links">
+      <li><a href="scene-states-feb20-2026/index.html">Scene States</a></li>
       <li><a href="madrid-feb-2026/index.html">Madrid</a></li>
       <li><a href="mar-2026/index.html">March 2026</a></li>
       <li><a href="feb-19-2026/index.html">Feb 19, 2026</a></li>
-      <li><a href="feb-2026/index.html">February 2026</a></li>
-      <li><a href="jan-2026/index.html">January 2026</a></li>
       <li><a href="#about">About</a></li>
     </ul>
   </nav>
@@ -593,6 +659,16 @@
   <section class="previous-editions">
     <div class="section-heading reveal">Previous Editions</div>
     <div class="editions-grid">
+      <a href="scene-states-feb20-2026/index.html" class="edition-card featured reveal">
+        <div class="featured-image">SCENE<br>STATES</div>
+        <div class="featured-content">
+          <span class="featured-label">Vibe Edition · Feb 20-23, 2026</span>
+          <h3 class="featured-title"><em>The Weekend Is The Data</em></h3>
+          <p class="featured-desc">Five cities, real events, sensory language, and what people actually do when they choose. Madrid. CDMX. Buenos Aires. NYC. NWA.</p>
+          <a href="scene-states-feb20-2026/index.html" class="featured-cta">Enter Scene States →</a>
+        </div>
+      </a>
+
       <a href="xt-relay/index.html" class="edition-card reveal">
         <div class="edition-card-image" style="background: radial-gradient(1200px 800px at 10% -10%, #1a2450 0%, transparent 60%), radial-gradient(1000px 700px at 120% 10%, #2a1a50 0%, transparent 55%), #0b0d12; display:flex; align-items:center; justify-content:center; overflow:hidden;">
           <div style="text-align:center; padding: 2rem;">
@@ -610,8 +686,6 @@
           <span style="font-size:0.65rem; color: var(--gray-mid); font-family:'JetBrains Mono',monospace;">Local-only · Daily seed</span>
         </div>
       </a>
-
-
 
       <a href="madrid-feb-2026/index.html" class="edition-card reveal">
         <div class="edition-card-image" style="background:#1a1a1a; display:flex; align-items:center; justify-content:center; overflow:hidden;">
