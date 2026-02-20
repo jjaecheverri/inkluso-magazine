@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 600 300" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Thrust illustration: capital flow diagram with arrows to buildings">
+  <!-- Background cream -->
+  <rect width="600" height="300" fill="#FAF6EE"/>
+  <!-- Diagonal stripe -->
+  <polygon points="520,0 600,0 600,300 565,300" fill="#FF6B35" opacity="0.1"/>
+  <!-- CAPITAL FLOW label top -->
+  <text x="300" y="30" font-family="Inter,sans-serif" font-size="9" font-weight="700" letter-spacing="3" fill="#FF6B35" text-anchor="middle">CAPITAL FLOW DIAGRAM</text>
+  <line x1="80" y1="36" x2="220" y2="36" stroke="#FF6B35" stroke-width="1" opacity="0.4"/>
+  <line x1="380" y1="36" x2="520" y2="36" stroke="#FF6B35" stroke-width="1" opacity="0.4"/>
+  <!-- SOURCE box (top center) -->
+  <rect x="230" y="45" width="140" height="50" rx="6" fill="#1a1a1a"/>
+  <text x="300" y="66" font-family="Inter,sans-serif" font-size="7" font-weight="700" letter-spacing="2" fill="#FAF6EE" text-anchor="middle">PRIVATE EQUITY</text>
+  <text x="300" y="78" font-family="Inter,sans-serif" font-size="6.5" fill="rgba(250,246,238,0.6)" text-anchor="middle">AltamarCAM Partners</text>
+  <text x="300" y="88" font-family="Inter,sans-serif" font-size="6" fill="rgba(255,107,53,0.8)" text-anchor="middle">Elix Rental Housing II</text>
+  <!-- Arrows from source to buildings -->
+  <!-- Arrow 1 - left building -->
+  <path d="M255,95 L255,125 L120,125 L120,155" stroke="#FF6B35" stroke-width="2.5" fill="none" marker-end="url(#arrowOrange)"/>
+  <!-- Arrow 2 - center building -->
+  <path d="M300,95 L300,155" stroke="#FF6B35" stroke-width="2.5" fill="none" marker-end="url(#arrowOrange)"/>
+  <!-- Arrow 3 - right building (with red X) -->
+  <path d="M345,95 L345,125 L480,125 L480,155" stroke="#DC2626" stroke-width="2.5" fill="none" stroke-dasharray="5 3" marker-end="url(#arrowRed)"/>
+  <!-- Arrow markers -->
+  <defs>
+    <marker id="arrowOrange" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#FF6B35"/>
+    </marker>
+    <marker id="arrowRed" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#DC2626"/>
+    </marker>
+  </defs>
+  <!-- BUILDING 1 - left (occupied) -->
+  <rect x="80" y="155" width="80" height="120" fill="#e0d8cc"/>
+  <rect x="80" y="145" width="80" height="12" fill="#c0b8aa"/>
+  <!-- windows building 1 -->
+  <rect x="92" y="168" width="16" height="20" fill="#FF6B35" opacity="0.4"/>
+  <rect x="116" y="168" width="16" height="20" fill="#FAF6EE" stroke="#1a1a1a" stroke-width="1" opacity="0.6"/>
+  <rect x="140" y="168" width="16" height="20" fill="#FF6B35" opacity="0.3"/>
+  <rect x="92" y="200" width="16" height="20" fill="#FAF6EE" stroke="#1a1a1a" stroke-width="1" opacity="0.6"/>
+  <rect x="116" y="200" width="16" height="20" fill="#FF6B35" opacity="0.4"/>
+  <rect x="140" y="200" width="16" height="20" fill="#FAF6EE" stroke="#1a1a1a" stroke-width="1" opacity="0.6"/>
+  <!-- Residents in windows -->
+  <circle cx="100" cy="176" r="3" fill="#FAF6EE" opacity="0.9"/>
+  <circle cx="148" cy="174" r="3" fill="#FAF6EE" opacity="0.9"/>
+  <text x="120" y="290" font-family="Inter,sans-serif" font-size="7" fill="#1a1a1a" text-anchor="middle" opacity="0.5">OCCUPIED</text>
+  <!-- BUILDING 2 - center (case) -->
+  <rect x="260" y="155" width="80" height="120" fill="#d5cfc5"/>
+  <rect x="260" y="145" width="80" height="12" fill="#bbb3a8"/>
+  <!-- windows building 2 -->
+  <rect x="272" y="168" width="16" height="20" fill="#FF6B35" opacity="0.3"/>
+  <rect x="296" y="168" width="16" height="20" fill="#1a1a1a" opacity="0.4"/>
+  <rect x="320" y="168" width="16" height="20" fill="#FF6B35" opacity="0.3"/>
+  <rect x="272" y="200" width="16" height="20" fill="#1a1a1a" opacity="0.4"/>
+  <rect x="296" y="200" width="16" height="20" fill="#FF6B35" opacity="0.5"/>
+  <rect x="320" y="200" width="16" height="20" fill="#1a1a1a" opacity="0.4"/>
+  <!-- Court label -->
+  <rect x="255" y="240" width="90" height="22" rx="3" fill="#FF6B35"/>
+  <text x="300" y="251" font-family="Inter,sans-serif" font-size="6.5" font-weight="700" letter-spacing="1" fill="#FAF6EE" text-anchor="middle">JUZGADO N&#xBA; 17</text>
+  <text x="300" y="258" font-family="Inter,sans-serif" font-size="5.5" fill="rgba(250,246,238,0.8)" text-anchor="middle">CRIMINAL COMPLAINT</text>
+  <!-- BUILDING 3 - right (red X, cleared) -->
+  <rect x="440" y="155" width="80" height="120" fill="#f5efe8"/>
+  <rect x="440" y="145" width="80" height="12" fill="#ddd5cc"/>
+  <!-- empty windows -->
+  <rect x="452" y="168" width="16" height="20" fill="#FAF6EE" stroke="#1a1a1a" stroke-width="0.5" opacity="0.3"/>
+  <rect x="476" y="168" width="16" height="20" fill="#FAF6EE" stroke="#1a1a1a" stroke-width="0.5" opacity="0.3"/>
+  <rect x="500" y="168" width="16" height="20" fill="#FAF6EE" stroke="#1a1a1a" stroke-width="0.5" opacity="0.3"/>
+  <rect x="452" y="200" width="16" height="20" fill="#FAF6EE" stroke="#1a1a1a" stroke-width="0.5" opacity="0.3"/>
+  <rect x="476" y="200" width="16" height="20" fill="#FAF6EE" stroke="#1a1a1a" stroke-width="0.5" opacity="0.3"/>
+  <rect x="500" y="200" width="16" height="20" fill="#FAF6EE" stroke="#1a1a1a" stroke-width="0.5" opacity="0.3"/>
+  <!-- RED X -->
+  <line x1="448" y1="152" x2="520" y2="225" stroke="#DC2626" stroke-width="4" opacity="0.9"/>
+  <line x1="520" y1="152" x2="448" y2="225" stroke="#DC2626" stroke-width="4" opacity="0.9"/>
+  <!-- TOURIST APARTMENT label -->
+  <rect x="432" y="248" width="96" height="22" rx="3" fill="#1a1a1a"/>
+  <text x="480" y="260" font-family="Inter,sans-serif" font-size="6.5" font-weight="700" letter-spacing="0.5" fill="#FAF6EE" text-anchor="middle">TOURIST APARTMENT</text>
+  <text x="480" y="268" font-family="Inter,sans-serif" font-size="5.5" fill="rgba(255,107,53,0.8)" text-anchor="middle">CLEARED</text>
+  <!-- Policy document bottom center -->
+  <rect x="248" y="278" width="104" height="20" rx="3" fill="#1a1a1a" opacity="0.08" stroke="#1a1a1a" stroke-width="1" opacity="0.2"/>
+  <text x="300" y="291" font-family="Inter,sans-serif" font-size="6.5" font-weight="700" letter-spacing="1.5" fill="#1a1a1a" text-anchor="middle" opacity="0.4">2,831 BUILDINGS ORDINANCE</text>
+</svg>

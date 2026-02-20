@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 600 300" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Ground illustration: balcony scene with figures looking down at street crowd">
+  <!-- Background: building facade -->
+  <rect width="600" height="300" fill="#e8e0d4"/>
+  <!-- Diagonal stripe -->
+  <polygon points="540,0 600,0 600,300 575,300" fill="#16A34A" opacity="0.1"/>
+  <!-- BUILDING FACADE GRID -->
+  <!-- Floor lines -->
+  <rect x="0" y="0" width="600" height="60" fill="#ddd5c8"/>
+  <rect x="0" y="60" width="600" height="4" fill="#c5bdb0"/>
+  <rect x="0" y="100" width="600" height="60" fill="#e0d8cc"/>
+  <rect x="0" y="160" width="600" height="4" fill="#c5bdb0"/>
+  <rect x="0" y="200" width="600" height="60" fill="#e5ddd1"/>
+  <rect x="0" y="260" width="600" height="4" fill="#c5bdb0"/>
+  <!-- WINDOWS across facade -->
+  <!-- Floor 3 windows -->
+  <rect x="30" y="12" width="55" height="42" rx="3" fill="#1a1a1a" opacity="0.6"/>
+  <rect x="120" y="12" width="55" height="42" rx="3" fill="#FF6B35" opacity="0.15"/>
+  <rect x="210" y="12" width="55" height="42" rx="3" fill="#1a1a1a" opacity="0.5"/>
+  <rect x="300" y="12" width="55" height="42" rx="3" fill="#FAF6EE" opacity="0.4"/>
+  <rect x="390" y="12" width="55" height="42" rx="3" fill="#1a1a1a" opacity="0.55"/>
+  <rect x="480" y="12" width="55" height="42" rx="3" fill="#FF6B35" opacity="0.12"/>
+  <!-- Floor 2 windows -->
+  <rect x="30" y="113" width="55" height="42" rx="3" fill="#FAF6EE" opacity="0.5"/>
+  <rect x="120" y="113" width="55" height="42" rx="3" fill="#1a1a1a" opacity="0.5"/>
+  <rect x="210" y="113" width="55" height="42" rx="3" fill="#FF6B35" opacity="0.18"/>
+  <rect x="300" y="113" width="55" height="42" rx="3" fill="#1a1a1a" opacity="0.45"/>
+  <rect x="390" y="113" width="55" height="42" rx="3" fill="#FAF6EE" opacity="0.4"/>
+  <rect x="480" y="113" width="55" height="42" rx="3" fill="#1a1a1a" opacity="0.5"/>
+  <!-- Floor 1 windows -->
+  <rect x="30" y="213" width="55" height="42" rx="3" fill="#1a1a1a" opacity="0.5"/>
+  <rect x="120" y="213" width="55" height="42" rx="3" fill="#FAF6EE" opacity="0.45"/>
+  <rect x="210" y="213" width="55" height="42" rx="3" fill="#1a1a1a" opacity="0.55"/>
+  <rect x="300" y="213" width="55" height="42" rx="3" fill="#FF6B35" opacity="0.15"/>
+  <rect x="390" y="213" width="55" height="42" rx="3" fill="#FAF6EE" opacity="0.4"/>
+  <rect x="480" y="213" width="55" height="42" rx="3" fill="#1a1a1a" opacity="0.5"/>
+  <!-- BALCONIES - floor 2 (main scene) -->
+  <!-- Balcony 1 (featured) -->
+  <rect x="28" y="155" width="59" height="10" rx="2" fill="#b0a898"/>
+  <line x1="28" y1="155" x2="28" y2="168" stroke="#b0a898" stroke-width="2"/>
+  <line x1="87" y1="155" x2="87" y2="168" stroke="#b0a898" stroke-width="2"/>
+  <line x1="38" y1="155" x2="38" y2="163" stroke="#c5bdb0" stroke-width="1.5"/>
+  <line x1="48" y1="155" x2="48" y2="163" stroke="#c5bdb0" stroke-width="1.5"/>
+  <line x1="58" y1="155" x2="58" y2="163" stroke="#c5bdb0" stroke-width="1.5"/>
+  <line x1="68" y1="155" x2="68" y2="163" stroke="#c5bdb0" stroke-width="1.5"/>
+  <line x1="78" y1="155" x2="78" y2="163" stroke="#c5bdb0" stroke-width="1.5"/>
+  <!-- MAIN FIGURES on balcony 1 - two people looking down -->
+  <circle cx="42" cy="112" r="9" fill="#1a1a1a"/>
+  <rect x="36" y="121" width="12" height="25" rx="3" fill="#1a1a1a"/>
+  <rect x="30" y="126" width="8" height="18" rx="3" fill="#1a1a1a"/>
+  <rect x="48" y="126" width="8" height="18" rx="3" fill="#1a1a1a"/>
+  <!-- Person 2 -->
+  <circle cx="68" cy="114" r="9" fill="#FF6B35"/>
+  <rect x="62" y="123" width="12" height="25" rx="3" fill="#FF6B35"/>
+  <rect x="56" y="128" width="8" height="18" rx="3" fill="#FF6B35"/>
+  <rect x="74" y="128" width="8" height="18" rx="3" fill="#FF6B35"/>
+  <!-- Both leaning forward (looking down) -->
+  <line x1="42" y1="121" x2="38" y2="150" stroke="#1a1a1a" stroke-width="2.5"/>
+  <line x1="68" y1="123" x2="66" y2="150" stroke="#FF6B35" stroke-width="2.5"/>
+  <!-- Balcony 2 -->
+  <rect x="118" y="155" width="59" height="10" rx="2" fill="#b0a898"/>
+  <line x1="118" y1="155" x2="118" y2="168" stroke="#b0a898" stroke-width="2"/>
+  <line x1="177" y1="155" x2="177" y2="168" stroke="#b0a898" stroke-width="2"/>
+  <!-- Third figure -->
+  <circle cx="148" cy="115" r="8" fill="#FAF6EE" stroke="#1a1a1a" stroke-width="2"/>
+  <rect x="142" y="123" width="12" height="22" rx="3" fill="#FAF6EE" stroke="#1a1a1a" stroke-width="1.5"/>
+  <line x1="148" y1="123" x2="147" y2="150" stroke="#1a1a1a" stroke-width="2"/>
+  <!-- Balconies rest (minimal) -->
+  <rect x="208" y="155" width="59" height="8" rx="2" fill="#b0a898"/>
+  <rect x="298" y="155" width="59" height="8" rx="2" fill="#b0a898"/>
+  <rect x="388" y="155" width="59" height="8" rx="2" fill="#b0a898"/>
+  <rect x="478" y="155" width="59" height="8" rx="2" fill="#b0a898"/>
+  <!-- Street level crowd below -->
+  <rect x="0" y="268" width="600" height="32" fill="#1a1a1a"/>
+  <!-- Crowd dots/figures -->
+  <circle cx="50" cy="278" r="5" fill="#FAF6EE" opacity="0.8"/>
+  <circle cx="70" cy="275" r="5" fill="#FF6B35" opacity="0.9"/>
+  <circle cx="90" cy="280" r="5" fill="#FAF6EE" opacity="0.7"/>
+  <circle cx="115" cy="276" r="5" fill="#FAF6EE" opacity="0.8"/>
+  <circle cx="138" cy="282" r="4" fill="#FF6B35" opacity="0.8"/>
+  <circle cx="158" cy="274" r="5" fill="#FAF6EE" opacity="0.6"/>
+  <circle cx="180" cy="278" r="5" fill="#FAF6EE" opacity="0.9"/>
+  <circle cx="200" cy="280" r="4" fill="#FF6B35" opacity="0.7"/>
+  <circle cx="220" cy="274" r="5" fill="#FAF6EE" opacity="0.8"/>
+  <circle cx="245" cy="280" r="5" fill="#FAF6EE" opacity="0.7"/>
+  <circle cx="265" cy="276" r="4" fill="#FF6B35" opacity="0.9"/>
+  <circle cx="285" cy="282" r="5" fill="#FAF6EE" opacity="0.6"/>
+  <circle cx="310" cy="275" r="5" fill="#FAF6EE" opacity="0.8"/>
+  <circle cx="330" cy="280" r="4" fill="#FF6B35" opacity="0.75"/>
+  <circle cx="350" cy="273" r="5" fill="#FAF6EE" opacity="0.7"/>
+  <circle cx="375" cy="280" r="5" fill="#FAF6EE" opacity="0.8"/>
+  <circle cx="398" cy="276" r="4" fill="#FF6B35" opacity="0.8"/>
+  <circle cx="418" cy="283" r="5" fill="#FAF6EE" opacity="0.6"/>
+  <circle cx="440" cy="275" r="5" fill="#FAF6EE" opacity="0.9"/>
+  <circle cx="460" cy="280" r="4" fill="#FF6B35" opacity="0.7"/>
+  <circle cx="480" cy="273" r="5" fill="#FAF6EE" opacity="0.8"/>
+  <circle cx="505" cy="280" r="5" fill="#FAF6EE" opacity="0.7"/>
+  <circle cx="525" cy="276" r="4" fill="#FF6B35" opacity="0.8"/>
+  <circle cx="548" cy="281" r="5" fill="#FAF6EE" opacity="0.6"/>
+  <circle cx="570" cy="275" r="5" fill="#FAF6EE" opacity="0.8"/>
+  <!-- Street label -->
+  <text x="300" y="294" font-family="Inter,sans-serif" font-size="7" font-weight="700" letter-spacing="2" fill="#FF6B35" text-anchor="middle" opacity="0.8">CALLE TRIBULETE · LAVAPIÉS · MADRID</text>
+  <!-- Overhead view arrows (figures pointing down) -->
+  <line x1="50" y1="152" x2="50" y2="267" stroke="#FF6B35" stroke-width="1" stroke-dasharray="4 3" opacity="0.3"/>
+  <line x1="150" y1="153" x2="150" y2="267" stroke="#FAF6EE" stroke-width="1" stroke-dasharray="4 3" opacity="0.2"/>
+</svg>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 600 300" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Flow illustration: movement map with dots crossing barrio lines">
+  <!-- Background cream -->
+  <rect width="600" height="300" fill="#FAF6EE"/>
+  <!-- Diagonal stripe -->
+  <polygon points="530,0 600,0 600,300 570,300" fill="#0EA5E9" opacity="0.08"/>
+  <!-- MAP GRID LINES -->
+  <line x1="0" y1="100" x2="600" y2="100" stroke="#1a1a1a" stroke-width="0.5" opacity="0.08"/>
+  <line x1="0" y1="200" x2="600" y2="200" stroke="#1a1a1a" stroke-width="0.5" opacity="0.08"/>
+  <line x1="200" y1="0" x2="200" y2="300" stroke="#1a1a1a" stroke-width="0.5" opacity="0.08"/>
+  <line x1="400" y1="0" x2="400" y2="300" stroke="#1a1a1a" stroke-width="0.5" opacity="0.08"/>
+  <!-- BARRIO BOUNDARIES -->
+  <path d="M30,50 L180,50 L230,150 L150,250 L30,250 Z" fill="#FF6B35" opacity="0.06" stroke="#FF6B35" stroke-width="1.5" stroke-dasharray="6 4" opacity="0.3"/>
+  <path d="M210,30 L390,30 L420,180 L340,270 L150,260 L230,150 Z" fill="#0EA5E9" opacity="0.05" stroke="#0EA5E9" stroke-width="1.5" stroke-dasharray="6 4" opacity="0.25"/>
+  <path d="M420,20 L570,20 L570,280 L380,280 L340,270 L420,180 Z" fill="#16A34A" opacity="0.05" stroke="#16A34A" stroke-width="1.5" stroke-dasharray="6 4" opacity="0.25"/>
+  <!-- Barrio labels -->
+  <text x="90" y="150" font-family="Inter,sans-serif" font-size="9" font-weight="700" letter-spacing="1" fill="#FF6B35" text-anchor="middle" opacity="0.6">LAVAPI&#xC9;S</text>
+  <text x="290" y="140" font-family="Inter,sans-serif" font-size="9" font-weight="700" letter-spacing="1" fill="#0EA5E9" text-anchor="middle" opacity="0.6">EMBAJADORES</text>
+  <text x="490" y="120" font-family="Inter,sans-serif" font-size="9" font-weight="700" letter-spacing="1" fill="#16A34A" text-anchor="middle" opacity="0.6">MALASA&#xD1;A</text>
+  <!-- NOSQUEDAMOS NODES -->
+  <!-- Node 1: Tribulete (Lavapiés) -->
+  <circle cx="95" cy="180" r="18" fill="#FF6B35" opacity="0.2"/>
+  <circle cx="95" cy="180" r="10" fill="#FF6B35"/>
+  <circle cx="95" cy="180" r="5" fill="#FAF6EE"/>
+  <text x="95" y="206" font-family="Inter,sans-serif" font-size="6.5" font-weight="700" fill="#1a1a1a" text-anchor="middle" opacity="0.7">TRIBULETE</text>
+  <!-- Node 2: San Ildefonso -->
+  <circle cx="220" cy="200" r="14" fill="#FF6B35" opacity="0.2"/>
+  <circle cx="220" cy="200" r="8" fill="#FF6B35"/>
+  <circle cx="220" cy="200" r="4" fill="#FAF6EE"/>
+  <text x="220" y="222" font-family="Inter,sans-serif" font-size="6" font-weight="700" fill="#1a1a1a" text-anchor="middle" opacity="0.7">SAN ILDEFONSO</text>
+  <!-- Node 3: General Lacy -->
+  <circle cx="305" cy="240" r="14" fill="#FF6B35" opacity="0.2"/>
+  <circle cx="305" cy="240" r="8" fill="#FF6B35"/>
+  <circle cx="305" cy="240" r="4" fill="#FAF6EE"/>
+  <text x="305" y="263" font-family="Inter,sans-serif" font-size="6" font-weight="700" fill="#1a1a1a" text-anchor="middle" opacity="0.7">GENERAL LACY</text>
+  <!-- Node 4: Mesón de Paredes -->
+  <circle cx="175" cy="135" r="14" fill="#FF6B35" opacity="0.2"/>
+  <circle cx="175" cy="135" r="8" fill="#FF6B35"/>
+  <circle cx="175" cy="135" r="4" fill="#FAF6EE"/>
+  <text x="175" y="157" font-family="Inter,sans-serif" font-size="6" font-weight="700" fill="#1a1a1a" text-anchor="middle" opacity="0.7">MES&#xD3;N PAREDES</text>
+  <!-- Node 5: Valverde 42 (Malasaña) -->
+  <circle cx="485" cy="165" r="18" fill="#16A34A" opacity="0.2"/>
+  <circle cx="485" cy="165" r="10" fill="#16A34A"/>
+  <circle cx="485" cy="165" r="5" fill="#FAF6EE"/>
+  <text x="485" y="192" font-family="Inter,sans-serif" font-size="6.5" font-weight="700" fill="#1a1a1a" text-anchor="middle" opacity="0.7">VALVERDE 42</text>
+  <!-- CONNECTING PATHS (strategy traveling) -->
+  <path d="M105,176 Q160,160 165,141" stroke="#FF6B35" stroke-width="2" fill="none" stroke-dasharray="4 3" marker-end="url(#arrowOrangeFlow)"/>
+  <path d="M185,137 Q200,168 212,196" stroke="#FF6B35" stroke-width="2" fill="none" stroke-dasharray="4 3" marker-end="url(#arrowOrangeFlow)"/>
+  <path d="M228,203 Q260,225 297,238" stroke="#FF6B35" stroke-width="2" fill="none" stroke-dasharray="4 3" marker-end="url(#arrowOrangeFlow)"/>
+  <!-- Strategy crossing barrio line to Malasaña -->
+  <path d="M183,129 Q330,80 475,160" stroke="#1a1a1a" stroke-width="2.5" fill="none" stroke-dasharray="6 3" marker-end="url(#arrowBlack)"/>
+  <defs>
+    <marker id="arrowOrangeFlow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#FF6B35"/>
+    </marker>
+    <marker id="arrowBlack" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#1a1a1a"/>
+    </marker>
+  </defs>
+  <!-- Strategy label on crossing arrow -->
+  <text x="330" y="96" font-family="Inter,sans-serif" font-size="7" font-weight="700" letter-spacing="1.5" fill="#1a1a1a" text-anchor="middle" opacity="0.55" transform="rotate(-8 330 96)">#NOSQUEDAMOS CROSSING BARRIO LINES</text>
+  <!-- DOTS - scattered movement dots -->
+  <circle cx="130" cy="160" r="3" fill="#FF6B35" opacity="0.5"/>
+  <circle cx="148" cy="172" r="2.5" fill="#FF6B35" opacity="0.4"/>
+  <circle cx="155" cy="155" r="2" fill="#FF6B35" opacity="0.35"/>
+  <circle cx="250" cy="185" r="3" fill="#0EA5E9" opacity="0.4"/>
+  <circle cx="265" cy="175" r="2" fill="#0EA5E9" opacity="0.35"/>
+  <circle cx="370" cy="200" r="2.5" fill="#0EA5E9" opacity="0.35"/>
+  <circle cx="420" cy="180" r="3" fill="#16A34A" opacity="0.4"/>
+  <circle cx="440" cy="170" r="2" fill="#16A34A" opacity="0.35"/>
+  <circle cx="455" cy="185" r="2.5" fill="#16A34A" opacity="0.3"/>
+  <!-- Legend -->
+  <rect x="20" y="20" width="130" height="55" rx="4" fill="#FAF6EE" stroke="#1a1a1a" stroke-width="1" opacity="0.5"/>
+  <circle cx="34" cy="35" r="5" fill="#FF6B35"/>
+  <text x="44" y="39" font-family="Inter,sans-serif" font-size="7" fill="#1a1a1a" opacity="0.7">#NosQuedamos node</text>
+  <circle cx="34" cy="52" r="5" fill="#16A34A"/>
+  <text x="44" y="56" font-family="Inter,sans-serif" font-size="7" fill="#1a1a1a" opacity="0.7">Strategy replicated</text>
+  <line x1="27" y1="66" x2="40" y2="66" stroke="#1a1a1a" stroke-width="2" stroke-dasharray="4 2"/>
+  <text x="44" y="70" font-family="Inter,sans-serif" font-size="7" fill="#1a1a1a" opacity="0.7">Barrio crossing</text>
+  <!-- Bottom label -->
+  <text x="300" y="293" font-family="Inter,sans-serif" font-size="7" font-weight="700" letter-spacing="2" fill="#FF6B35" text-anchor="middle" opacity="0.8">THE STRATEGY IS TRAVELING BETWEEN CITIES, NOT JUST NEIGHBORHOODS</text>
+</svg>
