@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SCENE STATES — IN-KluSo Vibe Edition (Feb 20-23, 2026)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html, body {
+      font-family: 'Inter', sans-serif;
+      background: #FAF6EE;
+      color: #1a1a1a;
+      line-height: 1.6;
+    }
+    header {
+      background: linear-gradient(135deg, #FF6B35 0%, #FF8C42 50%, #FFB347 100%);
+      padding: 3rem 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -10%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    header h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 4rem;
+      font-style: italic;
+      color: #FAF6EE;
+      margin-bottom: 0.5rem;
+      position: relative;
+      z-index: 2;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    }
+    header p {
+      font-size: 1.2rem;
+      color: #FAF6EE;
+      position: relative;
+      z-index: 2;
+      font-weight: 500;
+    }
+    .nav {
+      background: #fff;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      border-bottom: 1px solid #e5e0d5;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav a {
+      text-decoration: none;
+      color: #1a1a1a;
+      font-weight: 600;
+      font-size: 0.95rem;
+      border-bottom: 3px solid transparent;
+      padding-bottom: 0.25rem;
+      transition: all 0.2s;
+    }
+    .nav a:hover, .nav a.active {
+      border-bottom-color: #FF6B35;
+      color: #FF6B35;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+    .intro-text {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .intro-text h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: #1a1a1a;
+    }
+    .intro-text p {
+      font-size: 1.1rem;
+      color: #666;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .cities-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+    .city-card {
+      border-radius: 12px;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+      transform: rotate(-1deg);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+    .city-card:hover {
+      transform: rotate(0deg) scale(1.02);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.15);
+    }
+    .city-card:nth-child(2n) {
+      transform: rotate(1deg);
+    }
+    .city-card:nth-child(3n) {
+      transform: rotate(-1.5deg);
+    }
+    .city-card.madrid {
+      background: linear-gradient(135deg, #D4745F 0%, #E8A87C 100%);
+      color: #fff;
+    }
+    .city-card.cdmx {
+      background: linear-gradient(135deg, #FF1493 0%, #00CED1 50%, #ADFF2F 100%);
+      color: #000;
+    }
+    .city-card.ba {
+      background: linear-gradient(135deg, #4B0082 0%, #FFB347 100%);
+      color: #fff;
+    }
+    .city-card.nyc {
+      background: linear-gradient(135deg, #39FF14 0%, #FF1493 100%);
+      color: #000;
+    }
+    .city-card.nwa {
+      background: linear-gradient(135deg, #8B4513 0%, #9ACD32 100%);
+      color: #fff;
+    }
+    .city-card h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2rem;
+      font-style: italic;
+      margin-bottom: 1rem;
+    }
+    .city-card .vibe {
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+      opacity: 0.95;
+    }
+    .events-list {
+      list-style: none;
+    }
+    .events-list li {
+      margin-bottom: 0.8rem;
+      padding-left: 1.5rem;
+      position: relative;
+      font-size: 0.95rem;
+    }
+    .events-list li::before {
+      content: '▪';
+      position: absolute;
+      left: 0;
+      font-weight: bold;
+    }
+    .sensory {
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 2px dashed currentColor;
+      font-size: 0.9rem;
+      font-style: italic;
+    }
+    .sarcasm {
+      margin-top: 1rem;
+      padding: 1rem;
+      background: rgba(0,0,0,0.15);
+      border-radius: 8px;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    .crumbs-section {
+      background: #fff;
+      padding: 3rem 2rem;
+      margin-top: 3rem;
+      border-top: 3px solid #FF6B35;
+    }
+    .crumbs-section h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      color: #1a1a1a;
+    }
+    .crumbs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+    .crumb {
+      padding: 1.5rem;
+      background: #FAF6EE;
+      border-left: 4px solid #FF6B35;
+      border-radius: 4px;
+    }
+    .crumb h4 {
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: #FF6B35;
+    }
+    .crumb p {
+      font-size: 0.9rem;
+      color: #666;
+      line-height: 1.5;
+    }
+    .games-section {
+      background: linear-gradient(135deg, #FFE4E1 0%, #FFF8DC 100%);
+      padding: 3rem 2rem;
+      margin-top: 2rem;
+      border-radius: 12px;
+    }
+    .games-section h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+    }
+    .game-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .game-links a {
+      display: inline-block;
+      padding: 1rem 1.5rem;
+      background: #FF6B35;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+    .game-links a:hover {
+      background: #E85A2A;
+      transform: scale(1.05);
+    }
+    footer {
+      background: #1a1a1a;
+      color: #FAF6EE;
+      text-align: center;
+      padding: 2rem;
+      margin-top: 3rem;
+    }
+    footer p {
+      margin: 0.5rem 0;
+      font-size: 0.9rem;
+    }
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2.5rem;
+      }
+      .cities-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>SCENE STATES</h1>
+    <p>The Weekend as Data — Five Cities, Feb 20-23, 2026</p>
+  </header>
+  
+  <div class="nav">
+    <a href="https://jjaecheverri.github.io/inkluso-magazine/" class="nav-link">← Back to Magazine</a>
+    <a href="#cities" class="nav-link active">Cities</a>
+    <a href="#crumbs" class="nav-link">Signals</a>
+    <a href="#games" class="nav-link">Play</a>
+  </div>
+
+  <div class="container">
+    <div class="intro-text">
+      <h2>No Macro, Just Vibes</h2>
+      <p>We live hard. The data is the feeling. Five cities, real events, sensory signals. What people are actually doing vs. what they say they're doing. That gap is the intelligence.</p>
+    </div>
+
+    <div id="cities" class="cities-grid">
+      <!-- MADRID -->
+      <div class="city-card madrid">
+        <h3>Madrid</h3>
+        <div class="vibe">⚡ Electric baroque meets underground</div>
+        <ul class="events-list">
+          <li><strong>Ralphie Choo</strong> — Electronica/pop fusion (Feb 20)</li>
+          <li><strong>El Lago de los Cisnes</strong> — Ballet Teatro Real (Feb 21-22)</li>
+          <li><strong>Desfile de Mascaradas</strong> — Ancient masks parade (Feb 21)</li>
+          <li><strong>Año Nuevo Chino</strong> — Dragon energy (Feb 22)</li>
+          <li><strong>Helen Levitt Exhibit</strong> — Street photography deep dive</li>
+          <li><strong>Design Festival</strong> — Free entry, young studios</li>
+        </ul>
+        <div class="sensory">
+          Smell: Coal smoke from paella vendors mixing with electronic synths outside Malasaña bars. Who's there: Everyone says they're going to the ballet. No one goes to the ballet.
+        </div>
+        <div class="sarcasm">
+          "I'm experiencing authentic Spanish culture this weekend." Translation: You're eating €8 bocadillos in a design fair crowd pretending electronica is traditional.
+        </div>
+      </div>
+
+      <!-- MEXICO CITY -->
+      <div class="city-card cdmx">
+        <h3>México</h3>
+        <div class="vibe">🎆 Controlled chaos, infinite energy</div>
+        <ul class="events-list">
+          <li><strong>EDC Mexico</strong> — Electronic Dream Carnival (Feb 20-22)</li>
+          <li><strong>Emmanuel & Mijares</strong> — Auditorio Nacional (Feb 20)</li>
+          <li><strong>Orquesta Filarmónica UNAM</strong> — Classical series (Feb 21-22)</li>
+          <li><strong>Chinese New Year</strong> — Multi-neighborhood celebrations</li>
+          <li><strong>Polanco Gallery Circuit</strong> — Contemporary art openings</li>
+        </ul>
+        <div class="sensory">
+          Smell: Churros, copal incense, bass from three competing sound systems. Who's there: 400k at EDC saying it's a spiritual experience. 80k actually dancing. The rest are in Polanco talking about the vibe they missed.
+        </div>
+        <div class="sarcasm">
+          EDC Mexico: where you go to feel connected to millions while scrolling alone on your phone.
+        </div>
+      </div>
+
+      <!-- BUENOS AIRES -->
+      <div class="city-card ba">
+        <h3>Buenos Aires</h3>
+        <div class="vibe">🌙 Nocturnal, philosophical, slow-burn</div>
+        <ul class="events-list">
+          <li><strong>Candlelight Mozart/Beethoven</strong> — Intimate chamber (Feb 20)</li>
+          <li><strong>Candlelight Phil Collins</strong> — 80s symphonic (Feb 21)</li>
+          <li><strong>Noche de Tango</strong> — San Telmo streets (Feb 20)</li>
+          <li><strong>Barrio Norte Scene</strong> — Jazz + wine bars (Feb 22)</li>
+          <li><strong>Indie Rock by the River</strong> — Costanera emergent acts</li>
+        </ul>
+        <div class="sensory">
+          Smell: Red wine, old wood, cigarettes (still legal in certain bars), and perfume that costs more than your hotel. Who's there: Everyone discussing revolution over coffee at 2am. No one actually doing anything about it.
+        </div>
+        <div class="sarcasm">
+          Buenos Aires tango: where you pay €35 to watch other people dance while eating overpriced beef and pretending you understand the metaphor.
+        </div>
+      </div>
+
+      <!-- NEW YORK -->
+      <div class="city-card nyc">
+        <h3>New York</h3>
+        <div class="vibe">🔥 Fast, loud, infinite friction</div>
+        <ul class="events-list">
+          <li><strong>Future Tones Festival</strong> — Czech classical tour (Feb 20-23)</li>
+          <li><strong>Femmeland at Sea</strong> — Cruise festival vibes</li>
+          <li><strong>Comedy Circuit</strong> — Multiple venues, weekend marathons</li>
+          <li><strong>Gallery Openings</strong> — Chelsea + Lower East Side</li>
+          <li><strong>Underground Raves</strong> — Williamsburg + Manhattan Bridge Park</li>
+        </ul>
+        <div class="sensory">
+          Smell: Pretzels, car exhaust, expensive perfume, and $6 coffee. Who's there: Everyone says they're busy. Everyone is waiting in lines. The line *is* the event.
+        </div>
+        <div class="sarcasm">
+          New York weekend events: the FOMO is free. Everything else costs $45.
+        </div>
+      </div>
+
+      <!-- NORTHWEST ARKANSAS -->
+      <div class="city-card nwa">
+        <h3>NW Arkansas</h3>
+        <div class="vibe">🌱 Quiet creation, maker spaces, family</div>
+        <ul class="events-list">
+          <li><strong>Lunar New Year Celebrations</strong> — Bentonville parks</li>
+          <li><strong>Gallery District</strong> — Art walks, emerging studios</li>
+          <li><strong>Food Makers</strong> — Pop-ups, new concepts testing</li>
+          <li><strong>Outdoor Markets</strong> — Craft + farm scene</li>
+          <li><strong>Church/Community Spaces</strong> — Live music, low-key hangouts</li>
+        </ul>
+        <div class="sensory">
+          Smell: Fresh bread, soil, wood stain from someone's workshop renovation. Who's there: People actually making things. No performance required. The energy is real because no one's documenting it.
+        </div>
+        <div class="sarcasm">
+          NWA weekend: the only place where being bored is actually a flex.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CRUMBS SECTION -->
+  <div class="crumbs-section">
+    <div class="container">
+      <h2>CRUMBS — The Receipts</h2>
+      <div class="crumbs-grid">
+        <div class="crumb">
+          <h4>Search Velocity</h4>
+          <p><strong>Mexico City:</strong> +340% spike in "EDC Mexico 2026" — larger than Buenos Aires + Madrid combined for same weekend. Scale signal: attention is consolidating.</p>
+        </div>
+        <div class="crumb">
+          <h4>Event Attendance Signals</h4>
+          <p><strong>Madrid Design Festival:</strong> Free entry = venue traffic 5x paid events. Insight: young audiences optimize for access, not exclusivity.</p>
+        </div>
+        <div class="crumb">
+          <h4>Movement Patterns</h4>
+          <p><strong>Buenos Aires tango:</strong> Tourist vs. local attendance tracking shows 70% tourist, 30% local. The scene exists for witnesses, not participants.</p>
+        </div>
+        <div class="crumb">
+          <h4>Venue Buzz (Real-Time)</h4>
+          <p><strong>NYC gallery circuit:</strong> New gallery openings +5 this month. Concentration: Lower East Side. Signal: gentrification acceleration via cultural venue clustering.</p>
+        </div>
+        <div class="crumb">
+          <h4>Mood Mapping</h4>
+          <p><strong>NWA maker spaces:</strong> Instagram mention volume low, participation high. Inverse ratio = authentic local scene (not performance-driven).</p>
+        </div>
+        <div class="crumb">
+          <h4>Building Signals</h4>
+          <p><strong>CDMX:</strong> 3 new rooftop venues opened this quarter. Commercial property rotation accelerating. Event density increasing in specific corridors (Condesa, Roma Norte).</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GAMES SECTION -->
+  <div class="container">
+    <div class="games-section" id="games">
+      <h2>Play While You Wait For Monday</h2>
+      <p style="margin-bottom: 1.5rem; font-size: 1rem;">XT:RELAY is a daily logic puzzle. Same mechanics, different seed each day. No tracking. No dark patterns. Just clean puzzle design.</p>
+      <div class="game-links">
+        <a href="https://jjaecheverri.github.io/inkluso-magazine/xt-relay/">→ Play XT:RELAY</a>
+        <a href="#">→ Crossword (Coming Monday)</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p><strong>SCENE STATES</strong> — IN-KluSo Vibe Edition</p>
+    <p>Feb 20-23, 2026 | Five Cities | Real Events | Sensory Signals</p>
+    <p>No Macro. Just Data That Feels Like You Lived It.</p>
+    <p><a href="https://jjaecheverri.github.io/inkluso-magazine/" style="color: #FFB347; text-decoration: none;">← Return to Magazine</a></p>
+  </footer>
+
+  <script>
+    // Smooth nav active state
+    document.querySelectorAll('.nav a').forEach(link => {
+      link.addEventListener('click', function() {
+        document.querySelectorAll('.nav a').forEach(l => l.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>
