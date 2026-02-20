@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 600 260" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Community detection — crowd already forming around a signal">
+          <rect width="600" height="260" fill="#F0F9FF"/>
+          <!-- Glowing center dot (the tension) -->
+          <circle cx="270" cy="130" r="24" fill="#0EA5E9" opacity="0.15"/>
+          <circle cx="270" cy="130" r="14" fill="#0EA5E9" opacity="0.3"/>
+          <circle cx="270" cy="130" r="7" fill="#0EA5E9"/>
+          <!-- Ripple rings -->
+          <circle cx="270" cy="130" r="42" fill="none" stroke="#0EA5E9" stroke-width="1.5" opacity="0.25"/>
+          <circle cx="270" cy="130" r="64" fill="none" stroke="#0EA5E9" stroke-width="1" opacity="0.15"/>
+          <!-- Crowd figures already clustered -->
+          <g fill="#1a1a1a">
+            <circle cx="230" cy="105" r="8"/><rect x="223" y="113" width="14" height="10" rx="2"/>
+            <circle cx="248" cy="90" r="8"/><rect x="241" y="98" width="14" height="10" rx="2"/>
+            <circle cx="270" cy="85" r="8"/><rect x="263" y="93" width="14" height="10" rx="2"/>
+            <circle cx="292" cy="90" r="8"/><rect x="285" y="98" width="14" height="10" rx="2"/>
+            <circle cx="310" cy="105" r="8"/><rect x="303" y="113" width="14" height="10" rx="2"/>
+            <circle cx="315" cy="128" r="8"/><rect x="308" y="136" width="14" height="10" rx="2"/>
+            <circle cx="308" cy="152" r="8"/><rect x="301" y="160" width="14" height="10" rx="2"/>
+            <circle cx="290" cy="168" r="8"/><rect x="283" y="176" width="14" height="10" rx="2"/>
+            <circle cx="270" cy="174" r="8"/><rect x="263" y="182" width="14" height="10" rx="2"/>
+            <circle cx="250" cy="168" r="8"/><rect x="243" y="176" width="14" height="10" rx="2"/>
+            <circle cx="232" cy="152" r="8"/><rect x="225" y="160" width="14" height="10" rx="2"/>
+            <circle cx="225" cy="128" r="8"/><rect x="218" y="136" width="14" height="10" rx="2"/>
+          </g>
+          <!-- Speech bubble from crowd -->
+          <ellipse cx="200" cy="72" rx="38" ry="18" fill="white" stroke="#0EA5E9" stroke-width="1.5"/>
+          <polygon points="215,88 210,100 225,90" fill="white" stroke="#0EA5E9" stroke-width="1"/>
+          <text x="200" y="77" font-family="Inter,sans-serif" font-size="9" font-weight="700" fill="#0EA5E9" text-anchor="middle">finally.</text>
+
+          <!-- Arriving figure with megaphone -->
+          <circle cx="490" cy="120" r="14" fill="#FF6B35"/>
+          <rect x="479" y="134" width="22" height="16" rx="2" fill="#FF6B35"/>
+          <!-- Megaphone -->
+          <polygon points="505,115 520,105 520,125 505,120" fill="#1a1a1a"/>
+          <rect x="500" y="114" width="6" height="8" rx="1" fill="#1a1a1a"/>
+          <!-- Surprise lines -->
+          <line x1="503" y1="100" x2="506" y2="94" stroke="#1a1a1a" stroke-width="1.5"/>
+          <line x1="510" y1="98" x2="514" y2="93" stroke="#1a1a1a" stroke-width="1.5"/>
+          <line x1="517" y1="100" x2="522" y2="96" stroke="#1a1a1a" stroke-width="1.5"/>
+          <!-- Walking legs -->
+          <line x1="482" y1="150" x2="476" y2="175" stroke="#FF6B35" stroke-width="3" stroke-linecap="round"/>
+          <line x1="498" y1="150" x2="505" y2="175" stroke="#FF6B35" stroke-width="3" stroke-linecap="round"/>
+          <!-- Arrow from arriving figure toward crowd -->
+          <line x1="460" y1="130" x2="360" y2="130" stroke="rgba(0,0,0,0.2)" stroke-width="1.5" stroke-dasharray="4 3"/>
+          <polygon points="362,127 356,130 362,133" fill="rgba(0,0,0,0.2)"/>
+
+          <text x="300" y="248" font-family="Inter,sans-serif" font-size="8" fill="rgba(0,0,0,0.35)" text-anchor="middle" font-style="italic">The audience arrived before the megaphone.</text>
+        </svg>

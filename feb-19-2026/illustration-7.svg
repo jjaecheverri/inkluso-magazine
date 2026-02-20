@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 600 260" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Four domains converging on Ideas Worth Existing">
+          <rect width="600" height="260" fill="#1a1a1a"/>
+          <!-- Center label -->
+          <circle cx="300" cy="130" r="58" fill="#1a1a1a" stroke="#FF6B35" stroke-width="2.5"/>
+          <circle cx="300" cy="130" r="52" fill="#1a1a1a"/>
+          <text x="300" y="124" font-family="DM Serif Display,serif" font-size="10" font-style="italic" fill="#FAF6EE" text-anchor="middle">IDEAS WORTH</text>
+          <text x="300" y="140" font-family="DM Serif Display,serif" font-size="10" font-style="italic" fill="#FF6B35" text-anchor="middle">EXISTING</text>
+          <!-- Connecting lines -->
+          <line x1="155" y1="65" x2="258" y2="97" stroke="rgba(255,107,53,0.3)" stroke-width="1.5"/>
+          <line x1="445" y1="65" x2="342" y2="97" stroke="rgba(124,58,237,0.3)" stroke-width="1.5"/>
+          <line x1="155" y1="195" x2="258" y2="163" stroke="rgba(14,165,233,0.3)" stroke-width="1.5"/>
+          <line x1="445" y1="195" x2="342" y2="163" stroke="rgba(22,163,74,0.3)" stroke-width="1.5"/>
+          <!-- THRUST: Square (top-left) -->
+          <rect x="100" y="32" width="70" height="66" rx="4" fill="#FF6B35" opacity="0.9"/>
+          <text x="135" y="60" font-family="Inter,sans-serif" font-size="8" font-weight="700" fill="white" text-anchor="middle" letter-spacing="1">THRUST</text>
+          <text x="135" y="74" font-family="Inter,sans-serif" font-size="7" fill="rgba(255,255,255,0.7)" text-anchor="middle">Financial</text>
+          <text x="135" y="85" font-family="Inter,sans-serif" font-size="7" fill="rgba(255,255,255,0.7)" text-anchor="middle">Structure</text>
+          <!-- AXIS: Circle (top-right) -->
+          <circle cx="445" cy="65" r="40" fill="#7C3AED" opacity="0.9"/>
+          <text x="445" y="60" font-family="Inter,sans-serif" font-size="8" font-weight="700" fill="white" text-anchor="middle" letter-spacing="1">AXIS</text>
+          <text x="445" y="74" font-family="Inter,sans-serif" font-size="7" fill="rgba(255,255,255,0.7)" text-anchor="middle">Org</text>
+          <text x="445" y="85" font-family="Inter,sans-serif" font-size="7" fill="rgba(255,255,255,0.7)" text-anchor="middle">Structure</text>
+          <!-- FLOW: Triangle (bottom-left) -->
+          <polygon points="135,165 95,228 175,228" fill="#0EA5E9" opacity="0.9"/>
+          <text x="135" y="203" font-family="Inter,sans-serif" font-size="8" font-weight="700" fill="white" text-anchor="middle" letter-spacing="1">FLOW</text>
+          <text x="135" y="215" font-family="Inter,sans-serif" font-size="7" fill="rgba(255,255,255,0.7)" text-anchor="middle">Community</text>
+          <!-- GROUND: Diamond (bottom-right) -->
+          <polygon points="445,158 490,195 445,232 400,195" fill="#16A34A" opacity="0.9"/>
+          <text x="445" y="199" font-family="Inter,sans-serif" font-size="8" font-weight="700" fill="white" text-anchor="middle" letter-spacing="1">GROUND</text>
+          <text x="445" y="212" font-family="Inter,sans-serif" font-size="7" fill="rgba(255,255,255,0.7)" text-anchor="middle">Spatial</text>
+        </svg>
