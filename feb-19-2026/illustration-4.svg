@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 600 260" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="The Three Documents — trust, operating agreement, IP map">
+          <rect width="600" height="260" fill="#fdfbf8"/>
+          <!-- Three stacked documents -->
+          <!-- Bottom doc: IP MAP -->
+          <rect x="155" y="80" width="240" height="150" rx="6" fill="#FAF6EE" stroke="#ddd" stroke-width="2" transform="rotate(6, 275, 155)"/>
+          <text x="243" y="172" font-family="Inter,sans-serif" font-size="11" font-weight="700" fill="rgba(0,0,0,0.5)" letter-spacing="2" transform="rotate(6, 275, 155)">IP MAP</text>
+          <!-- Lines on bottom doc -->
+          <line x1="175" y1="185" x2="370" y2="190" stroke="rgba(0,0,0,0.1)" stroke-width="1.5" transform="rotate(6, 275, 155)"/>
+          <line x1="175" y1="195" x2="370" y2="200" stroke="rgba(0,0,0,0.1)" stroke-width="1.5" transform="rotate(6, 275, 155)"/>
+
+          <!-- Middle doc: OPERATING AGREEMENT -->
+          <rect x="155" y="75" width="240" height="150" rx="6" fill="white" stroke="#bbb" stroke-width="2" transform="rotate(-3, 275, 150)"/>
+          <text x="173" y="137" font-family="Inter,sans-serif" font-size="8" font-weight="700" fill="#1a1a1a" letter-spacing="2" transform="rotate(-3, 275, 150)">OPERATING AGREEMENT</text>
+          <line x1="172" y1="148" x2="375" y2="145" stroke="rgba(0,0,0,0.12)" stroke-width="1.2" transform="rotate(-3, 275, 150)"/>
+          <line x1="172" y1="158" x2="355" y2="155" stroke="rgba(0,0,0,0.12)" stroke-width="1.2" transform="rotate(-3, 275, 150)"/>
+          <line x1="172" y1="168" x2="365" y2="165" stroke="rgba(0,0,0,0.12)" stroke-width="1.2" transform="rotate(-3, 275, 150)"/>
+          <line x1="172" y1="178" x2="340" y2="175" stroke="rgba(0,0,0,0.12)" stroke-width="1.2" transform="rotate(-3, 275, 150)"/>
+          <line x1="172" y1="188" x2="350" y2="185" stroke="rgba(0,0,0,0.12)" stroke-width="1.2" transform="rotate(-3, 275, 150)"/>
+
+          <!-- Top doc: TRUST (ghost/translucent) -->
+          <rect x="155" y="65" width="240" height="150" rx="6" fill="rgba(124,58,237,0.06)" stroke="#7C3AED" stroke-width="2" stroke-dasharray="6 3"/>
+          <text x="255" y="155" font-family="DM Serif Display,serif" font-size="42" font-style="italic" fill="rgba(124,58,237,0.2)" text-anchor="middle">TRUST</text>
+
+          <!-- Small figure leaving -->
+          <circle cx="490" cy="150" r="14" fill="#1a1a1a"/>
+          <rect x="479" y="164" width="22" height="16" rx="2" fill="#1a1a1a"/>
+          <!-- Legs walking out -->
+          <line x1="482" y1="180" x2="476" y2="200" stroke="#1a1a1a" stroke-width="3" stroke-linecap="round"/>
+          <line x1="498" y1="180" x2="504" y2="200" stroke="#1a1a1a" stroke-width="3" stroke-linecap="round"/>
+          <!-- Door outline -->
+          <rect x="520" y="110" width="55" height="100" rx="3" fill="none" stroke="#ccc" stroke-width="2"/>
+          <circle cx="525" cy="162" r="3" fill="#ccc"/>
+          <!-- Arrow toward door -->
+          <line x1="505" y1="162" x2="518" y2="162" stroke="rgba(0,0,0,0.25)" stroke-width="1.5"/>
+          <polygon points="516,159 521,162 516,165" fill="rgba(0,0,0,0.25)"/>
+
+          <!-- Label -->
+          <text x="275" y="240" font-family="Inter,sans-serif" font-size="8" fill="rgba(0,0,0,0.35)" text-anchor="middle" font-style="italic">The ghost document is not saving the project.</text>
+        </svg>

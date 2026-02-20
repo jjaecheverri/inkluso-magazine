@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 600 260" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="The pitch that looked like traction">
+          <rect width="600" height="260" fill="#FAF6EE"/>
+          <!-- Stage/background area -->
+          <rect x="60" y="40" width="220" height="180" rx="6" fill="#f0ebe0"/>
+          <!-- Orange podium -->
+          <rect x="155" y="150" width="50" height="60" rx="3" fill="#FF6B35"/>
+          <rect x="145" y="145" width="70" height="12" rx="3" fill="#FF6B35"/>
+          <!-- Presenter figure -->
+          <circle cx="180" cy="125" r="15" fill="#1a1a1a"/>
+          <rect x="167" y="140" width="26" height="12" rx="2" fill="#1a1a1a"/>
+          <line x1="167" y1="145" x2="155" y2="155" stroke="#1a1a1a" stroke-width="3" stroke-linecap="round"/>
+          <line x1="193" y1="145" x2="205" y2="155" stroke="#1a1a1a" stroke-width="3" stroke-linecap="round"/>
+          <!-- Deck/screen behind presenter -->
+          <rect x="80" y="55" width="110" height="75" rx="4" fill="#1a1a1a"/>
+          <text x="90" y="78" font-family="Inter,sans-serif" font-size="7" fill="#FAF6EE" font-weight="700">TRACTION</text>
+          <!-- Bar chart on deck -->
+          <rect x="90" y="95" width="10" height="28" fill="#FF6B35" opacity="0.7"/>
+          <rect x="105" y="85" width="10" height="38" fill="#FF6B35" opacity="0.8"/>
+          <rect x="120" y="73" width="10" height="50" fill="#FF6B35"/>
+          <rect x="135" y="63" width="10" height="60" fill="#FF6B35" opacity="0.9"/>
+          <line x1="90" y1="124" x2="155" y2="124" stroke="#FAF6EE" stroke-width="0.8"/>
+          <!-- Audience figures -->
+          <g>
+            <!-- Figure 1 -->
+            <circle cx="330" cy="155" r="16" fill="#1a1a1a"/>
+            <rect x="318" y="171" width="24" height="14" rx="2" fill="#1a1a1a"/>
+            <!-- Smile curve -->
+            <path d="M323 162 Q330 168 337 162" stroke="#FAF6EE" stroke-width="1.5" fill="none"/>
+            <!-- Thought bubble -->
+            <circle cx="345" cy="138" r="3" fill="#ccc" opacity="0.8"/>
+            <circle cx="352" cy="130" r="4" fill="#ccc" opacity="0.8"/>
+            <ellipse cx="366" cy="120" rx="20" ry="14" fill="white" stroke="#ccc" stroke-width="1.5"/>
+            <text x="358" y="125" font-family="Inter,sans-serif" font-size="11" fill="#999">...</text>
+          </g>
+          <g>
+            <!-- Figure 2 -->
+            <circle cx="415" cy="160" r="16" fill="#1a1a1a"/>
+            <rect x="403" y="176" width="24" height="14" rx="2" fill="#1a1a1a"/>
+            <path d="M408 167 Q415 173 422 167" stroke="#FAF6EE" stroke-width="1.5" fill="none"/>
+            <!-- Thought bubble -->
+            <circle cx="431" cy="144" r="3" fill="#ccc" opacity="0.8"/>
+            <circle cx="437" cy="136" r="4" fill="#ccc" opacity="0.8"/>
+            <ellipse cx="451" cy="126" rx="20" ry="14" fill="white" stroke="#ccc" stroke-width="1.5"/>
+            <text x="443" y="131" font-family="Inter,sans-serif" font-size="11" fill="#999">...</text>
+          </g>
+          <g>
+            <!-- Figure 3 -->
+            <circle cx="500" cy="155" r="16" fill="#1a1a1a"/>
+            <rect x="488" y="171" width="24" height="14" rx="2" fill="#1a1a1a"/>
+            <path d="M493 162 Q500 168 507 162" stroke="#FAF6EE" stroke-width="1.5" fill="none"/>
+            <!-- Thought bubble -->
+            <circle cx="516" cy="138" r="3" fill="#ccc" opacity="0.8"/>
+            <circle cx="523" cy="130" r="4" fill="#ccc" opacity="0.8"/>
+            <ellipse cx="537" cy="120" rx="20" ry="14" fill="white" stroke="#ccc" stroke-width="1.5"/>
+            <text x="529" y="125" font-family="Inter,sans-serif" font-size="11" fill="#999">...</text>
+          </g>
+          <!-- Floor line -->
+          <line x1="60" y1="220" x2="580" y2="220" stroke="#ddd" stroke-width="1.5"/>
+          <!-- Caption -->
+          <text x="300" y="245" font-family="Inter,sans-serif" font-size="8" fill="rgba(0,0,0,0.4)" text-anchor="middle" font-style="italic">The pitch went well. It always does.</text>
+        </svg>
