@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>XT:RELAY — Signal Deduction</title>
+  <meta name="description" content="Crack the Xtatik signal code. Daily logic puzzle. No fluff, just inference." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3EX%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="wrap">
+    <header class="top">
+      <div class="brand">
+        <div class="logo">XT</div>
+        <div class="titles">
+          <h1>XT:RELAY</h1>
+          <p class="sub">Signal Deduction • daily-seeded logic puzzle</p>
+        </div>
+      </div>
+      <div class="top-actions">
+        <a href="../" class="btn ghost" style="text-decoration:none;font-size:13px;">← IN-KluSo</a>
+        <button id="btnHelp" class="btn ghost" type="button">How to play</button>
+        <button id="btnReset" class="btn ghost" type="button" title="Resets current run (does not change daily seed)">Reset</button>
+      </div>
+    </header>
+
+    <main class="grid">
+      <section class="card">
+        <div class="row">
+          <h2>Crack today's signal</h2>
+          <div class="pill" id="dailyTag">Daily</div>
+        </div>
+
+        <div class="meta">
+          <div><span class="k">Length</span> <span id="codeLen">4</span></div>
+          <div><span class="k">Symbols</span> <span id="symbolCount">6</span></div>
+          <div><span class="k">Attempts</span> <span id="maxAttempts">10</span></div>
+        </div>
+
+        <div class="controls">
+          <label class="toggle">
+            <input id="modeDaily" type="checkbox" checked />
+            <span>Daily mode (same puzzle for everyone today)</span>
+          </label>
+          <label class="toggle">
+            <input id="modeHard" type="checkbox" />
+            <span>Hard mode (no repeats in code)</span>
+          </label>
+          <button id="btnNew" class="btn" type="button">New run</button>
+        </div>
+
+        <div class="palette" id="palette" aria-label="Symbol palette"></div>
+
+        <div class="guess">
+          <div class="slots" id="slots" aria-label="Current guess slots"></div>
+          <div class="guess-actions">
+            <button id="btnBack" class="btn ghost" type="button">Back</button>
+            <button id="btnClear" class="btn ghost" type="button">Clear</button>
+            <button id="btnSubmit" class="btn" type="button">Submit</button>
+          </div>
+        </div>
+
+        <div class="board" id="board" aria-label="Guess history"></div>
+        <div class="status" id="status"></div>
+
+        <div class="share">
+          <button id="btnShare" class="btn ghost" type="button" disabled>Share result</button>
+          <button id="btnCopy" class="btn ghost" type="button" disabled>Copy summary</button>
+        </div>
+      </section>
+
+      <aside class="card">
+        <h2>Stats</h2>
+        <div class="stats">
+          <div class="stat">
+            <div class="n" id="streak">0</div>
+            <div class="l">Daily streak</div>
+          </div>
+          <div class="stat">
+            <div class="n" id="wins">0</div>
+            <div class="l">Wins</div>
+          </div>
+          <div class="stat">
+            <div class="n" id="losses">0</div>
+            <div class="l">Losses</div>
+          </div>
+          <div class="stat">
+            <div class="n" id="best">—</div>
+            <div class="l">Best (attempts)</div>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <h3 class="mini">Feedback key</h3>
+        <ul class="key">
+          <li><span class="dot hit"></span> <b>Hit</b>: correct symbol in correct position</li>
+          <li><span class="dot near"></span> <b>Near</b>: correct symbol wrong position</li>
+          <li><span class="dot miss"></span> <b>Miss</b>: symbol not in code</li>
+        </ul>
+
+        <div class="divider"></div>
+
+        <div class="note">
+          <p><b>Design note:</b> This game aims for "sticky" via <i>skill</i> and <i>clarity</i>, not manipulative loops.</p>
+          <p class="muted">Local-only storage. No tracking. No dark patterns. Your audience keeps their autonomy.</p>
+        </div>
+      </aside>
+    </main>
+
+    <footer class="foot">
+      <span id="buildTag" class="muted"></span>
+    </footer>
+  </div>
+
+  <dialog id="dlgHelp" class="dlg">
+    <form method="dialog" class="dlg-inner">
+      <h2>How to play</h2>
+      <p>You're trying to infer a hidden "signal code." Each guess returns feedback:</p>
+      <div class="legend">
+        <div><span class="dot hit"></span> <b>Hit</b> = correct symbol, correct position</div>
+        <div><span class="dot near"></span> <b>Near</b> = symbol exists, wrong position</div>
+        <div><span class="dot miss"></span> <b>Miss</b> = not in code</div>
+      </div>
+      <p>Use deduction. Eliminate impossibilities. Converge.</p>
+      <p class="muted">Daily mode uses a deterministic seed so everyone gets the same puzzle each day.</p>
+      <div class="dlg-actions">
+        <button class="btn" value="ok">Got it</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="./game.js"></script>
+</body>
+</html>
