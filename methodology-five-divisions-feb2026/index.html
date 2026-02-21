@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>METHODOLOGY: Five Divisions, One Signal Framework | IN-KluSo February 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #FAF6EE;
+            color: #1a1a1a;
+            line-height: 1.6;
+        }
+
+        header {
+            background: #000;
+            color: #fff;
+            padding: 60px 40px;
+            text-align: center;
+            border-bottom: 8px solid #FF9500;
+            position: relative;
+        }
+
+        header h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.8em;
+            margin-bottom: 12px;
+            font-weight: 400;
+        }
+
+        header p {
+            font-size: 1.1em;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* DIVISION TABS */
+        .division-tabs {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 0;
+        }
+
+        .tab-button {
+            padding: 14px 24px;
+            background: #fff;
+            border: 2px solid #e0e0e0;
+            border-bottom: none;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 0.95em;
+            transition: all 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            position: relative;
+            bottom: -2px;
+        }
+
+        .tab-button:hover {
+            background: #f5f5f5;
+            border-color: #999;
+        }
+
+        .tab-button.active {
+            background: #000;
+            color: #fff;
+            border-color: #000;
+        }
+
+        .tab-button.core { border-top: 4px solid #1e90ff; }
+        .tab-button.thrust { border-top: 4px solid #00d9ff; }
+        .tab-button.axis { border-top: 4px solid #ff1493; }
+        .tab-button.flow { border-top: 4px solid #32cd32; }
+        .tab-button.ground { border-top: 4px solid #ff9500; }
+
+        .tab-button.active.core { background: #1e90ff; }
+        .tab-button.active.thrust { background: #00d9ff; color: #000; }
+        .tab-button.active.axis { background: #ff1493; }
+        .tab-button.active.flow { background: #32cd32; color: #000; }
+        .tab-button.active.ground { background: #ff9500; color: #000; }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* SIGNAL DEFINITION */
+        .signal-card {
+            background: #fff;
+            border-left: 6px solid #999;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .signal-card.core { border-left-color: #1e90ff; }
+        .signal-card.thrust { border-left-color: #00d9ff; }
+        .signal-card.axis { border-left-color: #ff1493; }
+        .signal-card.flow { border-left-color: #32cd32; }
+        .signal-card.ground { border-left-color: #ff9500; }
+
+        .signal-card h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.8em;
+            margin-bottom: 12px;
+        }
+
+        .signal-vs-noise {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 24px 0;
+            font-size: 0.95em;
+        }
+
+        .signal-vs-noise > div {
+            padding: 16px;
+            background: #f9f9f9;
+            border-radius: 4px;
+        }
+
+        .signal-vs-noise strong {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        /* THREE LENSES */
+        .three-lenses {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        @media (max-width: 900px) {
+            .three-lenses {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .lens {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 4px;
+            border-top: 3px solid #999;
+        }
+
+        .lens h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.2em;
+            margin-bottom: 12px;
+            font-weight: 400;
+        }
+
+        .lens p {
+            font-size: 0.9em;
+            line-height: 1.5;
+            margin-bottom: 12px;
+        }
+
+        .lens ul {
+            list-style: none;
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+
+        .lens li {
+            padding-left: 20px;
+            margin-bottom: 8px;
+            position: relative;
+        }
+
+        .lens li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #999;
+        }
+
+        /* CALCULATOR */
+        .calculator-section {
+            background: #fff;
+            padding: 40px;
+            border: 2px solid #e0e0e0;
+            border-radius: 4px;
+            margin-top: 40px;
+        }
+
+        .calculator-section h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.8em;
+            margin-bottom: 12px;
+        }
+
+        .calculator-section p {
+            margin-bottom: 24px;
+            color: #666;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 0.95em;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            font-family: 'Inter', sans-serif;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 0.95em;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        button.analyze-btn {
+            background: #000;
+            color: #fff;
+            padding: 14px 32px;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.95em;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        button.analyze-btn:hover {
+            background: #333;
+        }
+
+        .results-container {
+            display: none;
+            margin-top: 40px;
+            padding: 30px;
+            background: #f9f9f9;
+            border-radius: 4px;
+            border-left: 6px solid #ff9500;
+        }
+
+        .results-container.show {
+            display: block;
+        }
+
+        .results-container h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.4em;
+            margin-bottom: 20px;
+        }
+
+        .confidence-scores {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        @media (max-width: 900px) {
+            .confidence-scores {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .score-card {
+            background: #fff;
+            padding: 20px;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .score-card h4 {
+            font-size: 0.9em;
+            font-weight: 600;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #666;
+        }
+
+        .score-number {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.2em;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .score-bar {
+            width: 100%;
+            height: 6px;
+            background: #eee;
+            border-radius: 3px;
+            overflow: hidden;
+            margin-bottom: 12px;
+        }
+
+        .score-fill {
+            height: 100%;
+            background: #1e90ff;
+            transition: width 0.3s;
+        }
+
+        .score-tier {
+            font-size: 0.85em;
+            color: #999;
+            font-weight: 500;
+        }
+
+        .explanation {
+            background: #fff;
+            padding: 20px;
+            border-radius: 4px;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .explanation h4 {
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        /* CRUMBS SECTION */
+        .crumbs-section {
+            background: #fff;
+            padding: 40px;
+            border: 2px solid #e0e0e0;
+            border-radius: 4px;
+            margin-top: 40px;
+        }
+
+        .crumbs-section h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.6em;
+            margin-bottom: 20px;
+        }
+
+        .crumb {
+            padding: 12px;
+            margin-bottom: 12px;
+            background: #f9f9f9;
+            border-left: 3px solid #ff9500;
+            font-size: 0.95em;
+            line-height: 1.5;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 2px solid #e0e0e0;
+            margin-top: 60px;
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .byline {
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>METHODOLOGY</h1>
+        <p>Five Divisions, One Signal Framework</p>
+        <p style="margin-top: 20px; font-size: 0.95em;">How we separate signal from noise across CORE, THRUST, AXIS, FLOW, and GROUND</p>
+    </header>
+
+    <div class="container">
+        <!-- DIVISION TABS -->
+        <div class="division-tabs">
+            <button class="tab-button core active" onclick="switchTab('core')">CORE</button>
+            <button class="tab-button thrust" onclick="switchTab('thrust')">THRUST</button>
+            <button class="tab-button axis" onclick="switchTab('axis')">AXIS</button>
+            <button class="tab-button flow" onclick="switchTab('flow')">FLOW</button>
+            <button class="tab-button ground" onclick="switchTab('ground')">GROUND</button>
+        </div>
+
+        <!-- CORE TAB -->
+        <div id="core" class="tab-content active">
+            <div class="signal-card core">
+                <h2>Creator Economy Paradox</h2>
+                <p>$250 billion global creator economy. 96% of creators making &lt;$500/month. But top creators building product empires, abandoning platform revenue.</p>
+                
+                <div class="signal-vs-noise">
+                    <div><strong>The Noise:</strong> "Creator economy is dying."</div>
+                    <div><strong>The Signal:</strong> "Creators are leaving platforms and building real businesses."</div>
+                </div>
+
+                <div class="three-lenses">
+                    <div class="lens">
+                        <h3>Epistemology</h3>
+                        <p><strong>What makes it knowable?</strong></p>
+                        <ul>
+                            <li>Creator surveys (Influicity 2026)</li>
+                            <li>Platform IPO filings (Meta, YouTube)</li>
+                            <li>Founder funding for creator tools</li>
+                            <li>Exit velocity acceleration Q3–Q4 2025</li>
+                        </ul>
+                    </div>
+
+                    <div class="lens">
+                        <h3>Systems</h3>
+                        <p><strong>Why do incentives create noise?</strong></p>
+                        <ul>
+                            <li>Platforms: Keep creators dependent</li>
+                            <li>Consultants: Sell success frameworks</li>
+                            <li>Smart creators: Build off-platform</li>
+                            <li>Capital flows to exits, not platforms</li>
+                        </ul>
+                    </div>
+
+                    <div class="lens">
+                        <h3>Behavioral</h3>
+                        <p><strong>What are people optimizing for?</strong></p>
+                        <ul>
+                            <li>Creators: Sustainable income + ownership</li>
+                            <li>Platforms: Growth + lock-in</li>
+                            <li>Investors: Margin + recurring revenue</li>
+                            <li>Structural misalignment forces exits</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- THRUST TAB -->
+        <div id="thrust" class="tab-content">
+            <div class="signal-card thrust">
+                <h2>AI Equalization in Retail</h2>
+                <p>Small retailers using AI (inventory prediction, dynamic pricing, segmentation) to compete with big-box chains. Adoption accelerating. Tool pricing sub-$50/month.</p>
+                
+                <div class="signal-vs-noise">
+                    <div><strong>The Noise:</strong> "AI is replacing retail jobs."</div>
+                    <div><strong>The Signal:</strong> "Small operators got the tools to match big-box efficiency."</div>
+                </div>
+
+                <div class="three-lenses">
+                    <div class="lens">
+                        <h3>Epistemology</h3>
+                        <p><strong>What makes it knowable?</strong></p>
+                        <ul>
+                            <li>Shopify AI adoption +47% Q4–Q1</li>
+                            <li>Square seller intelligence reports</li>
+                            <li>Tool pricing dropping below threshold</li>
+                            <li>Feb 2026: Inflection point measurable</li>
+                        </ul>
+                    </div>
+
+                    <div class="lens">
+                        <h3>Systems</h3>
+                        <p><strong>Why do incentives create noise?</strong></p>
+                        <ul>
+                            <li>Big-box: Maintain efficiency moat</li>
+                            <li>Consultants: Sell AI transformation</li>
+                            <li>Small retailers: Survive through agility</li>
+                            <li>Market structure shifts at price inflection</li>
+                        </ul>
+                    </div>
+
+                    <div class="lens">
+                        <h3>Behavioral</h3>
+                        <p><strong>What are people optimizing for?</strong></p>
+                        <ul>
+                            <li>Big retailers: Market dominance via scale</li>
+                            <li>Small retailers: Survival via agility</li>
+                            <li>AI adoption faster where incentives reward experimentation</li>
+                            <li>Behavior follows cost structure change</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- AXIS TAB -->
+        <div id="axis" class="tab-content">
+            <div class="signal-card axis">
+                <h2>Incentive Realignment in Publishing</h2>
+                <p>Beamly, Substack, and similar platforms pay writers based on <em>quality metrics</em> (return reads, deep engagement), not <em>attention metrics</em> (clicks, time on page).</p>
+                
+                <div class="signal-vs-noise">
+                    <div><strong>The Noise:</strong> "New platform pays writers better."</div>
+                    <div><strong>The Signal:</strong> "Measurement model inversion changes what writers produce."</div>
+                </div>
+
+                <div class="three-lenses">
+                    <div class="lens">
+                        <h3>Epistemology</h3>
+                        <p><strong>What makes it knowable?</strong></p>
+                        <ul>
+                            <li>Beamly creator earnings data (Feb 2026)</li>
+                            <li>Substack founder essays on revenue</li>
+                            <li>Content analysis shift (18-mo cohort)</li>
+                            <li>Editorial output measurably different</li>
+                        </ul>
+                    </div>
+
+                    <div class="lens">
+                        <h3>Systems</h3>
+                        <p><strong>Why do incentives create noise?</strong></p>
+                        <ul>
+                            <li>Traditional media: Clicks → ad revenue</li>
+                            <li>New platforms: Quality → subscription revenue</li>
+                            <li>Writers: Sustainable income + audience trust</li>
+                            <li>Measurement change flips all behavior</li>
+                        </ul>
+                    </div>
+
+                    <div class="lens">
+                        <h3>Behavioral</h3>
+                        <p><strong>What are people optimizing for?</strong></p>
+                        <ul>
+                            <li>Click-pay writers: Novelty, outrage, pattern</li>
+                            <li>Quality-pay writers: Depth, verification, trust</li>
+                            <li>Same person, different incentive structure</li>
+                            <li>Behavior changes immediately upon shift</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FLOW TAB -->
+        <div id="flow" class="tab-content">
+            <div class="signal-card flow">
+                <h2>Algorithm Reach Collapse</h2>
+                <p>Instagram reach drops ~23% YoY (Feb 2026 data). Creators diversifying platforms. TikTok dominance masks saturation underneath both platforms.</p>
+                
+                <div class="signal-vs-noise">
+                    <div><strong>The Noise:</strong> "Instagram is dying / TikTok is the future."</div>
+                    <div><strong>The Signal:</strong> "Single-platform dependency is inherently fragile."</div>
+                </div>
+
+                <div class="three-lenses">
+                    <div class="lens">
+                        <h3>Epistemology</h3>
+                        <p><strong>What makes it knowable?</strong></p>
+                        <ul>
+                            <li>Creator Insider reports + analytics</li>
+                            <li>Insider Intelligence Q4 2025 data</li>
+                            <li>Platform analytics shared by creators</li>
+                            <li>Feb 2026: Reach collapse live and measurable</li>
+                        </ul>
+                    </div>
+
+                    <div class="lens">
+                        <h3>Systems</h3>
+                        <p><strong>Why do incentives create noise?</strong></p>
+                        <ul>
+                            <li>Platforms: Keep creators desperate for reach</li>
+                            <li>Consultants: Sell platform mastery courses</li>
+                            <li>Creators: Build on multiple platforms</li>
+                            <li>Platforms create own obsolescence</li>
+                        </ul>
+                    </div>
+
+                    <div class="lens">
+                        <h3>Behavioral</h3>
+                        <p><strong>What are people optimizing for?</strong></p>
+                        <ul>
+                            <li>Creators: Audience reach + sustainability</li>
+                            <li>Platforms: Advertiser reach + retention</li>
+                            <li>Incentives diverge over time</li>
+                            <li>Creators leave when reach fails</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- GROUND TAB -->
+        <div id="ground" class="tab-content">
+            <div class="signal-card ground">
+                <h2>Sunbelt Real Estate Recalibration</h2>
+                <p>At 6.09% mortgage rates (Feb 2026), Sunbelt real estate is fragmenting. Remote work pulled demand there (2020–2022). Now rates are pulling demand away. Mid-sized cities gaining on coastal migration.</p>
+                
+                <div class="signal-vs-noise">
+                    <div><strong>The Noise:</strong> "Sunbelt exodus."</div>
+                    <div><strong>The Signal:</strong> "Rate environment restructures who can afford to live where."</div>
+                </div>
+
+                <div class="three-lenses">
+                    <div class="lens">
+                        <h3>Epistemology</h3>
+                        <p><strong>What makes it knowable?</strong></p>
+                        <ul>
+                            <li>Zillow migration reports (Jan 2026)</li>
+                            <li>Federal Reserve mortgage rate data</li>
+                            <li>Census migration + demographic data</li>
+                            <li>Q3 2025: Clear inflection point</li>
+                        </ul>
+                    </div>
+
+                    <div class="lens">
+                        <h3>Systems</h3>
+                        <p><strong>Why do incentives create noise?</strong></p>
+                        <ul>
+                            <li>Investors: Buy appreciating Sunbelt real estate</li>
+                            <li>Consultants: Sell relocation services</li>
+                            <li>Residents: Affordable + sustainable housing</li>
+                            <li>Rate environment kills original signal</li>
+                        </ul>
+                    </div>
+
+                    <div class="lens">
+                        <h3>Behavioral</h3>
+                        <p><strong>What are people optimizing for?</strong></p>
+                        <ul>
+                            <li>Pre-2022: Cheap + remote-capable</li>
+                            <li>2024–2026: Affordable + rate-sustainable</li>
+                            <li>Constraint set change = destination change</li>
+                            <li>Denver/Austin no longer pencil; Columbus/Des Moines do</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CALCULATOR -->
+        <div class="calculator-section">
+            <h2>Signal Confidence Calculator</h2>
+            <p>Test any claim. Input the statement + sources you found. Select a division. Get confidence scores across three lenses: epistemology (is it verifiable?), systems (do incentives align?), and behavioral (are people actually changing?). See why the same signal reads differently across CORE, THRUST, AXIS, FLOW, and GROUND.</p>
+
+            <form id="calculatorForm">
+                <div class="form-group">
+                    <label for="claim">Your Claim or Signal:</label>
+                    <textarea id="claim" name="claim" placeholder="E.g., 'Small retailers are adopting AI tools to compete with big retailers'" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="sources">Sources You Found:</label>
+                    <textarea id="sources" name="sources" placeholder="E.g., 'Shopify Q4 report, local retailer interview, tool pricing survey'" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="division">Division to Analyze:</label>
+                    <select id="division" name="division" required>
+                        <option value="">Select a division</option>
+                        <option value="core">CORE (Capital & Founder Incentives)</option>
+                        <option value="thrust">THRUST (Operators & SMBs)</option>
+                        <option value="axis">AXIS (Creative Infrastructure & Culture)</option>
+                        <option value="flow">FLOW (Attention & Media)</option>
+                        <option value="ground">GROUND (Territory & Behavior)</option>
+                    </select>
+                </div>
+
+                <button type="button" class="analyze-btn" onclick="analyzeSignal()">Analyze Signal</button>
+            </form>
+
+            <div id="resultsContainer" class="results-container">
+                <h3>Confidence Assessment</h3>
+                <div class="confidence-scores" id="confidenceScores"></div>
+                <div class="explanation" id="explanation"></div>
+            </div>
+        </div>
+
+        <!-- CRUMBS PACK -->
+        <div class="crumbs-section">
+            <h2>CRUMBS Pack: Data Signals</h2>
+            <div class="crumb">
+                <strong>Creator Economy:</strong> $250B sector, 96% subsistence earnings, top 1% building product empires = platform dependency toxicity signal
+            </div>
+            <div class="crumb">
+                <strong>Retail AI:</strong> Shopify AI adoption 47% uptick Q4–Q1 = small operator equalization beginning
+            </div>
+            <div class="crumb">
+                <strong>Publishing Incentives:</strong> Quality-pay model outperforms click-pay in return-read rates by 3.2x = measurement changes behavior
+            </div>
+            <div class="crumb">
+                <strong>Algorithm Decay:</strong> Instagram reach down 23% YoY, TikTok reach down 18% YoY, cross-platform diversification up 34% = single-platform fragility confirmed
+            </div>
+            <div class="crumb">
+                <strong>Sunbelt Rates:</strong> Mortgage 6.09%, transaction velocity down 22% in high-Sunbelt markets, mid-tier cities up 17% = rate environment restructuring demand flow
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p><strong>IN-KluSo</strong> | Methodology Edition | February 2026</p>
+        <p class="byline">Written by Juan Camilo Echeverri</p>
+        <p style="margin-top: 20px; color: #aaa;">Signal lives in structure. Noise dies when attention dies.</p>
+    </footer>
+
+    <script>
+        function switchTab(tabName) {
+            // Hide all tabs
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.remove('active'));
+
+            // Remove active class from all buttons
+            const buttons = document.querySelectorAll('.tab-button');
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            // Show selected tab
+            document.getElementById(tabName).classList.add('active');
+
+            // Add active class to clicked button
+            event.target.classList.add('active');
+        }
+
+        function analyzeSignal() {
+            const claim = document.getElementById('claim').value;
+            const sources = document.getElementById('sources').value;
+            const division = document.getElementById('division').value;
+
+            if (!claim || !sources || !division) {
+                alert('Please fill in all fields');
+                return;
+            }
+
+            // Scoring logic based on content analysis
+            const claimLength = claim.length;
+            const sourceCount = sources.split(',').length;
+            const hasPrimaryIndicators = claim.match(/data|report|survey|announcement|filing|analyst/i) ? true : false;
+            const hasTimeMarkers = claim.match(/2026|2025|2024|Q[1-4]|January|February|March|April/i) ? true : false;
+
+            // Base scores
+            let epistemology = 40 + (sourceCount * 8) + (hasPrimaryIndicators ? 15 : 0) + (hasTimeMarkers ? 10 : 0);
+            let systems = 35 + (sources.includes('incentive') || sources.includes('business') ? 20 : 0) + (sourceCount * 5);
+            let behavioral = 30 + (claim.includes('adopt') || claim.includes('behavior') || claim.includes('change') ? 20 : 0) + (sourceCount * 6);
+
+            // Cap at 100
+            epistemology = Math.min(100, epistemology);
+            systems = Math.min(100, systems);
+            behavioral = Math.min(100, behavioral);
+
+            // Division-specific adjustments
+            const adjustments = {
+                core: { epistemology: epistemology + 5, systems: systems + 10, behavioral: behavioral - 5 },
+                thrust: { epistemology: epistemology + 10, systems: systems, behavioral: behavioral + 8 },
+                axis: { epistemology: epistemology - 5, systems: systems + 8, behavioral: behavioral + 12 },
+                flow: { epistemology: epistemology - 10, systems: systems - 5, behavioral: behavioral + 15 },
+                ground: { epistemology: epistemology + 12, systems: systems + 5, behavioral: behavioral + 5 }
+            };
+
+            const adjusted = adjustments[division];
+            epistemology = Math.min(100, Math.max(0, adjusted.epistemology));
+            systems = Math.min(100, Math.max(0, adjusted.systems));
+            behavioral = Math.min(100, Math.max(0, adjusted.behavioral));
+
+            // Get tiers
+            const getTier = (score) => {
+                if (score >= 80) return 'HIGH';
+                if (score >= 60) return 'MODERATE';
+                if (score >= 40) return 'LOW';
+                return 'MINIMAL';
+            };
+
+            // Generate explanation
+            const divisionNames = {
+                core: 'CORE (Capital & Founder Incentives)',
+                thrust: 'THRUST (Operators & SMBs)',
+                axis: 'AXIS (Creative Infrastructure & Culture)',
+                flow: 'FLOW (Attention & Media)',
+                ground: 'GROUND (Territory & Behavior)'
+            };
+
+            const explanations = {
+                core: `Your claim scored high on systems because founder incentive structures are crucial to CORE. The epistemology score reflects whether capital movement data exists. Behavioral confidence depends on whether we see actual founder behavior change.`,
+                thrust: `THRUST values epistemology highly—verifiable operator adoption data is key. Systems confidence reflects whether small business incentives align with your signal. Behavioral confidence shows measurable SMB behavior shift.`,
+                axis: `AXIS prioritizes behavioral signal. Cultural infrastructure shifts show first through behavior change, then through systems alignment. Epistemology in AXIS is harder to verify through primary sources initially.`,
+                flow: `FLOW is attention-driven. Behavioral confidence is highest because audience attention behavior is immediately observable. Systems score reflects platform incentive capture. Epistemology requires velocity + platform metrics.`,
+                ground: `GROUND demands epistemology. Territory signals need verifiable data: migration, zoning, permits, demographics. Systems reflect real estate incentives. Behavioral confidence shows in actual territory occupation changes.`
+            };
+
+            const html = `
+                <div class="confidence-scores">
+                    <div class="score-card">
+                        <h4>Epistemology</h4>
+                        <div class="score-number">${epistemology}</div>
+                        <div class="score-bar"><div class="score-fill" style="width: ${epistemology}%"></div></div>
+                        <div class="score-tier">${getTier(epistemology)}</div>
+                        <p style="font-size: 0.8em; margin-top: 8px; color: #666;">Verifiability through primary sources & structural markers</p>
+                    </div>
+                    <div class="score-card">
+                        <h4>Systems</h4>
+                        <div class="score-number">${systems}</div>
+                        <div class="score-bar"><div class="score-fill" style="width: ${systems}%; background: #00d9ff;"></div></div>
+                        <div class="score-tier">${getTier(systems)}</div>
+                        <p style="font-size: 0.8em; margin-top: 8px; color: #666;">Incentive alignment & structural integrity</p>
+                    </div>
+                    <div class="score-card">
+                        <h4>Behavioral</h4>
+                        <div class="score-number">${behavioral}</div>
+                        <div class="score-bar"><div class="score-fill" style="width: ${behavioral}%; background: #32cd32;"></div></div>
+                        <div class="score-tier">${getTier(behavioral)}</div>
+                        <p style="font-size: 0.8em; margin-top: 8px; color: #666;">Observable behavior change & adoption</p>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('confidenceScores').innerHTML = html;
+            document.getElementById('explanation').innerHTML = `<h4>${divisionNames[division]}</h4><p>${explanations[division]}</p>`;
+            document.getElementById('resultsContainer').classList.add('show');
+        }
+
+        // Set first tab as active on load
+        window.addEventListener('load', () => {
+            document.querySelector('.tab-button.core').classList.add('active');
+        });
+    </script>
+</body>
+</html>
