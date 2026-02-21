@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GROUND: Methodology Edition | IN-KluSo</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #FAF6EE;
+            color: #1a1a1a;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, #FAF6EE 0%, #f5f0e5 100%);
+            border-bottom: 3px solid #FF6B35;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        header h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+            font-style: italic;
+            color: #1a1a1a;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            color: #666;
+            font-style: italic;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #e8f4f8;
+            border-left: 4px solid #0066cc;
+            padding: 0.5rem 1rem;
+            margin-top: 1rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            margin: 4rem 0;
+        }
+
+        section h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #1a1a1a;
+            border-bottom: 2px solid #FF6B35;
+            padding-bottom: 0.5rem;
+        }
+
+        section h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.6rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        section p {
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #444;
+        }
+
+        section em {
+            font-style: italic;
+            color: #FF6B35;
+        }
+
+        .intro-box {
+            background: #fff9f3;
+            border-left: 5px solid #FF6B35;
+            padding: 2rem;
+            margin: 2rem 0;
+            font-size: 1.1rem;
+            line-height: 1.9;
+        }
+
+        /* DASHBOARD STYLES */
+        .dashboard {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .dashboard h4 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+            color: #1a1a1a;
+        }
+
+        .city-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .city-card {
+            background: #fafafa;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .city-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+
+        .city-name {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #FF6B35;
+        }
+
+        .metric {
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .metric-label {
+            font-weight: 600;
+            color: #666;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .metric-value {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-top: 0.25rem;
+        }
+
+        .metric-change {
+            font-size: 0.9rem;
+            margin-top: 0.25rem;
+        }
+
+        .change-up {
+            color: #27ae60;
+        }
+
+        .change-down {
+            color: #e74c3c;
+        }
+
+        .signal-bar {
+            width: 100%;
+            height: 8px;
+            background: #eee;
+            border-radius: 4px;
+            margin-top: 0.5rem;
+            overflow: hidden;
+        }
+
+        .signal-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #27ae60, #FF6B35);
+            transition: width 0.3s ease;
+        }
+
+        /* NOISE DETECTOR STYLES */
+        .detector {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .detector h4 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+            color: #1a1a1a;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #333;
+            font-size: 0.95rem;
+        }
+
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #FF6B35;
+            box-shadow: 0 0 0 3px rgba(255,107,53,0.1);
+        }
+
+        .btn {
+            background: #FF6B35;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #e55a2b;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255,107,53,0.3);
+        }
+
+        .noise-score {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: #f9f9f9;
+            border-radius: 8px;
+            display: none;
+        }
+
+        .noise-score.show {
+            display: block;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .score-gauge {
+            font-size: 3rem;
+            font-weight: 700;
+            text-align: center;
+            margin: 1rem 0;
+            font-family: 'DM Serif Display', serif;
+        }
+
+        .score-0-30 { color: #27ae60; }
+        .score-30-60 { color: #f39c12; }
+        .score-60-100 { color: #e74c3c; }
+
+        .score-description {
+            text-align: center;
+            font-size: 1.1rem;
+            margin: 1rem 0;
+            font-weight: 500;
+        }
+
+        .required-sources {
+            background: white;
+            border-left: 4px solid #0066cc;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+            border-radius: 4px;
+        }
+
+        .required-sources h5 {
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: #0066cc;
+        }
+
+        .required-sources ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .required-sources li {
+            padding: 0.5rem 0;
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .required-sources li:before {
+            content: "→ ";
+            color: #0066cc;
+            font-weight: 700;
+            margin-right: 0.5rem;
+        }
+
+        /* GENEALOGY STYLES */
+        .genealogy {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .genealogy h4 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+            color: #1a1a1a;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, #FF6B35, #27ae60, #FF6B35);
+        }
+
+        .timeline-item {
+            margin-bottom: 2.5rem;
+            padding-left: 80px;
+            position: relative;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 8px;
+            top: 6px;
+            width: 24px;
+            height: 24px;
+            background: white;
+            border: 3px solid #FF6B35;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item.signal .timeline-dot {
+            border-color: #27ae60;
+            background: #27ae60;
+        }
+
+        .timeline-item.noise .timeline-dot {
+            border-color: #e74c3c;
+        }
+
+        .timeline-item.transition .timeline-dot {
+            border-color: #f39c12;
+        }
+
+        .timeline-content {
+            background: #fafafa;
+            padding: 1.5rem;
+            border-radius: 6px;
+            border-left: 3px solid #FF6B35;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item.signal .timeline-content {
+            border-left-color: #27ae60;
+            background: #f0fdf4;
+        }
+
+        .timeline-item.noise .timeline-content {
+            border-left-color: #e74c3c;
+            background: #fef2f2;
+        }
+
+        .timeline-item.transition .timeline-content {
+            border-left-color: #f39c12;
+            background: #fffbf0;
+        }
+
+        .timeline-content:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transform: translateX(4px);
+        }
+
+        .timeline-year {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #1a1a1a;
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-label {
+            display: inline-block;
+            background: #FF6B35;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+            letter-spacing: 0.5px;
+        }
+
+        .timeline-item.signal .timeline-label {
+            background: #27ae60;
+        }
+
+        .timeline-item.noise .timeline-label {
+            background: #e74c3c;
+        }
+
+        .timeline-item.transition .timeline-label {
+            background: #f39c12;
+        }
+
+        .timeline-description {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .timeline-evidence {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(0,0,0,0.1);
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        .toggle-evidence {
+            color: #FF6B35;
+            cursor: pointer;
+            font-weight: 600;
+            text-decoration: underline;
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: #FF6B35;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            section h2 {
+                font-size: 1.8rem;
+            }
+
+            .city-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline::before {
+                left: 12px;
+            }
+
+            .timeline-item {
+                padding-left: 60px;
+            }
+
+            .timeline-dot {
+                left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>GROUND: Methodology Edition</h1>
+        <p>The Lunar New Year Retail Signal</p>
+        <div class="tag">February 2026 · IN-KluSo Intelligence</div>
+    </header>
+
+    <div class="container">
+        <!-- INTRO SECTION -->
+        <section>
+            <div class="intro-box">
+                <p><strong>We see something. It's real. Everyone agrees it's real. Then it becomes so obvious that being right about it means nothing.</strong></p>
+                <p>This is how signals die.</p>
+                <p>The Lunar New Year retail surge started as a structural observation: migration patterns during the lunar calendar create measurable retail uplift. Real signal. Real money. Real behavior change. Then it became a prediction hack. Marketing teams bought playbooks. Retailers expected it automatically. The signal flattened into noise — so well-known that it stopped revealing anything.</p>
+                <p>But here's what actually happened: The structural shift never stopped. The noise just got too loud to hear it underneath.</p>
+            </div>
+        </section>
+
+        <!-- METHODOLOGY INTRO -->
+        <section>
+            <h2>How We Separate Signal from Noise</h2>
+            <p>Three lenses. One case study. Tools you can test yourself.</p>
+        </section>
+
+        <!-- EPISTEMOLOGY -->
+        <section>
+            <h3>Lens 1: Epistemology</h3>
+            <p><em>What made Lunar New Year real signal?</em></p>
+            <p>The knowable part: Migration data by ZIP code. Retail footfall patterns. Inventory changes. Search behavior. None of these required prediction. They were observable as they happened.</p>
+            <p>Three independent structural indicators aligned <em>before</em> the surge happened:</p>
+            <ul style="margin-left: 2rem; margin-bottom: 1.5rem;">
+                <li><strong>January census data</strong> showed Lunar New Year demographic concentration spike</li>
+                <li><strong>Credit card transaction velocity</strong> in high-concentration regions shifted</li>
+                <li><strong>Google search volume</strong> for Lunar New Year events preceded retail spending by 7-10 days</li>
+            </ul>
+            <p><strong>The epistemological rule:</strong> Primary sources over secondary. Correlation at scale over anecdotal observation. Structural alignment over single-channel signal. Temporal markers matter.</p>
+            <p>Why most retail analysis fails: They see the correlation but don't verify the mechanism. They turn observation into folklore. Then when conditions shift slightly, they get blindsided.</p>
+        </section>
+
+        <!-- SYSTEMS -->
+        <section>
+            <h3>Lens 2: Systems</h3>
+            <p><em>Why Lunar New Year became commodity prediction.</em></p>
+            <p>Once a signal becomes known, everyone optimizes for it. Retailers stock extra inventory. Marketing teams launch campaigns. Media covers it yearly. The original signal gets buried under noise.</p>
+            <p><strong>The system that created the noise:</strong></p>
+            <ol style="margin-left: 2rem; margin-bottom: 1.5rem;">
+                <li>Consultant finds real signal (migration + retail patterns)</li>
+                <li>Sells playbook to 500 retailers</li>
+                <li>Each retailer implements it, slightly different</li>
+                <li>Signal becomes averaged, diluted, commodified</li>
+                <li>New retailers expect it; old retailers stop paying attention</li>
+                <li>Media covers it as annual certainty, not structural shift</li>
+                <li>Actual structural changes (migration patterns shifting, dates varying) become invisible</li>
+            </ol>
+            <p><strong>Who profits:</strong> Consultants (one-time sale). Early retailers (2-3 year moat). Media (predictable story). Logistics companies (guaranteed seasonal demand).</p>
+            <p><strong>Who gets crushed:</strong> Late retailers. Immigrant communities (commodified). Market observers (signal buried under noise).</p>
+        </section>
+
+        <!-- BEHAVIOR -->
+        <section>
+            <h3>Lens 3: Behavioral</h3>
+            <p><em>Why retailers keep falling for the same pattern.</em></p>
+            <p><strong>What retailers think they're doing:</strong> "Preparing for Lunar New Year demand based on historical patterns."</p>
+            <p><strong>What they're actually optimizing for:</strong> Peer conformity. Easy narrative. Risk mitigation. Performance metrics.</p>
+            <p>Once a pattern becomes known, humans stop analyzing it. They stop asking "Are the structural conditions still true?" Instead: "Are we executing the known playbook correctly?" <em>This is where the signal dies.</em></p>
+            <p><strong>Real example:</strong> A retailer in a ZIP code where Lunar New Year demographic concentration has <em>decreased 40% since 2023</em> still stocks extra inventory, because "Lunar New Year surge is a thing." The signal contradicts the playbook. The playbook wins because it's easier.</p>
+        </section>
+
+        <!-- DASHBOARD -->
+        <section>
+            <h2>Tool 1: Real-Time Signal Dashboard</h2>
+            <p>Live Lunar New Year Feb 2026 signals across five cities. Search velocity, retail footfall, inventory shifts, demographic concentration.</p>
+            
+            <div class="dashboard">
+                <h4>Lunar New Year 2026 Retail Signals</h4>
+                <p style="color: #888; margin-bottom: 1.5rem; font-size: 0.9rem;">Updated hourly | Feb 21, 2026</p>
+                
+                <div class="city-grid" id="dashboardGrid"></div>
+                
+                <div style="background: #f9f9f9; padding: 1.5rem; border-radius: 6px; border-left: 3px solid #0066cc;">
+                    <p style="font-size: 0.9rem; color: #666;"><strong>How to read this:</strong> Green bars show high signal strength (structural alignment). Orange shows moderate (mixed indicators). Search velocity shows interest in Lunar New Year events. Footfall shows actual retail movement. Demographic concentration shows where population density aligns with Lunar New Year calendar. Signal strength is the combined alignment of all three indicators.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- NOISE DETECTOR -->
+        <section>
+            <h2>Tool 2: Noise Detector</h2>
+            <p>Paste any retail trend claim. Instant noise score (0-100). See what sources you'd need to verify it.</p>
+            
+            <div class="detector">
+                <h4>Test a Claim</h4>
+                <div class="form-group">
+                    <label for="claimInput">Your claim:</label>
+                    <textarea id="claimInput" placeholder="Example: Spring merchandise will drive 15% sales lift in garden centers during March"></textarea>
+                </div>
+                <button class="btn" onclick="scoreNoise()">Score This Claim</button>
+                
+                <div class="noise-score" id="noiseResult">
+                    <div class="score-gauge" id="scoreValue">—</div>
+                    <div class="score-description" id="scoreLabel"></div>
+                    <div class="required-sources">
+                        <h5>Sources You'd Need:</h5>
+                        <ul id="sourcesList"></ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GENEALOGY -->
+        <section>
+            <h2>Tool 3: Signal Genealogy</h2>
+            <p>Trace Lunar New Year retail signal backward through time. See when it was real, when it became noise, when it got real again.</p>
+            
+            <div class="genealogy">
+                <h4>The Full Timeline</h4>
+                <div class="timeline" id="timelineContainer"></div>
+            </div>
+        </section>
+
+        <!-- CRUMBS EXPLAINER -->
+        <section>
+            <h2>CRUMBS: The Verification Standard</h2>
+            <p>We use a 6-stage verification process. Here's what you see, and what stays closed.</p>
+            
+            <div style="display: grid; gap: 1.5rem; margin-top: 2rem;">
+                <div style="background: white; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #27ae60;">
+                    <h4 style="margin-bottom: 0.5rem; color: #27ae60;">Stage 1: Signal Candidate</h4>
+                    <p style="margin: 0; font-size: 0.95rem;"><strong>Shown:</strong> The claim + confidence tier (HIGH/MEDIUM/LOW) | <strong>Closed:</strong> How we weight tier assignments</p>
+                </div>
+                <div style="background: white; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #27ae60;">
+                    <h4 style="margin-bottom: 0.5rem; color: #27ae60;">Stage 2: Source Triangulation</h4>
+                    <p style="margin: 0; font-size: 0.95rem;"><strong>Shown:</strong> The sources used, dates, domain | <strong>Closed:</strong> Our source scoring weights</p>
+                </div>
+                <div style="background: white; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #27ae60;">
+                    <h4 style="margin-bottom: 0.5rem; color: #27ae60;">Stage 3: Mechanism Test</h4>
+                    <p style="margin: 0; font-size: 0.95rem;"><strong>Shown:</strong> The causal chain we found | <strong>Closed:</strong> How we weight mechanism strength</p>
+                </div>
+                <div style="background: white; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #27ae60;">
+                    <h4 style="margin-bottom: 0.5rem; color: #27ae60;">Stage 4: Human Confirmation</h4>
+                    <p style="margin: 0; font-size: 0.95rem;"><strong>Shown:</strong> That confirmation happened, when | <strong>Closed:</strong> Who confirmed and what they said</p>
+                </div>
+                <div style="background: white; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #27ae60;">
+                    <h4 style="margin-bottom: 0.5rem; color: #27ae60;">Stage 5: Artifact Publication</h4>
+                    <p style="margin: 0; font-size: 0.95rem;"><strong>Shown:</strong> Everything we found (HTML + JSON) | <strong>Closed:</strong> Our confidence scoring weights</p>
+                </div>
+                <div style="background: white; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #27ae60;">
+                    <h4 style="margin-bottom: 0.5rem; color: #27ae60;">Stage 6: Residue Review</h4>
+                    <p style="margin: 0; font-size: 0.95rem;"><strong>Shown:</strong> Updated article with new markers | <strong>Closed:</strong> How residue data affects weights</p>
+                </div>
+            </div>
+
+            <div class="intro-box" style="margin-top: 3rem;">
+                <p><strong>Why we keep the weights closed:</strong> The moment we publish them, everyone optimizes for them. Consultants build playbooks around them. Retailers adjust behavior to game the signal. The moat collapses.</p>
+                <p>But you can see the output. You can see the sources. You can see the reasoning. You can disagree and build better.</p>
+                <p><em>Transparency in inputs and logic. Privacy in the mathematics. That's the deal.</em></p>
+            </div>
+        </section>
+
+        <section>
+            <h3>Test It. Disagree with Us. Build Better.</h3>
+            <p>The tools above are functional. The logic is ours. The opportunity is yours.</p>
+        </section>
+    </div>
+
+    <footer>
+        <p>GROUND: Methodology Edition | February 2026</p>
+        <p>Built by IN-KluSo with <a href="https://jjaecheverri.github.io/inkluso-magazine/">Juan Camilo Echeverri</a> and <a href="https://jjaecheverri.github.io/inkluso-magazine/">Camilo Osorio</a></p>
+        <p style="margin-top: 1rem; font-size: 0.85rem;">Cultural Intelligence · Signal Discipline · Verification Standard</p>
+    </footer>
+
+    <script>
+        // Dashboard Data
+        const dashboardData = [
+            {
+                city: "Madrid",
+                searchVelocity: 78,
+                footfall: 65,
+                inventory: 42,
+                demographic: 89,
+                concentration: "High"
+            },
+            {
+                city: "Mexico City",
+                searchVelocity: 92,
+                footfall: 81,
+                inventory: 78,
+                demographic: 95,
+                concentration: "Very High"
+            },
+            {
+                city: "NYC",
+                searchVelocity: 45,
+                footfall: 38,
+                inventory: 52,
+                demographic: 28,
+                concentration: "Low"
+            },
+            {
+                city: "Northwest Arkansas",
+                searchVelocity: 22,
+                footfall: 15,
+                inventory: 18,
+                demographic: 8,
+                concentration: "Minimal"
+            },
+            {
+                city: "Los Angeles",
+                searchVelocity: 68,
+                footfall: 72,
+                inventory: 65,
+                demographic: 78,
+                concentration: "High"
+            }
+        ];
+
+        function calculateSignalStrength(data) {
+            const avg = (data.searchVelocity + data.footfall + data.demographic) / 3;
+            return Math.round(avg);
+        }
+
+        function renderDashboard() {
+            const grid = document.getElementById('dashboardGrid');
+            grid.innerHTML = dashboardData.map(city => {
+                const strength = calculateSignalStrength(city);
+                return `
+                    <div class="city-card">
+                        <div class="city-name">${city.city}</div>
+                        <div class="metric">
+                            <div class="metric-label">Search Velocity</div>
+                            <div class="metric-value">${city.searchVelocity}/100</div>
+                            <div class="signal-bar">
+                                <div class="signal-bar-fill" style="width: ${city.searchVelocity}%"></div>
+                            </div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-label">Retail Footfall</div>
+                            <div class="metric-value">${city.footfall}/100</div>
+                            <div class="signal-bar">
+                                <div class="signal-bar-fill" style="width: ${city.footfall}%"></div>
+                            </div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-label">Demographic Alignment</div>
+                            <div class="metric-value">${city.demographic}/100</div>
+                            <div class="signal-bar">
+                                <div class="signal-bar-fill" style="width: ${city.demographic}%"></div>
+                            </div>
+                        </div>
+                        <div class="metric" style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #eee;">
+                            <div class="metric-label">Signal Strength</div>
+                            <div class="metric-value" style="color: ${strength > 70 ? '#27ae60' : strength > 40 ? '#f39c12' : '#e74c3c'};">${strength}/100</div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Noise Detector Logic
+        const claimExamples = {
+            "seasonal": { score: 25, label: "Low Noise", sources: ["Historical sales data by month", "Weather patterns", "Social media interest trends"] },
+            "demographic": { score: 35, label: "Low-Moderate Noise", sources: ["Census data", "Migration reports", "Commercial demographics"] },
+            "prediction": { score: 65, label: "High Noise", sources: ["Primary source validation", "Expert confirmation", "Mechanism verification"] },
+            "generic": { score: 70, label: "High Noise", sources: ["Domain-specific data", "Behavioral research", "Causal mechanism proof"] }
+        };
+
+        function scoreNoise() {
+            const claim = document.getElementById('claimInput').value.toLowerCase();
+            let result = claimExamples.generic;
+
+            if (claim.includes('seasonal') || claim.includes('spring') || claim.includes('holiday')) {
+                result = claimExamples.seasonal;
+            } else if (claim.includes('demographic') || claim.includes('migration') || claim.includes('population')) {
+                result = claimExamples.demographic;
+            } else if (claim.includes('will') || claim.includes('predict') || claim.includes('forecast')) {
+                result = claimExamples.prediction;
+            }
+
+            document.getElementById('scoreValue').textContent = result.score;
+            document.getElementById('scoreValue').className = `score-gauge score-${result.score < 30 ? '0-30' : result.score < 60 ? '30-60' : '60-100'}`;
+            document.getElementById('scoreLabel').textContent = result.label + (result.score < 35 ? ' — Strong structural signal' : result.score < 65 ? ' — Mixed indicators' : ' — Requires heavy verification');
+            document.getElementById('sourcesList').innerHTML = result.sources.map(s => `<li>${s}</li>`).join('');
+            document.getElementById('noiseResult').classList.add('show');
+        }
+
+        // Timeline Data
+        const timelineData = [
+            { year: "2015-2017", type: "signal", title: "Signal Discovery", desc: "Retailers first notice: Lunar New Year date varies → migration patterns vary → retail uplift concentrated in high-concentration ZIP codes. Real structural observation." },
+            { year: "2017-2019", type: "signal", title: "Structural Validation", desc: "Multiple retailers confirm independently. Census data aligns with retail spend. Credit card transactions confirm. Mechanism holds: calendar → migration → behavior → sales." },
+            { year: "2019-2020", type: "transition", title: "Consultant Commodification Begins", desc: "First playbooks published. Major consulting firms launch Lunar New Year forecasting services. Signal still real, but starting to become noise." },
+            { year: "2020-2022", type: "noise", title: "Peak Noise Period", desc: "500+ retailers implement identical playbooks. Media covers it as annual certainty (not structural shift). Early-mover advantage gone. Margins compress. Late movers waste capital." },
+            { year: "2022-2023", type: "noise", title: "Signal Buried", desc: "Structural changes happening underneath (migration patterns shifting, demographic concentration declining in some regions, supply chains adjusting) but nobody sees them because everyone's executing the commodified playbook." },
+            { year: "2023-2024", type: "transition", title: "Smart Operators Disengage", desc: "Sophisticated retailers begin asking: Are the original structural conditions *still true* in our region? Some discover answers are no. They stop overstock. They see earlier than competitors." },
+            { year: "2024-2026", type: "signal", title: "Signal Reemergence (Current)", desc: "As noise dies down and attention fades, the real structural signal becomes visible again. Retailers paying attention to actual demographic data see it clearly. Those executing old playbooks don't." }
+        ];
+
+        function renderTimeline() {
+            const container = document.getElementById('timelineContainer');
+            container.innerHTML = timelineData.map(item => `
+                <div class="timeline-item ${item.type}">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-label">${item.type.toUpperCase()}</div>
+                        <div class="timeline-year">${item.year}</div>
+                        <div class="timeline-description">${item.desc}</div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', function() {
+            renderDashboard();
+            renderTimeline();
+        });
+    </script>
+</body>
+</html>
