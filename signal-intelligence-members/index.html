@@ -463,8 +463,8 @@ nav .nav-links{display:none}
 <div class="f-brand">IN-KluSo</div>
 <div class="f-quote">"Confirmation is the moat."</div>
 <div class="f-links">
-<a href="/">Magazine</a>
-<a href="/inkluso-tools">Tools</a>
+<a href="https://jjaecheverri.github.io/inkluso-magazine/">Magazine</a>
+<a href="https://jjaecheverri.github.io/inkluso-tools/">Tools</a>
 <a href="mailto:hello@inkluso.co">Contact</a>
 </div>
 <div class="f-copy">© 2026 IN-KluSo. Signal intelligence for builders.</div>
@@ -518,11 +518,8 @@ function dismissCTA() {
 document.getElementById('unlockCTA').classList.remove('show');
 }
 
-// Creator access: ?access=creator auto-unlocks and persists
-const urlParams = new URLSearchParams(window.location.search);
-if (urlParams.get('access') === 'creator') {
-  localStorage.setItem(UNLOCK_KEY, 'true');
-}
+// Open access mode: unlock everything on load
+localStorage.setItem(UNLOCK_KEY, 'true');
 initPaywall();
 
 // Enable smooth scrolling for anchor links even in paywall context
