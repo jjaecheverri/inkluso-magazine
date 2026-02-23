@@ -107,8 +107,8 @@ section:nth-child(even){background:rgba(0,0,0,0.01)}
 .mp-dot.active{opacity:1}
 .mp-arrow{font-size:1.2rem;color:var(--muted);transition:transform 0.3s}
 .mp-card.open .mp-arrow{transform:rotate(180deg)}
-.mp-body{max-height:0;overflow:hidden;transition:max-height 0.5s ease}
-.mp-card.open .mp-body{max-height:2000px}
+.mp-body{max-height:none;overflow:visible;}
+.mp-card.open .mp-body{max-height:none}
 .mp-content{padding:0 28px 28px;border-top:1px solid var(--light-border)}
 .mp-content p{margin-top:16px;color:var(--text);line-height:1.7;font-size:0.95rem}
 .mp-content .mp-signals{margin-top:16px;display:flex;flex-wrap:wrap;gap:6px}
@@ -396,11 +396,11 @@ nav .nav-links{display:none}
 </section>
 
 <!-- PAYWALL GATE -->
-<div class="paywall-gate"></div>
+<div class="paywall-gate" style="display:none!important;"></div>
 
 <!-- PREMIUM SECTION START (LOCKED BY DEFAULT) -->
-<section id="divisions" class="paywall-locked">
-<div class="locked-overlay">
+<section id="divisions" class="">
+<div class="locked-overlay" style="display:none!important;">
 <div style="text-align:center">
 <h3 style="color:var(--text);margin-bottom:12px">Complete Edition Members Only</h3>
 <p style="color:var(--muted);font-size:0.9rem;margin-bottom:20px">Unlock to access full Top 20 rankings, divisions breakdown, signal calculator, and intelligence packages.</p>
@@ -415,8 +415,8 @@ nav .nav-links{display:none}
 </section>
 
 <!-- INTELLIGENCE PACKAGES (LOCKED) -->
-<section class="paywall-locked">
-<div class="locked-overlay" style="display:none"></div>
+<section class="">
+<div class="locked-overlay" style="display:none!important;" style="display:none"></div>
 <div class="container paywall-blur">
 <h2 class="section-title">5 Intelligence Packages</h2>
 <p class="section-desc">Curated signal bundles designed for different buyer personas: strategic decision-makers, investors, operators, and teams building in specific verticals.</p>
@@ -425,8 +425,8 @@ nav .nav-links{display:none}
 </section>
 
 <!-- SIGNAL CALCULATOR (LOCKED) -->
-<section class="paywall-locked">
-<div class="locked-overlay" style="display:none"></div>
+<section class="">
+<div class="locked-overlay" style="display:none!important;" style="display:none"></div>
 <div class="container paywall-blur">
 <h2 class="section-title">Signal Confidence Calculator</h2>
 <p class="section-desc">Input any claim, sources, and division. Get three confidence scores (epistemology, systems, behavioral) showing why that signal scores that way.</p>
@@ -435,8 +435,8 @@ nav .nav-links{display:none}
 </section>
 
 <!-- CRUMBS (LOCKED) -->
-<section class="paywall-locked">
-<div class="locked-overlay" style="display:none"></div>
+<section class="">
+<div class="locked-overlay" style="display:none!important;" style="display:none"></div>
 <div class="container paywall-blur">
 <h2 class="section-title">Crumbs: Data Signals Division</h2>
 <p class="section-desc">18 verified signals. Sarcasm layer targets systems incentives. Dry mechanism explanation follows every sarcastic line.</p>
@@ -518,6 +518,8 @@ function dismissCTA() {
 document.getElementById('unlockCTA').classList.remove('show');
 }
 
+// TESTING MODE: auto-unlock everything
+localStorage.setItem(UNLOCK_KEY, 'true');
 initPaywall();
 
 // Enable smooth scrolling for anchor links even in paywall context
