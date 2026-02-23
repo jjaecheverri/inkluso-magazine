@@ -346,65 +346,6 @@
       transform: translateY(-6px);
       box-shadow: 0 14px 40px rgba(0,0,0,0.12);
     }
-    .edition-card.featured {
-      grid-column: 1 / -1;
-      background: linear-gradient(135deg, rgba(217, 118, 52, 0.1), rgba(255, 20, 147, 0.1), rgba(102, 51, 153, 0.1));
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      border: 2px solid var(--orange);
-    }
-    .edition-card.featured:hover::before {
-      display: none;
-    }
-    .featured-image {
-      background: linear-gradient(135deg, #D97634 0%, #FF1493 25%, #663399 50%, #39FF14 75%, #B7410E 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-family: 'DM Serif Display', serif;
-      font-size: 3rem;
-      font-style: italic;
-      order: 2;
-    }
-    .featured-content {
-      padding: 2.5rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      order: 1;
-    }
-    .featured-label {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--orange);
-      margin-bottom: 0.75rem;
-      display: block;
-    }
-    .featured-title {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.8rem;
-      line-height: 1.25;
-      color: var(--black);
-      margin-bottom: 0.75rem;
-      font-style: italic;
-    }
-    .featured-desc {
-      font-size: 0.9rem;
-      color: var(--gray-mid);
-      line-height: 1.65;
-      margin-bottom: 1.5rem;
-    }
-    .featured-cta {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.82rem;
-      font-weight: 600;
-      color: var(--orange);
-      letter-spacing: 0.04em;
-      text-decoration: none;
-    }
     .edition-card-image {
       height: 220px;
       overflow: hidden;
@@ -588,13 +529,6 @@
         order: -1;
       }
       .feature-card-content { padding: 2.5rem; }
-      .edition-card.featured {
-        grid-template-columns: 1fr;
-      }
-      .featured-image {
-        height: 280px;
-        order: -1;
-      }
       .about-inner {
         grid-template-columns: 1fr;
         gap: 2.5rem;
@@ -606,7 +540,6 @@
       .hero { padding: 6rem 1.25rem 4rem; }
       .latest-edition, .previous-editions { padding-left: 1.25rem; padding-right: 1.25rem; }
       .editions-grid { grid-template-columns: 1fr; }
-      .edition-card.featured { grid-template-columns: 1fr; }
       .about-strip { padding: 3.5rem 1.25rem; }
     }
   </style>
@@ -620,10 +553,11 @@
   <nav id="main-nav">
     <a href="index.html" class="nav-logo">IN-<span>K</span>luSo</a>
     <ul class="nav-links">
-      <li><a href="scene-states-feb20-2026/index.html">Scene States</a></li>
       <li><a href="madrid-feb-2026/index.html">Madrid</a></li>
       <li><a href="mar-2026/index.html">March 2026</a></li>
       <li><a href="feb-19-2026/index.html">Feb 19, 2026</a></li>
+      <li><a href="feb-2026/index.html">February 2026</a></li>
+      <li><a href="jan-2026/index.html">January 2026</a></li>
       <li><a href="#about">About</a></li>
     </ul>
   </nav>
@@ -639,9 +573,29 @@
     </div>
   </section>
 
-  <!-- LATEST EDITION -->
+  <!-- FEATURED: SIGNAL INTELLIGENCE MEMBERS EDITION -->
   <section class="latest-edition">
-    <span class="section-label reveal">Latest Edition</span>
+    <span class="section-label reveal">◆ Featured: Members Edition</span>
+    <div class="feature-card reveal" style="background: linear-gradient(135deg, rgba(232,101,46,0.08) 0%, rgba(45,91,255,0.08) 100%);">
+      <div class="feature-card-content">
+        <div class="feature-card-label">Signal Intelligence — Flagship Research · February 2026</div>
+        <h2 class="feature-card-headline"><em>74 Verified Signals. 7 Meta-Patterns. One Framework.</em></h2>
+        <p class="feature-card-desc">Comprehensive signal intelligence across 5 divisions and 6 cities. Free preview of meta-patterns and complete methodology. Full edition with Top 20 rankings, divisions breakdown, intelligence packages, and interactive calculator tools available to members.</p>
+        <a href="signal-intelligence-members/index.html" class="btn-primary">Explore Full Edition →</a>
+      </div>
+      <div class="feature-card-image" style="background: linear-gradient(135deg, #2D5BFF 0%, #E8652E 50%, #9B59B6 100%); display:flex; align-items:center; justify-content:center; overflow:hidden;">
+        <div style="text-align:center; font-family:'DM Serif Display', serif; color:#fff; padding:3rem;">
+          <div style="font-size:5rem; font-weight:700; letter-spacing:-2px; line-height:1; margin-bottom:0.5rem;">74</div>
+          <div style="font-size:0.9rem; letter-spacing:0.15em; text-transform:uppercase; opacity:0.8;">SIGNALS VERIFIED</div>
+          <div style="font-size:3rem; font-weight:700; margin-top:1rem; opacity:0.7;">◆ ◆ ◆</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LATEST EDITION: MADRID -->
+  <section class="latest-edition">
+    <span class="section-label reveal">Latest Ground Signal</span>
     <div class="feature-card reveal">
       <div class="feature-card-content">
         <div class="feature-card-label">Ground Signal Edition — Madrid · February 19, 2026</div>
@@ -657,15 +611,50 @@
 
   <!-- PREVIOUS EDITIONS -->
   <section class="previous-editions">
-    <div class="section-heading reveal">Previous Editions</div>
+    <div class="section-heading reveal">Research & Games</div>
     <div class="editions-grid">
-      <a href="scene-states-feb20-2026/index.html" class="edition-card featured reveal">
-        <div class="featured-image">SCENE<br>STATES</div>
-        <div class="featured-content">
-          <span class="featured-label">Vibe Edition · Feb 20-23, 2026</span>
-          <h3 class="featured-title"><em>The Weekend Is The Data</em></h3>
-          <p class="featured-desc">Five cities, real events, sensory language, and what people actually do when they choose. Madrid. CDMX. Buenos Aires. NYC. NWA.</p>
-          <a href="scene-states-feb20-2026/index.html" class="featured-cta">Enter Scene States →</a>
+      <a href="signal-intelligence-members/index.html" class="edition-card reveal">
+        <div class="edition-card-image" style="background: linear-gradient(135deg, #E8652E 0%, #2D5BFF 50%, #9B59B6 100%); display:flex; align-items:center; justify-content:center; overflow:hidden;">
+          <div style="text-align:center; padding: 2rem;">
+            <div style="font-family:'DM Serif Display', serif; font-size:3.5rem; font-weight:700; color:#fff; line-height:1; margin-bottom:0.5rem;">74</div>
+            <div style="font-family:'Inter', sans-serif; font-size:0.9rem; letter-spacing:0.15em; text-transform:uppercase; color:rgba(255,255,255,0.8);">SIGNALS</div>
+          </div>
+        </div>
+        <div class="edition-card-body">
+          <span class="edition-card-label" style="color: var(--orange);">◆ RESEARCH · Members Edition</span>
+          <h3 class="edition-card-title">Signal Intelligence — Flagship Edition</h3>
+          <p class="edition-card-desc">74 verified signals across 5 divisions and 6 cities. Free preview section with meta-patterns. Full edition for members: Top 20 rankings, divisions breakdown, intelligence packages, calculator tools.</p>
+        </div>
+        <div class="edition-card-footer">
+          <span class="read-link" style="color: var(--orange);">Explore edition →</span>
+          <span style="font-size:0.65rem; color: var(--gray-mid); font-family:'JetBrains Mono',monospace;\">Free preview + Members</span>
+        </div>
+      </a>
+
+      <a href="signal-finder/index.html" class="edition-card reveal">
+        <div class="edition-card-image" style="background: radial-gradient(800px 600px at 50% 120%, #1a2e1a 0%, transparent 60%), radial-gradient(600px 400px at 80% -20%, #2e1a0e 0%, transparent 55%), #0b0d12; display:flex; align-items:center; justify-content:center; overflow:hidden;">
+          <div style="text-align:center; padding: 2rem; position:relative;">
+            <div style="display:flex; gap:8px; justify-content:center; margin-bottom:14px;">
+              <div style="width:36px;height:36px;border-radius:6px;background:rgba(34,197,94,0.2);border:1px solid #22c55e;display:flex;align-items:center;justify-content:center;font-family:monospace;font-size:13px;font-weight:700;color:#22c55e;">S</div>
+              <div style="width:36px;height:36px;border-radius:6px;background:rgba(239,68,68,0.2);border:1px solid #ef4444;display:flex;align-items:center;justify-content:center;font-family:monospace;font-size:13px;font-weight:700;color:#ef4444;">N</div>
+              <div style="width:36px;height:36px;border-radius:6px;background:rgba(34,197,94,0.2);border:1px solid #22c55e;display:flex;align-items:center;justify-content:center;font-family:monospace;font-size:13px;font-weight:700;color:#22c55e;">S</div>
+            </div>
+            <div style="display:flex; gap:8px; justify-content:center;">
+              <div style="width:36px;height:36px;border-radius:6px;background:rgba(239,68,68,0.2);border:1px solid #ef4444;display:flex;align-items:center;justify-content:center;font-family:monospace;font-size:13px;font-weight:700;color:#ef4444;">N</div>
+              <div style="width:36px;height:36px;border-radius:6px;background:rgba(34,197,94,0.2);border:1px solid #22c55e;display:flex;align-items:center;justify-content:center;font-family:monospace;font-size:13px;font-weight:700;color:#22c55e;">S</div>
+              <div style="width:36px;height:36px;border-radius:6px;background:rgba(239,68,68,0.2);border:1px solid #ef4444;display:flex;align-items:center;justify-content:center;font-family:monospace;font-size:13px;font-weight:700;color:#ef4444;">N</div>
+            </div>
+            <div style="font-family:ui-monospace,monospace;font-size:0.65rem;color:rgba(255,255,255,0.3);letter-spacing:3px;margin-top:14px;text-transform:uppercase;">Signal · Noise</div>
+          </div>
+        </div>
+        <div class="edition-card-body">
+          <span class="edition-card-label" style="color: #22c55e;">GAME · Intelligence Lab</span>
+          <h3 class="edition-card-title">SIGNAL FINDER — Noise Against Essence</h3>
+          <p class="edition-card-desc">21 curated puzzle sets across /GROUND /FLOW /THRUST /AXIS /CORE. Six statements per round — three signals, three noise. Your job: tell the difference. 4 attempts, full analysis, daily seed.</p>
+        </div>
+        <div class="edition-card-footer">
+          <span class="read-link" style="color: #22c55e;">Play now →</span>
+          <span style="font-size:0.65rem; color: var(--gray-mid); font-family:'JetBrains Mono',monospace;">Daily seed · 7 puzzles</span>
         </div>
       </a>
 
@@ -686,6 +675,8 @@
           <span style="font-size:0.65rem; color: var(--gray-mid); font-family:'JetBrains Mono',monospace;">Local-only · Daily seed</span>
         </div>
       </a>
+
+
 
       <a href="madrid-feb-2026/index.html" class="edition-card reveal">
         <div class="edition-card-image" style="background:#1a1a1a; display:flex; align-items:center; justify-content:center; overflow:hidden;">
@@ -817,7 +808,7 @@
             <div class="author-avatar avatar-orange">JCE</div>
             <div class="author-info">
               <strong>Juan Camilo Echeverri</strong>
-              <span>Executive Broker · Habloft Global · Wesley Chapel, FL</span>
+              <span>Executive Broker · PAK Home Realty · Rogers, AR</span>
             </div>
           </div>
           <div class="author-inline">
@@ -835,7 +826,7 @@
   <!-- FOOTER -->
   <footer>
     <strong>IN-<span>K</span>luSo</strong>
-    IN-KluSo by Xtatik &nbsp;·&nbsp; © 2026 &nbsp;·&nbsp; All editions in English
+    IN-KluSo by Xtatik &nbsp;·&nbsp; © 2026 &nbsp;·&nbsp; <a href="https://jjaecheverri.github.io/inkluso-tools/" style="color: var(--orange); text-decoration: none;">Research Tools</a> &nbsp;·&nbsp; All editions in English
   </footer>
 
   <script>

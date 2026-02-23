@@ -1,0 +1,1241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SIGNAL FINDER — IN-KluSo</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap');
+
+    :root {
+      --bg: #0b0d12;
+      --card: #121726;
+      --card2: #0f1422;
+      --border: #1e2535;
+      --text: #e8e4dc;
+      --muted: #7a8296;
+      --orange: #e8612a;
+      --orange-dim: #c4521f;
+      --signal: #22c55e;
+      --signal-dim: #15803d;
+      --noise: #ef4444;
+      --noise-dim: #b91c1c;
+      --gold: #f59e0b;
+      --blue: #3b82f6;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+    }
+
+    header {
+      border-bottom: 1px solid var(--border);
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .back-link {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 13px;
+      letter-spacing: 0.05em;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: var(--orange); }
+
+    .header-center h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 22px;
+      letter-spacing: 0.02em;
+      color: var(--text);
+    }
+    .header-center p {
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-align: center;
+      margin-top: 2px;
+    }
+
+    .header-right {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .streak-badge {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 4px 12px;
+      font-size: 12px;
+      color: var(--gold);
+      letter-spacing: 0.05em;
+    }
+
+    .main {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 32px 20px 60px;
+    }
+
+    /* INTRO */
+    .intro {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .intro h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+    .intro h2 em { color: var(--orange); font-style: italic; }
+    .intro p {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.6;
+      max-width: 520px;
+      margin: 0 auto 20px;
+    }
+
+    .rules-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+    .rule-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 16px;
+      text-align: left;
+    }
+    .rule-card .rule-label {
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .rule-card.signal .rule-label { color: var(--signal); }
+    .rule-card.noise .rule-label { color: var(--noise); }
+    .rule-card p { font-size: 13px; color: var(--muted); line-height: 1.5; }
+
+    /* PROGRESS */
+    .progress-bar {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .progress-label {
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .progress-track {
+      flex: 1;
+      height: 4px;
+      background: var(--border);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: var(--orange);
+      border-radius: 2px;
+      transition: width 0.4s ease;
+    }
+    .progress-count {
+      font-size: 13px;
+      color: var(--text);
+      white-space: nowrap;
+    }
+
+    /* DOMAIN TAG */
+    .domain-tag {
+      display: inline-block;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+      font-weight: 600;
+    }
+    .domain-GROUND { background: #1a2e1a; color: #4ade80; border: 1px solid #166534; }
+    .domain-FLOW   { background: #1a1a2e; color: #818cf8; border: 1px solid #3730a3; }
+    .domain-THRUST { background: #2e1a0e; color: #fb923c; border: 1px solid #9a3412; }
+    .domain-AXIS   { background: #1e1a2e; color: #c084fc; border: 1px solid #6b21a8; }
+    .domain-CORE   { background: #2e1a1a; color: #f87171; border: 1px solid #991b1b; }
+
+    /* PUZZLE CARD */
+    .puzzle-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px;
+      margin-bottom: 24px;
+    }
+
+    .puzzle-prompt {
+      font-family: 'DM Serif Display', serif;
+      font-size: 20px;
+      line-height: 1.4;
+      margin-bottom: 8px;
+    }
+
+    .puzzle-instruction {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 24px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .attempts-left {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .attempt-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--orange);
+      transition: background 0.3s;
+    }
+    .attempt-dot.used { background: var(--border); }
+    .attempts-label {
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+      margin-left: 4px;
+    }
+
+    /* STATEMENTS */
+    .statements-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    .statement-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      background: var(--card2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 16px;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+      user-select: none;
+    }
+    .statement-item:hover:not(.locked) { border-color: var(--muted); }
+    .statement-item.selected-signal {
+      border-color: var(--signal);
+      background: rgba(34, 197, 94, 0.08);
+    }
+    .statement-item.selected-noise {
+      border-color: var(--noise);
+      background: rgba(239, 68, 68, 0.08);
+    }
+    .statement-item.locked { cursor: default; }
+
+    .statement-toggle {
+      display: flex;
+      gap: 6px;
+      flex-shrink: 0;
+      padding-top: 2px;
+    }
+    .toggle-btn {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.15s;
+      letter-spacing: 0.05em;
+    }
+    .toggle-btn:hover:not(:disabled) { border-color: var(--text); color: var(--text); }
+    .toggle-btn.active-signal { background: var(--signal-dim); border-color: var(--signal); color: #fff; }
+    .toggle-btn.active-noise { background: var(--noise-dim); border-color: var(--noise); color: #fff; }
+    .toggle-btn:disabled { cursor: default; opacity: 0.6; }
+
+    .statement-text {
+      font-size: 14px;
+      line-height: 1.55;
+      color: var(--text);
+      flex: 1;
+    }
+
+    .statement-result {
+      flex-shrink: 0;
+      font-size: 18px;
+      padding-top: 2px;
+    }
+
+    /* SUBMIT */
+    .submit-row {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .btn-submit {
+      background: var(--orange);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 12px 28px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      letter-spacing: 0.03em;
+      transition: background 0.2s;
+    }
+    .btn-submit:hover { background: var(--orange-dim); }
+    .btn-submit:disabled { opacity: 0.4; cursor: default; }
+
+    .btn-clear {
+      background: transparent;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 20px;
+      font-size: 13px;
+      cursor: pointer;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .btn-clear:hover { color: var(--text); border-color: var(--text); }
+
+    .submit-hint {
+      font-size: 12px;
+      color: var(--muted);
+      flex: 1;
+      text-align: right;
+    }
+
+    /* FEEDBACK */
+    .feedback-banner {
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 16px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+    .feedback-banner.correct {
+      background: rgba(34, 197, 94, 0.12);
+      border: 1px solid var(--signal);
+      color: var(--signal);
+    }
+    .feedback-banner.partial {
+      background: rgba(245, 158, 11, 0.1);
+      border: 1px solid var(--gold);
+      color: var(--gold);
+    }
+    .feedback-banner.wrong {
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid var(--noise);
+      color: var(--noise);
+    }
+
+    /* ANALYSIS PANEL */
+    .analysis-panel {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+    .analysis-panel h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 18px;
+      margin-bottom: 6px;
+    }
+    .analysis-panel > p {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .analysis-item {
+      margin-bottom: 18px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--border);
+    }
+    .analysis-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .analysis-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
+    .analysis-verdict {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+    .analysis-verdict.signal { background: var(--signal-dim); color: #fff; }
+    .analysis-verdict.noise { background: var(--noise-dim); color: #fff; }
+    .analysis-stmt { font-size: 13px; color: var(--text); font-style: italic; }
+    .analysis-why { font-size: 13px; color: var(--muted); line-height: 1.55; }
+    .analysis-why strong { color: var(--text); }
+
+    /* NEXT PUZZLE */
+    .btn-next {
+      width: 100%;
+      background: var(--card);
+      border: 1px solid var(--orange);
+      color: var(--orange);
+      border-radius: 8px;
+      padding: 14px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      letter-spacing: 0.04em;
+      transition: background 0.2s;
+    }
+    .btn-next:hover { background: rgba(232, 97, 42, 0.1); }
+
+    /* SCORE PANEL */
+    .score-panel {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 36px 28px;
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .score-panel h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+    .score-big {
+      font-size: 64px;
+      font-weight: 700;
+      color: var(--orange);
+      line-height: 1;
+      margin: 16px 0;
+    }
+    .score-label { font-size: 14px; color: var(--muted); margin-bottom: 24px; }
+    .score-breakdown {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+    .score-stat {
+      background: var(--card2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px;
+    }
+    .score-stat-value { font-size: 24px; font-weight: 700; color: var(--text); }
+    .score-stat-label { font-size: 11px; color: var(--muted); margin-top: 4px; }
+    .share-grid {
+      background: var(--card2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px;
+      font-family: monospace;
+      font-size: 16px;
+      letter-spacing: 2px;
+      margin-bottom: 16px;
+      line-height: 1.8;
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+    .btn-share {
+      background: var(--orange);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 12px 28px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-share:hover { background: var(--orange-dim); }
+    .next-edition {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 16px;
+    }
+
+    /* HIDDEN */
+    .hidden { display: none !important; }
+
+    @media (max-width: 600px) {
+      .rules-grid { grid-template-columns: 1fr; }
+      .score-breakdown { grid-template-columns: 1fr 1fr; }
+      .header-center h1 { font-size: 18px; }
+      .puzzle-prompt { font-size: 17px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="../" class="back-link">← IN-KluSo</a>
+  <div class="header-center">
+    <h1>SIGNAL FINDER</h1>
+    <p>Noise Against Essence — IN-KluSo Intelligence Lab</p>
+  </div>
+  <div class="header-right">
+    <div class="streak-badge" id="streakBadge">🔥 0</div>
+  </div>
+</header>
+
+<div class="main">
+
+  <!-- INTRO SCREEN -->
+  <div id="introScreen">
+    <div class="intro">
+      <h2>Noise Against <em>Essence</em></h2>
+      <p>Six statements. Three are structural signals — early indicators of real shifts in capital, culture, or territory. Three are noise — plausible-sounding but derivative, lagging, or incentive-distorted.</p>
+      <p>Your job: tell the difference. 4 attempts per puzzle. 7 puzzles per session, drawn from today's seed.</p>
+    </div>
+    <div class="rules-grid" style="margin-bottom: 32px;">
+      <div class="rule-card signal">
+        <div class="rule-label">📡 Signal</div>
+        <p>Structural shift. Upstream. Verifiable indicator before mainstream coverage. Infrastructure, capital flow, language drift, territory change.</p>
+      </div>
+      <div class="rule-card noise">
+        <div class="rule-label">📢 Noise</div>
+        <p>Reaction, not signal. Lagging indicator, press-release framing, sentiment without structure, trend coverage after the move already happened.</p>
+      </div>
+    </div>
+    <div style="text-align:center;">
+      <button class="btn-submit" onclick="startGame()" style="font-size:16px; padding: 14px 40px;">Start Today's Puzzles</button>
+    </div>
+  </div>
+
+  <!-- GAME SCREEN -->
+  <div id="gameScreen" class="hidden">
+
+    <div class="progress-bar">
+      <span class="progress-label">Puzzles</span>
+      <div class="progress-track">
+        <div class="progress-fill" id="progressFill" style="width:0%"></div>
+      </div>
+      <span class="progress-count" id="progressCount">0 / 7</span>
+    </div>
+
+    <div class="puzzle-card">
+      <div id="domainTag" class="domain-tag"></div>
+      <div class="puzzle-prompt" id="puzzlePrompt"></div>
+      <div class="puzzle-instruction">Mark each statement: <span style="color:var(--signal)">S = Signal</span> or <span style="color:var(--noise)">N = Noise</span>. All six must be classified before submitting.</div>
+
+      <div class="attempts-left" id="attemptsLeft">
+        <div class="attempt-dot" id="dot0"></div>
+        <div class="attempt-dot" id="dot1"></div>
+        <div class="attempt-dot" id="dot2"></div>
+        <div class="attempt-dot" id="dot3"></div>
+        <span class="attempts-label">attempts remaining</span>
+      </div>
+
+      <div id="feedbackBanner" class="feedback-banner hidden"></div>
+
+      <div class="statements-grid" id="statementsGrid"></div>
+
+      <div class="submit-row">
+        <button class="btn-submit" id="btnSubmit" onclick="submitAnswer()" disabled>Submit</button>
+        <button class="btn-clear" onclick="clearSelections()">Clear</button>
+        <span class="submit-hint" id="submitHint">Label all 6 to submit</span>
+      </div>
+    </div>
+
+    <div id="analysisPanel" class="analysis-panel hidden">
+      <h3>Signal Analysis</h3>
+      <p id="analysisIntro"></p>
+      <div id="analysisItems"></div>
+    </div>
+
+    <button id="btnNext" class="btn-next hidden" onclick="nextPuzzle()">Next Puzzle →</button>
+
+  </div>
+
+  <!-- SCORE SCREEN -->
+  <div id="scoreScreen" class="hidden">
+    <div class="score-panel">
+      <h2>Session Complete</h2>
+      <div class="score-big" id="finalScore">0</div>
+      <div class="score-label" id="scoreLabel"></div>
+      <div class="score-breakdown">
+        <div class="score-stat">
+          <div class="score-stat-value" id="statPerfect">0</div>
+          <div class="score-stat-label">Perfect reads</div>
+        </div>
+        <div class="score-stat">
+          <div class="score-stat-value" id="statPartial">0</div>
+          <div class="score-stat-label">Partial reads</div>
+        </div>
+        <div class="score-stat">
+          <div class="score-stat-value" id="statMissed">0</div>
+          <div class="score-stat-label">Missed</div>
+        </div>
+      </div>
+      <div class="share-grid" id="shareGrid"></div>
+      <button class="btn-share" onclick="copyShare()">Copy Results</button>
+      <div class="next-edition" id="nextEdition"></div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// ─────────────────────────────────────────────
+// PUZZLE BANK — 21 sets across 5 domains
+// Each set: 6 statements, exactly 3 signal (true) + 3 noise (false)
+// ─────────────────────────────────────────────
+const PUZZLES = [
+  {
+    domain: "GROUND",
+    prompt: "A mid-sized inland city announces a new transit corridor connecting its historic district to an emerging tech campus 4 miles away. What tells you something structural is shifting?",
+    statements: [
+      { text: "Zoning along the corridor was quietly reclassified from single-family residential to mixed-use in the past 18 months, before ground was broken.", signal: true, why: "<strong>Pre-permit zoning shifts</strong> are upstream of construction. Reclassification before announcement is a structural indicator — it means capital positioned early, not in reaction to the news." },
+      { text: "Local real estate agents are reporting 'increased buyer interest' in the corridor neighborhoods.", signal: false, why: "<strong>Agent sentiment is lagging.</strong> 'Increased interest' is a reaction to coverage, not a primary indicator. It reflects the narrative, not the underlying shift." },
+      { text: "A regional grocery anchor signed a 15-year lease at a corridor intersection 8 months before the transit announcement.", signal: true, why: "<strong>Long-term anchor leases</strong> are infrastructure bets. Grocers don't sign 15-year deals on sentiment — they require demographic data, traffic modeling, and capital certainty. This is upstream." },
+      { text: "National media ran a feature calling the city 'the next mid-tier boomtown.'", signal: false, why: "<strong>National feature coverage is lagging by definition.</strong> By the time a city gets the 'next boomtown' story, the early signal window has closed. This is the noise that follows the signal." },
+      { text: "A LIHTC (low-income housing tax credit) application was filed for a 120-unit affordable housing project at the corridor's northern end.", signal: true, why: "<strong>LIHTC filings are policy infrastructure signals.</strong> They require multi-year coordination between developers, municipalities, and federal agencies. Filing means institutional capital is already committed." },
+      { text: "Social media posts about the neighborhood are trending with hashtags about 'hidden gem' discovery.", signal: false, why: "<strong>Discovery narrative on social media</strong> signals the mainstream has found it — not that something is forming. Trend traction is a follow indicator, not a lead." }
+    ]
+  },
+  {
+    domain: "FLOW",
+    prompt: "A micro-community platform is gaining traction among independent researchers and niche hobbyists. Which indicators suggest something structurally durable is forming?",
+    statements: [
+      { text: "The platform has been featured in three Substack newsletters with a combined 200K subscribers.", signal: false, why: "<strong>Newsletter coverage</strong> is amplification of what already exists. It accelerates awareness, not formation. The underlying structure was already there before the feature." },
+      { text: "Members are self-organizing paid cohorts without any platform-native monetization infrastructure — using external tools to handle payments.", signal: true, why: "<strong>Workaround monetization</strong> is a strong structural signal. When users build payment infrastructure outside the platform, they're signaling demand the platform hasn't captured yet. This is pre-product-market fit behavior — highly legible." },
+      { text: "The platform's DAU (daily active users) is growing 15% week over week.", signal: false, why: "<strong>Growth metrics without behavioral texture are noise.</strong> 15% WoW could reflect a viral loop, paid acquisition, or a single viral post. Without understanding retention shape and engagement quality, the number says nothing structural." },
+      { text: "A university research department started using the platform as its primary communication layer for an ongoing multi-year project.", signal: true, why: "<strong>Institutional adoption in a non-institutional platform</strong> is a durability signal. Researchers don't migrate core infrastructure lightly — this indicates the platform solved a real workflow problem that institutional tools hadn't." },
+      { text: "Influencers in the adjacent creator economy are calling the platform 'the next big thing.'", signal: false, why: "<strong>Creator economy influencer endorsements</strong> are incentive-distorted — they benefit from early association with 'next big thing' narratives. This is positioning, not structural evidence." },
+      { text: "The platform's terms of service were updated to include a data portability clause, unprompted by regulation.", signal: true, why: "<strong>Unprompted data portability clauses</strong> signal that the platform is building for a user base that will demand it — typically technical, research-oriented, or privacy-aware communities. This is product architecture as community signal." }
+    ]
+  },
+  {
+    domain: "THRUST",
+    prompt: "An early-stage fund claims to focus on 'purpose-driven entrepreneurship' in Latin America. Separate the structural signals from the positioning noise.",
+    statements: [
+      { text: "The fund's LP base includes three development finance institutions (DFIs) with 10-year lockup periods.", signal: true, why: "<strong>DFI capital with long lockups</strong> is structurally different from venture capital. DFIs require impact measurement frameworks, accept lower IRR targets, and have institutional patience. Long lockups mean the capital isn't chasing quick exits — it's funding formation-stage work." },
+      { text: "The fund's website prominently features the word 'impact' 14 times on the homepage.", signal: false, why: "<strong>Language density is a noise indicator.</strong> The more often 'impact' appears without definition, the less likely it reflects operational structure. This is brand vocabulary, not fund architecture." },
+      { text: "The fund has co-invested alongside municipal governments in two infrastructure-adjacent startups in the past 18 months.", signal: true, why: "<strong>Municipal co-investment</strong> is a verification signal. Government capital is slow, scrutinized, and politically visible. When a fund closes deals alongside municipalities, it means they survived a due diligence process designed to resist them." },
+      { text: "The founders regularly speak at conferences about the importance of conscious capitalism.", signal: false, why: "<strong>Speaking circuit presence</strong> is brand maintenance, not structural evidence. Conference appearances are incentive-driven — visibility, deal flow, LP relations. They don't tell you what the fund actually does." },
+      { text: "Portfolio companies are required to report on at least two qualitative community indicators per quarter alongside financial metrics.", signal: true, why: "<strong>Mandatory qualitative reporting requirements</strong> embedded in LP agreements or portfolio covenants are operational structure. They cost time and money to implement — which means they're real commitments, not aspirational language." },
+      { text: "The fund was profiled in a major business publication as 'leading the charge on impact investing in the region.'", signal: false, why: "<strong>Publication profiles are lagging indicators.</strong> Journalists cover what's already validated. A profile is a legitimacy signal for the fund's PR cycle, not evidence of structural impact." }
+    ]
+  },
+  {
+    domain: "AXIS",
+    prompt: "A city is claiming to invest in 'creative infrastructure.' What actually tells you creative capacity is being structurally built versus announced?",
+    statements: [
+      { text: "The city's budget includes a line item for multi-year creative residency stipends in previously underused civic buildings.", signal: true, why: "<strong>Multi-year budget line items in civic buildings</strong> are structural. They require zoning flexibility, facilities management coordination, and budget cycle approval. This is harder to fake than a press release." },
+      { text: "The mayor gave a speech at a cultural summit about 'investing in the soul of the city.'", signal: false, why: "<strong>Mayoral keynote rhetoric</strong> is noise in almost every context. Speeches are incentive-driven political performance. Until there's a budget line or a permitting change, it's language, not infrastructure." },
+      { text: "Independent record labels and micro-publishers are registering LLCs in the city at twice the rate of three years ago.", signal: true, why: "<strong>Entity formation rates among micro-cultural producers</strong> are a leading indicator of creative ecosystem density. LLC registrations are a friction signal — people only incorporate when they're serious enough to incur the cost and paperwork." },
+      { text: "A new arts district was announced with renderings and a brand identity package.", signal: false, why: "<strong>Announced arts districts with brand packages</strong> are real estate speculation with cultural branding. Renderings and logos are produced before ground is broken and sometimes before financing is secured. This is marketing at infrastructure scale." },
+      { text: "A community college in the city launched a credit-bearing apprenticeship program with six independent cultural organizations as employer partners.", signal: true, why: "<strong>Institutional apprenticeship programs with independent cultural employers</strong> require accreditation coordination, employer agreements, and curriculum development. This is workforce infrastructure — slow to build, harder to fake." },
+      { text: "Local social media is buzzing with pride about the city's 'creative renaissance.'", signal: false, why: "<strong>Local pride narratives on social media</strong> reflect cultural mood, not structural capacity. They're often strongest when things are changing surface-level (new murals, new coffee shops) but before deeper infrastructure exists." }
+    ]
+  },
+  {
+    domain: "CORE",
+    prompt: "Macro economic signals: distinguishing structural shifts in capital reallocation from narrative noise during a period of uncertainty.",
+    statements: [
+      { text: "Three major pension funds announced they are reducing their publicly traded equity allocation by 8% in favor of real assets over the next 24 months.", signal: true, why: "<strong>Pension fund reallocation announcements</strong> are structural by definition. Pension capital is slow, regulated, and fiduciary-bound. An 8% shift across major funds moves trillions — this is not sentiment, it's obligation-bound repositioning." },
+      { text: "Financial media is running daily headlines about 'uncertainty' and 'market volatility.'", signal: false, why: "<strong>Financial media uncertainty coverage</strong> is reflexive noise — it both reflects and amplifies sentiment. Media incentives drive toward high-emotion framing. This tells you about the narrative, not the underlying capital structure." },
+      { text: "LP commitment pacing for emerging market private equity fell 34% year-over-year according to institutional allocator surveys.", signal: true, why: "<strong>LP commitment pacing data from allocator surveys</strong> is a direct infrastructure signal. It tells you where patient capital is actually flowing — independent of what managers are saying publicly about their pipelines." },
+      { text: "Analysts from major banks published optimistic outlooks for the second half of the year.", signal: false, why: "<strong>Bank analyst outlooks are incentive-distorted</strong> — they serve client retention, deal origination, and institutional relationships. Systematic studies show they skew optimistic. This is positioning, not signal." },
+      { text: "Grant-making foundations with 10-year program cycles began issuing RFPs explicitly targeting 'economic transition communities' — a new category not present in prior cycles.", signal: true, why: "<strong>New grant categories in multi-year foundation cycles</strong> are upstream of broader capital movement. Foundations shape what's legible as fundable — when they create new categories, they're signaling that their research arm has already validated a structural shift." },
+      { text: "Consumer confidence indexes dropped to their lowest reading in 18 months.", signal: false, why: "<strong>Consumer confidence indexes are sentiment surveys</strong> — they measure how people feel about the economy, which is shaped heavily by media framing. They're useful for tracking mood, not for identifying structural capital shifts." }
+    ]
+  },
+  {
+    domain: "GROUND",
+    prompt: "Northwest Arkansas, 2023–2025: signals that the region's growth is structural, not speculative.",
+    statements: [
+      { text: "Walmart corporate issued internal memos encouraging supplier partners to open regional offices in Bentonville.", signal: true, why: "<strong>Corporate memos to supplier networks</strong> are organizational infrastructure signals. When anchor institutions actively direct supply chain partners to relocate, they're hardening a regional economic cluster — not just attracting talent passively." },
+      { text: "National media called NWA 'America's most surprising growth story.'", signal: false, why: "<strong>Surprise narratives in national media</strong> are lagging by definition. The story runs when the data is already visible to anyone looking. By the time it's 'surprising,' the early positioning window has closed." },
+      { text: "The Walton Family Foundation increased its annual education and arts infrastructure grants to NWA organizations by 40% over three consecutive years.", signal: true, why: "<strong>Multi-year philanthropic ramp-up from an anchor family foundation</strong> is a durable infrastructure signal. Consistent year-over-year increases signal long-term institutional commitment to building human capital and cultural infrastructure." },
+      { text: "Home prices in Bentonville increased faster than the national average for two consecutive years.", signal: false, why: "<strong>Price appreciation rates</strong> are lagging price signals. They tell you demand exceeded supply in the past — not what's forming next. Following price is the opposite of signal detection." },
+      { text: "The University of Arkansas School of Architecture began offering a dedicated studio program in rural-to-urban transition design, funded by local developers.", signal: true, why: "<strong>University curriculum funded by local developers</strong> is a workforce pipeline signal. It means the development community identified a skills gap before it became a hiring problem — coordinating with institutional education is a multi-year, high-friction commitment." },
+      { text: "Out-of-state transplants posted extensively on social media about how much they love the trail system.", signal: false, why: "<strong>Lifestyle content from transplants</strong> is qualitative cultural noise. It reflects satisfaction, not structure. Every growing city has this — it tells you the narrative is positive, not that the underlying economics are durable." }
+    ]
+  },
+  {
+    domain: "FLOW",
+    prompt: "A niche podcast grows from 3,000 to 85,000 listeners in 14 months. Separate structural formation signals from growth story noise.",
+    statements: [
+      { text: "At 12,000 listeners, three independent brands approached the host for sponsorships without the host soliciting them.", signal: true, why: "<strong>Unsolicited brand inbound at early scale</strong> is a market signal. Brands don't reach out without internal research justifying the spend. Inbound sponsorship before you're asking for it means you've crossed a legibility threshold for advertisers — structural, not viral." },
+      { text: "The podcast was featured in a Spotify editorial playlist for three weeks.", signal: false, why: "<strong>Algorithmic or editorial placement</strong> is a platform distribution signal — it tells you the platform valued the content, not that a durable audience is forming. Editorial placement-driven spikes frequently don't convert to retained listeners." },
+      { text: "Listeners began building secondary community infrastructure (newsletters, Discord servers, study groups) organized around the podcast's framework.", signal: true, why: "<strong>Secondary infrastructure built by the audience</strong> is the strongest durability signal in community media. When listeners invest their own time building derivative community around your work, you've created a reference framework — not just content." },
+      { text: "The host's Twitter/X following grew 400% during the same 14 months.", signal: false, why: "<strong>Social following correlation with podcast growth</strong> is expected, not informative. They're both downstream of the same underlying momentum. Neither explains why the momentum exists or whether it's durable." },
+      { text: "A university media program added the podcast to its required listening list for a graduate journalism course.", signal: true, why: "<strong>Academic curriculum inclusion</strong> is an institutional legitimacy signal. Professors are conservative about what they require students to consume — inclusion means the content passed a peer evaluation, not just a popularity threshold." },
+      { text: "The podcast received thousands of five-star reviews calling it 'life-changing.'", signal: false, why: "<strong>Positive reviews are sentiment data.</strong> They tell you the audience liked it. They don't tell you whether the audience structure is durable, whether listener retention is holding, or whether the content has institutional reach." }
+    ]
+  },
+  {
+    domain: "THRUST",
+    prompt: "A social enterprise claims to be building economic mobility pathways in a post-industrial city. What's structural versus what's performance?",
+    statements: [
+      { text: "The enterprise has a formal employer partnership agreement with seven regional companies guaranteeing interview slots for program graduates.", signal: true, why: "<strong>Formal guaranteed interview agreements</strong> are structural — they require legal documentation, HR coordination, and employer commitment. This is pipeline infrastructure, not intent. The friction required to execute it makes it verifiable." },
+      { text: "The founder gave a TED talk about the need for economic inclusion.", signal: false, why: "<strong>TED talks are legitimacy-laundering events</strong> for founders who've already achieved cultural status. They're powerful marketing but zero evidence of operational impact. The selection process rewards narrative quality, not outcome data." },
+      { text: "The enterprise's first cohort had a 78% job placement rate at 12 months, audited by an independent third party.", signal: true, why: "<strong>Third-party audited 12-month placement rates</strong> are the hardest evidence available in workforce development. The combination of time horizon, independent verification, and specific metric makes this a genuine structural data point." },
+      { text: "The enterprise was named 'most innovative nonprofit of the year' by a regional business publication.", signal: false, why: "<strong>Business publication awards</strong> are typically based on submissions, relationships, or editorial judgment — not outcome data. 'Most innovative' is a category that rewards narrative construction, not impact measurement." },
+      { text: "City council approved a 5-year contract with the enterprise to operate a workforce development center inside a public facility.", signal: true, why: "<strong>Multi-year government contracts with public facility access</strong> are the most durable signal in the social sector. Government contracting requires procurement processes, political accountability, and demonstrated capacity. This is institutional validation with real cost to the city if it fails." },
+      { text: "The enterprise's Instagram features testimonials from program graduates describing transformed lives.", signal: false, why: "<strong>Testimonial content is self-selected and unverifiable.</strong> Organizations publish their best outcomes on social media. This tells you nothing about the distribution of outcomes — only that some participants had positive experiences." }
+    ]
+  },
+  {
+    domain: "AXIS",
+    prompt: "A collective of independent filmmakers claims to be building a new model for cultural production outside legacy studio systems. Separate structural formation from announcement.",
+    statements: [
+      { text: "The collective structured itself as a worker cooperative with profit-sharing bylaws filed with the state.", signal: true, why: "<strong>Worker cooperative legal structure</strong> is operational infrastructure. Filing cooperative bylaws requires legal coordination, unanimous member agreement, and ongoing governance compliance. You don't file paperwork for something you're not serious about." },
+      { text: "Their first documentary received strong reviews from major film critics.", signal: false, why: "<strong>Critical reception</strong> validates the work's quality, not the model's viability. Critics evaluate films, not organizational structures. A well-reviewed film could come from any production model — it tells you nothing about whether the cooperative model is replicable." },
+      { text: "Three streaming platforms offered the collective non-exclusive licensing deals, preserving the collective's IP ownership.", signal: true, why: "<strong>Non-exclusive licensing with retained IP</strong> is a structural negotiating win. Standard deals transfer IP. Getting non-exclusive terms means the platforms wanted the content badly enough to accept terms that don't serve their standard acquisition playbook — this is leverage evidence." },
+      { text: "The collective has 45,000 social media followers and growing.", signal: false, why: "<strong>Social media following for a production collective</strong> reflects audience interest in the content, not in the model. Followers consume work — they don't validate organizational structure or economic sustainability." },
+      { text: "A film school integrated the collective's production methodology into its curriculum, citing it as a case study in post-studio distribution.", signal: true, why: "<strong>Academic curriculum integration as a case study</strong> means the methodology was documented, evaluated, and deemed replicable by institutional educators. This is knowledge infrastructure — it outlasts any single film." },
+      { text: "The founders were profiled in a documentary about 'the future of independent film.'", signal: false, why: "<strong>Being the subject of someone else's documentary</strong> is meta-coverage — narrative about narrative. It signals cultural interest in the story, not structural evidence that the model works or scales." }
+    ]
+  },
+  {
+    domain: "CORE",
+    prompt: "A regional economy is showing early signs of structural transition from extractive industry dependence. Separate real transition signals from narrative.",
+    statements: [
+      { text: "A community college in the region launched a two-year clean energy technician certification, funded jointly by the state workforce board and a private utility company.", signal: true, why: "<strong>Joint workforce certification programs</strong> between state agencies and private utilities require multi-year funding commitments, curriculum development, and employer demand verification. This is human capital infrastructure — slow, expensive, and hard to reverse." },
+      { text: "The governor announced a 'clean energy future' initiative at a national conference.", signal: false, why: "<strong>Gubernatorial announcements at national conferences</strong> are political brand management. The audience is national, not local — it's designed to attract investment attention, not confirm that structural transition has begun." },
+      { text: "Commercial real estate vacancy in the region's traditional industrial corridors stayed elevated for four consecutive quarters despite general market recovery.", signal: true, why: "<strong>Sustained vacancy during market recovery</strong> is a structural signal. When the rest of the market recovers but specific corridors don't, it means the underlying demand driver is gone — not just cyclically suppressed. This is transition, not correction." },
+      { text: "Local residents reported in surveys that they feel optimistic about the region's economic future.", signal: false, why: "<strong>Optimism surveys</strong> reflect narrative absorption, not structural change. Residents feel optimistic when they hear good news — this tells you the communication strategy is working, not that the economic base has shifted." },
+      { text: "A utility-scale solar developer filed environmental impact documents for a 400-acre installation on former coal land, triggering a mandatory 18-month public comment process.", signal: true, why: "<strong>Environmental impact filings on former industrial land</strong> are the most concrete transition signal available. Filing triggers legal process, financial commitment, and community engagement — this is capital that has already moved, not capital that's considering it." },
+      { text: "A national publication ranked the city as one of the top 10 places to watch for economic comeback.", signal: false, why: "<strong>'City to watch' rankings</strong> are editorial products — they're produced annually and require the selection of cities with compelling narratives. Ranking reflects that the story is legible to outsiders, not that the structural transition is complete." }
+    ]
+  },
+  {
+    domain: "GROUND",
+    prompt: "Short-term rental policy signals: what indicates structural shift in how cities are managing housing versus what is political performance?",
+    statements: [
+      { text: "A city council voted to require STR operators to be primary residents of the property, with enforcement tied to utility account records.", signal: true, why: "<strong>Enforcement mechanisms tied to utility records</strong> are operational infrastructure. Primary residency requirements with utility verification create a paper trail that's cross-referenceable and legally defensible — this is a regulation built to actually work, not to satisfy press inquiries." },
+      { text: "The mayor gave a press conference about 'protecting housing affordability for families.'", signal: false, why: "<strong>Affordability press conferences without policy specifics</strong> are political positioning. Housing rhetoric without enforcement mechanism, budget allocation, or zoning change is noise — designed to signal intent, not create structure." },
+      { text: "Airbnb's municipal policy team opened a government affairs office in the city six months before any regulation was announced.", signal: true, why: "<strong>Preemptive lobbying office establishment</strong> is a signal that the platform's intelligence indicated regulation was coming before it was public. Companies don't open expensive policy offices in anticipation of nothing — this tells you the regulatory signal was real and early." },
+      { text: "Online sentiment analysis showed strong community opposition to short-term rentals on neighborhood social media groups.", signal: false, why: "<strong>Neighborhood social media sentiment</strong> is vocal but structurally thin. Opposition groups are often small, motivated minorities — they're visible but don't determine regulatory outcomes. Sentiment without council vote commitment is noise." },
+      { text: "A housing court in the city ruled that STR conversion of rent-stabilized units violated existing tenant protection law, creating legal precedent.", signal: true, why: "<strong>Court rulings creating legal precedent</strong> are the hardest structural signal in housing policy. Precedent reshapes the risk calculus for every operator in the market — it's retroactive and permanent until overturned. This moves capital." },
+      { text: "National media covered the city's STR conflict as a 'housing crisis battleground' story.", signal: false, why: "<strong>National 'battleground' framing</strong> is a narrative product designed to fit an existing story structure about housing conflict. Cities that get this coverage aren't necessarily at inflection points — they have the right story elements for the template." }
+    ]
+  },
+  {
+    domain: "FLOW",
+    prompt: "An independent media brand is claiming to have built a loyal, paying audience. What actually verifies audience durability?",
+    statements: [
+      { text: "The brand's paid subscription retention rate at 12 months is 71%, measured against cohort data.", signal: true, why: "<strong>12-month cohort retention at 71%</strong> is a durable audience signal. Industry benchmarks for subscription media cluster around 50-65% — 71% means the value proposition holds after the initial enthusiasm fades. Cohort measurement removes survivorship bias." },
+      { text: "The brand has been cited by three national publications as 'a must-read.'", signal: false, why: "<strong>'Must-read' citations in national media</strong> are peer legitimacy signals for journalists — they tell you the brand has cultural status in media circles, not that it has a financially sustainable audience base. Status and durability are different." },
+      { text: "During a server outage, subscribers voluntarily migrated to an email list at a 68% rate without being asked.", signal: true, why: "<strong>Voluntary migration during infrastructure failure</strong> is the clearest audience commitment signal available. When people self-organize to maintain access to something during a disruption, they're demonstrating active investment in the relationship — not passive consumption." },
+      { text: "The brand's open rates are consistently above industry average.", signal: false, why: "<strong>Open rates above average</strong> are an engagement metric, not a durability metric. They tell you content is being opened — not that subscribers stay, pay, or advocate. Open rates are also increasingly unreliable due to email client pre-loading." },
+      { text: "Paying subscribers have converted two additional paying subscribers on average, tracked via referral attribution data.", signal: true, why: "<strong>Subscriber-driven referral with attribution data</strong> is a compounding growth signal. An organic referral rate above 1.0 means the audience is self-sustaining — each subscriber is generating more than one replacement. This is structural, not campaign-dependent." },
+      { text: "The founding team appeared on a popular podcast and gained 12,000 new followers in a week.", signal: false, why: "<strong>Podcast appearance traffic spikes</strong> are attention events, not audience formation events. The conversion rate from follower to subscriber, and from subscriber to retained subscriber, is what matters. The spike is noise until conversion data validates it." }
+    ]
+  },
+  {
+    domain: "THRUST",
+    prompt: "An accelerator program claims to be building the next generation of Latin American founders. What tells you it's producing structural outcomes versus performing the narrative?",
+    statements: [
+      { text: "Of the last two cohorts (40 founders), 23 are still operating companies at 24 months post-graduation.", signal: true, why: "<strong>24-month company survival rate at 57.5%</strong> is a structural outcome metric. Most startup accelerators don't publish this data because it's unflattering. Publishing it — and it being above average — signals the program is measuring what matters." },
+      { text: "The accelerator's demo day attracted 200 investors from across Latin America.", signal: false, why: "<strong>Demo day attendance numbers</strong> are event metrics, not outcome metrics. Investors attend demo days for deal flow, networking, and market scanning — not all investors = investment. Attendance tells you the event is well-organized, not that outcomes are good." },
+      { text: "The accelerator has a formal follow-on funding commitment from three regional VCs who get first-look rights on graduates.", signal: true, why: "<strong>Formal first-look agreements with regional VCs</strong> are structural pipeline signals. They require legal documentation and signal that VCs find enough signal value in the cohort quality to formalize access. This is external validation with financial stakes." },
+      { text: "Alumni founders post frequently about how transformative the experience was.", signal: false, why: "<strong>Alumni testimonials</strong> are incentive-distorted — founders who benefited from the program benefit from the program's reputation. Positive posts reinforce their own investment narrative. This is not independent validation." },
+      { text: "The program's curriculum was developed with input from 12 operating founders who had previously failed, documenting specific failure modes.", signal: true, why: "<strong>Failure-informed curriculum with documented failure modes</strong> is a rare structural signal in accelerator design. Most programs are built around success cases. Failure documentation requires founders willing to be vulnerable and a program confident enough to center it — this is evidence of epistemic seriousness." },
+      { text: "The accelerator was ranked in a Top 10 list by a global startup publication.", signal: false, why: "<strong>Startup publication rankings</strong> are editorial products with unclear methodology, typically rewarding application volume, brand recognition, and network size rather than outcome quality. They're useful for awareness, not for evaluating structural impact." }
+    ]
+  },
+  {
+    domain: "AXIS",
+    prompt: "A city government claims its new public art program is investing in cultural equity, not just beautification. What actually signals equity infrastructure?",
+    statements: [
+      { text: "Artists receiving commissions are required to live and work in the neighborhood where the work is installed, verified through tax records.", signal: true, why: "<strong>Residency requirements verified through tax records</strong> are structural equity mechanisms. They're harder to satisfy than self-attestation, create local economic multiplier effects, and require administrative infrastructure to enforce — this is equity built into the contractual layer." },
+      { text: "The program was announced with renderings showing diverse participants in brightly lit community spaces.", signal: false, why: "<strong>Marketing renderings with diversity representation</strong> are aspiration documentation, not policy structure. Renderings are produced before community engagement begins and often before funding is secured. They tell you the narrative goal, not the operational structure." },
+      { text: "The program's grant committee includes voting seats reserved for neighborhood-based cultural organizations, with documented selection criteria.", signal: true, why: "<strong>Voting seats with documented selection criteria for neighborhood organizations</strong> is governance infrastructure. Representation with decision-making authority — not advisory roles — redistributes cultural capital allocation power. Documented criteria make the process legible and contestable." },
+      { text: "Local media praised the program as a model for other cities to follow.", signal: false, why: "<strong>Local media praise</strong> for government programs is typically uncritical coverage of press releases. It reflects the program's communication effectiveness, not its structural outcomes. 'Model for other cities' framing requires no evidence of actual impact." },
+      { text: "The program's first year data showed 67% of commissions went to artists from zip codes with median household incomes below the city average.", signal: true, why: "<strong>Commission distribution by income-correlated geography</strong> is outcome data for equity programs. It's a direct measurement of whether stated goals are producing results — not a proxy or a qualitative claim. This is what equity infrastructure looks like when measured." },
+      { text: "The mayor described the program as 'a celebration of who we are as a community.'", signal: false, why: "<strong>Mayoral celebratory framing</strong> is political language for ribbon-cutting moments. It positions the program as cultural pride rather than policy — which is useful for public relations but tells you nothing about resource allocation, power distribution, or measurable outcomes." }
+    ]
+  },
+  {
+    domain: "CORE",
+    prompt: "A tech company announces it is 'moving its headquarters' to a Sun Belt city. Separate real economic commitment from location branding.",
+    statements: [
+      { text: "The company signed a 20-year ground lease for a 400,000 sq ft campus, filed with the county recorder's office.", signal: true, why: "<strong>Recorded ground leases</strong> are legally binding, publicly verifiable, and financially irreversible. A 20-year commitment at that scale requires board approval, shareholder disclosure, and is priced into the company's long-term financial model. This is capital, not announcement." },
+      { text: "The CEO gave an interview about why they 'love the energy and talent' of the new city.", signal: false, why: "<strong>CEO lifestyle framing in press interviews</strong> is brand narrative. 'Energy and talent' are non-specific, non-verifiable claims designed to generate positive local media. The CEO's affection for the city is not an economic commitment." },
+      { text: "The company applied for a state-issued industrial revenue bond, requiring a public jobs commitment with clawback provisions.", signal: true, why: "<strong>Industrial revenue bonds with clawback provisions</strong> are the most structural economic development signal available. Clawback provisions mean the company faces financial penalty if it doesn't deliver on employment commitments — the state has negotiating leverage, and the company accepted it." },
+      { text: "Local business boosters predicted the move would 'transform the regional economy.'", signal: false, why: "<strong>Booster predictions</strong> are optimism products — they're generated to attract secondary investment and workforce, not to accurately model economic impact. The gap between booster predictions and realized economic outcomes is a documented, consistent phenomenon." },
+      { text: "The company transferred its state of incorporation from Delaware to the new state, requiring board resolution and SEC disclosure.", signal: true, why: "<strong>State of incorporation transfer</strong> is a legally significant, publicly disclosed commitment. It affects tax treatment, shareholder rights, and litigation jurisdiction. Companies don't change their legal domicile for marketing purposes — this is a structural, financial, and legal commitment." },
+      { text: "The company's announcement generated national media coverage and social media celebration in the new city.", signal: false, why: "<strong>Announcement media coverage and local celebration</strong> are the noise layer of every corporate relocation story. They precede any real economic impact and are often the peak of public attention — most of the structural work happens quietly afterward, without coverage." }
+    ]
+  },
+  {
+    domain: "GROUND",
+    prompt: "A heritage neighborhood is undergoing pressure from development. Signals that tell you long-term displacement is structural, not temporary.",
+    statements: [
+      { text: "Commercial rents along the neighborhood's main corridor increased 40% in 24 months, documented in lease renewal filings.", signal: true, why: "<strong>Documented commercial rent increases in lease filings</strong> are the clearest displacement pressure signal. Lease renewals are legal documents — the data is verifiable, sequential, and shows rate of change. 40% in 24 months is not a cycle fluctuation; it's a structural repricing." },
+      { text: "Real estate agents are actively marketing the neighborhood to out-of-state investors as 'the next hot market.'", signal: false, why: "<strong>Agent marketing narratives</strong> are incentive-driven. Agents market narratives that generate listings and transactions — 'next hot market' framing is sales language, not price data. It tells you the marketing cycle has reached this neighborhood, not that the structural shift is irreversible." },
+      { text: "Long-term anchor businesses (20+ year operating history) began relocating to adjacent, lower-rent corridors at an accelerating rate.", signal: true, why: "<strong>Anchor business relocation rates</strong> are displacement momentum signals. Businesses with 20+ year histories have survived previous cycles — when they move, it means the rent delta is too large to absorb. Each anchor departure accelerates the pressure on remaining tenants." },
+      { text: "Local activists organized a protest march with several hundred participants opposing displacement.", signal: false, why: "<strong>Organized community protest</strong> is an important civic act but a lagging signal for displacement momentum. Protests typically peak when displacement is already advanced — the structural process began before the mobilization." },
+      { text: "A Title 26 Section 1031 exchange portfolio aggregated 14 properties in the neighborhood within an 18-month window, documented in deed transfer records.", signal: true, why: "<strong>Section 1031 portfolio aggregation in deed records</strong> is a capital accumulation signal. Institutional investors using 1031 exchanges are building position for long-term hold or redevelopment — they're not buying for current yield. Documented aggregation at this scale indicates a coordinated strategy." },
+      { text: "New coffee shops and boutiques opened in previously vacant storefronts.", signal: false, why: "<strong>New retail arrival in previously vacant space</strong> is a mid-stage gentrification indicator — it comes after the rent increases have already begun attracting higher-income tenants. This is the visible, photogenic layer of displacement, not the upstream signal that caused it." }
+    ]
+  },
+  {
+    domain: "FLOW",
+    prompt: "A decentralized autonomous organization (DAO) claims to be a new model for community governance. What signals durability versus hype cycle?",
+    statements: [
+      { text: "The DAO has maintained quorum on governance votes for 18 consecutive months, with average participation at 34% of token holders.", signal: true, why: "<strong>18-month voting participation consistency</strong> is a durability signal in DAO governance. Most DAOs see participation collapse after initial enthusiasm. Sustained 34% participation across 18 months indicates governance infrastructure that actually functions — not just token speculation." },
+      { text: "The DAO raised $12M in an initial token sale that generated significant media attention.", signal: false, why: "<strong>Token sale fundraising and media attention</strong> are launch mechanics, not governance signals. The capital raised tells you the market's speculative interest — not whether the governance model produces durable coordination. Most token sales don't predict long-term organizational function." },
+      { text: "The DAO's legal team structured it as a legal entity in Wyoming under the state's DAO LLC statute, enabling enforceable contracts with off-chain entities.", signal: true, why: "<strong>DAO LLC formation under state statute</strong> is structural bridge-building between on-chain and off-chain legal reality. It allows the DAO to sign leases, hire contractors, and defend intellectual property — moving it from pure crypto infrastructure to legal economic actor." },
+      { text: "A prominent crypto influencer endorsed the DAO's mission on Twitter.", signal: false, why: "<strong>Influencer endorsements in crypto</strong> are among the most incentive-distorted signals in any sector. Token holder influencers benefit financially from price appreciation driven by their endorsement — this is a conflict of interest, not independent validation." },
+      { text: "The DAO established a formal dispute resolution process with independent arbitrators for governance conflicts, documented in its operating agreement.", signal: true, why: "<strong>Formal dispute resolution with independent arbitrators</strong> is organizational maturity infrastructure. Most DAOs have no conflict resolution mechanism — when they do, it means the organization has anticipated its own failure modes and built structure around them. This is institutional design, not idealism." },
+      { text: "Token price increased 400% in six months, generating excitement from the crypto community.", signal: false, why: "<strong>Token price appreciation</strong> is a speculative market signal that has historically zero correlation with organizational durability. Price captures speculation about future value — it doesn't measure governance quality, member engagement, or mission execution." }
+    ]
+  },
+  {
+    domain: "THRUST",
+    prompt: "A creative entrepreneur is trying to build a sustainable business around cultural production. Which signs indicate structural viability versus early-stage wishful thinking?",
+    statements: [
+      { text: "The business has three revenue streams, none of which accounts for more than 60% of total revenue after 24 months of operation.", signal: true, why: "<strong>Revenue diversification below 60% concentration at 24 months</strong> is a structural resilience signal. Single-revenue-stream creative businesses are fragile to platform or client changes. Diversification at this threshold after 24 months means the model is working across multiple value expressions." },
+      { text: "The founder has 50,000 Instagram followers who regularly engage with their content.", signal: false, why: "<strong>Social following with engagement</strong> is an audience signal, not a business signal. Engagement tells you people value the content — it doesn't tell you they'll pay for it, whether the conversion rate covers costs, or whether the platform's algorithm will continue to surface it." },
+      { text: "A mid-sized institution signed a 3-year service agreement with the business, representing 35% of projected annual revenue.", signal: true, why: "<strong>Multi-year institutional service agreements</strong> are the most durable revenue signal in creative business. Institutions don't sign 3-year agreements for novelty — they sign them when a service fills a structural need they can't fill internally. 35% concentration is healthy: significant but not existential." },
+      { text: "The founder was named 'Creative Entrepreneur of the Year' by a regional business chamber.", signal: false, why: "<strong>Chamber awards</strong> recognize narrative fit and community visibility — they're social capital events, not business validation. The selection criteria typically reward story quality and engagement in chamber activities, not financial viability or structural outcomes." },
+      { text: "The business's operating expenses have stayed below revenue for eight consecutive quarters without external investment.", signal: true, why: "<strong>Eight consecutive profitable quarters without external investment</strong> is a structural sufficiency signal. Profitability without dilution means the model generates more value than it consumes — this is the baseline test for business viability, and most creative businesses don't pass it at this duration." },
+      { text: "The founder's story was featured in a documentary about the future of creative work.", signal: false, why: "<strong>Documentary features</strong> are narrative products — they select subjects for story quality, not financial health. The filmmakers need a compelling arc, not a business model audit. Being featured tells you the story is compelling, not that the business is viable." }
+    ]
+  },
+  {
+    domain: "AXIS",
+    prompt: "A cultural festival claims to be building long-term community infrastructure, not just a one-time event. What actually signals durability?",
+    statements: [
+      { text: "The festival established a year-round artist residency program housed in a building the organization purchased (not leased) with festival proceeds.", signal: true, why: "<strong>Purchased real property for year-round programming</strong> is the clearest infrastructure signal for a festival. Ownership creates irreversible commitment — the organization cannot be displaced by a landlord. Year-round programming means the festival is building something that exists between events." },
+      { text: "The festival attracts 25,000 attendees and received strong national press coverage.", signal: false, why: "<strong>Attendance numbers and press coverage</strong> are event success metrics, not infrastructure metrics. A festival can have 25,000 attendees and zero community infrastructure. They tell you the event works — not that anything persists afterward." },
+      { text: "Local artists who participated in the first three festivals launched independent projects that explicitly cite the festival's methodology, creating a documented lineage.", signal: true, why: "<strong>Documented methodological lineage in participant projects</strong> is a knowledge infrastructure signal. When alumni work explicitly builds on a shared framework, it means the festival transferred replicable tools, not just inspiration. This is how culture infrastructure compounds." },
+      { text: "The festival founder gave an inspiring keynote about the transformative power of community art.", signal: false, why: "<strong>Inspiring keynotes about community transformation</strong> are standard festival marketing. The founder has every incentive to articulate the festival's cultural importance — this tells you they're effective communicators, not that the infrastructure is real." },
+      { text: "The city council approved a recurring budget line for the festival's community programming arm, separate from event operations.", signal: true, why: "<strong>Recurring city budget line for programming separate from the event</strong> is municipal recognition of non-event value. Cities don't create recurring line items for one-time events — they create them for services that fill ongoing community needs. This is structural public recognition." },
+      { text: "Volunteers report feeling 'deeply connected to the community' after participating.", signal: false, why: "<strong>Volunteer satisfaction data</strong> is qualitative and self-reported. It tells you the experience is positive and community-building in feeling — but feeling connected is not the same as infrastructure being built. Both things matter; only one is structural." }
+    ]
+  },
+  {
+    domain: "CORE",
+    prompt: "A report claims a regional innovation ecosystem has 'reached maturity.' Which indicators actually distinguish mature ecosystem from ecosystem performance theater?",
+    statements: [
+      { text: "The region has produced at least three companies that have themselves become LP investors in regional funds — recycling exits back into the ecosystem.", signal: true, why: "<strong>Exit-to-LP recycling</strong> is the definitive ecosystem maturity signal. When companies that were portfolio companies become capital providers in the next generation, it means the ecosystem has produced returns AND developed founders with enough conviction to reinvest locally. This is self-sustaining capital infrastructure." },
+      { text: "The regional innovation office published an annual report with impressive charts showing growth metrics.", signal: false, why: "<strong>Annual reports from innovation offices</strong> are self-assessment documents with selection bias. They're produced to demonstrate value to the officials who fund the office — the methodology always favors the narrative. Charts in self-produced reports require independent verification before they're informative." },
+      { text: "Talent that left the region for coastal tech markets is returning to found companies at a measurable rate, tracked through LinkedIn company registration data.", signal: true, why: "<strong>Return migration of tech talent to found locally</strong> is a maturity signal. Talented founders leave ecosystems because of capital, talent density, or market access gaps. Return means those gaps have narrowed enough to justify the trade-off. LinkedIn registration data gives this verifiability." },
+      { text: "A major tech company opened a satellite office in the region, citing 'access to diverse talent.'", signal: false, why: "<strong>Satellite office openings with 'diverse talent' framing</strong> are often extractive rather than ecosystem-building. Satellite offices can drain local talent into corporate structures rather than growing the startup ecosystem. The framing is positive; the structural impact is ambiguous." },
+      { text: "Legal and accounting service providers specializing in startup corporate structure (Delaware C-corps, SAFEs, 409A valuations) have established practices in the region, sufficient to serve deals without flying in outside counsel.", signal: true, why: "<strong>Local startup legal and accounting infrastructure</strong> is a maturity indicator almost never tracked in ecosystem reports. When startups can close rounds without importing lawyers, it means deal volume has been high enough to develop local expertise — this is ecosystem depth, not headline depth." },
+      { text: "The region was ranked in a 'Top Emerging Tech Hubs' list by a national publication.", signal: false, why: "<strong>'Emerging tech hub' rankings</strong> are editorial products that capture narrative momentum, not ecosystem maturity. 'Emerging' by definition means it hasn't arrived yet. Rankings measure legibility to outsiders — mature ecosystems often stop appearing on emerging lists because they're no longer emerging." }
+    ]
+  }
+];
+
+// ─────────────────────────────────────────────
+// GAME STATE
+// ─────────────────────────────────────────────
+const PUZZLES_PER_SESSION = 7;
+const MAX_ATTEMPTS = 4;
+
+let state = {
+  todaySeed: 0,
+  sessionOrder: [],
+  currentPuzzleIndex: 0,
+  attemptsLeft: MAX_ATTEMPTS,
+  selections: {}, // index -> 'signal' | 'noise'
+  solved: false,
+  failed: false,
+  results: [], // { puzzleIdx, score, attempts }
+  stats: { streak: 0, bestStreak: 0, played: 0, perfect: 0 }
+};
+
+function seededRandom(seed) {
+  let s = seed;
+  return function() {
+    s = (s * 1664525 + 1013904223) & 0xffffffff;
+    return (s >>> 0) / 0x100000000;
+  };
+}
+
+function getTodaySeed() {
+  const d = new Date();
+  return d.getFullYear() * 10000 + (d.getMonth() + 1) * 100 + d.getDate();
+}
+
+function initSession() {
+  const seed = getTodaySeed();
+  state.todaySeed = seed;
+  const rand = seededRandom(seed);
+  const indices = Array.from({length: PUZZLES.length}, (_, i) => i);
+  // Fisher-Yates shuffle
+  for (let i = indices.length - 1; i > 0; i--) {
+    const j = Math.floor(rand() * (i + 1));
+    [indices[i], indices[j]] = [indices[j], indices[i]];
+  }
+  state.sessionOrder = indices.slice(0, PUZZLES_PER_SESSION);
+
+  // Load stats
+  try {
+    const saved = JSON.parse(localStorage.getItem('sf_stats') || '{}');
+    state.stats = { ...state.stats, ...saved };
+  } catch(e) {}
+  updateStreak();
+}
+
+function saveStats() {
+  try { localStorage.setItem('sf_stats', JSON.stringify(state.stats)); } catch(e) {}
+}
+
+function updateStreak() {
+  document.getElementById('streakBadge').textContent = '🔥 ' + state.stats.streak;
+}
+
+// ─────────────────────────────────────────────
+// UI
+// ─────────────────────────────────────────────
+function startGame() {
+  initSession();
+  document.getElementById('introScreen').classList.add('hidden');
+  document.getElementById('gameScreen').classList.remove('hidden');
+  loadPuzzle(0);
+}
+
+function loadPuzzle(sessionIdx) {
+  state.currentPuzzleIndex = sessionIdx;
+  state.attemptsLeft = MAX_ATTEMPTS;
+  state.selections = {};
+  state.solved = false;
+  state.failed = false;
+
+  const pIdx = state.sessionOrder[sessionIdx];
+  const puzzle = PUZZLES[pIdx];
+
+  // Update progress
+  const pct = (sessionIdx / PUZZLES_PER_SESSION) * 100;
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressCount').textContent = sessionIdx + ' / ' + PUZZLES_PER_SESSION;
+
+  // Domain tag
+  const tag = document.getElementById('domainTag');
+  tag.textContent = '/' + puzzle.domain;
+  tag.className = 'domain-tag domain-' + puzzle.domain;
+
+  // Prompt
+  document.getElementById('puzzlePrompt').textContent = puzzle.prompt;
+
+  // Attempts
+  updateAttemptDots();
+
+  // Hide feedback
+  const fb = document.getElementById('feedbackBanner');
+  fb.classList.add('hidden');
+
+  // Hide analysis
+  document.getElementById('analysisPanel').classList.add('hidden');
+  document.getElementById('btnNext').classList.add('hidden');
+
+  // Shuffle statements for this puzzle using today's seed + sessionIdx
+  const rand = seededRandom(state.todaySeed + sessionIdx * 1000);
+  const perm = puzzle.statements.map((s, i) => i);
+  for (let i = perm.length - 1; i > 0; i--) {
+    const j = Math.floor(rand() * (i + 1));
+    [perm[i], perm[j]] = [perm[j], perm[i]];
+  }
+
+  // Render statements
+  const grid = document.getElementById('statementsGrid');
+  grid.innerHTML = '';
+  perm.forEach((origIdx, dispIdx) => {
+    const stmt = puzzle.statements[origIdx];
+    const item = document.createElement('div');
+    item.className = 'statement-item';
+    item.id = 'stmt_' + dispIdx;
+    item.dataset.origIdx = origIdx;
+    item.innerHTML = `
+      <div class="statement-toggle">
+        <button class="toggle-btn" id="btnS_${dispIdx}" onclick="selectStatement(${dispIdx}, 'signal')" title="Signal">S</button>
+        <button class="toggle-btn" id="btnN_${dispIdx}" onclick="selectStatement(${dispIdx}, 'noise')" title="Noise">N</button>
+      </div>
+      <div class="statement-text">${stmt.text}</div>
+      <div class="statement-result" id="result_${dispIdx}"></div>
+    `;
+    grid.appendChild(item);
+  });
+
+  // Store permutation
+  state.currentPerm = perm;
+
+  document.getElementById('btnSubmit').disabled = true;
+  document.getElementById('submitHint').textContent = 'Label all 6 to submit';
+}
+
+function selectStatement(dispIdx, verdict) {
+  if (state.solved || state.failed) return;
+
+  const current = state.selections[dispIdx];
+
+  if (current === verdict) {
+    // Deselect
+    delete state.selections[dispIdx];
+    document.getElementById('stmt_' + dispIdx).className = 'statement-item';
+    document.getElementById('btnS_' + dispIdx).classList.remove('active-signal');
+    document.getElementById('btnN_' + dispIdx).classList.remove('active-noise');
+  } else {
+    state.selections[dispIdx] = verdict;
+    const item = document.getElementById('stmt_' + dispIdx);
+    item.className = 'statement-item selected-' + verdict;
+    document.getElementById('btnS_' + dispIdx).className = 'toggle-btn' + (verdict === 'signal' ? ' active-signal' : '');
+    document.getElementById('btnN_' + dispIdx).className = 'toggle-btn' + (verdict === 'noise' ? ' active-noise' : '');
+  }
+
+  const count = Object.keys(state.selections).length;
+  const allLabeled = count === 6;
+  document.getElementById('btnSubmit').disabled = !allLabeled;
+  document.getElementById('submitHint').textContent = allLabeled ? 'Ready to submit' : (6 - count) + ' more to label';
+}
+
+function clearSelections() {
+  if (state.solved || state.failed) return;
+  state.selections = {};
+  for (let i = 0; i < 6; i++) {
+    document.getElementById('stmt_' + i).className = 'statement-item';
+    document.getElementById('btnS_' + i).className = 'toggle-btn';
+    document.getElementById('btnN_' + i).className = 'toggle-btn';
+  }
+  document.getElementById('btnSubmit').disabled = true;
+  document.getElementById('submitHint').textContent = 'Label all 6 to submit';
+}
+
+function submitAnswer() {
+  if (state.solved || state.failed) return;
+
+  const pIdx = state.sessionOrder[state.currentPuzzleIndex];
+  const puzzle = PUZZLES[pIdx];
+  const perm = state.currentPerm;
+
+  let correct = 0;
+  for (let dispIdx = 0; dispIdx < 6; dispIdx++) {
+    const origIdx = perm[dispIdx];
+    const stmt = puzzle.statements[origIdx];
+    const userVerdict = state.selections[dispIdx];
+    const correctVerdict = stmt.signal ? 'signal' : 'noise';
+    if (userVerdict === correctVerdict) correct++;
+  }
+
+  state.attemptsLeft--;
+
+  const fb = document.getElementById('feedbackBanner');
+  fb.classList.remove('hidden');
+
+  if (correct === 6) {
+    state.solved = true;
+    fb.className = 'feedback-banner correct';
+    fb.textContent = '✓ Perfect read. All 6 classified correctly.';
+    recordPuzzleResult(6, MAX_ATTEMPTS - state.attemptsLeft);
+    showAnalysis(true);
+  } else if (state.attemptsLeft === 0) {
+    state.failed = true;
+    fb.className = 'feedback-banner wrong';
+    fb.textContent = `✗ ${correct}/6 correct. No attempts remaining — see analysis below.`;
+    recordPuzzleResult(correct, MAX_ATTEMPTS);
+    showAnalysis(false);
+  } else {
+    fb.className = 'feedback-banner partial';
+    fb.textContent = `${correct}/6 correct. ${state.attemptsLeft} attempt${state.attemptsLeft !== 1 ? 's' : ''} remaining — adjust and try again.`;
+
+    // Show which ones are correct without revealing which are wrong specifically
+    // Just highlight correct ones as confirmed
+    for (let dispIdx = 0; dispIdx < 6; dispIdx++) {
+      const origIdx = perm[dispIdx];
+      const stmt = puzzle.statements[origIdx];
+      const userVerdict = state.selections[dispIdx];
+      const correctVerdict = stmt.signal ? 'signal' : 'noise';
+      if (userVerdict === correctVerdict) {
+        const item = document.getElementById('stmt_' + dispIdx);
+        item.classList.add('locked');
+        document.getElementById('btnS_' + dispIdx).disabled = true;
+        document.getElementById('btnN_' + dispIdx).disabled = true;
+        document.getElementById('result_' + dispIdx).textContent = '✓';
+      }
+    }
+  }
+
+  updateAttemptDots();
+}
+
+function updateAttemptDots() {
+  for (let i = 0; i < MAX_ATTEMPTS; i++) {
+    const dot = document.getElementById('dot' + i);
+    dot.className = 'attempt-dot' + (i >= state.attemptsLeft ? ' used' : '');
+  }
+}
+
+function recordPuzzleResult(correct, attemptsUsed) {
+  const score = correct === 6 ? (attemptsUsed === 1 ? 3 : attemptsUsed === 2 ? 2 : 1) : 0;
+  state.results.push({ correct, attemptsUsed, score });
+}
+
+function showAnalysis(solved) {
+  const pIdx = state.sessionOrder[state.currentPuzzleIndex];
+  const puzzle = PUZZLES[pIdx];
+  const perm = state.currentPerm;
+
+  const panel = document.getElementById('analysisPanel');
+  panel.classList.remove('hidden');
+
+  document.getElementById('analysisIntro').textContent = solved
+    ? 'Signal discipline confirmed. Here's what made each one legible:'
+    : 'Here's the full breakdown — understanding the misses is how the framework sharpens.';
+
+  const items = document.getElementById('analysisItems');
+  items.innerHTML = '';
+
+  perm.forEach((origIdx, dispIdx) => {
+    const stmt = puzzle.statements[origIdx];
+    const verdict = stmt.signal ? 'signal' : 'noise';
+    const div = document.createElement('div');
+    div.className = 'analysis-item';
+    div.innerHTML = `
+      <div class="analysis-header">
+        <span class="analysis-verdict ${verdict}">${verdict.toUpperCase()}</span>
+        <span class="analysis-stmt">"${stmt.text.substring(0, 60)}${stmt.text.length > 60 ? '…' : ''}"</span>
+      </div>
+      <div class="analysis-why">${stmt.why}</div>
+    `;
+    items.appendChild(div);
+  });
+
+  const isLast = state.currentPuzzleIndex >= PUZZLES_PER_SESSION - 1;
+  const btnNext = document.getElementById('btnNext');
+  btnNext.classList.remove('hidden');
+  btnNext.textContent = isLast ? 'See Final Score →' : 'Next Puzzle →';
+}
+
+function nextPuzzle() {
+  const next = state.currentPuzzleIndex + 1;
+  if (next >= PUZZLES_PER_SESSION) {
+    showScore();
+  } else {
+    loadPuzzle(next);
+  }
+}
+
+function showScore() {
+  document.getElementById('gameScreen').classList.add('hidden');
+  document.getElementById('scoreScreen').classList.remove('hidden');
+
+  const totalScore = state.results.reduce((s, r) => s + r.score, 0);
+  const maxScore = PUZZLES_PER_SESSION * 3;
+  const pct = Math.round((totalScore / maxScore) * 100);
+
+  const perfect = state.results.filter(r => r.correct === 6).length;
+  const partial = state.results.filter(r => r.correct > 0 && r.correct < 6).length;
+  const missed = state.results.filter(r => r.correct === 0).length;
+
+  document.getElementById('finalScore').textContent = pct + '%';
+  document.getElementById('statPerfect').textContent = perfect;
+  document.getElementById('statPartial').textContent = partial;
+  document.getElementById('statMissed').textContent = missed;
+
+  let label = '';
+  if (pct >= 90) label = 'Signal Analyst. You read infrastructure, not narrative.';
+  else if (pct >= 70) label = 'Developing signal discipline. The framework is taking shape.';
+  else if (pct >= 50) label = 'Noise is still loud. Keep calibrating the lens.';
+  else label = 'The noise won this round. Tomorrow, run it again.';
+  document.getElementById('scoreLabel').textContent = label;
+
+  // Update streak
+  const today = getTodaySeed();
+  try {
+    const lastPlayed = parseInt(localStorage.getItem('sf_lastPlayed') || '0');
+    const yesterday = (() => {
+      const d = new Date();
+      d.setDate(d.getDate() - 1);
+      return d.getFullYear() * 10000 + (d.getMonth() + 1) * 100 + d.getDate();
+    })();
+    if (lastPlayed === yesterday) {
+      state.stats.streak++;
+    } else if (lastPlayed !== today) {
+      state.stats.streak = 1;
+    }
+    localStorage.setItem('sf_lastPlayed', today);
+  } catch(e) { state.stats.streak = 1; }
+  state.stats.played++;
+  if (perfect >= 5) state.stats.perfect++;
+  if (state.stats.streak > state.stats.bestStreak) state.stats.bestStreak = state.stats.streak;
+  saveStats();
+  updateStreak();
+
+  // Share grid
+  const emoji = state.results.map(r => {
+    if (r.correct === 6 && r.attemptsUsed === 1) return '🟠';
+    if (r.correct === 6 && r.attemptsUsed === 2) return '🟡';
+    if (r.correct === 6) return '🟢';
+    if (r.correct >= 4) return '🟦';
+    return '⬛';
+  });
+
+  const d = new Date();
+  const dateStr = (d.getMonth()+1) + '/' + d.getDate() + '/' + d.getFullYear();
+  const shareText = `IN-KluSo SIGNAL FINDER ${dateStr}\n${pct}% signal accuracy\n\n${emoji.join('')}\n\n🟠 perfect (1st try) 🟡 clean (2nd) 🟢 found 🟦 partial ⬛ noise won\n\nhttps://jjaecheverri.github.io/inkluso-magazine/signal-finder/`;
+
+  document.getElementById('shareGrid').textContent = emoji.join('') + '\n' + pct + '% · ' + dateStr;
+  document.getElementById('shareGridText') && (document.getElementById('shareGridText').value = shareText);
+  window._shareText = shareText;
+
+  // Next edition
+  const nextD = new Date();
+  nextD.setDate(nextD.getDate() + 1);
+  document.getElementById('nextEdition').textContent = 'New set tomorrow · ' + nextD.toLocaleDateString('en-US', {weekday:'long', month:'long', day:'numeric'});
+
+  // Update progress bar to 100%
+  document.getElementById('progressFill').style.width = '100%';
+  document.getElementById('progressCount').textContent = '7 / 7';
+}
+
+function copyShare() {
+  const text = window._shareText || '';
+  navigator.clipboard.writeText(text.replace(/\\n/g, '\n')).then(() => {
+    const btn = document.querySelector('.btn-share');
+    const orig = btn.textContent;
+    btn.textContent = 'Copied ✓';
+    setTimeout(() => btn.textContent = orig, 2000);
+  }).catch(() => {
+    alert(text.replace(/\\n/g, '\n'));
+  });
+}
+</script>
+</body>
+</html>
