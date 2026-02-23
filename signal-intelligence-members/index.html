@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal Intelligence: Members Edition — IN-KluSo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+--cream:#FAF6EE;--orange:#E8652E;--thrust:#2D5BFF;--axis:#9B59B6;--flow:#00BFA5;--ground:#2C3E50;
+--dark:#1a1a1a;--text:#2C2C2C;--muted:#6B7280;--light-border:#E5E1D8;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--text);line-height:1.6;font-weight:400}
+h1,h2,h3,h4{font-family:'DM Serif Display',serif;font-weight:400;line-height:1.2}
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(250,246,238,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--light-border);padding:12px 0}
+nav .container{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.nav-brand{font-family:'DM Serif Display',serif;font-size:1.1rem;color:var(--orange);white-space:nowrap}
+.nav-links{display:flex;gap:6px;flex-wrap:wrap}
+.nav-links a{font-size:0.72rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);text-decoration:none;padding:4px 8px;border-radius:4px;transition:all 0.2s;font-weight:500}
+.nav-links a:hover{color:var(--orange);background:rgba(232,101,46,0.08)}
+.nav-links a.locked{opacity:0.4;cursor:not-allowed}
+
+.membership-status{display:flex;gap:12px;align-items:center;font-size:0.75rem}
+.status-dot{width:8px;height:8px;border-radius:50%;background:#e74c3c}
+.status-dot.unlocked{background:#27ae60}
+.status-text{font-weight:600;color:var(--muted)}
+
+/* HERO */
+.hero{padding:100px 0 80px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle at 50% 50%,rgba(232,101,46,0.06) 0%,transparent 50%);animation:heroPulse 8s ease-in-out infinite}
+@keyframes heroPulse{0%,100%{transform:scale(1);opacity:0.5}50%{transform:scale(1.1);opacity:1}}
+.hero-label{display:inline-block;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.15em;color:var(--orange);border:1px solid var(--orange);padding:6px 16px;border-radius:20px;margin-bottom:24px;font-weight:600}
+.hero-label.premium::before{content:'◆ ';margin-right:6px}
+.hero h1{font-size:clamp(2.2rem,5vw,4rem);color:var(--dark);margin-bottom:16px}
+.hero h1 span{color:var(--orange)}
+.hero-sub{font-size:clamp(1rem,2vw,1.35rem);color:var(--muted);max-width:700px;margin:0 auto 24px;font-weight:300}
+.hero-byline{font-size:0.85rem;color:var(--muted)}
+.hero-byline strong{color:var(--text);font-weight:600}
+.hero-stats{display:flex;justify-content:center;gap:32px;margin-top:40px;flex-wrap:wrap}
+.hero-stat{text-align:center}
+.hero-stat .num{font-family:'DM Serif Display',serif;font-size:2.2rem;color:var(--orange)}
+.hero-stat .label{font-size:0.7rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);display:block;margin-top:2px}
+
+/* FREE PREVIEW BANNER */
+.free-preview-badge{background:linear-gradient(90deg, rgba(0,191,165,0.1), rgba(45,91,255,0.1));border:1px solid var(--flow);border-radius:8px;padding:16px 24px;margin-bottom:40px;text-align:center}
+.free-preview-badge h3{font-size:0.9rem;margin-bottom:8px;color:var(--text)}
+.free-preview-badge p{font-size:0.85rem;color:var(--muted)}
+
+/* PAYWALL */
+.paywall-container{position:relative}
+.paywall-preview{position:relative;z-index:1}
+.paywall-locked{position:relative;z-index:2}
+.paywall-gate{position:absolute;bottom:0;left:0;right:0;height:600px;background:linear-gradient(to bottom, rgba(250,246,238,0), rgba(250,246,238,0.7), rgba(250,246,238,1));pointer-events:none;z-index:3}
+.paywall-locked .paywall-gate{display:none}
+.locked-overlay{position:absolute;inset:0;background:rgba(255,255,255,0.35);backdrop-filter:blur(3px);border-radius:8px;z-index:10;display:none}
+.paywall-locked .locked-overlay{display:flex;align-items:center;justify-content:center}
+.paywall-blur{transition:filter 0.3s;filter:blur(0)}
+.paywall-locked .paywall-blur{filter:blur(8px)}
+
+/* UNLOCK CTA */
+.unlock-cta{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:2px solid var(--light-border);padding:24px;text-align:center;z-index:1000;display:none;backdrop-filter:blur(12px)}
+.unlock-cta.show{display:block;animation:slideUp 0.4s ease}
+@keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+.unlock-cta-content{max-width:600px;margin:0 auto}
+.unlock-cta h3{font-size:1.1rem;margin-bottom:8px;color:var(--dark)}
+.unlock-cta p{font-size:0.9rem;color:var(--muted);margin-bottom:16px}
+.unlock-btn{display:inline-block;padding:12px 32px;background:var(--orange);color:#fff;border:none;border-radius:8px;font-family:'Inter',sans-serif;font-weight:600;font-size:0.95rem;cursor:pointer;text-decoration:none;transition:all 0.2s}
+.unlock-btn:hover{background:#d4571f;transform:translateY(-2px)}
+.dismiss-cta{display:inline-block;margin-left:12px;padding:12px 24px;background:transparent;border:1px solid var(--light-border);border-radius:8px;font-weight:600;font-size:0.9rem;cursor:pointer;color:var(--muted);text-decoration:none}
+.dismiss-cta:hover{color:var(--text);border-color:var(--text)}
+
+/* SECTIONS */
+section{padding:80px 0}
+section:nth-child(even){background:rgba(0,0,0,0.01)}
+.section-label{font-size:0.7rem;text-transform:uppercase;letter-spacing:0.15em;font-weight:600;margin-bottom:8px}
+.section-title{font-size:clamp(1.8rem,3vw,2.8rem);margin-bottom:16px;color:var(--dark)}
+.section-desc{font-size:1.05rem;color:var(--muted);max-width:700px;margin-bottom:40px;line-height:1.7}
+
+/* DARK CARD */
+.dark-card{background:var(--dark);color:#fff;border-radius:16px;padding:48px;margin-bottom:40px;position:relative;overflow:hidden}
+.dark-card::after{content:'';position:absolute;top:0;right:0;width:300px;height:300px;background:radial-gradient(circle,rgba(232,101,46,0.15),transparent 70%);pointer-events:none}
+.dark-card h2{color:#fff;margin-bottom:20px;font-size:1.8rem}
+.dark-card p{color:rgba(255,255,255,0.8);font-size:1.05rem;line-height:1.8;max-width:800px}
+.dark-card .stats-row{display:flex;gap:32px;margin-top:32px;flex-wrap:wrap}
+.dark-card .stat-item{text-align:center;min-width:100px}
+.dark-card .stat-item .val{font-family:'DM Serif Display',serif;font-size:2rem;color:var(--orange)}
+.dark-card .stat-item .lbl{font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em;color:rgba(255,255,255,0.5);margin-top:4px;display:block}
+
+/* META-PATTERN CARDS */
+.mp-grid{display:grid;gap:20px}
+.mp-card{background:#fff;border-radius:12px;border:1px solid var(--light-border);overflow:hidden;transition:all 0.3s;cursor:pointer}
+.mp-card:hover{box-shadow:0 8px 30px rgba(0,0,0,0.08);transform:translateY(-2px)}
+.mp-header{padding:24px 28px;display:flex;align-items:center;gap:16px;justify-content:space-between}
+.mp-num{font-family:'DM Serif Display',serif;font-size:1.8rem;color:var(--orange);min-width:40px}
+.mp-info{flex:1}
+.mp-info h3{font-size:1.15rem;margin-bottom:6px;color:var(--dark)}
+.mp-info .mp-meta{display:flex;gap:12px;align-items:center;font-size:0.8rem;color:var(--muted)}
+.mp-dots{display:flex;gap:4px}
+.mp-dot{width:10px;height:10px;border-radius:50%;opacity:0.3}
+.mp-dot.active{opacity:1}
+.mp-arrow{font-size:1.2rem;color:var(--muted);transition:transform 0.3s}
+.mp-card.open .mp-arrow{transform:rotate(180deg)}
+.mp-body{max-height:0;overflow:hidden;transition:max-height 0.5s ease}
+.mp-card.open .mp-body{max-height:2000px}
+.mp-content{padding:0 28px 28px;border-top:1px solid var(--light-border)}
+.mp-content p{margin-top:16px;color:var(--text);line-height:1.7;font-size:0.95rem}
+.mp-content .mp-signals{margin-top:16px;display:flex;flex-wrap:wrap;gap:6px}
+.mp-content .signal-tag{font-size:0.72rem;padding:4px 10px;border-radius:20px;background:rgba(0,0,0,0.04);color:var(--text);border:1px solid var(--light-border)}
+.mp-content .mp-value{margin-top:16px;padding:16px;background:rgba(232,101,46,0.05);border-radius:8px;border-left:3px solid var(--orange)}
+.mp-content .mp-value h4{font-size:0.85rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--orange);margin-bottom:8px}
+.mp-content .mp-value p{margin-top:0;font-size:0.9rem}
+
+/* TOP 20 PREVIEW */
+.top20-preview{background:#fff;border-radius:12px;border:1px solid var(--light-border);padding:24px;margin-bottom:32px}
+.top20-preview .preview-label{font-size:0.75rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--orange);font-weight:600;margin-bottom:16px}
+.preview-signals-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.preview-signal-card{padding:16px;background:rgba(0,0,0,0.02);border-radius:8px;border-left:3px solid var(--orange)}
+.preview-signal-card h4{font-size:0.95rem;margin-bottom:8px;color:var(--text)}
+.preview-signal-card .sig-meta{display:flex;gap:12px;align-items:center;font-size:0.8rem;margin-bottom:8px}
+.preview-signal-card .div-badge{display:inline-block;padding:2px 8px;border-radius:6px;font-size:0.65rem;font-weight:700;text-transform:uppercase;color:#fff}
+.preview-signal-card .score{font-size:0.85rem;color:var(--muted)}
+.preview-more{text-align:center;padding:32px 24px;background:linear-gradient(to bottom,rgba(250,246,238,0),rgba(250,246,238,1));font-size:0.95rem;color:var(--muted)}
+.preview-more strong{color:var(--orange);font-weight:600}
+
+/* FOOTER */
+footer{background:var(--dark);color:#fff;padding:60px 0;text-align:center}
+footer .f-brand{font-family:'DM Serif Display',serif;font-size:1.8rem;color:var(--orange);margin-bottom:16px}
+footer .f-quote{font-size:0.95rem;color:rgba(255,255,255,0.6);max-width:700px;margin:0 auto 24px;line-height:1.7;font-style:italic}
+footer .f-links a{color:rgba(255,255,255,0.4);text-decoration:none;font-size:0.8rem;margin:0 12px}
+footer .f-links a:hover{color:var(--orange)}
+footer .f-copy{font-size:0.7rem;color:rgba(255,255,255,0.2);margin-top:24px}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+nav .nav-links{display:none}
+.hero-stats{gap:16px}
+.unlock-cta{padding:16px}
+.unlock-btn{display:block;width:100%;margin-bottom:12px}
+.dismiss-cta{display:block;width:100%;margin-left:0;margin-top:12px}
+.preview-signals-grid{grid-template-columns:1fr}
+}
+@media(max-width:480px){
+.hero h1{font-size:2.5rem}
+.hero-stat .num{font-size:1.8rem}
+.paywall-gate{height:400px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+<div class="container">
+<div class="nav-brand">IN-KluSo ◆ Signal Intelligence</div>
+<div style="display:flex;gap:16px;align-items:center;flex:1;justify-content:flex-end">
+<div class="membership-status">
+<div class="status-dot" id="statusDot"></div>
+<span class="status-text" id="statusText">Preview Mode</span>
+</div>
+</div>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+<div class="container">
+<div class="hero-label premium">Members Edition</div>
+<h1>SIGNAL <span>INTELLIGENCE</span></h1>
+<p class="hero-sub">74 Signals. 7 Meta-Patterns. 5 Divisions. Complete Framework.</p>
+<p class="hero-byline">By <strong>Juan Camilo Echeverri</strong> & <strong>Camilo Osorio</strong></p>
+<div class="hero-stats">
+<div class="hero-stat"><div class="num">74</div><span class="label">Signals</span></div>
+<div class="hero-stat"><div class="num">7</div><span class="label">Meta-Patterns</span></div>
+<div class="hero-stat"><div class="num">20</div><span class="label">Top Ranked</span></div>
+<div class="hero-stat"><div class="num">5</div><span class="label">Divisions</span></div>
+<div class="hero-stat"><div class="num">86</div><span class="label">Avg Confidence</span></div>
+</div>
+</div>
+</section>
+
+<!-- FREE PREVIEW BANNER -->
+<section>
+<div class="container">
+<div class="free-preview-badge">
+<h3>Free Preview Section — Full Edition for Members</h3>
+<p>Explore the meta-patterns and framework preview below. Unlock the complete Top 20 signals, divisions breakdown, calculator, and intelligence packages with membership.</p>
+</div>
+</div>
+</section>
+
+<!-- PAYWALL PREVIEW CONTAINER -->
+<div class="paywall-container">
+
+<!-- EXECUTIVE SUMMARY (FREE) -->
+<section id="exec-summary" class="paywall-preview">
+<div class="container">
+<div class="dark-card">
+<h2>Executive Summary</h2>
+<p>In February 2026, we executed a comprehensive signal hunt across 5 divisions (CORE, THRUST, AXIS, FLOW, GROUND), 6 cities (NYC, LA, Madrid, CDMX, Buenos Aires, Northwest Arkansas), and 6 research channels (permits, court filings, council minutes, regulatory filings, news archives, institutional announcements). The objective: identify structural shifts at the capital, policy, culture, and territory level before mainstream coverage.</p>
+<div class="stats-row">
+<div class="stat-item"><div class="val">100</div><span class="lbl">Signals Hunted</span></div>
+<div class="stat-item"><div class="val">74</div><span class="lbl">Verified & Ranked</span></div>
+<div class="stat-item"><div class="val">7</div><span class="lbl">Meta-Patterns</span></div>
+<div class="stat-item"><div class="val">6-Stage</div><span class="lbl">Verification</span></div>
+</div>
+</div>
+</section>
+
+<!-- META-PATTERNS (FREE) -->
+<section id="meta-patterns" class="paywall-preview">
+<div class="container">
+<h2 class="section-title">7 Meta-Patterns</h2>
+<p class="section-desc">Structural forces visible across multiple divisions and geographies. These patterns reveal where incentives align, where capital is concentrating, and where behavioral adaptation is accelerating.</p>
+<div class="mp-grid">
+<div class="mp-card">
+<div class="mp-header">
+<div class="mp-num">1</div>
+<div class="mp-info">
+<h3>AI Shock → Enterprise Lock</h3>
+<div class="mp-meta"><span>CORE + THRUST</span><span>•</span><span>High confidence</span></div>
+</div>
+<div class="mp-arrow">↓</div>
+</div>
+<div class="mp-body">
+<div class="mp-content">
+<p>CIOs are moving AI spend from "experimentation" to "revenue-protection" mode. This shifts investment from cheap inference models to proprietary fine-tuning, custom data pipelines, and vendor lock-in infrastructure. The beneficiaries aren't the inference winners (OpenAI, Anthropic)—they're infrastructure providers, data firms, and systems integrators.</p>
+<div class="mp-signals"><span class="signal-tag">Northwood Space</span><span class="signal-tag">Capital concentration</span><span class="signal-tag">Defense surge</span></div>
+<div class="mp-value">
+<h4>Signal: Northwood Space $100M + Space Force $49.8M</h4>
+<p>Defense manufacturing securing capital to support AI/defense integration. Signal: Enterprise AI adoption entering compliance phase (not experimentation).</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="mp-card">
+<div class="mp-header">
+<div class="mp-num">2</div>
+<div class="mp-info">
+<h3>LatAm Triangulation</h3>
+<div class="mp-meta"><span>GROUND + AXIS</span><span>•</span><span>Emerging</span></div>
+</div>
+<div class="mp-arrow">↓</div>
+</div>
+<div class="mp-body">
+<div class="mp-content">
+<p>Capital is flowing into LatAm real estate and creative infrastructure (Madrid, CDMX, Buenos Aires). Simultaneously, regulatory clarity is increasing (Spain housing court decisions, Argentina office reuse policies). The pattern: developed-market capital seeking emerging-market fundamentals (lower entry cost, regulatory clarity, cultural gravity).</p>
+<div class="mp-signals"><span class="signal-tag">Madrid court rulings</span><span class="signal-tag">Buenos Aires policy</span><span class="signal-tag">Creative infrastructure</span></div>
+</div>
+</div>
+</div>
+
+<div class="mp-card">
+<div class="mp-header">
+<div class="mp-num">3</div>
+<div class="mp-info">
+<h3>Creator Bifurcation</h3>
+<div class="mp-meta"><span>FLOW</span><span>•</span><span>High confidence</span></div>
+</div>
+<div class="mp-arrow">↓</div>
+</div>
+<div class="mp-body">
+<div class="mp-content">
+<p>Instagram lost 18% reach among APAC creators (meta-driven algorithmic shift). TikTok gained 34% in same cohort. The split: established creators stay on revenue-generating platforms (YouTube, established Instagram bases). New creators go growth-first (TikTok, Discord communities). This bifurcates the creator economy—professional content vs. community-first content.</p>
+<div class="mp-signals"><span class="signal-tag">Platform migration</span><span class="signal-tag">Creator incentives</span><span class="signal-tag">Attention economy</span></div>
+</div>
+</div>
+</div>
+
+<div class="mp-card">
+<div class="mp-header">
+<div class="mp-num">4</div>
+<div class="mp-info">
+<h3>Physical Renaissance</h3>
+<div class="mp-meta"><span>GROUND + AXIS</span><span>•</span><span>Moderate confidence</span></div>
+</div>
+<div class="mp-arrow">↓</div>
+</div>
+<div class="mp-body">
+<div class="mp-content">
+<p>After 5 years of office flight, LA's adaptive reuse zoning changes are driving 25%+ office-to-residential conversions. Simultaneously, maker spaces and physical production (food, craft, manufacturing) are attracting capital in tier-2 cities. The pattern: digital saturation is making physical scarcity valuable again.</p>
+<div class="mp-signals"><span class="signal-tag">LA zoning shifts</span><span class="signal-tag">Adaptive reuse</span><span class="signal-tag">Maker economy</span></div>
+</div>
+</div>
+</div>
+
+<div class="mp-card">
+<div class="mp-header">
+<div class="mp-num">5</div>
+<div class="mp-info">
+<h3>Defense Surge</h3>
+<div class="mp-meta"><span>CORE</span><span>•</span><span>High confidence</span></div>
+</div>
+<div class="mp-arrow">↓</div>
+</div>
+<div class="mp-body">
+<div class="mp-content">
+<p>Geopolitical tension and AI integration are driving record capital into defense tech, manufacturing, and aerospace. This is not just government spending—it's institutional capital (venture, private equity, strategic corporate) viewing defense as the highest-confidence investment category in 2026.</p>
+<div class="mp-signals"><span class="signal-tag">Military tech spending</span><span class="signal-tag">Capital flows</span><span class="signal-tag">Institutional conviction</span></div>
+</div>
+</div>
+</div>
+
+<div class="mp-card">
+<div class="mp-header">
+<div class="mp-num">6</div>
+<div class="mp-info">
+<h3>Startup Pace Stabilization</h3>
+<div class="mp-meta"><span>THRUST</span><span>•</span><span>Moderate confidence</span></div>
+</div>
+<div class="mp-arrow">↓</div>
+</div>
+<div class="mp-body">
+<div class="mp-content">
+<p>NYC startup hiring accelerated in Jan-Feb 2026 (50+ companies actively hiring). This is not boom (2021-2022), but it's not winter. It's signal-based hiring: founders confident enough to expand, but disciplined about unit economics. Markers: profitability-focused hiring, skill-specific roles, geographic dispersion (not just SF/NYC).</p>
+<div class="mp-signals"><span class="signal-tag">Hiring data</span><span class="signal-tag">Founder confidence</span><span class="signal-tag">Capital deployment</span></div>
+</div>
+</div>
+</div>
+
+<div class="mp-card">
+<div class="mp-header">
+<div class="mp-num">7</div>
+<div class="mp-info">
+<h3>Credit & Lending Recalibration</h3>
+<div class="mp-meta"><span>CORE + GROUND</span><span>•</span><span>Emerging confidence</span></div>
+</div>
+<div class="mp-arrow">↓</div>
+</div>
+<div class="mp-body">
+<div class="mp-content">
+<p>Interest rates at 4.5-5.0% are forcing a repricing of credit. Cash-light businesses are under pressure. Real estate financing is bifurcating: prime properties (sub-5% rates) vs. speculative properties (8%+). Capital is consolidating into institutional hands. Small operator access to leverage is shrinking.</p>
+<div class="mp-signals"><span class="signal-tag">Rate environment</span><span class="signal-tag">Credit allocation</span><span class="signal-tag">Capital concentration</span></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- TOP 20 PREVIEW (FREE PARTIAL) -->
+<section id="top-20-preview" class="paywall-preview">
+<div class="container">
+<h2 class="section-title">Top 20 Signals — Preview</h2>
+<p class="section-desc">Ranked by commercial value, competitive advantage window, and cross-division applicability. The complete ranked list with full signal details is available to members.</p>
+<div class="top20-preview">
+<div class="preview-label">◆ Preview: Top 5 of 20</div>
+<div class="preview-signals-grid">
+<div class="preview-signal-card">
+<h4>1. Great Search Fragmentation</h4>
+<div class="sig-meta"><span class="div-badge" style="background:var(--flow)">FLOW</span><span>Confidence: 97/100</span></div>
+<p class="score">Google search -20% YoY per user. Answer engines +77% share. Zero-click queries at 69%. The funnel is permanently broken.</p>
+</div>
+<div class="preview-signal-card">
+<h4>2. Northwood Space Capital Surge</h4>
+<div class="sig-meta"><span class="div-badge" style="background:var(--orange)">CORE</span><span>Confidence: 91/100</span></div>
+<p class="score">$100M Series D. Space Force contracts $49.8M. Defense manufacturing entering AI integration phase.</p>
+</div>
+<div class="preview-signal-card">
+<h4>3. NYC Founder Hiring Acceleration</h4>
+<div class="sig-meta"><span class="div-badge" style="background:var(--thrust)">THRUST</span><span>Confidence: 81/100</span></div>
+<p class="score">50+ companies hiring Jan-Feb 2026. Focused expansion. Capital deployed into verified unit economics.</p>
+</div>
+<div class="preview-signal-card">
+<h4>4. LA Office Adaptive Reuse Policy</h4>
+<div class="sig-meta"><span class="div-badge" style="background:var(--ground)">GROUND</span><span>Confidence: 86/100</span></div>
+<p class="score">25.1% office vacancy. New zoning allows 10-year tax breaks for office-to-residential. Structural inflection.</p>
+</div>
+<div class="preview-signal-card">
+<h4>5. Madrid Housing Court Victory</h4>
+<div class="sig-meta"><span class="div-badge" style="background:var(--axis)">AXIS</span><span>Confidence: 88/100</span></div>
+<p class="score">Court ruled against Elix Rental Housing II. Rental caps enforceable. European capital reshaping.</p>
+</div>
+</div>
+<div class="preview-more">
+<strong>15 additional signals</strong> with full city, capital, and confidence data available to members. Includes CORE (capital concentration), THRUST (startup validation), AXIS (creative infrastructure), FLOW (attention economy), and GROUND (territory adoption) signals across all 6 cities.</div>
+</div>
+</section>
+
+<!-- PAYWALL GATE -->
+<div class="paywall-gate"></div>
+
+<!-- PREMIUM SECTION START (LOCKED BY DEFAULT) -->
+<section id="divisions" class="paywall-locked">
+<div class="locked-overlay">
+<div style="text-align:center">
+<h3 style="color:var(--text);margin-bottom:12px">Complete Edition Members Only</h3>
+<p style="color:var(--muted);font-size:0.9rem;margin-bottom:20px">Unlock to access full Top 20 rankings, divisions breakdown, signal calculator, and intelligence packages.</p>
+<button class="unlock-btn" onclick="unlockEdition()">Unlock Full Edition</button>
+</div>
+</div>
+<div class="container paywall-blur">
+<h2 class="section-title">5 Division Signals (Complete Rankings)</h2>
+<p class="section-desc">All 74 verified signals organized by division with three-lens analysis (epistemology, systems, behavioral).</p>
+<p style="text-align:center;color:var(--muted);padding:40px 0;font-style:italic">[Full divisions content available to members]</p>
+</div>
+</section>
+
+<!-- INTELLIGENCE PACKAGES (LOCKED) -->
+<section class="paywall-locked">
+<div class="locked-overlay" style="display:none"></div>
+<div class="container paywall-blur">
+<h2 class="section-title">5 Intelligence Packages</h2>
+<p class="section-desc">Curated signal bundles designed for different buyer personas: strategic decision-makers, investors, operators, and teams building in specific verticals.</p>
+<p style="text-align:center;color:var(--muted);padding:40px 0;font-style:italic">[Intelligence packages available to members]</p>
+</div>
+</section>
+
+<!-- SIGNAL CALCULATOR (LOCKED) -->
+<section class="paywall-locked">
+<div class="locked-overlay" style="display:none"></div>
+<div class="container paywall-blur">
+<h2 class="section-title">Signal Confidence Calculator</h2>
+<p class="section-desc">Input any claim, sources, and division. Get three confidence scores (epistemology, systems, behavioral) showing why that signal scores that way.</p>
+<p style="text-align:center;color:var(--muted);padding:40px 0;font-style:italic">[Interactive calculator available to members]</p>
+</div>
+</section>
+
+<!-- CRUMBS (LOCKED) -->
+<section class="paywall-locked">
+<div class="locked-overlay" style="display:none"></div>
+<div class="container paywall-blur">
+<h2 class="section-title">Crumbs: Data Signals Division</h2>
+<p class="section-desc">18 verified signals. Sarcasm layer targets systems incentives. Dry mechanism explanation follows every sarcastic line.</p>
+<p style="text-align:center;color:var(--muted);padding:40px 0;font-style:italic">[Crumbs signals available to members]</p>
+</div>
+</section>
+
+</div><!-- END PAYWALL CONTAINER -->
+
+<!-- UNLOCK CTA -->
+<div class="unlock-cta" id="unlockCTA">
+<div class="unlock-cta-content">
+<h3>Unlock Signal Intelligence</h3>
+<p>Get full access to all 74 verified signals, meta-patterns analysis, intelligence packages, calculator tools, and membership-exclusive CRUMBS data.</p>
+<button class="unlock-btn" onclick="unlockEdition()">Become a Member</button>
+<a href="#" class="dismiss-cta" onclick="dismissCTA(); return false;">Show Me More Preview</a>
+</div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+<div class="container">
+<div class="f-brand">IN-KluSo</div>
+<div class="f-quote">"Confirmation is the moat."</div>
+<div class="f-links">
+<a href="/">Magazine</a>
+<a href="/inkluso-tools">Tools</a>
+<a href="mailto:hello@inkluso.co">Contact</a>
+</div>
+<div class="f-copy">© 2026 IN-KluSo. Signal intelligence for builders.</div>
+</div>
+</footer>
+
+<script>
+const UNLOCK_KEY = 'inkluso_signal_member_2026';
+const SCROLL_THRESHOLD = 400;
+
+function initPaywall() {
+const isUnlocked = localStorage.getItem(UNLOCK_KEY) === 'true';
+if (isUnlocked) {
+  unlockEdition();
+} else {
+  showUnlockCTAOnScroll();
+}
+}
+
+function unlockEdition() {
+localStorage.setItem(UNLOCK_KEY, 'true');
+document.querySelectorAll('.paywall-locked').forEach(el => {
+  el.classList.remove('paywall-locked');
+});
+document.querySelectorAll('.paywall-gate').forEach(el => {
+  el.style.display = 'none';
+});
+document.querySelectorAll('.locked-overlay').forEach(el => {
+  el.style.display = 'none';
+});
+document.querySelectorAll('.paywall-blur').forEach(el => {
+  el.style.filter = 'blur(0)';
+});
+document.getElementById('unlockCTA').classList.remove('show');
+document.getElementById('statusDot').classList.add('unlocked');
+document.getElementById('statusText').textContent = 'Member Access';
+}
+
+function showUnlockCTAOnScroll() {
+window.addEventListener('scroll', () => {
+  const scrolled = window.scrollY;
+  const ctaElement = document.getElementById('unlockCTA');
+  
+  if (scrolled > SCROLL_THRESHOLD) {
+    ctaElement.classList.add('show');
+  }
+});
+}
+
+function dismissCTA() {
+document.getElementById('unlockCTA').classList.remove('show');
+}
+
+initPaywall();
+</script>
+
+</body>
+</html>
