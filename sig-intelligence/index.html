@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The AI/SEO Bridge - SIG Intelligence</title>
+    <style>
+        :root {
+            --primary: #1a1a1a;
+            --secondary: #666;
+            --accent: #0066cc;
+            --light-bg: #f8f8f8;
+            --border: #ddd;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--primary);
+            background: white;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 2rem;
+            padding: 2rem;
+        }
+        
+        .sidebar {
+            position: sticky;
+            top: 2rem;
+            height: fit-content;
+            max-height: calc(100vh - 4rem);
+            overflow-y: auto;
+            border-right: 1px solid var(--border);
+            padding-right: 2rem;
+        }
+        
+        .sidebar h2 {
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            letter-spacing: 0.5px;
+        }
+        
+        .sidebar nav ul {
+            list-style: none;
+        }
+        
+        .sidebar nav li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .sidebar nav a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: block;
+            padding: 0.5rem 0;
+            border-left: 2px solid transparent;
+            padding-left: 0.75rem;
+            transition: all 0.2s;
+        }
+        
+        .sidebar nav a:hover,
+        .sidebar nav a.active {
+            color: var(--accent);
+            border-left-color: var(--accent);
+        }
+        
+        .main-content {
+            padding: 0;
+        }
+        
+        .book-header {
+            margin-bottom: 3rem;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 2rem;
+        }
+        
+        .book-header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .book-header .subtitle {
+            font-size: 1.25rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+        
+        .tagline {
+            font-size: 1rem;
+            font-style: italic;
+            color: var(--secondary);
+            margin: 1.5rem 0;
+        }
+        
+        .section {
+            margin-bottom: 3rem;
+        }
+        
+        .section h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            margin-top: 2rem;
+            color: var(--primary);
+        }
+        
+        .section h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            margin-top: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .section h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            margin-top: 1rem;
+            color: var(--primary);
+        }
+        
+        .section p {
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+        
+        .section ul, .section ol {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .section li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .callout {
+            background: var(--light-bg);
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 2px;
+        }
+        
+        .callout strong {
+            color: var(--accent);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+        
+        th, td {
+            border: 1px solid var(--border);
+            padding: 0.75rem;
+            text-align: left;
+        }
+        
+        th {
+            background: var(--light-bg);
+            font-weight: 600;
+        }
+        
+        .chapter-marker {
+            font-size: 0.875rem;
+            color: var(--secondary);
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.5px;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+                padding: 1rem;
+            }
+            
+            .sidebar {
+                position: static;
+                max-height: none;
+                border-right: none;
+                border-bottom: 1px solid var(--border);
+                padding-right: 0;
+                padding-bottom: 1rem;
+                margin-bottom: 1rem;
+            }
+            
+            .book-header h1 {
+                font-size: 2rem;
+            }
+            
+            .section h2 {
+                font-size: 1.5rem;
+            }
+        }
+        
+        .inkluso-badge {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 3px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <h2>Contents</h2>
+            <nav>
+                <ul>
+                    <li><a href="#quick-start" class="nav-link">Quick Start</a></li>
+                    <li><a href="#executive-summary" class="nav-link">Executive Summary</a></li>
+                    <li><a href="#how-to-use" class="nav-link">How to Use</a></li>
+                    <li><a href="#diagnostic" class="nav-link">Diagnostic</a></li>
+                    <li><a href="#decision-tools" class="nav-link">Decision Tools</a></li>
+                    <li style="margin-top: 1.5rem; border-top: 1px solid var(--border); padding-top: 1rem;">
+                        <strong style="font-size: 0.75rem; color: var(--secondary); text-transform: uppercase;">Chapters</strong>
+                    </li>
+                    <li><a href="#ch-1" class="nav-link">1. What Happened to SEO</a></li>
+                    <li><a href="#ch-2" class="nav-link">2. Generational Gaps</a></li>
+                    <li><a href="#ch-3" class="nav-link">3. Most AI Budgets Waste</a></li>
+                    <li><a href="#ch-4" class="nav-link">4. Answer Engines</a></li>
+                    <li><a href="#ch-5" class="nav-link">5. Where LLMs Work</a></li>
+                    <li><a href="#ch-6" class="nav-link">6. Authenticity Moat</a></li>
+                    <li><a href="#ch-7" class="nav-link">7. Community Economics</a></li>
+                    <li><a href="#ch-8" class="nav-link">8. First-Party Data</a></li>
+                    <li><a href="#ch-9" class="nav-link">9. Attribution Dead</a></li>
+                    <li><a href="#ch-10" class="nav-link">10. Hybrid Playbook</a></li>
+                    <li><a href="#ch-11" class="nav-link">11. Selling Generations</a></li>
+                    <li><a href="#ch-12" class="nav-link">12. Build Right Now</a></li>
+                </ul>
+            </nav>
+        </aside>
+        
+        <main class="main-content">
+            <div class="book-header">
+                <h1>The AI/SEO Bridge</h1>
+                <div class="subtitle">Generational Marketing in an Age of Cheap Content</div>
+                <p><strong>A research-grade analysis for brand managers at innovative companies</strong></p>
+                <p class="tagline">SEO made content free. AI makes it invisible. The brands winning aren't replacing old playbooks — they're translating them into a fragmented, algorithm-resistant world.</p>
+                <div class="inkluso-badge">SIG Intelligence Exclusive</div>
+            </div>
+            
+            <div id="quick-start" class="section">
+                <h2>Quick Start</h2>
+                <p><strong>Choose your path:</strong></p>
+                <ul>
+                    <li><strong>15 minutes:</strong> Read the Executive Summary</li>
+                    <li><strong>1 hour:</strong> Read Executive Summary + How to Use</li>
+                    <li><strong>10 minutes:</strong> Take the Diagnostic Appendix</li>
+                    <li><strong>Full day:</strong> Read all 12 chapters in your role-specific order</li>
+                </ul>
+            </div>
+            
+            <div id="executive-summary" class="section">
+                <h2>Executive Summary</h2>
+                <p><strong>The AI/SEO Bridge: 12 Key Takeaways</strong></p>
+                <ol>
+                    <li><strong>Google kept 69% of searches on its own page.</strong> Zero-click queries jumped from 56% to 69% in 12 months (May 2024–2025), driven by AI Overviews.</li>
+                    <li><strong>The damage was not evenly distributed.</strong> Aggregate organic search declined 2.5% YoY—but mid-market sites lost 70–80% while large brands kept 60% of new customer acquisition from search.</li>
+                    <li><strong>Informational content is being consumed, not clicked.</strong> AI Overviews synthesize your content and serve it directly to users.</li>
+                    <li><strong>SEO lost one-third of its effectiveness as a top-of-funnel channel.</strong> For companies under $50M ARR, organic acquisition dropped from 40% to 15% in 18 months.</li>
+                    <li><strong>Generational audiences respond differently.</strong> Gen Z prioritizes authenticity (60%). Millennials respond to content authority (62%). Gen X values convenience (70%). Uniform strategy underperforms all three.</li>
+                    <li><strong>Most enterprise AI budgets are waste.</strong> McKinsey's 2025 data: 73% of AI pilots fail to scale. The successful 27% augmented existing workflows, not replaced judgment.</li>
+                    <li><strong>Answer engines broke the funnel.</strong> ChatGPT and Perplexity resolve questions before users visit your site.</li>
+                    <li><strong>Authenticity became an unfair advantage.</strong> Synthetic content now triggers skepticism. Winners show real constraints, real tradeoffs, real people.</li>
+                    <li><strong>Community and direct audience are now primary assets.</strong> Substack creators with 10,000 subscribers generate higher CAC-adjusted revenue than companies with 100,000 organic monthly visitors.</li>
+                    <li><strong>First-party data is the only reliable funnel lever left.</strong> Third-party cookies are gone. The one channel you control—email, community, CRM—is the one that's scaling.</li>
+                    <li><strong>Attribution is dead. Decision-making isn't.</strong> Shift from attribution to cohort analysis. Track which channels contribute to coherent customer outcomes.</li>
+                    <li><strong>The hybrid playbook is not "do both SEO and AI."</strong> It's SEO-era thinking + AI-era speed + community economics.</li>
+                </ol>
+            </div>
+            
+            <div id="how-to-use" class="section">
+                <h2>How to Use This Book</h2>
+                <p><strong>Reading Paths by Role</strong></p>
+                
+                <h3>For CMOs & Marketing VPs</h3>
+                <p>You're managing budget allocation and your team is split: "go all-in on AI" vs. "SEO still works." You need to know where to fund.</p>
+                <p><strong>Read:</strong> Ch. 1 → 3 → 9 → 10 → 12 | <strong>Time:</strong> 2.5 hours</p>
+                
+                <h3>For Founders (Pre-Series B through Series C)</h3>
+                <p>You're deciding GTM motion and realizing your instincts matter more than delegation. Where are your real growth levers?</p>
+                <p><strong>Read:</strong> Ch. 1 → 7 → 8 → 10 → 11 | <strong>Time:</strong> 2 hours</p>
+                
+                <h3>For Brand Leads</h3>
+                <p>You're executing and tired of contradictory directives. What actually works for your customers?</p>
+                <p><strong>Read:</strong> Ch. 2 → 5 → 6 → 7 → 10 | <strong>Time:</strong> 2.5 hours</p>
+            </div>
+            
+            <div id="diagnostic" class="section">
+                <h2>Diagnostic Appendix</h2>
+                <p><strong>Platform-Dependency Risk Assessment</strong></p>
+                <p>20 questions. 10 minutes. Your exposure score tells you which chapters matter most.</p>
+                <p style="margin-top: 1rem;"><em>See EXECUTIVE_SECTIONS.md for full diagnostic (20 questions with scoring guide).</em></p>
+            </div>
+            
+            <div id="decision-tools" class="section">
+                <h2>Decision Tools Appendix</h2>
+                <p><strong>5 Tools to Support Your Decisions</strong></p>
+                <ul>
+                    <li>Tool 1: Channel Viability Decision Matrix</li>
+                    <li>Tool 2: Content Type Strategy Chooser</li>
+                    <li>Tool 3: Generational Audience Messaging Quick-Ref</li>
+                    <li>Tool 4: First-Party Data Activation Checklist</li>
+                    <li>Tool 5: AI Pilot Evaluation Scorecard</li>
+                </ul>
+                <p style="margin-top: 1rem;"><em>See EXECUTIVE_SECTIONS.md for full templates and checklists.</em></p>
+            </div>
+            
+            <hr style="margin: 3rem 0; border: none; border-top: 1px solid var(--border);">
+            
+            <p style="font-size: 0.9rem; color: var(--secondary); margin-top: 2rem;">
+                <strong>Note:</strong> This is the SIG Intelligence exclusive edition of "The AI/SEO Bridge." 
+                The complete book includes all 12 chapters, full diagnostic appendix, decision tools, and 94 sources.
+                Markdown and full HTML versions available in the repository.
+            </p>
+        </main>
+    </div>
+    
+    <script>
+        // Simple anchor navigation
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
