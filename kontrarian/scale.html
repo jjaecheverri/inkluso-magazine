@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Kontrarian Scale — Editorial Standards</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #0a0a0a;
+      --white: #f5f3ee;
+      --cream: #ede9e0;
+      --gold: #c9a84c;
+      --gold-light: #e2c97e;
+      --red: #c0392b;
+      --amber: #d4813a;
+      --gray: #6b6b6b;
+      --border: #2a2a2a;
+      --card-bg: #111111;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--black);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      height: 68px;
+      background: rgba(10,10,10,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+    .logo span { color: var(--gold); }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    nav ul a {
+      color: var(--gray);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    nav ul a:hover { color: var(--white); }
+    nav ul a.active { color: var(--white); }
+
+    .nav-cta {
+      color: var(--gold) !important;
+      border: 1px solid var(--gold);
+      padding: 8px 18px;
+      border-radius: 2px;
+      transition: background 0.2s !important;
+    }
+    .nav-cta:hover { background: rgba(201,168,76,0.1) !important; }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      padding: 120px 40px 100px;
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 28px;
+      border: 1px solid rgba(201,168,76,0.3);
+      padding: 6px 16px;
+      border-radius: 2px;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--white);
+      margin-bottom: 28px;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      color: rgba(245,243,238,0.65);
+      line-height: 1.75;
+      max-width: 640px;
+      margin: 0 auto 52px;
+      font-weight: 300;
+    }
+
+    .hero-threshold {
+      display: inline-flex;
+      gap: 40px;
+      border: 1px solid var(--border);
+      padding: 28px 48px;
+      background: var(--card-bg);
+      border-radius: 2px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-threshold::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+
+    .threshold-item {
+      text-align: center;
+    }
+
+    .threshold-score {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 900;
+      line-height: 1;
+      color: var(--gold);
+    }
+
+    .threshold-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-top: 8px;
+      font-weight: 500;
+    }
+
+    .threshold-divider {
+      width: 1px;
+      background: var(--border);
+      align-self: stretch;
+    }
+
+    /* ── SECTION WRAPPER ── */
+    .section {
+      padding: 100px 40px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    .section-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 900;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: var(--white);
+      margin-bottom: 56px;
+    }
+
+    /* ── DIMENSION CARDS ── */
+    .dimensions {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .dimension-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      padding: 48px 56px;
+      position: relative;
+      transition: border-color 0.3s;
+    }
+
+    .dimension-card:hover {
+      border-color: rgba(201,168,76,0.35);
+    }
+
+    .dimension-card::after {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 3px;
+      background: var(--gold);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .dimension-card:hover::after { opacity: 1; }
+
+    .dim-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 28px;
+      margin-bottom: 24px;
+    }
+
+    .dim-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      font-weight: 900;
+      color: var(--gold);
+      line-height: 1;
+      min-width: 64px;
+      opacity: 0.9;
+    }
+
+    .dim-title-block { flex: 1; }
+
+    .dim-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: 6px;
+    }
+
+    .dim-definition {
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--gold-light);
+      letter-spacing: 0.02em;
+      font-style: italic;
+    }
+
+    .dim-detail {
+      font-size: 0.97rem;
+      color: rgba(245,243,238,0.68);
+      line-height: 1.78;
+      max-width: 740px;
+      margin-bottom: 32px;
+    }
+
+    /* Score bar */
+    .score-bar-wrap {
+      margin-bottom: 32px;
+    }
+
+    .score-bar-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+    .score-bar-track {
+      height: 4px;
+      background: rgba(255,255,255,0.07);
+      border-radius: 2px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .score-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light));
+      border-radius: 2px;
+      position: relative;
+    }
+
+    .score-bar-fill::after {
+      content: '';
+      position: absolute;
+      right: 0; top: -3px;
+      width: 10px; height: 10px;
+      background: var(--gold-light);
+      border-radius: 50%;
+      box-shadow: 0 0 8px rgba(226,201,126,0.6);
+    }
+
+    /* Pass/Fail */
+    .pass-fail {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .pf-item {
+      padding: 16px 20px;
+      border-radius: 2px;
+      font-size: 0.875rem;
+      line-height: 1.5;
+      position: relative;
+      padding-left: 44px;
+    }
+
+    .pf-item::before {
+      content: attr(data-icon);
+      position: absolute;
+      left: 16px;
+      top: 16px;
+      font-size: 0.9rem;
+    }
+
+    .pf-pass {
+      background: rgba(201,168,76,0.08);
+      border: 1px solid rgba(201,168,76,0.2);
+      color: rgba(245,243,238,0.8);
+    }
+
+    .pf-pass strong {
+      display: block;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 6px;
+      font-weight: 700;
+    }
+
+    .pf-fail {
+      background: rgba(192,57,43,0.07);
+      border: 1px solid rgba(192,57,43,0.2);
+      color: rgba(245,243,238,0.55);
+    }
+
+    .pf-fail strong {
+      display: block;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 6px;
+      font-weight: 700;
+    }
+
+    /* ── MOCK SCORECARD ── */
+    .scorecard-wrap {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .scorecard-wrap::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+
+    .scorecard-header {
+      padding: 28px 40px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .scorecard-header-left {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      color: var(--white);
+      font-weight: 700;
+    }
+
+    .scorecard-header-left small {
+      display: block;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray);
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+
+    .scorecard-status {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid rgba(201,168,76,0.4);
+      padding: 6px 14px;
+      border-radius: 2px;
+    }
+
+    .scorecard-rows {
+      padding: 8px 0;
+    }
+
+    .scorecard-row {
+      display: grid;
+      grid-template-columns: 28px 180px 1fr 64px;
+      align-items: center;
+      gap: 20px;
+      padding: 18px 40px;
+      border-bottom: 1px solid rgba(42,42,42,0.6);
+      transition: background 0.2s;
+    }
+
+    .scorecard-row:last-child { border-bottom: none; }
+    .scorecard-row:hover { background: rgba(255,255,255,0.02); }
+
+    .sc-num {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.05em;
+    }
+
+    .sc-name {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--white);
+    }
+
+    .sc-bar-track {
+      height: 3px;
+      background: rgba(255,255,255,0.07);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .sc-bar-fill {
+      height: 100%;
+      border-radius: 2px;
+    }
+
+    .sc-score {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      text-align: right;
+    }
+
+    .scorecard-total {
+      padding: 28px 40px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255,255,255,0.015);
+    }
+
+    .total-label {
+      font-size: 0.78rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray);
+      font-weight: 600;
+    }
+
+    .total-score {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+    }
+
+    .total-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      font-weight: 900;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .total-verdict {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(245,243,238,0.5);
+    }
+
+    /* ── OUTCOME TIERS ── */
+    .tiers-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+
+    .tier {
+      padding: 44px 36px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .tier::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+    }
+
+    .tier-below { background: rgba(192,57,43,0.08); border: 1px solid rgba(192,57,43,0.2); }
+    .tier-below::before { background: var(--red); }
+
+    .tier-published { background: rgba(212,129,58,0.08); border: 1px solid rgba(212,129,58,0.25); }
+    .tier-published::before { background: var(--amber); }
+
+    .tier-featured { background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.25); }
+    .tier-featured::before { background: var(--gold); }
+
+    .tier-range {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 900;
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+
+    .tier-below .tier-range { color: var(--red); }
+    .tier-published .tier-range { color: var(--amber); }
+    .tier-featured .tier-range { color: var(--gold); }
+
+    .tier-name {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .tier-below .tier-name { color: rgba(192,57,43,0.9); }
+    .tier-published .tier-name { color: rgba(212,129,58,0.9); }
+    .tier-featured .tier-name { color: var(--gold-light); }
+
+    .tier-desc {
+      font-size: 0.9rem;
+      color: rgba(245,243,238,0.6);
+      line-height: 1.7;
+    }
+
+    .tier-tag {
+      display: inline-block;
+      margin-top: 20px;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 2px;
+    }
+
+    .tier-below .tier-tag { background: rgba(192,57,43,0.15); color: rgba(192,57,43,0.8); border: 1px solid rgba(192,57,43,0.25); }
+    .tier-published .tier-tag { background: rgba(212,129,58,0.12); color: rgba(212,129,58,0.85); border: 1px solid rgba(212,129,58,0.25); }
+    .tier-featured .tier-tag { background: rgba(201,168,76,0.12); color: var(--gold); border: 1px solid rgba(201,168,76,0.3); }
+
+    /* ── CTA ── */
+    .cta-section {
+      padding: 100px 40px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .cta-inner {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .cta-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--white);
+      margin-bottom: 20px;
+    }
+
+    .cta-sub {
+      font-size: 1rem;
+      color: rgba(245,243,238,0.5);
+      margin-bottom: 44px;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--black);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 16px 36px;
+      border-radius: 2px;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+    .btn-secondary {
+      display: inline-block;
+      color: var(--white);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 16px 36px;
+      border-radius: 2px;
+      border: 1px solid var(--border);
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .btn-secondary:hover { border-color: rgba(201,168,76,0.5); color: var(--gold); }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 60px 40px 40px;
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 48px;
+      gap: 40px;
+    }
+
+    .footer-brand .logo {
+      display: inline-block;
+      margin-bottom: 12px;
+    }
+
+    .footer-tagline {
+      font-size: 0.85rem;
+      color: var(--gray);
+      max-width: 240px;
+      line-height: 1.6;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 60px;
+    }
+
+    .footer-col h4 {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 16px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-col ul a {
+      font-size: 0.88rem;
+      color: rgba(245,243,238,0.55);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-col ul a:hover { color: var(--white); }
+
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding-top: 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-copy {
+      font-size: 0.78rem;
+      color: var(--gray);
+    }
+
+    .footer-copy span { color: var(--gold); }
+
+    .footer-cities {
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(107,107,107,0.7);
+    }
+
+    /* ── SECTION DIVIDERS ── */
+    .section-divider {
+      height: 1px;
+      background: var(--border);
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 0 24px; }
+      nav ul { gap: 20px; }
+      .hero { padding: 80px 24px 72px; }
+      .section { padding: 72px 24px; }
+      .hero-threshold { gap: 24px; padding: 22px 32px; flex-wrap: wrap; justify-content: center; }
+      .dimension-card { padding: 36px 28px; }
+      .dim-header { gap: 16px; }
+      .dim-number { font-size: 2.2rem; min-width: 50px; }
+      .pass-fail { grid-template-columns: 1fr; }
+      .scorecard-row { grid-template-columns: 24px 140px 1fr 52px; gap: 14px; padding: 16px 24px; }
+      .scorecard-header, .scorecard-total { padding: 22px 24px; }
+      .tiers-grid { grid-template-columns: 1fr; }
+      .footer-top { flex-direction: column; }
+      .footer-links { gap: 36px; flex-wrap: wrap; }
+    }
+
+    @media (max-width: 600px) {
+      nav ul li:not(:last-child):not(:first-child) { display: none; }
+      .scorecard-row { grid-template-columns: 1fr 48px; gap: 12px; padding: 14px 20px; }
+      .sc-num, .sc-bar-track { display: none; }
+      .sc-name { font-size: 0.82rem; }
+      .scorecard-header, .scorecard-total { padding: 18px 20px; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="logo">Kon<span>trarian</span></a>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="scale.html" class="active">The Scale</a></li>
+      <li><a href="kontributor.html">Kontributor</a></li>
+      <li><a href="membership.html" class="nav-cta">Membership</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-eyebrow">Editorial Standard</div>
+    <h1>Not everything gets published.<br><em>Only what scores.</em></h1>
+    <p class="hero-sub">
+      The Kontrarian Scale is our editorial standard. Every piece of content submitted by a Kontributor is scored across five dimensions. To be published, it must meet the threshold. To be featured, it must exceed it.
+    </p>
+    <div class="hero-threshold">
+      <div class="threshold-item">
+        <div class="threshold-score">70</div>
+        <div class="threshold-label">Minimum to publish</div>
+      </div>
+      <div class="threshold-divider"></div>
+      <div class="threshold-item">
+        <div class="threshold-score">100</div>
+        <div class="threshold-label">Maximum score</div>
+      </div>
+      <div class="threshold-divider"></div>
+      <div class="threshold-item">
+        <div class="threshold-score">85<span style="font-size:1.4rem">+</span></div>
+        <div class="threshold-label">Featured threshold</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- FIVE DIMENSIONS -->
+  <section class="section">
+    <div class="section-label">The Five Dimensions</div>
+    <h2 class="section-headline">Every piece is scored on five criteria.<br>No exceptions.</h2>
+
+    <div class="dimensions">
+
+      <!-- 01 Authenticity -->
+      <div class="dimension-card">
+        <div class="dim-header">
+          <div class="dim-number">01</div>
+          <div class="dim-title-block">
+            <div class="dim-name">Authenticity</div>
+            <div class="dim-definition">Is this lived experience or borrowed perspective?</div>
+          </div>
+        </div>
+        <p class="dim-detail">
+          We can tell the difference between someone who walked that street at 2am and someone who read about it. Your story must come from a place only you could access. First-hand counts. Second-hand has to be ironclad.
+        </p>
+        <div class="score-bar-wrap">
+          <div class="score-bar-label"><span>Authenticity</span><span>88 / 100</span></div>
+          <div class="score-bar-track"><div class="score-bar-fill" style="width:88%"></div></div>
+        </div>
+        <div class="pass-fail">
+          <div class="pf-item pf-pass" data-icon="✓">
+            <strong>Passes</strong>
+            "A conversation with the chef who refused to sell his restaurant to a hotel chain"
+          </div>
+          <div class="pf-item pf-fail" data-icon="✗">
+            <strong>Fails</strong>
+            "Based on what locals say, the neighborhood has changed a lot"
+          </div>
+        </div>
+      </div>
+
+      <!-- 02 Point of View -->
+      <div class="dimension-card">
+        <div class="dim-header">
+          <div class="dim-number">02</div>
+          <div class="dim-title-block">
+            <div class="dim-name">Point of View</div>
+            <div class="dim-definition">Does this take a stance?</div>
+          </div>
+        </div>
+        <p class="dim-detail">
+          Neutral is not a virtue here. We don't want "on one hand, on the other hand." Kontrarian content has a perspective — it may invite disagreement, but it is never afraid to land somewhere. Opinion is not the same as bias; one is deliberate, the other is lazy.
+        </p>
+        <div class="score-bar-wrap">
+          <div class="score-bar-label"><span>Point of View</span><span>72 / 100</span></div>
+          <div class="score-bar-track"><div class="score-bar-fill" style="width:72%"></div></div>
+        </div>
+        <div class="pass-fail">
+          <div class="pf-item pf-pass" data-icon="✓">
+            <strong>Passes</strong>
+            "El Poblado lost its soul the moment it started optimizing for Airbnb reviews"
+          </div>
+          <div class="pf-item pf-fail" data-icon="✗">
+            <strong>Fails</strong>
+            "El Poblado has changed over the years and different people have different opinions"
+          </div>
+        </div>
+      </div>
+
+      <!-- 03 Craft -->
+      <div class="dimension-card">
+        <div class="dim-header">
+          <div class="dim-number">03</div>
+          <div class="dim-title-block">
+            <div class="dim-name">Craft</div>
+            <div class="dim-definition">Is it worth reading twice?</div>
+          </div>
+        </div>
+        <p class="dim-detail">
+          Sentences matter. Rhythm matters. A great idea buried in flat prose is a missed opportunity. We're not asking for literary fiction — we're asking for writing that respects the reader's time and intelligence.
+        </p>
+        <div class="score-bar-wrap">
+          <div class="score-bar-label"><span>Craft</span><span>90 / 100</span></div>
+          <div class="score-bar-track"><div class="score-bar-fill" style="width:90%"></div></div>
+        </div>
+        <div class="pass-fail">
+          <div class="pf-item pf-pass" data-icon="✓">
+            <strong>Passes</strong>
+            A lead paragraph that drops you into the scene without explanation
+          </div>
+          <div class="pf-item pf-fail" data-icon="✗">
+            <strong>Fails</strong>
+            "In this article, I will discuss the current state of the nightlife in Madrid."
+          </div>
+        </div>
+      </div>
+
+      <!-- 04 Cultural Depth -->
+      <div class="dimension-card">
+        <div class="dim-header">
+          <div class="dim-number">04</div>
+          <div class="dim-title-block">
+            <div class="dim-name">Cultural Depth</div>
+            <div class="dim-definition">Does it add to the conversation or just describe it?</div>
+          </div>
+        </div>
+        <p class="dim-detail">
+          Anyone can describe. Kontributor content connects — to history, to tension, to what's changing and what refuses to. The best pieces leave you thinking about something beyond what you just read.
+        </p>
+        <div class="score-bar-wrap">
+          <div class="score-bar-label"><span>Cultural Depth</span><span>85 / 100</span></div>
+          <div class="score-bar-track"><div class="score-bar-fill" style="width:85%"></div></div>
+        </div>
+        <div class="pass-fail">
+          <div class="pf-item pf-pass" data-icon="✓">
+            <strong>Passes</strong>
+            A piece on Medellín street art that traces the political lineage of the murals
+          </div>
+          <div class="pf-item pf-fail" data-icon="✗">
+            <strong>Fails</strong>
+            "There is a lot of street art in Medellín, and it's very colorful and interesting."
+          </div>
+        </div>
+      </div>
+
+      <!-- 05 Reliability -->
+      <div class="dimension-card">
+        <div class="dim-header">
+          <div class="dim-number">05</div>
+          <div class="dim-title-block">
+            <div class="dim-name">Reliability</div>
+            <div class="dim-definition">Can we stand behind this?</div>
+          </div>
+        </div>
+        <p class="dim-detail">
+          Names, places, facts — verify them. Kontrarian is building trust. One sloppy error undermines everything around it. This doesn't mean every piece needs citations — it means you don't publish something you can't defend.
+        </p>
+        <div class="score-bar-wrap">
+          <div class="score-bar-label"><span>Reliability</span><span>78 / 100</span></div>
+          <div class="score-bar-track"><div class="score-bar-fill" style="width:78%"></div></div>
+        </div>
+        <div class="pass-fail">
+          <div class="pf-item pf-pass" data-icon="✓">
+            <strong>Passes</strong>
+            "The bar opened in 2019 according to the owner, who I interviewed in person"
+          </div>
+          <div class="pf-item pf-fail" data-icon="✗">
+            <strong>Fails</strong>
+            "The bar has been around for years, or at least that's the impression I got"
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- MOCK SCORECARD -->
+  <section class="section">
+    <div class="section-label">Sample Evaluation</div>
+    <h2 class="section-headline">What a scored submission looks like.</h2>
+
+    <div class="scorecard-wrap">
+      <div class="scorecard-header">
+        <div class="scorecard-header-left">
+          <small>Kontrarian Editorial Review</small>
+          Draft Submission — Medellín
+        </div>
+        <div class="scorecard-status">Eligible for Publication</div>
+      </div>
+
+      <div class="scorecard-rows">
+        <div class="scorecard-row">
+          <span class="sc-num">01</span>
+          <span class="sc-name">Authenticity</span>
+          <div class="sc-bar-track"><div class="sc-bar-fill" style="width:88%; background: linear-gradient(90deg, #c9a84c, #e2c97e);"></div></div>
+          <span class="sc-score" style="color:#e2c97e">88</span>
+        </div>
+        <div class="scorecard-row">
+          <span class="sc-num">02</span>
+          <span class="sc-name">Point of View</span>
+          <div class="sc-bar-track"><div class="sc-bar-fill" style="width:72%; background: linear-gradient(90deg, #b8853a, #d4813a);"></div></div>
+          <span class="sc-score" style="color:#d4a86a">72</span>
+        </div>
+        <div class="scorecard-row">
+          <span class="sc-num">03</span>
+          <span class="sc-name">Craft</span>
+          <div class="sc-bar-track"><div class="sc-bar-fill" style="width:90%; background: linear-gradient(90deg, #c9a84c, #e2c97e);"></div></div>
+          <span class="sc-score" style="color:#e2c97e">90</span>
+        </div>
+        <div class="scorecard-row">
+          <span class="sc-num">04</span>
+          <span class="sc-name">Cultural Depth</span>
+          <div class="sc-bar-track"><div class="sc-bar-fill" style="width:85%; background: linear-gradient(90deg, #c9a84c, #e2c97e);"></div></div>
+          <span class="sc-score" style="color:#e2c97e">85</span>
+        </div>
+        <div class="scorecard-row">
+          <span class="sc-num">05</span>
+          <span class="sc-name">Reliability</span>
+          <div class="sc-bar-track"><div class="sc-bar-fill" style="width:78%; background: linear-gradient(90deg, #b8853a, #d4a86a);"></div></div>
+          <span class="sc-score" style="color:#d4a86a">78</span>
+        </div>
+      </div>
+
+      <div class="scorecard-total">
+        <span class="total-label">Composite Score</span>
+        <div class="total-score">
+          <span class="total-num">82.6</span>
+          <span class="total-verdict">/ 100 — Eligible for Publication</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- OUTCOME TIERS -->
+  <section class="section">
+    <div class="section-label">What Happens After Scoring</div>
+    <h2 class="section-headline">Three outcomes. One standard.</h2>
+
+    <div class="tiers-grid">
+      <div class="tier tier-below">
+        <div class="tier-range">Below 70</div>
+        <div class="tier-name">Returned for Revision</div>
+        <p class="tier-desc">
+          We coach you, not cut you. Every returned submission comes with specific feedback across each dimension. The threshold exists to maintain trust — not to keep you out.
+        </p>
+        <span class="tier-tag">Not published</span>
+      </div>
+
+      <div class="tier tier-published">
+        <div class="tier-range">70 – 84</div>
+        <div class="tier-name">Published</div>
+        <p class="tier-desc">
+          Your piece goes live on Kontrarian. It meets the standard. It earns its place. Readers will find it. Kontributors in this tier build credibility with every piece that lands here.
+        </p>
+        <span class="tier-tag">Goes live</span>
+      </div>
+
+      <div class="tier tier-featured">
+        <div class="tier-range">85<span style="font-size:1.4rem">+</span></div>
+        <div class="tier-name">Featured</div>
+        <p class="tier-desc">
+          Promoted across Ikluso channels. Boosted traffic. Higher earnings. Featured pieces are the ones that move people — the ones we point to when asked what Kontrarian is.
+        </p>
+        <span class="tier-tag">Promoted & boosted</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="cta-inner">
+      <h2 class="cta-headline">Think you can score?</h2>
+      <p class="cta-sub">The bar is high. The platform is worth it.</p>
+      <div class="cta-buttons">
+        <a href="kontributor.html" class="btn-primary">Become a Kontributor</a>
+        <a href="#" class="btn-secondary">Read what 85+ looks like</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">Kon<span>trarian</span></a>
+          <p class="footer-tagline">Premium cultural intelligence for cities worth paying attention to.</p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-col">
+            <h4>Platform</h4>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="scale.html">The Scale</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Community</h4>
+            <ul>
+              <li><a href="kontributor.html">Kontributor</a></li>
+              <li><a href="membership.html">Membership</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Cities</h4>
+            <ul>
+              <li><a href="#">Medellín</a></li>
+              <li><a href="#">Madrid</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2026 <span>Kontrarian</span> — Part of the Ikluso network.</p>
+        <span class="footer-cities">Medellín · Madrid</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

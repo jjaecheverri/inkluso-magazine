@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — Kontrarian</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --black: #0a0a0a;
+      --white: #f5f3ee;
+      --cream: #ede9e0;
+      --gold: #c9a84c;
+      --gold-light: #e2c97e;
+      --red: #c0392b;
+      --gray: #6b6b6b;
+      --border: #2a2a2a;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--black);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 48px;
+      background: rgba(10, 10, 10, 0.96);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(8px);
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      color: var(--white);
+    }
+
+    .logo span {
+      color: var(--gold);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 36px;
+    }
+
+    nav ul li a {
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--gray);
+      transition: color 0.2s;
+    }
+
+    nav ul li a:hover,
+    nav ul li a.active {
+      color: var(--white);
+    }
+
+    .nav-cta {
+      color: var(--gold) !important;
+      border: 1px solid var(--gold);
+      padding: 8px 18px;
+      border-radius: 2px;
+      transition: background 0.2s, color 0.2s !important;
+    }
+
+    .nav-cta:hover {
+      background: var(--gold);
+      color: var(--black) !important;
+    }
+
+    /* ── HERO / MANIFESTO ── */
+    .hero {
+      min-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 120px 48px 100px;
+      max-width: 1100px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .hero::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(ellipse at 20% 50%, rgba(201, 168, 76, 0.04) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 28px;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-weight: 900;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      color: var(--white);
+      max-width: 860px;
+      margin-bottom: 36px;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+
+    .hero-sub {
+      font-size: 1.2rem;
+      font-weight: 300;
+      line-height: 1.75;
+      color: rgba(245, 243, 238, 0.65);
+      max-width: 640px;
+      border-left: 2px solid var(--gold);
+      padding-left: 24px;
+    }
+
+    /* ── SECTION SHARED ── */
+    section {
+      padding: 100px 48px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-divider {
+      width: 100%;
+      height: 1px;
+      background: var(--border);
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+
+    .section-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.9rem, 4vw, 3rem);
+      font-weight: 900;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      color: var(--white);
+      margin-bottom: 40px;
+    }
+
+    /* ── WHY KONTRARIAN ── */
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .why-prose p {
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: rgba(245, 243, 238, 0.78);
+      margin-bottom: 24px;
+    }
+
+    .why-prose p:last-child {
+      margin-bottom: 0;
+    }
+
+    .why-prose p strong {
+      color: var(--white);
+      font-weight: 600;
+    }
+
+    .why-aside {
+      padding-top: 8px;
+    }
+
+    .pull-quote {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.6rem;
+      line-height: 1.45;
+      color: var(--gold-light);
+      border-left: 3px solid var(--gold);
+      padding-left: 28px;
+      margin-bottom: 40px;
+    }
+
+    .cities-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .city-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+    }
+
+    .city-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .city-dot.inactive {
+      background: var(--border);
+      border: 1px solid var(--gray);
+    }
+
+    .city-label {
+      color: var(--white);
+    }
+
+    .city-status {
+      margin-left: auto;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+
+    .city-status.live {
+      color: var(--gold);
+    }
+
+    /* ── IKLUSO ── */
+    .ikluso-section {
+      background: linear-gradient(135deg, #111111 0%, #0e0e0e 100%);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 80px 72px;
+      max-width: 1100px;
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ikluso-section::before {
+      content: 'IKLUSO';
+      position: absolute;
+      right: -20px;
+      top: 50%;
+      transform: translateY(-50%) rotate(90deg);
+      font-family: 'Playfair Display', serif;
+      font-size: 8rem;
+      font-weight: 900;
+      color: rgba(201, 168, 76, 0.04);
+      letter-spacing: 0.1em;
+      pointer-events: none;
+      white-space: nowrap;
+    }
+
+    .ikluso-inner {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .ikluso-brand {
+      text-align: center;
+    }
+
+    .ikluso-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      font-weight: 900;
+      letter-spacing: 0.05em;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    .ikluso-tagline {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+
+    .ikluso-prose p {
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: rgba(245, 243, 238, 0.78);
+      margin-bottom: 22px;
+    }
+
+    .ikluso-prose p:last-child {
+      margin-bottom: 0;
+    }
+
+    .ikluso-prose strong {
+      color: var(--white);
+      font-weight: 600;
+    }
+
+    /* ── THE SCALE ── */
+    .scale-section {
+      padding: 100px 48px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .scale-intro {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+      margin-bottom: 64px;
+    }
+
+    .scale-intro-text {
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: rgba(245, 243, 238, 0.78);
+    }
+
+    .scale-dimensions {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .dimension-item {
+      display: flex;
+      align-items: baseline;
+      gap: 20px;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .dimension-item:first-child {
+      border-top: 1px solid var(--border);
+    }
+
+    .dimension-name {
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: var(--gold);
+      min-width: 160px;
+      flex-shrink: 0;
+    }
+
+    .dimension-desc {
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: rgba(245, 243, 238, 0.65);
+      line-height: 1.55;
+    }
+
+    .scale-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 48px;
+      background: var(--gold);
+      color: var(--black);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 16px 32px;
+      border-radius: 2px;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .scale-cta:hover {
+      background: var(--gold-light);
+      transform: translateY(-1px);
+    }
+
+    .scale-cta svg {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+    }
+
+    /* ── FOUNDER NOTE ── */
+    .founder-section {
+      padding: 100px 48px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .founder-inner {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .founder-card {
+      position: sticky;
+      top: 100px;
+      border: 1px solid var(--border);
+      padding: 36px;
+      border-radius: 4px;
+      background: #0f0f0f;
+      text-align: center;
+    }
+
+    .founder-avatar {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold) 0%, #8a6620 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: var(--black);
+    }
+
+    .founder-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+
+    .founder-role {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    .founder-cities {
+      font-size: 0.8rem;
+      color: var(--gray);
+      font-weight: 400;
+    }
+
+    .founder-note {
+      padding-top: 4px;
+    }
+
+    .founder-note blockquote {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.45rem;
+      line-height: 1.5;
+      color: var(--white);
+      margin-bottom: 36px;
+    }
+
+    .founder-note p {
+      font-size: 1.0rem;
+      font-weight: 300;
+      color: rgba(245, 243, 238, 0.75);
+      line-height: 1.8;
+      margin-bottom: 22px;
+    }
+
+    .founder-note p:last-child {
+      margin-bottom: 0;
+    }
+
+    .founder-note strong {
+      color: var(--white);
+      font-weight: 500;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 60px 48px 48px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 40px;
+      align-items: start;
+      margin-bottom: 48px;
+    }
+
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+
+    .footer-logo span {
+      color: var(--gold);
+    }
+
+    .footer-tagline {
+      font-size: 0.8rem;
+      color: var(--gray);
+      letter-spacing: 0.06em;
+    }
+
+    .footer-nav {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .footer-nav a {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--gray);
+      transition: color 0.2s;
+    }
+
+    .footer-nav a:hover {
+      color: var(--white);
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 28px;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-copy {
+      font-size: 0.75rem;
+      color: var(--gray);
+    }
+
+    .footer-copy span {
+      color: var(--gold);
+    }
+
+    /* ── HAMBURGER MENU ── */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--white);
+      transition: all 0.25s;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav {
+        padding: 18px 24px;
+      }
+
+      nav ul {
+        display: none;
+        position: fixed;
+        top: 65px;
+        left: 0;
+        right: 0;
+        background: rgba(10, 10, 10, 0.99);
+        flex-direction: column;
+        padding: 32px 24px;
+        gap: 24px;
+        border-bottom: 1px solid var(--border);
+        z-index: 99;
+      }
+
+      nav ul.open {
+        display: flex;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .hero {
+        padding: 80px 24px 80px;
+        min-height: 70vh;
+      }
+
+      section,
+      .scale-section,
+      .founder-section {
+        padding: 70px 24px;
+      }
+
+      .why-grid,
+      .scale-intro,
+      .founder-inner {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+
+      .why-aside {
+        padding-top: 0;
+      }
+
+      .ikluso-section {
+        padding: 60px 28px;
+        margin: 0 24px;
+      }
+
+      .ikluso-inner {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: left;
+      }
+
+      .ikluso-brand {
+        text-align: left;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .founder-card {
+        position: static;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        text-align: left;
+        padding: 24px;
+      }
+
+      .founder-avatar {
+        margin: 0;
+        flex-shrink: 0;
+        width: 56px;
+        height: 56px;
+        font-size: 1.2rem;
+      }
+
+      .footer-inner {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+
+      .footer-nav {
+        flex-wrap: wrap;
+        gap: 16px 24px;
+      }
+
+      footer {
+        padding: 48px 24px 36px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+
+      .dimension-item {
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .dimension-name {
+        min-width: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="logo">Kon<span>trarian</span></a>
+    <ul id="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="scale.html">The Scale</a></li>
+      <li><a href="kontributor.html">Kontributor</a></li>
+      <li><a href="membership.html" class="nav-cta">Membership</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger" aria-label="Toggle menu" role="button" tabindex="0">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- HERO / MANIFESTO -->
+  <div style="max-width:1100px; margin:0 auto;">
+    <div class="hero">
+      <p class="hero-eyebrow">About Kontrarian</p>
+      <h1>We are not a magazine.<br/><em>We are a point of view.</em></h1>
+      <p class="hero-sub">
+        Kontrarian exists because cities are full of stories that never get told — not because no one lived them, but because no one with real access bothered to write them down.
+      </p>
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- WHY KONTRARIAN -->
+  <section>
+    <p class="section-label">Why Kontrarian</p>
+    <div class="why-grid">
+      <div class="why-prose">
+        <p>
+          The internet made everyone a publisher. It made almost no one a writer worth reading. The feeds are full of takes — hot, cold, recycled. Opinions dressed as insight. Listicles pretending to be criticism. Somewhere in that noise, the actual story of a city — its bars and its power, its streets and its contradictions — gets buried under content produced by people who've never been there past the airport.
+        </p>
+        <p>
+          Kontrarian is built on a simple bet: <strong>the most interesting content comes from people who are actually embedded in a place.</strong> Not visiting. Not remote. There. The kind of person who knows which table at which restaurant is where the decisions get made — and can write about it without making it sound like a press release.
+        </p>
+        <p>
+          Medellín and Madrid are the first two chapters. More cities will follow — but only when the right Kontributor is found. We'd rather move slowly and stay true than scale fast and become everything we're against.
+        </p>
+      </div>
+      <div class="why-aside">
+        <p class="pull-quote">"The most interesting content comes from people who are actually embedded in a place. Not visiting. Not remote. There."</p>
+        <div class="cities-list">
+          <div class="city-item">
+            <div class="city-dot"></div>
+            <span class="city-label">Medellín, Colombia</span>
+            <span class="city-status live">Live</span>
+          </div>
+          <div class="city-item">
+            <div class="city-dot"></div>
+            <span class="city-label">Madrid, Spain</span>
+            <span class="city-status live">Live</span>
+          </div>
+          <div class="city-item">
+            <div class="city-dot inactive"></div>
+            <span class="city-label">Next city</span>
+            <span class="city-status">When ready</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- THE IKLUSO CONNECTION -->
+  <div style="padding: 100px 48px; max-width:1196px; margin:0 auto;">
+    <div class="ikluso-section">
+      <div class="ikluso-inner">
+        <div class="ikluso-brand">
+          <div class="ikluso-logo">Ikluso</div>
+          <div class="ikluso-tagline">The parent community</div>
+        </div>
+        <div class="ikluso-prose">
+          <p>
+            Kontrarian doesn't exist in isolation. It's the editorial voice of <strong>Ikluso</strong> — a community being built for people who want to live, work, and actually belong in the cities they choose. Not pass through. Not remote-work from a WeWork. Belong.
+          </p>
+          <p>
+            Ikluso is being built carefully. That means content and trust come first — before anything is sold, before memberships are pitched, before the community is monetized. Kontrarian is how we earn the right to eventually ask for more. It's the layer that proves we're serious.
+          </p>
+          <p>
+            If Ikluso is the city you choose to inhabit, Kontrarian is the voice that tells you what's actually happening there.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- THE KONTRARIAN SCALE -->
+  <section class="scale-section">
+    <p class="section-label">Our Standards</p>
+    <div class="scale-intro">
+      <div>
+        <h2 class="section-heading">We don't publish everything.<br/>We publish what scores.</h2>
+      </div>
+      <div class="scale-intro-text">
+        Every piece of content on Kontrarian is evaluated against five dimensions. It's not a checklist — it's a standard. The score determines whether something gets published, and the full methodology is available for anyone who wants to understand exactly what we're looking for.
+      </div>
+    </div>
+
+    <div class="scale-dimensions">
+      <div class="dimension-item">
+        <span class="dimension-name">Authenticity</span>
+        <span class="dimension-desc">Is this lived experience or borrowed perspective?</span>
+      </div>
+      <div class="dimension-item">
+        <span class="dimension-name">Point of View</span>
+        <span class="dimension-desc">Does this take a stance?</span>
+      </div>
+      <div class="dimension-item">
+        <span class="dimension-name">Craft</span>
+        <span class="dimension-desc">Is it worth reading twice?</span>
+      </div>
+      <div class="dimension-item">
+        <span class="dimension-name">Cultural Depth</span>
+        <span class="dimension-desc">Does it add to the conversation or just describe it?</span>
+      </div>
+      <div class="dimension-item">
+        <span class="dimension-name">Reliability</span>
+        <span class="dimension-desc">Can we stand behind this?</span>
+      </div>
+    </div>
+
+    <a href="scale.html" class="scale-cta">
+      See the Full Scale
+      <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- FOUNDER NOTE -->
+  <section class="founder-section">
+    <p class="section-label">The Founder</p>
+    <div class="founder-inner">
+      <div class="founder-card">
+        <div class="founder-avatar">J</div>
+        <div>
+          <div class="founder-name">Juan</div>
+          <div class="founder-role">Founder &amp; Editor</div>
+          <div class="founder-cities">Medellín · Madrid</div>
+        </div>
+      </div>
+      <div class="founder-note">
+        <blockquote>"I built this because I was tired of reading about the cities I love from people who'd never been there past the airport."</blockquote>
+        <p>
+          That's the honest version. The longer version is that I've spent years in Medellín and Madrid, watching both cities get written about in ways that felt completely foreign to the places I actually knew. The rooftop bars. The neighborhoods that don't show up in guides. The people building things quietly. None of it makes it into the content.
+        </p>
+        <p>
+          I'm not interested in building another platform. I'm interested in building something that <strong>earns a place in how people understand the cities they're choosing to live in</strong>. Kontrarian is that — slowly, carefully, without shortcuts.
+        </p>
+        <p>
+          If it resonates with you, you're probably the kind of person we built it for.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <div class="section-divider"></div>
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo">Kon<span>trarian</span></div>
+        <div class="footer-tagline">Culture from the ground up.</div>
+      </div>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="scale.html">The Scale</a>
+        <a href="kontributor.html">Kontributor</a>
+        <a href="membership.html">Membership</a>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 Kontrarian / <span>Ikluso</span></span>
+      <span class="footer-copy" style="color: #3a3a3a;">Culture from the ground up.</span>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile nav toggle
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+    hamburger.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        navLinks.classList.toggle('open');
+      }
+    });
+    // Close nav on link click (mobile)
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+      });
+    });
+  </script>
+
+</body>
+</html>

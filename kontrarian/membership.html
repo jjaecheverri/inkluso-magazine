@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Membership — Kontrarian</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --black: #0a0a0a;
+      --white: #f5f3ee;
+      --cream: #ede9e0;
+      --gold: #c9a84c;
+      --gold-light: #e2c97e;
+      --red: #c0392b;
+      --gray: #6b6b6b;
+      --border: #2a2a2a;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--black);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* ─── NAV ─────────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 48px;
+      background: rgba(10, 10, 10, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--white);
+    }
+
+    .logo span {
+      color: var(--gold);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 36px;
+    }
+
+    nav ul li a {
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      color: var(--gray);
+      transition: color 0.2s ease;
+    }
+
+    nav ul li a:hover,
+    nav ul li a.active {
+      color: var(--white);
+    }
+
+    .nav-cta {
+      color: var(--gold) !important;
+      border: 1px solid var(--gold);
+      padding: 8px 18px;
+      border-radius: 2px;
+      transition: background 0.2s ease, color 0.2s ease !important;
+    }
+
+    .nav-cta:hover {
+      background: var(--gold);
+      color: var(--black) !important;
+    }
+
+    /* ─── BUTTONS ─────────────────────────────────────────── */
+    .btn-gold {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--black);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 16px 36px;
+      border: none;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.1s ease;
+    }
+
+    .btn-gold:hover {
+      background: var(--gold-light);
+      transform: translateY(-1px);
+    }
+
+    .btn-ghost {
+      display: inline-block;
+      background: transparent;
+      color: var(--gold);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 14px 34px;
+      border: 1px solid var(--gold);
+      border-radius: 2px;
+      cursor: pointer;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .btn-ghost:hover {
+      background: var(--gold);
+      color: var(--black);
+    }
+
+    /* ─── SECTION LABEL ───────────────────────────────────── */
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    /* ─── HERO ────────────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 48px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 50% 40%, rgba(201, 168, 76, 0.06) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 20% 70%, rgba(201, 168, 76, 0.03) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    /* Subtle grid texture */
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(201,168,76,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,168,76,0.03) 1px, transparent 1px);
+      background-size: 80px 80px;
+      pointer-events: none;
+      opacity: 0.6;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 28px;
+    }
+
+    .hero-eyebrow::before,
+    .hero-eyebrow::after {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.5;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: 900;
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+      color: var(--white);
+      margin-bottom: 28px;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      font-weight: 300;
+      color: rgba(245, 243, 238, 0.65);
+      line-height: 1.75;
+      max-width: 620px;
+      margin: 0 auto 44px;
+    }
+
+    .hero-cta-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .hero-signal {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: var(--gray);
+      border: 1px solid var(--border);
+      padding: 10px 20px;
+      border-radius: 100px;
+    }
+
+    .signal-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--gold);
+      animation: pulse 2.4s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.75); }
+    }
+
+    /* ─── FEATURES ────────────────────────────────────────── */
+    .features-section {
+      padding: 100px 48px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .features-header {
+      margin-bottom: 60px;
+    }
+
+    .features-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.75rem);
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+      border: 1px solid var(--border);
+    }
+
+    .feature-card {
+      padding: 44px 40px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.015);
+      transition: background 0.25s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 3px;
+      height: 0;
+      background: var(--gold);
+      transition: height 0.3s ease;
+    }
+
+    .feature-card:hover {
+      background: rgba(201, 168, 76, 0.04);
+    }
+
+    .feature-card:hover::before {
+      height: 100%;
+    }
+
+    .feature-number {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+      opacity: 0.7;
+      margin-bottom: 18px;
+    }
+
+    .feature-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--white);
+    }
+
+    .feature-card p {
+      font-size: 0.925rem;
+      color: rgba(245, 243, 238, 0.6);
+      line-height: 1.7;
+    }
+
+    .features-note {
+      margin-top: 28px;
+      font-size: 0.8rem;
+      color: var(--gray);
+      font-style: italic;
+      text-align: center;
+    }
+
+    /* ─── TIERS ───────────────────────────────────────────── */
+    .tiers-section {
+      padding: 100px 48px;
+      background: rgba(255,255,255,0.012);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .tiers-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .tiers-header {
+      max-width: 560px;
+      margin-bottom: 60px;
+    }
+
+    .tiers-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.75rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+
+    .tiers-header p {
+      margin-top: 16px;
+      font-size: 0.95rem;
+      color: rgba(245,243,238,0.55);
+      line-height: 1.7;
+    }
+
+    .tier-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .tier-card {
+      position: relative;
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 36px 32px 40px;
+      overflow: hidden;
+    }
+
+    .tier-card.tier-free {
+      border-color: rgba(201, 168, 76, 0.35);
+    }
+
+    /* Locked overlay on paid tiers */
+    .tier-locked-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(10,10,10,0.72);
+      backdrop-filter: blur(3px);
+      -webkit-backdrop-filter: blur(3px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      z-index: 5;
+    }
+
+    .tier-locked-overlay .lock-icon {
+      width: 36px;
+      height: 36px;
+      opacity: 0.5;
+    }
+
+    .tier-locked-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray);
+      border: 1px solid var(--border);
+      padding: 6px 14px;
+      border-radius: 100px;
+    }
+
+    .tier-badge {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid rgba(201,168,76,0.3);
+      padding: 4px 10px;
+      border-radius: 2px;
+      margin-bottom: 20px;
+    }
+
+    .tier-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--white);
+    }
+
+    .tier-price {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--gray);
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+
+    .tier-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 20px 0;
+    }
+
+    .tier-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+
+    .tier-features li {
+      font-size: 0.875rem;
+      color: rgba(245,243,238,0.6);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .tier-features li::before {
+      content: '—';
+      color: var(--gold);
+      opacity: 0.6;
+      flex-shrink: 0;
+    }
+
+    .tier-card .tier-action {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid rgba(201,168,76,0.4);
+      padding: 11px 22px;
+      border-radius: 2px;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .tier-card .tier-action:hover {
+      background: var(--gold);
+      color: var(--black);
+    }
+
+    /* ─── WHY WAIT ────────────────────────────────────────── */
+    .why-section {
+      padding: 100px 48px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .why-header {
+      margin-bottom: 60px;
+    }
+
+    .why-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.75rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+    }
+
+    .why-item {
+      padding: 44px 40px;
+      border: 1px solid var(--border);
+      position: relative;
+    }
+
+    .why-item + .why-item {
+      border-left: none;
+    }
+
+    .why-icon {
+      width: 40px;
+      height: 40px;
+      margin-bottom: 24px;
+      color: var(--gold);
+      opacity: 0.8;
+    }
+
+    .why-item h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--white);
+    }
+
+    .why-item p {
+      font-size: 0.9rem;
+      color: rgba(245,243,238,0.55);
+      line-height: 1.75;
+    }
+
+    /* ─── WAITLIST FORM ───────────────────────────────────── */
+    .waitlist-section {
+      padding: 100px 48px;
+      background: rgba(255,255,255,0.012);
+      border-top: 1px solid var(--border);
+    }
+
+    .waitlist-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .waitlist-left {
+      position: sticky;
+      top: 100px;
+    }
+
+    .waitlist-left h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+
+    .waitlist-left p {
+      font-size: 0.95rem;
+      color: rgba(245,243,238,0.55);
+      line-height: 1.75;
+      margin-bottom: 36px;
+    }
+
+    .waitlist-signal {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.8rem;
+      color: var(--gray);
+      padding: 14px 18px;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      background: rgba(201,168,76,0.03);
+    }
+
+    .waitlist-signal svg {
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+
+    /* Form */
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .form-group label {
+      font-size: 0.775rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+
+    .form-group input,
+    .form-group select {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.925rem;
+      padding: 14px 18px;
+      border-radius: 2px;
+      outline: none;
+      transition: border-color 0.2s ease, background 0.2s ease;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
+    .form-group select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='8' fill='none'%3E%3Cpath d='M1 1l6 6 6-6' stroke='%236b6b6b' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      padding-right: 42px;
+      cursor: pointer;
+    }
+
+    .form-group input::placeholder {
+      color: rgba(107,107,107,0.6);
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+      border-color: rgba(201,168,76,0.5);
+      background: rgba(201,168,76,0.04);
+    }
+
+    .form-group select option {
+      background: #1a1a1a;
+      color: var(--white);
+    }
+
+    .form-checkbox {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      cursor: pointer;
+    }
+
+    .form-checkbox input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      margin-top: 2px;
+      accent-color: var(--gold);
+      cursor: pointer;
+    }
+
+    .form-checkbox span {
+      font-size: 0.875rem;
+      color: rgba(245,243,238,0.6);
+      line-height: 1.5;
+    }
+
+    .form-checkbox span strong {
+      color: var(--white);
+      font-weight: 600;
+    }
+
+    .form-submit {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding-top: 4px;
+    }
+
+    .form-submit button {
+      flex-shrink: 0;
+    }
+
+    .form-note {
+      font-size: 0.78rem;
+      color: var(--gray);
+      line-height: 1.5;
+    }
+
+    /* ─── FOOTER ──────────────────────────────────────────── */
+    footer {
+      padding: 48px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      text-align: center;
+    }
+
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--white);
+    }
+
+    .footer-logo span {
+      color: var(--gold);
+    }
+
+    .footer-copy {
+      font-size: 0.8rem;
+      color: var(--gray);
+      letter-spacing: 0.03em;
+    }
+
+    /* ─── MOBILE ──────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      nav {
+        padding: 16px 24px;
+      }
+
+      nav ul {
+        gap: 20px;
+      }
+
+      nav ul li a {
+        font-size: 0.75rem;
+      }
+
+      .hero {
+        padding: 110px 24px 70px;
+      }
+
+      .features-section,
+      .tiers-inner,
+      .why-section {
+        padding-left: 24px;
+        padding-right: 24px;
+      }
+
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .tier-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .why-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .why-item + .why-item {
+        border-left: 1px solid var(--border);
+        border-top: none;
+      }
+
+      .waitlist-inner {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+
+      .waitlist-left {
+        position: static;
+      }
+
+      .waitlist-section {
+        padding: 80px 24px;
+      }
+
+      .tiers-section {
+        padding: 80px 24px;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      footer {
+        padding: 40px 24px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      nav ul li:not(:last-child) {
+        display: none;
+      }
+
+      .form-submit {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="logo">Kon<span>trarian</span></a>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="scale.html">The Scale</a></li>
+      <li><a href="kontributor.html">Kontributor</a></li>
+      <li><a href="membership.html" class="nav-cta active">Membership</a></li>
+    </ul>
+  </nav>
+
+  <!-- ─── HERO ───────────────────────────────────────────── -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">Early Access</div>
+      <h1>Membership is being earned.<br /><em>Not sold. Yet.</em></h1>
+      <p class="hero-sub">
+        We're not ready to sell you a membership. We're still doing the work that makes one worth buying.
+        But when it opens — and it will — early believers get in first, and best.
+      </p>
+      <div class="hero-cta-wrap">
+        <a href="#waitlist" class="btn-gold">Reserve My Spot</a>
+        <div class="hero-signal">
+          <div class="signal-dot"></div>
+          Early access closes when cities fill up
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── WHAT MEMBERSHIP WILL INCLUDE ──────────────────── -->
+  <section class="features-section">
+    <div class="features-header">
+      <div class="section-label">What We're Building</div>
+      <h2>Here's what we're building toward.</h2>
+    </div>
+
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-number">01</div>
+        <h3>City Insider Access</h3>
+        <p>Content from Kontributors that never goes public. The real version of the cities we cover — unfiltered, unsponsored, and off the tourist map.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-number">02</div>
+        <h3>The Kontrarian Archive</h3>
+        <p>Full access to every scored, published piece. Curated, not algorithmic. You navigate it — we don't push it at you.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-number">03</div>
+        <h3>Ikluso Community</h3>
+        <p>Access to the Ikluso network — people who live in and move between the cities we cover. Not a forum. A circle worth being in.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-number">04</div>
+        <h3>Early City Drops</h3>
+        <p>First access when a new city launches. Before it's announced publicly. Before the crowd arrives. That's the advantage.</p>
+      </div>
+    </div>
+
+    <p class="features-note">Exact features subject to evolution. Early members shape what this becomes.</p>
+  </section>
+
+  <!-- ─── TIERS ──────────────────────────────────────────── -->
+  <section class="tiers-section">
+    <div class="tiers-inner">
+      <div class="tiers-header">
+        <div class="section-label">Membership Tiers</div>
+        <h2>Three tiers. One open.</h2>
+        <p>We're not ready to sell. But here's where this is going — so you know what you're waiting for.</p>
+      </div>
+
+      <div class="tier-grid">
+
+        <!-- Free Tier -->
+        <div class="tier-card tier-free">
+          <div class="tier-badge">Kontributors Only</div>
+          <h3>Free</h3>
+          <p class="tier-price">Earned, not bought.</p>
+          <hr class="tier-divider" />
+          <ul class="tier-features">
+            <li>Full Kontrarian membership for life</li>
+            <li>Your byline on a trusted platform</li>
+            <li>Grandfathered Cultural Kontributor status</li>
+            <li>Editorial coaching &amp; support</li>
+            <li>Traffic-based income as platform grows</li>
+          </ul>
+          <a href="kontributor.html" class="tier-action">Apply as Kontributor</a>
+        </div>
+
+        <!-- Member Tier (locked) -->
+        <div class="tier-card">
+          <div class="tier-locked-overlay">
+            <svg class="lock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+            </svg>
+            <span class="tier-locked-label">Coming Soon</span>
+          </div>
+          <div class="tier-badge">General Access</div>
+          <h3>Member</h3>
+          <p class="tier-price">Priced fairly for the value. Early believers get locked rate.</p>
+          <hr class="tier-divider" />
+          <ul class="tier-features">
+            <li>Full archive access</li>
+            <li>City Insider content</li>
+            <li>Ikluso community access</li>
+            <li>Early city drops</li>
+          </ul>
+        </div>
+
+        <!-- Founding Member Tier (locked) -->
+        <div class="tier-card">
+          <div class="tier-locked-overlay">
+            <svg class="lock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+            </svg>
+            <span class="tier-locked-label">Limited Spots</span>
+          </div>
+          <div class="tier-badge">Limited</div>
+          <h3>Founding Member</h3>
+          <p class="tier-price">The best deal we'll ever offer. For the first [X] people.</p>
+          <hr class="tier-divider" />
+          <ul class="tier-features">
+            <li>Everything in Member</li>
+            <li>Founding Member recognition — forever</li>
+            <li>Locked rate for life — never repriced</li>
+            <li>Direct input on city expansion</li>
+            <li>Private access to Kontributors</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── WHY WAIT ───────────────────────────────────────── -->
+  <section class="why-section">
+    <div class="why-header">
+      <div class="section-label">The Strategy</div>
+      <h2>Why we're asking you to wait.</h2>
+    </div>
+
+    <div class="why-grid">
+      <div class="why-item">
+        <svg class="why-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 20h9"/>
+          <path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4 12.5-12.5z"/>
+        </svg>
+        <h3>Content first.</h3>
+        <p>We publish before we charge. Read us first. See if we're worth believing in. Pay only if you do. Trust isn't bought — it's built one piece at a time.</p>
+      </div>
+      <div class="why-item">
+        <svg class="why-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M12 8v4l3 3"/>
+        </svg>
+        <h3>One voice per city.</h3>
+        <p>The trust comes from knowing who wrote it and why. One Kontributor per city. No committee. No brand voice. Just a real person who actually lives there.</p>
+      </div>
+      <div class="why-item">
+        <svg class="why-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="8" y1="6" x2="21" y2="6"/>
+          <line x1="8" y1="12" x2="21" y2="12"/>
+          <line x1="8" y1="18" x2="21" y2="18"/>
+          <line x1="3" y1="6" x2="3.01" y2="6"/>
+          <line x1="3" y1="12" x2="3.01" y2="12"/>
+          <line x1="3" y1="18" x2="3.01" y2="18"/>
+        </svg>
+        <h3>No algorithm.</h3>
+        <p>Membership unlocks a curated feed, not a recommendation engine. We decide what's worth reading. You decide if you agree. That's the deal.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── WAITLIST FORM ──────────────────────────────────── -->
+  <section class="waitlist-section" id="waitlist">
+    <div class="waitlist-inner">
+
+      <div class="waitlist-left">
+        <div class="section-label">Reserve Your Spot</div>
+        <h2>Get in before the door closes.</h2>
+        <p>No credit card. No commitment. Just your name, email, and the city you care about most. Early believers get first access — and the best rate we'll ever offer.</p>
+        <div class="waitlist-signal">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+          <span>Your spot is reserved. Membership opens to the waitlist first.</span>
+        </div>
+      </div>
+
+      <form action="https://formspree.io/f/jjaecheverri@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="Kontrarian Membership Waitlist" />
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fname">First Name</label>
+            <input type="text" id="fname" name="first_name" placeholder="Your name" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="_replyto" placeholder="you@domain.com" required />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="city">City You Care About Most</label>
+          <select id="city" name="city" required>
+            <option value="" disabled selected>Choose a city</option>
+            <option value="Medellín, Colombia">Medellín, Colombia</option>
+            <option value="Madrid, Spain">Madrid, Spain</option>
+            <option value="Buenos Aires, Argentina">Buenos Aires, Argentina</option>
+            <option value="Mexico City, Mexico">Mexico City, Mexico</option>
+            <option value="Bogotá, Colombia">Bogotá, Colombia</option>
+            <option value="Barcelona, Spain">Barcelona, Spain</option>
+            <option value="Lisbon, Portugal">Lisbon, Portugal</option>
+            <option value="New York, USA">New York, USA</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+        <label class="form-checkbox">
+          <input type="checkbox" name="interested_kontributor" value="yes" />
+          <span>I'm interested in becoming a <strong>Kontributor</strong> — a local expert voice for my city.</span>
+        </label>
+
+        <div class="form-submit">
+          <button type="submit" class="btn-gold">Reserve My Spot</button>
+          <p class="form-note">No spam, ever.<br />We'll only reach out when membership opens.</p>
+        </div>
+      </form>
+
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ─────────────────────────────────────────── -->
+  <footer>
+    <a href="index.html" class="footer-logo">Kon<span>trarian</span></a>
+    <p class="footer-copy">© 2026 Kontrarian · All rights reserved</p>
+  </footer>
+
+</body>
+</html>
