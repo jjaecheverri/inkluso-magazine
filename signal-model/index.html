@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal Confidence Model — IN-KluSo</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FAF6EE;
+    --ink: #1A1A1A;
+    --orange: #E8521A;
+    --gray: #8A8070;
+    --light: #F0EBE1;
+    --dark: #111111;
+    --high: #2D7A3A;
+    --moderate: #B8860B;
+    --low: #C0392B;
+    --minimal: #666;
+    --mono: 'JetBrains Mono', monospace;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--cream); color: var(--ink); font-family: 'Inter', sans-serif; }
+
+  header {
+    background: var(--dark);
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border-bottom: 3px solid var(--orange);
+  }
+  .logo { color: white; font-family: 'DM Serif Display', serif; font-size: 1.4rem; letter-spacing: 0.05em; }
+  .logo span { color: var(--orange); }
+  .badge {
+    background: #222;
+    color: #888;
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    padding: 3px 10px;
+    border: 1px solid #333;
+    letter-spacing: 0.1em;
+  }
+  nav { margin-left: auto; display: flex; gap: 24px; }
+  nav a { color: #888; text-decoration: none; font-size: 0.8rem; letter-spacing: 0.08em; transition: color 0.2s; }
+  nav a:hover { color: white; }
+
+  .hero {
+    background: var(--dark);
+    padding: 60px 40px 40px;
+    border-bottom: 1px solid #222;
+  }
+  .hero-label {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--orange);
+    letter-spacing: 0.15em;
+    margin-bottom: 16px;
+  }
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    color: white;
+    line-height: 1.1;
+    max-width: 700px;
+    margin-bottom: 20px;
+  }
+  .hero p {
+    color: #999;
+    font-size: 1rem;
+    max-width: 600px;
+    line-height: 1.7;
+  }
+
+  /* Math formula display */
+  .formula-band {
+    background: #0D0D0D;
+    border-top: 1px solid #222;
+    border-bottom: 1px solid #333;
+    padding: 32px 40px;
+    overflow-x: auto;
+  }
+  .formula-label {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    color: #555;
+    letter-spacing: 0.12em;
+    margin-bottom: 16px;
+  }
+  .formula-main {
+    font-family: var(--mono);
+    font-size: clamp(0.85rem, 2vw, 1.1rem);
+    color: #E8E0D0;
+    line-height: 2.2;
+    white-space: nowrap;
+  }
+  .formula-main .var { color: var(--orange); }
+  .formula-main .weight { color: #7EB8D4; }
+  .formula-main .label { color: #888; font-size: 0.8em; }
+  .formula-sub {
+    margin-top: 24px;
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+  .formula-sub-item { font-family: var(--mono); font-size: 0.8rem; color: #666; line-height: 1.8; }
+  .formula-sub-item .k { color: #AAA; }
+  .formula-sub-item .v { color: var(--orange); }
+
+  /* Main layout */
+  .layout {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 0;
+    min-height: calc(100vh - 300px);
+  }
+
+  /* Input panel */
+  .input-panel {
+    padding: 40px;
+    border-right: 1px solid #DDD5C8;
+  }
+  .section-label {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    color: var(--orange);
+    letter-spacing: 0.15em;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-label::after { content: ''; flex: 1; height: 1px; background: #DDD5C8; }
+  .input-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 32px; }
+  .input-full { grid-column: 1 / -1; }
+
+  label { display: block; font-size: 0.75rem; color: var(--gray); letter-spacing: 0.06em; margin-bottom: 6px; font-weight: 500; }
+  input[type="text"], select, input[type="number"] {
+    width: 100%;
+    background: white;
+    border: 1px solid #DDD5C8;
+    padding: 10px 12px;
+    font-size: 0.9rem;
+    font-family: 'Inter', sans-serif;
+    color: var(--ink);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  input:focus, select:focus { border-color: var(--orange); }
+
+  /* Slider inputs */
+  .slider-group { margin-bottom: 24px; }
+  .slider-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .slider-row label { min-width: 140px; margin: 0; }
+  .slider-row input[type="range"] {
+    flex: 1; padding: 0; border: none; background: none;
+    accent-color: var(--orange);
+    cursor: pointer;
+  }
+  .slider-val {
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    color: var(--orange);
+    min-width: 36px;
+    text-align: right;
+  }
+  .lens-weight {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: #999;
+    min-width: 50px;
+    text-align: right;
+  }
+
+  /* Checkboxes */
+  .check-group { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 32px; }
+  .check-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: white;
+    border: 1px solid #DDD5C8;
+    padding: 10px 14px;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .check-item:hover { border-color: var(--orange); }
+  .check-item.checked { border-color: var(--orange); background: #FFF8F5; }
+  .check-item input { display: none; }
+  .check-box {
+    width: 16px; height: 16px;
+    border: 2px solid #CCC;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .check-item.checked .check-box { border-color: var(--orange); background: var(--orange); }
+  .check-item.checked .check-box::after { content: '✓'; color: white; font-size: 10px; font-weight: bold; }
+  .check-label { font-size: 0.82rem; color: var(--ink); line-height: 1.3; }
+
+  .run-btn {
+    width: 100%;
+    background: var(--orange);
+    color: white;
+    border: none;
+    padding: 16px;
+    font-size: 0.9rem;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .run-btn:hover { background: #C8441A; }
+
+  /* Result panel */
+  .result-panel {
+    background: var(--dark);
+    padding: 40px;
+    position: sticky;
+    top: 0;
+    height: fit-content;
+    min-height: 100%;
+  }
+  .result-empty {
+    color: #444;
+    font-size: 0.9rem;
+    line-height: 1.7;
+    font-family: var(--mono);
+    padding-top: 20px;
+  }
+  .result-output { display: none; }
+  .result-output.visible { display: block; }
+
+  .sci-display {
+    text-align: center;
+    margin-bottom: 32px;
+    padding: 32px 20px;
+    border: 1px solid #222;
+  }
+  .sci-label {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    color: #555;
+    letter-spacing: 0.15em;
+    margin-bottom: 12px;
+  }
+  .sci-number {
+    font-family: var(--mono);
+    font-size: 4rem;
+    font-weight: 600;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .sci-tier {
+    font-family: var(--mono);
+    font-size: 0.9rem;
+    letter-spacing: 0.15em;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .sci-pub {
+    font-size: 0.75rem;
+    color: #666;
+    letter-spacing: 0.05em;
+  }
+  .tier-HIGH .sci-number, .tier-HIGH .sci-tier { color: #4CAF50; }
+  .tier-MODERATE .sci-number, .tier-MODERATE .sci-tier { color: #FFB700; }
+  .tier-LOW .sci-number, .tier-LOW .sci-tier { color: #E74C3C; }
+  .tier-MINIMAL .sci-number, .tier-MINIMAL .sci-tier { color: #666; }
+
+  .component-breakdown {
+    margin-bottom: 24px;
+  }
+  .component-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+  .comp-name {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: #666;
+    width: 70px;
+    flex-shrink: 0;
+  }
+  .comp-bar-wrap {
+    flex: 1;
+    height: 6px;
+    background: #222;
+    overflow: hidden;
+  }
+  .comp-bar { height: 100%; background: var(--orange); transition: width 0.4s; }
+  .comp-val {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: #AAA;
+    width: 50px;
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  .result-notes {
+    border-top: 1px solid #222;
+    padding-top: 16px;
+    margin-top: 8px;
+  }
+  .note-item {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: #FFB700;
+    line-height: 1.5;
+    margin-bottom: 8px;
+    padding-left: 16px;
+    position: relative;
+  }
+  .note-item::before { content: '⚠'; position: absolute; left: 0; }
+
+  .cluster-bar {
+    margin-top: 24px;
+    border-top: 1px solid #222;
+    padding-top: 20px;
+  }
+  .cluster-progress {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: #555;
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+  }
+  .progress-track {
+    display: flex;
+    gap: 4px;
+    margin-top: 8px;
+  }
+  .progress-pip {
+    width: 20px; height: 8px;
+    background: #222;
+    transition: background 0.3s;
+  }
+  .progress-pip.filled { background: var(--orange); }
+
+  /* Math section below */
+  .math-section {
+    padding: 60px 40px;
+    border-top: 1px solid #DDD5C8;
+    background: white;
+  }
+  .math-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-top: 32px;
+  }
+  .math-card {
+    background: var(--cream);
+    border: 1px solid #DDD5C8;
+    padding: 24px;
+  }
+  .math-card h3 {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--orange);
+    letter-spacing: 0.12em;
+    margin-bottom: 16px;
+  }
+  .math-table { width: 100%; border-collapse: collapse; }
+  .math-table td {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    padding: 6px 0;
+    border-bottom: 1px solid #EEE;
+    color: var(--ink);
+  }
+  .math-table td:last-child { text-align: right; color: var(--orange); }
+
+  footer {
+    background: var(--dark);
+    padding: 32px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #222;
+    margin-top: 60px;
+  }
+  footer p { color: #555; font-size: 0.8rem; }
+  footer a { color: #666; text-decoration: none; }
+  footer a:hover { color: white; }
+
+  @media (max-width: 900px) {
+    .layout { grid-template-columns: 1fr; }
+    .result-panel { position: static; }
+    .formula-sub { gap: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">IN<span>-</span>KluSo</div>
+  <div class="badge">SIGNAL MODEL v1.0.0</div>
+  <nav>
+    <a href="../">← Magazine</a>
+    <a href="../doctrine/">Doctrine</a>
+    <a href="https://jjaecheverri.github.io/inkluso-tools/" target="_blank">Tools</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <div class="hero-label">CRUMBS SIGNAL ENGINE / CONFIDENCE CALCULATOR</div>
+  <h1>Signal Confidence<br><em>Model</em></h1>
+  <p>Every signal IN-KluSo publishes is scored against this model. Source quality, lens coverage, mechanism clarity, and territory specificity combine into a single verifiable index. MODERATE or HIGH = publishable. LOW = more evidence needed.</p>
+</div>
+
+<!-- Master formula display -->
+<div class="formula-band">
+  <div class="formula-label">CANONICAL FORMULA — SCI v1.0.0</div>
+  <div class="formula-main">
+    <span class="var">SCI</span> = (<span class="var">S</span> × <span class="weight">0.35</span>) + (<span class="var">L</span> × <span class="weight">0.30</span>) + (<span class="var">M</span> × <span class="weight">0.25</span>) + (<span class="var">T</span> × <span class="weight">0.10</span>)
+  </div>
+  <div class="formula-sub">
+    <div class="formula-sub-item">
+      <div><span class="k">S</span> = Source Score</div>
+      <div><span class="k">w</span> = <span class="v">0.35</span> — load-bearing</div>
+    </div>
+    <div class="formula-sub-item">
+      <div><span class="k">L</span> = Lens Coverage</div>
+      <div><span class="k">w</span> = <span class="v">0.30</span> — three-lens weighted</div>
+    </div>
+    <div class="formula-sub-item">
+      <div><span class="k">M</span> = Mechanism Clarity</div>
+      <div><span class="k">w</span> = <span class="v">0.25</span> — causal chain</div>
+    </div>
+    <div class="formula-sub-item">
+      <div><span class="k">T</span> = Territory Specificity</div>
+      <div><span class="k">w</span> = <span class="v">0.10</span> — traceable</div>
+    </div>
+  </div>
+</div>
+
+<div class="layout">
+
+  <!-- INPUT PANEL -->
+  <div class="input-panel">
+
+    <!-- Signal metadata -->
+    <div class="section-label">01 — SIGNAL METADATA</div>
+    <div class="input-grid">
+      <div class="input-full">
+        <label>Signal Title</label>
+        <input type="text" id="signalTitle" placeholder="e.g. The New Booth in Bella Vista" value="The New Booth in Bella Vista">
+      </div>
+      <div>
+        <label>Signal ID</label>
+        <input type="text" id="signalId" placeholder="NWA-GROUND-001" value="NWA-GROUND-001">
+      </div>
+      <div>
+        <label>Division</label>
+        <select id="division">
+          <option value="GROUND" selected>GROUND</option>
+          <option value="CORE">CORE</option>
+          <option value="THRIVE">THRIVE</option>
+          <option value="AXIS">AXIS</option>
+          <option value="FLOW">FLOW</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Sources -->
+    <div class="section-label">02 — SOURCE BUNDLE</div>
+    <div class="input-grid" style="margin-bottom:32px">
+      <div>
+        <label>Tier A sources (primary)</label>
+        <input type="number" id="tierA" min="0" max="10" value="0">
+      </div>
+      <div>
+        <label>Tier B sources (secondary)</label>
+        <input type="number" id="tierB" min="0" max="10" value="2">
+      </div>
+      <div>
+        <label>Tier C sources (color only)</label>
+        <input type="number" id="tierC" min="0" max="10" value="1">
+      </div>
+      <div style="display:flex;align-items:flex-end;padding-bottom:2px">
+        <div id="sourceCapWarning" style="font-family:var(--mono);font-size:0.7rem;color:#E74C3C;display:none;">
+          ⚠ Hard cap applies (no A + &lt;2 B)
+        </div>
+      </div>
+    </div>
+
+    <!-- Lens scores -->
+    <div class="section-label">03 — THREE-LENS ANALYSIS</div>
+    <div id="lensWeightsDisplay" style="font-family:var(--mono);font-size:0.72rem;color:#888;margin-bottom:16px;"></div>
+    <div class="slider-group">
+      <div class="slider-row">
+        <label>Epistemology</label>
+        <input type="range" id="epistemology" min="0" max="1" step="0.05" value="0.70" oninput="updateSlider('epistemology')">
+        <span class="slider-val" id="epistemologyVal">0.70</span>
+        <span class="lens-weight" id="epistemologyW"></span>
+      </div>
+      <div class="slider-row">
+        <label>Systems</label>
+        <input type="range" id="systems" min="0" max="1" step="0.05" value="0.50" oninput="updateSlider('systems')">
+        <span class="slider-val" id="systemsVal">0.50</span>
+        <span class="lens-weight" id="systemsW"></span>
+      </div>
+      <div class="slider-row">
+        <label>Behavioral</label>
+        <input type="range" id="behavioral" min="0" max="1" step="0.05" value="0.90" oninput="updateSlider('behavioral')">
+        <span class="slider-val" id="behavioralVal">0.90</span>
+        <span class="lens-weight" id="behavioralW"></span>
+      </div>
+    </div>
+
+    <!-- Mechanism -->
+    <div class="section-label">04 — MECHANISM CLARITY</div>
+    <div style="margin-bottom:32px">
+      <div class="slider-row" style="margin-bottom:8px">
+        <label>Causal chain score (1–5)</label>
+        <input type="range" id="mechanism" min="1" max="5" step="1" value="3" oninput="updateSlider('mechanism')">
+        <span class="slider-val" id="mechanismVal">3</span>
+      </div>
+      <div id="mechanismLabel" style="font-family:var(--mono);font-size:0.72rem;color:#888;margin-left:0;margin-top:4px;"></div>
+    </div>
+
+    <!-- Territory -->
+    <div class="section-label">05 — TERRITORY SPECIFICITY</div>
+    <div class="check-group">
+      <div class="check-item checked" id="chk_city" onclick="toggleCheck('city')">
+        <div class="check-box"></div>
+        <div class="check-label">City / neighborhood named</div>
+      </div>
+      <div class="check-item checked" id="chk_time" onclick="toggleCheck('time')">
+        <div class="check-box"></div>
+        <div class="check-label">Time window specified</div>
+      </div>
+      <div class="check-item checked" id="chk_actor" onclick="toggleCheck('actor')">
+        <div class="check-box"></div>
+        <div class="check-label">Actor or institution named</div>
+      </div>
+      <div class="check-item checked" id="chk_behavior" onclick="toggleCheck('behavior')">
+        <div class="check-box"></div>
+        <div class="check-label">Behavior documented</div>
+      </div>
+    </div>
+
+    <button class="run-btn" onclick="runModel()">RUN SIGNAL CONFIDENCE MODEL →</button>
+  </div>
+
+  <!-- RESULT PANEL -->
+  <div class="result-panel">
+    <div class="section-label" style="color:#444;">RESULT OUTPUT</div>
+
+    <div class="result-empty" id="resultEmpty">
+      — Run the model to see<br>the signal confidence score —<br><br>
+      SCI range: 0.000 → 1.000<br>
+      HIGH ≥ 0.80<br>
+      MODERATE ≥ 0.55<br>
+      LOW ≥ 0.30<br>
+      MINIMAL &lt; 0.30
+    </div>
+
+    <div class="result-output" id="resultOutput">
+      <div class="sci-display" id="sciDisplay">
+        <div class="sci-label">SIGNAL CONFIDENCE INDEX</div>
+        <div class="sci-number" id="sciNumber">—</div>
+        <div class="sci-tier" id="sciTier">—</div>
+        <div class="sci-pub" id="sciPub">—</div>
+      </div>
+
+      <div class="component-breakdown">
+        <div class="section-label" style="color:#444;font-size:0.6rem;margin-bottom:12px;">COMPONENT BREAKDOWN</div>
+        <div class="component-row">
+          <div class="comp-name">SOURCE</div>
+          <div class="comp-bar-wrap"><div class="comp-bar" id="barS" style="width:0%"></div></div>
+          <div class="comp-val" id="valS">—</div>
+        </div>
+        <div class="component-row">
+          <div class="comp-name">LENS</div>
+          <div class="comp-bar-wrap"><div class="comp-bar" id="barL" style="width:0%"></div></div>
+          <div class="comp-val" id="valL">—</div>
+        </div>
+        <div class="component-row">
+          <div class="comp-name">MECHANISM</div>
+          <div class="comp-bar-wrap"><div class="comp-bar" id="barM" style="width:0%"></div></div>
+          <div class="comp-val" id="valM">—</div>
+        </div>
+        <div class="component-row">
+          <div class="comp-name">TERRITORY</div>
+          <div class="comp-bar-wrap"><div class="comp-bar" id="barT" style="width:0%"></div></div>
+          <div class="comp-val" id="valT">—</div>
+        </div>
+      </div>
+
+      <div class="result-notes" id="resultNotes"></div>
+
+      <div class="cluster-bar">
+        <div class="cluster-progress">FARMERS MARKET CLUSTER · US</div>
+        <div style="font-family:var(--mono);font-size:0.7rem;color:#555;" id="clusterCount">1 / 10 signals</div>
+        <div class="progress-track" id="progressPips"></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Math reference section -->
+<div class="math-section">
+  <div class="section-label" style="font-family:var(--mono);font-size:0.65rem;color:var(--orange);letter-spacing:0.15em;">REFERENCE — COMPLETE MODEL PARAMETERS</div>
+  <div class="math-grid">
+    <div class="math-card">
+      <h3>SOURCE TIER WEIGHTS</h3>
+      <table class="math-table">
+        <tr><td>Tier A — Primary sources</td><td>1.00</td></tr>
+        <tr><td>Tier B — Reputable secondary</td><td>0.60</td></tr>
+        <tr><td>Tier C — Commentary / color</td><td>0.15</td></tr>
+        <tr><td>Decay per additional same-tier</td><td>× 0.60</td></tr>
+        <tr><td>Hard cap trigger</td><td>A=0 + B&lt;2</td></tr>
+      </table>
+    </div>
+    <div class="math-card">
+      <h3>LENS WEIGHTS BY DIVISION</h3>
+      <table class="math-table">
+        <tr><td>CORE — Epist / Sys / Behav</td><td>0.40 / 0.40 / 0.20</td></tr>
+        <tr><td>THRIVE — Epist / Sys / Behav</td><td>0.33 / 0.33 / 0.34</td></tr>
+        <tr><td>AXIS — Epist / Sys / Behav</td><td>0.20 / 0.40 / 0.40</td></tr>
+        <tr><td>FLOW — Epist / Sys / Behav</td><td>0.20 / 0.40 / 0.40</td></tr>
+        <tr><td>GROUND — Epist / Sys / Behav</td><td>0.40 / 0.20 / 0.40</td></tr>
+      </table>
+    </div>
+    <div class="math-card">
+      <h3>MECHANISM CLARITY SCALE</h3>
+      <table class="math-table">
+        <tr><td>1 — No causal chain</td><td>0.00</td></tr>
+        <tr><td>2 — Direction stated, not evidenced</td><td>0.25</td></tr>
+        <tr><td>3 — Partial chain, gaps acknowledged</td><td>0.50</td></tr>
+        <tr><td>4 — Full chain, partial evidence</td><td>0.75</td></tr>
+        <tr><td>5 — Full chain + named mechanism</td><td>1.00</td></tr>
+      </table>
+    </div>
+    <div class="math-card">
+      <h3>CONFIDENCE TIERS</h3>
+      <table class="math-table">
+        <tr><td>HIGH — Fully verifiable</td><td>≥ 0.80</td></tr>
+        <tr><td>MODERATE — Uncertainty disclosed</td><td>≥ 0.55</td></tr>
+        <tr><td>LOW — Not publishable</td><td>≥ 0.30</td></tr>
+        <tr><td>MINIMAL — Archive only</td><td>&lt; 0.30</td></tr>
+      </table>
+    </div>
+    <div class="math-card">
+      <h3>GLOBAL WEIGHTS</h3>
+      <table class="math-table">
+        <tr><td>Source Score (S)</td><td>0.35</td></tr>
+        <tr><td>Lens Coverage (L)</td><td>0.30</td></tr>
+        <tr><td>Mechanism Clarity (M)</td><td>0.25</td></tr>
+        <tr><td>Territory Specificity (T)</td><td>0.10</td></tr>
+        <tr><td>Total</td><td>1.00</td></tr>
+      </table>
+    </div>
+    <div class="math-card">
+      <h3>CLUSTER DOCTRINE</h3>
+      <table class="math-table">
+        <tr><td>Maximum active clusters</td><td>3</td></tr>
+        <tr><td>Signals to activate</td><td>10 min</td></tr>
+        <tr><td>Coverage window required</td><td>3 months</td></tr>
+        <tr><td>Monitoring updates needed</td><td>2</td></tr>
+        <tr><td>Current cluster (Juan)</td><td>1 / 10</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>IN-KluSo Signal Confidence Model v1.0.0 — Canonical scoring doctrine</p>
+  <div style="display:flex;gap:24px;">
+    <a href="../">Magazine</a>
+    <a href="../doctrine/">Doctrine</a>
+    <a href="https://jjaecheverri.github.io/inkluso-tools/">Tools</a>
+  </div>
+</footer>
+
+<script>
+const LENS_WEIGHTS = {
+  CORE:   { epistemology: 0.40, systems: 0.40, behavioral: 0.20 },
+  THRIVE: { epistemology: 0.33, systems: 0.33, behavioral: 0.34 },
+  AXIS:   { epistemology: 0.20, systems: 0.40, behavioral: 0.40 },
+  FLOW:   { epistemology: 0.20, systems: 0.40, behavioral: 0.40 },
+  GROUND: { epistemology: 0.40, systems: 0.20, behavioral: 0.40 },
+};
+
+const MECHANISM_LABELS = {
+  1: 'No causal chain identified',
+  2: 'Direction stated — not evidenced',
+  3: 'Partial chain — gaps acknowledged',
+  4: 'Full chain — partial evidence',
+  5: 'Full chain + mechanism named',
+};
+
+const checks = { city: true, time: true, actor: true, behavior: true };
+
+function toggleCheck(id) {
+  checks[id] = !checks[id];
+  const el = document.getElementById('chk_' + id);
+  el.classList.toggle('checked', checks[id]);
+  updateCapWarning();
+}
+
+function updateSlider(id) {
+  const val = parseFloat(document.getElementById(id).value);
+  const display = id === 'mechanism' ? val.toString() : val.toFixed(2);
+  document.getElementById(id + 'Val').textContent = display;
+  if (id === 'mechanism') {
+    document.getElementById('mechanismLabel').textContent = MECHANISM_LABELS[val];
+  }
+  updateCapWarning();
+}
+
+function updateCapWarning() {
+  const a = parseInt(document.getElementById('tierA').value) || 0;
+  const b = parseInt(document.getElementById('tierB').value) || 0;
+  document.getElementById('sourceCapWarning').style.display = (a === 0 && b < 2) ? 'block' : 'none';
+}
+
+function updateLensWeights() {
+  const div = document.getElementById('division').value;
+  const w = LENS_WEIGHTS[div];
+  document.getElementById('lensWeightsDisplay').textContent =
+    `${div} weights → Epist: ${w.epistemology.toFixed(2)}  Sys: ${w.systems.toFixed(2)}  Behav: ${w.behavioral.toFixed(2)}`;
+  document.getElementById('epistemologyW').textContent = `w=${w.epistemology.toFixed(2)}`;
+  document.getElementById('systemsW').textContent = `w=${w.systems.toFixed(2)}`;
+  document.getElementById('behavioralW').textContent = `w=${w.behavioral.toFixed(2)}`;
+}
+
+document.getElementById('division').addEventListener('change', updateLensWeights);
+updateLensWeights();
+updateSlider('mechanism');
+
+function sourceScore(a, b, c) {
+  function contrib(count, w) {
+    let t = 0;
+    for (let i = 1; i <= count; i++) t += w * Math.pow(0.6, i-1);
+    return t;
+  }
+  const raw = contrib(a, 1.00) + contrib(b, 0.60) + contrib(c, 0.15);
+  return Math.min(raw, 1.0);
+}
+
+function runModel() {
+  const div = document.getElementById('division').value;
+  const a = parseInt(document.getElementById('tierA').value) || 0;
+  const b = parseInt(document.getElementById('tierB').value) || 0;
+  const c = parseInt(document.getElementById('tierC').value) || 0;
+
+  const epi = parseFloat(document.getElementById('epistemology').value);
+  const sys = parseFloat(document.getElementById('systems').value);
+  const beh = parseFloat(document.getElementById('behavioral').value);
+  const mech = parseInt(document.getElementById('mechanism').value);
+
+  const lw = LENS_WEIGHTS[div];
+
+  // Scores
+  const S = sourceScore(a, b, c);
+  const L = epi * lw.epistemology + sys * lw.systems + beh * lw.behavioral;
+  const M = (mech - 1) / 4;
+  const T = Object.values(checks).filter(Boolean).length / 4;
+
+  let SCI = S * 0.35 + L * 0.30 + M * 0.25 + T * 0.10;
+  const hardCap = (a === 0 && b < 2);
+  if (hardCap) SCI = Math.min(SCI, 0.55);
+
+  const tier = SCI >= 0.80 ? 'HIGH' : SCI >= 0.55 ? 'MODERATE' : SCI >= 0.30 ? 'LOW' : 'MINIMAL';
+  const publishable = tier === 'HIGH' || tier === 'MODERATE';
+
+  // Render
+  document.getElementById('resultEmpty').style.display = 'none';
+  const out = document.getElementById('resultOutput');
+  out.classList.add('visible');
+
+  const sci = document.getElementById('sciDisplay');
+  sci.className = 'sci-display tier-' + tier;
+  document.getElementById('sciNumber').textContent = SCI.toFixed(4);
+  document.getElementById('sciTier').textContent = tier;
+  document.getElementById('sciPub').textContent = publishable ? '✓ Publishable' : '✗ Needs more evidence';
+
+  // Bars
+  function setBar(id, score, weighted) {
+    document.getElementById('bar' + id).style.width = (score * 100) + '%';
+    document.getElementById('val' + id).textContent = score.toFixed(3) + ' → ' + weighted.toFixed(3);
+  }
+  setBar('S', S, S * 0.35);
+  setBar('L', L, L * 0.30);
+  setBar('M', M, M * 0.25);
+  setBar('T', T, T * 0.10);
+
+  // Notes
+  const notes = [];
+  if (hardCap) notes.push('No Tier A + <2 Tier B → SCI capped at 0.55');
+  if (epi === 0 && lw.epistemology >= 0.33) notes.push(`Epistemology = 0 but weighted ${lw.epistemology} in ${div}`);
+  if (sys === 0 && lw.systems >= 0.33) notes.push(`Systems = 0 but weighted ${lw.systems} in ${div}`);
+  if (beh === 0 && lw.behavioral >= 0.33) notes.push(`Behavioral = 0 but weighted ${lw.behavioral} in ${div}`);
+  if (mech <= 2) notes.push(`Mechanism ${mech}/5 — causal chain not evidenced`);
+
+  const notesEl = document.getElementById('resultNotes');
+  notesEl.innerHTML = notes.length
+    ? notes.map(n => `<div class="note-item">${n}</div>`).join('')
+    : '<div style="font-family:var(--mono);font-size:0.72rem;color:#444;padding-top:4px;">No warnings — clean signal.</div>';
+
+  // Progress pips (1 existing + this one if publishable)
+  const total = 1 + (publishable ? 1 : 0);
+  const pips = document.getElementById('progressPips');
+  pips.innerHTML = Array.from({length: 10}, (_, i) =>
+    `<div class="progress-pip ${i < total ? 'filled' : ''}"></div>`
+  ).join('');
+  document.getElementById('clusterCount').textContent = `${total} / 10 signals`;
+}
+
+// Initialize source cap watcher
+document.getElementById('tierA').addEventListener('input', updateCapWarning);
+document.getElementById('tierB').addEventListener('input', updateCapWarning);
+updateCapWarning();
+</script>
+</body>
+</html>
