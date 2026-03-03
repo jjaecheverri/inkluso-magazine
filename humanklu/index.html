@@ -4,623 +4,1136 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HumanKlu™ — Human Calibration Standard | INKLUSO</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
-    /* ── RESET & BASE ────────────────────────────────────────────── */
+    /* ── RESET ─────────────────────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
       --navy:    #0B1F3A;
       --navy2:   #132944;
       --gold:    #B8960C;
       --gold-lt: #F5E9C0;
+      --gold-bg: #fdf8e8;
+      --cream:   #FAF6EE;
+      --paper:   #F4F1EA;
+      --ink:     #1A1A1A;
       --slate:   #4A5568;
       --slate-lt:#718096;
-      --bg:      #F7F8FA;
+      --rule:    #D4C9A8;
       --white:   #FFFFFF;
-      --border:  #E2E8F0;
-      --green:   #1A7F4E;
-      --amber:   #D48806;
-      --red:     #C0392B;
-      --violet:  #4A0E8F;
-      --text:    #1A202C;
+      --border:  #DDD5BB;
+      --green:   #1A5C35;
+      --amber:   #C07A00;
+      --red:     #9B1C1C;
+      --violet:  #3D0A7A;
     }
     html { scroll-behavior: smooth; }
     body {
-      font-family: 'Georgia', 'Times New Roman', serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.75;
+      font-family: 'Playfair Display', Georgia, serif;
+      background: var(--cream);
+      color: var(--ink);
       font-size: 16px;
+      line-height: 1.75;
     }
     a { color: var(--gold); text-decoration: none; }
     a:hover { text-decoration: underline; }
 
-    /* ── LAYOUT ──────────────────────────────────────────────────── */
-    .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
-    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
-    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
-    @media (max-width: 768px) {
-      .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
-    }
-
-    /* ── SITE NAV ────────────────────────────────────────────────── */
-    .site-nav {
+    /* ── TOP RIBBON (INKLUSO NAV) ───────────────────────────────────── */
+    .ribbon {
       background: var(--navy);
-      padding: .75rem 0;
-      font-family: 'Arial', sans-serif;
-      font-size: .8rem;
-      letter-spacing: .04em;
-    }
-    .site-nav .container {
-      display: flex; align-items: center; gap: 2rem;
-    }
-    .site-nav .brand {
-      color: var(--white); font-weight: 700;
-      text-transform: uppercase; letter-spacing: .1em;
-      text-decoration: none;
-    }
-    .site-nav .brand:hover { color: var(--gold); text-decoration: none; }
-    .site-nav a { color: rgba(255,255,255,.5); }
-    .site-nav a:hover { color: var(--white); text-decoration: none; }
-    .site-nav .divider { color: rgba(255,255,255,.2); }
-    .site-nav .active { color: var(--gold); font-weight: 600; }
-    .site-nav .nav-right { margin-left: auto; display: flex; gap: 1.5rem; }
-
-    /* ── HERO ────────────────────────────────────────────────────── */
-    .hero {
-      background: var(--navy);
-      color: var(--white);
-      padding: 6rem 0 5rem;
-      position: relative;
-      overflow: hidden;
-    }
-    .hero::after {
-      content: '';
-      position: absolute; bottom: 0; left: 0; right: 0; height: 4px;
-      background: linear-gradient(90deg, var(--gold) 0%, transparent 100%);
-    }
-    .hero-eyebrow {
-      font-family: 'Arial', sans-serif;
-      font-size: .75rem;
-      letter-spacing: .15em;
+      color: rgba(255,255,255,.5);
+      font-family: 'Inter', sans-serif;
+      font-size: .7rem;
+      letter-spacing: .12em;
       text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 1.25rem;
+      padding: .55rem 0;
+      text-align: center;
     }
-    .hero h1 {
-      font-size: clamp(2.25rem, 5vw, 3.5rem);
-      font-weight: 400;
-      line-height: 1.2;
-      max-width: 720px;
+    .ribbon a { color: rgba(255,255,255,.5); }
+    .ribbon a:hover { color: var(--gold); text-decoration: none; }
+    .ribbon .sep { margin: 0 .85rem; color: rgba(255,255,255,.2); }
+    .ribbon .active { color: var(--gold); font-weight: 600; }
+
+    /* ── MASTHEAD ────────────────────────────────────────────────────── */
+    .masthead {
+      background: var(--paper);
+      border-bottom: 2px solid var(--ink);
+      padding: 2.5rem 0 0;
+    }
+    .masthead-inner {
+      max-width: 1100px; margin: 0 auto; padding: 0 2.5rem;
+    }
+    .masthead-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-family: 'Inter', sans-serif;
+      font-size: .7rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--slate);
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: .6rem;
       margin-bottom: 1.5rem;
     }
-    .hero h1 em { font-style: normal; color: var(--gold); }
-    .hero-sub {
-      font-size: 1.1rem;
-      color: rgba(255,255,255,.65);
-      max-width: 560px;
-      margin-bottom: 3rem;
-      font-family: 'Arial', sans-serif;
-      line-height: 1.65;
+    .masthead-title {
+      text-align: center;
+      margin-bottom: 1.5rem;
     }
-    .cta-row { display: flex; gap: 1rem; flex-wrap: wrap; }
-    .btn-primary {
-      display: inline-block;
-      background: var(--gold);
+    .masthead-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3.5rem, 8vw, 6.5rem);
+      font-weight: 900;
+      letter-spacing: -0.03em;
       color: var(--navy);
-      font-family: 'Arial', sans-serif;
-      font-weight: 700;
-      font-size: .9rem;
-      letter-spacing: .04em;
-      padding: .85rem 2rem;
-      border-radius: 3px;
+      line-height: 1;
+      display: block;
     }
-    .btn-primary:hover { background: #d4aa10; text-decoration: none; }
-    .btn-ghost {
-      display: inline-block;
-      border: 1px solid rgba(255,255,255,.3);
-      color: rgba(255,255,255,.8);
-      font-family: 'Arial', sans-serif;
-      font-weight: 400;
-      font-size: .9rem;
-      letter-spacing: .04em;
-      padding: .85rem 2rem;
-      border-radius: 3px;
+    .masthead-logo span { color: var(--gold); }
+    .masthead-tagline {
+      font-family: 'Inter', sans-serif;
+      font-size: .8rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--slate);
+      margin-top: .5rem;
+      display: block;
     }
-    .btn-ghost:hover { border-color: var(--white); color: var(--white); text-decoration: none; }
+    .masthead-rule {
+      height: 3px;
+      background: var(--ink);
+      margin: 0;
+    }
+    .masthead-rule-thin {
+      height: 1px;
+      background: var(--rule);
+      margin: .35rem 0 0;
+    }
 
-    /* Stats bar */
-    .stat-bar {
-      margin-top: 4rem;
-      padding-top: 2.5rem;
-      border-top: 1px solid rgba(255,255,255,.1);
-      display: flex; gap: 3rem; flex-wrap: wrap;
-    }
-    .stat { font-family: 'Arial', sans-serif; }
-    .stat-num { font-size: 2rem; font-weight: 700; color: var(--white); display: block; }
-    .stat-label { font-size: .8rem; color: rgba(255,255,255,.45); letter-spacing: .08em; text-transform: uppercase; }
+    /* ── PAGE CONTAINER ─────────────────────────────────────────────── */
+    .page { max-width: 1100px; margin: 0 auto; padding: 0 2.5rem; }
 
-    /* ── SECTIONS ────────────────────────────────────────────────── */
-    section { padding: 5rem 0; }
-    .section-label {
-      font-family: 'Arial', sans-serif;
-      font-size: .7rem;
+    /* ── COVER SPREAD ────────────────────────────────────────────────── */
+    .cover-spread {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 0;
+      border-bottom: 2px solid var(--ink);
+      background: var(--paper);
+    }
+    .cover-main {
+      padding: 3rem 2.5rem 3rem 0;
+      border-right: 1px solid var(--rule);
+    }
+    .cover-sidebar {
+      padding: 3rem 0 3rem 2rem;
+    }
+    .cover-eyebrow {
+      font-family: 'Inter', sans-serif;
+      font-size: .68rem;
       letter-spacing: .18em;
       text-transform: uppercase;
       color: var(--gold);
-      margin-bottom: .75rem;
+      margin-bottom: .85rem;
     }
-    h2 {
-      font-size: clamp(1.6rem, 3vw, 2.25rem);
-      font-weight: 400;
+    .cover-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 900;
+      line-height: 1.12;
       color: var(--navy);
-      line-height: 1.25;
       margin-bottom: 1.25rem;
     }
-    h3 { font-size: 1.1rem; font-weight: 700; color: var(--navy); margin-bottom: .5rem; font-family: 'Arial', sans-serif; }
-    p.lead {
-      font-size: 1.05rem;
+    .cover-headline em { font-style: italic; color: var(--gold); }
+    .cover-deck {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--slate);
+      line-height: 1.65;
+      max-width: 560px;
+      margin-bottom: 2rem;
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      padding: 1rem 0;
+    }
+    .cover-body {
+      font-family: 'Playfair Display', serif;
+      font-size: .97rem;
       color: var(--slate);
       line-height: 1.8;
-      max-width: 640px;
+      column-count: 2;
+      column-gap: 2rem;
     }
-    .bg-white { background: var(--white); }
-    .bg-navy { background: var(--navy); color: var(--white); }
-    .bg-navy h2, .bg-navy h3 { color: var(--white); }
-    .bg-navy p.lead { color: rgba(255,255,255,.65); }
-
-    /* ── WHAT WE DO ──────────────────────────────────────────────── */
-    .problem-block {
-      background: var(--bg);
-      border-left: 3px solid var(--border);
-      padding: 1.5rem 1.75rem;
-      border-radius: 0 4px 4px 0;
+    .cover-body::first-letter {
+      font-size: 4rem;
+      font-weight: 900;
+      line-height: .85;
+      float: left;
+      margin: 0 .1em .05em 0;
+      color: var(--navy);
     }
-    .solution-block {
-      background: var(--white);
-      border-left: 3px solid var(--gold);
-      padding: 1.5rem 1.75rem;
-      border-radius: 0 4px 4px 0;
-    }
-    .block-label {
-      font-family: 'Arial', sans-serif;
-      font-size: .7rem;
-      letter-spacing: .15em;
+    .cover-cta { margin-top: 2rem; display: flex; gap: .85rem; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-block;
+      background: var(--navy);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: .78rem;
+      letter-spacing: .08em;
       text-transform: uppercase;
+      padding: .8rem 1.75rem;
+    }
+    .btn-primary:hover { background: var(--gold); color: var(--navy); text-decoration: none; }
+    .btn-outline {
+      display: inline-block;
+      border: 1.5px solid var(--navy);
+      color: var(--navy);
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: .78rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: .8rem 1.75rem;
+    }
+    .btn-outline:hover { background: var(--navy); color: var(--white); text-decoration: none; }
+
+    /* ── SIDEBAR INDEX ───────────────────────────────────────────────── */
+    .sidebar-box {
+      border: 1.5px solid var(--ink);
+      padding: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+    .sidebar-box-title {
+      font-family: 'Inter', sans-serif;
+      font-size: .65rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--slate);
+      margin-bottom: .85rem;
+      padding-bottom: .5rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .sidebar-index-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: .35rem 0;
+      border-bottom: 1px dotted var(--rule);
+      font-family: 'Inter', sans-serif;
+      font-size: .78rem;
+      color: var(--ink);
+    }
+    .sidebar-index-item:last-child { border-bottom: none; }
+    .sidebar-index-item .section-name { font-weight: 600; }
+    .sidebar-index-item .page-num { color: var(--slate); font-size: .72rem; }
+    .sidebar-stat {
+      text-align: center;
+      padding: 1rem 0;
+    }
+    .sidebar-stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: var(--navy);
+      display: block;
+      line-height: 1;
+    }
+    .sidebar-stat-label {
+      font-family: 'Inter', sans-serif;
+      font-size: .68rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--slate);
+      margin-top: .25rem;
+      display: block;
+    }
+    .sidebar-divider {
+      height: 1px;
+      background: var(--rule);
+      margin: .85rem 0;
+    }
+
+    /* ── VISUAL STAMP ────────────────────────────────────────────────── */
+    .hci-stamp {
+      width: 100%;
+      aspect-ratio: 1;
+      max-width: 140px;
+      margin: 0 auto 1rem;
+      display: block;
+      position: relative;
+    }
+    .stamp-svg {
+      width: 100%; height: auto;
+    }
+
+    /* ── SECTION HEADER ──────────────────────────────────────────────── */
+    .section-header {
+      border-top: 3px double var(--ink);
+      border-bottom: 1px solid var(--rule);
+      padding: .6rem 0;
+      margin: 0 0 2.5rem;
+      display: flex;
+      align-items: baseline;
+      gap: 1.25rem;
+    }
+    .section-number {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: 2.5rem;
+      color: var(--rule);
+      line-height: 1;
+    }
+    .section-title {
+      font-family: 'Inter', sans-serif;
+      font-size: .72rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--navy);
+    }
+    .section-subtitle {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: .85rem;
+      color: var(--slate);
+      margin-left: auto;
+    }
+
+    /* ── ARTICLE BODY ────────────────────────────────────────────────── */
+    .article-body {
+      font-family: 'Playfair Display', serif;
+      font-size: .97rem;
+      line-height: 1.82;
+      color: var(--ink);
+    }
+    .article-body p { margin-bottom: 1rem; }
+    .article-body p.drop-cap::first-letter {
+      font-size: 4rem;
+      font-weight: 900;
+      line-height: .82;
+      float: left;
+      margin: .05em .1em 0 0;
+      color: var(--navy);
+    }
+
+    /* ── PULL QUOTE ──────────────────────────────────────────────────── */
+    .pull-quote {
+      border-top: 3px solid var(--ink);
+      border-bottom: 1px solid var(--rule);
+      padding: 1.25rem 0;
+      margin: 2rem 0;
+      text-align: center;
+    }
+    .pull-quote-mark {
+      font-family: 'Playfair Display', serif;
+      font-size: 4rem;
+      line-height: 0.5;
+      color: var(--gold);
+      display: block;
       margin-bottom: .75rem;
     }
-    .problem-block .block-label { color: var(--slate-lt); }
-    .solution-block .block-label { color: var(--gold); }
+    .pull-quote-text {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.3rem;
+      font-weight: 400;
+      color: var(--navy);
+      line-height: 1.45;
+      max-width: 580px;
+      margin: 0 auto;
+    }
+    .pull-quote-attr {
+      font-family: 'Inter', sans-serif;
+      font-size: .7rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--slate);
+      margin-top: .85rem;
+    }
 
-    /* ── HKP DIMENSIONS ─────────────────────────────────────────── */
-    .dim-table { width: 100%; border-collapse: collapse; font-family: 'Arial', sans-serif; font-size: .9rem; }
+    /* ── THREE-COLUMN BODY ──────────────────────────────────────────── */
+    .col-3-body {
+      column-count: 3;
+      column-gap: 2.25rem;
+      column-rule: 1px solid var(--rule);
+      font-family: 'Playfair Display', serif;
+      font-size: .93rem;
+      line-height: 1.8;
+      color: var(--ink);
+    }
+    .col-3-body p { margin-bottom: .85rem; }
+    @media (max-width: 800px) {
+      .col-3-body { column-count: 1; }
+      .cover-spread { grid-template-columns: 1fr; }
+      .cover-main { border-right: none; padding-right: 0; }
+      .cover-sidebar { padding-left: 0; }
+    }
+
+    /* ── TWO-COLUMN BODY ─────────────────────────────────────────────── */
+    .col-2-body {
+      column-count: 2;
+      column-gap: 2.5rem;
+      column-rule: 1px solid var(--rule);
+      font-family: 'Playfair Display', serif;
+      font-size: .97rem;
+      line-height: 1.82;
+      color: var(--ink);
+    }
+    .col-2-body p { margin-bottom: .9rem; }
+    @media (max-width: 680px) {
+      .col-2-body { column-count: 1; }
+      .cover-body { column-count: 1; }
+    }
+
+    /* ── DIMENSION TABLE ─────────────────────────────────────────────── */
+    .dim-table { width: 100%; border-collapse: collapse; font-family: 'Inter', sans-serif; font-size: .875rem; }
     .dim-table th {
       background: var(--navy);
       color: var(--white);
-      padding: .75rem 1rem;
+      padding: .7rem 1rem;
       text-align: left;
-      font-size: .75rem;
-      letter-spacing: .06em;
+      font-size: .7rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      font-weight: 600;
     }
-    .dim-table td { padding: .85rem 1rem; border-bottom: 1px solid var(--border); vertical-align: top; }
-    .dim-table tr:nth-child(even) td { background: var(--bg); }
+    .dim-table td { padding: .9rem 1rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .dim-table tr:last-child td { border-bottom: 2px solid var(--ink); }
     .dim-code {
-      font-family: 'Courier New', monospace;
+      font-family: 'JetBrains Mono', 'Courier New', monospace;
       font-weight: 700;
       color: var(--navy);
-      font-size: 1rem;
+      font-size: .95rem;
     }
-    .formula-block {
+    .dim-table .wt {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .82rem;
+      color: var(--gold);
+      font-weight: 700;
+    }
+
+    /* ── FORMULA BOX ─────────────────────────────────────────────────── */
+    .formula-box {
       background: var(--navy);
       color: var(--white);
-      font-family: 'Courier New', monospace;
-      font-size: 1.15rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.05rem;
       text-align: center;
-      padding: 1.5rem;
-      border-radius: 4px;
-      margin-top: 2rem;
+      padding: 1.5rem 2rem;
       letter-spacing: .04em;
-    }
-    .formula-block span { color: var(--gold); }
-
-    /* ── CERT LEVELS ─────────────────────────────────────────────── */
-    .cert-card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 1.75rem;
-      border-top: 4px solid var(--navy);
+      margin: 2rem 0;
       position: relative;
     }
-    .cert-badge {
-      display: inline-block;
-      font-family: 'Arial', sans-serif;
-      font-size: .75rem;
+    .formula-box::before {
+      content: 'THE FORMULA';
+      position: absolute;
+      top: -1px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--gold);
+      color: var(--navy);
+      font-family: 'Inter', sans-serif;
+      font-size: .6rem;
       font-weight: 700;
-      letter-spacing: .06em;
-      padding: .3rem .75rem;
-      border-radius: 3px;
-      color: var(--white);
+      letter-spacing: .15em;
+      padding: .15rem .6rem;
+    }
+    .formula-box .var { color: var(--gold); }
+
+    /* ── CERT STRIP ──────────────────────────────────────────────────── */
+    .cert-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border: 2px solid var(--ink);
+      margin: 2rem 0;
+    }
+    .cert-col {
+      padding: 1.5rem 1.25rem;
+      border-right: 1px solid var(--rule);
+      position: relative;
+    }
+    .cert-col:last-child { border-right: none; }
+    .cert-level-bar {
+      height: 5px;
       margin-bottom: 1rem;
     }
-    .cert-card .hci-req {
-      font-family: 'Courier New', monospace;
-      font-size: .85rem;
+    .cert-badge-name {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      font-size: .82rem;
+      letter-spacing: .04em;
+      margin-bottom: .35rem;
+    }
+    .cert-threshold {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .72rem;
       color: var(--slate);
       margin-bottom: .75rem;
     }
-    .cert-card p { font-size: .9rem; color: var(--slate); line-height: 1.6; }
-
-    /* ── BADGE GALLERY ───────────────────────────────────────────── */
-    .gallery-item {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 1.5rem;
+    .cert-desc {
+      font-family: 'Inter', sans-serif;
+      font-size: .78rem;
+      line-height: 1.55;
+      color: var(--slate);
     }
-    .gallery-item .article-title { font-weight: 700; font-size: .95rem; margin-bottom: .25rem; }
-    .gallery-item .publisher { font-family: 'Arial', sans-serif; font-size: .8rem; color: var(--slate-lt); margin-bottom: 1rem; }
+    .cert-renewal {
+      font-family: 'Inter', sans-serif;
+      font-size: .68rem;
+      color: var(--slate-lt);
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      margin-top: .85rem;
+      border-top: 1px solid var(--border);
+      padding-top: .5rem;
+    }
+    @media (max-width: 700px) {
+      .cert-strip { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* ── PATHWAY COLUMNS ─────────────────────────────────────────────── */
+    .pathway-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin-top: 2rem;
+    }
+    @media (max-width: 680px) { .pathway-grid { grid-template-columns: 1fr; } }
+    .pathway-col-head {
+      font-family: 'Inter', sans-serif;
+      font-size: .65rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--gold);
+      border-bottom: 1px solid rgba(255,255,255,.15);
+      padding-bottom: .6rem;
+      margin-bottom: 1.5rem;
+    }
+    .step { display: flex; gap: 1rem; margin-bottom: 1.5rem; }
+    .step-num {
+      width: 28px; height: 28px; flex-shrink: 0;
+      background: var(--gold);
+      color: var(--navy);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Inter', sans-serif;
+      font-weight: 800; font-size: .78rem;
+    }
+    .step-body h4 { font-family: 'Inter', sans-serif; font-size: .88rem; font-weight: 700; color: var(--white); margin-bottom: .15rem; }
+    .step-body p { font-family: 'Inter', sans-serif; font-size: .82rem; color: rgba(255,255,255,.55); line-height: 1.5; }
+    .btn-gold {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--navy);
+      font-family: 'Inter', sans-serif;
+      font-weight: 800;
+      font-size: .75rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: .7rem 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .btn-gold:hover { background: #d4aa10; text-decoration: none; }
+    .btn-gold-outline {
+      display: inline-block;
+      border: 1.5px solid var(--gold);
+      color: var(--gold);
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: .75rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: .7rem 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .btn-gold-outline:hover { background: var(--gold); color: var(--navy); text-decoration: none; }
+
+    /* ── PRICING TABLE ───────────────────────────────────────────────── */
+    .pricing-table { width: 100%; border-collapse: collapse; font-family: 'Inter', sans-serif; font-size: .85rem; }
+    .pricing-table th {
+      background: var(--ink);
+      color: var(--white);
+      padding: .7rem 1rem;
+      text-align: left;
+      font-size: .68rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    .pricing-table td { padding: .9rem 1rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .pricing-table tr:nth-child(even) td { background: var(--gold-bg); }
+    .pricing-table tr:last-child td { border-bottom: 2px solid var(--ink); }
+    .pricing-table .tier { font-weight: 700; color: var(--navy); font-size: .88rem; }
+    .pricing-table .price { font-family: 'JetBrains Mono', monospace; font-weight: 700; color: var(--navy); }
+    .pricing-table .incl { font-size: .8rem; color: var(--slate); line-height: 1.5; }
+
+    /* ── BADGE EXAMPLES ──────────────────────────────────────────────── */
+    .badge-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .badge-card {
+      border: 1px solid var(--border);
+      background: var(--white);
+      padding: 1.25rem;
+    }
+    .badge-card .article-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: .92rem;
+      margin-bottom: .25rem;
+      color: var(--ink);
+    }
+    .badge-card .publisher {
+      font-family: 'Inter', sans-serif;
+      font-size: .72rem;
+      color: var(--slate-lt);
+      margin-bottom: 1rem;
+    }
     .live-badge {
       display: inline-flex;
       align-items: center;
-      gap: .4rem;
+      gap: .35rem;
       padding: .3rem .85rem;
-      border-radius: 3px;
-      font-family: 'Courier New', monospace;
-      font-size: .8rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .72rem;
       font-weight: 700;
       color: var(--white);
-      margin-bottom: .75rem;
+      margin-bottom: .6rem;
     }
-    .gallery-item .audit-link { font-family: 'Arial', sans-serif; font-size: .8rem; color: var(--gold); }
+    .badge-audit { font-family: 'Inter', sans-serif; font-size: .75rem; color: var(--gold); }
+    @media (max-width: 700px) { .badge-grid { grid-template-columns: 1fr; } }
 
-    /* ── PATHWAY ─────────────────────────────────────────────────── */
-    .pathway-col { }
-    .pathway-col .col-head {
-      font-family: 'Arial', sans-serif;
-      font-size: .7rem;
-      letter-spacing: .15em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 1rem;
-      padding-bottom: .5rem;
-      border-bottom: 1px solid rgba(255,255,255,.1);
-    }
-    .step {
-      display: flex;
-      gap: 1rem;
+    /* ── TRUST GRID ──────────────────────────────────────────────────── */
+    .trust-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem; }
+    @media (max-width: 680px) { .trust-grid { grid-template-columns: 1fr; } }
+    .trust-item { border-top: 2px solid var(--navy); padding-top: 1rem; }
+    .trust-item h4 { font-family: 'Inter', sans-serif; font-size: .82rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--navy); margin-bottom: .5rem; }
+    .trust-item p { font-family: 'Inter', sans-serif; font-size: .83rem; color: var(--slate); line-height: 1.6; }
+
+    /* ── SECTION WRAPPERS ────────────────────────────────────────────── */
+    .section-cream { background: var(--cream); padding: 4rem 0; }
+    .section-paper { background: var(--paper); padding: 4rem 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+    .section-navy { background: var(--navy); padding: 4.5rem 0; color: var(--white); }
+    .section-navy h2 { color: var(--white); }
+
+    /* ── TYPOGRAPHIC HEADINGS ───────────────────────────────────────── */
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      line-height: 1.15;
+      color: var(--navy);
       margin-bottom: 1.25rem;
     }
-    .step-num {
-      width: 2rem; height: 2rem;
-      background: var(--gold);
-      color: var(--navy);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'Arial', sans-serif;
+    h3 {
+      font-family: 'Playfair Display', serif;
       font-weight: 700;
-      font-size: .85rem;
-      flex-shrink: 0;
+      font-size: 1.15rem;
+      color: var(--navy);
+      margin-bottom: .5rem;
     }
-    .step-body h4 { font-family: 'Arial', sans-serif; font-size: .9rem; font-weight: 700; color: var(--white); margin-bottom: .2rem; }
-    .step-body p { font-size: .85rem; color: rgba(255,255,255,.55); line-height: 1.5; }
-    .pathway-cta {
-      margin-top: 2rem;
-      padding-top: 2rem;
-      border-top: 1px solid rgba(255,255,255,.1);
-    }
-    .btn-gold-ghost {
-      display: inline-block;
-      border: 1px solid var(--gold);
-      color: var(--gold);
-      font-family: 'Arial', sans-serif;
-      font-size: .85rem;
-      letter-spacing: .04em;
-      padding: .7rem 1.5rem;
-      border-radius: 3px;
-    }
-    .btn-gold-ghost:hover { background: var(--gold); color: var(--navy); text-decoration: none; }
-
-    /* ── PRICING ─────────────────────────────────────────────────── */
-    .pricing-table { width: 100%; border-collapse: collapse; font-family: 'Arial', sans-serif; }
-    .pricing-table th {
-      background: var(--navy);
-      color: var(--white);
-      padding: .85rem 1.25rem;
-      text-align: left;
-      font-size: .75rem;
-      letter-spacing: .06em;
+    .section-label {
+      font-family: 'Inter', sans-serif;
+      font-size: .65rem;
+      letter-spacing: .22em;
       text-transform: uppercase;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: .6rem;
     }
-    .pricing-table td { padding: 1rem 1.25rem; border-bottom: 1px solid var(--border); vertical-align: top; }
-    .pricing-table tr:nth-child(even) td { background: var(--bg); }
-    .pricing-table .tier-name { font-weight: 700; color: var(--navy); }
-    .pricing-table .price { font-family: 'Courier New', monospace; font-weight: 700; color: var(--navy); }
-    .pricing-table .incl { font-size: .85rem; color: var(--slate); }
+    p.lead {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      color: var(--slate);
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
 
-    /* ── TRUST ────────────────────────────────────────────────────── */
-    .trust-item { display: flex; gap: 1rem; align-items: flex-start; margin-bottom: 2rem; }
-    .trust-icon { font-size: 1.5rem; flex-shrink: 0; margin-top: .1rem; }
-    .trust-item h4 { font-family: 'Arial', sans-serif; font-size: .9rem; font-weight: 700; color: var(--navy); margin-bottom: .25rem; }
-    .trust-item p { font-size: .9rem; color: var(--slate); line-height: 1.6; }
+    /* ── ORNAMENTAL RULE ────────────────────────────────────────────── */
+    .ornament {
+      display: flex;
+      align-items: center;
+      gap: .85rem;
+      margin: 2.5rem 0;
+    }
+    .ornament-line { flex: 1; height: 1px; background: var(--rule); }
+    .ornament-glyph {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: var(--gold);
+    }
 
-    /* ── FOOTER ──────────────────────────────────────────────────── */
+    /* ── CALLOUT BOX ─────────────────────────────────────────────────── */
+    .callout {
+      border: 1.5px solid var(--ink);
+      background: var(--gold-bg);
+      padding: 1.25rem 1.5rem;
+      margin: 2rem 0;
+    }
+    .callout-head {
+      font-family: 'Inter', sans-serif;
+      font-size: .65rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: .6rem;
+    }
+    .callout p {
+      font-family: 'Inter', sans-serif;
+      font-size: .85rem;
+      color: var(--slate);
+      line-height: 1.6;
+    }
+
+    /* ── METADATA ROW ────────────────────────────────────────────────── */
+    .meta-row {
+      background: var(--ink);
+      color: rgba(255,255,255,.55);
+      font-family: 'Inter', sans-serif;
+      font-size: .72rem;
+      letter-spacing: .06em;
+      padding: .85rem 0;
+    }
+    .meta-row-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2.5rem;
+      display: flex;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+    }
+    .meta-row strong { color: rgba(255,255,255,.75); }
+
+    /* ── FOOTER ──────────────────────────────────────────────────────── */
     footer {
       background: #070f1c;
       color: rgba(255,255,255,.4);
       padding: 3rem 0;
-      font-family: 'Arial', sans-serif;
-      font-size: .8rem;
+      font-family: 'Inter', sans-serif;
+      font-size: .78rem;
     }
-    footer .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
-    footer .brand { color: rgba(255,255,255,.7); font-weight: 700; }
-    footer a { color: rgba(255,255,255,.4); }
-    footer a:hover { color: var(--gold); text-decoration: none; }
-
-    /* ── UTILS ───────────────────────────────────────────────────── */
-    .mono { font-family: 'Courier New', monospace; }
-    .text-gold { color: var(--gold); }
-    .divider-gold { height: 1px; background: linear-gradient(90deg, var(--gold) 0%, transparent 80%); margin: 0 0 4rem; }
-    .tag {
-      display: inline-block;
-      background: var(--gold-lt);
-      color: #7a5f00;
-      font-family: 'Arial', sans-serif;
-      font-size: .7rem;
-      font-weight: 700;
-      letter-spacing: .06em;
-      padding: .2rem .6rem;
-      border-radius: 2px;
-      text-transform: uppercase;
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2.5rem;
     }
+    .footer-rule {
+      height: 1px;
+      background: rgba(255,255,255,.1);
+      margin-bottom: 1.75rem;
+    }
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: 1.5rem;
+      color: rgba(255,255,255,.7);
+      margin-bottom: .25rem;
+      display: block;
+    }
+    .footer-logo span { color: var(--gold); }
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-top: 1.25rem;
+    }
+    .footer-links a { color: rgba(255,255,255,.4); }
+    .footer-links a:hover { color: var(--gold); text-decoration: none; }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,.08);
+    }
+    .mono { font-family: 'JetBrains Mono', monospace; }
   </style>
 </head>
 <body>
 
-<!-- ── SITE NAV ─────────────────────────────────────────────────────────── -->
-<nav class="site-nav">
-  <div class="container">
-    <a href="https://jjaecheverri.github.io/inkluso-magazine/" class="brand">INKLUSO</a>
-    <span class="divider">/</span>
-    <a href="#" class="active">HumanKlu™</a>
-    <div class="nav-right">
-      <a href="#methodology">Methodology</a>
-      <a href="#levels">Certification</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#analyst">Analysts</a>
-      <a href="https://jjaecheverri.github.io/inkluso-tools/" class="mono">Tools ↗</a>
+<!-- ── TOP RIBBON ─────────────────────────────────────────────────────────── -->
+<div class="ribbon">
+  <a href="https://jjaecheverri.github.io/inkluso-magazine/">INKLUSO Magazine</a>
+  <span class="sep">·</span>
+  <a href="https://jjaecheverri.github.io/inkluso-magazine/kontrarian/">Kontrarian</a>
+  <span class="sep">·</span>
+  <span class="active">HumanKlu™</span>
+  <span class="sep">·</span>
+  <a href="https://jjaecheverri.github.io/inkluso-tools/">Tools</a>
+</div>
+
+<!-- ── MASTHEAD ────────────────────────────────────────────────────────────── -->
+<div class="masthead">
+  <div class="masthead-inner">
+    <div class="masthead-meta">
+      <span>A Division of INKLUSO &nbsp;·&nbsp; Cultural Intelligence. Ground Level.</span>
+      <span>Protocol Version: HKP v1.0 &nbsp;·&nbsp; Launched February 2026</span>
+    </div>
+    <div class="masthead-title">
+      <span class="masthead-logo">Human<span>Klu</span>™</span>
+      <span class="masthead-tagline">The Human Calibration Standard for AI-Generated Intelligence</span>
     </div>
   </div>
-</nav>
+  <div class="masthead-rule"></div>
+  <div class="masthead-rule-thin"></div>
+</div>
 
-<!-- ── HERO ─────────────────────────────────────────────────────────────── -->
-<header class="hero">
-  <div class="container">
-    <p class="hero-eyebrow">A Division of INKLUSO &nbsp;·&nbsp; HKP v1.0</p>
-    <h1>The human calibration standard for <em>AI-generated intelligence.</em></h1>
-    <p class="hero-sub">HumanKlu™ certifies AI-assisted content against a structured evidence and reasoning framework — scored by credentialed analysts, recorded in a public ledger, and displayed as a verifiable badge.</p>
-    <div class="cta-row">
-      <a href="#creator" class="btn-primary">Submit an Article</a>
-      <a href="#analyst" class="btn-ghost">Become an Analyst</a>
-    </div>
-    <div class="stat-bar">
-      <div class="stat">
-        <span class="stat-num">—</span>
-        <span class="stat-label">Articles Certified</span>
+<!-- ── COVER SPREAD ────────────────────────────────────────────────────────── -->
+<div class="page">
+  <div class="cover-spread">
+
+    <!-- MAIN FEATURE -->
+    <div class="cover-main">
+      <div class="cover-eyebrow">Feature &nbsp;·&nbsp; Issue 001 &nbsp;·&nbsp; March 2026</div>
+      <h1 class="cover-headline">
+        Fluency is not accuracy.<br>
+        Confidence is not <em>evidence.</em>
+      </h1>
+      <p class="cover-deck">
+        As AI authorship reaches scale, intelligence-grade content is growing faster than the institutions built to evaluate it. HumanKlu™ is the calibration layer the industry does not yet know it needs — but is already asking for.
+      </p>
+      <div class="cover-body">
+        <p>Every week, thousands of market analyses, policy briefs, research summaries, and editorial intelligence pieces are produced with the assistance of large language models. They are fluent. They are confident. They are, on occasion, wrong — and the seams rarely show.</p>
+        <p>Readers, downstream decision-makers, editors, and institutions have no shared standard by which to assess whether a piece of AI-assisted intelligence is structurally sound. There is no auditable trail. There is no score. There is no human signature. There is, in most cases, only a byline — and a hope that it holds.</p>
+        <p>HumanKlu™ was built to close that gap. Not by replacing human judgment, but by making human judgment legible, repeatable, and publicly verifiable.</p>
       </div>
-      <div class="stat">
-        <span class="stat-num">—</span>
-        <span class="stat-label">Analysts Credentialed</span>
-      </div>
-      <div class="stat">
-        <span class="stat-num">v1.0</span>
-        <span class="stat-label">Protocol Version</span>
-      </div>
-      <div class="stat">
-        <span class="stat-num">Feb 2026</span>
-        <span class="stat-label">Public Launch</span>
+      <div class="cover-cta">
+        <a href="#creator" class="btn-primary">Submit an Article</a>
+        <a href="#analyst" class="btn-outline">Become an Analyst</a>
       </div>
     </div>
-  </div>
-</header>
 
-<!-- ── WHAT WE DO ────────────────────────────────────────────────────────── -->
-<section class="bg-white" id="about">
-  <div class="container">
-    <div class="divider-gold"></div>
-    <div class="section-label">What We Do</div>
-    <h2>Intelligence without a calibration layer<br>is structurally unverifiable.</h2>
+    <!-- SIDEBAR -->
+    <div class="cover-sidebar">
 
-    <div class="grid-2" style="margin-top: 2.5rem;">
-      <div>
-        <div class="problem-block">
-          <div class="block-label">The Problem</div>
-          <p style="color: var(--slate); line-height: 1.75; font-size: .95rem;">As AI authorship scales, the volume of intelligence-grade content — market analysis, policy briefs, research summaries — is growing faster than the institutions designed to evaluate it. AI systems produce fluent, confident prose. Fluency is not accuracy. Confidence is not evidence.</p>
-          <p style="color: var(--slate); line-height: 1.75; font-size: .95rem; margin-top: 1rem;">Readers, editors, and downstream decision-makers have no standard by which to assess whether a piece of AI-generated intelligence is structurally sound.</p>
+      <!-- CONTENTS BOX -->
+      <div class="sidebar-box">
+        <div class="sidebar-box-title">In This Report</div>
+        <div class="sidebar-index-item">
+          <span class="section-name">The Problem</span>
+          <span class="page-num">What We Do</span>
+        </div>
+        <div class="sidebar-index-item">
+          <span class="section-name">The Protocol</span>
+          <span class="page-num">Methodology</span>
+        </div>
+        <div class="sidebar-index-item">
+          <span class="section-name">The Formula</span>
+          <span class="page-num">HCI Index</span>
+        </div>
+        <div class="sidebar-index-item">
+          <span class="section-name">Four Tiers</span>
+          <span class="page-num">Certification</span>
+        </div>
+        <div class="sidebar-index-item">
+          <span class="section-name">The Badge</span>
+          <span class="page-num">In The Wild</span>
+        </div>
+        <div class="sidebar-index-item">
+          <span class="section-name">Get Certified</span>
+          <span class="page-num">Pathways</span>
+        </div>
+        <div class="sidebar-index-item">
+          <span class="section-name">Pricing</span>
+          <span class="page-num">Open → Institutional</span>
+        </div>
+        <div class="sidebar-index-item">
+          <span class="section-name">Governance</span>
+          <span class="page-num">Standards Board</span>
         </div>
       </div>
+
+      <!-- STAMP VISUAL -->
+      <div class="sidebar-box" style="text-align:center;">
+        <div class="sidebar-box-title">Live Badge Example</div>
+        <svg class="stamp-svg" viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="70,8 84,28 108,22 106,48 128,58 114,78 128,98 106,102 108,128 84,116 70,132 56,116 32,128 34,102 12,98 26,78 12,58 34,48 32,22 56,28" fill="#0B1F3A"/>
+          <polygon points="70,18 82,35 103,30 101,52 120,61 108,78 120,95 101,99 103,121 82,112 70,122 58,112 37,121 39,99 20,95 32,78 20,61 39,52 37,30 58,35" fill="none" stroke="#B8960C" stroke-width="1.5"/>
+          <text x="70" y="62" text-anchor="middle" font-family="Georgia,serif" font-weight="900" font-size="13" fill="#B8960C">HK-VERIFIED</text>
+          <text x="70" y="80" text-anchor="middle" font-family="Courier New,monospace" font-weight="700" font-size="18" fill="white">7.4</text>
+          <text x="70" y="95" text-anchor="middle" font-family="Courier New,monospace" font-size="9" fill="rgba(255,255,255,.55)">/10 · HCI</text>
+          <text x="70" y="110" text-anchor="middle" font-family="Arial,sans-serif" font-size="7.5" fill="rgba(255,255,255,.4)" letter-spacing="1">HUMANKLU™</text>
+        </svg>
+        <div style="font-family:'Inter',sans-serif; font-size:.72rem; color:var(--slate); margin-top:.5rem;">Embed code included with every certification.</div>
+      </div>
+
+      <!-- STATS -->
+      <div class="sidebar-box">
+        <div class="sidebar-box-title">Protocol at a Glance</div>
+        <div class="sidebar-stat">
+          <span class="sidebar-stat-num">5</span>
+          <span class="sidebar-stat-label">Calibration Dimensions</span>
+        </div>
+        <div class="sidebar-divider"></div>
+        <div class="sidebar-stat">
+          <span class="sidebar-stat-num">4</span>
+          <span class="sidebar-stat-label">Certification Tiers</span>
+        </div>
+        <div class="sidebar-divider"></div>
+        <div class="sidebar-stat">
+          <span class="sidebar-stat-num">100%</span>
+          <span class="sidebar-stat-label">Human-Applied Scoring</span>
+        </div>
+      </div>
+
+    </div>
+  </div><!-- /cover-spread -->
+</div><!-- /page -->
+
+<!-- ── WHAT WE DO ──────────────────────────────────────────────────────────── -->
+<div class="section-paper" id="about">
+  <div class="page">
+    <div class="section-header">
+      <span class="section-number">01</span>
       <div>
-        <div class="solution-block">
-          <div class="block-label">The HumanKlu Response</div>
-          <p style="color: var(--slate); line-height: 1.75; font-size: .95rem;">HumanKlu™ provides a consistent, human-applied scoring framework — the HumanKlu Calibration Protocol — that evaluates AI-generated content across five structural dimensions: evidence integrity, mechanism clarity, incentive transparency, risk realism, and specificity.</p>
-          <p style="color: var(--slate); line-height: 1.75; font-size: .95rem; margin-top: 1rem;">Every certified article carries a public evidence log, a structured score, and a verifiable badge — so readers know exactly what has been assessed and to what standard.</p>
+        <div class="section-title">The Problem · Our Response</div>
+      </div>
+      <span class="section-subtitle">Why calibration exists</span>
+    </div>
+
+    <div class="col-2-body">
+      <p class="drop-cap">The volume of AI-assisted intelligence output has grown faster than any institutional capacity to evaluate it. Market analyses, policy briefs, research summaries, and editorial intelligence pieces — all are now routinely produced with large language model assistance. The prose is polished. The confidence is absolute. The evidence trail, in most cases, is invisible.</p>
+
+      <p>This is not a technology failure. It is a structural gap. Publishing pipelines were not designed for content that can simultaneously be fluent and fabricated. Editors working under time pressure do not have systematic tools to separate well-sourced claims from confident hallucination. Readers have no signal at all.</p>
+
+      <p>The result is an epistemological infrastructure problem. The volume of produced intelligence is growing. The shared standards for evaluating that intelligence are not keeping pace. Without a calibration layer, readers, institutions, and downstream decision-makers are operating on a trust assumption that the pipeline no longer justifies.</p>
+
+      <p>HumanKlu™ is the calibration layer. It is not a fact-checking service. It does not replace editorial judgment. It provides a consistent, human-applied scoring framework — the HumanKlu Calibration Protocol (HKP) — that evaluates AI-generated and AI-assisted content across five structural dimensions: evidence integrity, mechanism clarity, incentive transparency, risk realism, and specificity.</p>
+
+      <p>Every certified article carries a public evidence log, a structured HCI score, and a verifiable badge. The record is permanent. The score is human-signed. The standard is public and versioned.</p>
+
+      <p>Confirmation is the moat. The organizations that build a public trail of verifiable intelligence will hold a structural advantage over those who scale without one. HumanKlu™ is how you build that trail.</p>
+    </div>
+
+    <div class="pull-quote">
+      <span class="pull-quote-mark">&ldquo;</span>
+      <p class="pull-quote-text">Fluency is not accuracy. Confidence is not evidence. The gap between the two is exactly where HumanKlu™ operates.</p>
+      <div class="pull-quote-attr">HumanKlu™ Editorial Statement · HKP v1.0</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── METHODOLOGY ──────────────────────────────────────────────────────────── -->
+<div class="section-cream" id="methodology">
+  <div class="page">
+    <div class="section-header">
+      <span class="section-number">02</span>
+      <div>
+        <div class="section-title">The Standard</div>
+      </div>
+      <span class="section-subtitle">HumanKlu Calibration Protocol</span>
+    </div>
+
+    <div style="display:grid; grid-template-columns: 2fr 1fr; gap: 3rem; align-items: start;">
+      <div>
+        <p class="lead">Five dimensions. One index. Every score applied by a credentialed human analyst — never automated.</p>
+
+        <table class="dim-table">
+          <thead>
+            <tr>
+              <th style="width:90px">Code</th>
+              <th>Dimension</th>
+              <th>What the Analyst Evaluates</th>
+              <th style="width:80px; text-align:center;">Score</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="dim-code">EVID</span></td>
+              <td><strong>Evidence Integrity</strong></td>
+              <td>Are claims backed by identifiable, verifiable sources cited with sufficient specificity to be checked independently?</td>
+              <td style="text-align:center;" class="dim-wt mono">0–10</td>
+            </tr>
+            <tr>
+              <td><span class="dim-code">MECH</span></td>
+              <td><strong>Mechanism Clarity</strong></td>
+              <td>Is the causal or logical pathway from evidence to conclusion explained? Are intermediate steps named, not implied?</td>
+              <td style="text-align:center;" class="mono">0–10</td>
+            </tr>
+            <tr>
+              <td><span class="dim-code">INC</span></td>
+              <td><strong>Incentive Decode</strong></td>
+              <td>Are the incentives of key actors identified and disclosed? Is the author's own position acknowledged where relevant?</td>
+              <td style="text-align:center;" class="mono">0–10</td>
+            </tr>
+            <tr>
+              <td><span class="dim-code">RISK</span></td>
+              <td><strong>Risk Realism</strong></td>
+              <td>Are contrary evidence and downside scenarios represented with appropriate weight? Is uncertainty acknowledged?</td>
+              <td style="text-align:center;" class="mono">0–10</td>
+            </tr>
+            <tr>
+              <td><span class="dim-code">SPEC</span></td>
+              <td><strong>Specificity</strong></td>
+              <td>Are claims sufficiently specific to be falsifiable? Are time horizons, magnitudes, and conditions named explicitly?</td>
+              <td style="text-align:center;" class="mono">0–10</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="formula-box">
+          HCI = ( <span class="var">EVID</span> + <span class="var">MECH</span> + <span class="var">INC</span> + <span class="var">RISK</span> + <span class="var">SPEC</span> ) ÷ 5
+        </div>
+      </div>
+
+      <!-- SIDEBAR CALLOUT -->
+      <div>
+        <div class="callout">
+          <div class="callout-head">Why These Five?</div>
+          <p>Each dimension addresses a specific failure mode in AI-assisted writing. EVID targets hallucinated citations. MECH catches plausible-sounding but unverified causal logic. INC exposes undisclosed conflicts. RISK catches omission bias. SPEC targets unfalsifiable vagueness — the hallmark of content that sounds precise but commits to nothing.</p>
+        </div>
+
+        <div class="callout" style="margin-top: 1.5rem;">
+          <div class="callout-head">The Hard Rule</div>
+          <p>An article scoring EVID &lt; 6 or where active hallucination is detected receives a <strong style="color:var(--red)">REJECTED</strong> designation regardless of other scores. No badge is issued. The record is permanently logged in the public ledger.</p>
+        </div>
+
+        <div class="callout" style="margin-top: 1.5rem;">
+          <div class="callout-head">Fully Human</div>
+          <p>The HCI score is never calculated from AI output. Every dimension is applied by a credentialed HumanKlu analyst who has passed the HKP Certification Exam and submitted a calibration portfolio. Automation is not permitted in the scoring loop.</p>
         </div>
       </div>
     </div>
   </div>
-</section>
+</div>
 
-<!-- ── METHODOLOGY ───────────────────────────────────────────────────────── -->
-<section id="methodology">
-  <div class="container">
-    <div class="section-label">The Standard</div>
-    <h2>The HumanKlu Calibration Protocol</h2>
-    <p class="lead">Five dimensions. One index. Every score applied by a credentialed human analyst — never automated.</p>
-
-    <div style="margin-top: 2.5rem; overflow-x: auto;">
-      <table class="dim-table">
-        <thead>
-          <tr>
-            <th style="width:80px">Code</th>
-            <th>Dimension</th>
-            <th>What the Analyst Evaluates</th>
-            <th style="width:120px; text-align:center;">Score</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><span class="dim-code">EVID</span></td>
-            <td><strong>Evidence Integrity</strong></td>
-            <td>Are claims backed by identifiable, verifiable sources cited with sufficient specificity to be checked independently?</td>
-            <td style="text-align:center; color: var(--slate-lt); font-family:'Courier New',monospace;">0 – 10</td>
-          </tr>
-          <tr>
-            <td><span class="dim-code">MECH</span></td>
-            <td><strong>Mechanism Clarity</strong></td>
-            <td>Is the causal or logical pathway from evidence to conclusion explained? Are intermediate steps named, not implied?</td>
-            <td style="text-align:center; color: var(--slate-lt); font-family:'Courier New',monospace;">0 – 10</td>
-          </tr>
-          <tr>
-            <td><span class="dim-code">INC</span></td>
-            <td><strong>Incentive Decode</strong></td>
-            <td>Are the incentives of key actors identified and disclosed? Is the author's own position acknowledged where relevant?</td>
-            <td style="text-align:center; color: var(--slate-lt); font-family:'Courier New',monospace;">0 – 10</td>
-          </tr>
-          <tr>
-            <td><span class="dim-code">RISK</span></td>
-            <td><strong>Risk Realism</strong></td>
-            <td>Are contrary evidence and downside scenarios represented with appropriate weight? Is uncertainty acknowledged?</td>
-            <td style="text-align:center; color: var(--slate-lt); font-family:'Courier New',monospace;">0 – 10</td>
-          </tr>
-          <tr>
-            <td><span class="dim-code">SPEC</span></td>
-            <td><strong>Specificity</strong></td>
-            <td>Are claims sufficiently specific to be falsifiable? Are time horizons, magnitudes, and conditions named explicitly?</td>
-            <td style="text-align:center; color: var(--slate-lt); font-family:'Courier New',monospace;">0 – 10</td>
-          </tr>
-        </tbody>
-      </table>
+<!-- ── CERT LEVELS ──────────────────────────────────────────────────────────── -->
+<div class="section-paper" id="levels">
+  <div class="page">
+    <div class="section-header">
+      <span class="section-number">03</span>
+      <div>
+        <div class="section-title">Certification Levels</div>
+      </div>
+      <span class="section-subtitle">Four tiers. One standard.</span>
     </div>
 
-    <div class="formula-block">
-      HCI = ( <span>EVID</span> + <span>MECH</span> + <span>INC</span> + <span>RISK</span> + <span>SPEC</span> ) ÷ 5
-    </div>
+    <p class="lead">Certification is assigned per article — not per publisher or platform. Each tier carries a defined HCI threshold, an analyst credential requirement, and a renewal cadence.</p>
 
-    <p style="margin-top: 1.25rem; font-family:'Arial',sans-serif; font-size:.85rem; color: var(--slate-lt);">
-      Full methodology: <a href="https://docs.inkluso.com/humanklu/hkp-v1">docs.inkluso.com/humanklu/hkp-v1</a>
-    </p>
+    <div class="cert-strip">
+      <div class="cert-col">
+        <div class="cert-level-bar" style="background:var(--amber);"></div>
+        <div class="cert-badge-name" style="color:var(--amber);">HK-REVIEWED</div>
+        <div class="cert-threshold">HCI 5.5 – 6.9</div>
+        <div class="cert-desc">Standard review. Content has been assessed against all five HKP dimensions by a registered analyst. Structural gaps may be formally noted in the audit record.</div>
+        <div class="cert-renewal">Renewal · Annual</div>
+      </div>
+      <div class="cert-col">
+        <div class="cert-level-bar" style="background:var(--green);"></div>
+        <div class="cert-badge-name" style="color:var(--green);">HK-VERIFIED</div>
+        <div class="cert-threshold">HCI ≥ 7.0 · EVID ≥ 7</div>
+        <div class="cert-desc">The standard trust mark. Evidence is predominantly sourced, mechanisms are explained, and the article is suitable for editorial and policy use without further qualification.</div>
+        <div class="cert-renewal">Renewal · Annual</div>
+      </div>
+      <div class="cert-col">
+        <div class="cert-level-bar" style="background:var(--navy);"></div>
+        <div class="cert-badge-name" style="color:var(--navy);">HK-PRO</div>
+        <div class="cert-threshold">HCI ≥ 8.0</div>
+        <div class="cert-desc">Professional-grade certification. Scored by an HK-PRO-credentialed analyst. Required for institutional reports, advisory products, and professional intelligence briefings.</div>
+        <div class="cert-renewal">Renewal · 6 Months</div>
+      </div>
+      <div class="cert-col">
+        <div class="cert-level-bar" style="background:var(--violet);"></div>
+        <div class="cert-badge-name" style="color:var(--violet);">HK-INSTITUTIONAL</div>
+        <div class="cert-threshold">HCI ≥ 8.5 · Board Audit</div>
+        <div class="cert-desc">Highest tier. Full audit trail. Lead Analyst and Governance Board sign-off required. Reserved for regulated distributions and institutional publishing programs.</div>
+        <div class="cert-renewal">Renewal · Quarterly</div>
+      </div>
+    </div>
   </div>
-</section>
+</div>
 
-<!-- ── CERT LEVELS ───────────────────────────────────────────────────────── -->
-<section class="bg-white" id="levels">
-  <div class="container">
-    <div class="section-label">Certification Levels</div>
-    <h2>Four tiers. One standard.</h2>
-    <p class="lead">Certification level is assigned per article, not per publisher. Each level has a defined HCI threshold, analyst requirement, and renewal cadence.</p>
-
-    <div class="grid-4" style="margin-top: 2.5rem;">
-      <div class="cert-card" style="border-top-color: var(--amber);">
-        <span class="cert-badge" style="background: var(--amber);">HK-REVIEWED</span>
-        <div class="hci-req">HCI 5.5 – 6.9</div>
-        <p>Standard review. Content has been assessed against HKP criteria by a registered analyst. Structural gaps may be noted.</p>
-        <p style="margin-top:.75rem; font-family:'Arial',sans-serif; font-size:.8rem; color:var(--slate-lt);">Renewal: Annual</p>
+<!-- ── BADGE GALLERY ────────────────────────────────────────────────────────── -->
+<div class="section-cream" id="gallery">
+  <div class="page">
+    <div class="section-header">
+      <span class="section-number">04</span>
+      <div>
+        <div class="section-title">Certified Content</div>
       </div>
-      <div class="cert-card" style="border-top-color: var(--green);">
-        <span class="cert-badge" style="background: var(--green);">HK-VERIFIED</span>
-        <div class="hci-req">HCI ≥ 7.0  ·  EVID ≥ 7</div>
-        <p>The standard trust mark. Evidence is predominantly sourced and mechanisms are explained. Suitable for editorial and policy use.</p>
-        <p style="margin-top:.75rem; font-family:'Arial',sans-serif; font-size:.8rem; color:var(--slate-lt);">Renewal: Annual</p>
-      </div>
-      <div class="cert-card" style="border-top-color: var(--navy);">
-        <span class="cert-badge" style="background: var(--navy);">HK-PRO</span>
-        <div class="hci-req">HCI ≥ 8.0</div>
-        <p>Professional-grade. Scored by a certified HK-PRO analyst. For institutional reports and professional intelligence products.</p>
-        <p style="margin-top:.75rem; font-family:'Arial',sans-serif; font-size:.8rem; color:var(--slate-lt);">Renewal: 6 months</p>
-      </div>
-      <div class="cert-card" style="border-top-color: var(--violet);">
-        <span class="cert-badge" style="background: var(--violet);">HK-INSTITUTIONAL</span>
-        <div class="hci-req">HCI ≥ 8.5  ·  Board Audit</div>
-        <p>Highest tier. Full audit trail. Lead Analyst and Governance Board sign-off. For regulated or institutional distributions.</p>
-        <p style="margin-top:.75rem; font-family:'Arial',sans-serif; font-size:.8rem; color:var(--slate-lt);">Renewal: Quarterly</p>
-      </div>
+      <span class="section-subtitle">The badge in the wild</span>
     </div>
 
-    <p style="margin-top: 1.5rem; font-family:'Arial',sans-serif; font-size:.85rem; color: var(--slate-lt);">
-      Articles scoring EVID &lt; 6 or where hallucination is detected receive a <strong style="color:var(--red)">REJECTED</strong> designation. No badge is issued. Record is logged publicly.
-    </p>
-  </div>
-</section>
+    <p class="lead">Each certified article carries a live badge linking to its public audit record. Scores, analyst IDs, and evidence logs are permanently accessible.</p>
 
-<!-- ── BADGE GALLERY ──────────────────────────────────────────────────────── -->
-<section id="gallery">
-  <div class="container">
-    <div class="section-label">Badge Gallery</div>
-    <h2>Certified content in the wild.</h2>
-    <p class="lead">Each certified article carries a live badge linking to its public audit record.</p>
-
-    <div class="grid-3" style="margin-top: 2.5rem;">
-      <div class="gallery-item">
+    <div class="badge-grid">
+      <div class="badge-card">
         <div class="article-title">AI Inference Cost Trajectories Q1 2026</div>
-        <div class="publisher">Fictive Intelligence Review &nbsp;·&nbsp; Sample</div>
-        <span class="live-badge" style="background: var(--green);">✓ HK-VERIFIED &nbsp;|&nbsp; HCI 7.0/10</span>
+        <div class="publisher">Fictive Intelligence Review · Sample</div>
+        <span class="live-badge" style="background:var(--green);">✓ HK-VERIFIED · HCI 7.4/10</span>
         <br>
-        <a href="#" class="audit-link">View audit record →</a>
+        <a href="#" class="badge-audit">View audit record →</a>
       </div>
-      <div class="gallery-item">
+      <div class="badge-card">
         <div class="article-title">Central Bank Digital Currency Risk Brief</div>
-        <div class="publisher">Meridian Policy Group &nbsp;·&nbsp; Sample</div>
-        <span class="live-badge" style="background: var(--navy);">✓ HK-PRO &nbsp;|&nbsp; HCI 8.2/10</span>
+        <div class="publisher">Meridian Policy Group · Sample</div>
+        <span class="live-badge" style="background:var(--navy);">✓ HK-PRO · HCI 8.2/10</span>
         <br>
-        <a href="#" class="audit-link">View audit record →</a>
+        <a href="#" class="badge-audit">View audit record →</a>
       </div>
-      <div class="gallery-item">
+      <div class="badge-card">
         <div class="article-title">Supply Chain Fragility: 2026 Outlook</div>
-        <div class="publisher">Archway Research &nbsp;·&nbsp; Sample</div>
-        <span class="live-badge" style="background: var(--amber);">◐ HK-REVIEWED &nbsp;|&nbsp; HCI 6.1/10</span>
+        <div class="publisher">Archway Research · Sample</div>
+        <span class="live-badge" style="background:var(--amber);">◐ HK-REVIEWED · HCI 6.1/10</span>
         <br>
-        <a href="#" class="audit-link">View audit record →</a>
+        <a href="#" class="badge-audit">View audit record →</a>
       </div>
     </div>
   </div>
-</section>
+</div>
 
-<!-- ── PATHWAYS ───────────────────────────────────────────────────────────── -->
-<section class="bg-navy" id="creator" style="padding: 5rem 0;">
-  <div class="container">
-    <div class="section-label">Pathways</div>
-    <h2 style="margin-bottom: 3rem;">For creators and analysts.</h2>
-    <div class="grid-2">
-      <div class="pathway-col">
-        <div class="col-head">Creator Pathway — Get Certified</div>
+<!-- ── PATHWAYS ─────────────────────────────────────────────────────────────── -->
+<div class="section-navy" id="creator">
+  <div class="page">
+    <div class="section-header" style="border-color: rgba(255,255,255,.15); margin-bottom:2rem;">
+      <span class="section-number" style="color:rgba(255,255,255,.15);">05</span>
+      <div>
+        <div class="section-title" style="color:var(--gold);">Pathways</div>
+      </div>
+      <span class="section-subtitle" style="color:rgba(255,255,255,.45);">For creators and analysts</span>
+    </div>
+
+    <div class="pathway-grid">
+      <div>
+        <div class="pathway-col-head">Creator Pathway — Get Certified</div>
         <div class="step">
           <div class="step-num">1</div>
           <div class="step-body">
             <h4>Submit</h4>
-            <p>Upload your article and a preliminary claims list — each claim, its source, and a proposed evidence status.</p>
+            <p>Upload your article and a preliminary claims list — each claim, its proposed source, and an evidence status.</p>
           </div>
         </div>
         <div class="step">
           <div class="step-num">2</div>
           <div class="step-body">
             <h4>Review</h4>
-            <p>A credentialed HumanKlu analyst scores your submission across five HKP dimensions within the agreed SLA.</p>
+            <p>A credentialed HumanKlu analyst scores your submission across all five HKP dimensions within the agreed SLA.</p>
           </div>
         </div>
         <div class="step">
           <div class="step-num">3</div>
           <div class="step-body">
             <h4>Certify</h4>
-            <p>Receive your badge embed code, sci_score.json, and evidence log. Record published to the public ledger.</p>
+            <p>Receive your badge embed code, <span class="mono" style="font-size:.8rem;">sci_score.json</span>, and evidence log. Record published to the public ledger permanently.</p>
           </div>
         </div>
-        <div class="pathway-cta">
-          <a href="#" class="btn-gold-ghost">Submit an Article →</a>
-        </div>
+        <a href="#" class="btn-gold">Submit an Article →</a>
       </div>
 
-      <div class="pathway-col" id="analyst">
-        <div class="col-head">Analyst Pathway — Get Credentialed</div>
+      <div id="analyst">
+        <div class="pathway-col-head">Analyst Pathway — Get Credentialed</div>
         <div class="step">
           <div class="step-num">1</div>
           <div class="step-body">
@@ -639,25 +1152,29 @@
           <div class="step-num">3</div>
           <div class="step-body">
             <h4>Score</h4>
-            <p>Receive your analyst credential, directory listing, and access to the scoring platform. Renew annually.</p>
+            <p>Receive your analyst credential, public directory listing, and access to the scoring platform. Renew annually.</p>
           </div>
         </div>
-        <div class="pathway-cta">
-          <a href="#" class="btn-gold-ghost">Apply as an Analyst →</a>
-        </div>
+        <a href="#" class="btn-gold-outline">Apply as an Analyst →</a>
       </div>
     </div>
   </div>
-</section>
+</div>
 
-<!-- ── PRICING ────────────────────────────────────────────────────────────── -->
-<section class="bg-white" id="pricing">
-  <div class="container">
-    <div class="section-label">Pricing</div>
-    <h2>Transparent, per-article pricing.</h2>
-    <p class="lead">No subscription required for creators. Pay per certification. Institutional tier by annual contract only.</p>
+<!-- ── PRICING ──────────────────────────────────────────────────────────────── -->
+<div class="section-paper" id="pricing">
+  <div class="page">
+    <div class="section-header">
+      <span class="section-number">06</span>
+      <div>
+        <div class="section-title">Pricing</div>
+      </div>
+      <span class="section-subtitle">Transparent, per-article</span>
+    </div>
 
-    <div style="margin-top: 2.5rem; overflow-x: auto;">
+    <p class="lead">No subscription required for creators. Pay per certification. Institutional tier by annual contract only. No pricing on priority tiers — contact us.</p>
+
+    <div style="overflow-x:auto;">
       <table class="pricing-table">
         <thead>
           <tr>
@@ -670,114 +1187,131 @@
         </thead>
         <tbody>
           <tr>
-            <td><span class="tier-name">Open Review</span></td>
+            <td><span class="tier">Open Review</span></td>
             <td><span class="price">Free</span></td>
-            <td><span class="cert-badge" style="background:var(--amber);font-size:.7rem;padding:.2rem .5rem">HK-REVIEWED</span></td>
+            <td><span style="background:var(--amber); color:white; font-family:'Inter',sans-serif; font-size:.68rem; font-weight:700; padding:.2rem .5rem; display:inline-block;">HK-REVIEWED</span></td>
             <td class="incl">Public badge, evidence log, 12-month validity. Limit 3/quarter per publisher.</td>
             <td class="incl">10 business days</td>
           </tr>
           <tr>
-            <td><span class="tier-name">Verified</span></td>
+            <td><span class="tier">Verified</span></td>
             <td><span class="price">$149 / article</span></td>
-            <td><span class="cert-badge" style="background:var(--green);font-size:.7rem;padding:.2rem .5rem">HK-VERIFIED</span></td>
-            <td class="incl">Verified badge + SCI report + embed code + audit PDF</td>
+            <td><span style="background:var(--green); color:white; font-family:'Inter',sans-serif; font-size:.68rem; font-weight:700; padding:.2rem .5rem; display:inline-block;">HK-VERIFIED</span></td>
+            <td class="incl">Verified badge + HCI report + embed code + audit PDF</td>
             <td class="incl">5 business days</td>
           </tr>
           <tr>
-            <td><span class="tier-name">Pro</span></td>
+            <td><span class="tier">Pro</span></td>
             <td><span class="price">$490 / article</span></td>
-            <td><span class="cert-badge" style="background:var(--navy);font-size:.7rem;padding:.2rem .5rem">HK-PRO</span></td>
+            <td><span style="background:var(--navy); color:white; font-family:'Inter',sans-serif; font-size:.68rem; font-weight:700; padding:.2rem .5rem; display:inline-block;">HK-PRO</span></td>
             <td class="incl">Pro badge + full audit PDF + API access + 6-month renewal cycle</td>
             <td class="incl">48 hours</td>
           </tr>
           <tr>
-            <td><span class="tier-name">Institutional</span></td>
+            <td><span class="tier">Institutional</span></td>
             <td><span class="price">Custom / Annual</span></td>
-            <td><span class="cert-badge" style="background:var(--violet);font-size:.7rem;padding:.2rem .5rem">HK-INST</span></td>
+            <td><span style="background:var(--violet); color:white; font-family:'Inter',sans-serif; font-size:.68rem; font-weight:700; padding:.2rem .5rem; display:inline-block;">HK-INST</span></td>
             <td class="incl">Full audit pipeline, quarterly review, board sign-off, API SLA, account management</td>
             <td class="incl">Negotiated</td>
           </tr>
           <tr>
-            <td><span class="tier-name">Analyst Credential</span></td>
+            <td><span class="tier">Analyst Credential</span></td>
             <td><span class="price">$299 / year</span></td>
             <td>—</td>
             <td class="incl">Certified analyst status, public directory listing, scoring platform access</td>
-            <td class="incl">Annual</td>
+            <td class="incl">Annual renewal</td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
-</section>
+</div>
 
-<!-- ── TRUST ──────────────────────────────────────────────────────────────── -->
-<section id="trust">
-  <div class="container">
-    <div class="grid-2">
+<!-- ── GOVERNANCE ──────────────────────────────────────────────────────────── -->
+<div class="section-cream" id="trust">
+  <div class="page">
+    <div class="section-header">
+      <span class="section-number">07</span>
       <div>
-        <div class="section-label">Governance</div>
-        <h2>Built to be auditable.</h2>
-        <p class="lead">HumanKlu™ is governed by the HumanKlu Standards Board — an independent committee that ratifies Institutional certifications, adjudicates revocations, and approves protocol updates.</p>
-        <p style="margin-top:1rem; font-family:'Arial',sans-serif; font-size:.85rem; color:var(--slate-lt);">Board decisions are published in the public governance log. Analyst conflicts of interest are disclosed prior to review.</p>
-        <a href="https://inkluso.com/humanklu/governance" style="font-family:'Arial',sans-serif; font-size:.85rem; color:var(--gold); display:inline-block; margin-top:1rem;">View Governance Charter →</a>
+        <div class="section-title">Governance</div>
       </div>
-      <div>
-        <div class="trust-item">
-          <div class="trust-icon">◻</div>
-          <div>
-            <h4>Public Ledger</h4>
-            <p>Every certification, revocation, and expiry is recorded in an append-only public ledger with hash-chained integrity.</p>
-          </div>
-        </div>
-        <div class="trust-item">
-          <div class="trust-icon">◻</div>
-          <div>
-            <h4>Open Protocol</h4>
-            <p>The HKP scoring methodology is publicly documented and versioned. Methodology changes require a 6-month transition period.</p>
-          </div>
-        </div>
-        <div class="trust-item">
-          <div class="trust-icon">◻</div>
-          <div>
-            <h4>Revocation Policy</h4>
-            <p>Certifications can be revoked for material alterations, misrepresentation, or hallucination findings. Revocations are public and permanent unless overturned on appeal.</p>
-          </div>
-        </div>
-        <div class="trust-item">
-          <div class="trust-icon">◻</div>
-          <div>
-            <h4>Analyst Independence</h4>
-            <p>Analysts score independently. Payment from creators for score outcomes is a permanent ban offense under the Analyst Code of Conduct.</p>
-          </div>
-        </div>
+      <span class="section-subtitle">Built to be auditable</span>
+    </div>
+
+    <p class="lead">HumanKlu™ is governed by the HumanKlu Standards Board — an independent committee that ratifies Institutional certifications, adjudicates revocations, and approves protocol updates.</p>
+
+    <div class="trust-grid">
+      <div class="trust-item">
+        <h4>Public Ledger</h4>
+        <p>Every certification, revocation, and expiry is recorded in an append-only public ledger with hash-chained integrity. Nothing disappears. Everything is timestamped.</p>
+      </div>
+      <div class="trust-item">
+        <h4>Open Protocol</h4>
+        <p>The HKP scoring methodology is publicly documented and versioned at <span class="mono" style="font-size:.8rem;">hkp-v1</span>. Methodology changes require a 6-month transition period before taking effect.</p>
+      </div>
+      <div class="trust-item">
+        <h4>Revocation Policy</h4>
+        <p>Certifications can be revoked for material alterations, misrepresentation, or hallucination findings post-publication. Revocations are public, permanent, and listed in the ledger unless formally overturned on appeal.</p>
+      </div>
+      <div class="trust-item">
+        <h4>Analyst Independence</h4>
+        <p>Analysts score independently. Payment from creators contingent on score outcome is a permanent ban offense under the Analyst Code of Conduct, enforced by the Standards Board.</p>
       </div>
     </div>
 
-    <div style="margin-top: 3rem; padding: 1.5rem; background: var(--white); border: 1px solid var(--border); border-radius: 6px; font-family:'Arial',sans-serif; font-size:.85rem; display:flex; gap:2rem; align-items:center; flex-wrap:wrap;">
-      <div><strong>Public Ledger:</strong> <a href="https://inkluso.com/humanklu/ledger" class="mono">inkluso.com/humanklu/ledger</a></div>
+    <div class="ornament">
+      <div class="ornament-line"></div>
+      <div class="ornament-glyph">✦</div>
+      <div class="ornament-line"></div>
+    </div>
+
+    <div style="background:var(--white); border: 1.5px solid var(--ink); padding: 1.5rem; display:flex; gap: 2.5rem; flex-wrap:wrap; font-family:'Inter',sans-serif; font-size:.82rem;">
+      <div><strong>Public Ledger:</strong> <a href="#" class="mono">inkluso.com/humanklu/ledger</a></div>
       <div><strong>Protocol Version:</strong> <span class="mono">HKP v1.0</span></div>
       <div><strong>Last Updated:</strong> February 2026</div>
-      <div><strong>Division of:</strong> INKLUSO</div>
+      <div><strong>A Division of:</strong> INKLUSO</div>
     </div>
   </div>
-</section>
+</div>
 
-<!-- ── FOOTER ─────────────────────────────────────────────────────────────── -->
+<!-- ── META ROW ────────────────────────────────────────────────────────────── -->
+<div class="meta-row">
+  <div class="meta-row-inner">
+    <span><strong>Protocol:</strong> HKP v1.0</span>
+    <span><strong>Scoring:</strong> Human-applied only</span>
+    <span><strong>Open Standard:</strong> Yes</span>
+    <span><strong>Governance:</strong> HumanKlu Standards Board</span>
+    <span><strong>Division of:</strong> INKLUSO Cultural Intelligence</span>
+  </div>
+</div>
+
+<!-- ── FOOTER ──────────────────────────────────────────────────────────────── -->
 <footer>
-  <div class="container">
-    <div class="footer-inner">
+  <div class="footer-inner">
+    <div class="footer-rule"></div>
+    <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:2rem;">
       <div>
-        <span class="brand">HumanKlu™</span> &nbsp;·&nbsp; A Division of <span class="brand">INKLUSO</span>
-        <br>
-        Human Calibration Standard for AI-Generated Intelligence &nbsp;·&nbsp; HKP v1.0
+        <span class="footer-logo">Human<span>Klu</span>™</span>
+        <div style="margin-top:.35rem; color:rgba(255,255,255,.35); font-size:.75rem;">Human Calibration Standard for AI-Generated Intelligence</div>
+        <div class="footer-links">
+          <a href="#methodology">Methodology</a>
+          <a href="#trust">Governance</a>
+          <a href="#gallery">Badge Gallery</a>
+          <a href="#pricing">Pricing</a>
+        </div>
       </div>
-      <div style="display:flex; gap:1.5rem;">
-        <a href="#">Methodology</a>
-        <a href="#">Governance</a>
-        <a href="#">Ledger</a>
-        <a href="#">Contact</a>
-        <a href="https://jjaecheverri.github.io/inkluso-magazine/">INKLUSO Magazine</a>
+      <div style="text-align:right;">
+        <div style="color:rgba(255,255,255,.35); font-size:.72rem; margin-bottom:.5rem; letter-spacing:.08em; text-transform:uppercase;">Part of the INKLUSO ecosystem</div>
+        <div class="footer-links" style="justify-content:flex-end;">
+          <a href="https://jjaecheverri.github.io/inkluso-magazine/">INKLUSO Magazine</a>
+          <a href="https://jjaecheverri.github.io/inkluso-magazine/kontrarian/">Kontrarian</a>
+          <a href="https://jjaecheverri.github.io/inkluso-tools/">Tools</a>
+        </div>
       </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 INKLUSO · HumanKlu™ is a Division of INKLUSO Cultural Intelligence</span>
+      <span class="mono" style="font-size:.68rem;">HKP v1.0 · Protocol Open Standard</span>
     </div>
   </div>
 </footer>
