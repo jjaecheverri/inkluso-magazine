@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRUMBS — Farmers Market Cluster · March 2026 — IN-KluSo</title>
+  <meta name="description" content="CRUMBS: Minimum publishable signal units from IN-KluSo's Farmers Market intelligence cluster. March 2026 data pack.">
+  <meta name="author" content="Juan Camilo Echeverri">
+  <link rel="canonical" href="https://jjaecheverri.github.io/inkluso-magazine/crumbs/farmers-market-march-2026/">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #FAF6EE;
+      --black: #111111;
+      --orange: #E05A1C;
+      --gray: #6B6B6B;
+      --light-gray: #E8E4DC;
+      --ground-color: #2D5016;
+      --ground-bg: #F0F4EB;
+    }
+
+    body {
+      background: var(--cream);
+      color: var(--black);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    /* NAV */
+    nav {
+      background: var(--black);
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      color: var(--cream);
+      font-size: 20px;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a {
+      color: #AAAAAA;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--cream); }
+
+    /* CRUMBS HEADER */
+    .crumbs-header {
+      text-align: center;
+      padding: 64px 32px 40px;
+      border-bottom: 2px solid var(--black);
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .crumbs-eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 12px;
+    }
+    .crumbs-header h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+    .crumbs-header .deck {
+      font-size: 15px;
+      color: var(--gray);
+      max-width: 560px;
+      margin: 0 auto 20px;
+      line-height: 1.5;
+    }
+    .crumbs-meta {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .crumbs-meta span {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 3px 12px;
+      border-radius: 2px;
+    }
+    .meta-cluster { background: var(--ground-bg); color: var(--ground-color); }
+    .meta-count { background: var(--black); color: var(--cream); }
+    .meta-date { background: var(--light-gray); color: var(--gray); }
+
+    /* CRUMBS GRID */
+    .crumbs-grid {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 32px 80px;
+    }
+
+    .crumb {
+      border-bottom: 1px solid var(--light-gray);
+      padding: 28px 0;
+    }
+    .crumb:first-child { padding-top: 0; }
+    .crumb-top {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+    .crumb-id {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      color: var(--gray);
+    }
+    .crumb-division {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 2px;
+      background: var(--ground-color);
+      color: white;
+    }
+    .crumb-city {
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 2px;
+      background: var(--light-gray);
+      color: var(--black);
+    }
+    .crumb-level {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 2px;
+    }
+    .level-high { background: #D4EDDA; color: #155724; }
+    .level-moderate { background: #FFF3CD; color: #856404; }
+    .level-low { background: #F8D7DA; color: #721C24; }
+
+    .crumb h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 22px;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+    .crumb h3 a {
+      color: var(--black);
+      text-decoration: none;
+    }
+    .crumb h3 a:hover {
+      color: var(--orange);
+    }
+
+    .crumb-interpretation {
+      font-size: 14px;
+      color: var(--gray);
+      line-height: 1.55;
+      margin-bottom: 10px;
+    }
+
+    .crumb-mechanism {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--ground-color);
+      letter-spacing: 0.04em;
+    }
+
+    .crumb-source {
+      font-size: 11px;
+      color: #999;
+      margin-top: 6px;
+    }
+    .crumb-source a {
+      color: #999;
+      text-decoration: underline;
+    }
+
+    /* SARCASTIC CRUMB */
+    .crumb-sarcastic .crumb-interpretation {
+      font-style: italic;
+      color: var(--black);
+    }
+
+    /* RELATED SIGNALS */
+    .related-signals {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 32px 60px;
+    }
+    .related-signals h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    .signal-links {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 16px;
+    }
+    .signal-link {
+      background: var(--black);
+      color: var(--cream);
+      padding: 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: transform 0.2s;
+    }
+    .signal-link:hover { transform: translateY(-2px); }
+    .signal-link-id {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      color: rgba(255,255,255,0.4);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .signal-link-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 18px;
+      line-height: 1.2;
+      margin-bottom: 6px;
+    }
+    .signal-link-desc {
+      font-size: 12px;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.4;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--black);
+      color: #AAAAAA;
+      padding: 40px 32px;
+      text-align: center;
+    }
+    footer a { color: #AAAAAA; text-decoration: none; }
+    footer a:hover { color: var(--cream); }
+    .footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 16px; font-size: 13px; flex-wrap: wrap; }
+    .footer-copy { font-size: 12px; }
+
+    @media (max-width: 600px) {
+      nav { padding: 0 16px; }
+      .nav-links { gap: 16px; }
+      .crumbs-header, .crumbs-grid, .related-signals { padding-left: 20px; padding-right: 20px; }
+      .signal-links { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="/inkluso-magazine/">IN-KluSo</a>
+  <ul class="nav-links">
+    <li><a href="/inkluso-magazine/#core">CORE</a></li>
+    <li><a href="/inkluso-magazine/#cities">CITIES</a></li>
+    <li><a href="/inkluso-magazine/kontrarian/">KONTRARIAN</a></li>
+    <li><a href="/inkluso-magazine/#about">ABOUT</a></li>
+    <li><a href="/inkluso-tools/">TOOLS</a></li>
+  </ul>
+</nav>
+
+<header class="crumbs-header">
+  <div class="crumbs-eyebrow">CRUMBS · Data Signals Division</div>
+  <h1>Farmers Market Cluster</h1>
+  <p class="deck">Minimum publishable signal units tracking structural movement in U.S. farmers market infrastructure, vendor economics, and governance. March 2026 data pack.</p>
+  <div class="crumbs-meta">
+    <span class="meta-cluster">GROUND · Farmers Market</span>
+    <span class="meta-count">12 Crumbs</span>
+    <span class="meta-date">March 3, 2026</span>
+  </div>
+</header>
+
+<main class="crumbs-grid">
+
+  <!-- CRUMB 1 -->
+  <div class="crumb">
+    <div class="crumb-top">
+      <span class="crumb-id">FM-C-001</span>
+      <span class="crumb-division">GROUND</span>
+      <span class="crumb-city">NWA</span>
+      <span class="crumb-level level-high">HIGH</span>
+    </div>
+    <h3><a href="/inkluso-magazine/cities/nwa/bentonville-wednesday-market/">Bentonville FM Adds Wednesday Market</a></h3>
+    <p class="crumb-interpretation">$3M+ in 2025 sales triggered temporal expansion. Downtown Bentonville Inc. launches weekday market May 6–Sept 30 on A Street Promenade. 25 vendors expressed interest before deadline. The Saturday-only model is no longer enough.</p>
+    <div class="crumb-mechanism">MECHANISM: revenue-threshold → infrastructure-expansion → temporal-diversification</div>
+    <div class="crumb-source">Source: NWA Democrat-Gazette, Feb 9, 2026 · <a href="https://www.nwaonline.com/news/2026/feb/09/bentonville-farmers-markets-new-wednesday-program/">Tier B</a></div>
+  </div>
+
+  <!-- CRUMB 2 -->
+  <div class="crumb">
+    <div class="crumb-top">
+      <span class="crumb-id">FM-C-002</span>
+      <span class="crumb-division">GROUND</span>
+      <span class="crumb-city">Rogers, AR</span>
+      <span class="crumb-level level-high">HIGH</span>
+    </div>
+    <h3><a href="/inkluso-magazine/cities/nwa/rogers-foragers-shelf/">Whole Foods Opens 2nd NWA Store</a></h3>
+    <p class="crumb-interpretation">39,500 sq ft in Rogers with 120+ local items. Dustin Kennedy — official title: "forager" — sources NWA producers for Amazon's shelf. Ozark Natural Breads, Onyx Coffee Lab now dual-channel. The supply chain just got a corporate landlord.</p>
+    <div class="crumb-mechanism">MECHANISM: corporate-entry → local-supply-absorption → dual-channel-pricing</div>
+    <div class="crumb-source">Source: Progressive Grocer, Feb 18, 2026 · <a href="https://progressivegrocer.com/whole-foods-market-debuts-2nd-northwest-arkansas-location">Tier B</a></div>
+  </div>
+
+  <!-- CRUMB 3 -->
+  <div class="crumb">
+    <div class="crumb-top">
+      <span class="crumb-id">FM-C-003</span>
+      <span class="crumb-division">GROUND</span>
+      <span class="crumb-city">Duluth, MN</span>
+      <span class="crumb-level level-high">HIGH</span>
+    </div>
+    <h3><a href="/inkluso-magazine/cities/duluth/vendors-became-the-market/">Duluth Vendors Self-Organize After Nonprofit Collapse</a></h3>
+    <p class="crumb-interpretation">Community Action Duluth canceled Lincoln Park market in Oct 2025. Vendors unpaid since June. State investigation ongoing. Vendors launched Twin Ports Roots Market bi-weekly in same food desert neighborhood. Governance failure became structural repair.</p>
+    <div class="crumb-mechanism">MECHANISM: governance-failure → vendor-displacement → self-organization → infrastructure-repair</div>
+    <div class="crumb-source">Source: Northern News Now, Feb 6, 2026 · <a href="https://www.northernnewsnow.com/2026/02/06/twin-ports-roots-market-launches-cad-investigation-continues/">Tier B</a></div>
+  </div>
+
+  <!-- CRUMB 4 -->
+  <div class="crumb">
+    <div class="crumb-top">
+      <span class="crumb-id">FM-C-004</span>
+      <span class="crumb-division">GROUND</span>
+      <span class="crumb-city">National</span>
+      <span class="crumb-level level-high">HIGH</span>
+    </div>
+    <h3>15,000 U.S. Farms Disappeared in 2025</h3>
+    <p class="crumb-interpretation">Total now 1.865 million — lowest in seven years. 8% decline since 2018. Texas saw the largest drop. Average farm size keeps climbing. The producers who supply farmers markets are disappearing faster than the markets are growing.</p>
+    <div class="crumb-mechanism">MECHANISM: consolidation-pressure → small-farm-exit → supply-chain-thinning</div>
+    <div class="crumb-source">Source: USDA, reported by Farmers' Advance, Feb 17, 2026 · Tier A</div>
+  </div>
+
+  <!-- CRUMB 5 -->
+  <div class="crumb">
+    <div class="crumb-top">
+      <span class="crumb-id">FM-C-005</span>
+      <span class="crumb-division">GROUND</span>
+      <span class="crumb-city">National</span>
+      <span class="crumb-level level-high">HIGH</span>
+    </div>
+    <h3>Farm Bankruptcies Surge 46% in 2025</h3>
+    <p class="crumb-interpretation">American Farm Bureau reports the sharpest annual increase in bankruptcies since the pandemic. Midwest filings up 70%. Net cash farm income revised down $27B below projections. The economic floor beneath small producers is cracking.</p>
+    <div class="crumb-mechanism">MECHANISM: income-decline → debt-compression → producer-exit</div>
+    <div class="crumb-source">Source: American Farm Bureau / DTN Progressive Farmer, Feb 18, 2026 · Tier B</div>
+  </div>
+
+  <!-- CRUMB 6 — SARCASTIC -->
+  <div class="crumb crumb-sarcastic">
+    <div class="crumb-top">
+      <span class="crumb-id">FM-C-006</span>
+      <span class="crumb-division">GROUND</span>
+      <span class="crumb-city">National</span>
+      <span class="crumb-level level-moderate">MODERATE</span>
+    </div>
+    <h3>Sprouts Plans 40+ Stores Using "Farmers Market" as Brand</h3>
+    <p class="crumb-interpretation">So Sprouts Farmers Market — which is a supermarket chain, not a farmers market — is opening 40+ new locations in 2026 after $8.8B in FY2025 revenue. The name says "farmers market." The logistics say Amazon's third cousin. Cool. Now explain who the farmer is.</p>
+    <div class="crumb-mechanism">MECHANISM: brand-appropriation → consumer-confusion → category-dilution</div>
+    <div class="crumb-source">Source: Seeking Alpha / Business Wire, Feb 2026 · Tier B</div>
+  </div>
+
+  <!-- CRUMB 7 -->
+  <div class="crumb">
+    <div class="crumb-top">
+      <span class="crumb-id">FM-C-007</span>
+      <span class="crumb-division">GROUND</span>
+      <span class="crumb-city">National</span>
+      <span class="crumb-level level-moderate">MODERATE</span>
+    </div>
+    <h3>SNAP Cuts Hit 2.4 Million Per Month</h3>
+    <p class="crumb-interpretation">CBO estimates SNAP participation drops by 2.4 million people per average month over 2025–2034. Many farmers markets accept EBT/SNAP — this is a direct demand signal. Fewer benefit dollars flowing through market terminals means less vendor revenue in food-access zones.</p>
+    <div class="crumb-mechanism">MECHANISM: policy-restriction → demand-contraction → vendor-revenue-loss</div>
+    <div class="crumb-source">Source: Congressional Budget Office / Civil Eats, Feb 2026 · Tier A/B</div>
+  </div>
+
+  <!-- CRUMB 8 -->
+  <div class="crumb">
+    <div class="crumb-top">
+      <span class="crumb-id">FM-C-008</span>
+      <span class="crumb-division">GROUND</span>
+      <span class="crumb-city">National</span>
+      <span class="crumb-level level-moderate">MODERATE</span>
+    </div>
+    <h3>USDA Cancels $1B+ Local Food Purchasing Program</h3>
+    <p class="crumb-interpretation">Secretary Rollins canceled LFPA and Local Food for Schools early — eliminating over $1 billion that farms expected. The Farm Bill draft proposes a $200M replacement with no mandatory funding. "An authorization of appropriations is essentially an empty promise." — NSAC</p>
+    <div class="crumb-mechanism">MECHANISM: federal-defunding → institutional-demand-collapse → small-farm-revenue-gap</div>
+    <div class="crumb-source">Source: Civil Eats, Feb 17, 2026 · <a href="https://civileats.com/2026/02/17/heres-whats-in-house-republicans-skinny-farm-bill/">Tier B</a></div>
+  </div>
+
+  <!-- CRUMB 9 -->
+  <div class="crumb">
+    <div class="crumb-top">
+      <span class="crumb-id">FM-C-009</span>
+      <span class="crumb-division">GROUND</span>
+      <span class="crumb-city">St. Johnsbury, VT</span>
+      <span class="crumb-level level-moderate">MODERATE</span>
+    </div>
+    <h3>Vermont Adds Wednesday Market Too</h3>
+    <p class="crumb-interpretation">Caledonia Farmers Market Association launches new Wednesday market in St. Johnsbury starting June 10, 2026 at Four Seasons Park. Same temporal expansion pattern as Bentonville. The Wednesday market isn't a local experiment — it's a structural trend.</p>
+    <div class="crumb-mechanism">MECHANISM: demand-saturation → temporal-expansion → weekday-infrastructure</div>
+    <div class="crumb-source">Source: North Star Monthly, 2026 · <a href="https://www.northstarmonthly.com/news/local/market-moves-cfma-brings-wednesday-market-to-st-johnsbury/article_6a8b08a0-ae04-4d96-af29-004a03f23f4c.html">Tier B</a></div>
+  </div>
+
+  <!-- CRUMB 10 -->
+  <div class="crumb">
+    <div class="crumb-top">
+      <span class="crumb-id">FM-C-010</span>
+      <span class="crumb-division">GROUND</span>
+      <span class="crumb-city">NWA</span>
+      <span class="crumb-level level-moderate">MODERATE</span>
+    </div>
+    <h3>NWA Retail Vacancy Hits 3%</h3>
+    <p class="crumb-interpretation">Northwest Arkansas retail vacancy at approximately 3% in early 2026 — virtually no available space. Whole Foods didn't find an opening, it created demand for one. When retail space is this tight, every new food store reshapes the local food economy.</p>
+    <div class="crumb-mechanism">MECHANISM: vacancy-compression → competitive-displacement → capital-reallocation</div>
+    <div class="crumb-source">Source: Arkansas Business, 2026 · Tier B</div>
+  </div>
+
+  <!-- CRUMB 11 -->
+  <div class="crumb">
+    <div class="crumb-top">
+      <span class="crumb-id">FM-C-011</span>
+      <span class="crumb-division">GROUND</span>
+      <span class="crumb-city">National</span>
+      <span class="crumb-level level-moderate">MODERATE</span>
+    </div>
+    <h3>Online SNAP Shopping Becomes Permanent</h3>
+    <p class="crumb-interpretation">Farm Bill draft mandates USDA make online SNAP shopping permanent — no longer a pilot. Plus chip-enabled EBT cards within 6 months to prevent skimming. Digital payment infrastructure at farmers markets just got a federal mandate.</p>
+    <div class="crumb-mechanism">MECHANISM: policy-mandate → digital-payment-infrastructure → market-access-expansion</div>
+    <div class="crumb-source">Source: Civil Eats / Farm Bill draft, Feb 17, 2026 · Tier A/B</div>
+  </div>
+
+  <!-- CRUMB 12 -->
+  <div class="crumb">
+    <div class="crumb-top">
+      <span class="crumb-id">FM-C-012</span>
+      <span class="crumb-division">GROUND</span>
+      <span class="crumb-city">National</span>
+      <span class="crumb-level level-low">LOW</span>
+    </div>
+    <h3>Food Prices Projected to Rise 3.1% in 2026</h3>
+    <p class="crumb-interpretation">USDA forecasts 3.1% food price increase for 2026 with beef leading the climb. When grocery prices rise, farmers market price premiums compress — the gap between "local artisan" and "Walmart shelf" narrows. That changes who shops where.</p>
+    <div class="crumb-mechanism">MECHANISM: price-inflation → premium-compression → behavioral-migration</div>
+    <div class="crumb-source">Source: USDA Food Price Outlook / RFD-TV, 2026 · Tier A</div>
+  </div>
+
+</main>
+
+<!-- RELATED CORE SIGNALS -->
+<section class="related-signals">
+  <h3>Core Signals in This Cluster</h3>
+  <div class="signal-links">
+    <a href="/inkluso-magazine/cities/nwa/bella-vista-new-booth/" class="signal-link">
+      <div class="signal-link-id">NWA-GROUND-001</div>
+      <div class="signal-link-title">The New Booth in Bella Vista</div>
+      <div class="signal-link-desc">What a 30-vendor market reveals about legitimacy cycles, pricing, and community formation.</div>
+    </a>
+    <a href="/inkluso-magazine/cities/nwa/bentonville-wednesday-market/" class="signal-link">
+      <div class="signal-link-id">NWA-GROUND-002</div>
+      <div class="signal-link-title">The Wednesday Market</div>
+      <div class="signal-link-desc">$3M milestone → weekday expansion. Vendor income stabilization meets infrastructure investment.</div>
+    </a>
+    <a href="/inkluso-magazine/cities/nwa/rogers-foragers-shelf/" class="signal-link">
+      <div class="signal-link-id">NWA-GROUND-003</div>
+      <div class="signal-link-title">The Forager's Shelf</div>
+      <div class="signal-link-desc">Whole Foods Rogers opens with a "forager" role. Amazon absorbs local supply chains.</div>
+    </a>
+    <a href="/inkluso-magazine/cities/duluth/vendors-became-the-market/" class="signal-link">
+      <div class="signal-link-id">DULUTH-GROUND-001</div>
+      <div class="signal-link-title">The Vendors Became the Market</div>
+      <div class="signal-link-desc">Nonprofit governance fails. Vendors self-organize in a food desert. Structural repair.</div>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-links">
+    <a href="/inkluso-magazine/">IN-KluSo Magazine</a>
+    <a href="/inkluso-magazine/kontrarian/">Kontrarian</a>
+    <a href="/inkluso-tools/">Tools</a>
+    <a href="/inkluso-magazine/doctrine/">Doctrine</a>
+  </div>
+  <div class="footer-copy">© 2026 IN-KluSo · CRUMBS: Farmers Market Cluster · March 2026 · 12 Signal Units</div>
+</footer>
+
+</body>
+</html>
