@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Vendors Became the Market — IN-KluSo</title>
+  <meta name="description" content="When a nonprofit managing Duluth's Lincoln Park farmers market collapsed under state investigation, unpaid vendors launched their own market in a food desert. This signal tracks governance failure, vendor self-organization, and the structural fragility of nonprofit-managed food infrastructure.">
+  <meta name="author" content="Juan Camilo Echeverri">
+  <link rel="canonical" href="https://jjaecheverri.github.io/inkluso-magazine/cities/duluth/vendors-became-the-market/">
+
+  <!-- JSON-LD Machine-Readable Signal -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "The Vendors Became the Market",
+    "description": "Structural signal on nonprofit governance failure, vendor self-organization, and food access infrastructure fragility in Duluth, Minnesota.",
+    "author": {
+      "@type": "Person",
+      "name": "Juan Camilo Echeverri",
+      "jobTitle": "Executive Broker, PAK Home Realty",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "PAK Home Realty",
+        "address": {
+          "@addressLocality": "Rogers",
+          "@addressRegion": "AR"
+        }
+      }
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "IN-KluSo",
+      "url": "https://jjaecheverri.github.io/inkluso-magazine/"
+    },
+    "datePublished": "2026-03-03",
+    "dateModified": "2026-03-03",
+    "articleSection": "GROUND",
+    "keywords": ["farmers market", "duluth", "minnesota", "nonprofit governance", "food desert", "vendor self-organization", "food access", "community action", "vendor cooperatives", "food infrastructure"],
+    "url": "https://jjaecheverri.github.io/inkluso-magazine/cities/duluth/vendors-became-the-market/",
+    "about": {
+      "@type": "Place",
+      "name": "Duluth",
+      "containedInPlace": {
+        "@type": "State",
+        "name": "Minnesota",
+        "containedInPlace": {
+          "@type": "Country",
+          "name": "United States"
+        }
+      }
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #FAF6EE;
+      --black: #111111;
+      --orange: #E05A1C;
+      --gray: #6B6B6B;
+      --light-gray: #E8E4DC;
+      --ground-color: #2D5016;
+      --ground-bg: #F0F4EB;
+    }
+
+    body {
+      background: var(--cream);
+      color: var(--black);
+      font-family: 'Inter', sans-serif;
+      font-size: 17px;
+      line-height: 1.75;
+    }
+
+    /* NAV */
+    nav {
+      background: var(--black);
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      color: var(--cream);
+      font-size: 20px;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: #AAAAAA;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--cream); }
+    .nav-links a.active { color: var(--orange); }
+
+    /* SIGNAL HEADER */
+    .signal-header {
+      border-bottom: 1px solid var(--light-gray);
+      padding: 48px 32px 32px;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .signal-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .signal-id {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--gray);
+      font-family: 'Inter', monospace;
+    }
+    .section-tag {
+      display: inline-block;
+      background: var(--ground-color);
+      color: white;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 2px;
+    }
+    .city-tag {
+      display: inline-block;
+      background: var(--light-gray);
+      color: var(--black);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 2px;
+    }
+    .cluster-tag {
+      font-size: 11px;
+      color: var(--orange);
+      font-weight: 500;
+      letter-spacing: 0.05em;
+    }
+
+    .signal-header h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(32px, 5vw, 52px);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      margin-bottom: 16px;
+    }
+    .signal-header .deck {
+      font-size: 19px;
+      color: var(--gray);
+      line-height: 1.5;
+      margin-bottom: 24px;
+      font-weight: 300;
+    }
+    .byline {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding-top: 20px;
+      border-top: 1px solid var(--light-gray);
+    }
+    .byline-text {
+      font-size: 13px;
+      color: var(--gray);
+    }
+    .byline-text strong {
+      color: var(--black);
+      font-weight: 600;
+    }
+    .publish-date { font-size: 12px; color: var(--gray); }
+
+    /* LAYER LABELS */
+    .layer-label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 48px 0 24px;
+    }
+    .layer-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--black);
+      color: var(--cream);
+      font-size: 12px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .layer-name {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+    .layer-rule {
+      flex: 1;
+      height: 1px;
+      background: var(--light-gray);
+    }
+
+    /* ARTICLE BODY */
+    .article-body {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 32px 80px;
+    }
+
+    .article-body p {
+      margin-bottom: 22px;
+      color: var(--black);
+    }
+    .article-body p em {
+      font-style: italic;
+      color: var(--black);
+    }
+    .article-body .pull-quote {
+      font-family: 'DM Serif Display', serif;
+      font-size: 24px;
+      line-height: 1.3;
+      color: var(--black);
+      border-left: 4px solid var(--orange);
+      padding: 16px 24px;
+      margin: 36px 0;
+      font-style: italic;
+    }
+    .article-body .structural-note {
+      background: var(--ground-bg);
+      border-left: 3px solid var(--ground-color);
+      padding: 20px 24px;
+      margin: 32px 0;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+    .article-body .structural-note strong {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ground-color);
+      margin-bottom: 8px;
+    }
+
+    hr.section-break {
+      border: none;
+      border-top: 1px solid var(--light-gray);
+      margin: 48px 0;
+    }
+
+    /* SIGNAL TAGS */
+    .signal-tags-section {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--light-gray);
+    }
+    .signal-tags-section h4 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 12px;
+    }
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tag {
+      background: var(--light-gray);
+      color: var(--black);
+      font-size: 11px;
+      font-weight: 500;
+      padding: 4px 12px;
+      border-radius: 12px;
+      letter-spacing: 0.04em;
+    }
+
+    /* EVIDENCE BLOCK */
+    .evidence-block {
+      background: #F5F5F0;
+      border: 1px solid var(--light-gray);
+      border-radius: 4px;
+      padding: 24px;
+      margin: 40px 0;
+    }
+    .evidence-block h4 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 16px;
+    }
+    .evidence-item {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 12px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .evidence-item:last-child { margin-bottom: 0; }
+    .ev-type {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 2px;
+      height: fit-content;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .ev-verified { background: #D4EDDA; color: #155724; }
+    .ev-inferred { background: #FFF3CD; color: #856404; }
+
+    /* UNCERTAINTY */
+    .uncertainty-block {
+      background: #FFF8F0;
+      border-left: 3px solid var(--orange);
+      padding: 16px 20px;
+      margin: 24px 0;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .uncertainty-block strong {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 6px;
+    }
+
+    /* SIGNAL CONFIDENCE */
+    .confidence-block {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 20px 24px;
+      background: var(--black);
+      color: var(--cream);
+      border-radius: 4px;
+      margin: 40px 0;
+    }
+    .confidence-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #AAAAAA;
+    }
+    .confidence-score {
+      font-family: 'DM Serif Display', serif;
+      font-size: 32px;
+      color: var(--orange);
+    }
+    .confidence-note {
+      font-size: 13px;
+      color: #AAAAAA;
+      line-height: 1.4;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--black);
+      color: #AAAAAA;
+      padding: 40px 32px;
+      text-align: center;
+    }
+    footer a { color: #AAAAAA; text-decoration: none; }
+    footer a:hover { color: var(--cream); }
+    .footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 16px; font-size: 13px; flex-wrap: wrap; }
+    .footer-copy { font-size: 12px; }
+
+    @media (max-width: 600px) {
+      nav { padding: 0 16px; }
+      .nav-links { gap: 16px; }
+      .signal-header, .article-body { padding-left: 20px; padding-right: 20px; }
+      .signal-header h1 { font-size: 30px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="/inkluso-magazine/">IN-KluSo</a>
+  <ul class="nav-links">
+    <li><a href="/inkluso-magazine/#core">CORE</a></li>
+    <li><a href="/inkluso-magazine/#cities">CITIES</a></li>
+    <li><a href="/inkluso-magazine/kontrarian/">KONTRARIAN</a></li>
+    <li><a href="/inkluso-magazine/#about">ABOUT</a></li>
+    <li><a href="/inkluso-tools/">TOOLS</a></li>
+  </ul>
+</nav>
+
+<!-- SIGNAL HEADER -->
+<header class="signal-header">
+  <div class="signal-meta">
+    <span class="signal-id">DULUTH-GROUND-001</span>
+    <span class="section-tag">GROUND</span>
+    <span class="city-tag">Duluth, MN</span>
+    <span class="cluster-tag">Farmers Market Cluster · Signal 4</span>
+  </div>
+
+  <h1>The Vendors Became the Market</h1>
+  <p class="deck">When a nonprofit managing Duluth's Lincoln Park farmers market collapsed under state investigation, the vendors who hadn't been paid since June did something no business plan anticipated — they built their own market in a food desert.</p>
+
+  <div class="byline">
+    <div>
+      <div class="byline-text"><strong>Juan Camilo Echeverri</strong> — Executive Broker, PAK Home Realty · Rogers, AR</div>
+      <div class="publish-date">March 3, 2026 · Duluth, MN · GROUND</div>
+    </div>
+  </div>
+</header>
+
+<!-- ARTICLE BODY -->
+<main class="article-body">
+
+  <!-- LAYER 1 -->
+  <div class="layer-label">
+    <div class="layer-num">1</div>
+    <div class="layer-name">Human Becoming</div>
+    <div class="layer-rule"></div>
+  </div>
+
+  <p>Arthur Allen is a vendor. That's how he introduces himself — not as an entrepreneur, not as a small business owner. A vendor. He sells at the Lincoln Park farmers market in Duluth, Minnesota. Or he did, until October, when the organization running the market canceled it without warning.</p>
+
+  <p>By then, Allen and the other vendors hadn't been paid in months. Product sold. Labor given. Mornings spent standing in a neighborhood where fresh food is hard to come by — and the people managing it all couldn't produce a receipt when the press came asking.</p>
+
+  <p>So Allen and the others did something that wasn't in any business plan.</p>
+
+  <p>They built their own market.</p>
+
+  <p>Twin Ports Roots Market. Bi-weekly. Same neighborhood. Same vendors. Different everything else.</p>
+
+  <div class="pull-quote">"It's an opportunity for us to make a little money, but more than that, it's an opportunity for us to be a part of the community, and we care about the people here — all of the vendors do."<br><span style="font-size: 15px; font-style: normal; color: var(--gray);">— Arthur Allen, vendor</span></div>
+
+  <p>He didn't say he was starting a business. He didn't pitch a growth plan. He said he was staying.</p>
+
+  <p>That distinction matters. In a neighborhood where food access has been precarious for years, the people who showed up weren't corporations or grants or city councils. They were the vendors. The ones who'd already been doing the work — unpaid, unmanaged, and now, ungoverned.</p>
+
+  <p>They didn't leave when the institution failed them. They replaced it.</p>
+
+  <hr class="section-break">
+
+  <!-- LAYER 2 -->
+  <div class="layer-label">
+    <div class="layer-num">2</div>
+    <div class="layer-name">Structural Read</div>
+    <div class="layer-rule"></div>
+  </div>
+
+  <p>Community Action Duluth is a nonprofit. Its mandate includes managing food access infrastructure in underserved neighborhoods. Lincoln Park qualifies — UMD Professor Aparna Katre confirmed it has "historically, for a long time" been classified as a food desert, meaning residents lack reasonable access to healthy food.</p>
+
+  <p>CAD ran the Lincoln Park farmers market as part of that mandate. Then in late 2025, the state of Minnesota launched an investigation into the organization's financial management and workplace harassment allegations. By October, CAD canceled the market. By November, investigative reporting from Northern News Now revealed that vendors hadn't been paid since June.</p>
+
+  <div class="structural-note">
+    <strong>Mechanism</strong>
+    When a single nonprofit controls food access infrastructure in a food desert, governance failure doesn't just disrupt a market — it removes food access from a community that has no backup. The causal chain is clean: financial mismanagement → state investigation → market cancellation → vendor payment freeze → food desert gap widens. Every link depends on the same institutional bottleneck.
+  </div>
+
+  <p>CAD blamed "late invoices" for the payment freeze. When Northern News Now asked for proof — submission logs, processing timelines — CAD couldn't provide it. The organization promised vendors a joint meeting in November. It never happened. The state ordered a quality improvement plan in January 2026, with a February deadline.</p>
+
+  <div class="pull-quote">"Historically, for a long time it's been a food desert, meaning people don't have access to healthy foods in the neighborhood, so there is a huge gap that is left in our community that needs to be addressed, and there should be a sense of urgency in the community around it."<br><span style="font-size: 15px; font-style: normal; color: var(--gray);">— Aparna Katre, UMD Professor</span></div>
+
+  <p>Meanwhile, the vendors didn't wait for the quality improvement plan. They self-organized. Twin Ports Roots Market now operates bi-weekly in the same Lincoln Park neighborhood — community-driven, vendor-governed. This wasn't entrepreneurship in the Silicon Valley sense. Nobody raised capital. Nobody filed a pitch deck. It was structural repair. They replaced the governance layer that failed them.</p>
+
+  <div class="structural-note">
+    <strong>Comparative Clarity</strong>
+    Vendors in this model are typically independent contractors. They can't sue for wages when a nonprofit stops paying. They can't access the infrastructure — the nonprofit holds the permits. They can't redirect customer traffic — the nonprofit owns the marketing channels.<br><br>
+    Self-organization is what remains when every formal channel fails.<br>
+    It's not the first option. It's the only one left.
+  </div>
+
+  <hr class="section-break">
+
+  <!-- LAYER 3 -->
+  <div class="layer-label">
+    <div class="layer-num">3</div>
+    <div class="layer-name">Pattern Confirmation</div>
+    <div class="layer-rule"></div>
+  </div>
+
+  <p>The Duluth story maps a pattern the Farmers Market Cluster is tracking nationally: the structural fragility of nonprofit-managed food infrastructure.</p>
+
+  <p>Across the United States, many farmers markets operate under nonprofit umbrellas — community action agencies, downtown development organizations, agricultural nonprofits. When governance works, the nonprofit provides permitting, marketing, vendor coordination, and payment processing. When it fails, vendors have no recourse. The institutional layer that was supposed to serve them becomes the thing that trapped them.</p>
+
+  <p>Twin Ports Roots Market represents a third governance model: vendor-governed markets that bypass the nonprofit intermediary entirely. This has precedent. Many of the earliest American farmers markets were vendor-cooperatives before nonprofits professionalized the management layer. The question isn't whether vendor self-governance can work. It's whether it can sustain itself without the institutional support — grants, marketing budgets, municipal partnerships — that nonprofits provide.</p>
+
+  <p>In Duluth, the answer is being tested in real time.</p>
+
+  <p>Meanwhile, the same governance model plays out differently elsewhere. In Bentonville, Arkansas, Downtown Bentonville Inc. — also a nonprofit — manages a market valued at over $3 million and is expanding to Wednesday operations. Same structure, opposite outcome. The difference is institutional health. And that's the variable nobody measures until it fails.</p>
+
+  <p>The pattern is clear: nonprofit-managed food infrastructure is only as resilient as the institution behind it. When the institution breaks, the community doesn't get a transition plan. It gets a food desert with one less option.</p>
+
+  <hr class="section-break">
+
+  <!-- EVIDENCE BLOCK -->
+  <div class="evidence-block">
+    <h4>Evidence</h4>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>CAD canceled the Lincoln Park farmers market in October 2025. Vendors report nonpayment since June 2025. Confirmed by Northern News Now investigative reporting (Nov 8, 2025; Feb 6, 2026).</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>State of Minnesota launched investigation into CAD financial mismanagement and harassment allegations. State ordered quality improvement plan with February 2026 deadline. (Northern News Now, Jan 13, 2026).</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>CAD blamed "late invoices" for payment failures but could not provide submission logs or processing timelines when asked by press. Promised November joint meeting with vendors — never delivered. (Northern News Now, Nov 8 and Nov 14, 2025).</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>Twin Ports Roots Market launched as vendor-organized bi-weekly market in Lincoln Park. Named sources: Arthur Allen (vendor), Aparna Katre (UMD Professor). (Northern News Now, Feb 6, 2026).</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>Lincoln Park area classified as food desert by UMD Professor Aparna Katre, citing longstanding lack of access to healthy foods in the neighborhood. (Northern News Now, Feb 6, 2026).</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-inferred">Inferred</span>
+      <span>Characterization of vendor self-organization as "structural repair" and governance replacement is an analytical inference from observed facts. Vendor motivations beyond quoted statements are interpreted.</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-inferred">Inferred</span>
+      <span>National pattern (Layer 3) — comparison to vendor-cooperative historical precedent and Bentonville's nonprofit-managed market draws from cluster-level research. Specific USDA citations pending.</span>
+    </div>
+  </div>
+
+  <!-- UNCERTAINTY -->
+  <div class="uncertainty-block">
+    <strong>Uncertainty</strong>
+    Full details of the state investigation into CAD remain unreleased; the quality improvement plan was not publicly available at time of publication. Vendor payment amounts and individual financial impact are not independently confirmed beyond the "not paid since June" claim. Whether Twin Ports Roots Market can sustain operations long-term without institutional support (permits, grants, marketing) remains an open question. The food desert classification is sourced from a single academic voice — formal USDA designation for Lincoln Park has not been independently verified for this signal.
+  </div>
+
+  <!-- CONFIDENCE -->
+  <div class="confidence-block">
+    <div>
+      <div class="confidence-label">Signal Confidence Index</div>
+      <div class="confidence-score">HIGH</div>
+    </div>
+    <div class="confidence-note">
+      Four Tier B sources from a single investigative series spanning October 2025–February 2026. Clear causal mechanism with named actors, specified territory, and documented institutional responses. All three doctrine lenses covered: epistemological (state records, press documentation), systems (nonprofit governance, food infrastructure), behavioral (vendor self-organization). Signal level: <strong>CONFIRMED</strong>.
+    </div>
+  </div>
+
+  <!-- SIGNAL TAGS -->
+  <div class="signal-tags-section">
+    <h4>Signal Tags</h4>
+    <div class="tags">
+      <span class="tag">farmers-market</span>
+      <span class="tag">duluth</span>
+      <span class="tag">minnesota</span>
+      <span class="tag">nonprofit-governance</span>
+      <span class="tag">food-desert</span>
+      <span class="tag">vendor-self-organization</span>
+      <span class="tag">food-access</span>
+      <span class="tag">vendor-cooperatives</span>
+      <span class="tag">food-infrastructure</span>
+      <span class="tag">governance-failure</span>
+      <span class="tag">structural-repair</span>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-links">
+    <a href="/inkluso-magazine/">IN-KluSo Magazine</a>
+    <a href="/inkluso-magazine/cities/duluth/">Duluth</a>
+    <a href="/inkluso-magazine/kontrarian/">Kontrarian</a>
+    <a href="/inkluso-tools/">Tools</a>
+    <a href="/inkluso-magazine/doctrine/">Doctrine</a>
+  </div>
+  <div class="footer-copy">© 2026 IN-KluSo · Signal DULUTH-GROUND-001 · Published Mar 3, 2026</div>
+</footer>
+
+</body>
+</html>
