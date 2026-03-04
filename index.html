@@ -38,13 +38,38 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
-      background: var(--cream);
+      background: 
+        linear-gradient(rgba(250,246,238,0.91), rgba(250,246,238,0.91)),
+        url('https://images.unsplash.com/photo-1540678931042-41a977082abf?w=1920&q=50&auto=format') center/cover fixed no-repeat;
       color: var(--black);
       font-family: 'Inter', -apple-system, sans-serif;
       font-size: 16px;
       line-height: 1.65;
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── TORN PAPER EDGES ── */
+    .torn-divider {
+      position: relative;
+      width: 100%;
+      height: 40px;
+      margin: -1px 0;
+      overflow: hidden;
+      z-index: 10;
+    }
+    .torn-divider svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    .torn-divider--cream svg { fill: var(--cream); }
+    .torn-divider--dark svg { fill: var(--black); }
+    .torn-divider--invert {
+      transform: scaleY(-1);
+    }
+    .torn-edge-shadow {
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.08));
     }
     a { color: inherit; text-decoration: none; }
 
@@ -1104,6 +1129,13 @@
   </div>
 </div>
 
+<!-- TORN PAPER: Dark → Cream -->
+<div class="torn-divider torn-edge-shadow" style="background:var(--black); margin-top:-1px;">
+  <svg viewBox="0 0 1200 40" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,12 Q18,8 35,18 Q52,28 70,14 Q88,4 105,20 Q122,32 140,16 Q158,6 175,22 Q192,34 210,12 Q228,2 245,18 Q262,30 280,14 Q298,4 315,24 Q332,36 350,16 Q368,2 385,20 Q402,34 420,10 Q438,4 455,22 Q472,36 490,14 Q508,2 525,24 Q542,34 560,12 Q578,4 595,22 Q612,36 630,16 Q648,6 665,24 Q682,34 700,12 Q718,2 735,20 Q752,30 770,14 Q788,6 805,22 Q822,34 840,10 Q858,2 875,24 Q892,36 910,16 Q928,4 945,20 Q962,32 980,12 Q998,4 1015,22 Q1032,36 1050,14 Q1068,4 1085,24 Q1102,34 1120,16 Q1138,4 1155,22 Q1172,32 1200,18 L1200,40 L0,40 Z" fill="var(--cream)"/>
+  </svg>
+</div>
+
 <!-- FEATURED SIGNALS -->
 <section class="section-wrap featured-wrap" id="signals">
   <div class="section-header reveal">
@@ -1114,7 +1146,7 @@
   <div class="featured-grid reveal">
     <!-- HERO CARD: The 5x Trap -->
     <a href="cities/global/the-5x-trap/" class="signal-card signal-card-hero">
-      <div class="sc-bg" style="background-image:url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80&fit=crop');"></div>
+      <div class="sc-bg" style="background-image:url('https://images.unsplash.com/photo-1550501834-8df3c535869d?w=800&q=80&fit=crop'); filter:saturate(0.8) contrast(1.05);"></div>
       <div class="sc-content">
         <div class="sc-division" style="color:var(--core-red);">
           CORE-002 · United States
@@ -1175,6 +1207,13 @@
     </a>
   </div>
 </section>
+
+<!-- TORN PAPER: Cream → Cream-dark -->
+<div class="torn-divider torn-edge-shadow" style="background:var(--cream); margin-bottom:-1px;">
+  <svg viewBox="0 0 1200 40" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,30 Q20,22 40,28 Q60,34 80,20 Q100,10 120,26 Q140,36 160,18 Q180,8 200,24 Q220,32 240,16 Q260,6 280,28 Q300,38 320,18 Q340,6 360,26 Q380,34 400,14 Q420,4 440,24 Q460,32 480,16 Q500,8 520,28 Q540,38 560,14 Q580,4 600,26 Q620,36 640,18 Q660,6 680,26 Q700,34 720,14 Q740,4 760,24 Q780,36 800,16 Q820,6 840,28 Q860,38 880,14 Q900,4 920,22 Q940,34 960,16 Q980,8 1000,26 Q1020,36 1040,18 Q1060,6 1080,24 Q1100,34 1120,14 Q1140,6 1160,26 Q1180,34 1200,22 L1200,40 L0,40 Z" fill="var(--cream-dark)"/>
+  </svg>
+</div>
 
 <!-- CITIES -->
 <section class="section-wrap" id="cities" style="background: var(--cream-dark); max-width:none; padding-left:0; padding-right:0;">
@@ -1427,6 +1466,13 @@
   </div>
 </div>
 
+<!-- TORN PAPER: Cream → Dark digest -->
+<div class="torn-divider torn-edge-shadow" style="background:var(--cream); margin-bottom:-1px;">
+  <svg viewBox="0 0 1200 40" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,18 Q25,10 50,22 Q75,34 100,16 Q125,4 150,26 Q175,38 200,14 Q225,2 250,24 Q275,36 300,12 Q325,4 350,20 Q375,32 400,16 Q425,6 450,26 Q475,36 500,10 Q525,2 550,22 Q575,34 600,14 Q625,6 650,26 Q675,38 700,12 Q725,2 750,24 Q775,34 800,16 Q825,4 850,22 Q875,36 900,14 Q925,2 950,26 Q975,38 1000,16 Q1025,4 1050,24 Q1075,34 1100,12 Q1125,4 1150,22 Q1175,36 1200,20 L1200,40 L0,40 Z" fill="#1a1a1a"/>
+  </svg>
+</div>
+
 <!-- SIGNAL INTELLIGENCE DIGEST — organic growth hook -->
 <section class="section-wrap" id="subscribe" style="max-width:none;background:linear-gradient(135deg,#1a1a1a 0%,#2a1f0a 100%);padding:5rem 2rem;">
   <div style="max-width:700px;margin:0 auto;text-align:center;" class="reveal">
@@ -1458,6 +1504,13 @@
     </div>
   </div>
 </section>
+
+<!-- TORN PAPER: Dark → Footer -->
+<div class="torn-divider" style="background:#1a1a1a; margin-top:-1px;">
+  <svg viewBox="0 0 1200 40" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,20 Q22,12 45,24 Q68,36 90,14 Q112,2 135,22 Q158,34 180,16 Q202,6 225,26 Q248,38 270,12 Q292,2 315,20 Q338,32 360,14 Q382,4 405,24 Q428,36 450,16 Q472,4 495,26 Q518,38 540,14 Q562,2 585,22 Q608,34 630,16 Q652,4 675,24 Q698,36 720,12 Q742,2 765,22 Q788,34 810,16 Q832,6 855,26 Q878,38 900,14 Q922,2 945,22 Q968,34 990,16 Q1012,4 1035,24 Q1058,36 1080,14 Q1102,2 1125,22 Q1148,34 1170,16 Q1185,8 1200,20 L1200,40 L0,40 Z" fill="var(--black)"/>
+  </svg>
+</div>
 
 <!-- FOOTER -->
 <footer>
