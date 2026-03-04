@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AXIS — IN-KluSo Signal Intelligence</title>
+  <meta name="description" content="AXIS tracks the governance decisions, cultural shifts, and institutional choices that determine who gets to create, who gets credited, and who gets erased. These signals document the structural politics of recognition and exclusion.">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "AXIS — IN-KluSo",
+    "description": "AXIS tracks the governance decisions, cultural shifts, and institutional choices that determine who gets to create, who gets credited, and who gets erased. These signals document the structural politics of recognition and exclusion.",
+    "url": "https://jjaecheverri.github.io/inkluso-magazine/axis/",
+    "publisher": { "@type": "Organization", "name": "IN-KluSo" }
+  }
+  </script>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #FAF6EE;
+      --text: #1A1A1A;
+      --accent: #9C27B0;
+      --accent-light: rgba(156, 39, 176, 0.08);
+      --accent-mid: rgba(156, 39, 176, 0.15);
+      --accent-glow: rgba(156, 39, 176, 0.25);
+      --white: #FFFFFF;
+      --gray-100: #F5F5F5;
+      --gray-200: #EEEEEE;
+      --gray-400: #9E9E9E;
+      --gray-600: #757575;
+      --high-bg: #E8F5E9;
+      --high-text: #2E7D32;
+      --mod-bg: #FFF3E0;
+      --mod-text: #E65100;
+      --low-bg: #FFEBEE;
+      --low-text: #C62828;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ======== NAVIGATION ======== */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(250, 246, 238, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+      padding: 0 2rem;
+    }
+
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+    }
+
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.3rem;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-logo span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gray-600);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--accent);
+    }
+
+    .nav-links a.active {
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 2px;
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .hamburger.open span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    /* Mobile menu */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 60px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(250, 246, 238, 0.97);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      z-index: 999;
+      padding: 2rem;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .mobile-menu.open { display: flex; }
+
+    .mobile-menu a {
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--gray-600);
+      text-decoration: none;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      transition: color 0.2s;
+    }
+
+    .mobile-menu a:hover,
+    .mobile-menu a.active {
+      color: var(--accent);
+    }
+
+    /* ======== HERO ======== */
+    .hero {
+      position: relative;
+      padding: 5rem 2rem 4rem;
+      overflow: hidden;
+      background: linear-gradient(165deg, var(--bg) 0%, rgba(156, 39, 176, 0.04) 50%, var(--bg) 100%);
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -60%;
+      right: -20%;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(156, 39, 176, 0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .hero-accent-line {
+      width: 64px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 2px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-division {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(3rem, 8vw, 5.5rem);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+
+    .hero-tagline {
+      font-size: 1.15rem;
+      color: var(--gray-600);
+      font-weight: 400;
+      margin-bottom: 1.5rem;
+      max-width: 560px;
+    }
+
+    .hero-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .signal-count-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.4rem 1rem;
+      border-radius: 100px;
+      letter-spacing: 0.03em;
+    }
+
+    .signal-count-badge::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+
+    .hero-description {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--gray-600);
+      max-width: 640px;
+    }
+
+    /* ======== SIGNAL GRID ======== */
+    .signals-section {
+      padding: 2rem 2rem 4rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .section-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.75rem;
+      color: var(--text);
+    }
+
+    .section-line {
+      flex: 1;
+      height: 1px;
+      background: rgba(0, 0, 0, 0.08);
+    }
+
+    /* Featured Card */
+    .featured-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      background: var(--white);
+      border-radius: 16px;
+      box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+      overflow: hidden;
+      margin-bottom: 2rem;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+      animation: fadeInUp 0.6s ease both;
+      position: relative;
+    }
+
+    .featured-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+    }
+
+    .featured-gradient {
+      background: linear-gradient(135deg, rgba(156, 39, 176, 0.08) 0%, rgba(156, 39, 176, 0.03) 100%);
+      padding: 3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .featured-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .featured-badge::before {
+      content: '★';
+      font-size: 0.65rem;
+    }
+
+    .featured-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.5rem, 3vw, 2.25rem);
+      line-height: 1.2;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+
+    .featured-oneliner {
+      font-size: 1rem;
+      line-height: 1.65;
+      color: var(--gray-600);
+    }
+
+    .featured-content {
+      padding: 3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 1.25rem;
+    }
+
+    .featured-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    .sci-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 500;
+      padding: 0.3rem 0.75rem;
+      border-radius: 6px;
+    }
+
+    .sci-badge.high { background: var(--high-bg); color: var(--high-text); }
+    .sci-badge.moderate { background: var(--mod-bg); color: var(--mod-text); }
+    .sci-badge.low { background: var(--low-bg); color: var(--low-text); }
+
+    .territory-tag {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--gray-600);
+      background: var(--gray-100);
+      padding: 0.3rem 0.75rem;
+      border-radius: 6px;
+    }
+
+    .date-tag {
+      font-size: 0.75rem;
+      color: var(--gray-400);
+    }
+
+    .read-arrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-top: auto;
+      transition: gap 0.2s ease;
+    }
+
+    .featured-card:hover .read-arrow { gap: 0.85rem; }
+
+    /* Grid Cards */
+    .signal-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .signal-card {
+      background: var(--white);
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+      padding: 2rem;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .signal-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--accent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .signal-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    }
+
+    .signal-card:hover::before { opacity: 1; }
+
+    .card-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.3rem;
+      line-height: 1.25;
+      color: var(--text);
+    }
+
+    .card-oneliner {
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: var(--gray-600);
+      flex: 1;
+    }
+
+    .card-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      align-items: center;
+      margin-top: 0.25rem;
+    }
+
+    .card-arrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-top: 0.25rem;
+      transition: gap 0.2s ease;
+    }
+
+    .signal-card:hover .card-arrow { gap: 0.75rem; }
+
+    /* Staggered animation */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .signal-card:nth-child(1) { animation: fadeInUp 0.5s ease 0.1s both; }
+    .signal-card:nth-child(2) { animation: fadeInUp 0.5s ease 0.2s both; }
+    .signal-card:nth-child(3) { animation: fadeInUp 0.5s ease 0.3s both; }
+    .signal-card:nth-child(4) { animation: fadeInUp 0.5s ease 0.4s both; }
+    .signal-card:nth-child(5) { animation: fadeInUp 0.5s ease 0.5s both; }
+    .signal-card:nth-child(6) { animation: fadeInUp 0.5s ease 0.6s both; }
+    .signal-card:nth-child(7) { animation: fadeInUp 0.5s ease 0.7s both; }
+    .signal-card:nth-child(8) { animation: fadeInUp 0.5s ease 0.8s both; }
+
+    /* ======== CTA SECTION ======== */
+    .signal-cta {
+      max-width: 1200px;
+      margin: 0 auto 4rem;
+      padding: 3.5rem 2.5rem;
+      background: linear-gradient(135deg, rgba(156, 39, 176, 0.05) 0%, rgba(156, 39, 176, 0.02) 100%);
+      border: 1px solid rgba(156, 39, 176, 0.1);
+      border-radius: 16px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .signal-cta::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 0 0 3px 3px;
+    }
+
+    .signal-cta h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.75rem;
+      margin-bottom: 0.75rem;
+      color: var(--text);
+    }
+
+    .signal-cta > p {
+      font-size: 1rem;
+      color: var(--gray-600);
+      max-width: 480px;
+      margin: 0 auto 1.5rem;
+      line-height: 1.65;
+    }
+
+    .cta-stats {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--gray-600);
+      margin-bottom: 1.75rem;
+      flex-wrap: wrap;
+    }
+
+    .cta-stats span:nth-child(even) {
+      color: var(--gray-400);
+    }
+
+    .subscribe-btn {
+      display: inline-block;
+      background: var(--accent);
+      color: var(--white);
+      font-size: 0.9rem;
+      font-weight: 600;
+      padding: 0.85rem 2.25rem;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      box-shadow: 0 2px 8px rgba(156, 39, 176, 0.25);
+    }
+
+    .subscribe-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(156, 39, 176, 0.3);
+      background: #8E24AA;
+    }
+
+    .cta-note {
+      font-size: 0.75rem;
+      color: var(--gray-400);
+      margin-top: 1rem;
+    }
+
+    /* ======== RELATED DIVISIONS ======== */
+    .related-section {
+      padding: 3rem 2rem 4rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+
+    .related-card {
+      background: var(--white);
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      padding: 1.5rem;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-top: 3px solid transparent;
+    }
+
+    .related-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    }
+
+    .related-card-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.15rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .related-card-tagline {
+      font-size: 0.8rem;
+      color: var(--gray-600);
+      line-height: 1.5;
+    }
+
+    .related-card[data-div="core"] { border-top-color: #D4A017; }
+    .related-card[data-div="thrive"] { border-top-color: #2E7D32; }
+    .related-card[data-div="flow"] { border-top-color: #1565C0; }
+
+    /* ======== FOOTER ======== */
+    .footer {
+      background: var(--text);
+      color: rgba(255, 255, 255, 0.6);
+      padding: 3rem 2rem;
+      margin-top: 2rem;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-brand {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.2rem;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-tagline {
+      font-size: 0.8rem;
+      line-height: 1.5;
+      max-width: 280px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 2.5rem;
+    }
+
+    .footer-col h4 {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.4);
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-col a {
+      display: block;
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.6);
+      text-decoration: none;
+      padding: 0.2rem 0;
+      transition: color 0.2s;
+    }
+
+    .footer-col a:hover { color: rgba(255, 255, 255, 0.95); }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 2rem auto 0;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.72rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .footer-bottom a {
+      color: rgba(255, 255, 255, 0.5);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-bottom a:hover { color: rgba(255, 255, 255, 0.85); }
+
+    /* ======== RESPONSIVE ======== */
+    @media (max-width: 900px) {
+      .featured-card {
+        grid-template-columns: 1fr;
+      }
+
+      .related-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+
+      .hero { padding: 3.5rem 1.5rem 3rem; }
+      .hero-division { font-size: 2.75rem; }
+
+      .signals-section { padding: 1.5rem 1.5rem 3rem; }
+
+      .signal-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .featured-gradient,
+      .featured-content {
+        padding: 2rem;
+      }
+
+      .signal-cta {
+        margin-left: 1rem;
+        margin-right: 1rem;
+        padding: 2.5rem 1.5rem;
+      }
+
+      .related-section { padding: 2rem 1.5rem 3rem; }
+
+      .footer-inner { flex-direction: column; }
+      .footer-links { flex-direction: column; gap: 1.5rem; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== NAVIGATION ===== -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="../" class="nav-logo">IN<span>·</span>KluSo</a>
+    <ul class="nav-links">
+      <li><a href="../core/">Core</a></li>
+      <li><a href="../thrive/">Thrive</a></li>
+      <li><a href="../flow/">Flow</a></li>
+      <li><a href="./" class="active">Axis</a></li>
+      <li><a href="../cities/">Cities</a></li>
+      <li><a href="../about/">About</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="../core/">Core</a>
+  <a href="../thrive/">Thrive</a>
+  <a href="../flow/">Flow</a>
+  <a href="./" class="active">Axis</a>
+  <a href="../cities/">Cities</a>
+  <a href="../about/">About</a>
+</div>
+
+<!-- ===== HERO ===== -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-accent-line"></div>
+    <h1 class="hero-division">AXIS</h1>
+    <p class="hero-tagline">Cultural Governance — Where identity, policy, and power intersect</p>
+    <div class="hero-meta">
+      <span class="signal-count-badge">3 Published Signals</span>
+    </div>
+    <p class="hero-description">AXIS tracks the governance decisions, cultural shifts, and institutional choices that determine who gets to create, who gets credited, and who gets erased. These signals document the structural politics of recognition and exclusion.</p>
+  </div>
+</header>
+
+<!-- ===== SIGNAL GRID ===== -->
+<section class="signals-section">
+  <div class="section-header">
+    <h2 class="section-title">Latest Signals</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <!-- Featured Signal: The Human Authorship Seal (SCI 0.952) -->
+  <a href="../signals/axis/the-human-authorship-seal/" class="featured-card">
+    <div class="featured-gradient">
+      <span class="featured-badge">Featured Signal</span>
+      <h3 class="featured-title">The Human Authorship Seal</h3>
+      <p class="featured-oneliner">SCOTUS denies AI copyright. The legal line is drawn: only human-created work gets protection. The authorship economy just split in two.</p>
+    </div>
+    <div class="featured-content">
+      <div class="featured-meta">
+        <span class="sci-badge high">SCI 0.952 · HIGH</span>
+        <span class="territory-tag">United States</span>
+        <span class="date-tag">March 2026</span>
+      </div>
+      <span class="read-arrow">Read full signal →</span>
+    </div>
+  </a>
+
+  <!-- Remaining Signals Grid -->
+  <div class="signal-grid">
+
+    <!-- The Closed Wing (SCI 0.92) -->
+    <a href="closed-wing/" class="signal-card">
+      <h3 class="card-title">The Closed Wing</h3>
+      <p class="card-oneliner">One-third of U.S. museums lost grants. 29% saw attendance drops. AAM survey of 511 directors reveals worst financial outlook since the pandemic.</p>
+      <div class="card-meta">
+        <span class="sci-badge high">SCI 0.92 · HIGH</span>
+        <span class="territory-tag">United States</span>
+        <span class="date-tag">March 2026</span>
+      </div>
+      <span class="card-arrow">Read signal →</span>
+    </a>
+
+    <!-- The 24% Silence (SCI 0.85) -->
+    <a href="../signals/axis/the-24-percent-silence/" class="signal-card">
+      <h3 class="card-title">The 24% Silence</h3>
+      <p class="card-oneliner">UNESCO finds 24% of artists report significant income loss from AI. The creative economy is being structurally hollowed — and the data is starting to arrive.</p>
+      <div class="card-meta">
+        <span class="sci-badge high">SCI 0.85 · HIGH</span>
+        <span class="territory-tag">Global</span>
+        <span class="date-tag">March 2026</span>
+      </div>
+      <span class="card-arrow">Read signal →</span>
+    </a>
+
+  </div>
+</section>
+
+<!-- ===== CTA SECTION ===== -->
+<section class="signal-cta">
+  <h3>Stay in the Signal</h3>
+  <p>New intelligence drops weekly. No noise. No spam. Just verified signals that matter.</p>
+  <div class="cta-stats">
+    <span>3 signals published</span>
+    <span>·</span>
+    <span>3 HIGH confidence</span>
+    <span>·</span>
+    <span>100% human-verified</span>
+  </div>
+  <a href="mailto:inkluso.signals@gmail.com?subject=Signal%20Intelligence%20—%20Subscribe&body=I'd%20like%20to%20receive%20signal%20intelligence%20updates." class="subscribe-btn">Join the Intelligence Network →</a>
+  <p class="cta-note">Free. Unsubscribe anytime. We don't sell data.</p>
+</section>
+
+<!-- ===== RELATED DIVISIONS ===== -->
+<section class="related-section">
+  <div class="section-header">
+    <h2 class="section-title">Explore Other Divisions</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="related-grid">
+    <a href="../core/" class="related-card" data-div="core">
+      <div class="related-card-name">CORE</div>
+      <p class="related-card-tagline">Labor & Economy — The structural shifts reshaping how people work and earn</p>
+    </a>
+    <a href="../thrive/" class="related-card" data-div="thrive">
+      <div class="related-card-name">THRIVE</div>
+      <p class="related-card-tagline">Health & Wellbeing — The signals redefining access, equity, and care systems</p>
+    </a>
+    <a href="../flow/" class="related-card" data-div="flow">
+      <div class="related-card-name">FLOW</div>
+      <p class="related-card-tagline">Migration & Mobility — Tracking the forces that move people across borders</p>
+    </a>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">IN·KluSo</div>
+      <p class="footer-tagline">Signal intelligence for the stories the world satisfies itself ignoring.</p>
+    </div>
+    <div class="footer-links">
+      <div class="footer-col">
+        <h4>Divisions</h4>
+        <a href="../core/">CORE</a>
+        <a href="../thrive/">THRIVE</a>
+        <a href="../flow/">FLOW</a>
+        <a href="./">AXIS</a>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <a href="../cities/">Cities</a>
+        <a href="../about/">About</a>
+        <a href="../doctrine/">Doctrine</a>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <a href="mailto:inkluso.signals@gmail.com">Contact</a>
+        <a href="https://jjaecheverri.github.io/inkluso-tools/" target="_blank" rel="noopener">Tools</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 IN-KluSo. All rights reserved.</span>
+    <a href="../">← Back to Home</a>
+  </div>
+</footer>
+
+<script>
+  // Hamburger toggle
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+    document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+  });
+
+  // Intersection Observer for scroll animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.animationPlayState = 'running';
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.signal-card, .featured-card').forEach(card => {
+    observer.observe(card);
+  });
+</script>
+
+</body>
+</html>

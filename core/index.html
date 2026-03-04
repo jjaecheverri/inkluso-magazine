@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CORE — IN-KluSo Signal Intelligence</title>
+  <meta name="description" content="CORE tracks the tectonic shifts in economic policy, infrastructure, and institutional behavior that define structural reality. These aren't opinions — they're load-bearing signals with verified data, primary sources, and measurable mechanisms.">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "CORE — IN-KluSo",
+    "description": "CORE tracks the tectonic shifts in economic policy, infrastructure, and institutional behavior that define structural reality. These aren't opinions — they're load-bearing signals with verified data, primary sources, and measurable mechanisms.",
+    "url": "https://jjaecheverri.github.io/inkluso-magazine/core/",
+    "publisher": { "@type": "Organization", "name": "IN-KluSo" }
+  }
+  </script>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #FAF6EE;
+      --text: #1A1A1A;
+      --accent: #D4A853;
+      --accent-light: rgba(212, 168, 83, 0.10);
+      --accent-medium: rgba(212, 168, 83, 0.25);
+      --card-bg: #FFFFFF;
+      --card-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      --card-hover-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      --nav-glass: rgba(250, 246, 238, 0.85);
+      --high-bg: #E8F5E9;
+      --high-text: #2E7D32;
+      --mod-bg: #FFF3E0;
+      --mod-text: #E65100;
+      --low-bg: #FFEBEE;
+      --low-text: #C62828;
+      --radius: 12px;
+      --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Navigation ── */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: var(--nav-glass);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      padding: 0 2rem;
+    }
+
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .nav-brand {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.35rem;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-brand span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text);
+      text-decoration: none;
+      padding: 0.45rem 0.75rem;
+      border-radius: 6px;
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      background: var(--accent-light);
+      color: var(--accent);
+    }
+
+    .nav-links a.active {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ── Hero ── */
+    .hero {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 5rem 2rem 3.5rem;
+      position: relative;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: -10%;
+      width: 50%;
+      height: 100%;
+      background: radial-gradient(ellipse at center, var(--accent-light) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-label::before {
+      content: '';
+      display: inline-block;
+      width: 32px;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+
+    .hero-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+
+    .hero-tagline {
+      font-size: 1.25rem;
+      font-weight: 400;
+      color: #555;
+      max-width: 640px;
+      margin-bottom: 1.5rem;
+      line-height: 1.5;
+    }
+
+    .hero-description {
+      font-size: 1rem;
+      color: #666;
+      max-width: 600px;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+
+    .hero-meta {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .signal-count-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 0.5rem 1.1rem;
+      border-radius: 100px;
+      letter-spacing: 0.02em;
+    }
+
+    .signal-count-badge svg {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+    }
+
+    .hero-stat {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #888;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .hero-stat strong {
+      color: var(--high-text);
+      font-weight: 700;
+    }
+
+    .accent-line {
+      width: 80px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 2px;
+      margin-top: 2.5rem;
+    }
+
+    /* ── Section Headings ── */
+    .section-heading {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem 1.5rem;
+    }
+
+    .section-heading h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.75rem;
+      letter-spacing: -0.02em;
+    }
+
+    .section-heading p {
+      color: #777;
+      font-size: 0.95rem;
+      margin-top: 0.25rem;
+    }
+
+    /* ── Featured Card ── */
+    .featured-section {
+      max-width: 1200px;
+      margin: 0 auto 2rem;
+      padding: 0 2rem;
+    }
+
+    .featured-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--card-shadow);
+      overflow: hidden;
+      text-decoration: none;
+      color: var(--text);
+      transition: var(--transition);
+      animation: fadeInUp 0.6s ease both;
+    }
+
+    .featured-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--card-hover-shadow);
+    }
+
+    .featured-visual {
+      position: relative;
+      min-height: 320px;
+      background: linear-gradient(135deg, var(--accent-medium), var(--accent-light), var(--bg));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .featured-visual::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 20px,
+        rgba(212,168,83,0.04) 20px,
+        rgba(212,168,83,0.04) 40px
+      );
+    }
+
+    .featured-sci-display {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+
+    .featured-sci-number {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 4.5rem;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+    }
+
+    .featured-sci-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--high-text);
+      margin-top: 0.5rem;
+    }
+
+    .featured-body {
+      padding: 3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .featured-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .featured-badge::before {
+      content: '★';
+      font-size: 0.8rem;
+    }
+
+    .featured-body h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2rem;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+
+    .featured-body .one-liner {
+      font-size: 1rem;
+      color: #555;
+      line-height: 1.65;
+      margin-bottom: 1.5rem;
+    }
+
+    .featured-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.3rem 0.7rem;
+      border-radius: 100px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    .tag-territory {
+      background: #F0EDE6;
+      color: #666;
+    }
+
+    .tag-date {
+      background: #F0EDE6;
+      color: #888;
+    }
+
+    .tag-sci {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      font-size: 0.7rem;
+    }
+
+    .tag-sci.high { background: var(--high-bg); color: var(--high-text); }
+    .tag-sci.moderate { background: var(--mod-bg); color: var(--mod-text); }
+    .tag-sci.low { background: var(--low-bg); color: var(--low-text); }
+
+    .read-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .read-link:hover { gap: 0.75rem; }
+
+    .read-link svg {
+      width: 18px;
+      height: 18px;
+      transition: var(--transition);
+    }
+
+    /* ── Signal Grid ── */
+    .signal-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem 3rem;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .signal-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--card-shadow);
+      padding: 2rem;
+      text-decoration: none;
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .signal-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--accent);
+      opacity: 0;
+      transition: var(--transition);
+    }
+
+    .signal-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--card-hover-shadow);
+    }
+
+    .signal-card:hover::before { opacity: 1; }
+
+    .signal-card-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .signal-card h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.35rem;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      flex: 1;
+    }
+
+    .signal-card .one-liner {
+      font-size: 0.9rem;
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 1.25rem;
+      flex: 1;
+    }
+
+    .signal-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-top: auto;
+      padding-top: 1rem;
+      border-top: 1px solid #f0ede6;
+    }
+
+    .signal-card-tags {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .signal-card .arrow {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--accent-light);
+      color: var(--accent);
+      transition: var(--transition);
+      flex-shrink: 0;
+    }
+
+    .signal-card:hover .arrow {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .arrow svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    /* Animation */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .signal-card { animation: fadeInUp 0.6s ease both; }
+    .signal-card:nth-child(1) { animation-delay: 0.1s; }
+    .signal-card:nth-child(2) { animation-delay: 0.2s; }
+    .signal-card:nth-child(3) { animation-delay: 0.3s; }
+    .signal-card:nth-child(4) { animation-delay: 0.4s; }
+    .signal-card:nth-child(5) { animation-delay: 0.5s; }
+    .signal-card:nth-child(6) { animation-delay: 0.6s; }
+    .signal-card:nth-child(7) { animation-delay: 0.7s; }
+
+    /* ── CTA Section ── */
+    .signal-cta {
+      max-width: 1200px;
+      margin: 1rem auto 3rem;
+      padding: 3.5rem 2rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .signal-cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--accent-light), transparent 60%);
+      border-radius: var(--radius);
+      z-index: 0;
+    }
+
+    .signal-cta > * { position: relative; z-index: 1; }
+
+    .signal-cta h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2rem;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.02em;
+    }
+
+    .signal-cta > p {
+      color: #555;
+      font-size: 1rem;
+      max-width: 520px;
+      margin: 0 auto 1.5rem;
+      line-height: 1.65;
+    }
+
+    .cta-stats {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #888;
+      margin-bottom: 2rem;
+      letter-spacing: 0.02em;
+    }
+
+    .cta-stats span:nth-child(even) { color: #ccc; }
+
+    .subscribe-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.9rem;
+      font-weight: 700;
+      padding: 0.85rem 2rem;
+      border-radius: 100px;
+      text-decoration: none;
+      transition: var(--transition);
+      letter-spacing: 0.02em;
+    }
+
+    .subscribe-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(212,168,83,0.35);
+    }
+
+    .cta-note {
+      font-size: 0.75rem;
+      color: #aaa;
+      margin-top: 1rem;
+    }
+
+    /* ── Related Divisions ── */
+    .related-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 2rem 4rem;
+    }
+
+    .related-section h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.02em;
+    }
+
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+
+    .related-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--card-shadow);
+      padding: 1.5rem;
+      text-decoration: none;
+      color: var(--text);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .related-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      border-radius: var(--radius) var(--radius) 0 0;
+    }
+
+    .related-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--card-hover-shadow);
+    }
+
+    .related-card .div-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.15rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .related-card .div-tagline {
+      font-size: 0.78rem;
+      color: #888;
+      line-height: 1.5;
+    }
+
+    .related-card .div-arrow {
+      display: inline-block;
+      margin-top: 0.75rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    /* Division colors */
+    .related-card.thrive::before { background: #6BBF8A; }
+    .related-card.thrive .div-arrow { color: #6BBF8A; }
+    .related-card.flow::before { background: #5BA4D9; }
+    .related-card.flow .div-arrow { color: #5BA4D9; }
+    .related-card.axis::before { background: #D95B5B; }
+    .related-card.axis .div-arrow { color: #D95B5B; }
+    .related-card.cities::before { background: #8B6BBF; }
+    .related-card.cities .div-arrow { color: #8B6BBF; }
+
+    /* ── Footer ── */
+    .footer {
+      background: var(--text);
+      color: rgba(255,255,255,0.7);
+      padding: 3rem 2rem;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .footer-brand {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.2rem;
+      color: #fff;
+    }
+
+    .footer-brand span { color: var(--accent); }
+
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      list-style: none;
+    }
+
+    .footer-links a {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .footer-links a:hover { color: var(--accent); }
+
+    .footer-copy {
+      width: 100%;
+      text-align: center;
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.3);
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    /* ── Mobile ── */
+    @media (max-width: 768px) {
+      .nav-links { 
+        display: none;
+        position: absolute;
+        top: 64px;
+        left: 0;
+        right: 0;
+        background: var(--nav-glass);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        flex-direction: column;
+        padding: 1rem;
+        border-bottom: 1px solid rgba(0,0,0,0.06);
+        gap: 0;
+      }
+
+      .nav-links.open { display: flex; }
+
+      .nav-links a {
+        padding: 0.75rem 1rem;
+        font-size: 0.85rem;
+        width: 100%;
+      }
+
+      .hamburger { display: flex; }
+
+      .hero { padding: 3.5rem 1.5rem 2.5rem; }
+
+      .hero-title { font-size: 2.8rem; }
+
+      .featured-card { grid-template-columns: 1fr; }
+
+      .featured-visual { min-height: 200px; }
+
+      .featured-body { padding: 2rem 1.5rem; }
+
+      .signal-grid {
+        grid-template-columns: 1fr;
+        padding: 0 1.5rem 2rem;
+      }
+
+      .related-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .section-heading,
+      .featured-section,
+      .related-section {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+      }
+
+      .signal-cta { margin-left: 1rem; margin-right: 1rem; }
+
+      .footer-inner { flex-direction: column; text-align: center; }
+      .footer-links { justify-content: center; }
+    }
+
+    @media (max-width: 480px) {
+      .related-grid { grid-template-columns: 1fr; }
+      .hero-meta { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Navigation ── -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="../" class="nav-brand">IN<span>·</span>KluSo</a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="./" class="active">Core</a></li>
+        <li><a href="../thrive/">Thrive</a></li>
+        <li><a href="../flow/">Flow</a></li>
+        <li><a href="../axis/">Axis</a></li>
+        <li><a href="../cities/">Cities</a></li>
+        <li><a href="../about/">About</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ── Hero ── -->
+  <header class="hero">
+    <div class="hero-content">
+      <div class="hero-label">IN-KluSo Signal Intelligence</div>
+      <h1 class="hero-title">CORE</h1>
+      <p class="hero-tagline">Structural Pressure — The forces reshaping markets, policy, and systems</p>
+      <p class="hero-description">CORE tracks the tectonic shifts in economic policy, infrastructure, and institutional behavior that define structural reality. These aren't opinions — they're load-bearing signals with verified data, primary sources, and measurable mechanisms.</p>
+      <div class="hero-meta">
+        <span class="signal-count-badge">
+          <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          8 Published Signals
+        </span>
+        <span class="hero-stat"><strong>8 HIGH</strong> confidence signals</span>
+      </div>
+      <div class="accent-line"></div>
+    </div>
+  </header>
+
+  <!-- ── Featured Signal ── -->
+  <div class="section-heading">
+    <h2>Featured Signal</h2>
+    <p>Highest-confidence intelligence in this division</p>
+  </div>
+
+  <div class="featured-section">
+    <a href="../cities/global/the-5x-trap/" class="featured-card">
+      <div class="featured-visual">
+        <div class="featured-sci-display">
+          <div class="featured-sci-number">0.976</div>
+          <div class="featured-sci-label">Signal Confidence Index</div>
+        </div>
+      </div>
+      <div class="featured-body">
+        <div class="featured-badge">Featured Signal</div>
+        <h3>The 5× Trap</h3>
+        <p class="one-liner">When housing costs exceed 5× income, the market doesn't correct — it calcifies. Harvard JCHS data reveals a structural trap affecting 23.4 million renter households.</p>
+        <div class="featured-meta">
+          <span class="tag tag-sci high">SCI 0.976</span>
+          <span class="tag tag-territory">Global</span>
+          <span class="tag tag-date">March 2026</span>
+        </div>
+        <span class="read-link">
+          Read Full Signal
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </span>
+      </div>
+    </a>
+  </div>
+
+  <!-- ── Signal Grid ── -->
+  <div class="section-heading">
+    <h2>All Signals</h2>
+    <p>Sorted by Signal Confidence Index — highest first</p>
+  </div>
+
+  <div class="signal-grid">
+
+    <!-- Signal 2: The Trillion-Dollar Line Item — SCI 0.95 -->
+    <a href="trillion-dollar-line-item/" class="signal-card">
+      <div class="signal-card-header">
+        <h3>The Trillion-Dollar Line Item</h3>
+        <span class="tag tag-sci high">0.95</span>
+      </div>
+      <p class="one-liner">Federal interest payments surpass $1 trillion annually — exceeding defense spending for the first time. CBO projects $2.1T by 2036.</p>
+      <div class="signal-card-footer">
+        <div class="signal-card-tags">
+          <span class="tag tag-territory">United States</span>
+          <span class="tag tag-date">March 2026</span>
+        </div>
+        <span class="arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </span>
+      </div>
+    </a>
+
+    <!-- Signal 3: The Lead Retreat — SCI 0.94 -->
+    <a href="lead-retreat/" class="signal-card">
+      <div class="signal-card-header">
+        <h3>The Lead Retreat</h3>
+        <span class="tag tag-sci high">0.94</span>
+      </div>
+      <p class="one-liner">Congress cuts $125M in lead pipe replacement funding while 9 million service lines remain. 900,000 infants at risk.</p>
+      <div class="signal-card-footer">
+        <div class="signal-card-tags">
+          <span class="tag tag-territory">United States</span>
+          <span class="tag tag-date">March 2026</span>
+        </div>
+        <span class="arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </span>
+      </div>
+    </a>
+
+    <!-- Signal 4: The Flood Line — SCI 0.93 -->
+    <a href="flood-line/" class="signal-card">
+      <div class="signal-card-header">
+        <h3>The Flood Line</h3>
+        <span class="tag tag-sci high">0.93</span>
+      </div>
+      <p class="one-liner">Climate migration is reshaping U.S. real estate. 3.2 million Americans relocated due to climate events. Florida insurance premiums up 400%.</p>
+      <div class="signal-card-footer">
+        <div class="signal-card-tags">
+          <span class="tag tag-territory">United States</span>
+          <span class="tag tag-date">March 2026</span>
+        </div>
+        <span class="arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </span>
+      </div>
+    </a>
+
+    <!-- Signal 5: The Extraction Playbook — SCI 0.92 -->
+    <a href="../cities/global/the-extraction-playbook/" class="signal-card">
+      <div class="signal-card-header">
+        <h3>The Extraction Playbook</h3>
+        <span class="tag tag-sci high">0.92</span>
+      </div>
+      <p class="one-liner">Walgreens PE-driven closures create pharmacy deserts. 1,200 stores shuttered, 25 million Americans now live in pharmacy deserts.</p>
+      <div class="signal-card-footer">
+        <div class="signal-card-tags">
+          <span class="tag tag-territory">United States</span>
+          <span class="tag tag-date">March 2026</span>
+        </div>
+        <span class="arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </span>
+      </div>
+    </a>
+
+    <!-- Signal 6: The $172 Billion Absence — SCI 0.92 -->
+    <a href="172-billion-absence/" class="signal-card">
+      <div class="signal-card-header">
+        <h3>The $172 Billion Absence</h3>
+        <span class="tag tag-sci high">0.92</span>
+      </div>
+      <p class="one-liner">$172 billion annual economic cost from the childcare crisis. 70,000 programs closed. Senate hearing confirms structural emergency.</p>
+      <div class="signal-card-footer">
+        <div class="signal-card-tags">
+          <span class="tag tag-territory">United States</span>
+          <span class="tag tag-date">March 2026</span>
+        </div>
+        <span class="arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </span>
+      </div>
+    </a>
+
+    <!-- Signal 7: The Triple Break — SCI 0.908 -->
+    <a href="../cities/global/the-triple-break/" class="signal-card">
+      <div class="signal-card-header">
+        <h3>The Triple Break</h3>
+        <span class="tag tag-sci high">0.908</span>
+      </div>
+      <p class="one-liner">Bank of Canada declares structural break in monetary policy — the first central bank to formally acknowledge the paradigm has shifted.</p>
+      <div class="signal-card-footer">
+        <div class="signal-card-tags">
+          <span class="tag tag-territory">Canada / Global</span>
+          <span class="tag tag-date">March 2026</span>
+        </div>
+        <span class="arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </span>
+      </div>
+    </a>
+
+    <!-- Signal 8: The Gig Reversal — SCI 0.88 -->
+    <a href="gig-reversal/" class="signal-card">
+      <div class="signal-card-header">
+        <h3>The Gig Reversal</h3>
+        <span class="tag tag-sci high">0.88</span>
+      </div>
+      <p class="one-liner">DOL's worker classification flip-flop — three reversals in five years — weakens regulatory authority permanently. Courts begin ignoring federal guidance.</p>
+      <div class="signal-card-footer">
+        <div class="signal-card-tags">
+          <span class="tag tag-territory">United States</span>
+          <span class="tag tag-date">March 2026</span>
+        </div>
+        <span class="arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </span>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- ── Stay in the Signal CTA ── -->
+  <section class="signal-cta">
+    <h3>Stay in the Signal</h3>
+    <p>New intelligence drops weekly. No noise. No spam. Just verified signals that matter.</p>
+    <div class="cta-stats">
+      <span>8 signals published</span>
+      <span>·</span>
+      <span>8 HIGH confidence</span>
+      <span>·</span>
+      <span>100% human-verified</span>
+    </div>
+    <a href="mailto:inkluso.signals@gmail.com?subject=Signal%20Intelligence%20—%20Subscribe&body=I'd%20like%20to%20receive%20signal%20intelligence%20updates." class="subscribe-btn">Join the Intelligence Network →</a>
+    <p class="cta-note">Free. Unsubscribe anytime. We don't sell data.</p>
+  </section>
+
+  <!-- ── Related Divisions ── -->
+  <section class="related-section">
+    <h2>Explore Other Divisions</h2>
+    <div class="related-grid">
+      <a href="../thrive/" class="related-card thrive">
+        <div class="div-name">THRIVE</div>
+        <p class="div-tagline">Human capital, workforce, and livelihood signals</p>
+        <span class="div-arrow">Explore →</span>
+      </a>
+      <a href="../flow/" class="related-card flow">
+        <div class="div-name">FLOW</div>
+        <p class="div-tagline">Capital movement, trade, and financial system signals</p>
+        <span class="div-arrow">Explore →</span>
+      </a>
+      <a href="../axis/" class="related-card axis">
+        <div class="div-name">AXIS</div>
+        <p class="div-tagline">Geopolitical tension, governance, and power structure signals</p>
+        <span class="div-arrow">Explore →</span>
+      </a>
+      <a href="../cities/" class="related-card cities">
+        <div class="div-name">CITIES</div>
+        <p class="div-tagline">Urban intelligence — signals mapped to the places where they hit</p>
+        <span class="div-arrow">Explore →</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ── Footer ── -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">IN<span>·</span>KluSo</div>
+      <ul class="footer-links">
+        <li><a href="../">Home</a></li>
+        <li><a href="../about/">About</a></li>
+        <li><a href="../doctrine/">Doctrine</a></li>
+        <li><a href="../tools/">Tools</a></li>
+        <li><a href="mailto:inkluso.signals@gmail.com">Contact</a></li>
+      </ul>
+      <div class="footer-copy">
+        © 2026 IN-KluSo Signal Intelligence. Independent research. No corporate sponsors. No paywalls.
+      </div>
+    </div>
+  </footer>
+
+  <!-- ── Mobile Nav Toggle ── -->
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      navLinks.classList.toggle('open');
+    });
+
+    // Close nav on link click (mobile)
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        navLinks.classList.remove('open');
+      });
+    });
+
+    // Intersection Observer for stagger animation
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animationPlayState = 'running';
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.signal-card').forEach(card => {
+      card.style.animationPlayState = 'paused';
+      observer.observe(card);
+    });
+  </script>
+
+</body>
+</html>

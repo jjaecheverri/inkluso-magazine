@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CITIES — IN-KluSo Signal Intelligence</title>
+<meta name="description" content="Territory-based signal intelligence. Every signal maps to a specific place. Ground-level data from the cities reshaping America.">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"CollectionPage","name":"CITIES — IN-KluSo","description":"Territory-based signal intelligence from the ground level.","url":"https://jjaecheverri.github.io/inkluso-magazine/cities/","publisher":{"@type":"Organization","name":"IN-KluSo"}}
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--cream:#FAF6EE;--black:#1A1A1A;--gray-mid:#6B6B6B;--orange:#D4A853;--white:#FFFFFF;--radius:12px;--shadow-sm:0 2px 12px rgba(0,0,0,0.06);--shadow-md:0 8px 24px rgba(0,0,0,0.1);--transition:0.3s cubic-bezier(.4,0,.2,1)}
+body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--black);line-height:1.6}
+/* Nav */
+.nav{position:sticky;top:0;z-index:100;background:rgba(250,246,238,0.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(0,0,0,0.06);padding:0.8rem 2rem;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:'DM Serif Display',serif;font-size:1.3rem;text-decoration:none;color:var(--black)}
+.nav-logo span{color:var(--orange)}
+.nav-links{display:flex;gap:1.5rem;list-style:none}
+.nav-links a{text-decoration:none;color:var(--gray-mid);font-size:0.8rem;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;transition:color var(--transition)}
+.nav-links a:hover{color:var(--black)}
+.nav-links a.active{color:var(--black);font-weight:700}
+.hamburger{display:none;flex-direction:column;cursor:pointer;gap:4px}
+.hamburger span{width:22px;height:2px;background:var(--black);transition:var(--transition)}
+.mobile-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(250,246,238,0.97);z-index:200;flex-direction:column;align-items:center;justify-content:center;gap:2rem}
+.mobile-menu.open{display:flex}
+.mobile-menu a{font-family:'DM Serif Display',serif;font-size:1.5rem;text-decoration:none;color:var(--black)}
+.mobile-close{position:absolute;top:1.5rem;right:2rem;font-size:2rem;cursor:pointer;background:none;border:none;color:var(--black)}
+
+/* Hero */
+.hero{padding:6rem 2rem 4rem;text-align:center;max-width:900px;margin:0 auto}
+.hero-badge{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:0.7rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--white);background:#FF6B35;padding:0.3rem 1rem;border-radius:100px;margin-bottom:1.5rem}
+.hero h1{font-family:'DM Serif Display',serif;font-size:clamp(2.5rem,5vw,4rem);line-height:1.1;margin-bottom:1rem}
+.hero h1 span{color:#FF6B35}
+.hero p{font-size:1.1rem;color:var(--gray-mid);max-width:650px;margin:0 auto 2rem}
+.hero-stats{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap}
+.hero-stats .stat{text-align:center}
+.hero-stats .stat-num{font-family:'DM Serif Display',serif;font-size:2rem;color:var(--black)}
+.hero-stats .stat-label{font-size:0.75rem;color:var(--gray-mid);text-transform:uppercase;letter-spacing:0.05em}
+
+/* City Grid */
+.cities-section{max-width:1100px;margin:0 auto;padding:2rem 2rem 4rem}
+.city-hub{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow-sm);overflow:hidden;transition:all var(--transition);margin-bottom:2rem}
+.city-hub:hover{box-shadow:var(--shadow-md);transform:translateY(-3px)}
+.city-hub-header{padding:2.5rem 2.5rem 1.5rem;border-bottom:1px solid rgba(0,0,0,0.04)}
+.city-hub-header h2{font-family:'DM Serif Display',serif;font-size:1.8rem;margin-bottom:0.3rem}
+.city-hub-header h2 a{color:var(--black);text-decoration:none}
+.city-hub-header h2 a:hover{color:#FF6B35}
+.city-hub-meta{font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--gray-mid);display:flex;gap:1.5rem;flex-wrap:wrap}
+.city-hub-desc{padding:1rem 2.5rem 0;font-size:0.95rem;color:var(--gray-mid);line-height:1.7}
+.city-signals{padding:1.5rem 2.5rem 2rem;display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem}
+.signal-mini{background:var(--cream);border-radius:8px;padding:1.2rem;text-decoration:none;color:var(--black);transition:all var(--transition);display:block}
+.signal-mini:hover{background:#f0ebe0;transform:translateX(4px)}
+.signal-mini h4{font-family:'DM Serif Display',serif;font-size:1rem;margin-bottom:0.4rem}
+.signal-mini p{font-size:0.8rem;color:var(--gray-mid);line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.sci-badge{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:0.65rem;font-weight:600;padding:0.15rem 0.6rem;border-radius:100px;margin-bottom:0.5rem}
+.sci-high{background:#E8F5E9;color:#2E7D32}
+.sci-moderate{background:#FFF3E0;color:#E65100}
+.city-link{display:inline-block;margin:0 2.5rem 2rem;font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:#FF6B35;text-decoration:none;font-weight:500;transition:color var(--transition)}
+.city-link:hover{color:var(--black)}
+
+/* Upcoming Cities */
+.upcoming{max-width:1100px;margin:0 auto;padding:2rem 2rem 4rem}
+.upcoming h2{font-family:'DM Serif Display',serif;font-size:1.5rem;margin-bottom:1.5rem;text-align:center}
+.upcoming-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem}
+.upcoming-card{background:var(--white);border-radius:var(--radius);padding:1.5rem;text-align:center;box-shadow:var(--shadow-sm);border:2px dashed rgba(0,0,0,0.08)}
+.upcoming-card h3{font-family:'DM Serif Display',serif;font-size:1.1rem;margin-bottom:0.3rem}
+.upcoming-card p{font-size:0.75rem;color:var(--gray-mid)}
+.upcoming-card .coming{font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:var(--orange);text-transform:uppercase;letter-spacing:0.1em;margin-top:0.5rem}
+
+/* CTA */
+.cta{max-width:700px;margin:0 auto;padding:4rem 2rem;text-align:center}
+.cta h3{font-family:'DM Serif Display',serif;font-size:1.5rem;margin-bottom:0.8rem}
+.cta p{font-size:0.95rem;color:var(--gray-mid);margin-bottom:1.5rem}
+.cta-stats{display:flex;justify-content:center;gap:1rem;font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--gray-mid);margin-bottom:1.5rem;flex-wrap:wrap}
+.subscribe-btn{display:inline-block;background:var(--black);color:var(--white);padding:0.8rem 2rem;border-radius:100px;text-decoration:none;font-size:0.85rem;font-weight:600;transition:all var(--transition)}
+.subscribe-btn:hover{background:#FF6B35;transform:translateY(-2px)}
+.cta-note{font-size:0.72rem;color:var(--gray-mid);margin-top:0.8rem}
+
+/* Divisions */
+.divisions{max-width:1100px;margin:0 auto;padding:2rem 2rem 4rem}
+.divisions h2{font-family:'DM Serif Display',serif;font-size:1.5rem;margin-bottom:1.5rem;text-align:center}
+.div-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem}
+.div-link{background:var(--white);border-radius:var(--radius);padding:1.5rem;text-decoration:none;color:var(--black);box-shadow:var(--shadow-sm);transition:all var(--transition);text-align:center}
+.div-link:hover{box-shadow:var(--shadow-md);transform:translateY(-3px)}
+.div-link h3{font-family:'DM Serif Display',serif;font-size:1.1rem;margin-bottom:0.3rem}
+.div-link p{font-size:0.75rem;color:var(--gray-mid)}
+.div-link .count{font-family:'JetBrains Mono',monospace;font-size:0.65rem;font-weight:600;margin-top:0.5rem;display:inline-block}
+
+/* Footer */
+.footer{background:var(--black);color:rgba(255,255,255,0.7);padding:3rem 2rem;text-align:center;font-size:0.8rem}
+.footer a{color:rgba(255,255,255,0.9);text-decoration:none}
+.footer a:hover{color:#FF6B35}
+.footer-links{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;margin-bottom:1rem}
+
+/* Animation */
+.fade-in{opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:768px){
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .hero h1{font-size:2rem}
+  .hero-stats{gap:1rem}
+  .city-hub-header{padding:1.5rem}
+  .city-hub-desc{padding:0.5rem 1.5rem 0}
+  .city-signals{padding:1rem 1.5rem;grid-template-columns:1fr}
+  .city-link{margin:0 1.5rem 1.5rem}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="../" class="nav-logo">IN<span>·</span>KluSo</a>
+  <ul class="nav-links">
+    <li><a href="../core/">CORE</a></li>
+    <li><a href="./" class="active">CITIES</a></li>
+    <li><a href="../humanklu/">HumanKlu™</a></li>
+    <li><a href="../axis/">AXIS</a></li>
+    <li><a href="../flow/">FLOW</a></li>
+    <li><a href="../thrive/">THRIVE</a></li>
+  </ul>
+  <div class="hamburger" onclick="document.getElementById('mob').classList.add('open')">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mob">
+  <button class="mobile-close" onclick="this.parentElement.classList.remove('open')">×</button>
+  <a href="../" onclick="closeMob()">Home</a>
+  <a href="../core/" onclick="closeMob()">Core</a>
+  <a href="./" onclick="closeMob()">Cities</a>
+  <a href="../thrive/" onclick="closeMob()">Thrive</a>
+  <a href="../flow/" onclick="closeMob()">Flow</a>
+  <a href="../axis/" onclick="closeMob()">Axis</a>
+  <a href="../humanklu/" onclick="closeMob()">HumanKlu™</a>
+</div>
+
+<section class="hero">
+  <span class="hero-badge">GROUND INTELLIGENCE</span>
+  <h1>Every Signal Has a <span>Zip Code</span></h1>
+  <p>National data hides local reality. IN-KluSo maps intelligence to specific places — the farmers market booth, the pharmacy desert, the metro that just became #1. This is where structure meets street.</p>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">4</div><div class="stat-label">Active Cities</div></div>
+    <div class="stat"><div class="stat-num">10</div><div class="stat-label">Ground Signals</div></div>
+    <div class="stat"><div class="stat-num">7</div><div class="stat-label">NWA Signals</div></div>
+  </div>
+</section>
+
+<section class="cities-section">
+
+  <!-- NWA Hub -->
+  <div class="city-hub fade-in">
+    <div class="city-hub-header">
+      <h2><a href="nwa/">Northwest Arkansas</a></h2>
+      <div class="city-hub-meta">
+        <span>🏔 Anchor City</span>
+        <span>7 Signals</span>
+        <span>4 HIGH Confidence</span>
+        <span>#1 Metro in America (Milken 2026)</span>
+      </div>
+    </div>
+    <p class="city-hub-desc">America's fastest-growing metro — and IN-KluSo's first anchor territory. Farmers market disruption, food inflation patterns, housing pressure, and corporate absorption tracked at the booth level.</p>
+    <div class="city-signals">
+      <a href="nwa/number-one-metro/" class="signal-mini">
+        <span class="sci-badge sci-high">SCI 0.94 · HIGH</span>
+        <h4>The #1 Metro</h4>
+        <p>Milken ranks NWA #1. Arkansas #1 for inbound moves. The structural growth story.</p>
+      </a>
+      <a href="nwa/the-overshoot/" class="signal-mini">
+        <span class="sci-badge sci-high">SCI 0.90 · HIGH</span>
+        <h4>The Overshoot</h4>
+        <p>Vendor supply outpaces demand. Price pressure emerges at the booth level.</p>
+      </a>
+      <a href="nwa/the-170-basket/" class="signal-mini">
+        <span class="sci-badge sci-high">SCI 0.86 · HIGH</span>
+        <h4>The $170 Basket</h4>
+        <p>Grocery inflation behavioral shift. Households restructuring spending patterns.</p>
+      </a>
+      <a href="nwa/rogers-foragers-shelf/" class="signal-mini">
+        <span class="sci-badge sci-moderate">SCI 0.78 · MODERATE</span>
+        <h4>The Forager's Shelf</h4>
+        <p>Whole Foods absorbs local products into corporate supply chains.</p>
+      </a>
+    </div>
+    <a href="nwa/" class="city-link">See all 7 NWA signals →</a>
+  </div>
+
+  <!-- Madrid Hub -->
+  <div class="city-hub fade-in">
+    <div class="city-hub-header">
+      <h2><a href="madrid/neighbors-veto/">Madrid</a></h2>
+      <div class="city-hub-meta">
+        <span>🇪🇸 European Territory</span>
+        <span>2 Signals</span>
+        <span>1 HIGH Confidence</span>
+      </div>
+    </div>
+    <p class="city-hub-desc">Short-term rental displacement, building democracy, and governance friction in one of Europe's most pressured housing markets.</p>
+    <div class="city-signals">
+      <a href="madrid/neighbors-veto/" class="signal-mini">
+        <span class="sci-badge sci-high">SCI 0.90 · HIGH</span>
+        <h4>The Neighbor's Veto</h4>
+        <p>Building democracy vs. STR displacement. Residents reclaim governance.</p>
+      </a>
+    </div>
+  </div>
+
+  <!-- Duluth Hub -->
+  <div class="city-hub fade-in">
+    <div class="city-hub-header">
+      <h2><a href="duluth/vendors-became-the-market/">Duluth</a></h2>
+      <div class="city-hub-meta">
+        <span>🏔 Midwest Territory</span>
+        <span>1 Signal</span>
+        <span>1 HIGH Confidence</span>
+      </div>
+    </div>
+    <p class="city-hub-desc">When institutions fail, people self-organize. Duluth's farmers market collapse became a case study in bottom-up governance.</p>
+    <div class="city-signals">
+      <a href="duluth/vendors-became-the-market/" class="signal-mini">
+        <span class="sci-badge sci-high">SCI 0.85 · HIGH</span>
+        <h4>The Vendors Became the Market</h4>
+        <p>Nonprofit failure triggers vendor self-organization. The market became the institution.</p>
+      </a>
+    </div>
+  </div>
+
+  <!-- Global Hub -->
+  <div class="city-hub fade-in">
+    <div class="city-hub-header">
+      <h2><a href="global/the-triple-break/">Global</a></h2>
+      <div class="city-hub-meta">
+        <span>🌍 Cross-Territory</span>
+        <span>3 Signals</span>
+        <span>3 HIGH Confidence</span>
+      </div>
+    </div>
+    <p class="city-hub-desc">Signals that transcend borders — structural breaks in monetary policy, housing affordability, and healthcare infrastructure visible across multiple territories.</p>
+    <div class="city-signals">
+      <a href="global/the-5x-trap/" class="signal-mini">
+        <span class="sci-badge sci-high">SCI 0.976 · HIGH</span>
+        <h4>The 5× Trap</h4>
+        <p>When housing costs hit 5× income, the market calcifies. 23.4M renter households trapped.</p>
+      </a>
+      <a href="global/the-extraction-playbook/" class="signal-mini">
+        <span class="sci-badge sci-high">SCI 0.92 · HIGH</span>
+        <h4>The Extraction Playbook</h4>
+        <p>PE-driven pharmacy closures create healthcare deserts. 25M Americans affected.</p>
+      </a>
+      <a href="global/the-triple-break/" class="signal-mini">
+        <span class="sci-badge sci-high">SCI 0.908 · HIGH</span>
+        <h4>The Triple Break</h4>
+        <p>Bank of Canada declares structural break. First central bank to formally name the paradigm shift.</p>
+      </a>
+    </div>
+  </div>
+
+</section>
+
+<!-- Upcoming Cities -->
+<section class="upcoming fade-in">
+  <h2>Coming Soon</h2>
+  <div class="upcoming-grid">
+    <div class="upcoming-card">
+      <h3>Austin</h3>
+      <p>Tech migration, housing pressure, cultural displacement</p>
+      <div class="coming">Scouting</div>
+    </div>
+    <div class="upcoming-card">
+      <h3>Detroit</h3>
+      <p>Urban renewal, manufacturing renaissance, population return</p>
+      <div class="coming">Scouting</div>
+    </div>
+    <div class="upcoming-card">
+      <h3>Boise</h3>
+      <p>Growth shock, affordability crisis, identity shift</p>
+      <div class="coming">Scouting</div>
+    </div>
+    <div class="upcoming-card">
+      <h3>Your City</h3>
+      <p>Have a signal? We track what others miss.</p>
+      <div class="coming"><a href="mailto:inkluso.signals@gmail.com?subject=City%20Signal%20Tip" style="color:inherit">Submit a tip →</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta fade-in">
+  <h3>Stay in the Signal</h3>
+  <p>New ground intelligence drops weekly. No noise. No spam. Just verified signals from the places that matter.</p>
+  <div class="cta-stats">
+    <span>10 ground signals</span>
+    <span>·</span>
+    <span>4 active cities</span>
+    <span>·</span>
+    <span>100% human-verified</span>
+  </div>
+  <a href="mailto:inkluso.signals@gmail.com?subject=Signal%20Intelligence%20—%20Subscribe&body=I'd%20like%20to%20receive%20signal%20intelligence%20updates." class="subscribe-btn">Join the Intelligence Network →</a>
+  <p class="cta-note">Free. Unsubscribe anytime. We don't sell data.</p>
+</section>
+
+<!-- Divisions -->
+<section class="divisions fade-in">
+  <h2>Explore by Division</h2>
+  <div class="div-grid">
+    <a href="../core/" class="div-link">
+      <h3>CORE</h3>
+      <p>Structural pressure</p>
+      <span class="count" style="color:#D4A853">8 signals</span>
+    </a>
+    <a href="../thrive/" class="div-link">
+      <h3>THRIVE</h3>
+      <p>Human resilience</p>
+      <span class="count" style="color:#4CAF50">4 signals</span>
+    </a>
+    <a href="../flow/" class="div-link">
+      <h3>FLOW</h3>
+      <p>Information dynamics</p>
+      <span class="count" style="color:#2196F3">4 signals</span>
+    </a>
+    <a href="../axis/" class="div-link">
+      <h3>AXIS</h3>
+      <p>Cultural governance</p>
+      <span class="count" style="color:#9C27B0">3 signals</span>
+    </a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-links">
+    <a href="../">Home</a>
+    <a href="../core/">Core</a>
+    <a href="./">Cities</a>
+    <a href="../thrive/">Thrive</a>
+    <a href="../flow/">Flow</a>
+    <a href="../axis/">Axis</a>
+    <a href="../humanklu/">HumanKlu™</a>
+    <a href="../doctrine/">Doctrine</a>
+  </div>
+  <p>© 2026 IN-KluSo · Signal Intelligence · <a href="https://jjaecheverri.github.io/inkluso-tools/">Tools</a></p>
+</footer>
+
+<script>
+function closeMob(){document.getElementById('mob').classList.remove('open')}
+const obs=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting)el.target.classList.add('visible')})},{threshold:0.1});
+document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+</script>
+
+</body>
+</html>

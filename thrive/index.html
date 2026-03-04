@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>THRIVE — IN-KluSo Signal Intelligence</title>
+  <meta name="description" content="THRIVE tracks the adaptive behaviors, entrepreneurial shifts, and structural workarounds that emerge when institutions stop serving people. These signals document human resilience against systemic pressure — not as inspiration, but as measurable pattern.">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "THRIVE — IN-KluSo",
+    "description": "THRIVE tracks the adaptive behaviors, entrepreneurial shifts, and structural workarounds that emerge when institutions stop serving people. These signals document human resilience against systemic pressure — not as inspiration, but as measurable pattern.",
+    "url": "https://jjaecheverri.github.io/inkluso-magazine/thrive/",
+    "publisher": { "@type": "Organization", "name": "IN-KluSo" }
+  }
+  </script>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #FAF6EE;
+      --text: #1A1A1A;
+      --accent: #4CAF50;
+      --accent-light: rgba(76, 175, 80, 0.08);
+      --accent-medium: rgba(76, 175, 80, 0.15);
+      --accent-glow: rgba(76, 175, 80, 0.25);
+      --white: #FFFFFF;
+      --gray-100: #F5F5F5;
+      --gray-200: #E8E8E8;
+      --gray-400: #999999;
+      --gray-600: #666666;
+      --high-bg: #E8F5E9;
+      --high-text: #2E7D32;
+      --moderate-bg: #FFF3E0;
+      --moderate-text: #E65100;
+      --low-bg: #FFEBEE;
+      --low-text: #C62828;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(250, 246, 238, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+      padding: 0 2rem;
+    }
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+    }
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.25rem;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gray-600);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--accent); }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    /* Mobile nav */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 60px;
+      left: 0; right: 0; bottom: 0;
+      background: rgba(250, 246, 238, 0.97);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      z-index: 999;
+      padding: 2rem;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a {
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--gray-600);
+      text-decoration: none;
+      padding: 0.85rem 0;
+      border-bottom: 1px solid var(--gray-200);
+      transition: color 0.2s;
+    }
+    .mobile-nav a:hover,
+    .mobile-nav a.active { color: var(--accent); }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+    }
+
+    /* ── HERO ── */
+    .hero {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 5rem 2rem 3.5rem;
+      position: relative;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -40px;
+      right: -120px;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .hero-content { position: relative; z-index: 1; }
+
+    .hero-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.25rem;
+    }
+    .hero-label::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: inline-block;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.3); }
+    }
+
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      font-weight: 400;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+
+    .hero-accent-line {
+      width: 80px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 2px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-tagline {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: var(--gray-600);
+      margin-bottom: 1rem;
+      max-width: 640px;
+    }
+
+    .hero-description {
+      font-size: 1.05rem;
+      color: var(--gray-600);
+      max-width: 640px;
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      padding: 0.5rem 1.1rem;
+      border-radius: 100px;
+      border: 1px solid var(--accent-medium);
+    }
+    .hero-badge svg { width: 14px; height: 14px; }
+
+    /* ── SECTION HEADERS ── */
+    .section-header {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 2rem 1.5rem;
+    }
+    .section-header h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.75rem;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+    .section-header p {
+      color: var(--gray-600);
+      margin-top: 0.35rem;
+      font-size: 0.95rem;
+    }
+
+    /* ── FEATURED CARD ── */
+    .featured-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem 1.5rem;
+    }
+    .featured-card {
+      display: flex;
+      gap: 2.5rem;
+      background: var(--white);
+      border-radius: 16px;
+      box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+      overflow: hidden;
+      text-decoration: none;
+      color: var(--text);
+      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s;
+      position: relative;
+      animation: fadeUp 0.6s ease-out both;
+    }
+    .featured-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+    }
+    .featured-accent {
+      width: 8px;
+      min-height: 100%;
+      background: linear-gradient(180deg, var(--accent), rgba(76, 175, 80, 0.3));
+      flex-shrink: 0;
+    }
+    .featured-body {
+      flex: 1;
+      padding: 2.5rem 2.5rem 2.5rem 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .featured-top {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+    .featured-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-light);
+      padding: 0.3rem 0.75rem;
+      border-radius: 4px;
+    }
+    .featured-card h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.85rem;
+      font-weight: 400;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+    .featured-card .card-oneliner {
+      font-size: 1.05rem;
+      color: var(--gray-600);
+      line-height: 1.7;
+      max-width: 600px;
+    }
+    .featured-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: auto;
+    }
+    .featured-arrow {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--accent);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      margin-top: 0.5rem;
+    }
+    .featured-arrow span { transition: transform 0.25s; }
+    .featured-card:hover .featured-arrow span { transform: translateX(4px); }
+
+    @media (max-width: 768px) {
+      .featured-card { flex-direction: column; gap: 0; }
+      .featured-accent { width: 100%; min-height: 6px; height: 6px; }
+      .featured-body { padding: 1.75rem; }
+      .featured-card h3 { font-size: 1.4rem; }
+    }
+
+    /* ── SIGNAL GRID ── */
+    .signal-grid-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0.5rem 2rem 2rem;
+    }
+    .signal-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+    @media (max-width: 768px) {
+      .signal-grid { grid-template-columns: 1fr; }
+    }
+
+    .signal-card {
+      background: var(--white);
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+      padding: 1.75rem;
+      text-decoration: none;
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s;
+      position: relative;
+      overflow: hidden;
+    }
+    .signal-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 3px;
+      background: var(--accent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .signal-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    }
+    .signal-card:hover::before { opacity: 1; }
+
+    .signal-card h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.3rem;
+      font-weight: 400;
+      line-height: 1.25;
+      letter-spacing: -0.01em;
+    }
+    .card-oneliner {
+      font-size: 0.92rem;
+      color: var(--gray-600);
+      line-height: 1.65;
+      flex: 1;
+    }
+    .card-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      flex-wrap: wrap;
+      margin-top: 0.25rem;
+    }
+
+    /* Badges */
+    .sci-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      font-weight: 500;
+      padding: 0.25rem 0.65rem;
+      border-radius: 6px;
+      letter-spacing: 0.02em;
+    }
+    .sci-high { background: var(--high-bg); color: var(--high-text); }
+    .sci-moderate { background: var(--moderate-bg); color: var(--moderate-text); }
+    .sci-low { background: var(--low-bg); color: var(--low-text); }
+
+    .territory-tag {
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--gray-600);
+      background: var(--gray-100);
+      padding: 0.25rem 0.6rem;
+      border-radius: 6px;
+    }
+    .date-tag {
+      font-size: 0.72rem;
+      color: var(--gray-400);
+    }
+
+    .card-arrow {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--accent);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      margin-top: 0.25rem;
+    }
+    .card-arrow span { transition: transform 0.25s; }
+    .signal-card:hover .card-arrow span { transform: translateX(4px); }
+
+    /* Animations */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .anim { animation: fadeUp 0.6s ease-out both; }
+    .anim-d1 { animation-delay: 0.1s; }
+    .anim-d2 { animation-delay: 0.2s; }
+    .anim-d3 { animation-delay: 0.3s; }
+    .anim-d4 { animation-delay: 0.4s; }
+    .anim-d5 { animation-delay: 0.5s; }
+    .anim-d6 { animation-delay: 0.6s; }
+    .anim-d7 { animation-delay: 0.7s; }
+
+    /* ── CTA SECTION ── */
+    .signal-cta {
+      max-width: 1200px;
+      margin: 2rem auto 0;
+      padding: 3.5rem 2rem;
+      text-align: center;
+      background: linear-gradient(135deg, var(--accent-light) 0%, transparent 60%);
+      border-top: 1px solid var(--gray-200);
+      border-bottom: 1px solid var(--gray-200);
+      position: relative;
+    }
+    .signal-cta::before {
+      content: '';
+      position: absolute;
+      bottom: -60px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 400px;
+      height: 200px;
+      background: radial-gradient(ellipse, var(--accent-glow) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .signal-cta h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.85rem;
+      font-weight: 400;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.02em;
+    }
+    .signal-cta > p {
+      color: var(--gray-600);
+      max-width: 480px;
+      margin: 0 auto 1.5rem;
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+    .cta-stats {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--gray-600);
+      margin-bottom: 1.75rem;
+      flex-wrap: wrap;
+    }
+    .subscribe-btn {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.9rem;
+      font-weight: 600;
+      padding: 0.85rem 2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+      box-shadow: 0 4px 14px rgba(76, 175, 80, 0.3);
+    }
+    .subscribe-btn:hover {
+      background: #43A047;
+      transform: translateY(-1px);
+    }
+    .cta-note {
+      font-size: 0.75rem;
+      color: var(--gray-400);
+      margin-top: 1rem;
+    }
+
+    /* ── RELATED DIVISIONS ── */
+    .related-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 3.5rem 2rem 2rem;
+    }
+    .related-section h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.02em;
+    }
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+    }
+    @media (max-width: 768px) {
+      .related-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    .related-card {
+      background: var(--white);
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      padding: 1.25rem;
+      text-decoration: none;
+      color: var(--text);
+      transition: transform 0.3s, box-shadow 0.3s;
+      border-top: 3px solid transparent;
+    }
+    .related-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    }
+    .related-card h4 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      margin-bottom: 0.3rem;
+    }
+    .related-card p {
+      font-size: 0.78rem;
+      color: var(--gray-600);
+      line-height: 1.5;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+      border-top: 1px solid var(--gray-200);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-left {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1rem;
+      color: var(--gray-600);
+    }
+    .footer-left span { color: var(--accent); }
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .footer-links a {
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--gray-400);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--accent); }
+    .footer-copy {
+      width: 100%;
+      text-align: center;
+      font-size: 0.72rem;
+      color: var(--gray-400);
+      margin-top: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      footer { flex-direction: column; text-align: center; }
+      .footer-links { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAVIGATION ── -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="../" class="nav-logo">IN<span>·</span>KluSo</a>
+    <ul class="nav-links">
+      <li><a href="../core/">Core</a></li>
+      <li><a href="../thrive/" class="active">Thrive</a></li>
+      <li><a href="../flow/">Flow</a></li>
+      <li><a href="../axis/">Axis</a></li>
+      <li><a href="../cities/">Cities</a></li>
+      <li><a href="../about/">About</a></li>
+      <li><a href="../tools/">Tools</a></li>
+    </ul>
+    <button class="hamburger" aria-label="Toggle menu" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile nav -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="../">Home</a>
+  <a href="../core/">Core</a>
+  <a href="../thrive/" class="active">Thrive</a>
+  <a href="../flow/">Flow</a>
+  <a href="../axis/">Axis</a>
+  <a href="../cities/">Cities</a>
+  <a href="../about/">About</a>
+  <a href="../tools/">Tools</a>
+</div>
+
+<!-- ── HERO ── -->
+<header class="hero">
+  <div class="hero-content">
+    <div class="hero-label">Signal Division</div>
+    <h1>THRIVE</h1>
+    <div class="hero-accent-line"></div>
+    <p class="hero-tagline">Human Resilience — How people adapt when systems fail them</p>
+    <p class="hero-description">THRIVE tracks the adaptive behaviors, entrepreneurial shifts, and structural workarounds that emerge when institutions stop serving people. These signals document human resilience against systemic pressure — not as inspiration, but as measurable pattern.</p>
+    <div class="hero-badge">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+      4 Published Signals
+    </div>
+  </div>
+</header>
+
+<!-- ── FEATURED SIGNAL ── -->
+<div class="section-header">
+  <h2>Featured Signal</h2>
+  <p>Highest-confidence intelligence in THRIVE</p>
+</div>
+
+<div class="featured-section">
+  <a href="credential-collapse/" class="featured-card anim">
+    <div class="featured-accent"></div>
+    <div class="featured-body">
+      <div class="featured-top">
+        <span class="featured-label">★ Featured</span>
+        <span class="sci-badge sci-high">SCI 0.90 · HIGH</span>
+        <span class="territory-tag">United States</span>
+        <span class="date-tag">March 2026</span>
+      </div>
+      <h3>The Credential Collapse</h3>
+      <p class="card-oneliner">Enrollment down 15% since 2010. 77% of employers now accept skills-based hiring. The $1.77 trillion student debt load is accelerating a structural break from degree dependency.</p>
+      <div class="featured-arrow">Read full signal <span>→</span></div>
+    </div>
+  </a>
+</div>
+
+<!-- ── SIGNAL GRID ── -->
+<div class="section-header">
+  <h2>All Signals</h2>
+  <p>Sorted by Signal Confidence Index</p>
+</div>
+
+<div class="signal-grid-section">
+  <div class="signal-grid">
+
+    <!-- The Debt Dream — SCI 0.90 -->
+    <a href="debt-dream/" class="signal-card anim anim-d1">
+      <div class="card-meta">
+        <span class="sci-badge sci-high">SCI 0.90 · HIGH</span>
+        <span class="territory-tag">United States</span>
+        <span class="date-tag">March 2026</span>
+      </div>
+      <h3>The Debt Dream</h3>
+      <p class="card-oneliner">Gen Z's average debt: $94,000. Homeownership: 3%. The American Dream has been redefined — it's no longer a house, it's being debt-free.</p>
+      <div class="card-arrow">Read signal <span>→</span></div>
+    </a>
+
+    <!-- The Bootstrap Inversion — SCI 0.86 -->
+    <a href="../signals/thrive/the-bootstrap-inversion/" class="signal-card anim anim-d2">
+      <div class="card-meta">
+        <span class="sci-badge sci-high">SCI 0.86 · HIGH</span>
+        <span class="territory-tag">United States</span>
+        <span class="date-tag">March 2026</span>
+      </div>
+      <h3>The Bootstrap Inversion</h3>
+      <p class="card-oneliner">57% of founders now choose bootstrapping over VC. Not because they can't raise — because the math changed. Venture as default path is dying.</p>
+      <div class="card-arrow">Read signal <span>→</span></div>
+    </a>
+
+    <!-- The Solo Majority — SCI 0.80 -->
+    <a href="../divisions/thrive/solo-majority/" class="signal-card anim anim-d3">
+      <div class="card-meta">
+        <span class="sci-badge sci-high">SCI 0.80 · HIGH</span>
+        <span class="territory-tag">United States</span>
+        <span class="date-tag">March 2026</span>
+      </div>
+      <h3>The Solo Majority</h3>
+      <p class="card-oneliner">Solo founders now outperform teams. The structural shift toward single-operator businesses is accelerating — not a lifestyle choice, a rational economic response.</p>
+      <div class="card-arrow">Read signal <span>→</span></div>
+    </a>
+
+  </div>
+</div>
+
+<!-- ── CTA SECTION ── -->
+<section class="signal-cta">
+  <h3>Stay in the Signal</h3>
+  <p>New intelligence drops weekly. No noise. No spam. Just verified signals that matter.</p>
+  <div class="cta-stats">
+    <span>4 signals published</span>
+    <span>·</span>
+    <span>4 HIGH confidence</span>
+    <span>·</span>
+    <span>100% human-verified</span>
+  </div>
+  <a href="mailto:inkluso.signals@gmail.com?subject=Signal%20Intelligence%20—%20Subscribe&body=I'd%20like%20to%20receive%20signal%20intelligence%20updates." class="subscribe-btn">Join the Intelligence Network →</a>
+  <p class="cta-note">Free. Unsubscribe anytime. We don't sell data.</p>
+</section>
+
+<!-- ── RELATED DIVISIONS ── -->
+<section class="related-section">
+  <h2>Explore Other Divisions</h2>
+  <div class="related-grid">
+    <a href="../core/" class="related-card" style="border-top-color: #FF6B35;">
+      <h4>CORE</h4>
+      <p>Labor, capital, and institutional power — the structural forces reshaping economies.</p>
+    </a>
+    <a href="../flow/" class="related-card" style="border-top-color: #2196F3;">
+      <h4>FLOW</h4>
+      <p>Migration, movement, and spatial reallocation — where people and capital are going.</p>
+    </a>
+    <a href="../axis/" class="related-card" style="border-top-color: #9C27B0;">
+      <h4>AXIS</h4>
+      <p>Geopolitics, regulation, and sovereignty — the power structures shaping global order.</p>
+    </a>
+    <a href="../cities/" class="related-card" style="border-top-color: #FFC107;">
+      <h4>CITIES</h4>
+      <p>Urban intelligence — how cities evolve under demographic, economic, and policy pressure.</p>
+    </a>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-left">IN<span>·</span>KluSo</div>
+  <div class="footer-links">
+    <a href="../">Home</a>
+    <a href="../about/">About</a>
+    <a href="../doctrine/">Doctrine</a>
+    <a href="../tools/">Tools</a>
+  </div>
+  <div class="footer-copy">© 2026 IN-KluSo Signal Intelligence. All rights reserved.</div>
+</footer>
+
+<script>
+function toggleMenu() {
+  document.querySelector('.hamburger').classList.toggle('open');
+  document.getElementById('mobileNav').classList.toggle('open');
+}
+
+// Intersection observer for scroll animations
+document.addEventListener('DOMContentLoaded', () => {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.animationPlayState = 'running';
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.anim').forEach(el => {
+    el.style.animationPlayState = 'paused';
+    observer.observe(el);
+  });
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FLOW — IN-KluSo Signal Intelligence</title>
+  <meta name="description" content="FLOW tracks the structural changes in how information moves, who controls distribution, and what happens when platforms reshape the relationship between creators and audiences. These signals document the invisible infrastructure of attention.">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "FLOW — IN-KluSo",
+    "description": "FLOW tracks the structural changes in how information moves, who controls distribution, and what happens when platforms reshape the relationship between creators and audiences. These signals document the invisible infrastructure of attention.",
+    "url": "https://jjaecheverri.github.io/inkluso-magazine/flow/",
+    "publisher": { "@type": "Organization", "name": "IN-KluSo" }
+  }
+  </script>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #FAF6EE;
+      --text: #1A1A1A;
+      --accent: #2196F3;
+      --accent-light: rgba(33, 150, 243, 0.08);
+      --accent-medium: rgba(33, 150, 243, 0.15);
+      --accent-glow: rgba(33, 150, 243, 0.25);
+      --white: #FFFFFF;
+      --gray-100: #F5F5F5;
+      --gray-200: #E0E0E0;
+      --gray-400: #9E9E9E;
+      --gray-600: #666666;
+      --radius: 12px;
+      --shadow-sm: 0 2px 12px rgba(0,0,0,0.06);
+      --shadow-md: 0 8px 24px rgba(0,0,0,0.1);
+      --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(250,246,238,0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      padding: 0 2rem;
+    }
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+    }
+    .nav-brand {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.3rem;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+    .nav-brand span { color: var(--accent); }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.8rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--gray-600);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--accent); }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 60px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(250,246,238,0.97);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      z-index: 999;
+      padding: 2rem;
+    }
+    .mobile-menu.open { display: flex; flex-direction: column; gap: 0.5rem; }
+    .mobile-menu a {
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text);
+      text-decoration: none;
+      padding: 0.8rem 0;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      transition: color var(--transition);
+    }
+    .mobile-menu a:hover,
+    .mobile-menu a.active { color: var(--accent); }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+    }
+
+    /* ── HERO ── */
+    .hero {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 5rem 2rem 3.5rem;
+      position: relative;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -80px;
+      right: -120px;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--accent-light) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .hero-content { position: relative; z-index: 1; }
+    .hero-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      margin-bottom: 1.2rem;
+    }
+    .hero-label::before {
+      content: '';
+      display: inline-block;
+      width: 28px;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+    .hero-tagline {
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: var(--gray-600);
+      max-width: 640px;
+      margin-bottom: 1.5rem;
+      line-height: 1.5;
+    }
+    .hero-description {
+      font-size: 1rem;
+      color: var(--gray-600);
+      max-width: 600px;
+      margin-bottom: 2rem;
+      line-height: 1.7;
+    }
+    .hero-meta {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .signal-count-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 24px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+    .signal-count-badge svg { width: 16px; height: 16px; }
+    .hero-divider {
+      width: 60px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 4px;
+      margin-top: 2.5rem;
+    }
+
+    /* ── SIGNAL GRID ── */
+    .signals-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 2rem 4rem;
+    }
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .section-header h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2rem;
+      letter-spacing: -0.02em;
+    }
+    .section-header .subtitle {
+      font-size: 0.85rem;
+      color: var(--gray-400);
+      font-weight: 500;
+    }
+
+    /* Featured Card */
+    .featured-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+      margin-bottom: 2rem;
+      text-decoration: none;
+      color: inherit;
+      transition: transform var(--transition), box-shadow var(--transition);
+      animation: fadeInUp 0.6s ease both;
+    }
+    .featured-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+    .featured-visual {
+      position: relative;
+      background: linear-gradient(135deg, var(--accent-medium) 0%, var(--accent-glow) 50%, var(--accent-light) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 280px;
+      padding: 2.5rem;
+    }
+    .featured-visual .featured-badge {
+      position: absolute;
+      top: 1.2rem;
+      left: 1.2rem;
+      background: var(--accent);
+      color: white;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 0.35rem 0.8rem;
+      border-radius: 4px;
+    }
+    .featured-visual .featured-icon {
+      font-size: 5rem;
+      opacity: 0.15;
+      color: var(--accent);
+    }
+    .featured-body {
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .featured-body h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.8rem;
+      line-height: 1.2;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.02em;
+    }
+    .featured-body .one-liner {
+      font-size: 1rem;
+      color: var(--gray-600);
+      line-height: 1.65;
+      margin-bottom: 1.5rem;
+    }
+    .featured-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      .featured-card { grid-template-columns: 1fr; }
+      .featured-visual { min-height: 160px; }
+    }
+
+    /* Card Grid */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+    @media (max-width: 768px) {
+      .card-grid { grid-template-columns: 1fr; }
+    }
+
+    .signal-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+      padding: 1.8rem;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      transition: transform var(--transition), box-shadow var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .signal-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--accent);
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+    .signal-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+    .signal-card:hover::before { opacity: 1; }
+
+    .signal-card h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.3rem;
+      line-height: 1.25;
+      margin-bottom: 0.6rem;
+      letter-spacing: -0.01em;
+    }
+    .signal-card .one-liner {
+      font-size: 0.9rem;
+      color: var(--gray-600);
+      line-height: 1.6;
+      margin-bottom: 1.2rem;
+      flex: 1;
+    }
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .card-tags {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    /* Badges */
+    .sci-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 0.25rem 0.65rem;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .sci-badge.high { background: #E8F5E9; color: #2E7D32; }
+    .sci-badge.moderate { background: #FFF3E0; color: #E65100; }
+    .sci-badge.low { background: #FFEBEE; color: #C62828; }
+
+    .territory-tag {
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--gray-400);
+      background: var(--gray-100);
+      padding: 0.22rem 0.55rem;
+      border-radius: 4px;
+    }
+    .date-tag {
+      font-size: 0.78rem;
+      color: var(--gray-400);
+    }
+
+    .card-arrow {
+      font-size: 1.2rem;
+      color: var(--accent);
+      transition: transform var(--transition);
+    }
+    .signal-card:hover .card-arrow,
+    .featured-card:hover .card-arrow { transform: translateX(4px); }
+
+    /* ── CTA SECTION ── */
+    .signal-cta {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+    .signal-cta-inner {
+      background: linear-gradient(135deg, var(--accent-light) 0%, rgba(33,150,243,0.04) 100%);
+      border: 1px solid var(--accent-medium);
+      border-radius: var(--radius);
+      padding: 3.5rem;
+      text-align: center;
+    }
+    .signal-cta-inner h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2rem;
+      margin-bottom: 0.75rem;
+    }
+    .signal-cta-inner > p {
+      font-size: 1rem;
+      color: var(--gray-600);
+      max-width: 520px;
+      margin: 0 auto 1.5rem;
+      line-height: 1.65;
+    }
+    .cta-stats {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--gray-600);
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+    .cta-stats span:nth-child(even) { color: var(--gray-200); }
+    .subscribe-btn {
+      display: inline-block;
+      background: var(--accent);
+      color: white;
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 0.85rem 2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+    }
+    .subscribe-btn:hover {
+      background: #1976D2;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(33,150,243,0.35);
+    }
+    .cta-note {
+      font-size: 0.78rem;
+      color: var(--gray-400);
+      margin-top: 1rem;
+    }
+
+    /* ── RELATED DIVISIONS ── */
+    .related-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 2rem 4rem;
+    }
+    .related-section h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.6rem;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.02em;
+    }
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+    @media (max-width: 768px) {
+      .related-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 480px) {
+      .related-grid { grid-template-columns: 1fr; }
+    }
+    .related-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+      padding: 1.3rem;
+      text-decoration: none;
+      color: inherit;
+      transition: transform var(--transition), box-shadow var(--transition);
+      border-top: 3px solid transparent;
+    }
+    .related-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+    .related-card h4 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.1rem;
+      margin-bottom: 0.35rem;
+    }
+    .related-card p {
+      font-size: 0.78rem;
+      color: var(--gray-400);
+      line-height: 1.5;
+    }
+    .related-card.core-card { border-top-color: #E53935; }
+    .related-card.thrive-card { border-top-color: #43A047; }
+    .related-card.axis-card { border-top-color: #FB8C00; }
+    .related-card.cities-card { border-top-color: #8E24AA; }
+
+    /* ── FOOTER ── */
+    .footer {
+      border-top: 1px solid rgba(0,0,0,0.06);
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .footer-brand {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.2rem;
+      color: var(--text);
+      margin-bottom: 0.75rem;
+    }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+    .footer-links a {
+      font-size: 0.8rem;
+      color: var(--gray-400);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color var(--transition);
+    }
+    .footer-links a:hover { color: var(--accent); }
+    .footer-copy {
+      font-size: 0.75rem;
+      color: var(--gray-400);
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate {
+      opacity: 0;
+      animation: fadeInUp 0.6s ease both;
+    }
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
+    .delay-4 { animation-delay: 0.4s; }
+    .delay-5 { animation-delay: 0.5s; }
+    .delay-6 { animation-delay: 0.6s; }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAVIGATION ── -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="../" class="nav-brand">IN<span>-</span>KluSo</a>
+      <ul class="nav-links">
+        <li><a href="../core/">Core</a></li>
+        <li><a href="../thrive/">Thrive</a></li>
+        <li><a href="./" class="active">Flow</a></li>
+        <li><a href="../axis/">Axis</a></li>
+        <li><a href="../cities/">Cities</a></li>
+        <li><a href="../about/">About</a></li>
+        <li><a href="../tools/">Tools</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="../core/">Core</a>
+    <a href="../thrive/">Thrive</a>
+    <a href="./" class="active">Flow</a>
+    <a href="../axis/">Axis</a>
+    <a href="../cities/">Cities</a>
+    <a href="../about/">About</a>
+    <a href="../tools/">Tools</a>
+  </div>
+
+  <!-- ── HERO ── -->
+  <header class="hero">
+    <div class="hero-content">
+      <div class="hero-label animate">Signal Division</div>
+      <h1 class="animate delay-1">FLOW</h1>
+      <p class="hero-tagline animate delay-2">Information &amp; Platform Dynamics — How attention, media, and distribution shift</p>
+      <p class="hero-description animate delay-3">FLOW tracks the structural changes in how information moves, who controls distribution, and what happens when platforms reshape the relationship between creators and audiences. These signals document the invisible infrastructure of attention.</p>
+      <div class="hero-meta animate delay-4">
+        <span class="signal-count-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          4 Published Signals
+        </span>
+        <span class="date-tag">Last updated March 2026</span>
+      </div>
+      <div class="hero-divider animate delay-5"></div>
+    </div>
+  </header>
+
+  <!-- ── SIGNAL GRID ── -->
+  <section class="signals-section">
+    <div class="section-header animate">
+      <h2>Signal Intelligence</h2>
+      <span class="subtitle">Sorted by confidence score</span>
+    </div>
+
+    <!-- Featured: The Empty Room (SCI 0.91, first alphabetically among ties) -->
+    <a href="empty-room/" class="featured-card animate delay-1">
+      <div class="featured-visual">
+        <span class="featured-badge">★ Featured Signal</span>
+        <div class="featured-icon">◈</div>
+      </div>
+      <div class="featured-body">
+        <div class="card-tags" style="margin-bottom:0.75rem;">
+          <span class="sci-badge high">SCI 0.91 · HIGH</span>
+          <span class="territory-tag">United States</span>
+        </div>
+        <h3>The Empty Room</h3>
+        <p class="one-liner">21% of Americans have zero access to civic gathering spaces. In civic deserts, 32% report having no close friends. The third place is disappearing.</p>
+        <div class="featured-meta">
+          <span class="date-tag">March 2026</span>
+          <span class="card-arrow">→</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Remaining Cards -->
+    <div class="card-grid">
+
+      <!-- The Last Masthead – SCI 0.91 -->
+      <a href="last-masthead/" class="signal-card animate delay-2">
+        <h3>The Last Masthead</h3>
+        <p class="one-liner">3,500 newspapers closed since 2005. 50 million Americans live in news deserts. Local journalism's collapse is creating information voids that don't get filled.</p>
+        <div class="card-footer">
+          <div class="card-tags">
+            <span class="sci-badge high">SCI 0.91 · HIGH</span>
+            <span class="territory-tag">United States</span>
+            <span class="date-tag">March 2026</span>
+          </div>
+          <span class="card-arrow">→</span>
+        </div>
+      </a>
+
+      <!-- The Five Million Exits – SCI 0.82 -->
+      <a href="../signals/flow/the-five-million-exits/" class="signal-card animate delay-3">
+        <h3>The Five Million Exits</h3>
+        <p class="one-liner">TikTok ban triggers 5 million creator relocations. Platform dependency becomes visible only at the moment of forced migration.</p>
+        <div class="card-footer">
+          <div class="card-tags">
+            <span class="sci-badge high">SCI 0.82 · HIGH</span>
+            <span class="territory-tag">United States</span>
+            <span class="date-tag">March 2026</span>
+          </div>
+          <span class="card-arrow">→</span>
+        </div>
+      </a>
+
+      <!-- The Slop Threshold – SCI 0.78 -->
+      <a href="../signals/flow/the-slop-threshold/" class="signal-card animate delay-4">
+        <h3>The Slop Threshold</h3>
+        <p class="one-liner">Creator reach collapsed from 20% to 2%. AI-generated content floods platforms. The signal-to-noise ratio has crossed a structural threshold.</p>
+        <div class="card-footer">
+          <div class="card-tags">
+            <span class="sci-badge moderate">SCI 0.78 · MODERATE</span>
+            <span class="territory-tag">Global</span>
+            <span class="date-tag">March 2026</span>
+          </div>
+          <span class="card-arrow">→</span>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ── CTA: STAY IN THE SIGNAL ── -->
+  <section class="signal-cta">
+    <div class="signal-cta-inner animate">
+      <h3>Stay in the Signal</h3>
+      <p>New intelligence drops weekly. No noise. No spam. Just verified signals that matter.</p>
+      <div class="cta-stats">
+        <span>4 signals published</span>
+        <span>·</span>
+        <span>3 HIGH confidence</span>
+        <span>·</span>
+        <span>100% human-verified</span>
+      </div>
+      <a href="mailto:inkluso.signals@gmail.com?subject=Signal%20Intelligence%20—%20Subscribe&body=I'd%20like%20to%20receive%20signal%20intelligence%20updates." class="subscribe-btn">Join the Intelligence Network →</a>
+      <p class="cta-note">Free. Unsubscribe anytime. We don't sell data.</p>
+    </div>
+  </section>
+
+  <!-- ── RELATED DIVISIONS ── -->
+  <section class="related-section">
+    <h2 class="animate">Explore Other Divisions</h2>
+    <div class="related-grid">
+      <a href="../core/" class="related-card core-card animate delay-1">
+        <h4>CORE</h4>
+        <p>Labor, Economy &amp; Structural Shifts</p>
+      </a>
+      <a href="../thrive/" class="related-card thrive-card animate delay-2">
+        <h4>THRIVE</h4>
+        <p>Health, Wellbeing &amp; Human Systems</p>
+      </a>
+      <a href="../axis/" class="related-card axis-card animate delay-3">
+        <h4>AXIS</h4>
+        <p>Power, Governance &amp; Regulation</p>
+      </a>
+      <a href="../cities/" class="related-card cities-card animate delay-4">
+        <h4>CITIES</h4>
+        <p>Urban Intelligence &amp; Territory Signals</p>
+      </a>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">IN-KluSo</div>
+      <div class="footer-links">
+        <a href="../">Home</a>
+        <a href="../about/">About</a>
+        <a href="../tools/">Tools</a>
+        <a href="../doctrine/">Doctrine</a>
+        <a href="mailto:inkluso.signals@gmail.com">Contact</a>
+      </div>
+      <p class="footer-copy">&copy; 2026 IN-KluSo Signal Intelligence. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- ── SCRIPTS ── -->
+  <script>
+    // Hamburger toggle
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+    });
+
+    // Intersection Observer for scroll animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animationPlayState = 'running';
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.animate').forEach(el => {
+      el.style.animationPlayState = 'paused';
+      observer.observe(el);
+    });
+
+    // Re-trigger hero animations immediately (above fold)
+    document.querySelectorAll('.hero .animate').forEach(el => {
+      el.style.animationPlayState = 'running';
+    });
+  </script>
+
+</body>
+</html>
