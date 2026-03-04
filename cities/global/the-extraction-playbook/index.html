@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Extraction Playbook — IN-KluSo</title>
+  <meta name="description" content="Sycamore Partners bought Walgreens in August. By February, 500 stores gone, 9,000 workers cut, holiday pay eliminated. The CEO who closed a third of Staples is now running America's second-largest pharmacy chain. This is how essential infrastructure becomes a balance sheet.">
+  <meta name="author" content="Juan Camilo Echeverri">
+  <link rel="canonical" href="https://jjaecheverri.github.io/inkluso-magazine/cities/global/the-extraction-playbook/">
+
+  <!-- JSON-LD Machine-Readable Signal -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "The Extraction Playbook",
+    "description": "Sycamore Partners bought Walgreens in August. By February, 500 stores gone, 9,000 workers cut. The CEO who closed a third of Staples is now running America's second-largest pharmacy chain.",
+    "author": {
+      "@type": "Person",
+      "name": "Juan Camilo Echeverri",
+      "jobTitle": "Executive Broker, PAK Home Realty",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "PAK Home Realty",
+        "address": {
+          "@addressLocality": "Rogers",
+          "@addressRegion": "AR"
+        }
+      }
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "IN-KluSo",
+      "url": "https://jjaecheverri.github.io/inkluso-magazine/"
+    },
+    "datePublished": "2026-03-03",
+    "dateModified": "2026-03-03",
+    "articleSection": "CORE",
+    "keywords": ["private equity", "infrastructure withdrawal", "pharmacy desert", "healthcare access", "essential services", "Walgreens", "Sycamore Partners", "labor displacement", "PBM reform", "pharmacy closures"],
+    "url": "https://jjaecheverri.github.io/inkluso-magazine/cities/global/the-extraction-playbook/",
+    "about": {
+      "@type": "Country",
+      "name": "United States"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #FAF6EE;
+      --black: #111111;
+      --orange: #E05A1C;
+      --gray: #6B6B6B;
+      --light-gray: #E8E4DC;
+      --division-color: #E8491D;
+      --division-bg: #FEF2ED;
+    }
+
+    body {
+      background: var(--cream);
+      color: var(--black);
+      font-family: 'Inter', sans-serif;
+      font-size: 17px;
+      line-height: 1.75;
+    }
+
+    /* NAV */
+    nav {
+      background: var(--black);
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      color: var(--cream);
+      font-size: 20px;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: #AAAAAA;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--cream); }
+    .nav-links a.active { color: var(--orange); }
+
+    /* SIGNAL HEADER */
+    .signal-header {
+      border-bottom: 1px solid var(--light-gray);
+      padding: 48px 32px 32px;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .signal-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .signal-id {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--gray);
+      font-family: 'Inter', monospace;
+    }
+    .section-tag {
+      display: inline-block;
+      background: var(--division-color);
+      color: white;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 2px;
+    }
+    .city-tag {
+      display: inline-block;
+      background: var(--light-gray);
+      color: var(--black);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 2px;
+    }
+    .cluster-tag {
+      font-size: 11px;
+      color: var(--orange);
+      font-weight: 500;
+      letter-spacing: 0.05em;
+    }
+
+    .signal-header h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(32px, 5vw, 52px);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      margin-bottom: 16px;
+    }
+    .signal-header .deck {
+      font-size: 19px;
+      color: var(--gray);
+      line-height: 1.5;
+      margin-bottom: 24px;
+      font-weight: 300;
+    }
+    .byline {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding-top: 20px;
+      border-top: 1px solid var(--light-gray);
+    }
+    .byline-text {
+      font-size: 13px;
+      color: var(--gray);
+    }
+    .byline-text strong {
+      color: var(--black);
+      font-weight: 600;
+    }
+    .publish-date { font-size: 12px; color: var(--gray); }
+
+    /* LAYER LABELS */
+    .layer-label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 48px 0 24px;
+    }
+    .layer-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--black);
+      color: var(--cream);
+      font-size: 12px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .layer-name {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+    .layer-rule {
+      flex: 1;
+      height: 1px;
+      background: var(--light-gray);
+    }
+
+    /* ARTICLE BODY */
+    .article-body {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 32px 80px;
+    }
+
+    .article-body p {
+      margin-bottom: 22px;
+      color: var(--black);
+    }
+    .article-body p em {
+      font-style: italic;
+      color: var(--black);
+    }
+    .article-body .pull-quote {
+      font-family: 'DM Serif Display', serif;
+      font-size: 24px;
+      line-height: 1.3;
+      color: var(--black);
+      border-left: 4px solid var(--orange);
+      padding: 16px 24px;
+      margin: 36px 0;
+      font-style: italic;
+    }
+    .article-body .structural-note {
+      background: var(--division-bg);
+      border-left: 3px solid var(--division-color);
+      padding: 20px 24px;
+      margin: 32px 0;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+    .article-body .structural-note strong {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--division-color);
+      margin-bottom: 8px;
+    }
+
+    hr.section-break {
+      border: none;
+      border-top: 1px solid var(--light-gray);
+      margin: 48px 0;
+    }
+
+    /* SIGNAL TAGS */
+    .signal-tags-section {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--light-gray);
+    }
+    .signal-tags-section h4 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 12px;
+    }
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tag {
+      background: var(--light-gray);
+      color: var(--black);
+      font-size: 11px;
+      font-weight: 500;
+      padding: 4px 12px;
+      border-radius: 12px;
+      letter-spacing: 0.04em;
+    }
+
+    /* EVIDENCE BLOCK */
+    .evidence-block {
+      background: #F5F5F0;
+      border: 1px solid var(--light-gray);
+      border-radius: 4px;
+      padding: 24px;
+      margin: 40px 0;
+    }
+    .evidence-block h4 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 16px;
+    }
+    .evidence-item {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 12px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .evidence-item:last-child { margin-bottom: 0; }
+    .ev-type {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 2px;
+      height: fit-content;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .ev-verified { background: #D4EDDA; color: #155724; }
+    .ev-inferred { background: #FFF3CD; color: #856404; }
+
+    /* UNCERTAINTY */
+    .uncertainty-block {
+      background: #FFF8F0;
+      border-left: 3px solid var(--orange);
+      padding: 16px 20px;
+      margin: 24px 0;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .uncertainty-block strong {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 6px;
+    }
+
+    /* SIGNAL CONFIDENCE */
+    .confidence-block {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 20px 24px;
+      background: var(--black);
+      color: var(--cream);
+      border-radius: 4px;
+      margin: 40px 0;
+    }
+    .confidence-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #AAAAAA;
+    }
+    .confidence-score {
+      font-family: 'DM Serif Display', serif;
+      font-size: 32px;
+      color: var(--orange);
+    }
+    .confidence-note {
+      font-size: 13px;
+      color: #AAAAAA;
+      line-height: 1.4;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--black);
+      color: #AAAAAA;
+      padding: 40px 32px;
+      text-align: center;
+    }
+    footer a { color: #AAAAAA; text-decoration: none; }
+    footer a:hover { color: var(--cream); }
+    .footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 16px; font-size: 13px; flex-wrap: wrap; }
+    .footer-copy { font-size: 12px; }
+
+    @media (max-width: 600px) {
+      nav { padding: 0 16px; }
+      .nav-links { gap: 16px; }
+      .signal-header, .article-body { padding-left: 20px; padding-right: 20px; }
+      .signal-header h1 { font-size: 30px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="../../../index.html">IN-KluSo</a>
+  <ul class="nav-links">
+    <li><a href="../../../index.html#core" class="active">CORE</a></li>
+    <li><a href="../../../index.html#cities">CITIES</a></li>
+    <li><a href="../../../kontrarian/">KONTRARIAN</a></li>
+    <li><a href="../../../index.html#about">ABOUT</a></li>
+    <li><a href="/inkluso-tools/">TOOLS</a></li>
+  </ul>
+</nav>
+
+<!-- SIGNAL HEADER -->
+<header class="signal-header">
+  <div class="signal-meta">
+    <span class="signal-id">CORE-003</span>
+    <span class="section-tag">CORE</span>
+    <span class="city-tag">United States</span>
+    <span class="cluster-tag">Infrastructure Extraction</span>
+  </div>
+
+  <h1>The Extraction Playbook</h1>
+  <p class="deck">Sycamore Partners bought Walgreens in August. By February, 500 stores gone, 9,000 workers cut, holiday pay eliminated. The CEO who closed a third of Staples is now running America's second-largest pharmacy chain. This is how essential infrastructure becomes a balance sheet.</p>
+
+  <div class="byline">
+    <div>
+      <div class="byline-text"><strong>Juan Camilo Echeverri</strong> — Executive Broker, PAK Home Realty · Rogers, AR</div>
+      <div class="publish-date">March 3, 2026 · United States · CORE</div>
+    </div>
+  </div>
+</header>
+
+<!-- ARTICLE BODY -->
+<main class="article-body">
+
+  <!-- LAYER 1 -->
+  <div class="layer-label">
+    <div class="layer-num">1</div>
+    <div class="layer-name">Human Becoming</div>
+    <div class="layer-rule"></div>
+  </div>
+
+  <p>She pulled into the parking lot at 6:47 a.m., the way she always did. Fifteen minutes before the pharmacy opened. Enough time to check the voicemail, sort the day's prescriptions, set out the blood pressure cuffs for the Tuesday walk-in clinic.</p>
+
+  <p>She had been opening this Walgreens for eleven years. Small town, central Illinois. The kind of place where the pharmacy is not just a pharmacy. It is where Mrs. Hendricks picks up her thyroid medication every Monday morning. Where the Garza family fills three prescriptions together every Wednesday afternoon. Where Mr. Oakley shows up every other Friday because he refuses to use a mail-order system and she learned years ago to stop arguing about it.</p>
+
+  <p>She knew every one of them by name. She knew which ones would need a refill before they called. She knew which ones would not ask for help even when they needed it.</p>
+
+  <p>The notice was taped to the inside of the glass door. Corporate letterhead. Two paragraphs. Effective immediately.</p>
+
+  <p>She read it twice.</p>
+
+  <p>Then she sat in her car for twenty minutes. Not out of anger — out of arithmetic. Not her arithmetic. Theirs. The patients who could not drive twelve miles to the next pharmacy. The ones who depended on the bus that stopped at this intersection. The diabetics who timed their refills to the day. The elderly who came in not because they needed something filled but because she was the only medical professional who still remembered their name.</p>
+
+  <p>Nobody from corporate called her. Nobody explained. The math had been done somewhere else, by people who had never filled a prescription in this building.</p>
+
+  <p>She did not cry. She picked up her phone and started making calls.</p>
+
+  <p>Not to corporate. To patients.</p>
+
+  <p>Because someone had to tell them before they showed up Monday morning to a locked door.</p>
+
+  <hr class="section-break">
+
+  <!-- LAYER 2 -->
+  <div class="layer-label">
+    <div class="layer-num">2</div>
+    <div class="layer-name">Structural Read</div>
+    <div class="layer-rule"></div>
+  </div>
+
+  <p>In August 2025, private equity firm Sycamore Partners completed its acquisition of Walgreens Boots Alliance, taking America's second-largest pharmacy chain private. Within six months, the results were public: 500 stores closed. 9,000 workers eliminated. Paid holidays stripped from hourly employees before Thanksgiving.</p>
+
+  <p>The playbook was not new. It did not need to be.</p>
+
+  <div class="structural-note">
+    <strong>Mechanism — The Sycamore Playbook</strong>
+    Sycamore Partners' approach is structurally identical to their Staples acquisition. In 2017, the firm took Staples private. The CEO they installed oversaw the closure of roughly one-third of all U.S. Staples stores and tens of thousands of layoffs. During that period, Sycamore extracted a $1 billion dividend from the company. In August 2025, they appointed the same CEO to run Walgreens. The sequence: acquire &rarr; install cost-cutting leadership &rarr; close locations &rarr; reduce labor costs &rarr; extract capital &rarr; service acquisition debt through operational savings. The leadership appointment is the tell.
+  </div>
+
+  <p>Jim Baker, Executive Director of the Private Equity Stakeholder Project, identified the pattern early.</p>
+
+  <div class="pull-quote">"Putting the same leadership in charge of Walgreens raised serious questions from the start. At Staples, workers and communities paid the price while Sycamore extracted over a billion dollars from the retailer."<br><span style="font-family: 'Inter', sans-serif; font-size: 13px; font-style: normal; color: var(--gray);">— Jim Baker, Executive Director, PESP</span></div>
+
+  <p>When PESP published its January 2026 analysis — after Walgreens eliminated holiday pay for hourly workers — Baker warned the cuts were "a warning sign of things to come." Within weeks, Bloomberg reported 469 layoffs in Illinois and the complete closure of a Texas distribution center, eliminating 159 positions.</p>
+
+  <div class="pull-quote">"These layoffs underscore the risks that come with turning essential healthcare providers into private equity portfolio companies."<br><span style="font-family: 'Inter', sans-serif; font-size: 13px; font-style: normal; color: var(--gray);">— Private Equity Stakeholder Project, February 2026</span></div>
+
+  <p>The velocity matters. Sycamore did not close 500 stores over five years. They did it in six months. That pace is not market correction. It is operational extraction.</p>
+
+  <div class="structural-note">
+    <strong>Comparative Clarity</strong>
+    A Staples store closes and you drive to Office Depot.<br>
+    A pharmacy closes and a diabetic rations insulin.<br><br>
+    The extraction model does not distinguish between office supplies and essential healthcare infrastructure. The balance sheet treats them identically. That is the mechanism — and the danger.
+  </div>
+
+  <p>Pharmacies are not retail stores. They are healthcare access points — prescriptions, vaccinations, health screenings, medication counseling. When 500 close in six months, the communities they served do not get replacements. Rural, low-income, and minority neighborhoods absorb the loss first, becoming what researchers call "pharmacy deserts" — the healthcare equivalent of food deserts.</p>
+
+  <p>The structural consequence is asymmetric. Sycamore's returns are private. The pharmacy deserts are public.</p>
+
+  <hr class="section-break">
+
+  <!-- LAYER 3 -->
+  <div class="layer-label">
+    <div class="layer-num">3</div>
+    <div class="layer-name">Pattern Confirmation</div>
+    <div class="layer-rule"></div>
+  </div>
+
+  <p>This is not a Walgreens story. It is an infrastructure withdrawal pattern.</p>
+
+  <p>Across the United States, major pharmacy chains have been consolidating and closing for years. Walgreens and Rite Aid have shuttered locations in state after state. Independent community pharmacies are disappearing alongside them. But private equity accelerates the timeline. What might have been a gradual ten-year contraction becomes a six-month restructuring. The pace matters because communities can adapt to slow decline. They cannot absorb sudden disappearance.</p>
+
+  <p>The communities already underserved — rural, low-income, minority neighborhoods — are the ones most at risk of becoming pharmacy deserts. The closures do not distribute evenly. They concentrate where margins were thinnest, which is where need was greatest.</p>
+
+  <p>The counter-signal, however, is already moving.</p>
+
+  <p>Arkansas — where Northwest Arkansas anchors one of the nation's most active local-economy experiments — passed the first state law prohibiting pharmacy benefit managers from operating both retail and mail-order pharmacies. The legislation directly targets the vertical integration that makes PE extraction profitable in pharmacy chains. Virginia's General Assembly has introduced similar bills. The structural withdrawal is producing legislative response.</p>
+
+  <div class="structural-note">
+    <strong>Cross-Signal — Farmers Market Cluster Connection</strong>
+    This signal connects to the Farmers Market cluster thesis tracked across GROUND signals: when corporate infrastructure withdraws from communities — pharmacy closures, grocery consolidation, food desert expansion — local alternatives emerge. Community pharmacies, cooperative health models, and direct-access food systems fill the void. Not because they are ideologically preferred, but because they are structurally necessary. The Walgreens extraction accelerates the same vacuum that drives farmers market formation in places like Northwest Arkansas.
+  </div>
+
+  <p>The pharmacist in Illinois did not wait for corporate to solve the problem. She picked up the phone. In Arkansas, legislators did not wait for the market to self-correct. They changed the rules.</p>
+
+  <p>The extraction playbook is efficient. It is repeatable. It is also, by now, legible. And legibility is the first condition for structural response.</p>
+
+  <hr class="section-break">
+
+  <!-- EVIDENCE BLOCK -->
+  <div class="evidence-block">
+    <h4>Evidence</h4>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>Bloomberg (Feb 19, 2026): 469 layoffs in Illinois, 159 in Texas with complete distribution center closure. Primary financial reporting on post-acquisition workforce reductions. Tier A source.</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>PESP (Jan 2026): 500 stores closed (8,500 → ~8,000 locations), 9,000 workers eliminated (220,000 → 211,000), holiday pay eliminated for hourly workers before Thanksgiving 2025. Tier A advocacy research with verified operational data.</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>Sycamore Partners completed Walgreens Boots Alliance acquisition August 2025. Same CEO from Staples installed. Staples precedent: ~1/3 of stores closed, $1 billion dividend extracted. Multiple Tier A/B sources confirm.</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>Arkansas passed first-in-nation PBM reform law prohibiting dual retail/mail-order pharmacy operation. Virginia General Assembly pursuing similar legislation. Confirmed by Cardinal News (Feb 2026).</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-inferred">Inferred</span>
+      <span>Pharmacy desert formation in affected communities. Directionally supported by SingleCare reporting and PESP analysis, but post-closure geographic impact not yet independently measured.</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-inferred">Inferred</span>
+      <span>Sycamore will follow Staples-scale dividend extraction pattern at Walgreens. Precedent-based inference — actual financial extraction not yet confirmed at comparable scale.</span>
+    </div>
+  </div>
+
+  <!-- UNCERTAINTY -->
+  <div class="uncertainty-block">
+    <strong>Uncertainty</strong>
+    Walgreens was already closing underperforming stores before the PE buyout — some closures may have occurred regardless of ownership change. Sycamore may not extract a Staples-scale dividend if pharmacy market conditions differ significantly. Independent pharmacies and telehealth may partially fill access gaps in some markets. PBM reform legislation (Arkansas model) may slow or redirect the extraction pattern. PE ownership does not always follow the same playbook — Sycamore may invest in digital transformation rather than pursue pure extraction.
+  </div>
+
+  <!-- CONFIDENCE -->
+  <div class="confidence-block">
+    <div>
+      <div class="confidence-label">Signal Confidence Index</div>
+      <div class="confidence-score">HIGH</div>
+    </div>
+    <div class="confidence-note">
+      SCI ~0.92. Tier A sources (Bloomberg, PESP) with specific operational data. Named actors, quantified outcomes, and documented precedent (Staples). Three-level causal mechanism clearly articulated with empirical validation. Counter-signal (Arkansas PBM law) strengthens structural read. Signal level: <strong>CONFIRMED</strong>.
+    </div>
+  </div>
+
+  <!-- SIGNAL TAGS -->
+  <div class="signal-tags-section">
+    <h4>Signal Tags</h4>
+    <div class="tags">
+      <span class="tag">private-equity-extraction</span>
+      <span class="tag">infrastructure-withdrawal</span>
+      <span class="tag">pharmacy-desert</span>
+      <span class="tag">healthcare-access</span>
+      <span class="tag">essential-services</span>
+      <span class="tag">labor-displacement</span>
+      <span class="tag">pe-playbook</span>
+      <span class="tag">sycamore-partners</span>
+      <span class="tag">walgreens</span>
+      <span class="tag">pbm-reform</span>
+      <span class="tag">arkansas</span>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-links">
+    <a href="../../../index.html">IN-KluSo Magazine</a>
+    <a href="../../../cities/global/">National Signals</a>
+    <a href="../../../kontrarian/">Kontrarian</a>
+    <a href="/inkluso-tools/">Tools</a>
+    <a href="../../../doctrine/">Doctrine</a>
+  </div>
+  <div class="footer-copy">&copy; 2026 IN-KluSo · Signal CORE-003 · Published Mar 3, 2026</div>
+</footer>
+
+</body>
+</html>
