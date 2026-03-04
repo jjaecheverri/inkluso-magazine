@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Neighbor's Veto — IN-KluSo</title>
+  <meta name="description" content="Spain's 2025 law gives building residents the power to block short-term rentals. Barcelona is phasing out 10,101 tourist apartments by 2028. Madrid courts are hearing displacement cases. Europe's housing war just got personal.">
+  <meta name="author" content="Juan Camilo Echeverri">
+  <link rel="canonical" href="https://jjaecheverri.github.io/inkluso-magazine/cities/madrid/neighbors-veto/">
+
+  <!-- JSON-LD Machine-Readable Signal -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "The Neighbor's Veto",
+    "description": "Spain's 2025 building-level veto law transforms property rights, giving neighbors collective power to block short-term rentals. Academic research confirms class-based displacement. A continental regulatory cascade is forming.",
+    "author": {
+      "@type": "Person",
+      "name": "Juan Camilo Echeverri",
+      "jobTitle": "Executive Broker, PAK Home Realty",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "PAK Home Realty",
+        "address": {
+          "@addressLocality": "Rogers",
+          "@addressRegion": "AR"
+        }
+      }
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "IN-KluSo",
+      "url": "https://jjaecheverri.github.io/inkluso-magazine/"
+    },
+    "datePublished": "2026-03-03",
+    "dateModified": "2026-03-03",
+    "articleSection": "GROUND",
+    "keywords": ["short-term rentals", "building governance", "property rights", "displacement", "platform regulation", "madrid", "barcelona", "spain", "eu housing policy", "class-based gentrification"],
+    "url": "https://jjaecheverri.github.io/inkluso-magazine/cities/madrid/neighbors-veto/",
+    "about": {
+      "@type": "Place",
+      "name": "Madrid",
+      "containedInPlace": {
+        "@type": "Country",
+        "name": "Spain"
+      }
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #FAF6EE;
+      --black: #111111;
+      --orange: #E05A1C;
+      --gray: #6B6B6B;
+      --light-gray: #E8E4DC;
+      --ground-color: #8B7355;
+      --ground-bg: #F5F0E8;
+    }
+
+    body {
+      background: var(--cream);
+      color: var(--black);
+      font-family: 'Inter', sans-serif;
+      font-size: 17px;
+      line-height: 1.75;
+    }
+
+    /* NAV */
+    nav {
+      background: var(--black);
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      color: var(--cream);
+      font-size: 20px;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: #AAAAAA;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--cream); }
+    .nav-links a.active { color: var(--orange); }
+
+    /* SIGNAL HEADER */
+    .signal-header {
+      border-bottom: 1px solid var(--light-gray);
+      padding: 48px 32px 32px;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .signal-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .signal-id {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--gray);
+      font-family: 'Inter', monospace;
+    }
+    .section-tag {
+      display: inline-block;
+      background: var(--ground-color);
+      color: white;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 2px;
+    }
+    .city-tag {
+      display: inline-block;
+      background: var(--light-gray);
+      color: var(--black);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 2px;
+    }
+    .cluster-tag {
+      font-size: 11px;
+      color: var(--orange);
+      font-weight: 500;
+      letter-spacing: 0.05em;
+    }
+
+    .signal-header h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(32px, 5vw, 52px);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      margin-bottom: 16px;
+    }
+    .signal-header .deck {
+      font-size: 19px;
+      color: var(--gray);
+      line-height: 1.5;
+      margin-bottom: 24px;
+      font-weight: 300;
+    }
+    .byline {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding-top: 20px;
+      border-top: 1px solid var(--light-gray);
+    }
+    .byline-text {
+      font-size: 13px;
+      color: var(--gray);
+    }
+    .byline-text strong {
+      color: var(--black);
+      font-weight: 600;
+    }
+    .publish-date { font-size: 12px; color: var(--gray); }
+
+    /* LAYER LABELS */
+    .layer-label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 48px 0 24px;
+    }
+    .layer-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--black);
+      color: var(--cream);
+      font-size: 12px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .layer-name {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+    .layer-rule {
+      flex: 1;
+      height: 1px;
+      background: var(--light-gray);
+    }
+
+    /* ARTICLE BODY */
+    .article-body {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 32px 80px;
+    }
+
+    .article-body p {
+      margin-bottom: 22px;
+      color: var(--black);
+    }
+    .article-body p em {
+      font-style: italic;
+      color: var(--black);
+    }
+    .article-body .pull-quote {
+      font-family: 'DM Serif Display', serif;
+      font-size: 24px;
+      line-height: 1.3;
+      color: var(--black);
+      border-left: 4px solid var(--orange);
+      padding: 16px 24px;
+      margin: 36px 0;
+      font-style: italic;
+    }
+    .article-body .structural-note {
+      background: var(--ground-bg);
+      border-left: 3px solid var(--ground-color);
+      padding: 20px 24px;
+      margin: 32px 0;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+    .article-body .structural-note strong {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ground-color);
+      margin-bottom: 8px;
+    }
+
+    hr.section-break {
+      border: none;
+      border-top: 1px solid var(--light-gray);
+      margin: 48px 0;
+    }
+
+    /* SIGNAL TAGS */
+    .signal-tags-section {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--light-gray);
+    }
+    .signal-tags-section h4 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 12px;
+    }
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tag {
+      background: var(--light-gray);
+      color: var(--black);
+      font-size: 11px;
+      font-weight: 500;
+      padding: 4px 12px;
+      border-radius: 12px;
+      letter-spacing: 0.04em;
+    }
+
+    /* EVIDENCE BLOCK */
+    .evidence-block {
+      background: #F5F5F0;
+      border: 1px solid var(--light-gray);
+      border-radius: 4px;
+      padding: 24px;
+      margin: 40px 0;
+    }
+    .evidence-block h4 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 16px;
+    }
+    .evidence-item {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 12px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .evidence-item:last-child { margin-bottom: 0; }
+    .ev-type {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 2px;
+      height: fit-content;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .ev-verified { background: #D4EDDA; color: #155724; }
+    .ev-inferred { background: #FFF3CD; color: #856404; }
+
+    /* UNCERTAINTY */
+    .uncertainty-block {
+      background: #FFF8F0;
+      border-left: 3px solid var(--orange);
+      padding: 16px 20px;
+      margin: 24px 0;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .uncertainty-block strong {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 6px;
+    }
+
+    /* SIGNAL CONFIDENCE */
+    .confidence-block {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 20px 24px;
+      background: var(--black);
+      color: var(--cream);
+      border-radius: 4px;
+      margin: 40px 0;
+    }
+    .confidence-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #AAAAAA;
+    }
+    .confidence-score {
+      font-family: 'DM Serif Display', serif;
+      font-size: 32px;
+      color: var(--orange);
+    }
+    .confidence-note {
+      font-size: 13px;
+      color: #AAAAAA;
+      line-height: 1.4;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--black);
+      color: #AAAAAA;
+      padding: 40px 32px;
+      text-align: center;
+    }
+    footer a { color: #AAAAAA; text-decoration: none; }
+    footer a:hover { color: var(--cream); }
+    .footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 16px; font-size: 13px; flex-wrap: wrap; }
+    .footer-copy { font-size: 12px; }
+
+    @media (max-width: 600px) {
+      nav { padding: 0 16px; }
+      .nav-links { gap: 16px; }
+      .signal-header, .article-body { padding-left: 20px; padding-right: 20px; }
+      .signal-header h1 { font-size: 30px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="../../../index.html">IN-KluSo</a>
+  <ul class="nav-links">
+    <li><a href="../../../index.html#core">CORE</a></li>
+    <li><a href="../../../index.html#cities">CITIES</a></li>
+    <li><a href="../../../kontrarian/">KONTRARIAN</a></li>
+    <li><a href="../../../index.html#about">ABOUT</a></li>
+    <li><a href="../../../index.html">TOOLS</a></li>
+  </ul>
+</nav>
+
+<!-- SIGNAL HEADER -->
+<header class="signal-header">
+  <div class="signal-meta">
+    <span class="signal-id">MADRID-GROUND-002</span>
+    <span class="section-tag">GROUND</span>
+    <span class="city-tag">Madrid, Spain</span>
+    <span class="cluster-tag">Housing Governance Cluster · Signal 2</span>
+  </div>
+
+  <h1>The Neighbor's Veto</h1>
+  <p class="deck">Spain's 2025 law gives building residents the power to block short-term rentals. Barcelona is phasing out 10,101 tourist apartments by 2028. Madrid courts are hearing displacement cases. Europe's housing war just got personal.</p>
+
+  <div class="byline">
+    <div>
+      <div class="byline-text"><strong>Juan Camilo Echeverri</strong> — Executive Broker, PAK Home Realty · Rogers, AR</div>
+      <div class="publish-date">March 3, 2026 · Madrid, Spain · GROUND</div>
+    </div>
+  </div>
+</header>
+
+<!-- ARTICLE BODY -->
+<main class="article-body">
+
+  <!-- LAYER 1 -->
+  <div class="layer-label">
+    <div class="layer-num">1</div>
+    <div class="layer-name">Human Becoming</div>
+    <div class="layer-rule"></div>
+  </div>
+
+  <p>Picture a Tuesday evening in a Madrid apartment building. Fourth floor, community meeting room. Fluorescent light. Folding chairs arranged in a rough semicircle. Someone has brought a thermos of coffee. Someone else is checking the time.</p>
+
+  <p>The agenda has one item.</p>
+
+  <p>Whether a neighbor — a man who owns the apartment on the second floor, who inherited it from his mother, who hasn't lived there in years — will be allowed to list it as a tourist rental.</p>
+
+  <p>He stands near the door. He's done the math. The nightly rate would cover the mortgage and then some. He's not a corporation. He's not a fund. He's one person trying to extract value from one property.</p>
+
+  <p>The woman across from him has lived in the building for nineteen years. She knows the sound of every elevator stop. She raised her children here. She has watched three families leave in the last two years — pushed out by rising costs, drawn away by noise, worn down by strangers in the hallway at midnight with rolling suitcases.</p>
+
+  <p>She raises her hand. She votes no.</p>
+
+  <div class="pull-quote">"It's not that we're against him. It's that we're for the building."</div>
+
+  <p>One by one, the hands go up. Twelve neighbors. Nine votes against. The apartment stays residential.</p>
+
+  <p>There is no shouting. No drama. Just a quiet shift in the meaning of ownership. What he can do with his property now depends on the people who live next to it.</p>
+
+  <p>That is not how property has worked — in Spain or anywhere — for a very long time. And this meeting is not unusual. Since April 2025, it is the law.</p>
+
+  <hr class="section-break">
+
+  <!-- LAYER 2 -->
+  <div class="layer-label">
+    <div class="layer-num">2</div>
+    <div class="layer-name">Structural Read</div>
+    <div class="layer-rule"></div>
+  </div>
+
+  <p>Spain's 2025 organic law reforming building community powers changed the default. Before: you could rent short-term unless explicitly banned. After: you need your building's collective approval to operate a tourist rental. The burden of permission flipped.</p>
+
+  <div class="structural-note">
+    <strong>Mechanism</strong>
+    The law operates at three causal levels. First, it transfers governance from individual property owner to collective building community — your neighbors become your regulator. Second, academic research confirms that short-term rental expansion drives class-based displacement: it pushes out lower-income residents while attracting higher-income newcomers. Third, Spain's action is part of a continental regulatory cascade — multiple European jurisdictions simultaneously restricting short-term rentals, closing the "displacement to adjacent cities" escape valve.
+  </div>
+
+  <p>The FEDEA research paper — published February 2026 by Alberto Hidalgo and Francisco J. Velazquez — provides the academic backbone. Their literature review synthesizes evidence from Madrid, Barcelona, Berlin, and New York. The Madrid findings are stark: short-term rental price increases reduce net residential inflows, and the displacement falls disproportionately on residents without a college degree.</p>
+
+  <p>This is not developer-driven gentrification. It is gentrification mediated by platform economics. An Airbnb listing does not require a crane or a zoning variance. It requires a phone, a listing, and an unlocked door. The infrastructure of displacement has become invisible.</p>
+
+  <div class="pull-quote">"STR-driven price increases reduce net residential inflows, with the displacement concentrated among residents without a college degree." — FEDEA, February 2026</div>
+
+  <p>Meanwhile, the substitution effect is measurable. In Madrid, each additional fourteen Airbnb rooms correspond to one new food-and-beverage establishment and eleven new hospitality workers. The neighborhood transforms around the listing — more tourist-facing, less resident-serving. The corner pharmacy becomes a cocktail bar. Slowly, then all at once.</p>
+
+  <div class="structural-note">
+    <strong>Comparative Clarity</strong>
+    The building-level veto inverts the burden of permission.<br>
+    Before: individual right to rent unless collectively banned.<br>
+    After: collective right to block unless individually approved.<br><br>
+    This is not a tax. It is not a cap. It is a structural reassignment of who decides what a home is for.
+  </div>
+
+  <p>Barcelona's approach is even more aggressive — phasing out all 10,101 licensed tourist apartments by 2028 through license non-renewal, not confiscation. The city absorbs 32 million visitors a year for 1.7 million residents. It has already shut down over 9,000 unlicensed operations since 2016. But sophistication runs both directions: operators adapt through medium-term rental arbitrage, multi-platform listing, and corporate ownership structures designed to circumvent building-level votes.</p>
+
+  <hr class="section-break">
+
+  <!-- LAYER 3 -->
+  <div class="layer-label">
+    <div class="layer-num">3</div>
+    <div class="layer-name">Pattern Confirmation</div>
+    <div class="layer-rule"></div>
+  </div>
+
+  <p>Spain is not acting alone. It is acting first — and loudly.</p>
+
+  <p>Across the continent, a regulatory cascade is forming. Amsterdam has imposed some of Europe's highest tourist taxes and strictest night-caps on short-term rentals. Venice has introduced day-tripper fees for peak-season visitors — an acknowledgment that even transient presence displaces. France has escalated enforcement. Portugal has frozen new licenses. The EU's incoming data-sharing mandates will add a supranational layer, requiring platforms to share host data with local authorities.</p>
+
+  <p>The FEDEA paper contextualizes Spain's action within this broader evidence base. In Berlin, each commercially operated short-term listing displaces between 0.23 and 0.37 long-term rental units. In New York, aggregate renter welfare losses from short-term rentals reach $2.4 billion. In Barcelona, top-decile neighborhoods experience rent increases of 7% and property price increases of 17% attributable to tourist apartments.</p>
+
+  <p>These are not isolated municipal experiments. They are converging structural responses to a shared mechanism: platform-enabled conversion of residential housing stock into hospitality infrastructure, with displacement costs externalized onto the least mobile residents.</p>
+
+  <p>When multiple jurisdictions restrict simultaneously, the classic regulatory arbitrage — operators moving to the next permissive city — begins to fail. The escape valve narrows. That is what a cascade does. It doesn't just regulate. It reorganizes the landscape of available evasion.</p>
+
+  <p>The building meeting in Madrid is small. Twelve people. One thermos of coffee. But the structural question it answers is continental: <em>who decides what a home is for?</em></p>
+
+  <hr class="section-break">
+
+  <!-- EVIDENCE BLOCK -->
+  <div class="evidence-block">
+    <h4>Evidence</h4>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>Spain's 2025 organic law reforming building community powers (Horizontal Property Law reform). National legislation effective April 2025, granting residents' associations authority to approve or block short-term rental operations.</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>FEDEA working paper (Feb 2026): "The economic impacts of short-term rentals and regulations: A literature review" by Hidalgo &amp; Velazquez. Quantifies displacement effects in Madrid, Barcelona, Berlin, and New York.</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>Barcelona phase-out: 10,101 licensed tourist apartments to see licenses expire by 2028. Over 9,000 unlicensed apartments shut down since 2016. 32 million annual visitors for 1.7 million residents.</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>Madrid displacement data: STR-driven price increases reduce net residential inflows; displacement concentrated among residents without college degrees. Each 14 additional Airbnb rooms = 1 new food-and-beverage establishment + 11 new workers.</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-inferred">Inferred</span>
+      <span>Continental regulatory cascade characterization: Amsterdam caps, Venice day-tripper tax, France enforcement surge, Portugal license freeze described as converging pattern. Coordination is structural, not planned.</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-inferred">Inferred</span>
+      <span>Operator circumvention strategies (medium-term rental arbitrage, multi-platform listing, corporate structures) are described in secondary sources and advocacy reporting; specific Madrid case data pending.</span>
+    </div>
+  </div>
+
+  <!-- UNCERTAINTY -->
+  <div class="uncertainty-block">
+    <strong>Uncertainty</strong>
+    Building veto enforcement depends on residents' willingness to organize and litigate — implementation will vary widely across communities. Barcelona's 2028 deadline faces legal challenges from property owners and could be delayed. The "displacement concentrated among non-degree holders" finding comes from one academic review; neighborhood-level variation in Madrid is not yet mapped. STR operators are sophisticated at circumvention, and medium-term rental arbitrage may partially offset the veto's effect. Continental regulatory alignment could fragment if countries face tourism revenue pressure during economic downturns.
+  </div>
+
+  <!-- CONFIDENCE -->
+  <div class="confidence-block">
+    <div>
+      <div class="confidence-label">Signal Confidence Index</div>
+      <div class="confidence-score">HIGH</div>
+    </div>
+    <div class="confidence-note">
+      SCI ~0.90. Dual Tier-A sources: national legislation (enacted, effective) and peer-reviewed academic research (FEDEA). Three-level causal chain is clearly articulated and independently verifiable. Continental pattern well-documented across multiple jurisdictions. Tier-B secondary sources provide supporting coverage. Signal status: <strong>CONFIRMED</strong>.
+    </div>
+  </div>
+
+  <!-- SIGNAL TAGS -->
+  <div class="signal-tags-section">
+    <h4>Signal Tags</h4>
+    <div class="tags">
+      <span class="tag">str-displacement</span>
+      <span class="tag">building-governance</span>
+      <span class="tag">platform-regulation</span>
+      <span class="tag">class-based-gentrification</span>
+      <span class="tag">housing-rights</span>
+      <span class="tag">continental-regulatory-cascade</span>
+      <span class="tag">madrid</span>
+      <span class="tag">barcelona</span>
+      <span class="tag">spain</span>
+      <span class="tag">eu-housing-policy</span>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-links">
+    <a href="../../../index.html">IN-KluSo Magazine</a>
+    <a href="../">Madrid</a>
+    <a href="../../../kontrarian/">Kontrarian</a>
+    <a href="../../../index.html">Tools</a>
+    <a href="../../../doctrine/">Doctrine</a>
+  </div>
+  <div class="footer-copy">&copy; 2026 IN-KluSo · Signal MADRID-GROUND-002 · Published Mar 3, 2026</div>
+</footer>
+
+</body>
+</html>
