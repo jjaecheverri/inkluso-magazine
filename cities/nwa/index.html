@@ -732,6 +732,23 @@
       .related-grid { grid-template-columns: 1fr; }
       .hero-meta { flex-direction: column; align-items: flex-start; }
     }
+  
+    /* ── TORN PAPER EDGES ── */
+    .torn-divider {
+      position: relative;
+      width: 100%;
+      height: 40px;
+      margin: -1px 0;
+      overflow: hidden;
+      z-index: 10;
+    }
+    .torn-divider svg {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+    }
   </style>
 </head>
 <body>
@@ -770,6 +787,13 @@
       <span class="hero-tag">Ground-Level Intelligence</span>
     </div>
   </header>
+
+<!-- TORN PAPER DIVIDER -->
+<div class="torn-divider" aria-hidden="true">
+  <svg viewBox="0 0 1440 40" preserveAspectRatio="none">
+    <path d="M0,18 Q80,30 160,14 T320,24 T480,10 T640,28 T800,16 T960,26 T1120,12 T1280,22 T1440,18 L1440,40 L0,40 Z" fill="#FAF6EE"/>
+  </svg>
+</div>
 
   <!-- ── Featured Signal ── -->
   <section class="signals-section">
@@ -923,6 +947,14 @@
       </a>
     </div>
   </section>
+
+
+<!-- TORN PAPER DIVIDER -->
+<div class="torn-divider" aria-hidden="true">
+  <svg viewBox="0 0 1440 40" preserveAspectRatio="none">
+    <path d="M0,20 Q60,5 120,18 T240,22 T360,12 T480,25 T600,15 T720,28 T840,10 T960,24 T1080,14 T1200,26 T1320,16 T1440,20 L1440,40 L0,40 Z" fill="#1a1a1a"/>
+  </svg>
+</div>
 
   <!-- ── Footer ── -->
   <footer class="footer">

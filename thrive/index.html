@@ -637,6 +637,23 @@
       footer { flex-direction: column; text-align: center; }
       .footer-links { justify-content: center; }
     }
+  
+    /* ── TORN PAPER EDGES ── */
+    .torn-divider {
+      position: relative;
+      width: 100%;
+      height: 40px;
+      margin: -1px 0;
+      overflow: hidden;
+      z-index: 10;
+    }
+    .torn-divider svg {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+    }
   </style>
 </head>
 <body>
