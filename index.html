@@ -12,14 +12,27 @@
   <style>
     :root {
       --cream: #FAF6EE;
+      --cream-dark: #F0EBE0;
       --black: #1A1A1A;
       --orange: #E8722A;
       --orange-light: #F4A261;
+      --orange-glow: rgba(232,114,42,0.12);
       --white: #FFFFFF;
       --gray-mid: #6B7280;
       --gray-light: #E5E7EB;
       --ground-green: #2D5016;
       --gold: #C9A84C;
+      --core-red: #E8491D;
+      --thrive-blue: #3B82F6;
+      --axis-purple: #7C3AED;
+      --flow-pink: #E91E63;
+      --ground-color: #16A34A;
+      --radius: 16px;
+      --radius-sm: 10px;
+      --shadow-sm: 0 2px 8px rgba(0,0,0,0.04);
+      --shadow-md: 0 8px 30px rgba(0,0,0,0.08);
+      --shadow-lg: 0 20px 60px rgba(0,0,0,0.12);
+      --transition: 0.35s cubic-bezier(0.23,1,0.32,1);
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -27,11 +40,13 @@
     body {
       background: var(--cream);
       color: var(--black);
-      font-family: 'Inter', sans-serif;
+      font-family: 'Inter', -apple-system, sans-serif;
       font-size: 16px;
       line-height: 1.65;
       overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
     }
+    a { color: inherit; text-decoration: none; }
 
     /* ── NAV ── */
     nav {
@@ -41,23 +56,25 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 2.5rem;
-      height: 58px;
+      padding: 0 clamp(1.25rem, 3vw, 2.5rem);
+      height: 60px;
       background: transparent;
-      transition: background 0.3s, box-shadow 0.3s;
+      transition: all 0.4s cubic-bezier(0.23,1,0.32,1);
     }
     nav.scrolled {
-      background: rgba(250,246,238,0.97);
-      box-shadow: 0 2px 20px rgba(0,0,0,0.08);
-      backdrop-filter: blur(10px);
+      background: rgba(250,246,238,0.85);
+      backdrop-filter: blur(20px) saturate(1.4);
+      -webkit-backdrop-filter: blur(20px) saturate(1.4);
+      box-shadow: 0 1px 0 rgba(0,0,0,0.06);
     }
     .nav-logo {
       font-family: 'DM Serif Display', serif;
-      font-size: 1.4rem;
+      font-size: 1.35rem;
       color: var(--black);
-      text-decoration: none;
       letter-spacing: -0.02em;
+      transition: opacity 0.2s;
     }
+    .nav-logo:hover { opacity: 0.7; }
     .nav-logo span { color: var(--orange); }
     .nav-links {
       display: flex;
@@ -67,35 +84,93 @@
     }
     .nav-links a {
       font-family: 'Inter', sans-serif;
-      font-size: 0.78rem;
+      font-size: 0.72rem;
       font-weight: 600;
       color: var(--black);
-      text-decoration: none;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      opacity: 0.6;
-      transition: opacity 0.2s, color 0.2s;
-      padding: 0 1.1rem;
-      height: 58px;
+      opacity: 0.5;
+      transition: all 0.25s;
+      padding: 0 1rem;
+      height: 60px;
       display: flex;
       align-items: center;
-      border-bottom: 2px solid transparent;
+      position: relative;
     }
-    .nav-links a:hover { opacity: 1; color: var(--orange); border-bottom-color: var(--orange); }
-    .nav-links a.kontrarian-link { color: var(--gold); opacity: 1; }
-    .nav-links a.kontrarian-link:hover { color: var(--gold); border-bottom-color: var(--gold); }
-    .nav-links .subscribe-link a {
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 1rem; right: 1rem;
+      height: 2px;
       background: var(--orange);
-      color: #fff;
-      opacity: 1;
-      border-radius: 4px;
-      padding: 0.45rem 1.1rem;
-      height: auto;
-      font-size: 0.75rem;
-      margin-left: 0.5rem;
-      border-bottom: none;
+      transform: scaleX(0);
+      transform-origin: center;
+      transition: transform 0.3s;
     }
-    .nav-links .subscribe-link a:hover { background: var(--orange-light); }
+    .nav-links a:hover { opacity: 1; }
+    .nav-links a:hover::after { transform: scaleX(1); }
+    .nav-links a.kontrarian-link { color: var(--gold); opacity: 0.8; }
+    .nav-links a.kontrarian-link:hover { opacity: 1; }
+    .nav-links a.kontrarian-link::after { background: var(--gold); }
+    .nav-links a.humanklu-link { color: #0B1F3A; opacity: 0.8; font-weight: 700; }
+    .nav-links a.humanklu-link:hover { opacity: 1; }
+    .nav-links a.humanklu-link::after { background: #0B1F3A; }
+    .subscribe-btn {
+      background: var(--black) !important;
+      color: var(--cream) !important;
+      opacity: 1 !important;
+      border-radius: 100px !important;
+      padding: 0.5rem 1.3rem !important;
+      height: auto !important;
+      font-size: 0.68rem !important;
+      margin-left: 0.75rem !important;
+      letter-spacing: 0.08em !important;
+      transition: all 0.3s !important;
+    }
+    .subscribe-btn:hover { background: var(--orange) !important; color: #fff !important; }
+    .subscribe-btn::after { display: none !important; }
+
+    /* Mobile hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 8px;
+      z-index: 300;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: var(--black);
+      transition: all 0.3s;
+    }
+    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(4px, 5px); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(4px, -5px); }
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(250,246,238,0.98);
+      backdrop-filter: blur(30px);
+      z-index: 250;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+    .mobile-menu.active { display: flex; }
+    .mobile-menu a {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.8rem;
+      color: var(--black);
+      font-style: italic;
+      opacity: 0.7;
+      transition: all 0.2s;
+    }
+    .mobile-menu a:hover { opacity: 1; color: var(--orange); }
 
     /* ── HERO ── */
     .hero {
@@ -105,443 +180,515 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 8rem 2rem 5rem;
+      padding: 7rem 2rem 4rem;
       position: relative;
       overflow: hidden;
       background: var(--cream);
     }
-    .hero::before {
-      content: '';
+    .hero-bg-grain {
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse at 60% 40%, rgba(232,114,42,0.07) 0%, transparent 65%);
+      opacity: 0.03;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
       pointer-events: none;
     }
-    .diagonal-stripe {
+    .hero-glow {
       position: absolute;
-      top: -20%;
-      right: -20px;
-      width: 80px;
-      height: 140vh;
-      background: var(--orange);
-      opacity: 0.08;
-      transform: rotate(15deg);
-      transform-origin: top right;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(232,114,42,0.08) 0%, transparent 70%);
+      top: 30%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       pointer-events: none;
+      animation: pulse-glow 8s ease-in-out infinite;
+    }
+    @keyframes pulse-glow {
+      0%, 100% { opacity: 0.6; transform: translate(-50%, -50%) scale(1); }
+      50% { opacity: 1; transform: translate(-50%, -50%) scale(1.15); }
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 820px; }
+    .hero-eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+    }
+    .hero-eyebrow::before, .hero-eyebrow::after {
+      content: '';
+      width: 30px;
+      height: 1px;
+      background: var(--orange);
+      opacity: 0.4;
     }
     .hero-wordmark {
       font-family: 'DM Serif Display', serif;
-      font-size: clamp(4rem, 12vw, 10rem);
-      line-height: 0.95;
-      letter-spacing: -0.03em;
+      font-size: clamp(4.5rem, 14vw, 11rem);
+      line-height: 0.9;
+      letter-spacing: -0.04em;
       color: var(--black);
-      margin-bottom: 1.5rem;
-      position: relative;
-      z-index: 1;
+      margin-bottom: 1.75rem;
     }
     .hero-wordmark span { color: var(--orange); }
     .hero-tagline {
       font-family: 'DM Serif Display', serif;
-      font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+      font-size: clamp(1.15rem, 2.5vw, 1.5rem);
       font-style: italic;
       color: var(--black);
-      opacity: 0.75;
-      margin-bottom: 1rem;
-      position: relative;
-      z-index: 1;
-    }
-    .hero-subtagline {
-      font-size: 0.92rem;
-      color: var(--gray-mid);
-      max-width: 480px;
-      line-height: 1.7;
-      position: relative;
-      z-index: 1;
+      opacity: 0.65;
       margin-bottom: 2.5rem;
     }
-    .hero-pills {
+    .hero-stats {
       display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
       justify-content: center;
-      position: relative;
-      z-index: 1;
+      gap: 3rem;
+      margin-bottom: 2.5rem;
     }
-    .hero-pill {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.68rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 0.3rem 0.9rem;
-      border-radius: 20px;
-      border: 1px solid rgba(0,0,0,0.15);
-      color: var(--gray-mid);
-    }
-    .hero-pill.active { border-color: var(--orange); color: var(--orange); background: rgba(232,114,42,0.06); }
-    .scroll-hint {
-      position: absolute;
-      bottom: 2.5rem;
-      left: 50%;
-      transform: translateX(-50%);
+    .hero-stat {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 0.5rem;
-      opacity: 0.4;
-      animation: bounce 2s infinite;
-      z-index: 1;
     }
-    .scroll-hint span { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; }
-    .scroll-arrow { width: 1px; height: 36px; background: linear-gradient(to bottom, transparent, var(--orange)); }
-    @keyframes bounce {
-      0%, 100% { transform: translateX(-50%) translateY(0); }
-      50% { transform: translateX(-50%) translateY(6px); }
+    .hero-stat-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2.4rem;
+      color: var(--black);
+      line-height: 1;
+    }
+    .hero-stat-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.58rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gray-mid);
+      margin-top: 0.35rem;
+    }
+    .hero-cta-row {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 0.82rem;
+      padding: 0.75rem 1.75rem;
+      border-radius: 100px;
+      transition: all var(--transition);
+      letter-spacing: 0.02em;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-primary {
+      background: var(--black);
+      color: var(--cream);
+    }
+    .btn-primary:hover { background: var(--orange); color: #fff; transform: translateY(-2px); box-shadow: 0 8px 25px rgba(232,114,42,0.25); }
+    .btn-outline {
+      background: transparent;
+      color: var(--black);
+      border: 1.5px solid rgba(0,0,0,0.15);
+    }
+    .btn-outline:hover { border-color: var(--orange); color: var(--orange); }
+
+    /* ── SIGNAL TICKER ── */
+    .signal-ticker {
+      background: var(--black);
+      padding: 0.65rem 0;
+      overflow: hidden;
+      position: relative;
+    }
+    .ticker-track {
+      display: flex;
+      animation: ticker 60s linear infinite;
+      width: max-content;
+    }
+    .ticker-item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0 2.5rem;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .ticker-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .ticker-signal {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.7);
+    }
+    .ticker-score {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.62rem;
+      font-weight: 700;
+      padding: 0.15rem 0.5rem;
+      border-radius: 3px;
+    }
+    @keyframes ticker {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
     }
 
     /* ── SECTION SHARED ── */
-    .section-wrap { padding: 5rem 2.5rem; position: relative; z-index: 1; }
-    .section-wrap.tight { padding-top: 3rem; padding-bottom: 3rem; }
+    .section-wrap {
+      padding: clamp(3rem, 6vw, 6rem) clamp(1.25rem, 4vw, 3.5rem);
+      position: relative;
+      z-index: 1;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
     .section-header {
       display: flex;
-      align-items: baseline;
+      align-items: center;
       gap: 1.25rem;
-      margin-bottom: 2.5rem;
-      padding-bottom: 1rem;
-      border-bottom: 1px solid rgba(0,0,0,0.08);
+      margin-bottom: 3rem;
     }
     .section-eyebrow {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.65rem;
+      font-size: 0.6rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--orange);
+      white-space: nowrap;
     }
     .section-title {
       font-family: 'DM Serif Display', serif;
-      font-size: 1.6rem;
+      font-size: clamp(1.4rem, 2.5vw, 1.8rem);
       letter-spacing: -0.01em;
       color: var(--black);
     }
-    .section-rule { flex: 1; height: 1px; background: rgba(0,0,0,0.07); margin-left: auto; }
+    .section-rule { flex: 1; height: 1px; background: rgba(0,0,0,0.08); }
 
-    /* ── CORE SECTION ── */
-    .core-section { background: var(--black); color: var(--white); }
-    .core-section .section-eyebrow { color: var(--orange); }
-    .core-section .section-title { color: var(--white); }
-    .core-section .section-rule { background: rgba(255,255,255,0.1); }
-    .divisions-grid {
+    /* ── DIVISIONS — BENTO GRID ── */
+    .core-wrap { background: var(--black); }
+    .core-wrap .section-eyebrow { color: var(--orange); }
+    .core-wrap .section-title { color: var(--white); }
+    .core-wrap .section-rule { background: rgba(255,255,255,0.08); }
+    .divisions-bento {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto auto;
       gap: 1px;
-      background: rgba(255,255,255,0.06);
+      border-radius: var(--radius);
+      overflow: hidden;
       border: 1px solid rgba(255,255,255,0.06);
-      border-radius: 8px;
+    }
+    .div-card {
+      padding: 2.25rem 2rem;
+      background: rgba(255,255,255,0.02);
+      transition: all var(--transition);
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: inherit;
+      position: relative;
       overflow: hidden;
     }
-    .division-card {
-      padding: 2rem 1.5rem;
-      background: var(--black);
-      transition: background 0.25s;
-      cursor: default;
+    .div-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px;
+      height: 0;
+      transition: height 0.4s;
     }
-    .division-card:hover { background: #222; }
-    .division-tag {
+    .div-card:hover { background: rgba(255,255,255,0.05); }
+    .div-card:hover::before { height: 100%; }
+    .div-card[data-div="core"]::before { background: var(--core-red); }
+    .div-card[data-div="thrive"]::before { background: var(--thrive-blue); }
+    .div-card[data-div="axis"]::before { background: var(--axis-purple); }
+    .div-card[data-div="flow"]::before { background: var(--flow-pink); }
+    .div-card[data-div="ground"]::before { background: var(--ground-color); }
+    .div-card[data-div="crumbs"]::before { background: var(--orange); }
+    .div-tag {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.65rem;
+      font-size: 0.58rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 0.8rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .div-tag .tag-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .div-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.35rem;
+      color: var(--white);
+      margin-bottom: 0.6rem;
+    }
+    .div-desc {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.4);
+      line-height: 1.6;
+      margin-bottom: auto;
+    }
+    .div-signals {
+      margin-top: 1.25rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      font-size: 0.72rem;
+      font-weight: 600;
+      line-height: 1.6;
+    }
+    .div-card.crumbs-card {
+      background: rgba(232,114,42,0.04);
+      border-top: 1px solid rgba(232,114,42,0.1);
+    }
+    .div-card.crumbs-card:hover { background: rgba(232,114,42,0.08); }
+
+    /* ── FEATURED SIGNALS ── */
+    .featured-wrap { background: var(--cream); }
+    .featured-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 1.5rem;
+    }
+    .signal-card {
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: all var(--transition);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+    .signal-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+    .signal-card-hero {
+      grid-row: span 2;
+      background: var(--black);
+      color: var(--cream);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      min-height: 520px;
+      position: relative;
+    }
+    .signal-card-hero .sc-bg {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0.25;
+      transition: all 0.6s;
+    }
+    .signal-card-hero:hover .sc-bg { opacity: 0.35; transform: scale(1.03); }
+    .signal-card-hero .sc-content {
+      position: relative;
+      z-index: 2;
+      padding: 3rem;
+      background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 60%, transparent 100%);
+      margin-top: auto;
+    }
+    .signal-card-sm {
+      background: var(--white);
+      box-shadow: var(--shadow-sm);
+    }
+    .signal-card-sm .sc-content { padding: 2rem; flex: 1; display: flex; flex-direction: column; }
+    .sc-division {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.58rem;
       letter-spacing: 0.16em;
       text-transform: uppercase;
+      font-weight: 700;
       margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .sc-confidence {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.6rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 3px;
       font-weight: 700;
     }
-    .division-name {
+    .conf-high { background: rgba(22,163,74,0.15); color: #16A34A; }
+    .conf-mod { background: rgba(232,114,42,0.12); color: var(--orange); }
+    .sc-title {
       font-family: 'DM Serif Display', serif;
-      font-size: 1.4rem;
-      color: var(--white);
-      margin-bottom: 0.5rem;
+      font-size: 1.8rem;
+      line-height: 1.15;
+      margin-bottom: 0.75rem;
+      font-style: italic;
     }
-    .division-desc { font-size: 0.78rem; color: rgba(255,255,255,0.45); line-height: 1.55; }
-    .d-thrive { color: #60A5FA; }
-    .d-axis { color: #A78BFA; }
-    .d-flow { color: #34D399; }
-    .d-ground { color: #86EFAC; }
-    .d-crumbs { color: var(--orange); }
-    .crumbs-card {
-      background: rgba(232,114,42,0.06);
-      border-top: 1px solid rgba(232,114,42,0.2);
+    .signal-card-sm .sc-title { font-size: 1.2rem; }
+    .sc-deck {
+      font-size: 0.88rem;
+      line-height: 1.65;
+      opacity: 0.6;
+      margin-bottom: 1.5rem;
     }
+    .signal-card-sm .sc-deck { font-size: 0.82rem; margin-bottom: auto; }
+    .sc-read {
+      font-size: 0.78rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: gap 0.3s;
+    }
+    .signal-card:hover .sc-read { gap: 0.75rem; }
+    .sc-read-arrow { transition: transform 0.3s; }
 
-    /* ── CITIES SECTION ── */
+    /* ── CITIES ── */
     .cities-grid {
       display: grid;
-      grid-template-columns: 2fr 1fr 1fr;
+      grid-template-columns: 1.6fr 1fr 1fr;
       grid-template-rows: auto auto;
       gap: 1.25rem;
     }
     .city-card {
-      border-radius: 12px;
+      border-radius: var(--radius);
       overflow: hidden;
-      text-decoration: none;
-      color: inherit;
       position: relative;
-      display: block;
-      transition: transform 0.3s, box-shadow 0.3s;
-      background: var(--white);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-    }
-    .city-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(0,0,0,0.12); }
-    .city-card-featured {
-      grid-row: span 2;
       display: flex;
       flex-direction: column;
+      transition: all var(--transition);
+      background: var(--white);
+      box-shadow: var(--shadow-sm);
     }
-    .city-card-visual {
-      height: 240px;
+    .city-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+    .city-card-featured { grid-row: span 2; }
+    .city-img {
+      height: 220px;
       position: relative;
       overflow: hidden;
-      flex-shrink: 0;
     }
-    .city-card-featured .city-card-visual { height: 340px; }
-    .city-card-visual img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
-    .city-card:hover .city-card-visual img { transform: scale(1.05); }
-    .city-overlay {
+    .city-card-featured .city-img { height: 320px; }
+    .city-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s;
+    }
+    .city-card:hover .city-img img { transform: scale(1.06); }
+    .city-img-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 60%);
+      background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.1) 50%, transparent 100%);
     }
-    .city-name-overlay {
+    .city-img-name {
       position: absolute;
-      bottom: 16px;
-      left: 20px;
+      bottom: 1.25rem;
+      left: 1.5rem;
       font-family: 'DM Serif Display', serif;
-      font-size: 1.6rem;
-      color: var(--white);
+      font-size: 1.5rem;
+      color: #fff;
       font-style: italic;
+      z-index: 2;
     }
-    .city-card-body { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; }
-    .city-signal-count {
+    .city-card-featured .city-img-name { font-size: 2rem; }
+    .city-img-count {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.14em;
+      font-size: 0.58rem;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--orange);
-      margin-bottom: 0.5rem;
+      color: #fff;
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(10px);
+      padding: 0.3rem 0.7rem;
+      border-radius: 100px;
+      z-index: 2;
     }
-    .city-article-title {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.25rem;
-      line-height: 1.25;
-      margin-bottom: 0.75rem;
-      font-style: italic;
-    }
-    .city-article-desc { font-size: 0.84rem; color: var(--gray-mid); line-height: 1.6; margin-bottom: 1rem; flex: 1; }
-    .city-read-link {
-      font-size: 0.82rem;
-      font-weight: 600;
-      color: var(--orange);
-      letter-spacing: 0.03em;
-      margin-top: auto;
-    }
-    .city-card-stub {
+    .city-body { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; }
+    .city-signal-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .city-signal-item {
       display: flex;
-      flex-direction: column;
+      align-items: center;
       justify-content: space-between;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid rgba(0,0,0,0.04);
+      font-size: 0.82rem;
+      transition: color 0.2s;
     }
-    .city-stub-visual {
-      height: 160px;
+    .city-signal-item:hover { color: var(--orange); }
+    .city-signal-item:last-child { border-bottom: none; }
+    .city-signal-id {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.6rem;
+      color: var(--gray-mid);
+      letter-spacing: 0.06em;
+    }
+    .city-signal-name {
+      font-family: 'DM Serif Display', serif;
+      font-style: italic;
+      flex: 1;
+      margin: 0 0.75rem;
+    }
+    .city-stub {
       display: flex;
       align-items: center;
       justify-content: center;
+      text-align: center;
+      min-height: 200px;
       position: relative;
       overflow: hidden;
+      cursor: default;
+    }
+    .city-stub-inner {
+      position: relative;
+      z-index: 2;
+      padding: 2rem;
     }
     .city-stub-name {
       font-family: 'DM Serif Display', serif;
-      font-size: 1.8rem;
+      font-size: 1.5rem;
       font-style: italic;
       color: var(--white);
-      z-index: 1;
+      margin-bottom: 0.4rem;
     }
-    .city-stub-body { padding: 1.25rem 1.5rem; }
     .city-stub-status {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.62rem;
+      font-size: 0.58rem;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--gray-mid);
-      margin-bottom: 0.35rem;
-    }
-    .city-stub-desc { font-size: 0.8rem; color: var(--gray-mid); line-height: 1.5; }
-
-    /* ── FEATURED ARTICLE ── */
-    .feature-card {
-      background: var(--black);
-      border-radius: 16px;
-      overflow: hidden;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      min-height: 480px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.18);
-      position: relative;
-      transition: transform 0.3s, box-shadow 0.3s;
-      text-decoration: none;
-      color: inherit;
-    }
-    .feature-card:hover { transform: translateY(-4px); box-shadow: 0 28px 70px rgba(0,0,0,0.24); }
-    .feature-card-content {
-      padding: 3.5rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      position: relative;
-      z-index: 2;
-    }
-    .feature-card-label {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--orange);
-      margin-bottom: 1.25rem;
-      border-left: 2px solid var(--orange);
-      padding-left: 0.75rem;
-    }
-    .feature-card-headline {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(1.8rem, 3vw, 2.6rem);
-      line-height: 1.15;
-      color: var(--white);
-      margin-bottom: 1rem;
-      font-style: italic;
-    }
-    .feature-card-deck {
-      font-size: 0.92rem;
-      color: rgba(255,255,255,0.6);
-      line-height: 1.7;
-      margin-bottom: 2rem;
-    }
-    .feature-card-meta {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-bottom: 2rem;
-    }
-    .meta-tag {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.62rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 0.25rem 0.75rem;
-      border-radius: 3px;
-    }
-    .meta-ground { background: rgba(45,80,22,0.5); color: #86EFAC; }
-    .meta-nwa { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.6); }
-    .meta-signal { background: rgba(232,114,42,0.15); color: var(--orange); }
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: var(--orange);
-      color: var(--white);
-      font-weight: 600;
-      font-size: 0.88rem;
-      padding: 0.8rem 1.6rem;
-      border-radius: 6px;
-      text-decoration: none;
-      letter-spacing: 0.02em;
-      transition: background 0.2s, transform 0.2s;
-      align-self: flex-start;
-    }
-    .btn-primary:hover { background: var(--orange-light); transform: translateY(-2px); }
-    .feature-card-visual {
-      background: linear-gradient(160deg, #0d1a0d 0%, #1a2e10 50%, #2d4a1a 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 3rem;
-      position: relative;
-      overflow: hidden;
-    }
-    .feature-card-visual::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse at 50% 80%, rgba(45,80,22,0.6) 0%, transparent 70%);
-    }
-    .visual-signal-block {
-      text-align: center;
-      position: relative;
-      z-index: 1;
-    }
-    .vsb-id {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      color: rgba(134,239,172,0.5);
-      margin-bottom: 1rem;
-      text-transform: uppercase;
-    }
-    .vsb-title {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.1rem;
-      color: rgba(134,239,172,0.9);
-      margin-bottom: 0.5rem;
-      font-style: italic;
-    }
-    .vsb-city {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.7rem;
       color: rgba(255,255,255,0.4);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      margin-bottom: 2rem;
     }
-    .vsb-layers { display: flex; flex-direction: column; gap: 8px; }
-    .vsb-layer {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 8px 14px;
-      border-radius: 4px;
-      background: rgba(255,255,255,0.04);
-      border-left: 2px solid rgba(134,239,172,0.3);
-    }
-    .vsb-layer-num {
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      background: rgba(134,239,172,0.15);
-      color: #86EFAC;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.65rem;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-    .vsb-layer-name { font-size: 0.72rem; color: rgba(255,255,255,0.6); font-family: 'Inter', sans-serif; }
-    .vsb-layer.active { background: rgba(134,239,172,0.08); border-left-color: #86EFAC; }
-    .vsb-layer.active .vsb-layer-name { color: rgba(255,255,255,0.9); }
 
-    /* ── ARCHIVE GRID ── */
-    .editions-grid {
+    /* ── ARCHIVE ── */
+    .archive-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 1.5rem;
     }
-    .edition-card {
+    .archive-card {
       background: var(--white);
-      border-radius: 10px;
+      border-radius: var(--radius);
       overflow: hidden;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.05);
-      text-decoration: none;
-      color: inherit;
+      box-shadow: var(--shadow-sm);
       display: flex;
       flex-direction: column;
-      transition: transform 0.3s, box-shadow 0.3s;
+      transition: all var(--transition);
       position: relative;
     }
-    .edition-card::before {
+    .archive-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
+    .archive-card::after {
       content: '';
       position: absolute;
       top: 0; left: 0; right: 0;
@@ -549,62 +696,82 @@
       background: var(--orange);
       transform: scaleX(0);
       transform-origin: left;
-      transition: transform 0.3s;
+      transition: transform 0.4s;
     }
-    .edition-card:hover::before { transform: scaleX(1); }
-    .edition-card:hover { transform: translateY(-5px); box-shadow: 0 12px 36px rgba(0,0,0,0.1); }
-    .edition-card-image { height: 180px; overflow: hidden; position: relative; background: #1a1a1a; }
-    .edition-card-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
-    .edition-card:hover .edition-card-image img { transform: scale(1.06); }
-    .edition-card-body { padding: 1.5rem; flex: 1; }
-    .edition-card-label {
+    .archive-card:hover::after { transform: scaleX(1); }
+    .archive-visual {
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .archive-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+    .archive-card:hover .archive-visual img { transform: scale(1.05); }
+    .archive-body { padding: 1.75rem; flex: 1; display: flex; flex-direction: column; }
+    .archive-label {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.62rem;
+      font-size: 0.58rem;
       letter-spacing: 0.16em;
       text-transform: uppercase;
       color: var(--orange);
       margin-bottom: 0.6rem;
-      display: block;
     }
-    .edition-card-title {
+    .archive-title {
       font-family: 'DM Serif Display', serif;
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       line-height: 1.25;
       margin-bottom: 0.6rem;
       font-style: italic;
     }
-    .edition-card-desc { font-size: 0.83rem; color: var(--gray-mid); line-height: 1.6; }
-    .edition-card-footer { padding: 1rem 1.5rem 1.25rem; display: flex; align-items: center; justify-content: space-between; }
-    .read-link { font-size: 0.8rem; font-weight: 600; color: var(--orange); }
+    .archive-desc { font-size: 0.8rem; color: var(--gray-mid); line-height: 1.6; flex: 1; }
+    .archive-footer {
+      padding: 1rem 1.75rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid rgba(0,0,0,0.04);
+    }
+    .archive-read { font-size: 0.78rem; font-weight: 600; color: var(--orange); }
 
     /* ── KONTRARIAN STRIP ── */
-    .kontrarian-strip {
-      background: linear-gradient(135deg, #0a0a0a 0%, #111108 100%);
-      border-top: 1px solid rgba(201,168,76,0.15);
+    .kontrarian-wrap {
+      background: linear-gradient(160deg, #0a0a0a 0%, #12110a 100%);
     }
-    .kontrarian-inner {
+    .kont-inner {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 4rem;
       align-items: center;
     }
-    .kont-text .kont-eyebrow {
+    .kont-eyebrow {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.65rem;
+      font-size: 0.6rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--gold);
-      margin-bottom: 1rem;
+      margin-bottom: 1.25rem;
     }
-    .kont-text h2 {
+    .kont-title {
       font-family: 'DM Serif Display', serif;
-      font-size: 2rem;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
       color: var(--cream);
       font-style: italic;
       margin-bottom: 1rem;
       line-height: 1.2;
     }
-    .kont-text p { font-size: 0.92rem; color: rgba(250,246,238,0.5); line-height: 1.75; margin-bottom: 1.5rem; }
+    .kont-desc {
+      font-size: 0.9rem;
+      color: rgba(250,246,238,0.45);
+      line-height: 1.75;
+      margin-bottom: 1.75rem;
+    }
     .btn-gold {
       display: inline-flex;
       align-items: center;
@@ -612,136 +779,168 @@
       background: var(--gold);
       color: #0a0a0a;
       font-weight: 700;
-      font-size: 0.85rem;
-      padding: 0.8rem 1.6rem;
-      border-radius: 6px;
-      text-decoration: none;
+      font-size: 0.82rem;
+      padding: 0.75rem 1.6rem;
+      border-radius: 100px;
+      transition: all var(--transition);
       letter-spacing: 0.03em;
-      transition: opacity 0.2s;
     }
-    .btn-gold:hover { opacity: 0.85; }
-    .kont-cities {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
+    .btn-gold:hover { opacity: 0.85; transform: translateY(-2px); }
+    .kont-cities { display: flex; flex-direction: column; gap: 0.75rem; }
     .kont-city {
-      padding: 1.25rem 1.5rem;
-      border: 1px solid rgba(201,168,76,0.12);
-      border-radius: 8px;
+      padding: 1.15rem 1.5rem;
+      border: 1px solid rgba(201,168,76,0.1);
+      border-radius: var(--radius-sm);
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(201,168,76,0.03);
+      transition: all 0.3s;
     }
+    .kont-city:hover { border-color: rgba(201,168,76,0.3); background: rgba(201,168,76,0.04); }
     .kont-city-name {
       font-family: 'DM Serif Display', serif;
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       color: var(--cream);
       font-style: italic;
     }
     .kont-city-status {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.6rem;
+      font-size: 0.56rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--gold);
-      background: rgba(201,168,76,0.1);
+      background: rgba(201,168,76,0.08);
       padding: 0.2rem 0.6rem;
-      border-radius: 3px;
+      border-radius: 100px;
     }
 
-    /* ── ABOUT STRIP ── */
-    .about-strip { background: var(--black); }
+    /* ── ABOUT ── */
+    .about-wrap { background: var(--black); }
     .about-inner {
-      max-width: 900px;
-      margin: 0 auto;
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 5rem;
       align-items: center;
     }
-    .about-text .xtatik-tag {
+    .about-tag {
       display: inline-block;
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.62rem;
-      letter-spacing: 0.15em;
+      font-size: 0.58rem;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
       color: var(--orange);
-      border: 1px solid rgba(232,114,42,0.3);
-      padding: 0.25rem 0.6rem;
-      border-radius: 4px;
-      margin-bottom: 1.25rem;
+      border: 1px solid rgba(232,114,42,0.25);
+      padding: 0.3rem 0.75rem;
+      border-radius: 100px;
+      margin-bottom: 1.5rem;
     }
-    .about-text h2 {
+    .about-headline {
       font-family: 'DM Serif Display', serif;
-      font-size: 2rem;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
       line-height: 1.2;
-      margin-bottom: 1rem;
+      margin-bottom: 1.25rem;
       font-style: italic;
       color: var(--white);
     }
-    .about-text h2 span { color: var(--orange); }
-    .about-text p { font-size: 0.9rem; color: rgba(255,255,255,0.55); line-height: 1.75; }
-    .authors-list { display: flex; flex-direction: column; gap: 1.25rem; }
-    .author-inline { display: flex; align-items: center; gap: 1rem; }
+    .about-headline em { color: var(--orange); font-style: italic; }
+    .about-desc {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.8;
+    }
+    .authors-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.58rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      margin-bottom: 1.5rem;
+    }
+    .authors-list { display: flex; flex-direction: column; gap: 1.5rem; }
+    .author-row { display: flex; align-items: center; gap: 1.15rem; }
     .author-avatar {
-      width: 44px; height: 44px; border-radius: 50%;
+      width: 48px; height: 48px; border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
       font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 0.72rem;
       flex-shrink: 0; letter-spacing: 0.05em;
     }
     .avatar-orange { background: var(--orange); color: #fff; }
-    .avatar-neutral { background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(255,255,255,0.2); }
-    .author-info strong { display: block; font-size: 0.88rem; font-weight: 600; color: var(--white); margin-bottom: 0.15rem; }
-    .author-info span { font-size: 0.75rem; color: rgba(255,255,255,0.45); font-family: 'JetBrains Mono', monospace; }
-    .authors-section-label { font-size: 0.75rem; color: rgba(255,255,255,0.35); font-family: 'JetBrains Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1.25rem; }
+    .avatar-neutral { background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.6); border: 1px solid rgba(255,255,255,0.12); }
+    .author-info strong { display: block; font-size: 0.9rem; font-weight: 600; color: var(--white); margin-bottom: 0.2rem; }
+    .author-info span { font-size: 0.72rem; color: rgba(255,255,255,0.4); font-family: 'JetBrains Mono', monospace; }
 
     /* ── FOOTER ── */
     footer {
       background: var(--black);
-      border-top: 1px solid rgba(255,255,255,0.06);
-      padding: 2rem 2.5rem;
-      text-align: center;
-      color: rgba(255,255,255,0.35);
+      border-top: 1px solid rgba(255,255,255,0.04);
+      padding: 3rem clamp(1.25rem, 4vw, 3.5rem) 2rem;
+    }
+    .footer-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+    .footer-brand {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.3rem;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 0.5rem;
+    }
+    .footer-brand span { color: var(--orange); }
+    .footer-copy {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.72rem;
+      font-size: 0.65rem;
+      color: rgba(255,255,255,0.25);
       letter-spacing: 0.04em;
     }
-    footer strong {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.1rem;
-      color: rgba(255,255,255,0.7);
-      display: block;
-      margin-bottom: 0.75rem;
+    .footer-links-col { display: flex; flex-direction: column; gap: 0.6rem; }
+    .footer-links-col a {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.35);
+      transition: color 0.2s;
     }
-    footer strong span { color: var(--orange); }
-    footer a { color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s; }
-    footer a:hover { color: var(--orange); }
-    .footer-links { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 1rem; }
+    .footer-links-col a:hover { color: var(--orange); }
+    .footer-col-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.58rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.2);
+      margin-bottom: 0.5rem;
+    }
 
-    /* ── REVEAL ANIMATION ── */
-    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    /* ── ANIMATIONS ── */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 1024px) {
-      .divisions-grid { grid-template-columns: repeat(3, 1fr); }
+      .divisions-bento { grid-template-columns: repeat(2, 1fr); }
+      .featured-grid { grid-template-columns: 1fr; }
+      .signal-card-hero { min-height: 400px; grid-row: span 1; }
       .cities-grid { grid-template-columns: 1fr 1fr; }
       .city-card-featured { grid-row: span 1; }
-      .editions-grid { grid-template-columns: 1fr 1fr; }
+      .archive-grid { grid-template-columns: 1fr 1fr; }
+      .kont-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .about-inner { grid-template-columns: 1fr; gap: 3rem; }
     }
     @media (max-width: 768px) {
-      nav { padding: 0 1.25rem; }
       .nav-links { display: none; }
-      .section-wrap { padding: 3rem 1.25rem; }
-      .divisions-grid { grid-template-columns: 1fr 1fr; }
+      .hamburger { display: flex; }
+      .hero { padding: 6rem 1.25rem 3rem; }
+      .hero-stats { gap: 2rem; }
+      .hero-stat-num { font-size: 1.8rem; }
+      .divisions-bento { grid-template-columns: 1fr; }
       .cities-grid { grid-template-columns: 1fr; }
-      .feature-card { grid-template-columns: 1fr; min-height: auto; }
-      .feature-card-visual { height: 260px; }
-      .editions-grid { grid-template-columns: 1fr; }
-      .kontrarian-inner { grid-template-columns: 1fr; gap: 2.5rem; }
-      .about-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .archive-grid { grid-template-columns: 1fr; }
+      .footer-inner { flex-direction: column; }
     }
   </style>
 </head>
@@ -753,229 +952,311 @@
   <ul class="nav-links">
     <li><a href="#core">CORE</a></li>
     <li><a href="#cities">CITIES</a></li>
-    <li><a href="#community">COMMUNITY</a></li>
+    <li><a href="#signals">SIGNALS</a></li>
     <li><a href="kontrarian/index.html" class="kontrarian-link">KONTRARIAN</a></li>
-    <li><a href="humanklu/index.html" style="color:#0B1F3A;opacity:1;font-weight:700;">HumanKlu™</a></li>
+    <li><a href="humanklu/index.html" class="humanklu-link">HumanKlu™</a></li>
     <li><a href="#about">ABOUT</a></li>
     <li><a href="https://jjaecheverri.github.io/inkluso-tools/" target="_blank">TOOLS</a></li>
-    <li class="subscribe-link"><a href="#about">SUBSCRIBE</a></li>
+    <li><a href="#about" class="subscribe-btn">SUBSCRIBE</a></li>
   </ul>
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
 </nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#core" onclick="closeMobile()">Core</a>
+  <a href="#cities" onclick="closeMobile()">Cities</a>
+  <a href="#signals" onclick="closeMobile()">Signals</a>
+  <a href="kontrarian/index.html">Kontrarian</a>
+  <a href="humanklu/index.html">HumanKlu™</a>
+  <a href="https://jjaecheverri.github.io/inkluso-tools/" target="_blank">Tools</a>
+  <a href="#about" onclick="closeMobile()">About</a>
+</div>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="diagonal-stripe"></div>
-  <h1 class="hero-wordmark">IN-<span>K</span>luSo</h1>
-  <p class="hero-tagline">Cultural intelligence. Ground level.</p>
-  <p class="hero-subtagline">Structured signal detection across cities, markets, and behavior — before the data catches up.</p>
-  <div class="hero-pills">
-    <span class="hero-pill active">Farmers Market Cluster</span>
-    <span class="hero-pill">NWA · Madrid · CDMX</span>
-    <span class="hero-pill">Doctrine 2026</span>
-    <span class="hero-pill">V3 Signal Stack</span>
-  </div>
-  <div class="scroll-hint">
-    <span>Scroll</span>
-    <div class="scroll-arrow"></div>
+  <div class="hero-bg-grain"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">A Xtatik Publication · Doctrine 2026</div>
+    <h1 class="hero-wordmark">IN-<span>K</span>luSo</h1>
+    <p class="hero-tagline">Cultural intelligence. Ground level.</p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num">16</div>
+        <div class="hero-stat-label">Signals Published</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">5</div>
+        <div class="hero-stat-label">Divisions</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">4</div>
+        <div class="hero-stat-label">Cities</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">.976</div>
+        <div class="hero-stat-label">Peak SCI Score</div>
+      </div>
+    </div>
+    <div class="hero-cta-row">
+      <a href="#signals" class="btn btn-primary">Explore Signals ↓</a>
+      <a href="doctrine/index.html" class="btn btn-outline">Read the Doctrine</a>
+    </div>
   </div>
 </section>
 
-<!-- CORE SECTION -->
-<section class="section-wrap core-section" id="core">
+<!-- SIGNAL TICKER -->
+<div class="signal-ticker">
+  <div class="ticker-track">
+    <div class="ticker-item"><div class="ticker-dot" style="background:var(--core-red);"></div><span class="ticker-signal">CORE-002 · The 5x Trap</span><span class="ticker-score conf-high">0.976 HIGH</span></div>
+    <div class="ticker-item"><div class="ticker-dot" style="background:var(--axis-purple);"></div><span class="ticker-signal">AXIS-002 · The Human Authorship Seal</span><span class="ticker-score conf-high">0.952 HIGH</span></div>
+    <div class="ticker-item"><div class="ticker-dot" style="background:var(--core-red);"></div><span class="ticker-signal">CORE-003 · The Extraction Playbook</span><span class="ticker-score conf-high">0.920 HIGH</span></div>
+    <div class="ticker-item"><div class="ticker-dot" style="background:var(--core-red);"></div><span class="ticker-signal">CORE-001 · The Triple Break</span><span class="ticker-score conf-high">0.908 HIGH</span></div>
+    <div class="ticker-item"><div class="ticker-dot" style="background:var(--ground-color);"></div><span class="ticker-signal">NWA-GROUND-004 · The Overshoot</span><span class="ticker-score conf-high">0.902 HIGH</span></div>
+    <div class="ticker-item"><div class="ticker-dot" style="background:var(--ground-color);"></div><span class="ticker-signal">MADRID-GROUND-002 · The Neighbor's Veto</span><span class="ticker-score conf-high">0.900 HIGH</span></div>
+    <div class="ticker-item"><div class="ticker-dot" style="background:var(--flow-pink);"></div><span class="ticker-signal">FLOW-002 · The Five Million Exits</span><span class="ticker-score conf-high">0.820 HIGH</span></div>
+    <div class="ticker-item"><div class="ticker-dot" style="background:var(--thrive-blue);"></div><span class="ticker-signal">THRIVE-002 · The Solo Majority</span><span class="ticker-score conf-high">0.800 HIGH</span></div>
+    <!-- duplicate for seamless loop -->
+    <div class="ticker-item"><div class="ticker-dot" style="background:var(--core-red);"></div><span class="ticker-signal">CORE-002 · The 5x Trap</span><span class="ticker-score conf-high">0.976 HIGH</span></div>
+    <div class="ticker-item"><div class="ticker-dot" style="background:var(--axis-purple);"></div><span class="ticker-signal">AXIS-002 · The Human Authorship Seal</span><span class="ticker-score conf-high">0.952 HIGH</span></div>
+    <div class="ticker-item"><div class="ticker-dot" style="background:var(--core-red);"></div><span class="ticker-signal">CORE-003 · The Extraction Playbook</span><span class="ticker-score conf-high">0.920 HIGH</span></div>
+    <div class="ticker-item"><div class="ticker-dot" style="background:var(--core-red);"></div><span class="ticker-signal">CORE-001 · The Triple Break</span><span class="ticker-score conf-high">0.908 HIGH</span></div>
+    <div class="ticker-item"><div class="ticker-dot" style="background:var(--ground-color);"></div><span class="ticker-signal">NWA-GROUND-004 · The Overshoot</span><span class="ticker-score conf-high">0.902 HIGH</span></div>
+    <div class="ticker-item"><div class="ticker-dot" style="background:var(--ground-color);"></div><span class="ticker-signal">MADRID-GROUND-002 · The Neighbor's Veto</span><span class="ticker-score conf-high">0.900 HIGH</span></div>
+    <div class="ticker-item"><div class="ticker-dot" style="background:var(--flow-pink);"></div><span class="ticker-signal">FLOW-002 · The Five Million Exits</span><span class="ticker-score conf-high">0.820 HIGH</span></div>
+    <div class="ticker-item"><div class="ticker-dot" style="background:var(--thrive-blue);"></div><span class="ticker-signal">THRIVE-002 · The Solo Majority</span><span class="ticker-score conf-high">0.800 HIGH</span></div>
+  </div>
+</div>
+
+<!-- CORE / EDITORIAL DIVISIONS -->
+<div class="core-wrap" id="core">
+  <div class="section-wrap">
+    <div class="section-header reveal">
+      <span class="section-eyebrow">◆ Editorial Divisions</span>
+      <h2 class="section-title" style="color:#fff;">Signal Architecture</h2>
+      <div class="section-rule"></div>
+    </div>
+    <div class="divisions-bento reveal">
+      <a href="cities/global/the-triple-break/" class="div-card" data-div="core">
+        <div class="div-tag" style="color:var(--core-red);"><span class="tag-dot" style="background:var(--core-red);"></span>CORE</div>
+        <div class="div-name">Core</div>
+        <div class="div-desc">Capital, infrastructure, and institutional signals. Where structural breaks surface before markets price them in.</div>
+        <div class="div-signals" style="color:var(--core-red);">3 Signals — The 5x Trap (0.976) · The Extraction Playbook · The Triple Break</div>
+      </a>
+      <a href="signals/thrive/the-bootstrap-inversion/" class="div-card" data-div="thrive">
+        <div class="div-tag" style="color:var(--thrive-blue);"><span class="tag-dot" style="background:var(--thrive-blue);"></span>THRIVE</div>
+        <div class="div-name">Thrive</div>
+        <div class="div-desc">Innovation, startups, and capital formation. Where new systems take root before they become industries.</div>
+        <div class="div-signals" style="color:var(--thrive-blue);">2 Signals — The Solo Majority · The Bootstrap Inversion</div>
+      </a>
+      <a href="signals/axis/the-24-percent-silence/" class="div-card" data-div="axis">
+        <div class="div-tag" style="color:var(--axis-purple);"><span class="tag-dot" style="background:var(--axis-purple);"></span>AXIS</div>
+        <div class="div-name">Axis</div>
+        <div class="div-desc">Creative infrastructure, cultural economy, and the built environments where ideas accumulate.</div>
+        <div class="div-signals" style="color:var(--axis-purple);">2 Signals — The Human Authorship Seal (0.952) · The 24% Silence</div>
+      </a>
+      <a href="signals/flow/the-five-million-exits/" class="div-card" data-div="flow">
+        <div class="div-tag" style="color:var(--flow-pink);"><span class="tag-dot" style="background:var(--flow-pink);"></span>FLOW</div>
+        <div class="div-name">Flow</div>
+        <div class="div-desc">Attention, media, and audience behavior. How ideas move, mutate, and reach critical density.</div>
+        <div class="div-signals" style="color:var(--flow-pink);">2 Signals — The Five Million Exits (0.82) · The Slop Threshold</div>
+      </a>
+      <a href="cities/nwa/the-overshoot/" class="div-card" data-div="ground">
+        <div class="div-tag" style="color:var(--ground-color);"><span class="tag-dot" style="background:var(--ground-color);"></span>GROUND</div>
+        <div class="div-name">Ground</div>
+        <div class="div-desc">Territory, real estate, and physical markets. The layer where economic signals become visible in space.</div>
+        <div class="div-signals" style="color:var(--ground-color);">8 Signals — 5 NWA + 2 Madrid + 1 Duluth</div>
+      </a>
+      <a href="crumbs/farmers-market-march-2026/" class="div-card crumbs-card" data-div="crumbs">
+        <div class="div-tag" style="color:var(--orange);"><span class="tag-dot" style="background:var(--orange);"></span>CRUMBS</div>
+        <div class="div-name">Crumbs</div>
+        <div class="div-desc">Data Signals Division. Minimum publishable units of verified structural signal — the intelligence dashboard.</div>
+        <div class="div-signals" style="color:var(--orange);">24 Crumbs — Farmers Market + Cross-Division Pack</div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- FEATURED SIGNALS -->
+<section class="section-wrap featured-wrap" id="signals">
   <div class="section-header reveal">
-    <span class="section-eyebrow">◆ Editorial Divisions</span>
-    <h2 class="section-title">CORE</h2>
+    <span class="section-eyebrow">◆ Latest Intelligence</span>
+    <h2 class="section-title">Featured Signals</h2>
     <div class="section-rule"></div>
   </div>
-  <div class="divisions-grid reveal">
-    <a href="cities/global/the-triple-break/" class="division-card" style="text-decoration:none;color:inherit;">
-      <div class="division-tag" style="background:#E8491D;color:#fff;">CORE</div>
-      <div class="division-name">Core</div>
-      <div class="division-desc">Capital, infrastructure, and institutional signals. Where structural breaks surface before markets price them in.</div>
-      <div style="margin-top:8px;font-size:0.75rem;color:#E8491D;font-weight:600;">▸ 3 SIGNALS: The Extraction Playbook (0.92) · The 5x Trap (0.976) · The Triple Break (0.908)</div>
+  <div class="featured-grid reveal">
+    <!-- HERO CARD: The 5x Trap -->
+    <a href="cities/global/the-5x-trap/" class="signal-card signal-card-hero">
+      <div class="sc-bg" style="background-image:url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80&fit=crop');"></div>
+      <div class="sc-content">
+        <div class="sc-division" style="color:var(--core-red);">
+          CORE-002 · United States
+          <span class="sc-confidence conf-high">0.976 HIGH</span>
+        </div>
+        <h3 class="sc-title" style="color:#fff;">The 5x Trap</h3>
+        <p class="sc-deck" style="color:rgba(255,255,255,0.65);">Housing costs now exceed 5× median income in 550 U.S. counties. The Harvard Joint Center calls it a structural trap: demand grows, supply lags, and the gap doesn't close.</p>
+        <span class="sc-read" style="color:var(--orange);">Read Signal <span class="sc-read-arrow">→</span></span>
+      </div>
     </a>
-    <a href="signals/thrive/the-bootstrap-inversion/" class="division-card" style="text-decoration:none;color:inherit;">
-      <div class="division-tag d-thrive">THRIVE</div>
-      <div class="division-name">Thrive</div>
-      <div class="division-desc">Innovation, startups, and capital formation. Where new systems take root before they become industries.</div>
-      <div style="margin-top:8px;font-size:0.75rem;color:#FF6B35;font-weight:600;">▸ 2 SIGNALS: The Solo Majority · The Bootstrap Inversion</div>
+    <!-- SM CARD: Human Authorship Seal -->
+    <a href="signals/axis/the-human-authorship-seal/" class="signal-card signal-card-sm">
+      <div class="sc-content">
+        <div class="sc-division" style="color:var(--axis-purple);">
+          AXIS-002 · Washington, D.C.
+          <span class="sc-confidence conf-high">0.952 HIGH</span>
+        </div>
+        <h3 class="sc-title">The Human Authorship Seal</h3>
+        <p class="sc-deck">SCOTUS declines to hear Thaler v. Perlmutter. AI-generated works cannot be copyrighted. The human author isn't optional — it's the law.</p>
+        <span class="sc-read" style="color:var(--axis-purple);">Read Signal <span class="sc-read-arrow">→</span></span>
+      </div>
     </a>
-    <a href="signals/axis/the-24-percent-silence/" class="division-card" style="text-decoration:none;color:inherit;">
-      <div class="division-tag d-axis">AXIS</div>
-      <div class="division-name">Axis</div>
-      <div class="division-desc">Creative infrastructure, cultural economy, and the built environments where ideas accumulate.</div>
-      <div style="margin-top:8px;font-size:0.75rem;color:#6C63FF;font-weight:600;">▸ 2 SIGNALS: The Human Authorship Seal (0.952) · The 24% Silence</div>
+    <!-- SM CARD: The Extraction Playbook -->
+    <a href="cities/global/the-extraction-playbook/" class="signal-card signal-card-sm">
+      <div class="sc-content">
+        <div class="sc-division" style="color:var(--core-red);">
+          CORE-003 · United States
+          <span class="sc-confidence conf-high">0.920 HIGH</span>
+        </div>
+        <h3 class="sc-title">The Extraction Playbook</h3>
+        <p class="sc-deck">Sycamore Partners acquires Walgreens. 9,000 jobs cut and 500 stores closed within 6 months. Same playbook that gutted Staples.</p>
+        <span class="sc-read" style="color:var(--core-red);">Read Signal <span class="sc-read-arrow">→</span></span>
+      </div>
     </a>
-    <a href="signals/flow/the-slop-threshold/" class="division-card" style="text-decoration:none;color:inherit;">
-      <div class="division-tag d-flow">FLOW</div>
-      <div class="division-name">Flow</div>
-      <div class="division-desc">Attention, media, and audience behavior. How ideas move, mutate, and reach critical density.</div>
-      <div style="margin-top:8px;font-size:0.75rem;color:#E91E63;font-weight:600;">▸ 2 SIGNALS: The Five Million Exits (0.82) · The Slop Threshold</div>
+  </div>
+
+  <!-- SECONDARY SIGNAL STRIP -->
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:1.5rem;" class="reveal reveal-delay-1">
+    <a href="cities/global/the-triple-break/" style="background:var(--white);border-radius:var(--radius-sm);padding:1.5rem;box-shadow:var(--shadow-sm);transition:all var(--transition);" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='var(--shadow-md)'" onmouseout="this.style.transform='none';this.style.boxShadow='var(--shadow-sm)'">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--core-red);margin-bottom:0.5rem;">CORE-001 · 0.908</div>
+      <div style="font-family:'DM Serif Display',serif;font-size:1rem;font-style:italic;line-height:1.2;">The Triple Break</div>
+      <div style="font-size:0.75rem;color:var(--gray-mid);margin-top:0.4rem;">Bank of Canada names three simultaneous structural breaks.</div>
     </a>
-    <a href="cities/nwa/bentonville-wednesday-market/" class="division-card" style="text-decoration:none;color:inherit;">
-      <div class="division-tag d-ground">GROUND</div>
-      <div class="division-name">Ground</div>
-      <div class="division-desc">Territory, real estate, and physical markets. The layer where economic signals become visible in space.</div>
-      <div style="margin-top:8px;font-size:0.75rem;color:#2D5016;font-weight:600;">▸ 5 NWA + 2 Madrid + Duluth — The Overshoot (0.902)</div>
+    <a href="cities/nwa/the-overshoot/" style="background:var(--white);border-radius:var(--radius-sm);padding:1.5rem;box-shadow:var(--shadow-sm);transition:all var(--transition);" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='var(--shadow-md)'" onmouseout="this.style.transform='none';this.style.boxShadow='var(--shadow-sm)'">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--ground-color);margin-bottom:0.5rem;">NWA-004 · 0.902</div>
+      <div style="font-family:'DM Serif Display',serif;font-size:1rem;font-style:italic;line-height:1.2;">The Overshoot</div>
+      <div style="font-size:0.75rem;color:var(--gray-mid);margin-top:0.4rem;">NWA supply-demand inversion creates affordability window.</div>
     </a>
-    <a href="crumbs/farmers-market-march-2026/" class="division-card crumbs-card" style="text-decoration:none;color:inherit;">
-      <div class="division-tag d-crumbs">CRUMBS</div>
-      <div class="division-name">Crumbs</div>
-      <div class="division-desc">Data Signals Division. Brand intelligence dashboard — minimum publishable unit of verified structural signal.</div>
-      <div style="margin-top:8px;font-size:0.75rem;color:#C9A84C;font-weight:600;">▸ 24 CRUMBS — Farmers Market + Cross-Division Pack</div>
+    <a href="cities/madrid/neighbors-veto/" style="background:var(--white);border-radius:var(--radius-sm);padding:1.5rem;box-shadow:var(--shadow-sm);transition:all var(--transition);" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='var(--shadow-md)'" onmouseout="this.style.transform='none';this.style.boxShadow='var(--shadow-sm)'">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--ground-color);margin-bottom:0.5rem;">MADRID-002 · 0.900</div>
+      <div style="font-family:'DM Serif Display',serif;font-size:1rem;font-style:italic;line-height:1.2;">The Neighbor's Veto</div>
+      <div style="font-size:0.75rem;color:var(--gray-mid);margin-top:0.4rem;">Spain gives buildings power to block Airbnb conversions.</div>
+    </a>
+    <a href="signals/flow/the-five-million-exits/" style="background:var(--white);border-radius:var(--radius-sm);padding:1.5rem;box-shadow:var(--shadow-sm);transition:all var(--transition);" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='var(--shadow-md)'" onmouseout="this.style.transform='none';this.style.boxShadow='var(--shadow-sm)'">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--flow-pink);margin-bottom:0.5rem;">FLOW-002 · 0.820</div>
+      <div style="font-family:'DM Serif Display',serif;font-size:1rem;font-style:italic;line-height:1.2;">The Five Million Exits</div>
+      <div style="font-size:0.75rem;color:var(--gray-mid);margin-top:0.4rem;">Newsletter subscriptions overtake algorithmic distribution.</div>
     </a>
   </div>
 </section>
 
-<!-- CITIES SECTION -->
-<section class="section-wrap" id="cities" style="background: var(--cream);">
-  <div class="section-header reveal">
-    <span class="section-eyebrow">◆ Territory Intelligence</span>
-    <h2 class="section-title">CITIES</h2>
-    <div class="section-rule"></div>
-  </div>
-
-  <div class="cities-grid reveal">
-
-    <!-- NWA — FEATURED with 3 signals -->
-    <a href="cities/nwa/bentonville-wednesday-market/" class="city-card city-card-featured">
-      <div class="city-card-visual" style="background: linear-gradient(160deg, #0d1a0d 0%, #1e3a12 50%, #2d5016 100%);">
-        <div class="city-overlay"></div>
-        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
-          <div style="text-align:center;padding:2rem;">
-            <div style="font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.2em;color:rgba(134,239,172,0.5);text-transform:uppercase;margin-bottom:1rem;">4 Signals Published</div>
-            <div style="font-family:'DM Serif Display',serif;font-size:2.2rem;color:#86EFAC;font-style:italic;line-height:1.1;margin-bottom:0.5rem;">The Wednesday<br>Market</div>
-            <div style="width:30px;height:1px;background:rgba(134,239,172,0.3);margin:1rem auto;"></div>
-            <div style="font-family:'JetBrains Mono',monospace;font-size:0.62rem;color:rgba(255,255,255,0.3);letter-spacing:0.12em;text-transform:uppercase;">GROUND · Farmers Market Cluster</div>
-          </div>
+<!-- CITIES -->
+<section class="section-wrap" id="cities" style="background: var(--cream-dark); max-width:none; padding-left:0; padding-right:0;">
+  <div style="max-width:1400px; margin:0 auto; padding:0 clamp(1.25rem,4vw,3.5rem);">
+    <div class="section-header reveal">
+      <span class="section-eyebrow">◆ Territory Intelligence</span>
+      <h2 class="section-title">Cities</h2>
+      <div class="section-rule"></div>
+    </div>
+    <div class="cities-grid reveal">
+      <!-- NWA FEATURED -->
+      <a href="cities/nwa/bentonville-wednesday-market/" class="city-card city-card-featured">
+        <div class="city-img">
+          <img src="https://images.unsplash.com/photo-1488459716781-31db52582fe9?w=800&q=80&fit=crop" alt="Northwest Arkansas Farmers Market" loading="lazy">
+          <div class="city-img-overlay"></div>
+          <div class="city-img-name">Northwest Arkansas</div>
+          <div class="city-img-count">4 Signals</div>
         </div>
-        <div class="city-name-overlay">Northwest Arkansas</div>
+        <div class="city-body">
+          <ul class="city-signal-list">
+            <li class="city-signal-item">
+              <span class="city-signal-id">004</span>
+              <span class="city-signal-name">The Overshoot</span>
+              <span class="city-signal-id" style="color:var(--ground-color);">0.902</span>
+            </li>
+            <li class="city-signal-item">
+              <span class="city-signal-id">003</span>
+              <span class="city-signal-name">The Forager's Shelf</span>
+              <span class="city-signal-id">→</span>
+            </li>
+            <li class="city-signal-item">
+              <span class="city-signal-id">002</span>
+              <span class="city-signal-name">The Wednesday Market</span>
+              <span class="city-signal-id">→</span>
+            </li>
+            <li class="city-signal-item">
+              <span class="city-signal-id">001</span>
+              <span class="city-signal-name">The New Booth in Bella Vista</span>
+              <span class="city-signal-id">→</span>
+            </li>
+          </ul>
+        </div>
+      </a>
+      <!-- MADRID -->
+      <a href="cities/madrid/neighbors-veto/" class="city-card">
+        <div class="city-img">
+          <img src="https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=600&q=80&fit=crop" alt="Madrid Spain" loading="lazy">
+          <div class="city-img-overlay"></div>
+          <div class="city-img-name">Madrid</div>
+          <div class="city-img-count">2 Signals</div>
+        </div>
+        <div class="city-body">
+          <ul class="city-signal-list">
+            <li class="city-signal-item">
+              <span class="city-signal-id">002</span>
+              <span class="city-signal-name">The Neighbor's Veto</span>
+              <span class="city-signal-id" style="color:var(--ground-color);">0.90</span>
+            </li>
+            <li class="city-signal-item">
+              <span class="city-signal-id">001</span>
+              <span class="city-signal-name">Tribulete 7</span>
+              <span class="city-signal-id">→</span>
+            </li>
+          </ul>
+        </div>
+      </a>
+      <!-- DULUTH -->
+      <a href="cities/duluth/vendors-became-the-market/" class="city-card">
+        <div class="city-img">
+          <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80&fit=crop" alt="Duluth Minnesota" loading="lazy">
+          <div class="city-img-overlay"></div>
+          <div class="city-img-name">Duluth</div>
+          <div class="city-img-count">1 Signal</div>
+        </div>
+        <div class="city-body">
+          <ul class="city-signal-list">
+            <li class="city-signal-item">
+              <span class="city-signal-id">001</span>
+              <span class="city-signal-name">The Vendors Became the Market</span>
+              <span class="city-signal-id">→</span>
+            </li>
+          </ul>
+        </div>
+      </a>
+      <!-- NYC stub -->
+      <div class="city-card city-stub" style="background:linear-gradient(135deg,#0d1520,#1a2535);cursor:default;">
+        <div class="city-stub-inner">
+          <div class="city-stub-name">New York</div>
+          <div class="city-stub-status">Signals Incoming</div>
+        </div>
       </div>
-      <div class="city-card-body">
-        <div class="city-signal-count">4 Signals Published · Farmers Market Cluster</div>
-        <div class="city-article-title">Latest: The Wednesday Market</div>
-        <div class="city-article-desc">Bentonville Farmers Market hits $3M and expands to weekday operations. The structural gap between direct-buy growth and industrial farm contraction — measured in chocolate and corn.</div>
-        <div class="city-read-link" style="margin-bottom:6px;"><a href="cities/nwa/the-overshoot/" style="color:inherit;text-decoration:none;">NWA-GROUND-004 · The Overshoot (0.902) →</a></div>
-        <div class="city-read-link" style="margin-bottom:6px;">NWA-GROUND-002 · The Wednesday Market →</div>
-        <div class="city-read-link" style="margin-bottom:6px;"><a href="cities/nwa/rogers-foragers-shelf/" style="color:inherit;text-decoration:none;">NWA-GROUND-003 · The Forager's Shelf →</a></div>
-        <div class="city-read-link"><a href="cities/nwa/bella-vista-new-booth/" style="color:inherit;text-decoration:none;">NWA-GROUND-001 · The New Booth in Bella Vista →</a></div>
+      <!-- LA stub -->
+      <div class="city-card city-stub" style="background:linear-gradient(135deg,#1a1005,#2d2010);cursor:default;">
+        <div class="city-stub-inner">
+          <div class="city-stub-name">Los Angeles</div>
+          <div class="city-stub-status">Signals Incoming</div>
+        </div>
       </div>
-    </a>
-
-    <!-- MADRID — 2 SIGNALS -->
-    <a href="cities/madrid/neighbors-veto/" class="city-card">
-      <div class="city-stub-visual" style="background: linear-gradient(135deg, #1a1015 0%, #2d1a20 100%);">
-        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.5) 0%,transparent 60%);"></div>
-        <span class="city-stub-name" style="color:#FAF6EE;">Madrid</span>
-      </div>
-      <div class="city-stub-body">
-        <div class="city-stub-status">2 Signals · Ground</div>
-        <div class="city-stub-desc">The Neighbor's Veto — Spain's 2025 law gives building residents power to block Airbnb. Class-based displacement quantified.</div>
-        <div class="city-read-link" style="margin-bottom:4px;">MADRID-GROUND-002 · The Neighbor's Veto →</div>
-        <div class="city-read-link"><a href="madrid-feb-2026/index.html" style="color:inherit;text-decoration:none;">MADRID-GROUND-001 · Tribulete 7 →</a></div>
-      </div>
-    </a>
-
-    <!-- NYC -->
-    <div class="city-card city-card-stub" style="cursor:default;">
-      <div class="city-stub-visual" style="background: linear-gradient(135deg, #0d1520 0%, #1a2535 100%);">
-        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.5) 0%,transparent 60%);"></div>
-        <span class="city-stub-name">New York</span>
-      </div>
-      <div class="city-stub-body">
-        <div class="city-stub-status">Signals Incoming</div>
-        <div class="city-stub-desc">Ground-level intelligence from the five boroughs. First signal in research.</div>
-      </div>
-    </div>
-
-    <!-- LA -->
-    <div class="city-card city-card-stub" style="cursor:default;">
-      <div class="city-stub-visual" style="background: linear-gradient(135deg, #1a1005 0%, #2d2010 100%);">
-        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.5) 0%,transparent 60%);"></div>
-        <span class="city-stub-name">Los Angeles</span>
-      </div>
-      <div class="city-stub-body">
-        <div class="city-stub-status">Signals Incoming</div>
-        <div class="city-stub-desc">Market infrastructure, cultural corridors, and post-fire behavioral recalibration.</div>
-      </div>
-    </div>
-
-    <!-- CDMX -->
-    <div class="city-card city-card-stub" style="cursor:default;">
-      <div class="city-stub-visual" style="background: linear-gradient(135deg, #1a0d05 0%, #2d1a05 100%);">
-        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.5) 0%,transparent 60%);"></div>
-        <span class="city-stub-name">CDMX</span>
-      </div>
-      <div class="city-stub-body">
-        <div class="city-stub-status">Signals Incoming</div>
-        <div class="city-stub-desc">Urban displacement, market density, and the informal economy as structural signal.</div>
-      </div>
-    </div>
-
-    <!-- DULUTH — NEW SIGNAL -->
-    <a href="cities/duluth/vendors-became-the-market/" class="city-card">
-      <div class="city-stub-visual" style="background: linear-gradient(135deg, #0a1520 0%, #152535 100%);">
-        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.5) 0%,transparent 60%);"></div>
-        <span class="city-stub-name" style="color:#FAF6EE;">Duluth</span>
-      </div>
-      <div class="city-stub-body">
-        <div class="city-stub-status">1 Signal · Ground</div>
-        <div class="city-stub-desc">The Vendors Became the Market — When a nonprofit failed, vendors built their own food infrastructure in a food desert.</div>
-      </div>
-    </a>
-
-  </div>
-</section>
-
-<!-- LATEST SIGNALS: FARMERS MARKET CLUSTER -->
-<section class="section-wrap tight" style="background: #F5F1E8; padding-top: 0;">
-  <a href="cities/nwa/bentonville-wednesday-market/" class="feature-card reveal">
-    <div class="feature-card-content">
-      <div class="feature-card-label">GROUND · NWA-GROUND-002 · Farmers Market Cluster · Signal 2</div>
-      <h2 class="feature-card-headline">The Wednesday Market</h2>
-      <p class="feature-card-deck">Bentonville Farmers Market broke $3 million in 2025 and is expanding to Wednesday operations. While 15,000 U.S. farms disappeared last year, direct-to-consumer food infrastructure is scaling — and the vendors are betting on weekday depth.</p>
-      <div class="feature-card-meta">
-        <span class="meta-tag meta-ground">GROUND</span>
-        <span class="meta-tag meta-nwa">Northwest Arkansas</span>
-        <span class="meta-tag meta-signal">Signal CONFIRMED</span>
-      </div>
-      <span class="btn-primary">Read Signal →</span>
-    </div>
-    <div class="feature-card-visual">
-      <div class="visual-signal-block">
-        <div class="vsb-id">NWA-GROUND-002</div>
-        <div class="vsb-title">Bentonville Farmers Market</div>
-        <div class="vsb-city">Northwest Arkansas · Mar 2026</div>
-        <div class="vsb-layers">
-          <div class="vsb-layer active">
-            <div class="vsb-layer-num">1</div>
-            <div class="vsb-layer-name">Human Becoming</div>
-          </div>
-          <div class="vsb-layer active">
-            <div class="vsb-layer-num">2</div>
-            <div class="vsb-layer-name">Structural Read</div>
-          </div>
-          <div class="vsb-layer active">
-            <div class="vsb-layer-num">3</div>
-            <div class="vsb-layer-name">Pattern Confirmation</div>
-          </div>
+      <!-- CDMX stub -->
+      <div class="city-card city-stub" style="background:linear-gradient(135deg,#1a0d05,#2d1a05);cursor:default;">
+        <div class="city-stub-inner">
+          <div class="city-stub-name">CDMX</div>
+          <div class="city-stub-status">Signals Incoming</div>
         </div>
       </div>
     </div>
-  </a>
-
-  <!-- MORE SIGNALS STRIP -->
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;max-width:1200px;margin:0 auto 2rem;padding:0 2rem;" class="reveal">
-    <a href="cities/nwa/rogers-foragers-shelf/" style="display:block;background:var(--black);color:var(--cream);padding:2rem;border-radius:12px;text-decoration:none;transition:transform 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='none'">
-      <div style="font-size:0.65rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:0.75rem;">NWA-GROUND-003 · Signal 3</div>
-      <div style="font-family:'DM Serif Display',serif;font-size:1.4rem;line-height:1.2;margin-bottom:0.5rem;">The Forager's Shelf</div>
-      <div style="font-size:0.82rem;color:rgba(255,255,255,0.5);line-height:1.5;">Whole Foods opens in Rogers with 120+ local items and a dedicated "forager." Amazon's logistics now curate the same producers who sell at Saturday markets.</div>
-    </a>
-    <a href="cities/duluth/vendors-became-the-market/" style="display:block;background:var(--black);color:var(--cream);padding:2rem;border-radius:12px;text-decoration:none;transition:transform 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='none'">
-      <div style="font-size:0.65rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:0.75rem;">DULUTH-GROUND-001 · Signal 4</div>
-      <div style="font-family:'DM Serif Display',serif;font-size:1.4rem;line-height:1.2;margin-bottom:0.5rem;">The Vendors Became the Market</div>
-      <div style="font-size:0.82rem;color:rgba(255,255,255,0.5);line-height:1.5;">When a nonprofit failed and stopped paying vendors in Duluth, they built their own market in a food desert. Governance failure becomes structural repair.</div>
-    </a>
   </div>
 </section>
 
@@ -986,167 +1267,201 @@
     <h2 class="section-title">Research & Editions</h2>
     <div class="section-rule"></div>
   </div>
-  <div class="editions-grid">
-
-    <a href="sig-intelligence-ai-seo/index.html" class="edition-card reveal">
-      <div class="edition-card-image" style="background:linear-gradient(135deg,#0f0f1a,#1a0f0f);display:flex;align-items:center;justify-content:center;">
+  <div class="archive-grid">
+    <a href="sig-intelligence-ai-seo/index.html" class="archive-card reveal">
+      <div class="archive-visual" style="background:linear-gradient(135deg,#0f0f1a,#1a0f0f);">
         <div style="text-align:center;font-family:'JetBrains Mono',monospace;color:#fff;">
           <div style="font-size:2.8rem;font-weight:700;color:var(--orange);">9.1</div>
           <div style="font-size:0.6rem;letter-spacing:0.14em;color:rgba(255,255,255,0.4);text-transform:uppercase;">Audit Score</div>
         </div>
       </div>
-      <div class="edition-card-body">
-        <span class="edition-card-label">SIG Intelligence · AI/SEO</span>
-        <h3 class="edition-card-title">The AI/SEO Bridge</h3>
-        <p class="edition-card-desc">190 verified citations. 107 sources. Tier A/B throughout. How AI-driven search is redrawing discoverability — the operator's guide.</p>
+      <div class="archive-body">
+        <span class="archive-label">SIG Intelligence · AI/SEO</span>
+        <h3 class="archive-title">The AI/SEO Bridge</h3>
+        <p class="archive-desc">190 verified citations. 107 sources. Tier A/B throughout. How AI-driven search is redrawing discoverability.</p>
       </div>
-      <div class="edition-card-footer"><span class="read-link">Read →</span></div>
+      <div class="archive-footer"><span class="archive-read">Read →</span></div>
     </a>
-
-    <a href="signal-intelligence-members/index.html" class="edition-card reveal">
-      <div class="edition-card-image" style="background:linear-gradient(135deg,#E8652E,#2D5BFF,#9B59B6);display:flex;align-items:center;justify-content:center;">
+    <a href="signal-intelligence-members/index.html" class="archive-card reveal reveal-delay-1">
+      <div class="archive-visual" style="background:linear-gradient(135deg,#E8652E,#2D5BFF,#9B59B6);">
         <div style="text-align:center;font-family:'DM Serif Display',serif;color:#fff;">
           <div style="font-size:3rem;font-weight:700;">74</div>
           <div style="font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;opacity:0.8;">Signals Verified</div>
         </div>
       </div>
-      <div class="edition-card-body">
-        <span class="edition-card-label">Signal Intelligence · Members Edition</span>
-        <h3 class="edition-card-title">74 Verified Signals. 7 Meta-Patterns.</h3>
-        <p class="edition-card-desc">Comprehensive intelligence across 5 divisions and 6 cities. Top 20 rankings, meta-patterns, and intelligence packages.</p>
+      <div class="archive-body">
+        <span class="archive-label">Signal Intelligence · Members</span>
+        <h3 class="archive-title">74 Verified Signals. 7 Meta-Patterns.</h3>
+        <p class="archive-desc">Comprehensive intelligence across 5 divisions and 6 cities. Top 20 rankings and intelligence packages.</p>
       </div>
-      <div class="edition-card-footer"><span class="read-link">Explore →</span><span style="font-size:0.62rem;color:var(--gray-mid);font-family:'JetBrains Mono',monospace;">Free preview + Members</span></div>
+      <div class="archive-footer"><span class="archive-read">Explore →</span><span style="font-size:0.58rem;color:var(--gray-mid);font-family:'JetBrains Mono',monospace;">Members</span></div>
     </a>
-
-    <a href="madrid-feb-2026/index.html" class="edition-card reveal">
-      <div class="edition-card-image" style="background:#1a1a1a;display:flex;align-items:center;justify-content:center;">
-        <div style="font-family:'DM Serif Display',serif;font-size:1.8rem;color:rgba(255,107,53,0.7);font-style:italic;text-align:center;padding:1.5rem;">When the Building Does the Work</div>
+    <a href="madrid-feb-2026/index.html" class="archive-card reveal reveal-delay-2">
+      <div class="archive-visual" style="background:#1a1a1a;">
+        <div style="font-family:'DM Serif Display',serif;font-size:1.6rem;color:rgba(255,107,53,0.7);font-style:italic;text-align:center;padding:1.5rem;">When the Building Does the Work</div>
       </div>
-      <div class="edition-card-body">
-        <span class="edition-card-label">Ground Signal · Madrid · Feb 19, 2026</span>
-        <h3 class="edition-card-title">When the Building Does the Work</h3>
-        <p class="edition-card-desc">A criminal first in Spanish legal history. The screwdrivers at Tribulete 7. The court hearing.</p>
+      <div class="archive-body">
+        <span class="archive-label">Ground Signal · Madrid · Feb 2026</span>
+        <h3 class="archive-title">When the Building Does the Work</h3>
+        <p class="archive-desc">A criminal first in Spanish legal history. The screwdrivers at Tribulete 7. The court hearing.</p>
       </div>
-      <div class="edition-card-footer"><span class="read-link">Read →</span></div>
+      <div class="archive-footer"><span class="archive-read">Read →</span></div>
     </a>
-
-    <a href="feb-19-2026/index.html" class="edition-card reveal">
-      <div class="edition-card-image" style="background:#1a1a1a;display:flex;align-items:center;justify-content:center;">
-        <div style="font-family:'DM Serif Display',serif;font-size:1.6rem;color:rgba(232,114,42,0.6);font-style:italic;text-align:center;padding:1.5rem;">Ideas Worth Existing</div>
+    <a href="feb-19-2026/index.html" class="archive-card reveal">
+      <div class="archive-visual" style="background:#1a1a1a;">
+        <div style="font-family:'DM Serif Display',serif;font-size:1.5rem;color:rgba(232,114,42,0.6);font-style:italic;text-align:center;padding:1.5rem;">Ideas Worth Existing</div>
       </div>
-      <div class="edition-card-body">
-        <span class="edition-card-label">Feb 19, 2026 · V3.3</span>
-        <h3 class="edition-card-title">Ideas Worth Existing</h3>
-        <p class="edition-card-desc">Not every idea deserves to exist. Yours might. A structural diagnostic for founders and operators.</p>
+      <div class="archive-body">
+        <span class="archive-label">Feb 19, 2026 · V3.3</span>
+        <h3 class="archive-title">Ideas Worth Existing</h3>
+        <p class="archive-desc">Not every idea deserves to exist. Yours might. A structural diagnostic for founders and operators.</p>
       </div>
-      <div class="edition-card-footer"><span class="read-link">Read →</span></div>
+      <div class="archive-footer"><span class="archive-read">Read →</span></div>
     </a>
-
-    <a href="xt-relay/index.html" class="edition-card reveal">
-      <div class="edition-card-image" style="background:radial-gradient(#1a2450,#0b0d12);display:flex;align-items:center;justify-content:center;">
+    <a href="xt-relay/index.html" class="archive-card reveal reveal-delay-1">
+      <div class="archive-visual" style="background:radial-gradient(#1a2450,#0b0d12);">
         <div style="font-family:'JetBrains Mono',monospace;font-size:2.5rem;font-weight:900;color:#2b6cff;letter-spacing:-2px;">XT<span style="color:#fff;">:</span>RELAY</div>
       </div>
-      <div class="edition-card-body">
-        <span class="edition-card-label" style="color:#2b6cff;">GAME · Daily Puzzle</span>
-        <h3 class="edition-card-title">XT:RELAY — Signal Deduction</h3>
-        <p class="edition-card-desc">Daily-seeded logic puzzle. Crack the signal code. No tracking, no dark patterns. Same puzzle for everyone today.</p>
+      <div class="archive-body">
+        <span class="archive-label" style="color:#2b6cff;">Game · Daily Puzzle</span>
+        <h3 class="archive-title">XT:RELAY — Signal Deduction</h3>
+        <p class="archive-desc">Daily-seeded logic puzzle. Crack the signal code. Same puzzle for everyone today.</p>
       </div>
-      <div class="edition-card-footer"><span class="read-link" style="color:#2b6cff;">Play →</span></div>
+      <div class="archive-footer"><span class="archive-read" style="color:#2b6cff;">Play →</span></div>
     </a>
-
-    <a href="feb-2026/index.html" class="edition-card reveal">
-      <div class="edition-card-image">
+    <a href="feb-2026/index.html" class="archive-card reveal reveal-delay-2">
+      <div class="archive-visual">
         <img src="https://images.unsplash.com/photo-1486325212823-c51b7b1e8e81?w=600&q=80&fit=crop" alt="February 2026" loading="lazy">
       </div>
-      <div class="edition-card-body">
-        <span class="edition-card-label">February 2026</span>
-        <h3 class="edition-card-title">NWA Is #1. We Called It First.</h3>
-        <p class="edition-card-desc">Northwest Arkansas crowned America's best-performing metro. Colombia resets. The Great Housing Restart.</p>
+      <div class="archive-body">
+        <span class="archive-label">February 2026</span>
+        <h3 class="archive-title">NWA Is #1. We Called It First.</h3>
+        <p class="archive-desc">Northwest Arkansas crowned America's best-performing metro. Colombia resets. The Great Housing Restart.</p>
       </div>
-      <div class="edition-card-footer"><span class="read-link">Read →</span></div>
+      <div class="archive-footer"><span class="archive-read">Read →</span></div>
     </a>
-
   </div>
 </section>
 
-<!-- COMMUNITY / KONTRARIAN -->
-<section class="section-wrap kontrarian-strip" id="community">
-  <div class="kontrarian-inner reveal">
-    <div class="kont-text">
-      <div class="kont-eyebrow">◆ Sister Publication · Community</div>
-      <h2>Culture from the Ground Up.</h2>
-      <p>Kontrarian is where local experts become the intelligence source. Kontributors — people who actually live in a city — report the cultural signals that no algorithm is looking for. Medellín. Madrid. More coming.</p>
-      <a href="kontrarian/index.html" class="btn-gold">Explore Kontrarian →</a>
-    </div>
-    <div class="kont-cities">
-      <div class="kont-city">
-        <span class="kont-city-name">Medellín</span>
-        <span class="kont-city-status">Active</span>
+<!-- KONTRARIAN -->
+<div class="kontrarian-wrap" id="community">
+  <div class="section-wrap" style="max-width:1400px;">
+    <div class="kont-inner reveal">
+      <div>
+        <div class="kont-eyebrow">◆ Sister Publication · Community</div>
+        <h2 class="kont-title">Culture from the Ground Up.</h2>
+        <p class="kont-desc">Kontrarian is where local experts become the intelligence source. Kontributors — people who actually live in a city — report the cultural signals no algorithm is looking for.</p>
+        <a href="kontrarian/index.html" class="btn-gold">Explore Kontrarian →</a>
       </div>
-      <div class="kont-city">
-        <span class="kont-city-name">Madrid</span>
-        <span class="kont-city-status">Active</span>
-      </div>
-      <div class="kont-city" style="opacity:0.4;">
-        <span class="kont-city-name">Next City</span>
-        <span class="kont-city-status" style="color:rgba(201,168,76,0.4);background:rgba(201,168,76,0.04);">In Selection</span>
+      <div class="kont-cities">
+        <div class="kont-city">
+          <span class="kont-city-name">Medellín</span>
+          <span class="kont-city-status">Active</span>
+        </div>
+        <div class="kont-city">
+          <span class="kont-city-name">Madrid</span>
+          <span class="kont-city-status">Active</span>
+        </div>
+        <div class="kont-city" style="opacity:0.4;">
+          <span class="kont-city-name">Next City</span>
+          <span class="kont-city-status" style="opacity:0.5;">In Selection</span>
+        </div>
       </div>
     </div>
   </div>
-</section>
+</div>
 
 <!-- ABOUT -->
-<section class="section-wrap about-strip" id="about">
-  <div class="about-inner reveal">
-    <div class="about-text">
-      <div class="xtatik-tag">A Xtatik Publication · Doctrine 2026</div>
-      <h2>Signal detection <span>before</span> the data catches up.</h2>
-      <p>IN-KluSo is a structured, repeatable, human-verified cultural intelligence dataset presented in editorial form. Not opinion media. Not trend coverage. Micro-incident analysis, mechanism mapping, and structured territorial signal tracking.</p>
-    </div>
-    <div>
-      <div class="authors-section-label">Contributors</div>
-      <div class="authors-list">
-        <div class="author-inline">
-          <div class="author-avatar avatar-orange">JCE</div>
-          <div class="author-info">
-            <strong>Juan Camilo Echeverri</strong>
-            <span>Executive Broker · PAK Home Realty · Rogers, AR</span>
+<div class="about-wrap" id="about">
+  <div class="section-wrap" style="max-width:1400px;">
+    <div class="about-inner reveal">
+      <div>
+        <div class="about-tag">A Xtatik Publication · Doctrine 2026</div>
+        <h2 class="about-headline">Signal detection <em>before</em> the data catches up.</h2>
+        <p class="about-desc">IN-KluSo is a structured, repeatable, human-verified cultural intelligence dataset presented in editorial form. Not opinion media. Not trend coverage. Micro-incident analysis, mechanism mapping, and structured territorial signal tracking.</p>
+      </div>
+      <div>
+        <div class="authors-label">Contributors</div>
+        <div class="authors-list">
+          <div class="author-row">
+            <div class="author-avatar avatar-orange">JCE</div>
+            <div class="author-info">
+              <strong>Juan Camilo Echeverri</strong>
+              <span>Executive Broker · PAK Home Realty · Rogers, AR</span>
+            </div>
           </div>
-        </div>
-        <div class="author-inline">
-          <div class="author-avatar avatar-neutral">CO</div>
-          <div class="author-info">
-            <strong>Camilo Osorio</strong>
-            <span>Brand Strategist · Madrid, Spain</span>
+          <div class="author-row">
+            <div class="author-avatar avatar-neutral">CO</div>
+            <div class="author-info">
+              <strong>Camilo Osorio</strong>
+              <span>Brand Strategist · Madrid, Spain</span>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</section>
+</div>
 
+<!-- FOOTER -->
 <footer>
-  <strong>IN-<span>K</span>luSo</strong>
-  <div class="footer-links">
-    <a href="#core">Core</a>
-    <a href="#cities">Cities</a>
-    <a href="kontrarian/index.html">Kontrarian</a>
-    <a href="https://jjaecheverri.github.io/inkluso-tools/" target="_blank">Research Tools</a>
-    <a href="doctrine/index.html">Doctrine</a>
-    <a href="#about">About</a>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">IN-<span>K</span>luSo</div>
+      <div class="footer-copy">© 2026 Xtatik · All editions in English</div>
+    </div>
+    <div class="footer-links-col">
+      <div class="footer-col-title">Navigate</div>
+      <a href="#core">Core</a>
+      <a href="#cities">Cities</a>
+      <a href="#signals">Signals</a>
+      <a href="#archive">Archive</a>
+    </div>
+    <div class="footer-links-col">
+      <div class="footer-col-title">Ecosystem</div>
+      <a href="kontrarian/index.html">Kontrarian</a>
+      <a href="humanklu/index.html">HumanKlu™</a>
+      <a href="https://jjaecheverri.github.io/inkluso-tools/" target="_blank">Research Tools</a>
+      <a href="doctrine/index.html">Doctrine</a>
+    </div>
+    <div class="footer-links-col">
+      <div class="footer-col-title">Intelligence</div>
+      <a href="signal-model/index.html">SCI Calculator</a>
+      <a href="crumbs/farmers-market-march-2026/">CRUMBS</a>
+      <a href="#about">Subscribe</a>
+    </div>
   </div>
-  IN-KluSo by Xtatik &nbsp;·&nbsp; © 2026 &nbsp;·&nbsp; All editions in English
 </footer>
 
 <script>
+  // Nav scroll effect
   const nav = document.getElementById('main-nav');
-  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 60); });
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60));
+
+  // Hamburger menu
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    mobileMenu.classList.toggle('active');
+    document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+  });
+  function closeMobile() {
+    hamburger.classList.remove('active');
+    mobileMenu.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  // Scroll reveal with stagger
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
     });
-  }, { threshold: 0.1 });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
   reveals.forEach(el => observer.observe(el));
 </script>
 </body>
