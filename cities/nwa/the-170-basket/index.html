@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The $170 Basket — IN-KluSo</title>
+  <meta name="description" content="The average grocery basket costs $170 a week now. Prices explain part of it. The rest is a behavioral shift — and it's handing farmers market vendors an advantage nobody designed.">
+  <meta name="author" content="Juan Camilo Echeverri">
+  <link rel="canonical" href="https://jjaecheverri.github.io/inkluso-magazine/cities/nwa/the-170-basket/">
+
+  <!-- JSON-LD Machine-Readable Signal -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "The $170 Basket",
+    "description": "Average weekly grocery spend hits record while food-at-home inflation splits from restaurant prices — and the gap reshapes who wins the premium food dollar in Northwest Arkansas.",
+    "author": {
+      "@type": "Person",
+      "name": "Juan Camilo Echeverri",
+      "jobTitle": "Executive Broker, PAK Home Realty",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "PAK Home Realty",
+        "address": {
+          "@addressLocality": "Rogers",
+          "@addressRegion": "AR"
+        }
+      }
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "IN-KluSo",
+      "url": "https://jjaecheverri.github.io/inkluso-magazine/"
+    },
+    "datePublished": "2026-03-03",
+    "dateModified": "2026-03-03",
+    "articleSection": "GROUND",
+    "keywords": ["food-inflation", "grocery-spending", "USDA", "farmers-market", "consumer-behavior", "generational-shift", "NWA", "restaurant-avoidance", "beef-prices"],
+    "url": "https://jjaecheverri.github.io/inkluso-magazine/cities/nwa/the-170-basket/",
+    "about": {
+      "@type": "Place",
+      "name": "Northwest Arkansas",
+      "containedInPlace": {
+        "@type": "State",
+        "name": "Arkansas",
+        "containedInPlace": {
+          "@type": "Country",
+          "name": "United States"
+        }
+      }
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #FAF6EE;
+      --black: #111111;
+      --orange: #E05A1C;
+      --gray: #6B6B6B;
+      --light-gray: #E8E4DC;
+      --ground-color: #B85C1F;
+      --ground-bg: #FEF5EC;
+    }
+
+    body {
+      background: var(--cream);
+      color: var(--black);
+      font-family: 'Inter', sans-serif;
+      font-size: 17px;
+      line-height: 1.75;
+    }
+
+    /* NAV */
+    nav {
+      background: var(--black);
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      color: var(--cream);
+      font-size: 20px;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: #AAAAAA;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--cream); }
+    .nav-links a.active { color: var(--orange); }
+
+    /* SIGNAL HEADER */
+    .signal-header {
+      border-bottom: 1px solid var(--light-gray);
+      padding: 48px 32px 32px;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .signal-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .signal-id {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--gray);
+      font-family: 'Inter', monospace;
+    }
+    .section-tag {
+      display: inline-block;
+      background: var(--ground-color);
+      color: white;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 2px;
+    }
+    .city-tag {
+      display: inline-block;
+      background: var(--light-gray);
+      color: var(--black);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 2px;
+    }
+    .cluster-tag {
+      font-size: 11px;
+      color: var(--orange);
+      font-weight: 500;
+      letter-spacing: 0.05em;
+    }
+
+    .signal-header h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(32px, 5vw, 52px);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      margin-bottom: 16px;
+    }
+    .signal-header .deck {
+      font-size: 19px;
+      color: var(--gray);
+      line-height: 1.5;
+      margin-bottom: 24px;
+      font-weight: 300;
+    }
+    .byline {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding-top: 20px;
+      border-top: 1px solid var(--light-gray);
+    }
+    .byline-text {
+      font-size: 13px;
+      color: var(--gray);
+    }
+    .byline-text strong {
+      color: var(--black);
+      font-weight: 600;
+    }
+    .publish-date { font-size: 12px; color: var(--gray); }
+
+    /* LAYER LABELS */
+    .layer-label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 48px 0 24px;
+    }
+    .layer-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--black);
+      color: var(--cream);
+      font-size: 12px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .layer-name {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+    .layer-rule {
+      flex: 1;
+      height: 1px;
+      background: var(--light-gray);
+    }
+
+    /* ARTICLE BODY */
+    .article-body {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 32px 80px;
+    }
+
+    .article-body p {
+      margin-bottom: 22px;
+      color: var(--black);
+    }
+    .article-body p em {
+      font-style: italic;
+      color: var(--black);
+    }
+    .article-body .pull-quote {
+      font-family: 'DM Serif Display', serif;
+      font-size: 24px;
+      line-height: 1.3;
+      color: var(--black);
+      border-left: 4px solid var(--orange);
+      padding: 16px 24px;
+      margin: 36px 0;
+      font-style: italic;
+    }
+    .article-body .structural-note {
+      background: var(--ground-bg);
+      border-left: 3px solid var(--ground-color);
+      padding: 20px 24px;
+      margin: 32px 0;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+    .article-body .structural-note strong {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ground-color);
+      margin-bottom: 8px;
+    }
+
+    hr.section-break {
+      border: none;
+      border-top: 1px solid var(--light-gray);
+      margin: 48px 0;
+    }
+
+    /* SIGNAL TAGS */
+    .signal-tags-section {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--light-gray);
+    }
+    .signal-tags-section h4 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 12px;
+    }
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tag {
+      background: var(--light-gray);
+      color: var(--black);
+      font-size: 11px;
+      font-weight: 500;
+      padding: 4px 12px;
+      border-radius: 12px;
+      letter-spacing: 0.04em;
+    }
+
+    /* EVIDENCE BLOCK */
+    .evidence-block {
+      background: #F5F5F0;
+      border: 1px solid var(--light-gray);
+      border-radius: 4px;
+      padding: 24px;
+      margin: 40px 0;
+    }
+    .evidence-block h4 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 16px;
+    }
+    .evidence-item {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 12px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .evidence-item:last-child { margin-bottom: 0; }
+    .ev-type {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 2px;
+      height: fit-content;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .ev-verified { background: #D4EDDA; color: #155724; }
+    .ev-inferred { background: #FFF3CD; color: #856404; }
+
+    /* UNCERTAINTY */
+    .uncertainty-block {
+      background: #FFF8F0;
+      border-left: 3px solid var(--orange);
+      padding: 16px 20px;
+      margin: 24px 0;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .uncertainty-block strong {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 6px;
+    }
+
+    /* SIGNAL CONFIDENCE */
+    .confidence-block {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 20px 24px;
+      background: var(--black);
+      color: var(--cream);
+      border-radius: 4px;
+      margin: 40px 0;
+    }
+    .confidence-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #AAAAAA;
+    }
+    .confidence-score {
+      font-family: 'DM Serif Display', serif;
+      font-size: 32px;
+      color: var(--orange);
+    }
+    .confidence-note {
+      font-size: 13px;
+      color: #AAAAAA;
+      line-height: 1.4;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--black);
+      color: #AAAAAA;
+      padding: 40px 32px;
+      text-align: center;
+    }
+    footer a { color: #AAAAAA; text-decoration: none; }
+    footer a:hover { color: var(--cream); }
+    .footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 16px; font-size: 13px; flex-wrap: wrap; }
+    .footer-copy { font-size: 12px; }
+
+    @media (max-width: 600px) {
+      nav { padding: 0 16px; }
+      .nav-links { gap: 16px; }
+      .signal-header, .article-body { padding-left: 20px; padding-right: 20px; }
+      .signal-header h1 { font-size: 30px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="/inkluso-magazine/">IN-KluSo</a>
+  <ul class="nav-links">
+    <li><a href="/inkluso-magazine/#core">CORE</a></li>
+    <li><a href="/inkluso-magazine/#cities">CITIES</a></li>
+    <li><a href="/inkluso-magazine/kontrarian/">KONTRARIAN</a></li>
+    <li><a href="/inkluso-magazine/#about">ABOUT</a></li>
+    <li><a href="/inkluso-tools/">TOOLS</a></li>
+  </ul>
+</nav>
+
+<!-- SIGNAL HEADER -->
+<header class="signal-header">
+  <div class="signal-meta">
+    <span class="signal-id">NWA-GROUND-005</span>
+    <span class="section-tag">GROUND</span>
+    <span class="city-tag">Northwest Arkansas</span>
+    <span class="cluster-tag">Farmers Market Cluster · Signal 5</span>
+  </div>
+
+  <h1>The $170 Basket</h1>
+  <p class="deck">The average grocery basket costs $170 a week now. Prices explain part of it. The rest is a behavioral shift — and it's handing farmers market vendors an advantage nobody designed.</p>
+
+  <div class="byline">
+    <div>
+      <div class="byline-text"><strong>Juan Camilo Echeverri</strong> — Executive Broker, PAK Home Realty · Rogers, AR</div>
+      <div class="publish-date">March 3, 2026 · Northwest Arkansas · GROUND</div>
+    </div>
+  </div>
+</header>
+
+<!-- ARTICLE BODY -->
+<main class="article-body">
+
+  <!-- LAYER 1 -->
+  <div class="layer-label">
+    <div class="layer-num">1</div>
+    <div class="layer-name">Human Becoming</div>
+    <div class="layer-rule"></div>
+  </div>
+
+  <p>You notice it at the checkout.</p>
+
+  <p>Not the farmers market checkout — the other one. The fluorescent one with the self-scan machines they installed after removing half the cashiers and calling it progress. The screen blinks and the total lands: $173.42. For a week. For two adults and two kids. For what you swear used to cost less.</p>
+
+  <p>You don't check the receipt. The body already did the math.</p>
+
+  <p>There's no single moment when groceries became the thing you think about. It crept. A gallon of milk didn't double overnight. Ground beef just kept inching. You adjusted. Switched brands. Bought less of one thing, more of another. Stopped buying the snack your kid liked because the store brand was close enough.</p>
+
+  <p>At the Rogers farmers market on a Wednesday morning, a woman handed a vendor a twenty for a jar of honey, a dozen eggs, and a bundle of Swiss chard. She didn't ask the price first. She asked where the eggs came from.</p>
+
+  <div class="pull-quote">"I'd rather spend it here than at a restaurant that charges me eighteen dollars for a salad."</div>
+
+  <p>She said it matter-of-factly. Like she'd already finished the argument with herself weeks ago.</p>
+
+  <p>The basket is getting heavier. Not because people are buying more. Because the weight of choosing where your food dollar goes now feels like the most consequential financial decision of the week.</p>
+
+  <hr class="section-break">
+
+  <!-- LAYER 2 -->
+  <div class="layer-label">
+    <div class="layer-num">2</div>
+    <div class="layer-name">Structural Read</div>
+    <div class="layer-rule"></div>
+  </div>
+
+  <p>The USDA's 2026 Agricultural Outlook Forum made the feeling official: food-at-home inflation is running at 1.7 percent. Food-away-from-home — restaurants, cafés, delivery — at 4.6 percent.</p>
+
+  <p>That's a nearly three-to-one gap. And gaps create gravity.</p>
+
+  <div class="structural-note">
+    <strong>Mechanism</strong>
+    When restaurant prices inflate at nearly triple the rate of grocery prices, consumer spending redirects. Not because people suddenly love cooking — because the spread makes eating out feel irrational at the margin. The USDA frames it as a food price outlook. Behaviorally, it functions as a reallocation engine. Dollars don't disappear. They move.
+  </div>
+
+  <p>But the headline number misleads. The average American household now spends $170 per week on groceries — up from $120 in 2020. That's a 42 percent increase in six years.</p>
+
+  <p>Grocery prices haven't risen 42 percent. They've risen about 30 percent since 2019. The remaining twelve points are behavioral. Consumers are buying differently: more fresh produce, more premium items, more snacks and energy drinks as Gen Z and Gen Alpha reshape what a grocery basket even contains. The composition of the basket is changing underneath the price.</p>
+
+  <div class="structural-note">
+    <strong>Comparative Clarity</strong>
+    Food-at-home inflation (2026): +1.7%<br>
+    Food-away-from-home inflation (2026): +4.6%<br>
+    Grocery spending increase since 2020: +42%<br>
+    Grocery price increase since 2019: ~30%<br><br>
+    The 12-point gap between spending growth and price growth is not inflation. It's a structural shift in what and how people buy. Price tells you the cost. Spending tells you the behavior.
+  </div>
+
+  <p>And within that $170 basket, the category-level volatility is extreme. Beef prices are projected to surge 9.4 percent — with the USDA's upper range touching 16.6 percent. Eggs, after their 2025 spike, are expected to fall 22.2 percent. The average is a polite mask. Underneath it, protein markets are fragmenting in opposite directions.</p>
+
+  <p>For NWA farmers markets, this restructuring is a tailwind. The consumer redirecting $55 from a restaurant dinner toward $38 at a market booth isn't downgrading. She's reallocating — toward freshness, locality, and perceived value. The direct-to-consumer model sidesteps the 4.6 percent restaurant markup entirely. Vendors didn't plan for this advantage. The spread handed it to them.</p>
+
+  <div class="pull-quote">"People aren't coming to the market because it's charming. They're coming because the math works."<br><span style="font-size: 14px; font-style: normal; color: #6B6B6B;">— Vendor, Bentonville Farmers Market, February 2026</span></div>
+
+  <hr class="section-break">
+
+  <!-- LAYER 3 -->
+  <div class="layer-label">
+    <div class="layer-num">3</div>
+    <div class="layer-name">Pattern Confirmation</div>
+    <div class="layer-rule"></div>
+  </div>
+
+  <p>This isn't a regional quirk. The FMI — The Food Industry Association — reports that 62 percent of American consumers feel very or extremely concerned about food prices. That number is down six points from January 2025, but it remains historically elevated. Concern is cooling. Behavior has already shifted.</p>
+
+  <p>The USDA's forecast contains a range that allows for up to 6 percent overall food inflation if tariff effects or supply-chain disruptions materialize. Producer prices rose more than expected in January — a signal that input costs haven't finished traveling downstream. The uncertainty alone keeps the restaurant-avoidance posture locked in place.</p>
+
+  <p>What's visible in NWA sits inside this national current. The Wednesday market expansion (NWA-GROUND-002) is absorbing restaurant-avoidance spending. The Whole Foods Rogers entry (NWA-GROUND-003) is competing for the same premium grocery dollar. The supply overshoot dynamics (NWA-GROUND-004) confirmed that NWA corridors with $220,000 median household incomes can absorb premium pricing without flinching.</p>
+
+  <p>The $170 basket is not just a number. It's a redistribution map — showing where food dollars are leaving (restaurants, fast casual, delivery apps) and where they're arriving (grocery stores, premium retailers, direct-to-consumer markets).</p>
+
+  <p>In Northwest Arkansas, the arrival point increasingly includes a folding table, a handwritten sign, and someone who can tell you exactly which field grew what you're holding.</p>
+
+  <p>That's not nostalgia. That's the structural output of a three-to-one inflation gap doing what gaps always do — redirecting flow.</p>
+
+  <hr class="section-break">
+
+  <!-- EVIDENCE BLOCK -->
+  <div class="evidence-block">
+    <h4>Evidence</h4>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>USDA Economic Research Service, 2026 Agricultural Outlook Forum: food-at-home inflation forecast +1.7%, food-away-from-home +4.6%. Beef +9.4% (range: −0.4% to +16.6%), eggs −22.2% (range: −39.5% to +1.1%).</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>Bureau of Labor Statistics, January 2026: CPI +2.4% overall, food inflation +2.9% year-over-year.</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>FMI — The Food Industry Association: 62% of consumers very/extremely concerned about food prices (down 6 pts from Jan 2025). Average weekly grocery spend $170, up from $120 in 2020.</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>FoodNavigator-USA (Feb 24, 2026) and Grocery Dive: corroborating analysis of USDA + FMI data on spending-price decoupling and generational basket shifts.</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-inferred">Inferred</span>
+      <span>NWA-specific application of national grocery spending data. No localized weekly spend data available — national $170 average used as proxy for NWA consumer behavior.</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-inferred">Inferred</span>
+      <span>Restaurant-avoidance spending redirecting to farmers markets. Behavioral inference from inflation gap and vendor-reported foot traffic. Not directly measured.</span>
+    </div>
+  </div>
+
+  <!-- UNCERTAINTY -->
+  <div class="uncertainty-block">
+    <strong>Uncertainty</strong>
+    Tariff effects on food prices are not fully priced into 2026 USDA forecasts. Category prediction intervals are exceptionally wide — beef could land anywhere from flat to +16.6%. Consumer concern is declining, meaning the behavioral shift may plateau or reverse. The USDA's confidence interval allows for up to 6% overall food inflation under adverse conditions. Critically, NWA-specific grocery spending data is not available; all local application uses national averages as proxy.
+  </div>
+
+  <!-- CONFIDENCE -->
+  <div class="confidence-block">
+    <div>
+      <div class="confidence-label">Signal Confidence Index</div>
+      <div class="confidence-score">0.86</div>
+    </div>
+    <div class="confidence-note">
+      <strong>HIGH.</strong> Source tier is very high (USDA, BLS, FMI — all Tier A). Mechanism is clearly documented: spending-price decoupling with behavioral and generational components. Lens coverage is strong across economic, behavioral, and demographic dimensions. Territory specificity is moderate — national data with NWA inference, not NWA-native measurement. Signal level: <strong>CONFIRMED</strong>.
+    </div>
+  </div>
+
+  <!-- SIGNAL TAGS -->
+  <div class="signal-tags-section">
+    <h4>Signal Tags</h4>
+    <div class="tags">
+      <span class="tag">food-inflation</span>
+      <span class="tag">grocery-spending</span>
+      <span class="tag">USDA</span>
+      <span class="tag">farmers-market</span>
+      <span class="tag">consumer-behavior</span>
+      <span class="tag">generational-shift</span>
+      <span class="tag">northwest-arkansas</span>
+      <span class="tag">restaurant-avoidance</span>
+      <span class="tag">beef-prices</span>
+      <span class="tag">spending-price-gap</span>
+      <span class="tag">direct-to-consumer</span>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-links">
+    <a href="/inkluso-magazine/">IN-KluSo Magazine</a>
+    <a href="/inkluso-magazine/cities/nwa/">Northwest Arkansas</a>
+    <a href="/inkluso-magazine/kontrarian/">Kontrarian</a>
+    <a href="/inkluso-tools/">Tools</a>
+    <a href="/inkluso-magazine/doctrine/">Doctrine</a>
+  </div>
+  <div class="footer-copy">© 2026 IN-KluSo · Signal NWA-GROUND-005 · Published Mar 3, 2026</div>
+</footer>
+
+</body>
+</html>
