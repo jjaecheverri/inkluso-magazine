@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The 5x Trap — IN-KluSo</title>
+  <meta name="description" content="The median American home now costs five times the median income. The historical norm was three. The federal government inflates demand while local governments strangle supply. Nobody in charge wants to fix both sides.">
+  <meta name="author" content="Juan Camilo Echeverri">
+  <link rel="canonical" href="https://jjaecheverri.github.io/inkluso-magazine/cities/global/the-5x-trap/">
+
+  <!-- JSON-LD Machine-Readable Signal -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "The 5x Trap",
+    "description": "The median American home now costs five times the median income. The historical norm was three. The federal government inflates demand while local governments strangle supply. Nobody in charge wants to fix both sides.",
+    "author": {
+      "@type": "Person",
+      "name": "Juan Camilo Echeverri",
+      "jobTitle": "Executive Broker, PAK Home Realty",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "PAK Home Realty",
+        "address": {
+          "@addressLocality": "Rogers",
+          "@addressRegion": "AR"
+        }
+      }
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "IN-KluSo",
+      "url": "https://jjaecheverri.github.io/inkluso-magazine/"
+    },
+    "datePublished": "2026-03-03",
+    "dateModified": "2026-03-03",
+    "articleSection": "CORE",
+    "keywords": ["housing-affordability", "capital-flow", "institutional-policy", "supply-demand-imbalance", "federal-policy", "zoning-regulation", "homeownership-decline", "cost-burden", "structural-dysfunction", "migration-arbitrage"],
+    "url": "https://jjaecheverri.github.io/inkluso-magazine/cities/global/the-5x-trap/",
+    "about": {
+      "@type": "Country",
+      "name": "United States"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #FAF6EE;
+      --black: #111111;
+      --orange: #E8491D;
+      --gray: #6B6B6B;
+      --light-gray: #E8E4DC;
+      --division-color: #E8491D;
+      --division-bg: #FEF0EB;
+    }
+
+    body {
+      background: var(--cream);
+      color: var(--black);
+      font-family: 'Inter', sans-serif;
+      font-size: 17px;
+      line-height: 1.75;
+    }
+
+    /* NAV */
+    nav {
+      background: var(--black);
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      color: var(--cream);
+      font-size: 20px;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: #AAAAAA;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--cream); }
+    .nav-links a.active { color: var(--orange); }
+
+    /* SIGNAL HEADER */
+    .signal-header {
+      border-bottom: 1px solid var(--light-gray);
+      padding: 48px 32px 32px;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .signal-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .signal-id {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--gray);
+      font-family: 'Inter', monospace;
+    }
+    .section-tag {
+      display: inline-block;
+      background: var(--division-color);
+      color: white;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 2px;
+    }
+    .city-tag {
+      display: inline-block;
+      background: var(--light-gray);
+      color: var(--black);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 2px;
+    }
+    .cluster-tag {
+      font-size: 11px;
+      color: var(--orange);
+      font-weight: 500;
+      letter-spacing: 0.05em;
+    }
+
+    .signal-header h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(32px, 5vw, 52px);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      margin-bottom: 16px;
+    }
+    .signal-header .deck {
+      font-size: 19px;
+      color: var(--gray);
+      line-height: 1.5;
+      margin-bottom: 24px;
+      font-weight: 300;
+    }
+    .byline {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding-top: 20px;
+      border-top: 1px solid var(--light-gray);
+    }
+    .byline-text {
+      font-size: 13px;
+      color: var(--gray);
+    }
+    .byline-text strong {
+      color: var(--black);
+      font-weight: 600;
+    }
+    .publish-date { font-size: 12px; color: var(--gray); }
+
+    /* LAYER LABELS */
+    .layer-label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 48px 0 24px;
+    }
+    .layer-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--black);
+      color: var(--cream);
+      font-size: 12px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .layer-name {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+    .layer-rule {
+      flex: 1;
+      height: 1px;
+      background: var(--light-gray);
+    }
+
+    /* ARTICLE BODY */
+    .article-body {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 32px 80px;
+    }
+
+    .article-body p {
+      margin-bottom: 22px;
+      color: var(--black);
+    }
+    .article-body p em {
+      font-style: italic;
+      color: var(--black);
+    }
+    .article-body .pull-quote {
+      font-family: 'DM Serif Display', serif;
+      font-size: 24px;
+      line-height: 1.3;
+      color: var(--black);
+      border-left: 4px solid var(--orange);
+      padding: 16px 24px;
+      margin: 36px 0;
+      font-style: italic;
+    }
+    .article-body .structural-note {
+      background: var(--division-bg);
+      border-left: 3px solid var(--division-color);
+      padding: 20px 24px;
+      margin: 32px 0;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+    .article-body .structural-note strong {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--division-color);
+      margin-bottom: 8px;
+    }
+
+    hr.section-break {
+      border: none;
+      border-top: 1px solid var(--light-gray);
+      margin: 48px 0;
+    }
+
+    /* SIGNAL TAGS */
+    .signal-tags-section {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--light-gray);
+    }
+    .signal-tags-section h4 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 12px;
+    }
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tag {
+      background: var(--light-gray);
+      color: var(--black);
+      font-size: 11px;
+      font-weight: 500;
+      padding: 4px 12px;
+      border-radius: 12px;
+      letter-spacing: 0.04em;
+    }
+
+    /* EVIDENCE BLOCK */
+    .evidence-block {
+      background: #F5F5F0;
+      border: 1px solid var(--light-gray);
+      border-radius: 4px;
+      padding: 24px;
+      margin: 40px 0;
+    }
+    .evidence-block h4 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 16px;
+    }
+    .evidence-item {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 12px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .evidence-item:last-child { margin-bottom: 0; }
+    .ev-type {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 2px;
+      height: fit-content;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .ev-verified { background: #D4EDDA; color: #155724; }
+    .ev-inferred { background: #FFF3CD; color: #856404; }
+
+    /* UNCERTAINTY */
+    .uncertainty-block {
+      background: #FFF8F0;
+      border-left: 3px solid var(--orange);
+      padding: 16px 20px;
+      margin: 24px 0;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .uncertainty-block strong {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 6px;
+    }
+
+    /* SIGNAL CONFIDENCE */
+    .confidence-block {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 20px 24px;
+      background: var(--black);
+      color: var(--cream);
+      border-radius: 4px;
+      margin: 40px 0;
+    }
+    .confidence-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #AAAAAA;
+    }
+    .confidence-score {
+      font-family: 'DM Serif Display', serif;
+      font-size: 32px;
+      color: var(--orange);
+    }
+    .confidence-tier {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--orange);
+      letter-spacing: 0.06em;
+    }
+    .confidence-note {
+      font-size: 13px;
+      color: #AAAAAA;
+      line-height: 1.4;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--black);
+      color: #AAAAAA;
+      padding: 40px 32px;
+      text-align: center;
+    }
+    footer a { color: #AAAAAA; text-decoration: none; }
+    footer a:hover { color: var(--cream); }
+    .footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 16px; font-size: 13px; flex-wrap: wrap; }
+    .footer-copy { font-size: 12px; }
+
+    @media (max-width: 600px) {
+      nav { padding: 0 16px; }
+      .nav-links { gap: 16px; }
+      .signal-header, .article-body { padding-left: 20px; padding-right: 20px; }
+      .signal-header h1 { font-size: 30px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="/inkluso-magazine/">IN-KluSo</a>
+  <ul class="nav-links">
+    <li><a href="/inkluso-magazine/#core" class="active">CORE</a></li>
+    <li><a href="/inkluso-magazine/#cities">CITIES</a></li>
+    <li><a href="/inkluso-magazine/kontrarian/">KONTRARIAN</a></li>
+    <li><a href="/inkluso-magazine/#about">ABOUT</a></li>
+    <li><a href="/inkluso-tools/">TOOLS</a></li>
+  </ul>
+</nav>
+
+<!-- SIGNAL HEADER -->
+<header class="signal-header">
+  <div class="signal-meta">
+    <span class="signal-id">CORE-002</span>
+    <span class="section-tag">CORE</span>
+    <span class="city-tag">United States</span>
+    <span class="cluster-tag">National · Institutional Analysis</span>
+  </div>
+
+  <h1>The 5x Trap</h1>
+  <p class="deck">The median American home now costs five times the median income. The historical norm was three. The federal government inflates demand while local governments strangle supply. Nobody in charge wants to fix both sides.</p>
+
+  <div class="byline">
+    <div>
+      <div class="byline-text"><strong>Juan Camilo Echeverri</strong> — Executive Broker, PAK Home Realty · Rogers, AR</div>
+      <div class="publish-date">March 3, 2026 · United States · CORE</div>
+    </div>
+  </div>
+</header>
+
+<!-- ARTICLE BODY -->
+<main class="article-body">
+
+  <!-- LAYER 1 -->
+  <div class="layer-label">
+    <div class="layer-num">1</div>
+    <div class="layer-name">Human Becoming</div>
+    <div class="layer-rule"></div>
+  </div>
+
+  <p>There's a moment every first-time homebuyer in 2026 recognizes. You open the pre-approval letter. You pull up the listings. You compare.</p>
+
+  <p>The number the bank says you can borrow. The number on the homes you want. The distance between them.</p>
+
+  <p>In your parents' generation, that distance was walkable. A home cost about three times what a family earned. You saved, you stretched, you got in. Today the ratio is five. Three to five doesn't sound catastrophic. It is. It's the difference between a down payment you can build in three years and one that takes ten. Between buying at 28 and buying at 38 — or not buying at all.</p>
+
+  <p>The homeownership rate for Americans under 35 is falling faster than any other age group. Not because they stopped wanting homes. Because the math stopped closing.</p>
+
+  <p>So they rent. And renting takes everything. More than you planned. More than feels sustainable. Half of what you earn, just to keep a roof. The rest is groceries, and hope, and a ten-dollar matcha that makes Tuesday morning feel like something you chose.</p>
+
+  <p>Nobody voted on this. The system built itself — one subsidy at a time, one zoning vote at a time, one loan limit increase at a time — and by the time you showed up, the door was already narrowing.</p>
+
+  <hr class="section-break">
+
+  <!-- LAYER 2 -->
+  <div class="layer-label">
+    <div class="layer-num">2</div>
+    <div class="layer-name">Structural Read</div>
+    <div class="layer-rule"></div>
+  </div>
+
+  <p>The trap has two jaws. They work in opposition. Together, they're nearly perfect.</p>
+
+  <p><strong>The first jaw is federal.</strong> Washington inflates housing demand through a lattice of subsidies so embedded they've become invisible. The mortgage-interest tax deduction makes owning cheaper than renting — for those who can already buy. The capital-gains exclusion reduces the cost of selling. Government-sponsored enterprises — Fannie Mae and Freddie Mac — securitize 52% of the nation's $13 trillion in mortgage debt, enabling banks to offer 30-year fixed-rate loans at rates a free market would never produce. The FHA and VA back another 19%. Conforming loan limits reach $806,500 in standard markets and $1.2 million in high-cost areas. The July 2025 One Big Beautiful Bill Act raised the SALT deduction cap from $10,000 to $40,000 — expanding the pool of filers who will also deduct mortgage interest.</p>
+
+  <p>Every one of these policies increases demand. More buyers, with more borrowing power, competing for the same houses.</p>
+
+  <div class="structural-note">
+    <strong>Mechanism</strong>
+    Federal demand-side architecture: mortgage-interest deduction + capital-gains exclusion + GSE securitization (52% of $13T) + FHA/VA backing (19%) + conforming limits up to $1.2M + SALT cap increase → systematic demand inflation. The median existing single-family home reached $412,500 in 2024 — five times the median household income. Historical norm: 3x. Sources: Harvard JCHS 2025, NAR, Federal Reserve Bank of New York.
+  </div>
+
+  <p><strong>The second jaw is local.</strong> Municipalities constrain supply through single-family zoning with large lot minimums, height restrictions, and "neighborhood character" protections. The mechanism is counterintuitive: restricting housing supply raises property values, which raises property tax revenue, which funds local services — without the political cost of managing growth. Sociologist Harvey Molotch predicted this inversion in 1976. The urban growth machine stopped growing because scarcity became more profitable than expansion.</p>
+
+  <p>The YIMBY movement has scored state-level victories. California's SB 79 now requires multifamily development near transit. The ROAD to Housing Act passed the Senate with bipartisan support. But its provisions are modest — enhanced NEPA exemptions, streamlined manufactured housing rules, small incentives for local reform.</p>
+
+  <div class="pull-quote">"No single piece of legislation can solve a crisis that has been decades in the making."</div>
+
+  <p>The trap is self-reinforcing because no institutional actor benefits from dismantling both jaws simultaneously. Washington won't reduce mortgage subsidies — it would crash home prices and destabilize a financial system built on housing wealth. Local governments won't upzone — scarcity is profitable. Housing starts peaked in 2022 and have been declining since, remaining far below 1970s levels in a country with 100 million more people.</p>
+
+  <div class="structural-note">
+    <strong>Comparative Clarity</strong>
+    Federal government: inflates demand, won't reduce because 66% of households own homes.<br>
+    Local government: restricts supply, won't expand because scarcity raises property tax revenue.<br>
+    Existing homeowners: benefit from appreciation, oppose density.<br><br>
+    Result: policy paralysis that compounds annually. Each side's fix is the other side's threat.
+  </div>
+
+  <hr class="section-break">
+
+  <!-- LAYER 3 -->
+  <div class="layer-label">
+    <div class="layer-num">3</div>
+    <div class="layer-name">Pattern Confirmation</div>
+    <div class="layer-rule"></div>
+  </div>
+
+  <p>The 5x ratio is not an American anomaly. In the UK and major Australian metros, home prices stand at 8 to 10 times the median income. In the 1980s, both were closer to three. The structural forces — demand subsidies, supply constraints, capital lock — operate globally, though through different policy mechanisms.</p>
+
+  <p>What makes 2026 distinct is convergence. The Bank of Canada Governor's "triple break" speech, analyzed in <a href="/inkluso-magazine/cities/global/the-triple-break/">CORE-001</a>, identified trade fragmentation, AI displacement, and demographic decline as simultaneous structural shifts. Each amplifies the housing trap. Trade uncertainty reduces corporate investment → fewer jobs in secondary cities → migration concentrates in proven growth nodes → demand intensifies in markets that are already overpriced.</p>
+
+  <p>The connection to Northwest Arkansas's multifamily overshoot (<a href="/inkluso-magazine/cities/nwa/the-overshoot/">NWA-GROUND-004</a>) is structural, not coincidental. NWA, where the price-to-income ratio remains closer to 3–4x, attracts migration from markets where the ratio is 8–10x. That migration pressure is what drove developers to deliver 3,164 apartment units in a single year — while the commercial ecosystem those residents need hadn't scaled to match. The national trap creates the local overshoot.</p>
+
+  <p>For 24% of homeowners and 50% of renters now classified as cost-burdened, the structural read reduces to incentives. Every institutional actor in the system — federal agencies, local governments, GSEs, existing homeowners — benefits from their piece of the trap. Nobody benefits from dismantling the whole thing.</p>
+
+  <div class="pull-quote">"The system is working exactly as designed. It's just not designed for them."</div>
+
+  <p>For 22 million severely cost-burdened renters, there is no policy window on the horizon that addresses both jaws at once. The affordable ratio was three. It's five. And the distance between those two numbers contains an entire generation's relationship to stability.</p>
+
+  <hr class="section-break">
+
+  <!-- EVIDENCE BLOCK -->
+  <div class="evidence-block">
+    <h4>Evidence</h4>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>US median existing single-family home price: $412,500 in 2024 — 5x median household income. Source: NAR via Harvard JCHS 2025.</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>50% of renter households cost-burdened (30%+ of income); 27% severely cost-burdened (50%+). 24% of owner households cost-burdened. Source: Harvard JCHS 2025.</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>GSEs (Fannie/Freddie) hold ~52% of $13T mortgage debt; FHA/VA hold additional 19%. Source: Federal Reserve Bank of New York, August 2025.</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>Conforming loan limits: $806,500 standard, $1.2M high-cost areas. Source: FHFA 2025 designation.</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>SALT deduction cap raised from $10,000 to $40,000 via One Big Beautiful Bill Act, July 2025. Source: federal legislation.</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>US homeownership rate peaked 69.4% (2004), fell to 66.1% (2023); steepest decline among under-35 householders. Source: Harvard JCHS via Federal Reserve data.</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>ROAD to Housing Act passed Senate with bipartisan support; California SB 79 signed October 2025 requiring multifamily near transit. Source: Congressional/state records.</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>Housing starts peaked post-recession in 2022, declining since — remaining well below early 1970s levels. Source: FRED data.</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-inferred">Inferred</span>
+      <span>OBBBA SALT cap increase will expand the number of itemizers claiming the mortgage-interest deduction, further inflating demand.</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-inferred">Inferred</span>
+      <span>GSE privatization without government guarantees is structurally unlikely — it would cause home prices to fall and destabilize mortgage markets.</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-inferred">Inferred</span>
+      <span>The structural trap is self-reinforcing: every policy fix addresses one jaw while the other jaw neutralizes the effect.</span>
+    </div>
+  </div>
+
+  <!-- UNCERTAINTY -->
+  <div class="uncertainty-block">
+    <strong>Uncertainty</strong>
+    Harvard JCHS data is from 2024; full-year 2025 figures are not yet available. If mortgage rates decline in 2026, both demand and supply dynamics could shift. The YIMBY movement's state-level victories (documented by Pew, September 2025) may produce supply effects over 3–5 years not yet visible. The ROAD to Housing Act's modest provisions may compound with state legislation to create meaningful aggregate change. The structural trap thesis assumes continued policy paralysis — which may not hold if political conditions shift.
+  </div>
+
+  <!-- CONFIDENCE -->
+  <div class="confidence-block">
+    <div>
+      <div class="confidence-label">Signal Confidence Index</div>
+      <div class="confidence-score">0.976</div>
+      <div class="confidence-tier">HIGH</div>
+    </div>
+    <div class="confidence-note">
+      Highest SCI score in IN-KluSo history. 8 Tier A sources including Harvard JCHS, Federal Reserve, FHFA, and federal legislation. Complete causal mechanism with quantified nodes. Full territory specificity across time, actor, and behavior dimensions. Behavioral lens slightly reduced (0.6) — individual responses inferred, not directly observed.
+    </div>
+  </div>
+
+  <!-- SIGNAL TAGS -->
+  <div class="signal-tags-section">
+    <h4>Signal Tags</h4>
+    <div class="tags">
+      <span class="tag">housing-affordability</span>
+      <span class="tag">capital-flow</span>
+      <span class="tag">institutional-policy</span>
+      <span class="tag">supply-demand-imbalance</span>
+      <span class="tag">federal-policy</span>
+      <span class="tag">zoning-regulation</span>
+      <span class="tag">homeownership-decline</span>
+      <span class="tag">cost-burden</span>
+      <span class="tag">structural-dysfunction</span>
+      <span class="tag">migration-arbitrage</span>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-links">
+    <a href="/inkluso-magazine/">IN-KluSo Magazine</a>
+    <a href="/inkluso-magazine/#cities">Cities</a>
+    <a href="/inkluso-magazine/kontrarian/">Kontrarian</a>
+    <a href="/inkluso-tools/">Tools</a>
+    <a href="/inkluso-magazine/doctrine/">Doctrine</a>
+  </div>
+  <div class="footer-copy">© 2026 IN-KluSo · Signal CORE-002 · Published Mar 3, 2026</div>
+</footer>
+
+</body>
+</html>
