@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Retail Churn — IN-KluSo</title>
+  <meta name="description" content="8,000 stores closing in 2026, but 5,500 opening. National vacancy at 4.4%, near historic lows. Retail isn't dying — it's being replaced by a different species. Off-price and experiential tenants are backfilling what legacy chains abandoned.">
+  <meta name="author" content="Juan Camilo Echeverri">
+  <link rel="canonical" href="https://jjaecheverri.github.io/inkluso-magazine/flow/retail-churn/">
+
+  <!-- JSON-LD Machine-Readable Signal -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "The Retail Churn",
+    "description": "8,000+ retail store closures expected in 2026, but 5,500 new stores opening simultaneously. National vacancy at 4.4%. Retail isn't dying — it's being replaced by a different species of commerce.",
+    "author": {
+      "@type": "Person",
+      "name": "Juan Camilo Echeverri",
+      "jobTitle": "Executive Broker, PAK Home Realty",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "PAK Home Realty",
+        "address": {
+          "@addressLocality": "Rogers",
+          "@addressRegion": "AR"
+        }
+      }
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "IN-KluSo",
+      "url": "https://jjaecheverri.github.io/inkluso-magazine/"
+    },
+    "datePublished": "2026-03-06",
+    "dateModified": "2026-03-06",
+    "articleSection": "FLOW",
+    "keywords": ["retail churn", "store closures 2026", "retail vacancy", "off-price retail", "experiential tenants", "species replacement", "commercial real estate", "pickleball", "treasure hunt retail", "mall death"],
+    "url": "https://jjaecheverri.github.io/inkluso-magazine/flow/retail-churn/"
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #FAF6EE;
+      --black: #111111;
+      --orange: #E05A1C;
+      --gray: #6B6B6B;
+      --light-gray: #E8E4DC;
+      --flow-color: #1B4A6B;
+      --flow-bg: #F0F4F7;
+    }
+
+    body {
+      background: linear-gradient(rgba(250,246,238,0.91), rgba(250,246,238,0.91)), url('https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=1920&q=50&auto=format') center/cover fixed no-repeat;
+      color: var(--black);
+      font-family: 'Inter', sans-serif;
+      font-size: 17px;
+      line-height: 1.75;
+    }
+
+    /* NAV */
+    nav {
+      background: var(--black);
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      color: var(--cream);
+      font-size: 20px;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: #AAAAAA;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--cream); }
+    .nav-links a.active { color: var(--orange); }
+
+    /* SIGNAL HEADER */
+    .signal-header {
+      border-bottom: 1px solid var(--light-gray);
+      padding: 48px 32px 32px;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .signal-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .signal-id {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--gray);
+      font-family: 'Inter', monospace;
+    }
+    .section-tag {
+      display: inline-block;
+      background: var(--flow-color);
+      color: white;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 2px;
+    }
+    .city-tag {
+      display: inline-block;
+      background: var(--light-gray);
+      color: var(--black);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 2px;
+    }
+    .cluster-tag {
+      font-size: 11px;
+      color: var(--orange);
+      font-weight: 500;
+      letter-spacing: 0.05em;
+    }
+
+    .signal-header h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(32px, 5vw, 52px);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      margin-bottom: 16px;
+    }
+    .signal-header .deck {
+      font-size: 19px;
+      color: var(--gray);
+      line-height: 1.5;
+      margin-bottom: 24px;
+      font-weight: 300;
+    }
+    .byline {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding-top: 20px;
+      border-top: 1px solid var(--light-gray);
+    }
+    .byline-text {
+      font-size: 13px;
+      color: var(--gray);
+    }
+    .byline-text strong {
+      color: var(--black);
+      font-weight: 600;
+    }
+    .publish-date { font-size: 12px; color: var(--gray); }
+
+    /* LAYER LABELS */
+    .layer-label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 48px 0 24px;
+    }
+    .layer-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--black);
+      color: var(--cream);
+      font-size: 12px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .layer-name {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+    .layer-rule {
+      flex: 1;
+      height: 1px;
+      background: var(--light-gray);
+    }
+
+    /* ARTICLE BODY */
+    .article-body {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 32px 80px;
+    }
+
+    .article-body p {
+      margin-bottom: 22px;
+      color: var(--black);
+    }
+    .article-body p em {
+      font-style: italic;
+      color: var(--black);
+    }
+    .article-body .pull-quote {
+      font-family: 'DM Serif Display', serif;
+      font-size: 24px;
+      line-height: 1.3;
+      color: var(--black);
+      border-left: 4px solid var(--orange);
+      padding: 16px 24px;
+      margin: 36px 0;
+      font-style: italic;
+    }
+    .article-body .structural-note {
+      background: var(--flow-bg);
+      border-left: 3px solid var(--flow-color);
+      padding: 20px 24px;
+      margin: 32px 0;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+    .article-body .structural-note strong {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--flow-color);
+      margin-bottom: 8px;
+    }
+
+    hr.section-break {
+      border: none;
+      border-top: 1px solid var(--light-gray);
+      margin: 48px 0;
+    }
+
+    /* SIGNAL TAGS */
+    .signal-tags-section {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--light-gray);
+    }
+    .signal-tags-section h4 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 12px;
+    }
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tag {
+      background: var(--light-gray);
+      color: var(--black);
+      font-size: 11px;
+      font-weight: 500;
+      padding: 4px 12px;
+      border-radius: 12px;
+      letter-spacing: 0.04em;
+    }
+
+    /* EVIDENCE BLOCK */
+    .evidence-block {
+      background: #F5F5F0;
+      border: 1px solid var(--light-gray);
+      border-radius: 4px;
+      padding: 24px;
+      margin: 40px 0;
+    }
+    .evidence-block h4 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 16px;
+    }
+    .evidence-item {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 12px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .evidence-item:last-child { margin-bottom: 0; }
+    .ev-type {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 2px;
+      height: fit-content;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .ev-verified { background: #D4EDDA; color: #155724; }
+    .ev-inferred { background: #FFF3CD; color: #856404; }
+
+    /* UNCERTAINTY */
+    .uncertainty-block {
+      background: #FFF8F0;
+      border-left: 3px solid var(--orange);
+      padding: 16px 20px;
+      margin: 24px 0;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .uncertainty-block strong {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 6px;
+    }
+
+    /* SIGNAL CONFIDENCE */
+    .confidence-block {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 20px 24px;
+      background: var(--black);
+      color: var(--cream);
+      border-radius: 4px;
+      margin: 40px 0;
+    }
+    .confidence-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #AAAAAA;
+    }
+    .confidence-score {
+      font-family: 'DM Serif Display', serif;
+      font-size: 32px;
+      color: var(--orange);
+    }
+    .confidence-note {
+      font-size: 13px;
+      color: #AAAAAA;
+      line-height: 1.4;
+    }
+
+    /* REFERENCES */
+    .references-section {
+      margin-top: 40px;
+      padding-top: 24px;
+      border-top: 1px solid var(--light-gray);
+    }
+    .references-section h4 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 16px;
+    }
+    .references-section ol {
+      padding-left: 20px;
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--gray);
+    }
+    .references-section li {
+      margin-bottom: 8px;
+    }
+    .references-section a {
+      color: var(--flow-color);
+      text-decoration: none;
+    }
+    .references-section a:hover {
+      text-decoration: underline;
+    }
+    .ref-tier {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 1px 6px;
+      border-radius: 2px;
+      background: var(--light-gray);
+      color: var(--gray);
+      margin-left: 4px;
+    }
+    sup a {
+      color: var(--flow-color);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    sup a:hover { text-decoration: underline; }
+
+    /* FOOTER */
+    footer {
+      background: var(--black);
+      color: #AAAAAA;
+      padding: 40px 32px;
+      text-align: center;
+    }
+    footer a { color: #AAAAAA; text-decoration: none; }
+    footer a:hover { color: var(--cream); }
+    .footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 16px; font-size: 13px; flex-wrap: wrap; }
+    .footer-copy { font-size: 12px; }
+
+    @media (max-width: 600px) {
+      nav { padding: 0 16px; }
+      .nav-links { gap: 16px; }
+      .signal-header, .article-body { padding-left: 20px; padding-right: 20px; }
+      .signal-header h1 { font-size: 30px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO IMAGE -->
+<div style="position:relative; width:100%; height:420px; overflow:hidden;">
+  <img src="https://images.unsplash.com/photo-1567449303078-57ad995bd329?w=1920&q=80&auto=format&fit=crop" alt="Empty retail storefront with for-lease sign — the retail churn" style="width:100%; height:100%; object-fit:cover; filter:saturate(0.65) contrast(1.08);" loading="lazy">
+  <div style="position:absolute; bottom:0; left:0; right:0; height:120px; background:linear-gradient(transparent, rgba(0,0,0,0.55));"></div>
+  <span style="position:absolute; bottom:10px; left:16px; font-size:0.6rem; color:rgba(255,255,255,0.6); font-family:'Inter',sans-serif;">Photo: Mike Petrucci / Unsplash</span>
+</div>
+
+<nav>
+  <a class="nav-logo" href="/inkluso-magazine/">IN-KluSo</a>
+  <ul class="nav-links">
+    <li><a href="/inkluso-magazine/#core">CORE</a></li>
+    <li><a href="/inkluso-magazine/#thrive">THRIVE</a></li>
+    <li><a href="/inkluso-magazine/#axis">AXIS</a></li>
+    <li><a href="/inkluso-magazine/flow/" class="active">FLOW</a></li>
+    <li><a href="/inkluso-magazine/#cities">CITIES</a></li>
+    <li><a href="/inkluso-magazine/kontrarian/">KONTRARIAN</a></li>
+    <li><a href="/inkluso-magazine/#about">ABOUT</a></li>
+    <li><a href="/inkluso-tools/">TOOLS</a></li>
+  </ul>
+</nav>
+
+<!-- SIGNAL HEADER -->
+<header class="signal-header">
+  <div class="signal-meta">
+    <span class="signal-id">FLOW-008</span>
+    <span class="section-tag">FLOW</span>
+    <span class="city-tag">United States · National</span>
+    <span class="cluster-tag">Behavioral Commerce · Signal 8</span>
+  </div>
+
+  <h1>The Retail Churn</h1>
+  <p class="deck">Eight thousand stores closing. Five thousand opening. National vacancy near historic lows. Retail isn't dying — it's being replaced by a different species. The organism changes. The habitat stays.</p>
+
+  <div class="byline">
+    <div>
+      <div class="byline-text"><strong>Juan Camilo Echeverri</strong> — Executive Broker, PAK Home Realty · Rogers, AR</div>
+      <div class="publish-date">March 6, 2026 · Behavioral Commerce · FLOW</div>
+    </div>
+  </div>
+</header>
+
+
+<!-- ARTICLE BODY -->
+<main class="article-body">
+
+  <!-- LAYER 1 -->
+  <div class="layer-label">
+    <div class="layer-num">1</div>
+    <div class="layer-name">Human Becoming</div>
+    <div class="layer-rule"></div>
+  </div>
+
+  <p>The sign went up on a Tuesday.</p>
+
+  <p>Nobody made an announcement. There was no farewell sale, no "EVERYTHING MUST GO" banner stretched across the windows. Just a sheet of paper taped to the inside of the glass door: <em>This location is permanently closed. Thank you for your patronage.</em> A sentence that sounds like a form letter because it is one.</p>
+
+  <p>The woman standing outside with her daughter doesn't read it twice. She already knew. The shelves had been thinning for weeks — half-empty racks, no new inventory, a lone employee folding the same stack of clearance shirts every afternoon. The store was dying in public, the way most of them do. Slowly, then all at once.</p>
+
+  <p>Her daughter asks if they can go to the one across town. She says sure, but she already checked. That one closed last month.</p>
+
+  <div class="pull-quote">"You don't notice a store dying. You notice it's gone. One day you drive past and the parking lot is empty and you can't remember the last time you walked in."</div>
+
+  <p>Down the strip, a different storefront is being gutted. The drywall is open. Workers are carrying in something that looks like sports flooring. A neighbor says it's going to be a pickleball place. She doesn't know what that means for her shopping, but she knows what it means for the plaza: something left, and something else showed up before the dust settled.</p>
+
+  <p>That's how it works now. The name on the sign changes. The lights stay on.</p>
+
+  <hr class="section-break">
+
+  <!-- LAYER 2 -->
+  <div class="layer-label">
+    <div class="layer-num">2</div>
+    <div class="layer-name">Structural Read</div>
+    <div class="layer-rule"></div>
+  </div>
+
+  <p>The numbers look catastrophic in isolation. Francesca's filed Chapter 11 on February 5 and is closing all 400 stores. GameStop is shuttering 470 locations. Eddie Bauer: 175 stores, gone. Wendy's plans to close 300 units in the first half of 2026. Pizza Hut is pulling 250 stores under its "Hut Forward" strategy. Saks Global declared $3.4 billion in bankruptcy, with dozens of Saks Off 5th locations closing. Macy's is consolidating to 350 core stores — which means 150 disappear.<sup><a href="#ref1" id="fn1">[1]</a></sup></p>
+
+  <p>Add it up and you get more than 8,000 store closures expected in 2026. That's the headline. Here's the paragraph underneath it that almost nobody reads: 5,500 new stores are opening simultaneously.<sup><a href="#ref2" id="fn2">[2]</a></sup></p>
+
+  <div class="structural-note">
+    <strong>Mechanism</strong>
+    Legacy retailers — mid-tier department stores, mall-anchored chains, casual dining — are dying because their model requires regular, predictable spending patterns that inflation and e-commerce systematically destroyed. But the physical space has value. Off-price retailers thrive on "treasure hunt" psychology that can't be replicated online. Experiential tenants — pickleball courts, gyms, entertainment venues — fill the remaining gaps. The retail ecosystem evolves; the organism changes, the habitat stays.
+  </div>
+
+  <p>Charlie Boscarino of LQ Commercial in Tampa put it plainly: "When Big Lots began shuttering stores, a line of off-price retailers formed."<sup><a href="#ref3" id="fn3">[3]</a></sup> Ross, Burlington, Marshalls, Bealls — they don't mourn the old tenants. They measure the square footage.</p>
+
+  <p>In St. Petersburg, a former Badcock Furniture store — 24,000 square feet of showroom that once sold sofas on installment plans — became a pickleball facility. Not because pickleball is a better business than furniture. Because the landlord learned something the hard way: you can buy a sofa online, but you can't serve a ball through a screen.</p>
+
+  <div class="pull-quote">"When Big Lots began shuttering stores, a line of off-price retailers formed." — Charlie Boscarino, LQ Commercial, Tampa<sup><a href="#ref3">[3]</a></sup></div>
+
+  <div class="structural-note">
+    <strong>Friction Point</strong>
+    The landlords who once rejected gym tenants and discounters — too low-prestige, wrong co-tenancy — now actively recruit them. The hierarchy of "desirable" retail tenants has inverted. Experiential and off-price tenants pay lower per-square-foot rents but sign longer leases and generate foot traffic that benefits adjacent stores. The math changed. The snobbery followed.
+  </div>
+
+  <p>CoStar Group's March 2026 retail forecast confirms the paradox: retailers vacated 13% less space in Q4 2025 than Q3, and vacancy rates are expected to decline again in late 2026.<sup><a href="#ref2" id="fn2b">[2]</a></sup> The national retail vacancy rate sits at 4.4% — near historic lows. Eight thousand closures, and the shelves are still mostly full. Just with different names on them.</p>
+
+  <hr class="section-break">
+
+  <!-- LAYER 3 -->
+  <div class="layer-label">
+    <div class="layer-num">3</div>
+    <div class="layer-name">Pattern Confirmation</div>
+    <div class="layer-rule"></div>
+  </div>
+
+  <p>The species replacement pattern is not new. It happened when Borders died and gyms moved in. It happened when Sears collapsed and urgent cares took the anchor spots. What's new in 2026 is the <em>velocity</em> and the <em>simultaneity</em> — multiple legacy chains failing at once while a different class of tenant is ready, capitalized, and hungry for exactly the space being vacated.</p>
+
+  <p>The 8,000-to-5,500 ratio tells a structural story. America is not losing retail. It is losing <em>a kind</em> of retail — the mid-tier, brand-loyalty, regular-price model that assumed consumers would keep showing up out of habit. That model depended on a middle class that spent predictably. That middle class now price-compares on a phone in the parking lot, buys basics on Amazon, and reserves physical trips for two things: bargains and experiences.</p>
+
+  <p>Off-price retailers understand this. The "treasure hunt" — Ross's phrase for the unpredictable, rotating inventory that makes every visit different — is a psychological mechanic that e-commerce cannot replicate. You don't browse Ross the way you browse a website. You <em>discover</em>. That's the surviving retail instinct: not convenience (Amazon owns that), not loyalty (gone), but surprise.</p>
+
+  <p>Experiential tenants understand something adjacent: physicality is irreplaceable. You cannot do pickleball on a screen. You cannot get a haircut through an app. The pandemic proved isolation was tolerable. It also proved people will pay to leave it.</p>
+
+  <p>The American strip mall is becoming a different kind of place — less about <em>buying things</em> and more about <em>doing things</em>, with discounted shopping filling the gaps between experiences. The landlords who adapt will thrive. The ones waiting for another department store to call are still waiting.</p>
+
+  <p>Retail isn't dying. It's molting. The old shell cracks. The new form is already underneath.</p>
+
+  <hr class="section-break">
+
+  <!-- EVIDENCE BLOCK -->
+  <div class="evidence-block">
+    <h4>Evidence</h4>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>8,000+ retail store closures expected in 2026 across major chains including Francesca's (400), GameStop (470+), Eddie Bauer (175), Wendy's (300), Pizza Hut (250), Saks Global ($3.4B bankruptcy), Macy's (150).</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>5,500 new store openings in 2026, predominantly off-price and value retailers (CoStar Group forecast).</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>National retail vacancy rate at 4.4%, near historic lows (CoStar Group, March 2026).</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>Q4 2025 vacated retail space down 13% from Q3 2025 (CoStar Group quarterly data).</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>Former Badcock Furniture in St. Petersburg converted to 24,000 sq ft pickleball facility (Business Observer Florida).</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-inferred">Inferred</span>
+      <span>Characterization of retail evolution as "species replacement" — editorial framework supported by vacancy and backfill data but not a formal industry classification.</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-inferred">Inferred</span>
+      <span>Landlord preference inversion (experiential/off-price tenants now preferred over traditional retail) — reported anecdotally by brokers, not yet quantified in national survey data.</span>
+    </div>
+  </div>
+
+  <!-- UNCERTAINTY -->
+  <div class="uncertainty-block">
+    <strong>Uncertainty</strong>
+    The 8,000 closure figure aggregates announced plans across multiple chains — actual closure counts may differ as some brands negotiate lease modifications or partial reprieves. The 5,500 new openings figure from CoStar includes planned stores that may not materialize. Vacancy rate of 4.4% is a national average that masks significant regional variation — some Sun Belt markets sit below 3%, while select Midwest malls exceed 15%. Whether experiential tenants (pickleball, gyms) represent a durable commercial category or a transitional trend remains unproven over a full economic cycle. Off-price retailer expansion assumes continued consumer price sensitivity — a rapid improvement in middle-class purchasing power could slow their growth.
+  </div>
+
+  <!-- CONFIDENCE -->
+  <div class="confidence-block">
+    <div>
+      <div class="confidence-label">Signal Confidence Index</div>
+      <div class="confidence-score">0.87 · HIGH</div>
+    </div>
+    <div class="confidence-note">
+      S: 3.5/5 (CoStar data + industry reporting, Tier B sources) · L: 4.0/5 (economic + behavioral + systems lenses) · M: 4.0/5 (clear species replacement mechanism with measurable backfill) · T: 3.0/4 (US national, Q1 2026, specific chains and locations named). Signal level: <strong>CONFIRMED</strong>.
+    </div>
+  </div>
+
+  <!-- SIGNAL TAGS -->
+  <div class="signal-tags-section">
+    <h4>Signal Tags</h4>
+    <div class="tags">
+      <span class="tag">retail-churn</span>
+      <span class="tag">store-closures-2026</span>
+      <span class="tag">species-replacement</span>
+      <span class="tag">off-price-retail</span>
+      <span class="tag">experiential-tenants</span>
+      <span class="tag">commercial-vacancy</span>
+      <span class="tag">treasure-hunt-retail</span>
+      <span class="tag">pickleball-economy</span>
+      <span class="tag">mall-evolution</span>
+      <span class="tag">behavioral-commerce</span>
+    </div>
+  </div>
+
+  <!-- REFERENCES -->
+  <div class="references-section">
+    <h4>References</h4>
+    <ol>
+      <li id="ref1">Newsweek, "Full List of U.S. Store Closures in 2026," Suzanne Blake, March 2026. Aggregated closure data for Francesca's, GameStop, Eddie Bauer, Wendy's, Pizza Hut, Saks Global, Macy's. <span class="ref-tier">Tier B</span></li>
+      <li id="ref2">CoStar Group, Retail Forecast March 2026. National vacancy rate (4.4%), Q4 2025 vacated space decline (13% from Q3), new store opening projections (5,500), late-2026 vacancy outlook. <span class="ref-tier">Tier B</span></li>
+      <li id="ref3">Business Observer Florida, "Retail Real Estate: Closures Create Opportunity," Louis Llovio, March 6, 2026. Includes quotes from Charlie Boscarino (LQ Commercial, Tampa) and Badcock-to-pickleball conversion detail. <span class="ref-tier">Tier B</span></li>
+      <li id="ref4">Industry executive commentary — Zuckerman Group and regional commercial brokers on tenant preference shifts and backfill dynamics in Gulf Coast markets. <span class="ref-tier">Tier C</span></li>
+    </ol>
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-links">
+    <a href="/inkluso-magazine/">IN-KluSo Magazine</a>
+    <a href="/inkluso-magazine/flow/">Behavioral Infrastructure</a>
+    <a href="/inkluso-magazine/kontrarian/">Kontrarian</a>
+    <a href="/inkluso-tools/">Tools</a>
+    <a href="/inkluso-magazine/doctrine/">Doctrine</a>
+  </div>
+  <div class="footer-copy">© 2026 IN-KluSo · Signal FLOW-008 · Published Mar 6, 2026</div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The 1°C Price Tag — IN-KluSo</title>
+  <meta name="description" content="New research finds climate damages are an order of magnitude larger than previously estimated. 1°C of warming reduces world GDP by over 20% — rewriting every cost-benefit analysis that shapes energy, insurance, and real estate policy.">
+  <meta name="author" content="Juan Camilo Echeverri">
+  <link rel="canonical" href="https://jjaecheverri.github.io/inkluso-magazine/core/1c-price-tag/">
+
+  <!-- JSON-LD Machine-Readable Signal -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "The 1°C Price Tag",
+    "description": "New research finds climate damages are an order of magnitude larger than previously estimated. 1°C of warming reduces world GDP by over 20%, rewriting every cost-benefit analysis that shapes energy, insurance, and real estate policy.",
+    "author": {
+      "@type": "Person",
+      "name": "Juan Camilo Echeverri",
+      "jobTitle": "Executive Broker, PAK Home Realty",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "PAK Home Realty",
+        "address": {
+          "@addressLocality": "Rogers",
+          "@addressRegion": "AR"
+        }
+      }
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "IN-KluSo",
+      "url": "https://jjaecheverri.github.io/inkluso-magazine/"
+    },
+    "datePublished": "2026-03-06",
+    "dateModified": "2026-03-06",
+    "articleSection": "CORE",
+    "keywords": ["climate-economics", "GDP-impact", "social-cost-of-carbon", "cost-benefit-analysis", "decarbonization", "QJE", "extreme-weather", "productivity-shock", "energy-transition", "insurance-repricing"],
+    "url": "https://jjaecheverri.github.io/inkluso-magazine/core/1c-price-tag/",
+    "about": {
+      "@type": "Thing",
+      "name": "Global Climate Economics"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #FAF6EE;
+      --black: #111111;
+      --orange: #E05A1C;
+      --gray: #6B6B6B;
+      --light-gray: #E8E4DC;
+      --div-color: #B8490F;
+      --div-bg: #FFF5EF;
+    }
+
+    body {
+      background: linear-gradient(rgba(250,246,238,0.91), rgba(250,246,238,0.91)), url('https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=1920&q=50&auto=format') center/cover fixed no-repeat;
+      color: var(--black);
+      font-family: 'Inter', sans-serif;
+      font-size: 17px;
+      line-height: 1.75;
+    }
+
+    /* NAV */
+    nav {
+      background: var(--black);
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      color: var(--cream);
+      font-size: 20px;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: #AAAAAA;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--cream); }
+    .nav-links a.active { color: var(--orange); }
+
+    /* SIGNAL HEADER */
+    .signal-header {
+      border-bottom: 1px solid var(--light-gray);
+      padding: 48px 32px 32px;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .signal-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .signal-id {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--gray);
+      font-family: 'Inter', monospace;
+    }
+    .section-tag {
+      display: inline-block;
+      background: var(--div-color);
+      color: white;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 2px;
+    }
+    .city-tag {
+      display: inline-block;
+      background: var(--light-gray);
+      color: var(--black);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 2px;
+    }
+    .cluster-tag {
+      font-size: 11px;
+      color: var(--orange);
+      font-weight: 500;
+      letter-spacing: 0.05em;
+    }
+
+    .signal-header h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(32px, 5vw, 52px);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      margin-bottom: 16px;
+    }
+    .signal-header .deck {
+      font-size: 19px;
+      color: var(--gray);
+      line-height: 1.5;
+      margin-bottom: 24px;
+      font-weight: 300;
+    }
+    .byline {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding-top: 20px;
+      border-top: 1px solid var(--light-gray);
+    }
+    .byline-text {
+      font-size: 13px;
+      color: var(--gray);
+    }
+    .byline-text strong {
+      color: var(--black);
+      font-weight: 600;
+    }
+    .publish-date { font-size: 12px; color: var(--gray); }
+
+    /* LAYER LABELS */
+    .layer-label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 48px 0 24px;
+    }
+    .layer-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--black);
+      color: var(--cream);
+      font-size: 12px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .layer-name {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+    .layer-rule {
+      flex: 1;
+      height: 1px;
+      background: var(--light-gray);
+    }
+
+    /* ARTICLE BODY */
+    .article-body {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 32px 80px;
+    }
+
+    .article-body p {
+      margin-bottom: 22px;
+      color: var(--black);
+    }
+    .article-body p em {
+      font-style: italic;
+      color: var(--black);
+    }
+    .article-body .pull-quote {
+      font-family: 'DM Serif Display', serif;
+      font-size: 24px;
+      line-height: 1.3;
+      color: var(--black);
+      border-left: 4px solid var(--orange);
+      padding: 16px 24px;
+      margin: 36px 0;
+      font-style: italic;
+    }
+    .article-body .structural-note {
+      background: var(--div-bg);
+      border-left: 3px solid var(--div-color);
+      padding: 20px 24px;
+      margin: 32px 0;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+    .article-body .structural-note strong {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--div-color);
+      margin-bottom: 8px;
+    }
+
+    hr.section-break {
+      border: none;
+      border-top: 1px solid var(--light-gray);
+      margin: 48px 0;
+    }
+
+    /* SIGNAL TAGS */
+    .signal-tags-section {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--light-gray);
+    }
+    .signal-tags-section h4 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 12px;
+    }
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tag {
+      background: var(--light-gray);
+      color: var(--black);
+      font-size: 11px;
+      font-weight: 500;
+      padding: 4px 12px;
+      border-radius: 12px;
+      letter-spacing: 0.04em;
+    }
+
+    /* EVIDENCE BLOCK */
+    .evidence-block {
+      background: #F5F5F0;
+      border: 1px solid var(--light-gray);
+      border-radius: 4px;
+      padding: 24px;
+      margin: 40px 0;
+    }
+    .evidence-block h4 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 16px;
+    }
+    .evidence-item {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 12px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .evidence-item:last-child { margin-bottom: 0; }
+    .ev-type {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 2px;
+      height: fit-content;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .ev-verified { background: #D4EDDA; color: #155724; }
+    .ev-inferred { background: #FFF3CD; color: #856404; }
+
+    /* UNCERTAINTY */
+    .uncertainty-block {
+      background: #FFF8F0;
+      border-left: 3px solid var(--orange);
+      padding: 16px 20px;
+      margin: 24px 0;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .uncertainty-block strong {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 6px;
+    }
+
+    /* SIGNAL CONFIDENCE */
+    .confidence-block {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 20px 24px;
+      background: var(--black);
+      color: var(--cream);
+      border-radius: 4px;
+      margin: 40px 0;
+    }
+    .confidence-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #AAAAAA;
+    }
+    .confidence-score {
+      font-family: 'DM Serif Display', serif;
+      font-size: 32px;
+      color: var(--orange);
+    }
+    .confidence-note {
+      font-size: 13px;
+      color: #AAAAAA;
+      line-height: 1.4;
+    }
+
+    /* REFERENCES */
+    .references-section {
+      margin-top: 40px;
+      padding-top: 24px;
+      border-top: 1px solid var(--light-gray);
+    }
+    .references-section h4 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 16px;
+    }
+    .ref-item {
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--gray);
+      margin-bottom: 10px;
+      padding-left: 24px;
+      position: relative;
+    }
+    .ref-item .ref-num {
+      position: absolute;
+      left: 0;
+      font-weight: 600;
+      color: var(--div-color);
+    }
+    .ref-item a {
+      color: var(--div-color);
+      text-decoration: none;
+    }
+    .ref-item a:hover { text-decoration: underline; }
+    .ref-tier {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 1px 6px;
+      border-radius: 2px;
+      margin-left: 6px;
+    }
+    .tier-a { background: #D4EDDA; color: #155724; }
+    .tier-b { background: #FFF3CD; color: #856404; }
+
+    sup a {
+      color: var(--div-color);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.75em;
+    }
+    sup a:hover { text-decoration: underline; }
+
+    /* FOOTER */
+    footer {
+      background: var(--black);
+      color: #AAAAAA;
+      padding: 40px 32px;
+      text-align: center;
+    }
+    footer a { color: #AAAAAA; text-decoration: none; }
+    footer a:hover { color: var(--cream); }
+    .footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 16px; font-size: 13px; flex-wrap: wrap; }
+    .footer-copy { font-size: 12px; }
+
+    @media (max-width: 600px) {
+      nav { padding: 0 16px; }
+      .nav-links { gap: 16px; }
+      .signal-header, .article-body { padding-left: 20px; padding-right: 20px; }
+      .signal-header h1 { font-size: 30px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="/inkluso-magazine/">IN-KluSo</a>
+  <ul class="nav-links">
+    <li><a href="/inkluso-magazine/#core" class="active">CORE</a></li>
+    <li><a href="/inkluso-magazine/#thrive">THRIVE</a></li>
+    <li><a href="/inkluso-magazine/#axis">AXIS</a></li>
+    <li><a href="/inkluso-magazine/#flow">FLOW</a></li>
+    <li><a href="/inkluso-magazine/#cities">CITIES</a></li>
+    <li><a href="/inkluso-magazine/kontrarian/">KONTRARIAN</a></li>
+    <li><a href="/inkluso-magazine/#about">ABOUT</a></li>
+    <li><a href="/inkluso-tools/">TOOLS</a></li>
+  </ul>
+</nav>
+
+<!-- SIGNAL HEADER -->
+<header class="signal-header">
+  <div class="signal-meta">
+    <span class="signal-id">CORE-017</span>
+    <span class="section-tag">CORE</span>
+    <span class="city-tag">Global</span>
+    <span class="cluster-tag">Climate Economics · Signal 17</span>
+  </div>
+
+  <h1>The 1°C Price Tag</h1>
+  <p class="deck">New research finds climate damages are an order of magnitude larger than previously estimated. One degree of warming reduces world GDP by over 20% — rewriting every cost-benefit analysis that shapes energy, insurance, and real estate policy.</p>
+
+  <div class="byline">
+    <div>
+      <div class="byline-text"><strong>Juan Camilo Echeverri</strong> — Executive Broker, PAK Home Realty · Rogers, AR</div>
+      <div class="publish-date">March 6, 2026 · Global · CORE</div>
+    </div>
+  </div>
+</header>
+
+<!-- HERO IMAGE -->
+<div style="position:relative; width:100%; height:340px; overflow:hidden; border-radius:12px; margin:2rem auto; max-width:780px; box-shadow:0 8px 32px rgba(0,0,0,0.18);">
+  <img src="https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?w=1400&q=80&auto=format&fit=crop" alt="Cracked, parched earth — the economic cost of climate change made visible" style="width:100%; height:100%; object-fit:cover; filter:saturate(0.8) contrast(1.05);" loading="lazy">
+  <div style="position:absolute; bottom:0; left:0; right:0; height:80px; background:linear-gradient(transparent, rgba(0,0,0,0.5));"></div>
+  <span style="position:absolute; bottom:8px; left:12px; font-size:0.6rem; color:rgba(255,255,255,0.6); font-family:'Inter',sans-serif;">Photo: Markus Spiske / Unsplash</span>
+</div>
+
+<!-- ARTICLE BODY -->
+<main class="article-body">
+
+  <!-- LAYER 1 — Human Becoming -->
+  <div class="layer-label">
+    <div class="layer-num">1</div>
+    <div class="layer-name">Human Becoming</div>
+    <div class="layer-rule"></div>
+  </div>
+
+  <p>He'd been farming the same eighty acres for thirty-one years.</p>
+
+  <p>The soil was good. Not great — never the rich black loam they show in documentaries — but good enough. Good enough for soybeans. Good enough for corn. Good enough to pay off the land and send two daughters to state school and still have enough left to fix the barn roof every decade or so.</p>
+
+  <p>Then the rain didn't come.</p>
+
+  <p>Not a drought, exactly. The weatherman didn't use that word. It just… shifted. The pattern broke. April rain came in February. June stayed dry. The heat in July wasn't record-setting — it was record-<em>lingering</em>. Three weeks without a break. The corn tasseled too early and the yield dropped by a third.</p>
+
+  <p>The next year it happened differently. Too much rain in March. A late frost in May. Then heat again. Another bad yield. Different cause, same result. The averages were fine. The averages were always fine. But the averages weren't growing his crop.</p>
+
+  <p>His crop insurance adjuster came out, nodded, filed the claim. Said he was seeing it everywhere. <em>"The models don't catch it yet,"</em> she told him. <em>"It's not one thing. It's everything shifting half a beat."</em></p>
+
+  <div class="pull-quote">"It's not that the weather got worse. It's that it stopped being predictable. And predictable was the whole business model."</div>
+
+  <p>He sold the machinery in November. Not because the land was worthless. Because he couldn't price next year. And farming without being able to price next year isn't farming. It's gambling.</p>
+
+  <p>That's the one-degree price tag. Not a catastrophe. A slow, compounding loss of the conditions that made ordinary work viable.</p>
+
+  <hr class="section-break">
+
+  <!-- LAYER 2 — Structural Read -->
+  <div class="layer-label">
+    <div class="layer-num">2</div>
+    <div class="layer-name">Structural Read</div>
+    <div class="layer-rule"></div>
+  </div>
+
+  <p>His story has a number now. A precise one.</p>
+
+  <p>In a paper published in the <em>Quarterly Journal of Economics</em> — one of the five most prestigious economics journals in the world — researchers Adrien Bilal and Diego R. Känzig demonstrate that 1°C of global warming reduces world GDP by more than 12% within six years, and over 20% in the long run.<sup><a href="#ref1" id="fn1">[1]</a></sup> Previous consensus estimates ranged from 5% to 10%. The new figure is an order of magnitude larger.</p>
+
+  <p>The difference is methodological. Earlier models used country-level temperature variation — comparing hot years to cool years within individual nations. Bilal and Känzig use <em>global</em> temperature variation instead, which captures something the country-level approach missed: the correlation between global temperature and extreme climatic events.<sup><a href="#ref2" id="fn2">[2]</a></sup></p>
+
+  <div class="structural-note">
+    <strong>Mechanism</strong>
+    Global temperature rise → increased frequency and intensity of extreme events (storms, droughts, floods, heat waves) → productivity shocks to agriculture, infrastructure, and labor → persistent GDP drag. Unlike one-time losses, these shocks destroy capital, disrupt supply chains, and reduce output cumulatively. The compounding effect over decades explains the order-of-magnitude gap with previous estimates. Country-level models captured the gentle slope. Global models capture the jolts.
+  </div>
+
+  <p>The implications cascade. The Social Cost of Carbon — the dollar figure policymakers use to weigh climate regulations — jumps from the conventional $50–200 per ton to more than $1,200 per ton.<sup><a href="#ref1" id="fn1b">[1]</a></sup> That's not a revision. That's a 6x to 24x multiplier on every cost-benefit analysis that governs energy regulation, infrastructure spending, and insurance pricing in the United States and globally.</p>
+
+  <div class="pull-quote">"The macroeconomic damages from climate change are an order of magnitude larger than previously thought." — Bilal &amp; Känzig, QJE (2026)</div>
+
+  <p>Tyler Cowen, writing at Marginal Revolution, called the paper "the most important economics research of the year so far" — notable not for drama but because Cowen rarely uses superlatives.<sup><a href="#ref3" id="fn3">[3]</a></sup> The finding that unilateral US decarbonization is cost-effective — even without global cooperation — reframes the entire political calculus of climate policy.</p>
+
+  <div class="structural-note">
+    <strong>Policy Implication</strong>
+    If the Social Cost of Carbon is $1,200/ton rather than $50/ton, then virtually every climate regulation that has failed cost-benefit analysis in the past two decades now passes it — by a wide margin. Building codes, emission standards, subsidies, carbon taxes: the math changes for all of them. Not because the politics changed. Because the arithmetic did.
+  </div>
+
+  <hr class="section-break">
+
+  <!-- LAYER 3 — Pattern Confirmation -->
+  <div class="layer-label">
+    <div class="layer-num">3</div>
+    <div class="layer-name">Pattern Confirmation</div>
+    <div class="layer-rule"></div>
+  </div>
+
+  <p>This is not an isolated finding.</p>
+
+  <p>It sits within a growing body of research — from the IMF, the Federal Reserve, and reinsurance firms — that consistently revises climate damages upward. But the Bilal-Känzig estimate is notable because of where it was published (QJE accepts fewer than 5% of submissions), the methodological rigor (NBER Working Paper #32450, openly available for replication), and the sheer magnitude of the revision.<sup><a href="#ref1" id="fn1c">[1]</a></sup></p>
+
+  <p>The pattern is structural: each generation of climate-economics models finds larger damages than the last, because each generation captures feedback loops the previous one simplified away. Country-level models missed extreme events. Extreme-event models are beginning to capture cascading infrastructure failure. The next generation will likely add financial contagion and migration costs. The number moves in one direction.</p>
+
+  <p>For real estate, insurance, and municipal finance, the implications are immediate. A $1,200/ton Social Cost of Carbon means that properties in climate-exposed zones are mispriced by the models that underwrite them. It means that infrastructure investments in flood walls, fire breaks, and cooling systems have returns far higher than currently projected. It means the energy transition isn't a luxury — it's an arbitrage opportunity against compounding loss.</p>
+
+  <div class="structural-note">
+    <strong>Compounding Dynamic</strong>
+    Business-as-usual warming implies a present welfare loss exceeding 30%. This figure captures not just direct damages but the cumulative cost of reduced growth trajectories. A world that is 20% poorer because of warming that already happened is a world that has 20% fewer resources to mitigate future warming. This is not a linear problem. It compounds.
+  </div>
+
+  <p>The 1°C price tag was never zero. We just hadn't opened the invoice.</p>
+
+  <p>Now someone has done the math. And the math doesn't negotiate.</p>
+
+  <hr class="section-break">
+
+  <!-- EVIDENCE BLOCK -->
+  <div class="evidence-block">
+    <h4>Evidence</h4>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>Bilal &amp; Känzig, <em>Quarterly Journal of Economics</em> (2026): 1°C of warming reduces world GDP by 12%+ within six years, 20%+ in the long run. NBER Working Paper #32450.</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>Social Cost of Carbon exceeds $1,200 per ton under the updated damage function — compared to conventional estimates of $50–200/ton used in US regulatory analysis.</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>Methodological advance: global temperature variation correlates more strongly with extreme climatic events than country-level temperature variation, capturing previously unmeasured productivity shocks.</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>Paper finds unilateral US decarbonization is cost-effective even without international cooperation — domestic benefits exceed costs at the revised damage estimate.</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-inferred">Inferred</span>
+      <span>Real estate, insurance, and infrastructure repricing implied by the revised Social Cost of Carbon — not yet reflected in current market pricing or regulatory frameworks.</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-inferred">Inferred</span>
+      <span>Compounding welfare loss exceeding 30% under business-as-usual warming — model-dependent and sensitive to discount rate assumptions.</span>
+    </div>
+  </div>
+
+  <!-- UNCERTAINTY -->
+  <div class="uncertainty-block">
+    <strong>Uncertainty</strong>
+    The Bilal-Känzig estimate relies on a specific identification strategy (global temperature as instrument) that, while published in a top-5 journal, has not yet been replicated independently. Some economists dispute whether global temperature variation can cleanly isolate causal climate effects from correlated macroeconomic shocks. The long-run 20%+ GDP figure involves extrapolation from the observed six-year response. Discount rate choices significantly affect the Social Cost of Carbon translation. The policy implication (unilateral US action is cost-effective) depends on damage being primarily domestic, which remains debated.
+  </div>
+
+  <!-- CONFIDENCE -->
+  <div class="confidence-block">
+    <div>
+      <div class="confidence-label">Signal Confidence Index</div>
+      <div class="confidence-score">0.92</div>
+    </div>
+    <div class="confidence-note">
+      Tier: <strong>HIGH</strong>. Source: 5/5 (QJE publication + NBER working paper, Tier A primary). Lens: 4/5 (economic, systems, behavioral). Mechanism: 4/5 (clear methodological advance, some modeling debate). Territory: 2/4 (global scope, 1960–2019 period). Top-tier source credibility with appropriate uncertainty on extrapolation and policy translation.
+    </div>
+  </div>
+
+  <!-- SIGNAL TAGS -->
+  <div class="signal-tags-section">
+    <h4>Signal Tags</h4>
+    <div class="tags">
+      <span class="tag">climate-economics</span>
+      <span class="tag">GDP-impact</span>
+      <span class="tag">social-cost-of-carbon</span>
+      <span class="tag">cost-benefit-analysis</span>
+      <span class="tag">decarbonization</span>
+      <span class="tag">QJE</span>
+      <span class="tag">extreme-weather</span>
+      <span class="tag">productivity-shock</span>
+      <span class="tag">energy-transition</span>
+      <span class="tag">insurance-repricing</span>
+    </div>
+  </div>
+
+  <!-- REFERENCES -->
+  <div class="references-section">
+    <h4>References</h4>
+    <div class="ref-item" id="ref1">
+      <span class="ref-num">[1]</span>
+      Bilal, A. &amp; Känzig, D.R. (2026). "The Macroeconomic Impact of Climate Change: Global vs. Local Temperature." <em>Quarterly Journal of Economics</em>. NBER Working Paper #32450. <a href="https://www.nber.org/papers/w32450" target="_blank">nber.org/papers/w32450</a> <span class="ref-tier tier-a">Tier A</span>
+    </div>
+    <div class="ref-item" id="ref2">
+      <span class="ref-num">[2]</span>
+      Bilal, A. &amp; Känzig, D.R. (2024). "The Macroeconomic Impact of Climate Change: Global vs. Local Temperature." NBER Working Paper #32450. Methodology appendix and replication data. <a href="https://www.nber.org/papers/w32450" target="_blank">nber.org/papers/w32450</a> <span class="ref-tier tier-a">Tier A</span>
+    </div>
+    <div class="ref-item" id="ref3">
+      <span class="ref-num">[3]</span>
+      Cowen, T. (2026). "The Macroeconomic Damages from Climate Change." <em>Marginal Revolution</em>. <a href="https://marginalrevolution.com" target="_blank">marginalrevolution.com</a> <span class="ref-tier tier-b">Tier B</span>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-links">
+    <a href="/inkluso-magazine/">IN-KluSo Magazine</a>
+    <a href="/inkluso-magazine/core/">Core Signals</a>
+    <a href="/inkluso-magazine/kontrarian/">Kontrarian</a>
+    <a href="/inkluso-tools/">IN-KluSo Tools</a>
+    <a href="/inkluso-magazine/doctrine/">Doctrine</a>
+  </div>
+  <div class="footer-copy">© 2026 IN-KluSo · Signal CORE-017 · Published Mar 6, 2026</div>
+</footer>
+
+</body>
+</html>

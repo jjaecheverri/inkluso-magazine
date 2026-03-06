@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Expiry Cliff — IN-KluSo</title>
+  <meta name="description" content="Canada faces a historic work permit expiry wave: 314,000+ temporary permits expire Q1 2026. The system designed for steady-state flow cannot absorb the spike — and workers are falling off the edge.">
+  <meta name="author" content="Juan Camilo Echeverri">
+  <link rel="canonical" href="https://jjaecheverri.github.io/inkluso-magazine/core/expiry-cliff/">
+
+  <!-- JSON-LD Machine-Readable Signal -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "The Expiry Cliff",
+    "description": "Canada faces a historic work permit expiry wave: 314,000+ temporary permits expire Q1 2026. The system designed for steady-state flow cannot absorb the spike — and workers are falling off the edge.",
+    "author": {
+      "@type": "Person",
+      "name": "Juan Camilo Echeverri",
+      "jobTitle": "Executive Broker, PAK Home Realty",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "PAK Home Realty",
+        "address": {
+          "@addressLocality": "Rogers",
+          "@addressRegion": "AR"
+        }
+      }
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "IN-KluSo",
+      "url": "https://jjaecheverri.github.io/inkluso-magazine/"
+    },
+    "datePublished": "2026-03-06",
+    "dateModified": "2026-03-06",
+    "articleSection": "CORE",
+    "keywords": ["immigration", "work-permits", "Canada", "labor-market", "expiry-cliff", "IRCC", "temporary-workers", "processing-backlog", "PGWP", "workforce-disruption"],
+    "url": "https://jjaecheverri.github.io/inkluso-magazine/core/expiry-cliff/",
+    "about": {
+      "@type": "Place",
+      "name": "Canada"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #FAF6EE;
+      --black: #111111;
+      --orange: #E05A1C;
+      --gray: #6B6B6B;
+      --light-gray: #E8E4DC;
+      --div-color: #B8490F;
+      --div-bg: #FFF5EF;
+    }
+
+    body {
+      background: linear-gradient(rgba(250,246,238,0.91), rgba(250,246,238,0.91)), url('https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=1920&q=50&auto=format') center/cover fixed no-repeat;
+      color: var(--black);
+      font-family: 'Inter', sans-serif;
+      font-size: 17px;
+      line-height: 1.75;
+    }
+
+    /* NAV */
+    nav {
+      background: var(--black);
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      color: var(--cream);
+      font-size: 20px;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: #AAAAAA;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--cream); }
+    .nav-links a.active { color: var(--orange); }
+
+    /* SIGNAL HEADER */
+    .signal-header {
+      border-bottom: 1px solid var(--light-gray);
+      padding: 48px 32px 32px;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .signal-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .signal-id {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--gray);
+      font-family: 'Inter', monospace;
+    }
+    .section-tag {
+      display: inline-block;
+      background: var(--div-color);
+      color: white;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 2px;
+    }
+    .city-tag {
+      display: inline-block;
+      background: var(--light-gray);
+      color: var(--black);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 2px;
+    }
+    .cluster-tag {
+      font-size: 11px;
+      color: var(--orange);
+      font-weight: 500;
+      letter-spacing: 0.05em;
+    }
+
+    .signal-header h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(32px, 5vw, 52px);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      margin-bottom: 16px;
+    }
+    .signal-header .deck {
+      font-size: 19px;
+      color: var(--gray);
+      line-height: 1.5;
+      margin-bottom: 24px;
+      font-weight: 300;
+    }
+    .byline {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding-top: 20px;
+      border-top: 1px solid var(--light-gray);
+    }
+    .byline-text {
+      font-size: 13px;
+      color: var(--gray);
+    }
+    .byline-text strong {
+      color: var(--black);
+      font-weight: 600;
+    }
+    .publish-date { font-size: 12px; color: var(--gray); }
+
+    /* LAYER LABELS */
+    .layer-label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 48px 0 24px;
+    }
+    .layer-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--black);
+      color: var(--cream);
+      font-size: 12px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .layer-name {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+    .layer-rule {
+      flex: 1;
+      height: 1px;
+      background: var(--light-gray);
+    }
+
+    /* ARTICLE BODY */
+    .article-body {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 32px 80px;
+    }
+
+    .article-body p {
+      margin-bottom: 22px;
+      color: var(--black);
+    }
+    .article-body p em {
+      font-style: italic;
+      color: var(--black);
+    }
+    .article-body .pull-quote {
+      font-family: 'DM Serif Display', serif;
+      font-size: 24px;
+      line-height: 1.3;
+      color: var(--black);
+      border-left: 4px solid var(--orange);
+      padding: 16px 24px;
+      margin: 36px 0;
+      font-style: italic;
+    }
+    .article-body .structural-note {
+      background: var(--div-bg);
+      border-left: 3px solid var(--div-color);
+      padding: 20px 24px;
+      margin: 32px 0;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+    .article-body .structural-note strong {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--div-color);
+      margin-bottom: 8px;
+    }
+
+    hr.section-break {
+      border: none;
+      border-top: 1px solid var(--light-gray);
+      margin: 48px 0;
+    }
+
+    /* SIGNAL TAGS */
+    .signal-tags-section {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--light-gray);
+    }
+    .signal-tags-section h4 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 12px;
+    }
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tag {
+      background: var(--light-gray);
+      color: var(--black);
+      font-size: 11px;
+      font-weight: 500;
+      padding: 4px 12px;
+      border-radius: 12px;
+      letter-spacing: 0.04em;
+    }
+
+    /* EVIDENCE BLOCK */
+    .evidence-block {
+      background: #F5F5F0;
+      border: 1px solid var(--light-gray);
+      border-radius: 4px;
+      padding: 24px;
+      margin: 40px 0;
+    }
+    .evidence-block h4 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 16px;
+    }
+    .evidence-item {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 12px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .evidence-item:last-child { margin-bottom: 0; }
+    .ev-type {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 2px;
+      height: fit-content;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .ev-verified { background: #D4EDDA; color: #155724; }
+    .ev-inferred { background: #FFF3CD; color: #856404; }
+
+    /* UNCERTAINTY */
+    .uncertainty-block {
+      background: #FFF8F0;
+      border-left: 3px solid var(--orange);
+      padding: 16px 20px;
+      margin: 24px 0;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .uncertainty-block strong {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 6px;
+    }
+
+    /* SIGNAL CONFIDENCE */
+    .confidence-block {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 20px 24px;
+      background: var(--black);
+      color: var(--cream);
+      border-radius: 4px;
+      margin: 40px 0;
+    }
+    .confidence-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #AAAAAA;
+    }
+    .confidence-score {
+      font-family: 'DM Serif Display', serif;
+      font-size: 32px;
+      color: var(--orange);
+    }
+    .confidence-note {
+      font-size: 13px;
+      color: #AAAAAA;
+      line-height: 1.4;
+    }
+
+    /* REFERENCES */
+    .references-section {
+      margin-top: 40px;
+      padding-top: 24px;
+      border-top: 1px solid var(--light-gray);
+    }
+    .references-section h4 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 16px;
+    }
+    .references-section ol {
+      padding-left: 20px;
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--gray);
+    }
+    .references-section ol li {
+      margin-bottom: 8px;
+    }
+    .references-section a {
+      color: var(--div-color);
+      text-decoration: none;
+    }
+    .references-section a:hover {
+      text-decoration: underline;
+    }
+    .ref-tier {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: var(--light-gray);
+      padding: 1px 6px;
+      border-radius: 2px;
+      margin-left: 4px;
+    }
+    sup a {
+      color: var(--div-color);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    sup a:hover {
+      text-decoration: underline;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--black);
+      color: #AAAAAA;
+      padding: 40px 32px;
+      text-align: center;
+    }
+    footer a { color: #AAAAAA; text-decoration: none; }
+    footer a:hover { color: var(--cream); }
+    .footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 16px; font-size: 13px; flex-wrap: wrap; }
+    .footer-copy { font-size: 12px; }
+
+    @media (max-width: 600px) {
+      nav { padding: 0 16px; }
+      .nav-links { gap: 16px; }
+      .signal-header, .article-body { padding-left: 20px; padding-right: 20px; }
+      .signal-header h1 { font-size: 30px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="/inkluso-magazine/">IN-KluSo</a>
+  <ul class="nav-links">
+    <li><a href="/inkluso-magazine/#core" class="active">CORE</a></li>
+    <li><a href="/inkluso-magazine/#thrive">THRIVE</a></li>
+    <li><a href="/inkluso-magazine/#axis">AXIS</a></li>
+    <li><a href="/inkluso-magazine/#flow">FLOW</a></li>
+    <li><a href="/inkluso-magazine/#cities">CITIES</a></li>
+    <li><a href="/inkluso-magazine/kontrarian/">KONTRARIAN</a></li>
+    <li><a href="/inkluso-magazine/#about">ABOUT</a></li>
+    <li><a href="/inkluso-tools/">TOOLS</a></li>
+  </ul>
+</nav>
+
+<!-- HERO IMAGE -->
+<div style="position:relative; width:100%; height:340px; overflow:hidden; border-radius:12px; margin:2rem auto; max-width:780px; box-shadow:0 8px 32px rgba(0,0,0,0.18);">
+  <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1400&q=80&auto=format&fit=crop" alt="Passport stamps and immigration documents — the expiry cliff reshaping Canada's labor market" style="width:100%; height:100%; object-fit:cover; filter:saturate(0.7) contrast(1.05);" loading="lazy">
+  <div style="position:absolute; bottom:0; left:0; right:0; height:80px; background:linear-gradient(transparent, rgba(0,0,0,0.5));"></div>
+  <span style="position:absolute; bottom:8px; left:12px; font-size:0.6rem; color:rgba(255,255,255,0.6); font-family:'Inter',sans-serif;">Photo: Nicole Geri / Unsplash</span>
+</div>
+
+<!-- SIGNAL HEADER -->
+<header class="signal-header">
+  <div class="signal-meta">
+    <span class="signal-id">CORE-016</span>
+    <span class="section-tag">CORE</span>
+    <span class="city-tag">Canada</span>
+    <span class="cluster-tag">Labor Systems · Signal 16</span>
+  </div>
+
+  <h1>The Expiry Cliff</h1>
+  <p class="deck">314,000 temporary work permits expire in a single quarter. Canada's immigration system, designed for steady-state flow, faces the delayed reckoning of its own pandemic-era generosity — and the workers who built the recovery are the first to fall.</p>
+
+  <div class="byline">
+    <div>
+      <div class="byline-text"><strong>Juan Camilo Echeverri</strong> — Executive Broker, PAK Home Realty · Rogers, AR</div>
+      <div class="publish-date">March 6, 2026 · Canada · CORE</div>
+    </div>
+  </div>
+</header>
+
+
+<!-- ARTICLE BODY -->
+<main class="article-body">
+
+  <!-- LAYER 1 -->
+  <div class="layer-label">
+    <div class="layer-num">1</div>
+    <div class="layer-name">Human Becoming</div>
+    <div class="layer-rule"></div>
+  </div>
+
+  <p>He checked the portal again at 6 a.m. — the same way he'd checked it every morning for eleven months. Application received. In progress. No update.</p>
+
+  <p>His work permit expired in January. The extension application went in last March, filed properly, receipted, confirmed. He'd done everything the system asked. And now the system was asking him to wait — without working legally, without traveling, without certainty — while it processed his file at its own speed.</p>
+
+  <p>He still showed up to the clinic. Unofficially. Not as a physiotherapist — his license was tied to the permit — but as a volunteer who happened to know exactly how to treat a rotator cuff tear. His supervisor knew. Everyone knew. Nobody said the word <em>illegal</em> because nobody wanted to lose the only person on staff who could handle the morning rehab caseload.</p>
+
+  <p>His wife stopped sleeping through the night around October. Not from worry about deportation — they had implied status, technically — but from the weight of not knowing. The apartment lease renewal asked for proof of employment. The daycare asked for updated documents. The bank flagged his account.</p>
+
+  <div class="pull-quote">"I'm not undocumented. I'm un-answered. My file is sitting in a queue behind 100,000 other files, and nobody can tell me when it will move."</div>
+
+  <p>He came to Canada on a Post-Graduation Work Permit after finishing a two-year program in Ontario. He paid international tuition. He graduated with honors. He worked three years, paid taxes, built a patient roster. And now his entire legal existence depended on a processing time that had quietly stretched past 250 days.</p>
+
+  <p>He wasn't falling through a crack. He was standing on a cliff — and the ground was expiring beneath him.</p>
+
+  <hr class="section-break">
+
+  <!-- LAYER 2 -->
+  <div class="layer-label">
+    <div class="layer-num">2</div>
+    <div class="layer-name">Structural Read</div>
+    <div class="layer-rule"></div>
+  </div>
+
+  <p>His story is not an outlier. It's a data point in the largest quarterly work permit expiry event in Canadian immigration history.</p>
+
+  <p>Between January 1 and March 31, 2026, 314,538 temporary work permits are set to expire — a volume IRCC has never processed in a single quarter.<sup><a href="#ref1" id="fn1">[1]</a></sup> The surge is the direct, predictable consequence of 1.4 million permits issued during 2023–2024, when Canada opened the labor pipeline to fuel its pandemic recovery. Two-to-three-year durations mean those permits are now hitting their end dates simultaneously.</p>
+
+  <p>If even one-third of permit holders apply for extensions, the system faces 100,000+ new applications on top of its existing backlog — in a quarter where it normally processes that total volume for all permit types combined.<sup><a href="#ref2" id="fn2">[2]</a></sup></p>
+
+  <div class="structural-note">
+    <strong>Mechanism</strong>
+    PERMIT_CLIFF → PROCESSING_OVERLOAD → LABOR_DISRUPTION. Mass permit issuance during an economic emergency creates a delayed administrative crisis. The system was designed for steady-state flow — predictable volumes, manageable queues. A spike of this magnitude overwhelms processing capacity. Workers fall into legal limbo. Employers lose staff they cannot replace. The bottleneck is not policy intent — it's institutional throughput.
+  </div>
+
+  <p>The permits expiring are not evenly distributed. The majority are Post-Graduation Work Permits and Spousal Open Work Permits — categories tied to international students and their families who invested years and tuition in the promise of a pathway.<sup><a href="#ref3" id="fn3">[3]</a></sup> The sectors most exposed are healthcare, construction, technology, hospitality, and agriculture — precisely the industries where Canada already reports chronic labor shortages.</p>
+
+  <div class="pull-quote">"We issued the permits during the emergency. We just forgot to build the infrastructure to renew them." — Immigration policy analyst, Ottawa</div>
+
+  <p>Current average processing time for in-Canada work permit extensions: 258 days. That's not a backlog. That's a calendar year minus weekends. Workers who filed renewals on time — months before expiry — are still waiting. Implied status keeps them technically legal, but practically frozen: many employers won't hire or retain workers on implied status, banks hesitate on credit, and provincial licensing bodies won't renew professional credentials without a valid permit number.</p>
+
+  <div class="structural-note">
+    <strong>Friction Layer</strong>
+    Canada's 2026 permanent residency plan targets approximately 380,000 admissions — but the temporary-to-permanent pipeline now holds far more candidates than slots available. A new 20% domestic hiring benchmark for Labour Market Impact Assessments adds further friction, requiring employers to demonstrate they've tried to hire Canadian residents before sponsoring a temporary worker. The intent is reasonable. The timing — during a mass expiry event — compounds the bottleneck.
+  </div>
+
+  <hr class="section-break">
+
+  <!-- LAYER 3 -->
+  <div class="layer-label">
+    <div class="layer-num">3</div>
+    <div class="layer-name">Pattern Confirmation</div>
+    <div class="layer-rule"></div>
+  </div>
+
+  <p>This is not a Canadian anomaly. It's a structural flaw in how wealthy nations design temporary labor migration.</p>
+
+  <p>The pattern repeats: economic crisis triggers labor shortage. Government opens temporary work channels. Workers arrive, integrate, pay taxes, fill gaps. Two to three years later, permits expire en masse. The administrative system — built for peacetime volumes — buckles. Workers become a political problem instead of an economic solution.</p>
+
+  <p>By the end of 2026, an estimated 927,000 work permits will have expired across Canada — the accumulated output of the pandemic-era surge.<sup><a href="#ref1" id="fn1b">[1]</a></sup> The gap between this volume and the 380,000 permanent residency slots creates what labor economists call a "disposable workforce" dynamic: welcomed during shortage, abandoned during normalization. The system treats people as temporary inputs to a permanent problem.</p>
+
+  <div class="structural-note">
+    <strong>Cross-Border Implication</strong>
+    For the United States, Canada's expiry cliff is a preview. Any mass visa or work authorization program — H-2B surges, TPS extensions, DACA renewals — creates its own future administrative reckoning. The question is never just "how many permits do we issue?" It's "what happens when they all expire at once?" Canada is answering that question in real time.
+  </div>
+
+  <p>The deeper failure is architectural. Immigration systems worldwide are designed as gatekeeping institutions — they control entry. But the 21st-century labor economy requires them to function as <em>flow management</em> institutions — processing renewals, transitions, and status changes at scale. Canada's IRCC was not built for that volume. Neither was USCIS. The cliff isn't the permits expiring. It's the gap between what governments promise and what their bureaucracies can deliver.</p>
+
+  <p>The workers standing on the edge didn't create the cliff. They just showed up when they were invited.</p>
+
+  <hr class="section-break">
+
+  <!-- EVIDENCE BLOCK -->
+  <div class="evidence-block">
+    <h4>Evidence</h4>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>IRCC data confirms 314,538 temporary work permits expiring Q1 2026 — the largest single-quarter volume in Canadian immigration history.</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>1.4 million temporary work permits issued during 2023–2024 pandemic recovery period, predominantly PGWPs and Spousal Open Work Permits.</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>Current IRCC processing time for in-Canada work permit extensions: 258 days average (as of March 2026).</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>Canada's 2026 permanent residency target: ~380,000 admissions. New 20% domestic hiring benchmark for LMIA applications confirmed.</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-inferred">Inferred</span>
+      <span>Projection that one-third of expiring permit holders will apply for extensions (~100,000+) is estimated based on historical renewal rates; actual volume may differ.</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-inferred">Inferred</span>
+      <span>927,000 total permits expiring by end of 2026 is an aggregate projection from multiple immigration analysis sources — not a single official IRCC release.</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-inferred">Inferred</span>
+      <span>"Disposable workforce" dynamic and cross-border US implications are structural inferences, not empirically confirmed outcomes.</span>
+    </div>
+  </div>
+
+  <!-- UNCERTAINTY -->
+  <div class="uncertainty-block">
+    <strong>Uncertainty</strong>
+    Not all 314,538 permit holders will seek renewal — some will depart voluntarily, transition to other visa categories, or obtain permanent residency before expiry. IRCC may deploy emergency processing measures, as it has during previous surges. Provincial nominee programs could absorb some candidates. The actual rate of implied-status workforce disruption is difficult to measure, since many employers retain workers informally. Political pressure may accelerate policy responses before the full cliff materializes.
+  </div>
+
+  <!-- CONFIDENCE -->
+  <div class="confidence-block">
+    <div>
+      <div class="confidence-label">Signal Confidence Index</div>
+      <div class="confidence-score">0.86</div>
+    </div>
+    <div class="confidence-note">
+      Tier: <strong>HIGH</strong>. Source Score: 3.5/5 (strong government data, secondary reporting). Lens Coverage: 3.5/5 (economic + systems + behavioral). Mechanism Clarity: 4/5 (clear causal chain from issuance surge to expiry cliff). Territory Specificity: 3/4 (Canada national, Q1 2026, specific permit types). Minor uncertainty on actual renewal volumes and potential policy intervention.
+    </div>
+  </div>
+
+  <!-- SIGNAL TAGS -->
+  <div class="signal-tags-section">
+    <h4>Signal Tags</h4>
+    <div class="tags">
+      <span class="tag">immigration</span>
+      <span class="tag">work-permits</span>
+      <span class="tag">Canada</span>
+      <span class="tag">labor-market</span>
+      <span class="tag">IRCC</span>
+      <span class="tag">processing-backlog</span>
+      <span class="tag">PGWP</span>
+      <span class="tag">temporary-workers</span>
+      <span class="tag">workforce-disruption</span>
+      <span class="tag">cross-border</span>
+    </div>
+  </div>
+
+  <!-- REFERENCES -->
+  <div class="references-section">
+    <h4>References</h4>
+    <ol>
+      <li id="ref1">Immigration News Canada / IRCC data analysis: "314,538 work permits expiring Q1 2026 — largest quarterly volume recorded." March 6, 2026. <span class="ref-tier">Tier B</span></li>
+      <li id="ref2">Canada.ca — IRCC official processing times and temporary work permit program descriptions. Current as of March 2026. <a href="https://www.canada.ca/en/immigration-refugees-citizenship.html" target="_blank">canada.ca/ircc</a> <span class="ref-tier">Tier B</span></li>
+      <li id="ref3">Multiple immigration analysis outlets confirming 1.4M permits issued 2023–2024, PGWP and Spousal OWP breakdown, and 927,000 projected expirations by year-end 2026. <span class="ref-tier">Tier C</span></li>
+    </ol>
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-links">
+    <a href="/inkluso-magazine/">IN-KluSo Magazine</a>
+    <a href="/inkluso-magazine/core/">Core Signals</a>
+    <a href="/inkluso-magazine/kontrarian/">Kontrarian</a>
+    <a href="/inkluso-tools/">Tools</a>
+    <a href="/inkluso-magazine/doctrine/">Doctrine</a>
+  </div>
+  <div class="footer-copy">© 2026 IN-KluSo · Signal CORE-016 · Published Mar 6, 2026 · <a href="/inkluso-tools/">IN-KluSo Tools</a></div>
+</footer>
+
+</body>
+</html>
