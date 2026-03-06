@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Safety Net Rewrite — IN-KluSo</title>
+  <meta name="description" content="The Farm Bill was supposed to protect small farmers and food security. Instead, it immunizes agrochemical companies and accelerates consolidation. 175,000 farms lost since 2017 aren't coming back under this framework.">
+  <meta name="author" content="Juan Camilo Echeverri">
+  <link rel="canonical" href="https://jjaecheverri.github.io/inkluso-magazine/thrive/safety-net-rewrite/">
+
+  <!-- JSON-LD Machine-Readable Signal -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "The Safety Net Rewrite",
+    "description": "The Farm Bill was designed to protect small farmers and food security. Instead, it immunizes agrochemical companies, preempts local regulation, and accelerates farm consolidation. 175,000 farms lost since 2017.",
+    "author": {
+      "@type": "Person",
+      "name": "Juan Camilo Echeverri",
+      "jobTitle": "Executive Broker, PAK Home Realty",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "PAK Home Realty",
+        "address": {
+          "@addressLocality": "Rogers",
+          "@addressRegion": "AR"
+        }
+      }
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "IN-KluSo",
+      "url": "https://jjaecheverri.github.io/inkluso-magazine/"
+    },
+    "datePublished": "2026-03-06",
+    "dateModified": "2026-03-06",
+    "articleSection": "THRIVE",
+    "keywords": ["farm bill", "pesticide regulation", "farm consolidation", "SNAP cuts", "agrochemical lobby", "food security", "small farmers", "regulatory capture", "safety net", "agriculture policy"],
+    "url": "https://jjaecheverri.github.io/inkluso-magazine/thrive/safety-net-rewrite/"
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #FAF6EE;
+      --black: #111111;
+      --orange: #E05A1C;
+      --gray: #6B6B6B;
+      --light-gray: #E8E4DC;
+      --div-color: #1B6B4A;
+      --div-bg: #F0F7F4;
+    }
+
+    body {
+      background: linear-gradient(rgba(250,246,238,0.91), rgba(250,246,238,0.91)), url('https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=1920&q=50&auto=format') center/cover fixed no-repeat;
+      color: var(--black);
+      font-family: 'Inter', sans-serif;
+      font-size: 17px;
+      line-height: 1.75;
+    }
+
+    /* NAV */
+    nav {
+      background: var(--black);
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      color: var(--cream);
+      font-size: 20px;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: #AAAAAA;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--cream); }
+    .nav-links a.active { color: var(--div-color); }
+
+    /* SIGNAL HEADER */
+    .signal-header {
+      border-bottom: 1px solid var(--light-gray);
+      padding: 48px 32px 32px;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .signal-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .signal-id {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--gray);
+      font-family: 'Inter', monospace;
+    }
+    .section-tag {
+      display: inline-block;
+      background: var(--div-color);
+      color: white;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 2px;
+    }
+    .city-tag {
+      display: inline-block;
+      background: var(--light-gray);
+      color: var(--black);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 2px;
+    }
+    .cluster-tag {
+      font-size: 11px;
+      color: var(--orange);
+      font-weight: 500;
+      letter-spacing: 0.05em;
+    }
+
+    .signal-header h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(32px, 5vw, 52px);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      margin-bottom: 16px;
+    }
+    .signal-header .deck {
+      font-size: 19px;
+      color: var(--gray);
+      line-height: 1.5;
+      margin-bottom: 24px;
+      font-weight: 300;
+    }
+    .byline {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding-top: 20px;
+      border-top: 1px solid var(--light-gray);
+    }
+    .byline-text {
+      font-size: 13px;
+      color: var(--gray);
+    }
+    .byline-text strong {
+      color: var(--black);
+      font-weight: 600;
+    }
+    .publish-date { font-size: 12px; color: var(--gray); }
+
+    /* LAYER LABELS */
+    .layer-label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 48px 0 24px;
+    }
+    .layer-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--black);
+      color: var(--cream);
+      font-size: 12px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .layer-name {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+    .layer-rule {
+      flex: 1;
+      height: 1px;
+      background: var(--light-gray);
+    }
+
+    /* ARTICLE BODY */
+    .article-body {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 32px 80px;
+    }
+
+    .article-body p {
+      margin-bottom: 22px;
+      color: var(--black);
+    }
+    .article-body p em {
+      font-style: italic;
+      color: var(--black);
+    }
+    .article-body .pull-quote {
+      font-family: 'DM Serif Display', serif;
+      font-size: 24px;
+      line-height: 1.3;
+      color: var(--black);
+      border-left: 4px solid var(--orange);
+      padding: 16px 24px;
+      margin: 36px 0;
+      font-style: italic;
+    }
+    .article-body .structural-note {
+      background: var(--div-bg);
+      border-left: 3px solid var(--div-color);
+      padding: 20px 24px;
+      margin: 32px 0;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+    .article-body .structural-note strong {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--div-color);
+      margin-bottom: 8px;
+    }
+
+    hr.section-break {
+      border: none;
+      border-top: 1px solid var(--light-gray);
+      margin: 48px 0;
+    }
+
+    /* SIGNAL TAGS */
+    .signal-tags-section {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--light-gray);
+    }
+    .signal-tags-section h4 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 12px;
+    }
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tag {
+      background: var(--light-gray);
+      color: var(--black);
+      font-size: 11px;
+      font-weight: 500;
+      padding: 4px 12px;
+      border-radius: 12px;
+      letter-spacing: 0.04em;
+    }
+
+    /* EVIDENCE BLOCK */
+    .evidence-block {
+      background: #F5F5F0;
+      border: 1px solid var(--light-gray);
+      border-radius: 4px;
+      padding: 24px;
+      margin: 40px 0;
+    }
+    .evidence-block h4 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 16px;
+    }
+    .evidence-item {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 12px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .evidence-item:last-child { margin-bottom: 0; }
+    .ev-type {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 2px;
+      height: fit-content;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .ev-verified { background: #D4EDDA; color: #155724; }
+    .ev-inferred { background: #FFF3CD; color: #856404; }
+
+    /* UNCERTAINTY */
+    .uncertainty-block {
+      background: #FFF8F0;
+      border-left: 3px solid var(--orange);
+      padding: 16px 20px;
+      margin: 24px 0;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .uncertainty-block strong {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 6px;
+    }
+
+    /* SIGNAL CONFIDENCE */
+    .confidence-block {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 20px 24px;
+      background: var(--black);
+      color: var(--cream);
+      border-radius: 4px;
+      margin: 40px 0;
+    }
+    .confidence-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #AAAAAA;
+    }
+    .confidence-score {
+      font-family: 'DM Serif Display', serif;
+      font-size: 32px;
+      color: var(--orange);
+    }
+    .confidence-note {
+      font-size: 13px;
+      color: #AAAAAA;
+      line-height: 1.4;
+    }
+
+    /* REFERENCES */
+    .references-section {
+      margin-top: 40px;
+      padding-top: 24px;
+      border-top: 1px solid var(--light-gray);
+    }
+    .references-section h4 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 16px;
+    }
+    .references-section ol {
+      padding-left: 20px;
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--gray);
+    }
+    .references-section ol li {
+      margin-bottom: 8px;
+    }
+    .references-section a {
+      color: var(--div-color);
+      text-decoration: none;
+    }
+    .references-section a:hover {
+      text-decoration: underline;
+    }
+    .ref-tier {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      padding: 1px 6px;
+      border-radius: 2px;
+      background: var(--light-gray);
+      color: var(--gray);
+      margin-left: 4px;
+    }
+    sup a {
+      color: var(--div-color);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    sup a:hover { text-decoration: underline; }
+
+    /* FOOTER */
+    footer {
+      background: var(--black);
+      color: #AAAAAA;
+      padding: 40px 32px;
+      text-align: center;
+    }
+    footer a { color: #AAAAAA; text-decoration: none; }
+    footer a:hover { color: var(--cream); }
+    .footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 16px; font-size: 13px; flex-wrap: wrap; }
+    .footer-copy { font-size: 12px; }
+
+    @media (max-width: 600px) {
+      nav { padding: 0 16px; }
+      .nav-links { gap: 16px; }
+      .signal-header, .article-body { padding-left: 20px; padding-right: 20px; }
+      .signal-header h1 { font-size: 30px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="../../">IN-KluSo</a>
+  <ul class="nav-links">
+    <li><a href="../../core/">CORE</a></li>
+    <li><a href="../" class="active">THRIVE</a></li>
+    <li><a href="../../axis/">AXIS</a></li>
+    <li><a href="../../flow/">FLOW</a></li>
+    <li><a href="../../cities/">CITIES</a></li>
+    <li><a href="../../kontrarian/">KONTRARIAN</a></li>
+    <li><a href="../../#about">ABOUT</a></li>
+    <li><a href="/inkluso-tools/">TOOLS</a></li>
+  </ul>
+</nav>
+
+<!-- HERO IMAGE -->
+<div style="position:relative; width:100%; height:400px; overflow:hidden;">
+  <img src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=1200&q=80&auto=format&fit=crop" alt="Aerial view of agricultural farmland with golden fields — 175,000 farms lost since 2017" style="width:100%; height:100%; object-fit:cover; filter:saturate(0.7) contrast(1.05);" loading="lazy">
+  <div style="position:absolute; bottom:0; left:0; right:0; height:120px; background:linear-gradient(transparent, rgba(0,0,0,0.55));"></div>
+  <span style="position:absolute; bottom:8px; left:12px; font-size:0.6rem; color:rgba(255,255,255,0.6); font-family:'Inter',sans-serif;">Photo: Federico Respini / Unsplash</span>
+</div>
+
+<!-- SIGNAL HEADER -->
+<header class="signal-header">
+  <div class="signal-meta">
+    <span class="signal-id">THRIVE-006</span>
+    <span class="section-tag">THRIVE</span>
+    <span class="city-tag">United States</span>
+    <span class="cluster-tag">Regulatory Capture</span>
+  </div>
+
+  <h1>The Safety Net Rewrite</h1>
+  <p class="deck">The Farm Bill was designed to protect small farmers and food security. Instead, it immunizes agrochemical companies from lawsuits, preempts local pesticide regulation, and accelerates the consolidation that has already erased 175,000 farms.</p>
+
+  <div class="byline">
+    <div>
+      <div class="byline-text"><strong>Juan Camilo Echeverri</strong> — Executive Broker · PAK Home Realty · Rogers, AR</div>
+      <div class="publish-date">March 6, 2026 · United States · THRIVE</div>
+    </div>
+  </div>
+</header>
+
+<!-- ARTICLE BODY -->
+<main class="article-body">
+
+  <!-- LAYER 1 -->
+  <div class="layer-label">
+    <div class="layer-num">1</div>
+    <div class="layer-name">Human Becoming</div>
+    <div class="layer-rule"></div>
+  </div>
+
+  <p>She drives an hour to the farmers market every Saturday in a truck that's older than her marriage. Twenty-two acres of mixed greens, heirloom tomatoes in season, herbs she dries herself. The booth fee went up again. The diesel went up again. The seed cost went up again.</p>
+
+  <p>She doesn't call herself an activist. She calls herself tired.</p>
+
+  <p>Her neighbor sold last year — not because he wanted to, but because the math stopped working. The inputs cost more than the yield could cover. He tried switching to organic, but the certification process took three years and the county extension office told him there wasn't funding to help. He drives a forklift in Springdale now.</p>
+
+  <p>She heard something about the Farm Bill on the radio while unloading crates. Something about protections. Something about food security. She didn't catch the details because the tailgate was stuck again and the market opens at seven whether she's ready or not.</p>
+
+  <div class="pull-quote">"They keep saying they're protecting the family farm. I just don't know which family they mean."</div>
+
+  <p>What she doesn't know yet — what most people don't know — is that the bill moving through Congress right now was written to protect the companies that sell her the inputs she can barely afford. Not her. Not her neighbor. Not the soil.</p>
+
+  <p>The safety net got rewritten. She just wasn't in the room when it happened.</p>
+
+  <hr class="section-break">
+
+  <!-- LAYER 2 -->
+  <div class="layer-label">
+    <div class="layer-num">2</div>
+    <div class="layer-name">Structural Read</div>
+    <div class="layer-rule"></div>
+  </div>
+
+  <p>On March 5, 2026, the House Agriculture Committee advanced the Farm, Food, and National Security Act of 2026 by a vote of 34–17.<sup><a href="#ref-1" id="fn-1">[1]</a></sup> The bill now heads to the full House floor. What it contains is not a safety net. It is a liability shield dressed in the language of food security.</p>
+
+  <div class="structural-note">
+    <strong>Mechanism</strong>
+    FARM BILL → PESTICIDE IMMUNITY → LOCAL REGULATION PREEMPTION → ENVIRONMENTAL REVIEW ELIMINATION → CONSOLIDATION ACCELERATION<br><br>
+    Section 10205 immunizes pesticide manufacturers from failure-to-warn lawsuits. Section 10206 preempts local government pesticide regulation. Section 10207 exempts pesticides from Clean Water Act, Endangered Species Act, and other environmental reviews. Section 10211 eliminates USDA crop and pesticide use surveys — removing the data infrastructure needed to monitor what's happening.<sup><a href="#ref-2" id="fn-2">[2]</a></sup>
+  </div>
+
+  <p>Read that sequence again. The bill doesn't just weaken protections — it removes the ability to <em>measure</em> the damage. You can't regulate what you can't see. You can't sue if the law says you can't. You can't pass local rules if federal law preempts them. Every exit is closed.</p>
+
+  <p>The bill passed with bipartisan support. Seven Democrats joined all Republicans on the committee. The Pingree amendment, which would have preserved health and environmental protections, was rejected.<sup><a href="#ref-3" id="fn-3">[3]</a></sup></p>
+
+  <div class="pull-quote">"The bill does not yet meet the scale of the crisis." — Rob Larew, President, National Farmers Union<sup><a href="#ref-4" id="fn-4">[4]</a></sup></div>
+
+  <p>That's a careful way to say it does almost nothing for the people it claims to serve. The National Sustainable Agriculture Coalition was more direct: "no meaningful steps toward building a fair, responsible farm safety net."<sup><a href="#ref-5" id="fn-5">[5]</a></sup> The American Friends Service Committee said the bill "ignores hunger."</p>
+
+  <div class="structural-note">
+    <strong>Structural Inversion</strong>
+    The Farm Bill is supposed to be the structural floor under American food security. What it now structurally serves: agrochemical liability protection, agribusiness consolidation, and the removal of local regulatory authority. The gap between stated purpose and structural function is the signal.
+  </div>
+
+  <p>For farmers markets and direct-to-consumer agriculture, the squeeze is specific. Small producers who differentiate on pesticide-free or low-chemical practices lose ground when local pesticide regulation is preempted. They can't compete on price with industrial operations. They were competing on trust. This bill undermines the regulatory framework that made that trust legible.</p>
+
+  <hr class="section-break">
+
+  <!-- LAYER 3 -->
+  <div class="layer-label">
+    <div class="layer-num">3</div>
+    <div class="layer-name">Pattern Confirmation</div>
+    <div class="layer-rule"></div>
+  </div>
+
+  <p>This is not one bad bill. It is the latest iteration of a decades-long structural pattern: the Farm Bill as a vehicle for regulatory capture.</p>
+
+  <p>The American Farm Bureau Federation confirms that more than 175,000 farms have closed since 2017.<sup><a href="#ref-6" id="fn-6">[6]</a></sup> SNAP — the Supplemental Nutrition Assistance Program, which feeds 42 million Americans — saw a $186 billion cut in the earlier One Big Beautiful Bill Act. The current Farm Bill does not restore those cuts. It redirects the machinery of agricultural policy toward the companies selling inputs to a shrinking farmer base.</p>
+
+  <p>The word "bipartisan" in agriculture now means bipartisan agreement to serve consolidation. Both parties voted to immunize chemical manufacturers. Both parties voted to preempt local authority. The mechanism is not partisan — it's structural. Campaign contributions from agrochemical interests flow to both sides of the aisle, and the bill reflects that investment precisely.</p>
+
+  <p>The 175,000 farms aren't coming back under this framework. That's not a prediction. That's the math. When input costs rise, safety nets shrink, and the legal tools for differentiation are removed, small operations close. The land gets absorbed. The consolidation accelerates. The Farm Bill doesn't prevent that outcome — it ensures it.</p>
+
+  <p>The safety net was rewritten. Not eliminated — that would be visible. Rewritten, so it catches different things now. It catches liability. It catches lawsuits. It catches local regulation before it reaches the field. What it no longer catches is the farmer.</p>
+
+  <hr class="section-break">
+
+  <!-- EVIDENCE BLOCK -->
+  <div class="evidence-block">
+    <h4>Evidence</h4>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>House Agriculture Committee vote 34–17 advancing the Farm, Food, and National Security Act of 2026 (March 5, 2026) — Committee record (Tier A).</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>Sections 10205–10211: pesticide manufacturer immunity, local regulation preemption, environmental review exemption, survey elimination — H.R. 7567 bill text (Tier A).</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>Pingree amendment to preserve health/environmental protections rejected in committee — Congressional Record (Tier A).</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>175,000+ farms lost since 2017 — American Farm Bureau Federation, President Zippy Duvall (Tier B).</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>National Farmers Union: "does not yet meet the scale of the crisis" — NFU President Rob Larew (Tier B).</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>National Sustainable Agriculture Coalition: "no meaningful steps toward building a fair, responsible farm safety net" (Tier B).</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>$186 billion SNAP cut in the One Big Beautiful Bill Act — Congressional Budget Office (Tier A).</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-inferred">Inferred</span>
+      <span>Causal link between pesticide preemption and reduced competitive advantage for small/organic producers — structurally logical, not empirically isolated.</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-inferred">Inferred</span>
+      <span>Agrochemical campaign contributions as driver of bipartisan support — pattern consistent with lobbying data, specific dollar-to-vote causation not isolated.</span>
+    </div>
+  </div>
+
+  <!-- UNCERTAINTY -->
+  <div class="uncertainty-block">
+    <strong>Uncertainty</strong>
+    The bill has passed committee but not the full House — amendments, modifications, or defeat on the floor remain possible. Some agricultural organizations, including the American Farm Bureau Federation, have expressed broad support for the bill, indicating the impact assessment is contested. The specific effect of pesticide preemption on farmers market economics is structurally inferred, not empirically measured. The $186 billion SNAP cut figure comes from the prior One Big Beautiful Bill Act, not this bill directly. Consolidation trends predate this legislation and are driven by multiple factors beyond the Farm Bill.
+  </div>
+
+  <!-- CONFIDENCE -->
+  <div class="confidence-block">
+    <div>
+      <div class="confidence-label">Signal Confidence Index</div>
+      <div class="confidence-score">0.895 HIGH</div>
+    </div>
+    <div class="confidence-note">
+      S (Source): 0.90 — bill text + committee record + 6 major farm organizations. L (Lens): 0.90 — institutional, economic, agricultural/environmental. M (Mechanism): 0.90 — clear protection removal + consolidation pressure + safety net erosion. T (Territory): 0.85 — national, time-bound, actor-specific. Signal level: <strong>HIGH</strong>.
+    </div>
+  </div>
+
+  <!-- SIGNAL TAGS -->
+  <div class="signal-tags-section">
+    <h4>Signal Tags</h4>
+    <div class="tags">
+      <span class="tag">farm-bill</span>
+      <span class="tag">pesticide-regulation</span>
+      <span class="tag">regulatory-capture</span>
+      <span class="tag">farm-consolidation</span>
+      <span class="tag">food-security</span>
+      <span class="tag">SNAP</span>
+      <span class="tag">agrochemical-lobby</span>
+      <span class="tag">safety-net-inversion</span>
+      <span class="tag">small-farmers</span>
+      <span class="tag">local-preemption</span>
+    </div>
+  </div>
+
+  <!-- REFERENCES -->
+  <div class="references-section">
+    <h4>References</h4>
+    <ol>
+      <li id="ref-1">House Agriculture Committee, vote record: Farm, Food, and National Security Act of 2026, 34–17 (March 5, 2026). <span class="ref-tier">Tier A</span></li>
+      <li id="ref-2">Beyond Pesticides, <a href="https://beyondpesticides.org" target="_blank" rel="noopener">"Farm Bill Strips Protections from Pesticides"</a> — detailed section-by-section analysis of Sections 10205–10211 (March 6, 2026). <span class="ref-tier">Tier B</span></li>
+      <li id="ref-3">Congressional Record, Pingree Amendment (rejected in committee). <span class="ref-tier">Tier A</span></li>
+      <li id="ref-4">National Farmers Union, President Rob Larew — statement on Farm Bill committee passage (March 5, 2026). <span class="ref-tier">Tier B</span></li>
+      <li id="ref-5">National Sustainable Agriculture Coalition — statement on Farm Bill (March 2026). <span class="ref-tier">Tier B</span></li>
+      <li id="ref-6">American Farm Bureau Federation, President Zippy Duvall — 175,000 farms lost since 2017 (cited via <a href="https://agriculture.com" target="_blank" rel="noopener">Agriculture.com/Successful Farming</a>, March 5, 2026). <span class="ref-tier">Tier B</span></li>
+      <li id="ref-7">H.R. 7567, Farm, Food, and National Security Act of 2026 — bill text. <span class="ref-tier">Tier A</span></li>
+    </ol>
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-links">
+    <a href="../../">IN-KluSo Magazine</a>
+    <a href="../">THRIVE</a>
+    <a href="../../kontrarian/">Kontrarian</a>
+    <a href="/inkluso-tools/">Tools</a>
+    <a href="../../doctrine/">Doctrine</a>
+  </div>
+  <div class="footer-copy">© 2026 IN-KluSo · Signal THRIVE-006 · Published Mar 6, 2026</div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The $2T Hole — IN-KluSo</title>
+  <meta name="description" content="The Supreme Court struck down IEEPA tariffs. The CBO says the gap is $2 trillion. The government built its fiscal architecture on revenue that courts declared illegal — and now the bill is coming due.">
+  <meta name="author" content="Juan Camilo Echeverri">
+  <link rel="canonical" href="https://jjaecheverri.github.io/inkluso-magazine/core/2t-hole/">
+
+  <!-- JSON-LD Machine-Readable Signal -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "The $2T Hole",
+    "description": "The Supreme Court struck down IEEPA tariffs. The CBO says the gap is $2 trillion. The government built its fiscal architecture on revenue that courts declared illegal.",
+    "author": {
+      "@type": "Person",
+      "name": "Juan Camilo Echeverri",
+      "jobTitle": "Executive Broker, PAK Home Realty",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "PAK Home Realty",
+        "address": {
+          "@addressLocality": "Rogers",
+          "@addressRegion": "AR"
+        }
+      }
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "IN-KluSo",
+      "url": "https://jjaecheverri.github.io/inkluso-magazine/"
+    },
+    "datePublished": "2026-03-06",
+    "dateModified": "2026-03-06",
+    "articleSection": "CORE",
+    "keywords": ["fiscal-policy", "tariffs", "IEEPA", "Supreme-Court", "CBO", "national-debt", "deficit", "trade-policy", "executive-overreach", "revenue-gap"],
+    "url": "https://jjaecheverri.github.io/inkluso-magazine/core/2t-hole/",
+    "about": {
+      "@type": "Place",
+      "name": "United States"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #FAF6EE;
+      --black: #111111;
+      --orange: #E05A1C;
+      --gray: #6B6B6B;
+      --light-gray: #E8E4DC;
+      --div-color: #B8490F;
+      --div-bg: #FFF5EF;
+    }
+
+    body {
+      background: linear-gradient(rgba(250,246,238,0.91), rgba(250,246,238,0.91)), url('https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=1920&q=50&auto=format') center/cover fixed no-repeat;
+      color: var(--black);
+      font-family: 'Inter', sans-serif;
+      font-size: 17px;
+      line-height: 1.75;
+    }
+
+    /* NAV */
+    nav {
+      background: var(--black);
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      color: var(--cream);
+      font-size: 20px;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: #AAAAAA;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--cream); }
+    .nav-links a.active { color: var(--orange); }
+
+    /* SIGNAL HEADER */
+    .signal-header {
+      border-bottom: 1px solid var(--light-gray);
+      padding: 48px 32px 32px;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .signal-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .signal-id {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--gray);
+      font-family: 'Inter', monospace;
+    }
+    .section-tag {
+      display: inline-block;
+      background: var(--div-color);
+      color: white;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 2px;
+    }
+    .city-tag {
+      display: inline-block;
+      background: var(--light-gray);
+      color: var(--black);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 2px;
+    }
+    .cluster-tag {
+      font-size: 11px;
+      color: var(--orange);
+      font-weight: 500;
+      letter-spacing: 0.05em;
+    }
+
+    .signal-header h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(32px, 5vw, 52px);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      margin-bottom: 16px;
+    }
+    .signal-header .deck {
+      font-size: 19px;
+      color: var(--gray);
+      line-height: 1.5;
+      margin-bottom: 24px;
+      font-weight: 300;
+    }
+    .byline {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding-top: 20px;
+      border-top: 1px solid var(--light-gray);
+    }
+    .byline-text {
+      font-size: 13px;
+      color: var(--gray);
+    }
+    .byline-text strong {
+      color: var(--black);
+      font-weight: 600;
+    }
+    .publish-date { font-size: 12px; color: var(--gray); }
+
+    /* LAYER LABELS */
+    .layer-label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 48px 0 24px;
+    }
+    .layer-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--black);
+      color: var(--cream);
+      font-size: 12px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .layer-name {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+    .layer-rule {
+      flex: 1;
+      height: 1px;
+      background: var(--light-gray);
+    }
+
+    /* ARTICLE BODY */
+    .article-body {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 32px 80px;
+    }
+
+    .article-body p {
+      margin-bottom: 22px;
+      color: var(--black);
+    }
+    .article-body p em {
+      font-style: italic;
+      color: var(--black);
+    }
+    .article-body .pull-quote {
+      font-family: 'DM Serif Display', serif;
+      font-size: 24px;
+      line-height: 1.3;
+      color: var(--black);
+      border-left: 4px solid var(--orange);
+      padding: 16px 24px;
+      margin: 36px 0;
+      font-style: italic;
+    }
+    .article-body .structural-note {
+      background: var(--div-bg);
+      border-left: 3px solid var(--div-color);
+      padding: 20px 24px;
+      margin: 32px 0;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+    .article-body .structural-note strong {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--div-color);
+      margin-bottom: 8px;
+    }
+
+    hr.section-break {
+      border: none;
+      border-top: 1px solid var(--light-gray);
+      margin: 48px 0;
+    }
+
+    /* FOOTNOTES */
+    sup a {
+      color: var(--div-color);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.75em;
+    }
+    sup a:hover { text-decoration: underline; }
+
+    /* REFERENCES */
+    .references {
+      margin-top: 40px;
+      padding-top: 24px;
+      border-top: 1px solid var(--light-gray);
+    }
+    .references h4 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 16px;
+    }
+    .references ol {
+      padding-left: 20px;
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--gray);
+    }
+    .references ol li {
+      margin-bottom: 8px;
+    }
+    .references .ref-tier {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 1px 6px;
+      border-radius: 2px;
+      margin-left: 6px;
+    }
+    .ref-tier-a { background: #D4EDDA; color: #155724; }
+    .ref-tier-b { background: #FFF3CD; color: #856404; }
+
+    /* SIGNAL TAGS */
+    .signal-tags-section {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--light-gray);
+    }
+    .signal-tags-section h4 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 12px;
+    }
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tag {
+      background: var(--light-gray);
+      color: var(--black);
+      font-size: 11px;
+      font-weight: 500;
+      padding: 4px 12px;
+      border-radius: 12px;
+      letter-spacing: 0.04em;
+    }
+
+    /* EVIDENCE BLOCK */
+    .evidence-block {
+      background: #F5F5F0;
+      border: 1px solid var(--light-gray);
+      border-radius: 4px;
+      padding: 24px;
+      margin: 40px 0;
+    }
+    .evidence-block h4 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 16px;
+    }
+    .evidence-item {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 12px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .evidence-item:last-child { margin-bottom: 0; }
+    .ev-type {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 2px;
+      height: fit-content;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .ev-verified { background: #D4EDDA; color: #155724; }
+    .ev-inferred { background: #FFF3CD; color: #856404; }
+
+    /* UNCERTAINTY */
+    .uncertainty-block {
+      background: #FFF8F0;
+      border-left: 3px solid var(--orange);
+      padding: 16px 20px;
+      margin: 24px 0;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .uncertainty-block strong {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 6px;
+    }
+
+    /* SIGNAL CONFIDENCE */
+    .confidence-block {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 20px 24px;
+      background: var(--black);
+      color: var(--cream);
+      border-radius: 4px;
+      margin: 40px 0;
+    }
+    .confidence-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #AAAAAA;
+    }
+    .confidence-score {
+      font-family: 'DM Serif Display', serif;
+      font-size: 32px;
+      color: var(--orange);
+    }
+    .confidence-note {
+      font-size: 13px;
+      color: #AAAAAA;
+      line-height: 1.4;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--black);
+      color: #AAAAAA;
+      padding: 40px 32px;
+      text-align: center;
+    }
+    footer a { color: #AAAAAA; text-decoration: none; }
+    footer a:hover { color: var(--cream); }
+    .footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 16px; font-size: 13px; flex-wrap: wrap; }
+    .footer-copy { font-size: 12px; }
+
+    @media (max-width: 600px) {
+      nav { padding: 0 16px; }
+      .nav-links { gap: 16px; }
+      .signal-header, .article-body { padding-left: 20px; padding-right: 20px; }
+      .signal-header h1 { font-size: 30px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="/inkluso-magazine/">IN-KluSo</a>
+  <ul class="nav-links">
+    <li><a href="/inkluso-magazine/#core" class="active">CORE</a></li>
+    <li><a href="/inkluso-magazine/#thrive">THRIVE</a></li>
+    <li><a href="/inkluso-magazine/#axis">AXIS</a></li>
+    <li><a href="/inkluso-magazine/#flow">FLOW</a></li>
+    <li><a href="/inkluso-magazine/#cities">CITIES</a></li>
+    <li><a href="/inkluso-magazine/kontrarian/">KONTRARIAN</a></li>
+    <li><a href="/inkluso-magazine/#about">ABOUT</a></li>
+    <li><a href="/inkluso-tools/">TOOLS</a></li>
+  </ul>
+</nav>
+
+<!-- SIGNAL HEADER -->
+<header class="signal-header">
+  <div class="signal-meta">
+    <span class="signal-id">CORE-014</span>
+    <span class="section-tag">CORE</span>
+    <span class="city-tag">United States</span>
+    <span class="cluster-tag">Fiscal Architecture · Signal 14</span>
+  </div>
+
+  <h1>The $2T Hole</h1>
+  <p class="deck">The Supreme Court struck down IEEPA tariffs. The CBO says the gap is $2 trillion. The federal government built its fiscal architecture on revenue that courts declared illegal — and now the math has to go somewhere.</p>
+
+  <div class="byline">
+    <div>
+      <div class="byline-text"><strong>Juan Camilo Echeverri</strong> — Executive Broker, PAK Home Realty · Rogers, AR</div>
+      <div class="publish-date">March 6, 2026 · United States · CORE</div>
+    </div>
+  </div>
+</header>
+
+<!-- HERO IMAGE -->
+<div style="position:relative; width:100%; height:340px; overflow:hidden; border-radius:12px; margin:2rem auto; max-width:780px; box-shadow:0 8px 32px rgba(0,0,0,0.18);">
+  <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?w=1200&q=80&auto=format&fit=crop" alt="US dollar bills scattered — fiscal architecture collapse" style="width:100%; height:100%; object-fit:cover; filter:saturate(0.8) contrast(1.05);" loading="lazy">
+  <div style="position:absolute; bottom:0; left:0; right:0; height:80px; background:linear-gradient(transparent, rgba(0,0,0,0.5));"></div>
+  <span style="position:absolute; bottom:8px; left:12px; font-size:0.6rem; color:rgba(255,255,255,0.6); font-family:'Inter',sans-serif;">Photo: Alexander Mils / Unsplash</span>
+</div>
+
+<!-- ARTICLE BODY -->
+<main class="article-body">
+
+  <!-- LAYER 1 -->
+  <div class="layer-label">
+    <div class="layer-num">1</div>
+    <div class="layer-name">Human Becoming</div>
+    <div class="layer-rule"></div>
+  </div>
+
+  <p>He didn't understand the ruling. He didn't need to.</p>
+
+  <p>What he understood was the price tag on the pallet of ceramic tile sitting in a warehouse in Long Beach. Three weeks ago, when his contractor quoted the kitchen remodel, the tile was $4.80 a square foot — imported from Guangdong, same supplier for six years. Then the tariffs hit. The price jumped to $7.20. He signed the contract anyway. The house needed it.</p>
+
+  <p>Then the Supreme Court struck the tariffs down. The price didn't come back.</p>
+
+  <p>His supplier said something about uncertainty surcharges, hedging costs, shipping contracts locked in at the higher rate. The words didn't matter. What mattered was that the number on the invoice didn't move. He'd already paid the difference out of his savings — money earmarked for his daughter's first semester at community college.</p>
+
+  <p><em>"They said the tariffs were to protect people like me,"</em> he told his wife over dinner. <em>"Then the court said they were illegal. But nobody gave the money back."</em></p>
+
+  <div class="pull-quote">"The tariffs came and went. The price just came."</div>
+
+  <p>That's the hole at the kitchen-table level. Not two trillion dollars. Just the distance between what was promised and what was delivered — measured in tile, tuition, and the quiet erosion of trust in people who speak in very large numbers about your very small life.</p>
+
+  <hr class="section-break">
+
+  <!-- LAYER 2 -->
+  <div class="layer-label">
+    <div class="layer-num">2</div>
+    <div class="layer-name">Structural Read</div>
+    <div class="layer-rule"></div>
+  </div>
+
+  <p>On March 5, 2026, the Congressional Budget Office published an analysis that turned a constitutional ruling into a fiscal earthquake. The Supreme Court's decision to strike down tariffs imposed under the International Emergency Economic Powers Act didn't just change trade policy. It blew a $2 trillion hole in the federal government's ten-year fiscal outlook.<sup><a href="#ref1" id="fn1">[1]</a></sup></p>
+
+  <p>The math is blunt. The White House had been counting on roughly $300 billion per year in IEEPA tariff revenue. That revenue funded tariff rebate checks, corporate tax provisions in the One Big Beautiful Bill Act, and general spending. The Court said the authority was illegal. The revenue vanished. The spending didn't.</p>
+
+  <div class="structural-note">
+    <strong>Mechanism</strong>
+    The fiscal architecture rested on emergency-power tariff revenue → Court invalidated the authority → $1.6 trillion primary deficit increase + $400 billion in additional interest costs over a decade → replacement tariffs under Section 122 (Trade Act of 1974) generate only $35–50 billion → gap must be covered by borrowing → borrowing compounds against an interest burden already exceeding defense spending (see CORE-008).
+  </div>
+
+  <p>Treasury Secretary Scott Bessent, speaking at the Economic Club of Dallas on February 20, claimed tariff revenue would be "virtually unchanged in 2026" through a combination of Section 122, Section 232 (national security), and Section 301 (unfair trade practices).<sup><a href="#ref2" id="fn2">[2]</a></sup> The CBO's numbers don't support that claim. The 10% surcharge under Section 122 — which carries a statutory 150-day limit — generates roughly $35–50 billion. Even if Congress extends it, 10% tariffs produce approximately $900 billion over a decade. The hole is $2 trillion.</p>
+
+  <div class="pull-quote">"The government was running on revenue that a court said it was never allowed to collect." — CBO Director Phillip Swagel, March 5, 2026</div>
+
+  <p>The President floated a 15% tariff rate on social media. Not legislated. Not proposed in a bill. A number on a screen. At 15%, the Committee for a Responsible Federal Budget estimates roughly $1.3 trillion over ten years.<sup><a href="#ref3" id="fn3">[3]</a></sup> That's a pleasant fiction — it still leaves a $700 billion gap, assumes Congress passes it, and assumes no trade retaliation reduces the taxable base.</p>
+
+  <div class="structural-note">
+    <strong>Revenue Replacement Gap</strong>
+    IEEPA tariffs (struck down): ~$300B/year, ~$2T/decade<br>
+    Section 122 at 10% (current): ~$35–50B/year, ~$900B/decade<br>
+    Hypothetical 15% (not legislated): ~$130B/year, ~$1.3T/decade<br><br>
+    No available replacement closes the gap without legislative action. The 150-day clock on Section 122 expires in July 2026.
+  </div>
+
+  <p>The structural issue isn't the tariff rate. It's that the federal government built an entire fiscal architecture on executive action that bypassed Congress — and the judiciary said no. The scramble to replace it reveals how dependent modern fiscal policy has become on presidential proclamation rather than legislative consensus.</p>
+
+  <hr class="section-break">
+
+  <!-- LAYER 3 -->
+  <div class="layer-label">
+    <div class="layer-num">3</div>
+    <div class="layer-name">Pattern Confirmation</div>
+    <div class="layer-rule"></div>
+  </div>
+
+  <p>This is not an isolated budget line. It's a structural pattern.</p>
+
+  <p>Federal interest payments surpassed defense spending in fiscal year 2025 — our CORE-008 signal flagged this crossover. The national debt is projected to reach $58 trillion by 2036 under current trajectory, according to Fortune's analysis of CBO data.<sup><a href="#ref4" id="fn4">[4]</a></sup> The $2T hole accelerates that timeline. Every dollar of the gap that gets covered by borrowing generates its own interest cost, which generates its own borrowing need. The CBO's $400 billion interest estimate is likely conservative if rates remain elevated.</p>
+
+  <p>The pattern is executive fiscal dependency: presidents of both parties have increasingly relied on executive authority — emergency declarations, tariff powers, regulatory waivers — to shape fiscal outcomes without passing legislation. When courts reverse those actions, the fiscal architecture collapses retroactively. Revenue that was collected gets challenged. Revenue that was projected disappears. Spending that was authorized doesn't.</p>
+
+  <div class="structural-note">
+    <strong>Compounding Dynamic</strong>
+    The $2T hole compounds against existing fiscal pressure. Interest payments already exceed $1 trillion annually. The deficit was projected at $1.9 trillion before this ruling. Adding $160 billion per year in lost revenue and $40 billion per year in additional interest costs pushes the annual deficit toward $2.1 trillion — without any new spending. This is a fiscal feedback loop: borrowing to cover lost revenue increases the interest burden, which increases the borrowing need.
+  </div>
+
+  <p>For the household-level economy, the consequences are indirect but real. Higher federal borrowing competes with private credit markets, pressuring mortgage rates upward. Reduced fiscal flexibility limits the government's ability to respond to the next recession. And the uncertainty itself — will Congress act? at what rate? with what timeline? — creates the kind of policy fog that freezes business investment.</p>
+
+  <p>The $2T hole isn't where the money went. It's where the authority was.</p>
+
+  <p>And authority, once revoked, doesn't compound in your favor.</p>
+
+  <hr class="section-break">
+
+  <!-- EVIDENCE BLOCK -->
+  <div class="evidence-block">
+    <h4>Evidence</h4>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>Congressional Budget Office, "Estimated Effects of Changes in Tariff Policy" (March 5, 2026): $1.6 trillion primary deficit increase + $400 billion additional interest costs = $2 trillion total fiscal impact over ten years.</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>Supreme Court ruling (February 2026) striking down IEEPA tariff authority, invalidating the majority of tariffs imposed during 2025 "Liberation Day" and earlier.</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>Presidential Proclamation (February 20, 2026): 10% import surcharge under Section 122, Trade Act of 1974, with statutory 150-day limit.</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>Treasury Secretary Scott Bessent, Economic Club of Dallas speech (February 20, 2026): claimed tariff revenue would be "virtually unchanged in 2026."</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-inferred">Inferred</span>
+      <span>Committee for a Responsible Federal Budget revenue replacement estimates ($900B at 10%, $1.3T at 15%) — analytical projections, not CBO-scored.</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-inferred">Inferred</span>
+      <span>Compounding interest feedback loop (lost revenue → borrowing → higher interest → more borrowing) is structurally logical but dependent on rate environment and Congressional action.</span>
+    </div>
+  </div>
+
+  <!-- UNCERTAINTY -->
+  <div class="uncertainty-block">
+    <strong>Uncertainty</strong>
+    Congress could pass new tariff legislation that partially closes the gap — but no bill has been introduced as of March 6, 2026. The 150-day limit on Section 122 creates a hard deadline (July 2026) that may force action or create a second revenue cliff. Trade partners may retaliate against replacement tariffs, reducing the taxable import base. CBO projections assume current policy baseline — legislative changes could alter the trajectory in either direction. The $400 billion interest cost estimate depends on rate assumptions that may shift.
+  </div>
+
+  <!-- CONFIDENCE -->
+  <div class="confidence-block">
+    <div>
+      <div class="confidence-label">Signal Confidence Index</div>
+      <div class="confidence-score">0.92</div>
+    </div>
+    <div class="confidence-note">
+      Tier: <strong>HIGH</strong>. S (Source): 0.95 — CBO primary report, SCOTUS ruling, presidential proclamation. L (Lens): 0.90 — economic + legal/institutional + political. M (Mechanism): 0.90 — clear causal chain from illegal revenue to fiscal gap to compounding interest. T (Territory): 0.90 — US-specific, time-bound, actor-specific. Minor uncertainty on Congressional response and rate environment.
+    </div>
+  </div>
+
+  <!-- SIGNAL TAGS -->
+  <div class="signal-tags-section">
+    <h4>Signal Tags</h4>
+    <div class="tags">
+      <span class="tag">fiscal-policy</span>
+      <span class="tag">tariffs</span>
+      <span class="tag">IEEPA</span>
+      <span class="tag">Supreme-Court</span>
+      <span class="tag">CBO</span>
+      <span class="tag">national-debt</span>
+      <span class="tag">deficit</span>
+      <span class="tag">trade-policy</span>
+      <span class="tag">executive-overreach</span>
+      <span class="tag">revenue-gap</span>
+      <span class="tag">interest-burden</span>
+      <span class="tag">Section-122</span>
+    </div>
+  </div>
+
+  <!-- REFERENCES -->
+  <div class="references">
+    <h4>References</h4>
+    <ol>
+      <li id="ref1">Congressional Budget Office, "Estimated Effects of Changes in Tariff Policy," March 5, 2026. Director Phillip Swagel. <span class="ref-tier ref-tier-a">Tier A</span></li>
+      <li id="ref2">Treasury Secretary Scott Bessent, Economic Club of Dallas speech, February 20, 2026. Remarks on tariff revenue replacement strategy. <span class="ref-tier ref-tier-a">Tier A</span></li>
+      <li id="ref3">Committee for a Responsible Federal Budget, analysis of replacement tariff revenue scenarios ($900B–$1.3T range), March 2026. <span class="ref-tier ref-tier-b">Tier B</span></li>
+      <li id="ref4">Fortune, "Trump's loss of $1.7 trillion in tariff revenue will send the national debt to $58 trillion by 2036," Eleanor Pringle, March 5, 2026. <span class="ref-tier ref-tier-b">Tier B</span></li>
+      <li id="ref5">Supreme Court ruling on IEEPA tariff authority, February 2026. <span class="ref-tier ref-tier-a">Tier A</span></li>
+      <li id="ref6">Presidential Proclamation on 10% import surcharge under Section 122, Trade Act of 1974, February 20, 2026. <span class="ref-tier ref-tier-a">Tier A</span></li>
+    </ol>
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-links">
+    <a href="/inkluso-magazine/">IN-KluSo Magazine</a>
+    <a href="/inkluso-magazine/core/">Core Signals</a>
+    <a href="/inkluso-magazine/kontrarian/">Kontrarian</a>
+    <a href="/inkluso-tools/">Tools</a>
+    <a href="/inkluso-magazine/doctrine/">Doctrine</a>
+  </div>
+  <div class="footer-copy">© 2026 IN-KluSo · Signal CORE-014 · Published Mar 6, 2026</div>
+</footer>
+
+</body>
+</html>
