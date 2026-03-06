@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The White-Collar Recession — IN-KluSo</title>
+  <meta name="description" content="Anthropic mapped which jobs AI is already doing vs. which it could do. The gap is the iceberg. When adoption catches capability, the most displaced workers will be older, educated, well-paid — and disproportionately female.">
+  <meta name="author" content="Juan Camilo Echeverri">
+  <link rel="canonical" href="https://jjaecheverri.github.io/inkluso-magazine/axis/white-collar-recession/">
+
+  <!-- JSON-LD Machine-Readable Signal -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "The White-Collar Recession",
+    "description": "Anthropic mapped which jobs AI is already doing vs. which it could do. The gap is the iceberg. When adoption catches capability, the most displaced workers will be older, educated, well-paid — and disproportionately female.",
+    "author": {
+      "@type": "Person",
+      "name": "Juan Camilo Echeverri",
+      "jobTitle": "Executive Broker, PAK Home Realty",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "PAK Home Realty",
+        "address": {
+          "@addressLocality": "Rogers",
+          "@addressRegion": "AR"
+        }
+      }
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "IN-KluSo",
+      "url": "https://jjaecheverri.github.io/inkluso-magazine/"
+    },
+    "datePublished": "2026-03-06",
+    "dateModified": "2026-03-06",
+    "articleSection": "AXIS",
+    "keywords": ["ai-displacement", "white-collar-recession", "anthropic-research", "labor-market", "knowledge-work", "professional-class", "observed-exposure"],
+    "url": "https://jjaecheverri.github.io/inkluso-magazine/axis/white-collar-recession/"
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #FAF6EE;
+      --black: #111111;
+      --orange: #E05A1C;
+      --gray: #6B6B6B;
+      --light-gray: #E8E4DC;
+      --division-color: #4A1B6B;
+      --division-bg: #F5F0F7;
+    }
+
+    body {
+      background: linear-gradient(rgba(250,246,238,0.91), rgba(250,246,238,0.91)), url('https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=1920&q=50&auto=format') center/cover fixed no-repeat;
+      color: var(--black);
+      font-family: 'Inter', sans-serif;
+      font-size: 17px;
+      line-height: 1.75;
+    }
+
+    /* NAV */
+    nav {
+      background: var(--black);
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      color: var(--cream);
+      font-size: 20px;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: #AAAAAA;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--cream); }
+    .nav-links a.active { color: var(--orange); }
+
+    /* SIGNAL HEADER */
+    .signal-header {
+      border-bottom: 1px solid var(--light-gray);
+      padding: 48px 32px 32px;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .signal-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .signal-id {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--gray);
+      font-family: 'Inter', monospace;
+    }
+    .section-tag {
+      display: inline-block;
+      background: var(--division-color);
+      color: white;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 2px;
+    }
+    .city-tag {
+      display: inline-block;
+      background: var(--light-gray);
+      color: var(--black);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 2px;
+    }
+    .cluster-tag {
+      font-size: 11px;
+      color: var(--orange);
+      font-weight: 500;
+      letter-spacing: 0.05em;
+    }
+
+    .signal-header h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(32px, 5vw, 52px);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      margin-bottom: 16px;
+    }
+    .signal-header .deck {
+      font-size: 19px;
+      color: var(--gray);
+      line-height: 1.5;
+      margin-bottom: 24px;
+      font-weight: 300;
+    }
+    .byline {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding-top: 20px;
+      border-top: 1px solid var(--light-gray);
+    }
+    .byline-text {
+      font-size: 13px;
+      color: var(--gray);
+    }
+    .byline-text strong {
+      color: var(--black);
+      font-weight: 600;
+    }
+    .publish-date { font-size: 12px; color: var(--gray); }
+
+    /* LAYER LABELS */
+    .layer-label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 48px 0 24px;
+    }
+    .layer-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--black);
+      color: var(--cream);
+      font-size: 12px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .layer-name {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+    .layer-rule {
+      flex: 1;
+      height: 1px;
+      background: var(--light-gray);
+    }
+
+    /* ARTICLE BODY */
+    .article-body {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 32px 80px;
+    }
+
+    .article-body p {
+      margin-bottom: 22px;
+      color: var(--black);
+    }
+    .article-body p em {
+      font-style: italic;
+      color: var(--black);
+    }
+    .article-body .pull-quote {
+      font-family: 'DM Serif Display', serif;
+      font-size: 24px;
+      line-height: 1.3;
+      color: var(--black);
+      border-left: 4px solid var(--orange);
+      padding: 16px 24px;
+      margin: 36px 0;
+      font-style: italic;
+    }
+    .article-body .structural-note {
+      background: var(--division-bg);
+      border-left: 3px solid var(--division-color);
+      padding: 20px 24px;
+      margin: 32px 0;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+    .article-body .structural-note strong {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--division-color);
+      margin-bottom: 8px;
+    }
+
+    hr.section-break {
+      border: none;
+      border-top: 1px solid var(--light-gray);
+      margin: 48px 0;
+    }
+
+    /* SIGNAL TAGS */
+    .signal-tags-section {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--light-gray);
+    }
+    .signal-tags-section h4 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 12px;
+    }
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tag {
+      background: var(--light-gray);
+      color: var(--black);
+      font-size: 11px;
+      font-weight: 500;
+      padding: 4px 12px;
+      border-radius: 12px;
+      letter-spacing: 0.04em;
+    }
+
+    /* EVIDENCE BLOCK */
+    .evidence-block {
+      background: #F5F5F0;
+      border: 1px solid var(--light-gray);
+      border-radius: 4px;
+      padding: 24px;
+      margin: 40px 0;
+    }
+    .evidence-block h4 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 16px;
+    }
+    .evidence-item {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 12px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .evidence-item:last-child { margin-bottom: 0; }
+    .ev-type {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 2px;
+      height: fit-content;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .ev-verified { background: #D4EDDA; color: #155724; }
+    .ev-inferred { background: #FFF3CD; color: #856404; }
+
+    /* UNCERTAINTY */
+    .uncertainty-block {
+      background: #FFF8F0;
+      border-left: 3px solid var(--orange);
+      padding: 16px 20px;
+      margin: 24px 0;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .uncertainty-block strong {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 6px;
+    }
+
+    /* SIGNAL CONFIDENCE */
+    .confidence-block {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 20px 24px;
+      background: var(--black);
+      color: var(--cream);
+      border-radius: 4px;
+      margin: 40px 0;
+    }
+    .confidence-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #AAAAAA;
+    }
+    .confidence-score {
+      font-family: 'DM Serif Display', serif;
+      font-size: 32px;
+      color: var(--orange);
+    }
+    .confidence-note {
+      font-size: 13px;
+      color: #AAAAAA;
+      line-height: 1.4;
+    }
+
+    /* REFERENCES */
+    .references-section {
+      margin-top: 40px;
+      padding-top: 24px;
+      border-top: 1px solid var(--light-gray);
+    }
+    .references-section h4 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 16px;
+    }
+    .references-section ol {
+      padding-left: 20px;
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--gray);
+    }
+    .references-section li {
+      margin-bottom: 8px;
+    }
+    .references-section .ref-tier {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      padding: 1px 6px;
+      border-radius: 2px;
+      margin-right: 6px;
+    }
+    .ref-tier-a { background: #D4EDDA; color: #155724; }
+    .ref-tier-b { background: #CCE5FF; color: #004085; }
+    .ref-tier-c { background: #FFF3CD; color: #856404; }
+    sup a {
+      color: var(--division-color);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    sup a:hover { text-decoration: underline; }
+
+    /* FOOTER */
+    footer {
+      background: var(--black);
+      color: #AAAAAA;
+      padding: 40px 32px;
+      text-align: center;
+    }
+    footer a { color: #AAAAAA; text-decoration: none; }
+    footer a:hover { color: var(--cream); }
+    .footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 16px; font-size: 13px; flex-wrap: wrap; }
+    .footer-copy { font-size: 12px; }
+
+    @media (max-width: 600px) {
+      nav { padding: 0 16px; }
+      .nav-links { gap: 16px; }
+      .signal-header, .article-body { padding-left: 20px; padding-right: 20px; }
+      .signal-header h1 { font-size: 30px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="/inkluso-magazine/">IN-KluSo</a>
+  <ul class="nav-links">
+    <li><a href="/inkluso-magazine/#core">CORE</a></li>
+    <li><a href="/inkluso-magazine/#thrive">THRIVE</a></li>
+    <li><a href="/inkluso-magazine/axis/" class="active">AXIS</a></li>
+    <li><a href="/inkluso-magazine/#flow">FLOW</a></li>
+    <li><a href="/inkluso-magazine/#cities">CITIES</a></li>
+    <li><a href="/inkluso-magazine/kontrarian/">KONTRARIAN</a></li>
+    <li><a href="/inkluso-magazine/#about">ABOUT</a></li>
+    <li><a href="/inkluso-tools/">TOOLS</a></li>
+  </ul>
+</nav>
+
+<!-- HERO IMAGE -->
+<div style="position:relative; width:100%; height:340px; overflow:hidden; border-radius:12px; margin:2rem auto; max-width:780px; box-shadow:0 8px 32px rgba(0,0,0,0.18);">
+  <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1400&q=80&auto=format&fit=crop" alt="Empty corporate office — the white-collar recession" style="width:100%; height:100%; object-fit:cover; filter:saturate(0.7) contrast(1.05);" loading="lazy">
+  <div style="position:absolute; bottom:0; left:0; right:0; height:80px; background:linear-gradient(transparent, rgba(0,0,0,0.5));"></div>
+  <span style="position:absolute; bottom:8px; left:12px; font-size:0.6rem; color:rgba(255,255,255,0.6); font-family:'Inter',sans-serif;">Photo: Nastuh Abootalebi / Unsplash</span>
+</div>
+
+<!-- SIGNAL HEADER -->
+<header class="signal-header">
+  <div class="signal-meta">
+    <span class="signal-id">AXIS-006</span>
+    <span class="section-tag">AXIS</span>
+    <span class="city-tag">United States · National</span>
+    <span class="cluster-tag">AI &amp; Labor Displacement</span>
+  </div>
+
+  <h1>The White-Collar Recession</h1>
+  <p class="deck">Anthropic mapped which jobs AI is already doing vs. which it could do. The gap is the iceberg. When adoption catches capability, the most displaced workers will be older, educated, well-paid — and disproportionately female.</p>
+
+  <div class="byline">
+    <div>
+      <div class="byline-text"><strong>Juan Camilo Echeverri</strong> — Executive Broker, PAK Home Realty · Rogers, AR</div>
+      <div class="publish-date">March 6, 2026 · United States · AXIS</div>
+    </div>
+  </div>
+</header>
+
+<!-- ARTICLE BODY -->
+<main class="article-body">
+
+  <!-- LAYER 1 -->
+  <div class="layer-label">
+    <div class="layer-num">1</div>
+    <div class="layer-name">Human Becoming</div>
+    <div class="layer-rule"></div>
+  </div>
+
+  <p>She rewrites the email for the third time.</p>
+
+  <p>Not because the phrasing is wrong — it's fine, grammatically, structurally, tonally fine. The problem is that the phrasing is <em>exactly</em> what the AI draft produced forty seconds ago. She's a compliance analyst at a mid-size financial firm in Charlotte. Fourteen years of careful language. Fourteen years of knowing which word makes a regulator relax and which one makes them pick up the phone. Now she spends her mornings editing outputs that are almost right, and her afternoons wondering how long "almost" keeps her necessary.</p>
+
+  <p>Her manager hasn't said anything. That's the part that stays with her. No meeting. No restructuring memo. Just a quiet Tuesday when she noticed the team Slack had fewer questions. The junior associates weren't asking her to review their drafts anymore. They were asking the tool. And the tool was asking nobody.</p>
+
+  <div class="pull-quote">"Nobody told her she was being replaced. The workflow just… routed around her. Like water finding a crack in the foundation."</div>
+
+  <p>She has a master's degree. She earns well above the median. She is precisely the person who was told — by parents, by professors, by every career counselor she ever met — that education was the durable investment. The thing that couldn't be outsourced.</p>
+
+  <p>She doesn't talk about it at dinner. Not yet. She rewrites the email a fourth time, adding a comma the AI missed, and sends it. It's the comma that keeps her employed. For now.</p>
+
+  <hr class="section-break">
+
+  <!-- LAYER 2 -->
+  <div class="layer-label">
+    <div class="layer-num">2</div>
+    <div class="layer-name">Structural Read</div>
+    <div class="layer-rule"></div>
+  </div>
+
+  <p>The measurement is new. The displacement is not.</p>
+
+  <p>Anthropic published a landmark study in March 2026 — "Labor market impacts of AI: A new measure and early evidence" by Massenkoff and McCrory — that distinguishes between what AI <em>can theoretically</em> do and what it is <em>actually observed</em> doing in professional settings.<sup><a href="#ref1" id="fn1">[1]</a></sup> This distinction is the paper's core contribution. Previous AI-exposure indices measured capability. This one measures deployment.</p>
+
+  <p>The gap is staggering. For computer and mathematical occupations, AI can theoretically handle 94% of tasks. Claude, Anthropic's own model, currently covers 33% in observed professional use. Office and administrative roles show 90% theoretical capability — a fraction in actual deployment. The distance between those numbers is not comfort. It is runway.</p>
+
+  <div class="structural-note">
+    <strong>Mechanism</strong>
+    AI capability outpaces adoption because of temporary barriers: legal constraints, technical integration hurdles, and human review requirements. As organizations solve these friction points — and they are solving them — the observed-exposure line rises toward the feasible-exposure ceiling. The displacement concentrates in knowledge work (legal, finance, software, administration), not physical labor. The 30% of workers with zero AI exposure — cooks, mechanics, bartenders — share one trait: their jobs require a body in a room.<sup><a href="#ref2" id="fn2">[2]</a></sup>
+  </div>
+
+  <p>The demographic profile of the most AI-exposed workers is precise and unsettling. They are 16 percentage points more likely to be female. They earn 47% more than the median. They are nearly four times more likely to hold a graduate degree. This is not a blue-collar story. This is the professional class discovering that expertise is a depreciating asset.</p>
+
+  <div class="pull-quote">"The paper names a specific scenario: a 'Great Recession for white-collar workers' — unemployment doubling from 3% to 6% in the top AI-exposed quartile."<br><span style="font-size:14px; font-style:normal; font-family:'Inter',sans-serif; color:var(--gray);">— Massenkoff &amp; McCrory, Anthropic Research (March 2026)</span></div>
+
+  <p>The labor market is already showing early symptoms. Job-finding rates in AI-exposed fields have dropped 14% since the ChatGPT era began. Employment among workers aged 22 to 25 in these fields has fallen 16%. The young feel it first — not because they're less skilled, but because they're cheaper to not hire than to train.<sup><a href="#ref3" id="fn3">[3]</a></sup></p>
+
+  <div class="structural-note">
+    <strong>Structural Tension</strong>
+    The company building the tools published the paper naming the risk. Anthropic's CEO has said AI could disrupt half of entry-level white-collar work. Microsoft's AI chief estimated most professional work replaced within 18 months. These are not critics. These are builders, describing what they see from inside the machine. When the manufacturer publishes the safety warning, the product is already on the shelf.
+  </div>
+
+  <hr class="section-break">
+
+  <!-- LAYER 3 -->
+  <div class="layer-label">
+    <div class="layer-num">3</div>
+    <div class="layer-name">Pattern Confirmation</div>
+    <div class="layer-rule"></div>
+  </div>
+
+  <p>This week the U.S. economy shed 92,000 jobs. Unemployment ticked to 4.4%.<sup><a href="#ref4" id="fn4">[4]</a></sup> Block — the payments company formerly known as Square — fired approximately 4,000 employees, citing AI as a direct replacement for the roles eliminated. These are not abstractions. They are addresses and severance packages.</p>
+
+  <p>Federal Reserve Governor Michael Barr, in a February 2026 speech, outlined three AI scenarios for the labor market. The optimistic one involves reallocation — workers shifting into new AI-complementary roles. The middle scenario describes a "painful transition" with significant short-term unemployment. The dark scenario is the white-collar recession the Anthropic paper names: a structural contraction in knowledge-work employment that mirrors what manufacturing endured between 2000 and 2010, but faster and aimed at a class that never expected it.<sup><a href="#ref5" id="fn5">[5]</a></sup></p>
+
+  <p>Stanford's Digital Economy Lab confirms the direction: a 13% drop in hiring for AI-exposed entry-level positions. The displacement pattern mirrors historical technology transitions — electricity reorganized factories, personal computers reorganized offices — but this one targets a different demographic. The workers most exposed are not those who lacked access to education. They are those who invested the most in it.</p>
+
+  <p>The professional class that believed credentials were permanent insurance is now discovering that insurance has an expiration date. The "Great Recession for white-collar workers" isn't a prediction from a think tank. It's a named scenario, with measurable thresholds, published by the company building the tools. The gap between what AI can do and what it is currently doing is not a buffer. It is a countdown.</p>
+
+  <hr class="section-break">
+
+  <!-- EVIDENCE BLOCK -->
+  <div class="evidence-block">
+    <h4>Evidence</h4>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>Anthropic Research (Massenkoff &amp; McCrory, March 2026): Computer/math occupations show 94% theoretical AI capability vs. 33% observed deployment. Office/admin roles: 90% theoretical, fraction in actual use. Most AI-exposed workers: 16pp more likely female, earn 47% more, ~4x more likely to hold graduate degree.</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>14% drop in job-finding rate in AI-exposed fields post-ChatGPT era. 16% fall in employment for AI-exposed jobs among workers aged 22–25. Stanford Digital Economy Lab: 13% drop in AI-exposed entry-level hiring.</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>BLS February 2026: -92,000 jobs, unemployment at 4.4%. Block fired ~4,000 employees citing AI replacement. Anthropic CEO stated AI could disrupt half of entry-level white-collar work.</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>Fed Governor Michael Barr outlined three AI labor scenarios in Feb 2026 speech, including structural knowledge-work contraction.</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-inferred">Inferred</span>
+      <span>The "countdown" framing — treating the gap between observed and feasible AI exposure as a closing window — is an editorial synthesis. The Anthropic paper presents it as a measurement gap, not a timeline.</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-inferred">Inferred</span>
+      <span>Historical parallel to 2000–2010 manufacturing contraction is directional analogy, not a quantitative claim by any cited source.</span>
+    </div>
+  </div>
+
+  <!-- UNCERTAINTY -->
+  <div class="uncertainty-block">
+    <strong>Uncertainty</strong>
+    The Anthropic paper measures <em>exposure</em>, not displacement — high exposure does not guarantee job loss, as many tasks require human judgment, legal accountability, or client trust that AI cannot replicate. The 94%-vs.-33% gap may narrow slowly due to regulatory, institutional, and cultural friction that the paper acknowledges but cannot predict. The "Great Recession for white-collar workers" is a named scenario within the paper, not a forecast — it describes what <em>could</em> happen if observed exposure rises rapidly toward feasible exposure. The demographic skew (female, educated, high-earning) reflects current occupational distribution in AI-exposed fields and may shift as AI capabilities expand into other sectors. The 14% job-finding decline and 16% youth employment drop are correlational — isolating AI as the sole cause requires further research. Microsoft's "18 months" estimate is a corporate projection, not a peer-reviewed finding.
+  </div>
+
+  <!-- CONFIDENCE -->
+  <div class="confidence-block">
+    <div>
+      <div class="confidence-label">Signal Confidence Index</div>
+      <div class="confidence-score">0.92</div>
+    </div>
+    <div class="confidence-note">
+      <strong>HIGH</strong> — S: 4.8/5 (Anthropic primary research + BLS data + Fed commentary). L: 4.5/5 (Epistemological + Systems + Behavioral). M: 4.2/5 (Clear causal chain: capability gap → adoption acceleration → displacement concentration). T: 3/4 (US national, specific occupations, specific age cohorts). Signal level: <strong>HIGH CONFIDENCE</strong>.
+    </div>
+  </div>
+
+  <!-- SIGNAL TAGS -->
+  <div class="signal-tags-section">
+    <h4>Signal Tags</h4>
+    <div class="tags">
+      <span class="tag">ai-displacement</span>
+      <span class="tag">white-collar-recession</span>
+      <span class="tag">anthropic-research</span>
+      <span class="tag">labor-market</span>
+      <span class="tag">knowledge-work</span>
+      <span class="tag">professional-class</span>
+      <span class="tag">observed-exposure</span>
+    </div>
+  </div>
+
+  <!-- REFERENCES -->
+  <div class="references-section">
+    <h4>References</h4>
+    <ol>
+      <li id="ref1"><span class="ref-tier ref-tier-a">Tier A</span> Massenkoff, M. &amp; McCrory, P. (2026). "Labor market impacts of AI: A new measure and early evidence." Anthropic Research, published March 2026. <a href="#fn1">↩</a></li>
+      <li id="ref2"><span class="ref-tier ref-tier-b">Tier B</span> Fortune (March 6, 2026). Comprehensive analysis of the Anthropic paper, including occupational breakdown and demographic exposure profiles. <a href="#fn2">↩</a></li>
+      <li id="ref3"><span class="ref-tier ref-tier-b">Tier B</span> Stanford Digital Economy Lab. 13% drop in AI-exposed entry-level hiring. Cited alongside BLS data on post-ChatGPT labor trends. <a href="#fn3">↩</a></li>
+      <li id="ref4"><span class="ref-tier ref-tier-a">Tier A</span> Bureau of Labor Statistics. February 2026 Employment Situation Summary: -92,000 nonfarm payrolls, 4.4% unemployment rate. <a href="#fn4">↩</a></li>
+      <li id="ref5"><span class="ref-tier ref-tier-b">Tier B</span> Federal Reserve Governor Michael Barr. Speech on three AI labor market scenarios, February 2026. <a href="#fn5">↩</a></li>
+    </ol>
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-links">
+    <a href="/inkluso-magazine/">IN-KluSo Magazine</a>
+    <a href="/inkluso-magazine/axis/">AXIS</a>
+    <a href="/inkluso-magazine/kontrarian/">Kontrarian</a>
+    <a href="/inkluso-tools/">IN-KluSo Tools</a>
+    <a href="/inkluso-magazine/doctrine/">Doctrine</a>
+  </div>
+  <div class="footer-copy">© 2026 IN-KluSo · Signal AXIS-006 · Published Mar 6, 2026</div>
+</footer>
+
+</body>
+</html>

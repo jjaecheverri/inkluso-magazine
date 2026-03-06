@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The E-Shaped Economy — IN-KluSo</title>
+  <meta name="description" content="America doesn't have two economies anymore. It has three. The top spends freely, the middle stretches at Costco, and the bottom finances groceries with Buy Now, Pay Later. Economist Heather Long calls it the E-shaped economy — and the middle tier just broke away.">
+  <meta name="author" content="Juan Camilo Echeverri">
+  <link rel="canonical" href="https://jjaecheverri.github.io/inkluso-magazine/flow/e-shaped-economy/">
+
+  <!-- JSON-LD Machine-Readable Signal -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "The E-Shaped Economy",
+    "description": "The US consumer economy has fractured into three tiers. The top 20% drive nearly 60% of spending. The middle class treads water at bulk retailers. The bottom finances groceries with installment loans. The K-shape was bad. The E-shape is structural.",
+    "author": {
+      "@type": "Person",
+      "name": "Juan Camilo Echeverri",
+      "jobTitle": "Executive Broker, PAK Home Realty",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "PAK Home Realty",
+        "address": {
+          "@addressLocality": "Rogers",
+          "@addressRegion": "AR"
+        }
+      }
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "IN-KluSo",
+      "url": "https://jjaecheverri.github.io/inkluso-magazine/"
+    },
+    "datePublished": "2026-03-06",
+    "dateModified": "2026-03-06",
+    "articleSection": "FLOW",
+    "keywords": ["e-shaped economy", "consumer tiers", "affordability crisis", "BNPL groceries", "middle class", "income inequality", "costco economy", "consumer spending", "paycheck to paycheck"],
+    "url": "https://jjaecheverri.github.io/inkluso-magazine/flow/e-shaped-economy/"
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #FAF6EE;
+      --black: #111111;
+      --orange: #E05A1C;
+      --gray: #6B6B6B;
+      --light-gray: #E8E4DC;
+      --flow-color: #1B4A6B;
+      --flow-bg: #F0F4F7;
+    }
+
+    body {
+      background: linear-gradient(rgba(250,246,238,0.91), rgba(250,246,238,0.91)), url('https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=1920&q=50&auto=format') center/cover fixed no-repeat;
+      color: var(--black);
+      font-family: 'Inter', sans-serif;
+      font-size: 17px;
+      line-height: 1.75;
+    }
+
+    /* NAV */
+    nav {
+      background: var(--black);
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      color: var(--cream);
+      font-size: 20px;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: #AAAAAA;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--cream); }
+    .nav-links a.active { color: var(--orange); }
+
+    /* SIGNAL HEADER */
+    .signal-header {
+      border-bottom: 1px solid var(--light-gray);
+      padding: 48px 32px 32px;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .signal-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .signal-id {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--gray);
+      font-family: 'Inter', monospace;
+    }
+    .section-tag {
+      display: inline-block;
+      background: var(--flow-color);
+      color: white;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 2px;
+    }
+    .city-tag {
+      display: inline-block;
+      background: var(--light-gray);
+      color: var(--black);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 2px;
+    }
+    .cluster-tag {
+      font-size: 11px;
+      color: var(--orange);
+      font-weight: 500;
+      letter-spacing: 0.05em;
+    }
+
+    .signal-header h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(32px, 5vw, 52px);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      margin-bottom: 16px;
+    }
+    .signal-header .deck {
+      font-size: 19px;
+      color: var(--gray);
+      line-height: 1.5;
+      margin-bottom: 24px;
+      font-weight: 300;
+    }
+    .byline {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding-top: 20px;
+      border-top: 1px solid var(--light-gray);
+    }
+    .byline-text {
+      font-size: 13px;
+      color: var(--gray);
+    }
+    .byline-text strong {
+      color: var(--black);
+      font-weight: 600;
+    }
+    .publish-date { font-size: 12px; color: var(--gray); }
+
+    /* LAYER LABELS */
+    .layer-label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 48px 0 24px;
+    }
+    .layer-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--black);
+      color: var(--cream);
+      font-size: 12px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .layer-name {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+    .layer-rule {
+      flex: 1;
+      height: 1px;
+      background: var(--light-gray);
+    }
+
+    /* ARTICLE BODY */
+    .article-body {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 32px 80px;
+    }
+
+    .article-body p {
+      margin-bottom: 22px;
+      color: var(--black);
+    }
+    .article-body p em {
+      font-style: italic;
+      color: var(--black);
+    }
+    .article-body .pull-quote {
+      font-family: 'DM Serif Display', serif;
+      font-size: 24px;
+      line-height: 1.3;
+      color: var(--black);
+      border-left: 4px solid var(--orange);
+      padding: 16px 24px;
+      margin: 36px 0;
+      font-style: italic;
+    }
+    .article-body .structural-note {
+      background: var(--flow-bg);
+      border-left: 3px solid var(--flow-color);
+      padding: 20px 24px;
+      margin: 32px 0;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+    .article-body .structural-note strong {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--flow-color);
+      margin-bottom: 8px;
+    }
+
+    hr.section-break {
+      border: none;
+      border-top: 1px solid var(--light-gray);
+      margin: 48px 0;
+    }
+
+    /* SIGNAL TAGS */
+    .signal-tags-section {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--light-gray);
+    }
+    .signal-tags-section h4 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 12px;
+    }
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tag {
+      background: var(--light-gray);
+      color: var(--black);
+      font-size: 11px;
+      font-weight: 500;
+      padding: 4px 12px;
+      border-radius: 12px;
+      letter-spacing: 0.04em;
+    }
+
+    /* EVIDENCE BLOCK */
+    .evidence-block {
+      background: #F5F5F0;
+      border: 1px solid var(--light-gray);
+      border-radius: 4px;
+      padding: 24px;
+      margin: 40px 0;
+    }
+    .evidence-block h4 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 16px;
+    }
+    .evidence-item {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 12px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .evidence-item:last-child { margin-bottom: 0; }
+    .ev-type {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 2px;
+      height: fit-content;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .ev-verified { background: #D4EDDA; color: #155724; }
+    .ev-inferred { background: #FFF3CD; color: #856404; }
+
+    /* UNCERTAINTY */
+    .uncertainty-block {
+      background: #FFF8F0;
+      border-left: 3px solid var(--orange);
+      padding: 16px 20px;
+      margin: 24px 0;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .uncertainty-block strong {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 6px;
+    }
+
+    /* SIGNAL CONFIDENCE */
+    .confidence-block {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 20px 24px;
+      background: var(--black);
+      color: var(--cream);
+      border-radius: 4px;
+      margin: 40px 0;
+    }
+    .confidence-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #AAAAAA;
+    }
+    .confidence-score {
+      font-family: 'DM Serif Display', serif;
+      font-size: 32px;
+      color: var(--orange);
+    }
+    .confidence-note {
+      font-size: 13px;
+      color: #AAAAAA;
+      line-height: 1.4;
+    }
+
+    /* REFERENCES */
+    .references-section {
+      margin-top: 40px;
+      padding-top: 24px;
+      border-top: 1px solid var(--light-gray);
+    }
+    .references-section h4 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 16px;
+    }
+    .references-section ol {
+      padding-left: 20px;
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--gray);
+    }
+    .references-section li {
+      margin-bottom: 8px;
+    }
+    .references-section a {
+      color: var(--flow-color);
+      text-decoration: none;
+    }
+    .references-section a:hover {
+      text-decoration: underline;
+    }
+    .ref-tier {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 1px 6px;
+      border-radius: 2px;
+      background: var(--light-gray);
+      color: var(--gray);
+      margin-left: 4px;
+    }
+    sup a {
+      color: var(--flow-color);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    sup a:hover { text-decoration: underline; }
+
+    /* FOOTER */
+    footer {
+      background: var(--black);
+      color: #AAAAAA;
+      padding: 40px 32px;
+      text-align: center;
+    }
+    footer a { color: #AAAAAA; text-decoration: none; }
+    footer a:hover { color: var(--cream); }
+    .footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 16px; font-size: 13px; flex-wrap: wrap; }
+    .footer-copy { font-size: 12px; }
+
+    @media (max-width: 600px) {
+      nav { padding: 0 16px; }
+      .nav-links { gap: 16px; }
+      .signal-header, .article-body { padding-left: 20px; padding-right: 20px; }
+      .signal-header h1 { font-size: 30px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO IMAGE -->
+<div style="position:relative; width:100%; height:420px; overflow:hidden;">
+  <img src="https://images.unsplash.com/photo-1534723452862-4c874018d66d?w=1920&q=80&auto=format&fit=crop" alt="Supermarket aisle with shoppers — the E-shaped economy" style="width:100%; height:100%; object-fit:cover; filter:saturate(0.65) contrast(1.08);" loading="lazy">
+  <div style="position:absolute; bottom:0; left:0; right:0; height:120px; background:linear-gradient(transparent, rgba(0,0,0,0.55));"></div>
+  <span style="position:absolute; bottom:10px; left:16px; font-size:0.6rem; color:rgba(255,255,255,0.6); font-family:'Inter',sans-serif;">Photo: Nathália Rosa / Unsplash</span>
+</div>
+
+<nav>
+  <a class="nav-logo" href="/inkluso-magazine/">IN-KluSo</a>
+  <ul class="nav-links">
+    <li><a href="/inkluso-magazine/#core">CORE</a></li>
+    <li><a href="/inkluso-magazine/#thrive">THRIVE</a></li>
+    <li><a href="/inkluso-magazine/#axis">AXIS</a></li>
+    <li><a href="/inkluso-magazine/flow/" class="active">FLOW</a></li>
+    <li><a href="/inkluso-magazine/#cities">CITIES</a></li>
+    <li><a href="/inkluso-magazine/kontrarian/">KONTRARIAN</a></li>
+    <li><a href="/inkluso-magazine/#about">ABOUT</a></li>
+    <li><a href="/inkluso-tools/">TOOLS</a></li>
+  </ul>
+</nav>
+
+<!-- SIGNAL HEADER -->
+<header class="signal-header">
+  <div class="signal-meta">
+    <span class="signal-id">FLOW-007</span>
+    <span class="section-tag">FLOW</span>
+    <span class="city-tag">United States · National</span>
+    <span class="cluster-tag">Consumer Economy · Signal 7</span>
+  </div>
+
+  <h1>The E-Shaped Economy</h1>
+  <p class="deck">America doesn't have two economies anymore. It has three. The top spends freely, the middle stretches at Costco, and the bottom finances groceries with Buy Now, Pay Later. The K-shape was disturbing. The E-shape is structural.</p>
+
+  <div class="byline">
+    <div>
+      <div class="byline-text"><strong>Juan Camilo Echeverri</strong> — Executive Broker, PAK Home Realty · Rogers, AR</div>
+      <div class="publish-date">March 6, 2026 · Consumer Economy · FLOW</div>
+    </div>
+  </div>
+</header>
+
+
+<!-- ARTICLE BODY -->
+<main class="article-body">
+
+  <!-- LAYER 1 -->
+  <div class="layer-label">
+    <div class="layer-num">1</div>
+    <div class="layer-name">Human Becoming</div>
+    <div class="layer-rule"></div>
+  </div>
+
+  <p>She puts the beef back.</p>
+
+  <p>It's a Wednesday afternoon in a grocery store somewhere in the middle of Arkansas. She's holding a pack of ground beef — not the good stuff, the 80/20 on the lower shelf — and she's doing math in her head. The number doesn't work. She puts it back and reaches for the chicken thighs instead. Those don't quite work either, but they're closer.</p>
+
+  <p>Her cart is careful. Store-brand cereal. The big bag of rice. A gallon of milk she'll stretch through the week. She's not panicking. She's not poor in the way that makes news. She has a job. She has a car payment. She has a kid in travel soccer. She is, by every official measure, middle class.</p>
+
+  <p>She just can't buy the same groceries she bought two years ago.</p>
+
+  <div class="pull-quote">"Nobody calls it a crisis when you can still eat. They just call it budgeting. But budgeting used to mean choosing between wants. Now it means choosing between meals."</div>
+
+  <p>Two aisles over, a younger woman is checking out with a phone screen held up to the card reader. She's splitting a grocery bill — <em>groceries</em> — into four payments. Not furniture. Not a laptop. Food. The installment plan is the only reason the cart is full.</p>
+
+  <p>And in the parking lot, a different car loads bags from the premium section without a second thought. Organic. Grass-fed. The good olive oil. No math required.</p>
+
+  <p>Three carts. Three Americas. Same store.</p>
+
+  <hr class="section-break">
+
+  <!-- LAYER 2 -->
+  <div class="layer-label">
+    <div class="layer-num">2</div>
+    <div class="layer-name">Structural Read</div>
+    <div class="layer-rule"></div>
+  </div>
+
+  <p>Heather Long, chief economist at Navy Federal Credit Union, put a name on it in March 2026. The US consumer economy, she argued, is no longer K-shaped — two tiers splitting apart. It's E-shaped: three distinct tiers, each moving independently.<sup><a href="#ref1" id="fn1">[1]</a></sup></p>
+
+  <p>The top tier — roughly the top 20% of earners — accounts for nearly 60% of all US consumer spending, according to Moody's Analytics.<sup><a href="#ref2" id="fn2">[2]</a></sup> They're not just spending more. They're spending as if inflation is a minor inconvenience, not a structural constraint. Premium credit cards have raised annual fees to $795–$895, betting correctly that this tier won't blink.</p>
+
+  <div class="structural-note">
+    <strong>Mechanism</strong>
+    The K-shape assumed two Americas: winners and losers. The E-shape reveals a third group — the middle — that was previously grouped with the top but has now broken away into its own behavioral lane. They're not collapsing. They're "treading water," in Long's phrase. The Costco economy: bulk buying, coupon stacking, careful substitution. Not poverty. Not comfort. Arithmetic.
+  </div>
+
+  <p>Bank of America Institute data from January 2026 shows the gap between high-income and all-other-household spending growth at its widest since mid-2022.<sup><a href="#ref3" id="fn3">[3]</a></sup> Middle-class spending diverged from upper-income patterns in late 2025 — not because of a single shock, but because the cumulative weight of price increases finally overwhelmed wage gains.</p>
+
+  <p>Beef prices rose 22% year-over-year in January 2026.<sup><a href="#ref4" id="fn4">[4]</a></sup> That's not a number that appears in speeches. It appears in carts. Consumer sentiment fell 13% year-over-year by February, according to the University of Michigan — and sentiment, unlike GDP, measures what people <em>feel</em> they can afford.<sup><a href="#ref5" id="fn5">[5]</a></sup></p>
+
+  <div class="pull-quote">"When installment loans become a food-access tool, the consumer economy has structurally fractured." — Heather Long, Navy Federal Credit Union<sup><a href="#ref1">[1]</a></sup></div>
+
+  <p>The bottom tier tells the sharpest story. LendingTree reported that 25% of Buy Now, Pay Later users used installment loans for groceries in 2025 — up from 14% the year before.<sup><a href="#ref6" id="fn6">[6]</a></sup> BNPL was designed for discretionary purchases: a jacket, a pair of headphones, a plane ticket. When it becomes a tool for buying food, the instrument has outgrown its design. That's not consumer choice. That's structural necessity wearing a fintech costume.</p>
+
+  <div class="structural-note">
+    <strong>Friction Point</strong>
+    24% of US households are now living paycheck to paycheck — defined by Bank of America as spending more than 95% of income on expenses. That share has been rising since at least 2023. Meanwhile, 59% of cardholders earning $25K–$49K carry a credit card balance, per the Federal Reserve's Survey of Consumer Finances. The bottom tier isn't running out of money at the end of the month. They're running out of money in the middle of it.
+  </div>
+
+  <hr class="section-break">
+
+  <!-- LAYER 3 -->
+  <div class="layer-label">
+    <div class="layer-num">3</div>
+    <div class="layer-name">Pattern Confirmation</div>
+    <div class="layer-rule"></div>
+  </div>
+
+  <p>The E-shape doesn't emerge from one data point. It emerges from convergence. Spending divergence, sentiment collapse, debt instrument migration, and price acceleration all point in the same direction: the American consumer class has split into three populations with three different relationships to the same economy.</p>
+
+  <p>The top 20% are pulling further ahead, spending through elevated prices without friction. Premium brands are thriving. High-end credit products are raising fees because they can. This tier's spending behavior barely registers inflation as a constraint.</p>
+
+  <p>The middle is not collapsing — and that's precisely why it's invisible. Middle-class households are absorbing price increases through behavioral substitution: switching proteins, driving to bulk retailers, downgrading brands. They're holding. But "holding" is not "growing," and when 35% of Americans expecting tax refunds plan to use them for debt repayment rather than spending or saving, the stretch is showing.<sup><a href="#ref7" id="fn7">[7]</a></sup></p>
+
+  <p>The bottom is financing daily life. BNPL for groceries. Revolving credit card balances on low-limit cards. Payday advance apps rebranded as "earned wage access." The financial instruments designed for occasional purchases have become permanent infrastructure for basic consumption.</p>
+
+  <p>What makes this a FLOW signal — not just an economics story — is the cultural consequence. The K-shape was already disturbing because it named two Americas. The E-shape is worse because it reveals the middle was never stable. It was just slow to show strain. When "the Costco economy" emerges as a named consumer tier, stretching isn't a tactic anymore. It's an identity.</p>
+
+  <p>And identities, unlike budgets, don't bounce back when the numbers improve.</p>
+
+  <hr class="section-break">
+
+  <!-- EVIDENCE BLOCK -->
+  <div class="evidence-block">
+    <h4>Evidence</h4>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>Top 20% of earners account for nearly 60% of all US consumer spending (Moody's Analytics, 2026).</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>Beef prices rose 22% year-over-year in January 2026 (Bureau of Labor Statistics, CPI data).</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>25% of BNPL users used installment loans for groceries in 2025, up from 14% in 2024 (LendingTree survey).</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>Consumer sentiment down 13% year-over-year as of February 2026 (University of Michigan Survey of Consumers).</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>24% of households living paycheck to paycheck with expenses exceeding 95% of income (Bank of America Institute).</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-inferred">Inferred</span>
+      <span>Characterization of middle-class divergence as a distinct third tier ("E-shape") — analytical framework proposed by Heather Long, not yet independently validated as a formal economic classification.</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-inferred">Inferred</span>
+      <span>BNPL as "structural necessity wearing a fintech costume" — editorial framing supported by usage data migration but not independently studied as a systemic risk indicator.</span>
+    </div>
+  </div>
+
+  <!-- UNCERTAINTY -->
+  <div class="uncertainty-block">
+    <strong>Uncertainty</strong>
+    The "E-shaped" framework is Heather Long's analytical characterization, not an established economic classification — other economists may segment the consumer landscape differently. Spending divergence data from Bank of America Institute reflects card transaction patterns, not total household spending. BNPL grocery usage figures come from a LendingTree survey with self-reported data, not transactional records. Whether the middle-class spending break from upper-income patterns is cyclical (responding to cumulative inflation) or structural (a permanent behavioral shift) remains unresolved. Tax refund debt repayment intentions (TurboTax survey) may not reflect actual behavior.
+  </div>
+
+  <!-- CONFIDENCE -->
+  <div class="confidence-block">
+    <div>
+      <div class="confidence-label">Signal Confidence Index</div>
+      <div class="confidence-score">0.89 · HIGH</div>
+    </div>
+    <div class="confidence-note">
+      S: 4.2/5 (multiple Tier B reputable sources + BLS Tier A) · L: 4.5/5 (behavioral + systems + epistemological) · M: 4.3/5 (clear three-tier framework with measurable indicators) · T: 3.0/4 (US national, income-specific, time-specific). Signal level: <strong>CONFIRMED</strong>.
+    </div>
+  </div>
+
+  <!-- SIGNAL TAGS -->
+  <div class="signal-tags-section">
+    <h4>Signal Tags</h4>
+    <div class="tags">
+      <span class="tag">e-shaped-economy</span>
+      <span class="tag">consumer-tiers</span>
+      <span class="tag">affordability-crisis</span>
+      <span class="tag">bnpl-groceries</span>
+      <span class="tag">middle-class</span>
+      <span class="tag">income-inequality</span>
+      <span class="tag">costco-economy</span>
+      <span class="tag">paycheck-to-paycheck</span>
+      <span class="tag">consumer-spending</span>
+    </div>
+  </div>
+
+  <!-- REFERENCES -->
+  <div class="references-section">
+    <h4>References</h4>
+    <ol>
+      <li id="ref1">CNBC, "The U.S. economy is now E-shaped," interview with Heather Long, chief economist at Navy Federal Credit Union, March 6, 2026. <span class="ref-tier">Tier B</span></li>
+      <li id="ref2">Moody's Analytics — consumer spending concentration data: top 20% of earners account for nearly 60% of US consumer spending, 2026 report. <span class="ref-tier">Tier B</span></li>
+      <li id="ref3">Bank of America Institute — spending divergence between high-income and all-other-household groups at widest since mid-2022, January 2026 data. Paycheck-to-paycheck metric (24% of households). <span class="ref-tier">Tier B</span></li>
+      <li id="ref4">Bureau of Labor Statistics — Consumer Price Index: beef prices up 22% year-over-year, January 2026. <span class="ref-tier">Tier A</span></li>
+      <li id="ref5">University of Michigan — Survey of Consumers, February 2026: consumer sentiment down 13% year-over-year. <span class="ref-tier">Tier B</span></li>
+      <li id="ref6">LendingTree — BNPL usage survey, February 2025: 25% of users applied installment loans to grocery purchases, up from 14% in 2024. <span class="ref-tier">Tier B</span></li>
+      <li id="ref7">TurboTax survey — 35% of Americans expecting tax refunds plan to use them for debt repayment, 2026. Federal Reserve Survey of Consumer Finances — 59% of cardholders earning $25K–$49K carry a balance. <span class="ref-tier">Tier B</span></li>
+    </ol>
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-links">
+    <a href="/inkluso-magazine/">IN-KluSo Magazine</a>
+    <a href="/inkluso-magazine/flow/">Cultural Infrastructure</a>
+    <a href="/inkluso-magazine/kontrarian/">Kontrarian</a>
+    <a href="/inkluso-tools/">Tools</a>
+    <a href="/inkluso-magazine/doctrine/">Doctrine</a>
+  </div>
+  <div class="footer-copy">© 2026 IN-KluSo · Signal FLOW-007 · Published Mar 6, 2026</div>
+</footer>
+
+</body>
+</html>

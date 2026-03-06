@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Slow Climb — IN-KluSo</title>
+  <meta name="description" content="The Federal Reserve documents how tariffs didn't hit as a price shock — they climbed slowly into every shopping trip. Chinese imports up 8.5%. Consumer pass-through: at least 30%. The most dangerous inflation is the kind you stop noticing.">
+  <meta name="author" content="Juan Camilo Echeverri">
+  <link rel="canonical" href="https://jjaecheverri.github.io/inkluso-magazine/core/slow-climb/">
+
+  <!-- JSON-LD Machine-Readable Signal -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "The Slow Climb",
+    "description": "The Federal Reserve documents how tariffs didn't hit as a price shock — they climbed slowly, almost invisibly, into every shopping trip. The most dangerous inflation is the kind that becomes normal.",
+    "author": {
+      "@type": "Person",
+      "name": "Juan Camilo Echeverri",
+      "jobTitle": "Executive Broker, PAK Home Realty",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "PAK Home Realty",
+        "address": {
+          "@addressLocality": "Rogers",
+          "@addressRegion": "AR"
+        }
+      }
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "IN-KluSo",
+      "url": "https://jjaecheverri.github.io/inkluso-magazine/"
+    },
+    "datePublished": "2026-03-06",
+    "dateModified": "2026-03-06",
+    "articleSection": "CORE",
+    "keywords": ["tariffs", "inflation", "federal-reserve", "consumer-prices", "trade-policy", "slow-climb", "price-pass-through", "china-imports"],
+    "url": "https://jjaecheverri.github.io/inkluso-magazine/core/slow-climb/"
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #FAF6EE;
+      --black: #111111;
+      --orange: #E05A1C;
+      --gray: #6B6B6B;
+      --light-gray: #E8E4DC;
+      --core-color: #D4A853;
+      --core-bg: #FDF8EE;
+    }
+
+    body {
+      background: linear-gradient(rgba(250,246,238,0.91), rgba(250,246,238,0.91)), url('https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=1920&q=50&auto=format') center/cover fixed no-repeat;
+      color: var(--black);
+      font-family: 'Inter', sans-serif;
+      font-size: 17px;
+      line-height: 1.75;
+    }
+
+    /* NAV */
+    nav {
+      background: var(--black);
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      color: var(--cream);
+      font-size: 20px;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: #AAAAAA;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--cream); }
+    .nav-links a.active { color: var(--orange); }
+
+    /* SIGNAL HEADER */
+    .signal-header {
+      border-bottom: 1px solid var(--light-gray);
+      padding: 48px 32px 32px;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .signal-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .signal-id {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--gray);
+      font-family: 'Inter', monospace;
+    }
+    .section-tag {
+      display: inline-block;
+      background: var(--core-color);
+      color: white;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 2px;
+    }
+    .city-tag {
+      display: inline-block;
+      background: var(--light-gray);
+      color: var(--black);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 2px;
+    }
+    .cluster-tag {
+      font-size: 11px;
+      color: var(--orange);
+      font-weight: 500;
+      letter-spacing: 0.05em;
+    }
+
+    .signal-header h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(32px, 5vw, 52px);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      margin-bottom: 16px;
+    }
+    .signal-header .deck {
+      font-size: 19px;
+      color: var(--gray);
+      line-height: 1.5;
+      margin-bottom: 24px;
+      font-weight: 300;
+    }
+    .byline {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding-top: 20px;
+      border-top: 1px solid var(--light-gray);
+    }
+    .byline-text {
+      font-size: 13px;
+      color: var(--gray);
+    }
+    .byline-text strong {
+      color: var(--black);
+      font-weight: 600;
+    }
+    .publish-date { font-size: 12px; color: var(--gray); }
+
+    /* LAYER LABELS */
+    .layer-label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 48px 0 24px;
+    }
+    .layer-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--black);
+      color: var(--cream);
+      font-size: 12px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .layer-name {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+    .layer-rule {
+      flex: 1;
+      height: 1px;
+      background: var(--light-gray);
+    }
+
+    /* ARTICLE BODY */
+    .article-body {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 32px 80px;
+    }
+
+    .article-body p {
+      margin-bottom: 22px;
+      color: var(--black);
+    }
+    .article-body p em {
+      font-style: italic;
+      color: var(--black);
+    }
+    .article-body .pull-quote {
+      font-family: 'DM Serif Display', serif;
+      font-size: 24px;
+      line-height: 1.3;
+      color: var(--black);
+      border-left: 4px solid var(--orange);
+      padding: 16px 24px;
+      margin: 36px 0;
+      font-style: italic;
+    }
+    .article-body .structural-note {
+      background: var(--core-bg);
+      border-left: 3px solid var(--core-color);
+      padding: 20px 24px;
+      margin: 32px 0;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+    .article-body .structural-note strong {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--core-color);
+      margin-bottom: 8px;
+    }
+
+    hr.section-break {
+      border: none;
+      border-top: 1px solid var(--light-gray);
+      margin: 48px 0;
+    }
+
+    /* SIGNAL TAGS */
+    .signal-tags-section {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--light-gray);
+    }
+    .signal-tags-section h4 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 12px;
+    }
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tag {
+      background: var(--light-gray);
+      color: var(--black);
+      font-size: 11px;
+      font-weight: 500;
+      padding: 4px 12px;
+      border-radius: 12px;
+      letter-spacing: 0.04em;
+    }
+
+    /* EVIDENCE BLOCK */
+    .evidence-block {
+      background: #F5F5F0;
+      border: 1px solid var(--light-gray);
+      border-radius: 4px;
+      padding: 24px;
+      margin: 40px 0;
+    }
+    .evidence-block h4 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 16px;
+    }
+    .evidence-item {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 12px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .evidence-item:last-child { margin-bottom: 0; }
+    .ev-type {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 2px;
+      height: fit-content;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .ev-verified { background: #D4EDDA; color: #155724; }
+    .ev-inferred { background: #FFF3CD; color: #856404; }
+
+    /* UNCERTAINTY */
+    .uncertainty-block {
+      background: #FFF8F0;
+      border-left: 3px solid var(--orange);
+      padding: 16px 20px;
+      margin: 24px 0;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .uncertainty-block strong {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 6px;
+    }
+
+    /* SIGNAL CONFIDENCE */
+    .confidence-block {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 20px 24px;
+      background: var(--black);
+      color: var(--cream);
+      border-radius: 4px;
+      margin: 40px 0;
+    }
+    .confidence-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #AAAAAA;
+    }
+    .confidence-score {
+      font-family: 'DM Serif Display', serif;
+      font-size: 32px;
+      color: var(--orange);
+    }
+    .confidence-note {
+      font-size: 13px;
+      color: #AAAAAA;
+      line-height: 1.4;
+    }
+
+    /* REFERENCES */
+    .references-section {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--light-gray);
+    }
+    .references-section h4 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 16px;
+    }
+    .references-section ol {
+      padding-left: 20px;
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--gray);
+    }
+    .references-section ol li {
+      margin-bottom: 8px;
+    }
+    .references-section a {
+      color: var(--orange);
+      text-decoration: none;
+    }
+    .references-section a:hover {
+      text-decoration: underline;
+    }
+    .ref-tier {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: var(--light-gray);
+      padding: 1px 6px;
+      border-radius: 2px;
+      color: var(--gray);
+      margin-left: 4px;
+    }
+
+    sup a {
+      color: var(--orange);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    sup a:hover { text-decoration: underline; }
+
+    /* FOOTER */
+    footer {
+      background: var(--black);
+      color: #AAAAAA;
+      padding: 40px 32px;
+      text-align: center;
+    }
+    footer a { color: #AAAAAA; text-decoration: none; }
+    footer a:hover { color: var(--cream); }
+    .footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 16px; font-size: 13px; flex-wrap: wrap; }
+    .footer-copy { font-size: 12px; }
+
+    @media (max-width: 600px) {
+      nav { padding: 0 16px; }
+      .nav-links { gap: 16px; }
+      .signal-header, .article-body { padding-left: 20px; padding-right: 20px; }
+      .signal-header h1 { font-size: 30px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="../../">IN-KluSo</a>
+  <ul class="nav-links">
+    <li><a href="../../#core" class="active">CORE</a></li>
+    <li><a href="../../#thrive">THRIVE</a></li>
+    <li><a href="../../#axis">AXIS</a></li>
+    <li><a href="../../#flow">FLOW</a></li>
+    <li><a href="../../#cities">CITIES</a></li>
+    <li><a href="../../kontrarian/">KONTRARIAN</a></li>
+    <li><a href="../../#about">ABOUT</a></li>
+    <li><a href="/inkluso-tools/">TOOLS</a></li>
+  </ul>
+</nav>
+
+<!-- SIGNAL HEADER -->
+<header class="signal-header">
+  <div class="signal-meta">
+    <span class="signal-id">CORE-015</span>
+    <span class="section-tag">CORE</span>
+    <span class="city-tag">United States</span>
+    <span class="cluster-tag">Trade &amp; Inflation</span>
+  </div>
+
+  <h1>The Slow Climb</h1>
+  <p class="deck">The Federal Reserve documents how tariffs didn't hit as a price shock — they climbed slowly, almost invisibly, into every shopping trip. Chinese imports up 8.5%. Consumer pass-through: at least 30%. The most dangerous inflation is the kind you stop noticing.</p>
+
+  <div class="byline">
+    <div>
+      <div class="byline-text"><strong>Juan Camilo Echeverri</strong> — Executive Broker · PAK Home Realty · Rogers, AR</div>
+      <div class="publish-date">March 6, 2026 · United States · CORE</div>
+    </div>
+  </div>
+</header>
+
+<!-- HERO IMAGE -->
+<div style="position:relative; width:100%; height:340px; overflow:hidden; border-radius:12px; margin:2rem auto; max-width:780px; box-shadow:0 8px 32px rgba(0,0,0,0.18);">
+  <img src="https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=1920&q=80&auto=format&fit=crop" alt="Grocery store shelves — tariff-driven price increases climb invisibly into every shopping trip" style="width:100%; height:100%; object-fit:cover; filter:saturate(0.8) contrast(1.05);" loading="lazy">
+  <div style="position:absolute; bottom:0; left:0; right:0; height:80px; background:linear-gradient(transparent, rgba(0,0,0,0.5));"></div>
+  <span style="position:absolute; bottom:8px; left:12px; font-size:0.6rem; color:rgba(255,255,255,0.6); font-family:'Inter',sans-serif;">Photo: Nathália Rosa / Unsplash</span>
+</div>
+
+<!-- ARTICLE BODY -->
+<main class="article-body">
+
+  <!-- LAYER 1 -->
+  <div class="layer-label">
+    <div class="layer-num">1</div>
+    <div class="layer-name">Human Becoming</div>
+    <div class="layer-rule"></div>
+  </div>
+
+  <p>You don't remember when it changed.</p>
+
+  <p>There wasn't a day it happened. No single trip where you looked at the receipt and thought: <em>this is different now.</em> It was slower than that. It was the kind of change that folds itself into routine until routine is all you feel.</p>
+
+  <p>You used to buy the same laundry detergent every two weeks. Same brand, same size. You didn't check the price because the price never moved enough to notice. Then sometime — was it May? June? — you noticed the number was different. Not dramatically. Just enough to register for one second before you put it in the cart anyway.</p>
+
+  <p>Then the rice was a little more. Then the paper towels. Then the off-brand shampoo your kids don't complain about.</p>
+
+  <div class="pull-quote">"It wasn't a shock. It was a season that never ended — and by the time you noticed, the season was the weather."</div>
+
+  <p>None of it felt like a crisis. None of it made the evening news. Nobody protested in the parking lot of the grocery store. You just — adjusted. You stopped comparing. You stopped tracking. You adapted your baseline, one quiet Tuesday at a time.</p>
+
+  <p>That's how it works. Not with a bang. With a receipt that costs eleven dollars more than it did last spring and no single line item you can point to.</p>
+
+  <hr class="section-break">
+
+  <!-- LAYER 2 -->
+  <div class="layer-label">
+    <div class="layer-num">2</div>
+    <div class="layer-name">Structural Read</div>
+    <div class="layer-rule"></div>
+  </div>
+
+  <p>The Federal Reserve just named the mechanism. And the name is precise: <em>the slow climb</em>.</p>
+
+  <p>On March 5, 2026, the Fed's Board of Governors published a FEDS Note by economists Hacıoğlu-Hoke, Malladi, and Feler<sup><a href="#ref1" id="fn1">[1]</a></sup> using item-level retail data from 200,000 U.S. households — the Numerator consumer panel — combined with country-of-origin product tracking. The finding was definitive: tariffs imposed in 2025 did not produce a one-time price shock. They climbed gradually, almost invisibly, into consumer prices beginning around April 2025 and accelerating through the fall.</p>
+
+  <div class="structural-note">
+    <strong>Mechanism</strong>
+    TARIFF ENACTED → INVENTORY BUFFER ABSORBS INITIAL COST → BUFFER DEPLETES → RETAILERS PASS THROUGH INCREMENTALLY → CONSUMER BASELINE ADAPTS<br><br>
+    The slow-release structure is more effective than a shock precisely because it avoids political backlash. Consumers adapt their expectations rather than resisting the price. By December 2025, Chinese imported goods were up 8.5% year-over-year. The pass-through rate to consumers: at least 28–32%.<sup><a href="#ref2" id="fn2">[2]</a></sup>
+  </div>
+
+  <p>The methodology matters. The researchers used a Fisher Price Index — the same approach underlying the Fed's preferred PCE inflation measure — and validated their retail panel against the Bureau of Economic Analysis PCE deflator for food, achieving a 0.96 correlation.<sup><a href="#ref3" id="fn3">[3]</a></sup> This isn't a think-tank estimate. It's the Federal Reserve measuring its own economy with its own tools and finding a tax it didn't impose working exactly as economic theory predicted.</p>
+
+  <p>The statutory effective tariff rate on Chinese goods reached approximately 30%. The realized effective rate, accounting for exclusions and reclassifications, landed at roughly 26%. The difference didn't save consumers — it just slowed the climb by a few weeks.</p>
+
+  <div class="pull-quote">"The 'others' category — goods from countries not named China or Canada — rose 5% year-over-year. Trade diversion didn't eliminate the cost. It redistributed it." — FEDS Note, March 2026</div>
+
+  <p>The data also reveals what didn't move. Canadian goods showed muted price changes, likely reflecting the different tariff structure under USMCA. U.S.-produced goods stayed below 2% annual increases. The climbing was concentrated precisely where the tariffs were concentrated — on imported consumer products, especially from China.</p>
+
+  <div class="structural-note">
+    <strong>Comparative Clarity</strong>
+    What officials described: "targeted trade policy to protect American industry."<br>
+    What the data shows: a slow-release consumption tax concentrated on lower-cost imported goods — the products disproportionately purchased by middle- and lower-income households.<br><br>
+    The gap between narrative and measurement is the signal.
+  </div>
+
+  <p>The "others" category is particularly instructive. Countries not named China or Canada — the trade diversion destinations — saw goods prices climb 5%+ year-over-year by December. Tariff evasion through rerouting didn't eliminate the cost. It dispersed it across more supply chains. The slow climb has no single origin anymore. It arrives from everywhere.</p>
+
+  <hr class="section-break">
+
+  <!-- LAYER 3 -->
+  <div class="layer-label">
+    <div class="layer-num">3</div>
+    <div class="layer-name">Pattern Confirmation</div>
+    <div class="layer-rule"></div>
+  </div>
+
+  <p>This is not a new finding. It is the confirmation of a pattern economists have documented since the first round of tariffs in 2018.</p>
+
+  <p>Cavallo et al. (2025) estimated tariff pass-through rates using earlier data and found substantially similar results: consumers absorbed the majority of tariff costs, with minimal evidence that foreign exporters lowered prices to compensate.<sup><a href="#ref4" id="fn4">[4]</a></sup> Dvorkin et al. at the St. Louis Fed reached the same structural conclusion — tariffs function as a consumption tax, not a production incentive.<sup><a href="#ref5" id="fn5">[5]</a></sup></p>
+
+  <p>What's new is the granularity and the timeline. The FEDS Note tracks the 2025 tariff wave with item-level precision across 200,000 households. It shows that cumulative inflation from 2018 through 2025 reached 28–38% across all product origin categories. The tariff contribution is layered on top of pandemic-era inflation, supply chain recovery markups, and monetary tightening. The slow climb didn't start the fire. It added fuel so gradually that most people thought the fire was out.</p>
+
+  <p>For real estate, the mechanism matters directly. Households adjusting to higher consumer costs have less margin for housing. Mortgage applications don't collapse because rates spike — they erode because the grocery bill, the gas bill, the household goods bill each took a quiet step up. The slow climb reaches the housing market the same way it reaches the shopping cart: without announcement.</p>
+
+  <p>The most dangerous inflation isn't the kind that makes headlines. It's the kind that becomes normal. When the Federal Reserve itself documents how tariff costs passed through to your receipt — slowly, steadily, with no single moment you could point to — the mechanism is no longer debatable. It's measured.</p>
+
+  <p>The slow climb is also a slow squeeze. And the squeeze doesn't end when you stop noticing it.</p>
+
+  <hr class="section-break">
+
+  <!-- EVIDENCE BLOCK -->
+  <div class="evidence-block">
+    <h4>Evidence</h4>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>Chinese imported goods +8.5% year-over-year by December 2025 — FEDS Note, Hacıoğlu-Hoke, Malladi &amp; Feler, March 2026 (Tier A).</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>Consumer tariff pass-through: 28–32% for Chinese goods — FEDS Note, validated against PCE deflator (Tier A).</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>"Others" category countries: 5%+ year-over-year by December 2025 — FEDS Note (Tier A).</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>Fisher Price Index validated against BEA PCE deflator for food — 0.96 correlation (Tier A).</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>Statutory effective tariff rate on China: ~30%; realized ETR: ~26% — FEDS Note (Tier A).</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>200,000 U.S. household panel (Numerator) used for item-level price tracking (Tier A).</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>Prior pass-through estimates consistent with 2025 findings — Cavallo et al. (2025), Dvorkin et al. (2025) (Tier B).</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-inferred">Inferred</span>
+      <span>Downstream housing market pressure from cumulative consumer cost increases — structurally logical, not empirically isolated in the FEDS Note.</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-inferred">Inferred</span>
+      <span>Disproportionate impact on lower-income households — consistent with consumption patterns but not segmented by income in source data.</span>
+    </div>
+  </div>
+
+  <!-- UNCERTAINTY -->
+  <div class="uncertainty-block">
+    <strong>Uncertainty</strong>
+    The FEDS Note tracks price changes for goods with identified country of origin, which may not capture all tariff-affected categories. The 28–32% pass-through rate is a central estimate; the true rate varies by product category and retailer strategy. Cumulative inflation figures (28–38%) include non-tariff contributors — pandemic recovery, supply chain disruptions, monetary policy — and isolating the tariff-specific share requires additional econometric work. The housing market connection, while structurally sound, is not directly measured in the source research. Canadian goods' muted response may reflect USMCA protections or different product mix, not solely tariff structure.
+  </div>
+
+  <!-- CONFIDENCE -->
+  <div class="confidence-block">
+    <div>
+      <div class="confidence-label">Signal Confidence Index</div>
+      <div class="confidence-score">0.95 HIGH</div>
+    </div>
+    <div class="confidence-note">
+      Source: 5.0/5 — Federal Reserve primary research with validated methodology. Lens: 4.5/5 — Epistemological, Systems, Behavioral. Mechanism: 4.5/5 — Clear causal chain with econometric validation. Territory: 4/4 — National scope, country-specific breakdown. Signal level: <strong>HIGH</strong>.
+    </div>
+  </div>
+
+  <!-- SIGNAL TAGS -->
+  <div class="signal-tags-section">
+    <h4>Signal Tags</h4>
+    <div class="tags">
+      <span class="tag">tariffs</span>
+      <span class="tag">inflation</span>
+      <span class="tag">federal-reserve</span>
+      <span class="tag">consumer-prices</span>
+      <span class="tag">trade-policy</span>
+      <span class="tag">slow-climb</span>
+      <span class="tag">price-pass-through</span>
+      <span class="tag">china-imports</span>
+      <span class="tag">consumption-tax</span>
+      <span class="tag">housing-pressure</span>
+    </div>
+  </div>
+
+  <!-- REFERENCES -->
+  <div class="references-section">
+    <h4>References</h4>
+    <ol>
+      <li id="ref1">Hacıoğlu-Hoke, S., Malladi, S., &amp; Feler, L. (2026). "The Slow Climb: How Tariffs Gradually Raised Retail Prices in 2025." <em>FEDS Notes</em>, Board of Governors of the Federal Reserve System, March 5, 2026. <a href="https://www.federalreserve.gov/econres/notes/feds-notes/" target="_blank">Federal Reserve FEDS Notes</a> <span class="ref-tier">Tier A</span> <a href="#fn1">↩</a></li>
+      <li id="ref2">Bureau of Economic Analysis. PCE Price Index data, 2025. <a href="https://www.bea.gov/data/personal-consumption-expenditures-price-index" target="_blank">BEA PCE Data</a> <span class="ref-tier">Tier A</span> <a href="#fn2">↩</a></li>
+      <li id="ref3">Bureau of Labor Statistics. Consumer Price Index, 2025. <a href="https://www.bls.gov/cpi/" target="_blank">BLS CPI</a> <span class="ref-tier">Tier A</span> <a href="#fn3">↩</a></li>
+      <li id="ref4">Cavallo, A. et al. (2025). Tariff pass-through estimates using household-level scanner data. <span class="ref-tier">Tier B</span> <a href="#fn4">↩</a></li>
+      <li id="ref5">Dvorkin, M. et al. (2025). Tariff-price analysis. Federal Reserve Bank of St. Louis. <a href="https://www.stlouisfed.org/" target="_blank">St. Louis Fed</a> <span class="ref-tier">Tier B</span> <a href="#fn5">↩</a></li>
+    </ol>
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-links">
+    <a href="../../">IN-KluSo Magazine</a>
+    <a href="../">CORE</a>
+    <a href="../../kontrarian/">Kontrarian</a>
+    <a href="/inkluso-tools/">Tools</a>
+    <a href="../../doctrine/">Doctrine</a>
+  </div>
+  <div class="footer-copy">© 2026 IN-KluSo · Signal CORE-015 · Published Mar 6, 2026</div>
+</footer>
+
+</body>
+</html>

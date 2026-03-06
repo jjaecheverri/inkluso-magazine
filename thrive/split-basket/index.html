@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Split Basket — IN-KluSo</title>
+  <meta name="description" content="The weekly grocery trip is fracturing into tactical raids across multiple stores. Americans aren't browsing — they're optimizing in real time against prices that won't hold still.">
+  <meta name="author" content="Juan Camilo Echeverri">
+  <link rel="canonical" href="https://jjaecheverri.github.io/inkluso-magazine/thrive/split-basket/">
+
+  <!-- JSON-LD Machine-Readable Signal -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "The Split Basket",
+    "description": "The weekly grocery trip is fracturing into tactical raids across multiple stores. Americans aren't browsing — they're optimizing in real time against prices that won't hold still.",
+    "author": {
+      "@type": "Person",
+      "name": "Juan Camilo Echeverri",
+      "jobTitle": "Executive Broker, PAK Home Realty",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "PAK Home Realty",
+        "address": {
+          "@addressLocality": "Rogers",
+          "@addressRegion": "AR"
+        }
+      }
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "IN-KluSo",
+      "url": "https://jjaecheverri.github.io/inkluso-magazine/"
+    },
+    "datePublished": "2026-03-06",
+    "dateModified": "2026-03-06",
+    "articleSection": "THRIVE",
+    "keywords": ["grocery fragmentation", "split basket", "food prices", "consumer behavior", "retail restructuring", "farmers market", "food inflation", "cost management"],
+    "url": "https://jjaecheverri.github.io/inkluso-magazine/thrive/split-basket/"
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #FAF6EE;
+      --black: #111111;
+      --orange: #E05A1C;
+      --gray: #6B6B6B;
+      --light-gray: #E8E4DC;
+      --div-color: #1B6B4A;
+      --div-bg: #F0F7F4;
+    }
+
+    body {
+      background: linear-gradient(rgba(250,246,238,0.91), rgba(250,246,238,0.91)), url('https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=1920&q=50&auto=format') center/cover fixed no-repeat;
+      color: var(--black);
+      font-family: 'Inter', sans-serif;
+      font-size: 17px;
+      line-height: 1.75;
+    }
+
+    /* HERO */
+    .hero-image {
+      position: relative;
+      width: 100%;
+      height: 420px;
+      overflow: hidden;
+    }
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(0.6) contrast(1.08);
+    }
+    .hero-image .hero-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 120px;
+      background: linear-gradient(transparent, rgba(0,0,0,0.55));
+    }
+    .hero-image .hero-credit {
+      position: absolute;
+      bottom: 8px;
+      left: 12px;
+      font-size: 0.6rem;
+      color: rgba(255,255,255,0.6);
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* NAV */
+    nav {
+      background: var(--black);
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      color: var(--cream);
+      font-size: 20px;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: #AAAAAA;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--cream); }
+    .nav-links a.active { color: var(--div-color); }
+
+    /* SIGNAL HEADER */
+    .signal-header {
+      border-bottom: 1px solid var(--light-gray);
+      padding: 48px 32px 32px;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .signal-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .signal-id {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--gray);
+      font-family: 'Inter', monospace;
+    }
+    .section-tag {
+      display: inline-block;
+      background: var(--div-color);
+      color: white;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 2px;
+    }
+    .city-tag {
+      display: inline-block;
+      background: var(--light-gray);
+      color: var(--black);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 2px;
+    }
+    .cluster-tag {
+      font-size: 11px;
+      color: var(--orange);
+      font-weight: 500;
+      letter-spacing: 0.05em;
+    }
+
+    .signal-header h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(32px, 5vw, 52px);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      margin-bottom: 16px;
+    }
+    .signal-header .deck {
+      font-size: 19px;
+      color: var(--gray);
+      line-height: 1.5;
+      margin-bottom: 24px;
+      font-weight: 300;
+    }
+    .byline {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding-top: 20px;
+      border-top: 1px solid var(--light-gray);
+    }
+    .byline-text {
+      font-size: 13px;
+      color: var(--gray);
+    }
+    .byline-text strong {
+      color: var(--black);
+      font-weight: 600;
+    }
+    .publish-date { font-size: 12px; color: var(--gray); }
+
+    /* LAYER LABELS */
+    .layer-label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 48px 0 24px;
+    }
+    .layer-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--black);
+      color: var(--cream);
+      font-size: 12px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .layer-name {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+    .layer-rule {
+      flex: 1;
+      height: 1px;
+      background: var(--light-gray);
+    }
+
+    /* ARTICLE BODY */
+    .article-body {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 32px 80px;
+    }
+
+    .article-body p {
+      margin-bottom: 22px;
+      color: var(--black);
+    }
+    .article-body p em {
+      font-style: italic;
+      color: var(--black);
+    }
+    .article-body .pull-quote {
+      font-family: 'DM Serif Display', serif;
+      font-size: 24px;
+      line-height: 1.3;
+      color: var(--black);
+      border-left: 4px solid var(--orange);
+      padding: 16px 24px;
+      margin: 36px 0;
+      font-style: italic;
+    }
+    .article-body .structural-note {
+      background: var(--div-bg);
+      border-left: 3px solid var(--div-color);
+      padding: 20px 24px;
+      margin: 32px 0;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+    .article-body .structural-note strong {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--div-color);
+      margin-bottom: 8px;
+    }
+
+    hr.section-break {
+      border: none;
+      border-top: 1px solid var(--light-gray);
+      margin: 48px 0;
+    }
+
+    /* SIGNAL TAGS */
+    .signal-tags-section {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--light-gray);
+    }
+    .signal-tags-section h4 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 12px;
+    }
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tag {
+      background: var(--light-gray);
+      color: var(--black);
+      font-size: 11px;
+      font-weight: 500;
+      padding: 4px 12px;
+      border-radius: 12px;
+      letter-spacing: 0.04em;
+    }
+
+    /* EVIDENCE BLOCK */
+    .evidence-block {
+      background: #F5F5F0;
+      border: 1px solid var(--light-gray);
+      border-radius: 4px;
+      padding: 24px;
+      margin: 40px 0;
+    }
+    .evidence-block h4 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 16px;
+    }
+    .evidence-item {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 12px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .evidence-item:last-child { margin-bottom: 0; }
+    .ev-type {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 2px;
+      height: fit-content;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .ev-verified { background: #D4EDDA; color: #155724; }
+    .ev-inferred { background: #FFF3CD; color: #856404; }
+
+    /* UNCERTAINTY */
+    .uncertainty-block {
+      background: #FFF8F0;
+      border-left: 3px solid var(--orange);
+      padding: 16px 20px;
+      margin: 24px 0;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .uncertainty-block strong {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 6px;
+    }
+
+    /* SIGNAL CONFIDENCE */
+    .confidence-block {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 20px 24px;
+      background: var(--black);
+      color: var(--cream);
+      border-radius: 4px;
+      margin: 40px 0;
+    }
+    .confidence-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #AAAAAA;
+    }
+    .confidence-score {
+      font-family: 'DM Serif Display', serif;
+      font-size: 32px;
+      color: var(--orange);
+    }
+    .confidence-note {
+      font-size: 13px;
+      color: #AAAAAA;
+      line-height: 1.4;
+    }
+
+    /* REFERENCES */
+    .references-section {
+      margin-top: 40px;
+      padding-top: 24px;
+      border-top: 1px solid var(--light-gray);
+    }
+    .references-section h4 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 16px;
+    }
+    .references-section ol {
+      padding-left: 20px;
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--gray);
+    }
+    .references-section ol li {
+      margin-bottom: 8px;
+    }
+    .references-section a {
+      color: var(--div-color);
+      text-decoration: none;
+    }
+    .references-section a:hover {
+      text-decoration: underline;
+    }
+    .ref-tier {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: var(--light-gray);
+      padding: 1px 6px;
+      border-radius: 2px;
+      color: var(--gray);
+      margin-left: 4px;
+    }
+    sup a {
+      color: var(--div-color);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    sup a:hover {
+      text-decoration: underline;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--black);
+      color: #AAAAAA;
+      padding: 40px 32px;
+      text-align: center;
+    }
+    footer a { color: #AAAAAA; text-decoration: none; }
+    footer a:hover { color: var(--cream); }
+    .footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 16px; font-size: 13px; flex-wrap: wrap; }
+    .footer-copy { font-size: 12px; }
+
+    @media (max-width: 600px) {
+      nav { padding: 0 16px; }
+      .nav-links { gap: 16px; }
+      .signal-header, .article-body { padding-left: 20px; padding-right: 20px; }
+      .signal-header h1 { font-size: 30px; }
+      .hero-image { height: 260px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO IMAGE -->
+<div class="hero-image">
+  <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=1920&q=80&auto=format&fit=crop" alt="Grocery produce section — food retail fragmentation signal" loading="eager">
+  <div class="hero-overlay"></div>
+  <span class="hero-credit">Photo: nrd / Unsplash</span>
+</div>
+
+<nav>
+  <a class="nav-logo" href="../../">IN-KluSo</a>
+  <ul class="nav-links">
+    <li><a href="../../core/">CORE</a></li>
+    <li><a href="../" class="active">THRIVE</a></li>
+    <li><a href="../../axis/">AXIS</a></li>
+    <li><a href="../../flow/">FLOW</a></li>
+    <li><a href="../../cities/">CITIES</a></li>
+    <li><a href="../../kontrarian/">KONTRARIAN</a></li>
+    <li><a href="../../#about">ABOUT</a></li>
+    <li><a href="/inkluso-tools/">TOOLS</a></li>
+  </ul>
+</nav>
+
+<!-- SIGNAL HEADER -->
+<header class="signal-header">
+  <div class="signal-meta">
+    <span class="signal-id">THRIVE-008</span>
+    <span class="section-tag">THRIVE</span>
+    <span class="city-tag">United States</span>
+    <span class="cluster-tag">Food / Agriculture</span>
+  </div>
+
+  <h1>The Split Basket</h1>
+  <p class="deck">The weekly grocery trip — one store, one list, one budget — is fracturing into tactical raids across multiple retailers. Americans aren't browsing. They're price-optimizing in real time, and the food system is splitting in two.</p>
+
+  <div class="byline">
+    <div>
+      <div class="byline-text"><strong>Juan Camilo Echeverri</strong> — Executive Broker · PAK Home Realty · Rogers, AR</div>
+      <div class="publish-date">March 6, 2026 · United States · THRIVE</div>
+    </div>
+  </div>
+</header>
+
+<!-- ARTICLE BODY -->
+<main class="article-body">
+
+  <!-- LAYER 1 -->
+  <div class="layer-label">
+    <div class="layer-num">1</div>
+    <div class="layer-name">Human Becoming</div>
+    <div class="layer-rule"></div>
+  </div>
+
+  <p>She used to do it all on Sunday.</p>
+
+  <p>One store. One cart. The list on her phone, organized by aisle because she'd memorized the layout over years of the same route — produce first, dairy last, cereal on the way back if the kids had been good. It took an hour. Sometimes less. The receipt was a single number she could absorb and move on from.</p>
+
+  <p>That was before the math changed.</p>
+
+  <p>Now she goes to three stores in a week. The warehouse club on Saturday for bulk rice, paper towels, the big bag of frozen chicken. The discount grocer on Tuesday for canned goods and whatever produce looks decent. The neighborhood market on Thursday — just for milk, eggs, and the bread her daughter actually eats. Each trip is fast. Under fifteen minutes, in and out. She has it timed.</p>
+
+  <div class="pull-quote">"I don't have a grocery store anymore. I have a route. Three stops, three budgets, three parking lots. It's not shopping. It's logistics."</div>
+
+  <p>She doesn't think of it as strategy. She thinks of it as what you do when a gallon of milk costs more at the place where you also buy laundry detergent, and the detergent costs more at the place where the milk is cheaper. The math doesn't resolve into one store anymore. So she splits the basket.</p>
+
+  <p>Her mother used to clip coupons. She manages apps. The feeling underneath is the same — the quiet, exhausting work of making a household budget hold when the prices keep moving and the paycheck doesn't.</p>
+
+  <hr class="section-break">
+
+  <!-- LAYER 2 -->
+  <div class="layer-label">
+    <div class="layer-num">2</div>
+    <div class="layer-name">Structural Read</div>
+    <div class="layer-rule"></div>
+  </div>
+
+  <p>What feels like a personal coping strategy is, at scale, a structural reorganization of American food retail.</p>
+
+  <p>Placer.ai's 2026 grocery growth analysis documents the shift in hard numbers: visits under fifteen minutes now account for over 40% of all grocery traffic, up from 37.9% in 2022. The top fifteen most-visited chains capture roughly half of all grocery visits — but the growth is happening at the margins, in specialty stores and discount outlets that serve these short, purpose-driven trips.<sup><a href="#ref1" id="fn1">[1]</a></sup></p>
+
+  <div class="structural-note">
+    <strong>Mechanism</strong>
+    PERSISTENT PRICE INCREASES → HOUSEHOLD COST OPTIMIZATION → TRIP FRAGMENTATION → PARALLEL RETAIL ECONOMIES<br><br>
+    When food costs rise persistently, consumers don't simply buy less — they restructure <em>how</em> they buy. Bulk staples at the warehouse club. Specific items at the discount chain. Fresh produce at the specialty market. This fragments the traditional grocery model and creates two parallel food retail economies: one built for efficiency (big chains, private label, stock-up trips) and one built for specificity (specialty, local, farmers markets).
+  </div>
+
+  <p>The driver is not preference. It's income. Low- and middle-income households are making more frequent trips across more retailers — not to explore, but to manage costs in real time. The USDA's 2026 Food Price Outlook projects food-at-home prices rising another 2.5%, with beef and veal up 5.5%.<sup><a href="#ref2" id="fn2">[2]</a></sup> That's not a spike. That's compounding pressure on households already stretched thin.</p>
+
+  <div class="pull-quote">"The weekly stock-up trip assumed price stability. When that stability disappears, the trip fractures — and the entire retail architecture fractures with it." — Placer.ai grocery sector analysis</div>
+
+  <p>Big chains are responding with private-label expansion and competitive pricing to hold stock-up trips. But specialty and independent grocers are growing through the opposite strategy — winning short, targeted visits where organic produce, craft snacks, and plant-based items justify the trip. The market isn't shrinking. It's splitting.<sup><a href="#ref1" id="fn1b">[1]</a></sup></p>
+
+  <div class="structural-note">
+    <strong>Retail Signal</strong>
+    Farmers markets sit at the intersection of both economies. They offer the specificity and freshness that split-basket shoppers seek, while providing a sense of agency — direct sourcing, visible producers, transparent pricing — that no app or warehouse club replicates. In a fragmented food landscape, the market stall becomes the counter-model to algorithmic retail.
+  </div>
+
+  <hr class="section-break">
+
+  <!-- LAYER 3 -->
+  <div class="layer-label">
+    <div class="layer-num">3</div>
+    <div class="layer-name">Pattern Confirmation</div>
+    <div class="layer-rule"></div>
+  </div>
+
+  <p>The split basket is not an American quirk. It's an affordability signal visible in global food data.</p>
+
+  <p>The FAO Food Price Index ticked higher in early 2026 after five months of decline — a reversal that suggests the post-pandemic commodity correction has stalled.<sup><a href="#ref3" id="fn3">[3]</a></sup> Meanwhile, a Federal Reserve study on tariff impacts found Chinese imported goods up 8.5% year-over-year as of December 2025, adding upstream cost pressure to processed foods and packaging materials.<sup><a href="#ref4" id="fn4">[4]</a></sup></p>
+
+  <p>These are not isolated data points. They are components of the same mechanism: when input costs rise across the supply chain — from global commodities to tariffed packaging to domestic labor — the increase arrives at the grocery shelf, and the household absorbs it through behavior change. The split basket is that absorption made visible.</p>
+
+  <p>The cultural consequence runs deeper than retail metrics. The weekly grocery trip was a ritual of middle-class stability — one store, one list, one budget that covered the household for seven days. Its fragmentation into tactical runs across multiple retailers is a behavioral confession: the food system no longer serves the consumer who doesn't actively manage it. You cannot passively afford groceries anymore. You have to work at it.</p>
+
+  <p>That work is invisible in economic statistics. No inflation metric accounts for the gasoline burned driving between a warehouse club and a discount grocer. The split basket is the hidden labor of affordability — and it falls disproportionately on the households least able to spare the time.</p>
+
+  <hr class="section-break">
+
+  <!-- EVIDENCE BLOCK -->
+  <div class="evidence-block">
+    <h4>Evidence</h4>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>Grocery visits under 15 minutes now exceed 40% of all visits, up from 37.9% in 2022 — Placer.ai grocery growth report, 2026 (Tier B).</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>Top 15 most-visited grocery chains account for ~50% of all grocery traffic — Placer.ai (Tier B).</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>USDA 2026 Food Price Outlook: food-at-home up 2.5%, beef/veal up 5.5% — USDA Economic Research Service (Tier A).</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>FAO Food Price Index reversed five-month decline in early 2026 — FAO (Tier A).</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>Chinese imported goods up 8.5% YoY (December 2025) — Federal Reserve tariff study (Tier A).</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-inferred">Inferred</span>
+      <span>Trip fragmentation driven primarily by cost management rather than consumer preference — behavioral pattern synthesized from Placer.ai income-segmented data and USDA price projections.</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-inferred">Inferred</span>
+      <span>Two parallel retail economies (efficiency vs. specificity) emerging from basket-splitting behavior — structural inference from multiple industry sources.</span>
+    </div>
+  </div>
+
+  <!-- UNCERTAINTY -->
+  <div class="uncertainty-block">
+    <strong>Uncertainty</strong>
+    Placer.ai data tracks foot traffic, not purchasing behavior — visit frequency does not directly confirm basket splitting as a cost strategy versus convenience preference. The 40%+ figure for short visits may partly reflect demographic shifts (smaller households, urban density) rather than purely economic pressure. USDA food price projections are estimates subject to revision. The FAO index reversal may prove temporary. Tariff impacts on grocery shelf prices are indirect and mediated by retailer absorption and substitution effects. The "two parallel economies" framing is an editorial synthesis, not an industry-consensus categorization. Regional variation in grocery access, food deserts, and retailer density significantly affects how basket-splitting manifests across different communities.
+  </div>
+
+  <!-- CONFIDENCE -->
+  <div class="confidence-block">
+    <div>
+      <div class="confidence-label">Signal Confidence Index</div>
+      <div class="confidence-score">0.85 HIGH</div>
+    </div>
+    <div class="confidence-note">
+      Source: 4.0/5 — Mix of Tier A (USDA, FAO, Fed) and Tier B (Placer.ai, industry analysts). Lens: 4.2/5 — Behavioral + systems analysis. Mechanism: 4.0/5 — Clear behavioral-to-structural chain. Territory: 3/4 — US national, income-specific. Signal level: <strong>HIGH</strong>.
+    </div>
+  </div>
+
+  <!-- SIGNAL TAGS -->
+  <div class="signal-tags-section">
+    <h4>Signal Tags</h4>
+    <div class="tags">
+      <span class="tag">grocery-fragmentation</span>
+      <span class="tag">split-basket</span>
+      <span class="tag">food-prices</span>
+      <span class="tag">consumer-behavior</span>
+      <span class="tag">retail-restructuring</span>
+      <span class="tag">farmers-market</span>
+      <span class="tag">food-inflation</span>
+      <span class="tag">cost-management</span>
+    </div>
+  </div>
+
+  <!-- REFERENCES -->
+  <div class="references-section">
+    <h4>References</h4>
+    <ol>
+      <li id="ref1">Placer.ai, "5 Grocery Growth Drivers in 2026" — Analysis of foot traffic patterns showing visit fragmentation and short-trip growth across US grocery retail. Reported via FoodNavigator-USA, March 6, 2026. <span class="ref-tier">Tier B</span></li>
+      <li id="ref2">USDA Economic Research Service — 2026 Food Price Outlook: food-at-home prices projected up 2.5%, beef and veal up 5.5%. <span class="ref-tier">Tier A</span></li>
+      <li id="ref3">FAO — Food Price Index, March 2026: reversal of five-month decline in global food commodity prices. <span class="ref-tier">Tier A</span></li>
+      <li id="ref4">Federal Reserve — Tariff impact study: Chinese imported goods up 8.5% year-over-year as of December 2025, with downstream effects on food packaging and processed goods. <span class="ref-tier">Tier A</span></li>
+      <li id="ref5">The Barcode Group, Tosca — Industry expert commentary on specialty grocer growth and private-label competitive dynamics in fragmented grocery market. <span class="ref-tier">Tier B</span></li>
+    </ol>
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-links">
+    <a href="../../">IN-KluSo Magazine</a>
+    <a href="../">THRIVE</a>
+    <a href="../../kontrarian/">Kontrarian</a>
+    <a href="/inkluso-tools/">Tools</a>
+    <a href="../../doctrine/">Doctrine</a>
+  </div>
+  <div class="footer-copy">© 2026 IN-KluSo · Signal THRIVE-008 · Published Mar 6, 2026</div>
+</footer>
+
+</body>
+</html>
