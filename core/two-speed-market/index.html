@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Two-Speed Market — IN-KluSo</title>
+  <meta name="description" content="The Midwest is heating up while the Sun Belt cools down. America's housing market just split in two — and the fracture line runs through affordability, inventory, and reverse migration.">
+  <meta name="author" content="Juan Camilo Echeverri">
+  <link rel="canonical" href="https://jjaecheverri.github.io/inkluso-magazine/core/two-speed-market/">
+
+  <!-- JSON-LD Machine-Readable Signal -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "The Two-Speed Market",
+    "description": "The Midwest is heating up while the Sun Belt cools down. America's housing market just split in two.",
+    "author": {
+      "@type": "Person",
+      "name": "Juan Camilo Echeverri",
+      "jobTitle": "Executive Broker, PAK Home Realty",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "PAK Home Realty",
+        "address": {
+          "@addressLocality": "Rogers",
+          "@addressRegion": "AR"
+        }
+      }
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "IN-KluSo",
+      "url": "https://jjaecheverri.github.io/inkluso-magazine/"
+    },
+    "datePublished": "2026-03-06",
+    "dateModified": "2026-03-06",
+    "articleSection": "CORE",
+    "keywords": ["housing-market", "two-speed-market", "midwest-revival", "sun-belt-correction", "migration", "affordability", "inventory-crisis", "regional-economics"],
+    "url": "https://jjaecheverri.github.io/inkluso-magazine/core/two-speed-market/",
+    "about": {
+      "@type": "Place",
+      "name": "United States"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #FAF6EE;
+      --black: #111111;
+      --orange: #E05A1C;
+      --gray: #6B6B6B;
+      --light-gray: #E8E4DC;
+      --div-color: #B8490F;
+      --div-bg: #FFF5EF;
+    }
+
+    body {
+      background: linear-gradient(rgba(250,246,238,0.91), rgba(250,246,238,0.91)), url('https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=1920&q=50&auto=format') center/cover fixed no-repeat;
+      color: var(--black);
+      font-family: 'Inter', sans-serif;
+      font-size: 17px;
+      line-height: 1.75;
+    }
+
+    /* NAV */
+    nav {
+      background: var(--black);
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      color: var(--cream);
+      font-size: 20px;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: #AAAAAA;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--cream); }
+    .nav-links a.active { color: var(--orange); }
+
+    /* SIGNAL HEADER */
+    .signal-header {
+      border-bottom: 1px solid var(--light-gray);
+      padding: 48px 32px 32px;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .signal-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .signal-id {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--gray);
+      font-family: 'Inter', monospace;
+    }
+    .section-tag {
+      display: inline-block;
+      background: var(--div-color);
+      color: white;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 2px;
+    }
+    .city-tag {
+      display: inline-block;
+      background: var(--light-gray);
+      color: var(--black);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 2px;
+    }
+    .cluster-tag {
+      font-size: 11px;
+      color: var(--orange);
+      font-weight: 500;
+      letter-spacing: 0.05em;
+    }
+
+    .signal-header h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(32px, 5vw, 52px);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      margin-bottom: 16px;
+    }
+    .signal-header .deck {
+      font-size: 19px;
+      color: var(--gray);
+      line-height: 1.5;
+      margin-bottom: 24px;
+      font-weight: 300;
+    }
+    .byline {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding-top: 20px;
+      border-top: 1px solid var(--light-gray);
+    }
+    .byline-text {
+      font-size: 13px;
+      color: var(--gray);
+    }
+    .byline-text strong {
+      color: var(--black);
+      font-weight: 600;
+    }
+    .publish-date { font-size: 12px; color: var(--gray); }
+
+    /* LAYER LABELS */
+    .layer-label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 48px 0 24px;
+    }
+    .layer-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--black);
+      color: var(--cream);
+      font-size: 12px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .layer-name {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+    .layer-rule {
+      flex: 1;
+      height: 1px;
+      background: var(--light-gray);
+    }
+
+    /* ARTICLE BODY */
+    .article-body {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 32px 80px;
+    }
+
+    .article-body p {
+      margin-bottom: 22px;
+      color: var(--black);
+    }
+    .article-body p em {
+      font-style: italic;
+      color: var(--black);
+    }
+    .article-body .pull-quote {
+      font-family: 'DM Serif Display', serif;
+      font-size: 24px;
+      line-height: 1.3;
+      color: var(--black);
+      border-left: 4px solid var(--orange);
+      padding: 16px 24px;
+      margin: 36px 0;
+      font-style: italic;
+    }
+    .article-body .structural-note {
+      background: var(--div-bg);
+      border-left: 3px solid var(--div-color);
+      padding: 20px 24px;
+      margin: 32px 0;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+    .article-body .structural-note strong {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--div-color);
+      margin-bottom: 8px;
+    }
+
+    hr.section-break {
+      border: none;
+      border-top: 1px solid var(--light-gray);
+      margin: 48px 0;
+    }
+
+    /* FOOTNOTES */
+    sup a {
+      color: var(--div-color);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.75em;
+    }
+    sup a:hover { text-decoration: underline; }
+
+    /* REFERENCES */
+    .references-section {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--light-gray);
+    }
+    .references-section h4 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 16px;
+    }
+    .references-section ol {
+      padding-left: 20px;
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--gray);
+    }
+    .references-section li {
+      margin-bottom: 8px;
+    }
+    .ref-tier {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 1px 6px;
+      border-radius: 2px;
+      margin-right: 6px;
+    }
+    .ref-tier-a { background: #D4EDDA; color: #155724; }
+    .ref-tier-b { background: #FFF3CD; color: #856404; }
+
+    /* SIGNAL TAGS */
+    .signal-tags-section {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--light-gray);
+    }
+    .signal-tags-section h4 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 12px;
+    }
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tag {
+      background: var(--light-gray);
+      color: var(--black);
+      font-size: 11px;
+      font-weight: 500;
+      padding: 4px 12px;
+      border-radius: 12px;
+      letter-spacing: 0.04em;
+    }
+
+    /* EVIDENCE BLOCK */
+    .evidence-block {
+      background: #F5F5F0;
+      border: 1px solid var(--light-gray);
+      border-radius: 4px;
+      padding: 24px;
+      margin: 40px 0;
+    }
+    .evidence-block h4 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 16px;
+    }
+    .evidence-item {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 12px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .evidence-item:last-child { margin-bottom: 0; }
+    .ev-type {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 2px;
+      height: fit-content;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .ev-verified { background: #D4EDDA; color: #155724; }
+    .ev-inferred { background: #FFF3CD; color: #856404; }
+
+    /* UNCERTAINTY */
+    .uncertainty-block {
+      background: #FFF8F0;
+      border-left: 3px solid var(--orange);
+      padding: 16px 20px;
+      margin: 24px 0;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .uncertainty-block strong {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 6px;
+    }
+
+    /* SIGNAL CONFIDENCE */
+    .confidence-block {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 20px 24px;
+      background: var(--black);
+      color: var(--cream);
+      border-radius: 4px;
+      margin: 40px 0;
+    }
+    .confidence-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #AAAAAA;
+    }
+    .confidence-score {
+      font-family: 'DM Serif Display', serif;
+      font-size: 32px;
+      color: var(--orange);
+    }
+    .confidence-note {
+      font-size: 13px;
+      color: #AAAAAA;
+      line-height: 1.4;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--black);
+      color: #AAAAAA;
+      padding: 40px 32px;
+      text-align: center;
+    }
+    footer a { color: #AAAAAA; text-decoration: none; }
+    footer a:hover { color: var(--cream); }
+    .footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 16px; font-size: 13px; flex-wrap: wrap; }
+    .footer-copy { font-size: 12px; }
+
+    @media (max-width: 600px) {
+      nav { padding: 0 16px; }
+      .nav-links { gap: 16px; }
+      .signal-header, .article-body { padding-left: 20px; padding-right: 20px; }
+      .signal-header h1 { font-size: 30px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="/inkluso-magazine/">IN-KluSo</a>
+  <ul class="nav-links">
+    <li><a href="/inkluso-magazine/#core" class="active">CORE</a></li>
+    <li><a href="/inkluso-magazine/#thrive">THRIVE</a></li>
+    <li><a href="/inkluso-magazine/#axis">AXIS</a></li>
+    <li><a href="/inkluso-magazine/#flow">FLOW</a></li>
+    <li><a href="/inkluso-magazine/#cities">CITIES</a></li>
+    <li><a href="/inkluso-magazine/kontrarian/">KONTRARIAN</a></li>
+    <li><a href="/inkluso-magazine/#about">ABOUT</a></li>
+    <li><a href="/inkluso-tools/">TOOLS</a></li>
+  </ul>
+</nav>
+
+<!-- SIGNAL HEADER -->
+<header class="signal-header">
+  <div class="signal-meta">
+    <span class="signal-id">CORE-011</span>
+    <span class="section-tag">CORE</span>
+    <span class="city-tag">National · Midwest / NE</span>
+    <span class="cluster-tag">Structural Systems · Signal 11</span>
+  </div>
+
+  <h1>The Two-Speed Market</h1>
+  <p class="deck">The Midwest is heating up while the Sun Belt cools down. America's housing market just split in two — and the fracture line runs through affordability, inventory, and reverse migration.</p>
+
+  <div class="byline">
+    <div>
+      <div class="byline-text"><strong>Juan Camilo Echeverri</strong> — Executive Broker, PAK Home Realty · Rogers, AR</div>
+      <div class="publish-date">March 6, 2026 · United States · CORE</div>
+    </div>
+  </div>
+</header>
+
+<!-- HERO IMAGE -->
+<div style="position:relative; width:100%; height:340px; overflow:hidden; border-radius:12px; margin:2rem auto; max-width:780px; box-shadow:0 8px 32px rgba(0,0,0,0.18);">
+  <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=1400&q=80&auto=format&fit=crop" alt="Suburban house — the two-speed housing market reshaping American real estate" style="width:100%; height:100%; object-fit:cover; filter:saturate(0.8) contrast(1.05);" loading="lazy">
+  <div style="position:absolute; bottom:0; left:0; right:0; height:80px; background:linear-gradient(transparent, rgba(0,0,0,0.5));"></div>
+  <span style="position:absolute; bottom:8px; left:12px; font-size:0.6rem; color:rgba(255,255,255,0.6); font-family:'Inter',sans-serif;">Photo: Todd Kent / Unsplash</span>
+</div>
+
+<!-- ARTICLE BODY -->
+<main class="article-body">
+
+  <!-- LAYER 1 -->
+  <div class="layer-label">
+    <div class="layer-num">1</div>
+    <div class="layer-name">Human Becoming</div>
+    <div class="layer-rule"></div>
+  </div>
+
+  <p>They didn't move to Milwaukee for the weather.</p>
+
+  <p>The family had been renting in Tampa for four years — a two-bedroom, $2,400 a month, no equity, no trajectory. Every lease renewal came with a bump. Every hurricane season came with a question mark. When the flood insurance letter arrived last fall, something shifted. Not the roof. The logic.</p>
+
+  <p>She ran the numbers at the kitchen table one night. Four years of rent: over $115,000. Equity built: zero. Savings for a down payment: shrinking. The math wasn't complicated. It was just honest.</p>
+
+  <p>Her husband's cousin had bought a three-bedroom in a quiet Milwaukee neighborhood. Fenced yard. Garage. Monthly payment: less than their Tampa rent. She kept looking at the listing photos. Not because the house was remarkable. Because the math was.</p>
+
+  <div class="pull-quote">"We didn't leave Florida for a city. We left for a mortgage we could actually pay off."</div>
+
+  <p>They chose snow over hurricanes. That's not a lifestyle preference. That's a financial calculation wearing a winter coat.</p>
+
+  <p>The moving truck went north on I-65 on a Tuesday in January. She cried somewhere around Nashville — not because she was sad, but because she was relieved. The numbers finally made sense.</p>
+
+  <hr class="section-break">
+
+  <!-- LAYER 2 -->
+  <div class="layer-label">
+    <div class="layer-num">2</div>
+    <div class="layer-name">Structural Read</div>
+    <div class="layer-rule"></div>
+  </div>
+
+  <p>What happened to that family is not an anecdote. It's a data pattern with a name: the two-speed market.</p>
+
+  <p>Cotality's March 2026 Home Price Insights report identifies a structural bifurcation in American housing.<sup><a href="#ref1" id="fn1">[1]</a></sup> The Midwest and Northeast are accelerating — average year-over-year price growth of 3.56%, the nation's strongest regional performance. Meanwhile, high-cost coastal and Sun Belt regions are undergoing price corrections. National prices rose only 0.7% overall. Half of the nation's 50 largest metros saw price declines over the past year.<sup><a href="#ref2" id="fn2">[2]</a></sup></p>
+
+  <p>The numbers are specific. Illinois: prices up 4.91%, median listing $280,000. Wisconsin: up 4.78%, median $370,000. Nebraska: up 4.75%, median $335,000. New Jersey leads the nation at 5.6% appreciation, median $519,999. Connecticut follows at 5.26%.<sup><a href="#ref1" id="fn1b">[1]</a></sup></p>
+
+  <div class="structural-note">
+    <strong>Mechanism</strong>
+    Regional housing bifurcation is being driven by three converging forces: (1) relative affordability advantage in the Midwest creating a pull signal for cost-burdened renters and buyers, (2) inventory constraints that maintain upward price pressure in undersupplied markets, and (3) reverse migration flows from overheated Sun Belt metros where insurance costs, climate risk, and post-pandemic corrections are eroding value.
+  </div>
+
+  <p>Chicago broker Matt Laricy puts it plainly: <em>"Many pandemic movers are coming back — they'll take snow over hurricanes any day."</em><sup><a href="#ref3" id="fn3">[3]</a></sup> That reversal — people returning to cities they left during COVID — is reshaping demand in places the market had written off.</p>
+
+  <div class="pull-quote">"The best market we've seen in downtown Chicago in five or six years." — Matt Laricy, Chicago broker</div>
+
+  <p>But the Midwest advantage has a fragile edge. Inventory remains stubbornly low. In Newark, New Jersey, only 53 new homes were built last year — creating bidding wars in a city that most investors ignored a decade ago. And where new construction does exist, it's not relief. In Nebraska, new-construction homes carry a 58.5% premium over existing stock.<sup><a href="#ref4" id="fn4">[4]</a></sup> The supply pipeline is building luxury, not entry points.</p>
+
+  <div class="structural-note">
+    <strong>Structural Tension</strong>
+    The Midwest advantage is real but self-limiting. Low inventory maintains price growth — that's the feature. But it also means the market can't absorb new demand without overheating. When supply constraints create appreciation, they also create the conditions for the same affordability erosion that pushed buyers out of the Sun Belt in the first place.
+  </div>
+
+  <p>Cotality chief economist Selma Hepp frames it structurally: the market isn't slowing uniformly. It's splitting.<sup><a href="#ref1" id="fn1c">[1]</a></sup> High-cost regions are correcting. Affordable regions are absorbing displaced demand. The result is not equilibrium. It's two separate markets operating on two separate timelines.</p>
+
+  <hr class="section-break">
+
+  <!-- LAYER 3 -->
+  <div class="layer-label">
+    <div class="layer-num">3</div>
+    <div class="layer-name">Pattern Confirmation</div>
+    <div class="layer-rule"></div>
+  </div>
+
+  <p>The two-speed dynamic is not new. It's the same structural rearrangement playing out in slow motion across American economic geography.</p>
+
+  <p>National home prices rose 1.3% in 2025 according to S&P Case-Shiller — the weakest annual gain since the post-2008 recovery.<sup><a href="#ref5" id="fn5">[5]</a></sup> But that national average conceals the divergence. Midwest metros appreciated at nearly five times the national rate. Sun Belt metros that led the pandemic-era boom — Phoenix, Austin, Tampa, Boise — are now giving back gains.</p>
+
+  <p>Climate risk, insurance costs, and affordability limits are reshaping migration patterns. The Midwest's value proposition — stable employment bases, lower entry points, modest climate exposure — creates conditions for sustained appreciation. But this is also the pattern that preceded Sun Belt overheating a decade ago. A region becomes "discovered." Capital flows in. Affordability erodes. The question is whether Midwest markets can maintain stability or whether they're simply earlier on the same curve.</p>
+
+  <div class="structural-note">
+    <strong>Historical Echo</strong>
+    Every American housing cycle has a discovery phase. The Sun Belt's began in 2012. The Midwest's may have begun in 2024. The variable that determines the outcome isn't demand — it's supply response. If Midwest cities build housing proportional to incoming demand, prices stabilize. If they don't, they become the next affordability crisis. Nebraska's 58.5% new-construction premium suggests the supply response is already misaligned.
+  </div>
+
+  <p>The two-speed market isn't a temporary correction. It's a structural redistribution of where American housing wealth accrues — and where it erodes. The families moving north aren't following a trend. They're following arithmetic.</p>
+
+  <hr class="section-break">
+
+  <!-- EVIDENCE BLOCK -->
+  <div class="evidence-block">
+    <h4>Evidence</h4>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>Cotality Home Price Insights (March 2026): Midwest average YoY growth 3.56%; Illinois 4.91%, Wisconsin 4.78%, Nebraska 4.75%, New Jersey 5.6%, Connecticut 5.26%.</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>National home prices rose only 0.7% overall (Cotality). S&amp;P Case-Shiller reported 1.3% national growth for 2025.</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>Half of the 50 largest U.S. metros saw price declines over the past year (Zillow metro-level data).</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>Newark, NJ: only 53 new homes built in the past year, triggering bidding wars in previously overlooked markets.</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>Nebraska new-construction premium: 58.5% above existing home prices (Realtor.com New-Construction Insights Q4).</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-inferred">Inferred</span>
+      <span>Reverse migration from Sun Belt to Midwest characterized as "pandemic movers returning" — based on broker testimony (Matt Laricy), not comprehensive migration data.</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-inferred">Inferred</span>
+      <span>Midwest overheating risk parallels Sun Belt discovery cycle — structural analogy based on price trajectory, not confirmed by longitudinal comparison.</span>
+    </div>
+  </div>
+
+  <!-- UNCERTAINTY -->
+  <div class="uncertainty-block">
+    <strong>Uncertainty</strong>
+    Mortgage rate trajectory could alter demand distribution — a significant rate drop would reignite Sun Belt activity. Midwest price gains partly reflect low inventory rather than organic demand growth, making them vulnerable to supply shocks. Reverse migration volume is anecdotal; comprehensive Census domestic migration data for 2025–2026 is not yet available. Nebraska's new-construction premium may reflect rural luxury builds rather than systemic misalignment. Policy changes — zoning reform, federal housing investment — could shift the structural equation in either direction.
+  </div>
+
+  <!-- CONFIDENCE -->
+  <div class="confidence-block">
+    <div>
+      <div class="confidence-label">Signal Confidence Index</div>
+      <div class="confidence-score">0.90</div>
+    </div>
+    <div class="confidence-note">
+      Tier: <strong>HIGH</strong>. S 4.5 · L 4.0 · M 4.0 · T 4.0 — Sourced from Tier A data (Cotality, S&amp;P Case-Shiller, Zillow). Three-force mechanism is clear and multi-sourced. City-level specificity confirmed with named actors and median prices. Minor uncertainty on migration volume and supply-response trajectory.
+    </div>
+  </div>
+
+  <!-- SIGNAL TAGS -->
+  <div class="signal-tags-section">
+    <h4>Signal Tags</h4>
+    <div class="tags">
+      <span class="tag">housing-market</span>
+      <span class="tag">two-speed-market</span>
+      <span class="tag">midwest-revival</span>
+      <span class="tag">sun-belt-correction</span>
+      <span class="tag">migration</span>
+      <span class="tag">affordability</span>
+      <span class="tag">inventory-crisis</span>
+      <span class="tag">regional-economics</span>
+    </div>
+  </div>
+
+  <!-- REFERENCES -->
+  <div class="references-section">
+    <h4>References</h4>
+    <ol>
+      <li id="ref1"><span class="ref-tier ref-tier-a">Tier A</span> Cotality (formerly CoreLogic), <em>Home Price Insights</em>, March 2026. Regional and state-level YoY appreciation data, economist commentary (Selma Hepp, Molly Boesel). <a href="#fn1">↩</a></li>
+      <li id="ref2"><span class="ref-tier ref-tier-a">Tier A</span> Zillow, metro-level home price data, 2025–2026. Half of 50 largest metros showing YoY price declines. <a href="#fn2">↩</a></li>
+      <li id="ref3"><span class="ref-tier ref-tier-b">Tier B</span> NY Post / Realtor.com reporting, March 4, 2026. Matt Laricy quotes on Chicago market conditions and reverse migration. <a href="#fn3">↩</a></li>
+      <li id="ref4"><span class="ref-tier ref-tier-b">Tier B</span> Realtor.com, <em>New-Construction Insights Q4 Report</em>. Nebraska new-construction premium data; Newark, NJ new-home supply figures. <a href="#fn4">↩</a></li>
+      <li id="ref5"><span class="ref-tier ref-tier-a">Tier A</span> S&amp;P Case-Shiller Home Price Index, 2025 year-end. National growth of 1.3%. <a href="#fn5">↩</a></li>
+    </ol>
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-links">
+    <a href="/inkluso-magazine/">IN-KluSo Magazine</a>
+    <a href="/inkluso-magazine/core/">Core Signals</a>
+    <a href="/inkluso-magazine/kontrarian/">Kontrarian</a>
+    <a href="/inkluso-tools/">Tools</a>
+    <a href="/inkluso-magazine/doctrine/">Doctrine</a>
+  </div>
+  <div class="footer-copy">© 2026 IN-KluSo · Signal CORE-011 · Published Mar 6, 2026</div>
+</footer>
+
+</body>
+</html>
