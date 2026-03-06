@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Robot Wage — IN-KluSo</title>
+  <meta name="description" content="Raise the minimum wage 10%. Robot adoption goes up 8%. The math was always coming. Now it's peer-reviewed.">
+  <meta name="author" content="Juan Camilo Echeverri">
+  <link rel="canonical" href="https://jjaecheverri.github.io/inkluso-magazine/axis/robot-wage/">
+
+  <!-- JSON-LD Machine-Readable Signal -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "The Robot Wage",
+    "description": "Raise the minimum wage 10%. Robot adoption goes up 8%. The math was always coming. Now it's peer-reviewed.",
+    "author": {
+      "@type": "Person",
+      "name": "Juan Camilo Echeverri",
+      "jobTitle": "Executive Broker, PAK Home Realty",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "PAK Home Realty",
+        "address": {
+          "@addressLocality": "Rogers",
+          "@addressRegion": "AR"
+        }
+      }
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "IN-KluSo",
+      "url": "https://jjaecheverri.github.io/inkluso-magazine/"
+    },
+    "datePublished": "2026-03-06",
+    "dateModified": "2026-03-06",
+    "articleSection": "AXIS",
+    "keywords": ["automation", "minimum-wage", "robots", "manufacturing", "labor-market", "AI-displacement", "Brynjolfsson", "NBER", "blue-collar", "entry-level", "double-squeeze"],
+    "url": "https://jjaecheverri.github.io/inkluso-magazine/axis/robot-wage/"
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #FAF6EE;
+      --black: #111111;
+      --orange: #E05A1C;
+      --gray: #6B6B6B;
+      --light-gray: #E8E4DC;
+      --division-color: #4A1B6B;
+      --division-bg: #F5F0F7;
+    }
+
+    body {
+      background: linear-gradient(rgba(250,246,238,0.91), rgba(250,246,238,0.91)), url('https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=1920&q=50&auto=format') center/cover fixed no-repeat;
+      color: var(--black);
+      font-family: 'Inter', sans-serif;
+      font-size: 17px;
+      line-height: 1.75;
+    }
+
+    /* NAV */
+    nav {
+      background: var(--black);
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      color: var(--cream);
+      font-size: 20px;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: #AAAAAA;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--cream); }
+    .nav-links a.active { color: var(--orange); }
+
+    /* SIGNAL HEADER */
+    .signal-header {
+      border-bottom: 1px solid var(--light-gray);
+      padding: 48px 32px 32px;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .signal-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .signal-id {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--gray);
+      font-family: 'Inter', monospace;
+    }
+    .section-tag {
+      display: inline-block;
+      background: var(--division-color);
+      color: white;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 2px;
+    }
+    .city-tag {
+      display: inline-block;
+      background: var(--light-gray);
+      color: var(--black);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 2px;
+    }
+    .cluster-tag {
+      font-size: 11px;
+      color: var(--orange);
+      font-weight: 500;
+      letter-spacing: 0.05em;
+    }
+
+    .signal-header h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(32px, 5vw, 52px);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      margin-bottom: 16px;
+    }
+    .signal-header .deck {
+      font-size: 19px;
+      color: var(--gray);
+      line-height: 1.5;
+      margin-bottom: 24px;
+      font-weight: 300;
+    }
+    .byline {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding-top: 20px;
+      border-top: 1px solid var(--light-gray);
+    }
+    .byline-text {
+      font-size: 13px;
+      color: var(--gray);
+    }
+    .byline-text strong {
+      color: var(--black);
+      font-weight: 600;
+    }
+    .publish-date { font-size: 12px; color: var(--gray); }
+
+    /* LAYER LABELS */
+    .layer-label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 48px 0 24px;
+    }
+    .layer-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--black);
+      color: var(--cream);
+      font-size: 12px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .layer-name {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+    .layer-rule {
+      flex: 1;
+      height: 1px;
+      background: var(--light-gray);
+    }
+
+    /* ARTICLE BODY */
+    .article-body {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 32px 80px;
+    }
+
+    .article-body p {
+      margin-bottom: 22px;
+      color: var(--black);
+    }
+    .article-body p em {
+      font-style: italic;
+      color: var(--black);
+    }
+    .article-body .pull-quote {
+      font-family: 'DM Serif Display', serif;
+      font-size: 24px;
+      line-height: 1.3;
+      color: var(--black);
+      border-left: 4px solid var(--orange);
+      padding: 16px 24px;
+      margin: 36px 0;
+      font-style: italic;
+    }
+    .article-body .structural-note {
+      background: var(--division-bg);
+      border-left: 3px solid var(--division-color);
+      padding: 20px 24px;
+      margin: 32px 0;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+    .article-body .structural-note strong {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--division-color);
+      margin-bottom: 8px;
+    }
+
+    hr.section-break {
+      border: none;
+      border-top: 1px solid var(--light-gray);
+      margin: 48px 0;
+    }
+
+    /* SIGNAL TAGS */
+    .signal-tags-section {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--light-gray);
+    }
+    .signal-tags-section h4 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 12px;
+    }
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tag {
+      background: var(--light-gray);
+      color: var(--black);
+      font-size: 11px;
+      font-weight: 500;
+      padding: 4px 12px;
+      border-radius: 12px;
+      letter-spacing: 0.04em;
+    }
+
+    /* EVIDENCE BLOCK */
+    .evidence-block {
+      background: #F5F5F0;
+      border: 1px solid var(--light-gray);
+      border-radius: 4px;
+      padding: 24px;
+      margin: 40px 0;
+    }
+    .evidence-block h4 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 16px;
+    }
+    .evidence-item {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 12px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .evidence-item:last-child { margin-bottom: 0; }
+    .ev-type {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 2px;
+      height: fit-content;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .ev-verified { background: #D4EDDA; color: #155724; }
+    .ev-inferred { background: #FFF3CD; color: #856404; }
+
+    /* UNCERTAINTY */
+    .uncertainty-block {
+      background: #FFF8F0;
+      border-left: 3px solid var(--orange);
+      padding: 16px 20px;
+      margin: 24px 0;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .uncertainty-block strong {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 6px;
+    }
+
+    /* SIGNAL CONFIDENCE */
+    .confidence-block {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 20px 24px;
+      background: var(--black);
+      color: var(--cream);
+      border-radius: 4px;
+      margin: 40px 0;
+    }
+    .confidence-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #AAAAAA;
+    }
+    .confidence-score {
+      font-family: 'DM Serif Display', serif;
+      font-size: 32px;
+      color: var(--orange);
+    }
+    .confidence-note {
+      font-size: 13px;
+      color: #AAAAAA;
+      line-height: 1.4;
+    }
+
+    /* REFERENCES */
+    .references-section {
+      margin-top: 40px;
+      padding-top: 24px;
+      border-top: 1px solid var(--light-gray);
+    }
+    .references-section h4 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 16px;
+    }
+    .references-section ol {
+      padding-left: 20px;
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--gray);
+    }
+    .references-section li {
+      margin-bottom: 8px;
+    }
+    .references-section .ref-tier {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      padding: 1px 6px;
+      border-radius: 2px;
+      margin-right: 6px;
+    }
+    .ref-tier-a { background: #D4EDDA; color: #155724; }
+    .ref-tier-b { background: #CCE5FF; color: #004085; }
+    .ref-tier-c { background: #FFF3CD; color: #856404; }
+    sup a {
+      color: var(--division-color);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    sup a:hover { text-decoration: underline; }
+
+    /* FOOTER */
+    footer {
+      background: var(--black);
+      color: #AAAAAA;
+      padding: 40px 32px;
+      text-align: center;
+    }
+    footer a { color: #AAAAAA; text-decoration: none; }
+    footer a:hover { color: var(--cream); }
+    .footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 16px; font-size: 13px; flex-wrap: wrap; }
+    .footer-copy { font-size: 12px; }
+
+    @media (max-width: 600px) {
+      nav { padding: 0 16px; }
+      .nav-links { gap: 16px; }
+      .signal-header, .article-body { padding-left: 20px; padding-right: 20px; }
+      .signal-header h1 { font-size: 30px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="/inkluso-magazine/">IN-KluSo</a>
+  <ul class="nav-links">
+    <li><a href="/inkluso-magazine/#core">CORE</a></li>
+    <li><a href="/inkluso-magazine/#thrive">THRIVE</a></li>
+    <li><a href="/inkluso-magazine/axis/" class="active">AXIS</a></li>
+    <li><a href="/inkluso-magazine/#flow">FLOW</a></li>
+    <li><a href="/inkluso-magazine/#cities">CITIES</a></li>
+    <li><a href="/inkluso-magazine/kontrarian/">KONTRARIAN</a></li>
+    <li><a href="/inkluso-magazine/#about">ABOUT</a></li>
+    <li><a href="/inkluso-tools/">TOOLS</a></li>
+  </ul>
+</nav>
+
+<!-- SIGNAL HEADER -->
+<header class="signal-header">
+  <div class="signal-meta">
+    <span class="signal-id">AXIS-005</span>
+    <span class="section-tag">AXIS</span>
+    <span class="city-tag">United States · National</span>
+    <span class="cluster-tag">Labor &amp; Automation</span>
+  </div>
+
+  <h1>The Robot Wage</h1>
+  <p class="deck">Raise the minimum wage 10%. Robot adoption goes up 8%. The math was always coming. Now it's peer-reviewed.</p>
+
+  <div class="byline">
+    <div>
+      <div class="byline-text"><strong>Juan Camilo Echeverri</strong> — Executive Broker, PAK Home Realty · Rogers, AR</div>
+      <div class="publish-date">March 6, 2026 · United States · AXIS</div>
+    </div>
+  </div>
+</header>
+
+<!-- HERO IMAGE -->
+<div style="position:relative; width:100%; height:340px; overflow:hidden; border-radius:12px; margin:2rem auto; max-width:780px; box-shadow:0 8px 32px rgba(0,0,0,0.18);">
+  <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=1400&q=80&auto=format&fit=crop" alt="Robot arm in manufacturing — the robot wage" style="width:100%; height:100%; object-fit:cover; filter:saturate(0.8) contrast(1.05);" loading="lazy">
+  <div style="position:absolute; bottom:0; left:0; right:0; height:80px; background:linear-gradient(transparent, rgba(0,0,0,0.5));"></div>
+  <span style="position:absolute; bottom:8px; left:12px; font-size:0.6rem; color:rgba(255,255,255,0.6); font-family:'Inter',sans-serif;">Photo: Alex Knight / Unsplash</span>
+</div>
+
+<!-- ARTICLE BODY -->
+<main class="article-body">
+
+  <!-- LAYER 1 -->
+  <div class="layer-label">
+    <div class="layer-num">1</div>
+    <div class="layer-name">Human Becoming</div>
+    <div class="layer-rule"></div>
+  </div>
+
+  <p>He notices the plastic sheeting first.</p>
+
+  <p>Not tarps for a renovation — the kind that mean new drywall and fresh paint. These are clean industrial sheets, sealed with tape at the edges, partitioning off a section of factory floor he's walked past for nineteen years. Behind them, something hums. Not loud. A low, patient frequency, like a machine learning to breathe.</p>
+
+  <p>He's forty-seven. He tightens bolts on an assembly line near the Ohio–Pennsylvania border. Has done since he was twenty-eight. Same plant, same shift, same parking spot by the dumpster. When the state minimum wage went up last January, he got a modest raise — seventy cents an hour. He bought his daughter new cleats. He felt, briefly, like the system had remembered him.</p>
+
+  <p>Three months later, his supervisor walked him past that sealed-off section. Didn't explain much. "Upgrades," he said. The way people say "fine" when they mean the opposite.</p>
+
+  <div class="pull-quote">"The robots were already there. They hadn't replaced him yet. But they were learning the same bolts."</div>
+
+  <p>He tells his wife about it at dinner. She asks if he's worried. He says no. But he starts taking a different route to his station — the one that doesn't pass the plastic sheeting. Not because he's afraid. Because the hum is too steady. Too calm. Like it already knows something he doesn't.</p>
+
+  <p>Nobody told him the raise and the robots were connected. Nobody had to.</p>
+
+  <hr class="section-break">
+
+  <!-- LAYER 2 -->
+  <div class="layer-label">
+    <div class="layer-num">2</div>
+    <div class="layer-name">Structural Read</div>
+    <div class="layer-rule"></div>
+  </div>
+
+  <p>The connection is now peer-reviewed.</p>
+
+  <p>A new NBER working paper — #34895, published February 2026 — tracks 240,000 single-unit U.S. manufacturing firms across nearly three decades, from 1992 to 2021.<sup><a href="#ref1" id="fn1">[1]</a></sup> The authors, led by Stanford economist Erik Brynjolfsson, used confidential Census Bureau microdata linked to customs import records to identify which firms adopted industrial robots — by tracking imports from Japan, Germany, and Switzerland, the three dominant producers.</p>
+
+  <p>The central finding is clean and unsentimental: a 10% increase in the minimum wage is associated with an approximately 8% increase in the likelihood a firm will adopt robots.</p>
+
+  <div class="structural-note">
+    <strong>Mechanism</strong>
+    When the cost of human labor increases at the bottom of the wage spectrum, the economic calculus tips toward automation. A robot that costs the same whether the minimum wage is $10 or $15 becomes relatively cheaper each time labor costs rise. The effect is mechanical, not ideological — firms respond to price signals. The study confirms this with a border-pair quasi-experiment: firms on opposite sides of state lines with different minimum wage laws show an 8.4% divergence in robot adoption, controlling for firm size, age, industry, and right-to-work status.<sup><a href="#ref2" id="fn2">[2]</a></sup>
+  </div>
+
+  <p>The methodology matters. This isn't a think-tank estimate or a model projection. It's thirty years of actual firm behavior measured against actual policy changes, using the gold-standard approach of comparing near-identical firms separated only by a state line and a wage law.</p>
+
+  <div class="pull-quote">"Firms subject to higher minimum wages are more likely to adopt robots, even after controlling for observable firm and local economic characteristics." <br><span style="font-size:14px; font-style:normal; font-family:'Inter',sans-serif; color:var(--gray);">— Brynjolfsson, Li, Miranda, Seamans &amp; Wang (NBER, 2026)</span></div>
+
+  <p>The finding replicates internationally. Turkey's 33.5% minimum wage increase in 2016 drove medium and large firms to accelerate robot adoption. China showed the same pattern between 2008 and 2012. Germany's 2015 introduction of a national minimum wage pushed routine-task plants toward automation.<sup><a href="#ref3" id="fn3">[3]</a></sup> Four countries. Four independent datasets. Same direction.</p>
+
+  <div class="structural-note">
+    <strong>Structural Tension</strong>
+    The policy designed to help low-wage workers may accelerate the very displacement it aims to prevent. This is not an argument against minimum wage increases — the authors note robot adoption can sometimes correlate with higher firm-level productivity and even employment growth. But the net effect is ambiguous, and the ambiguity is the point. Good intentions do not exempt policy from second-order consequences.
+  </div>
+
+  <hr class="section-break">
+
+  <!-- LAYER 3 -->
+  <div class="layer-label">
+    <div class="layer-num">3</div>
+    <div class="layer-name">Pattern Confirmation</div>
+    <div class="layer-rule"></div>
+  </div>
+
+  <p>This is the double squeeze.</p>
+
+  <p>In August 2025, Brynjolfsson published a companion study using ADP payroll data showing AI caused a 13% relative employment decline for entry-level workers ages 22 to 25 in AI-exposed occupations.<sup><a href="#ref4" id="fn4">[4]</a></sup> That was the white-collar end. Now the manufacturing study shows minimum wage hikes accelerating blue-collar automation. Two technologies. Two workforce segments. Two mechanisms. Same direction.</p>
+
+  <p>The timing compounds. Anthropic released a report on March 6, 2026, mapping which jobs AI could potentially replace, warning of a possible "Great Recession for white-collar workers."<sup><a href="#ref5" id="fn5">[5]</a></sup> Moody's chief economist calls this a "Cortés moment" — companies are burning the boats on human labor. The metaphor is dramatic but the data trail is calm and methodical. The displacement isn't sudden. It's structural, cumulative, and moving from both ends of the skill spectrum toward the middle.</p>
+
+  <p>The question is no longer whether automation displaces workers. The question is whether policy responses can keep pace with the displacement they inadvertently accelerate. A wage floor that triggers a robot ceiling is not a failure of policy design — it's a signal that the underlying economic architecture has shifted. The seventy-cent raise was real. The robots were also real. Both things were true at the same time, on the same factory floor, for the same worker.</p>
+
+  <p>That's not a paradox. That's the new math.</p>
+
+  <hr class="section-break">
+
+  <!-- EVIDENCE BLOCK -->
+  <div class="evidence-block">
+    <h4>Evidence</h4>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>NBER Working Paper #34895 (February 2026): 240,000 single-unit U.S. manufacturing firms tracked 1992–2021. 10% minimum wage increase → 8% increase in robot adoption likelihood. Border-pair confirmation: 8.4%. Authors: Brynjolfsson, Li, Miranda, Seamans, Wang.</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>Methodology uses confidential Census Bureau microdata linked to customs import records identifying industrial robot imports from Japan, Germany, and Switzerland. Controls for firm size, age, industry, right-to-work laws.</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>International replication: Turkey (33.5% wage hike, 2016), China (10% wage increase, 2008–2012), Germany (2015 minimum wage introduction) — all showed accelerated robot adoption. Cited in NBER paper.</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>Brynjolfsson August 2025 companion study: AI caused 13% relative employment decline for entry-level workers (ages 22–25) in AI-exposed occupations. Based on ADP payroll data.</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-inferred">Inferred</span>
+      <span>"Double squeeze" framing — connecting the two Brynjolfsson studies as a converging pattern — is an editorial synthesis, not a claim made by the authors themselves.</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-inferred">Inferred</span>
+      <span>Net employment effects of robot adoption remain ambiguous per the authors. Robot-adopting firms sometimes show higher productivity and employment growth. The displacement framing captures one trajectory, not the only one.</span>
+    </div>
+  </div>
+
+  <!-- UNCERTAINTY -->
+  <div class="uncertainty-block">
+    <strong>Uncertainty</strong>
+    The study measures robot <em>adoption likelihood</em>, not net job loss — firms that adopt robots sometimes grow total employment. The 8% figure captures the decision to automate, not the downstream labor outcome, which varies by firm and sector. Manufacturing represents a shrinking share of total U.S. employment; the effect on the broader labor market depends on whether the pattern extends to services, logistics, and retail — sectors where automation is accelerating but less studied. The border-pair methodology is rigorous but cannot capture firms that relocate across state lines in response to wage changes. The international replications are directionally consistent but use different methodologies and time periods. The "double squeeze" framing connects two separate studies by the same lead author; the interaction effects between AI displacement and robot adoption have not been directly measured.
+  </div>
+
+  <!-- CONFIDENCE -->
+  <div class="confidence-block">
+    <div>
+      <div class="confidence-label">Signal Confidence Index</div>
+      <div class="confidence-score">0.94</div>
+    </div>
+    <div class="confidence-note">
+      <strong>HIGH</strong> — S: 5/5 (NBER working paper with Census microdata). L: 5/5 (economic + behavioral + systemic + cross-national replication). M: 5/5 (quantified, border-pair tested, internationally replicated). T: 3.5/5 (national, 30-year dataset, industry-specific). Primary research with gold-standard methodology. Signal level: <strong>CONFIRMED</strong>.
+    </div>
+  </div>
+
+  <!-- SIGNAL TAGS -->
+  <div class="signal-tags-section">
+    <h4>Signal Tags</h4>
+    <div class="tags">
+      <span class="tag">automation</span>
+      <span class="tag">minimum-wage</span>
+      <span class="tag">robots</span>
+      <span class="tag">manufacturing</span>
+      <span class="tag">labor-market</span>
+      <span class="tag">AI-displacement</span>
+      <span class="tag">Brynjolfsson</span>
+      <span class="tag">NBER</span>
+      <span class="tag">blue-collar</span>
+      <span class="tag">entry-level</span>
+      <span class="tag">double-squeeze</span>
+    </div>
+  </div>
+
+  <!-- REFERENCES -->
+  <div class="references-section">
+    <h4>References</h4>
+    <ol>
+      <li id="ref1"><span class="ref-tier ref-tier-a">Tier A</span> Brynjolfsson, E., Li, D., Miranda, J., Seamans, R., &amp; Wang, J. (2026). "Minimum Wages and Robot Adoption." NBER Working Paper #34895. <a href="#fn1">↩</a></li>
+      <li id="ref2"><span class="ref-tier ref-tier-a">Tier A</span> U.S. Census Bureau confidential microdata — firm-level manufacturing records linked to customs import data (industrial robots from Japan, Germany, Switzerland), 1992–2021. <a href="#fn2">↩</a></li>
+      <li id="ref3"><span class="ref-tier ref-tier-b">Tier B</span> Cross-national studies: Turkey minimum wage (2016), China robot adoption (2008–2012), Germany minimum wage introduction (2015). Cited in Brynjolfsson et al. (2026). Fortune reporting, March 4, 2026. <a href="#fn3">↩</a></li>
+      <li id="ref4"><span class="ref-tier ref-tier-a">Tier A</span> Brynjolfsson, E. et al. (2025). AI and entry-level employment decline study. Based on ADP payroll data. Published August 2025. <a href="#fn4">↩</a></li>
+      <li id="ref5"><span class="ref-tier ref-tier-c">Tier C</span> Anthropic report on AI job displacement potential, published March 6, 2026. <a href="#fn5">↩</a></li>
+    </ol>
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-links">
+    <a href="/inkluso-magazine/">IN-KluSo Magazine</a>
+    <a href="/inkluso-magazine/axis/">AXIS</a>
+    <a href="/inkluso-magazine/kontrarian/">Kontrarian</a>
+    <a href="/inkluso-tools/">IN-KluSo Tools</a>
+    <a href="/inkluso-magazine/doctrine/">Doctrine</a>
+  </div>
+  <div class="footer-copy">© 2026 IN-KluSo · Signal AXIS-005 · Published Mar 6, 2026</div>
+</footer>
+
+</body>
+</html>
