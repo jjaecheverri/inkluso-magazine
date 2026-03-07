@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Desk Drought — IN-KluSo</title>
+  <meta name="description" content="Thomas Greifenberger graduated in three years with a double major. Now he prunes trees. The white-collar job market has entered a sustained contraction without a recession — and Harvard economists say it's virtually unprecedented.">
+  <meta name="author" content="Juan Camilo Echeverri">
+  <link rel="canonical" href="https://jjaecheverri.github.io/inkluso-magazine/flow/desk-drought/">
+
+  <!-- JSON-LD Machine-Readable Signal -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "The Desk Drought",
+    "description": "The white-collar job market has entered a sustained period of slow job growth and rising unemployment without a real recession. New graduates face a desk drought as AI and post-pandemic corrections hollow out knowledge-worker roles. Skilled workers shift to trades. Class identity fractures.",
+    "author": {
+      "@type": "Person",
+      "name": "Juan Camilo Echeverri",
+      "jobTitle": "Executive Broker, PAK Home Realty",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "PAK Home Realty",
+        "address": {
+          "@addressLocality": "Rogers",
+          "@addressRegion": "AR"
+        }
+      }
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "IN-KluSo",
+      "url": "https://jjaecheverri.github.io/inkluso-magazine/"
+    },
+    "datePublished": "2026-03-07",
+    "dateModified": "2026-03-07",
+    "articleSection": "FLOW",
+    "keywords": ["desk drought", "white-collar recession", "AI job displacement", "labor market", "knowledge workers", "trades shift", "class identity", "hiring freeze", "new graduates", "unemployment"],
+    "url": "https://jjaecheverri.github.io/inkluso-magazine/flow/desk-drought/"
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #FAF6EE;
+      --black: #111111;
+      --orange: #E05A1C;
+      --gray: #6B6B6B;
+      --light-gray: #E8E4DC;
+      --flow-color: #1B4A6B;
+      --flow-bg: #F0F4F7;
+    }
+
+    body {
+      background: linear-gradient(rgba(250,246,238,0.91), rgba(250,246,238,0.91)), url('https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=1920&q=50&auto=format') center/cover fixed no-repeat;
+      color: var(--black);
+      font-family: 'Inter', sans-serif;
+      font-size: 17px;
+      line-height: 1.75;
+    }
+
+    /* NAV */
+    nav {
+      background: var(--black);
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      color: var(--cream);
+      font-size: 20px;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: #AAAAAA;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--cream); }
+    .nav-links a.active { color: var(--orange); }
+
+    /* SIGNAL HEADER */
+    .signal-header {
+      border-bottom: 1px solid var(--light-gray);
+      padding: 48px 32px 32px;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .signal-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .signal-id {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--gray);
+      font-family: 'Inter', monospace;
+    }
+    .section-tag {
+      display: inline-block;
+      background: var(--flow-color);
+      color: white;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 2px;
+    }
+    .city-tag {
+      display: inline-block;
+      background: var(--light-gray);
+      color: var(--black);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 2px;
+    }
+    .cluster-tag {
+      font-size: 11px;
+      color: var(--orange);
+      font-weight: 500;
+      letter-spacing: 0.05em;
+    }
+
+    .signal-header h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(32px, 5vw, 52px);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      margin-bottom: 16px;
+    }
+    .signal-header .deck {
+      font-size: 19px;
+      color: var(--gray);
+      line-height: 1.5;
+      margin-bottom: 24px;
+      font-weight: 300;
+    }
+    .byline {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding-top: 20px;
+      border-top: 1px solid var(--light-gray);
+    }
+    .byline-text {
+      font-size: 13px;
+      color: var(--gray);
+    }
+    .byline-text strong {
+      color: var(--black);
+      font-weight: 600;
+    }
+    .publish-date { font-size: 12px; color: var(--gray); }
+
+    /* LAYER LABELS */
+    .layer-label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 48px 0 24px;
+    }
+    .layer-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--black);
+      color: var(--cream);
+      font-size: 12px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .layer-name {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+    .layer-rule {
+      flex: 1;
+      height: 1px;
+      background: var(--light-gray);
+    }
+
+    /* ARTICLE BODY */
+    .article-body {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 32px 80px;
+    }
+
+    .article-body p {
+      margin-bottom: 22px;
+      color: var(--black);
+    }
+    .article-body p em {
+      font-style: italic;
+      color: var(--black);
+    }
+    .article-body .pull-quote {
+      font-family: 'DM Serif Display', serif;
+      font-size: 24px;
+      line-height: 1.3;
+      color: var(--black);
+      border-left: 4px solid var(--orange);
+      padding: 16px 24px;
+      margin: 36px 0;
+      font-style: italic;
+    }
+    .article-body .structural-note {
+      background: var(--flow-bg);
+      border-left: 3px solid var(--flow-color);
+      padding: 20px 24px;
+      margin: 32px 0;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+    .article-body .structural-note strong {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--flow-color);
+      margin-bottom: 8px;
+    }
+
+    hr.section-break {
+      border: none;
+      border-top: 1px solid var(--light-gray);
+      margin: 48px 0;
+    }
+
+    /* SIGNAL TAGS */
+    .signal-tags-section {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--light-gray);
+    }
+    .signal-tags-section h4 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 12px;
+    }
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tag {
+      background: var(--light-gray);
+      color: var(--black);
+      font-size: 11px;
+      font-weight: 500;
+      padding: 4px 12px;
+      border-radius: 12px;
+      letter-spacing: 0.04em;
+    }
+
+    /* EVIDENCE BLOCK */
+    .evidence-block {
+      background: #F5F5F0;
+      border: 1px solid var(--light-gray);
+      border-radius: 4px;
+      padding: 24px;
+      margin: 40px 0;
+    }
+    .evidence-block h4 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 16px;
+    }
+    .evidence-item {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 12px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .evidence-item:last-child { margin-bottom: 0; }
+    .ev-type {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 2px;
+      height: fit-content;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .ev-verified { background: #D4EDDA; color: #155724; }
+    .ev-inferred { background: #FFF3CD; color: #856404; }
+
+    /* UNCERTAINTY */
+    .uncertainty-block {
+      background: #FFF8F0;
+      border-left: 3px solid var(--orange);
+      padding: 16px 20px;
+      margin: 24px 0;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .uncertainty-block strong {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 6px;
+    }
+
+    /* SIGNAL CONFIDENCE */
+    .confidence-block {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 20px 24px;
+      background: var(--black);
+      color: var(--cream);
+      border-radius: 4px;
+      margin: 40px 0;
+    }
+    .confidence-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #AAAAAA;
+    }
+    .confidence-score {
+      font-family: 'DM Serif Display', serif;
+      font-size: 32px;
+      color: var(--orange);
+    }
+    .confidence-note {
+      font-size: 13px;
+      color: #AAAAAA;
+      line-height: 1.4;
+    }
+
+    /* REFERENCES */
+    .references-section {
+      margin-top: 40px;
+      padding-top: 24px;
+      border-top: 1px solid var(--light-gray);
+    }
+    .references-section h4 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 16px;
+    }
+    .references-section ol {
+      padding-left: 20px;
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--gray);
+    }
+    .references-section li {
+      margin-bottom: 8px;
+    }
+    .references-section a {
+      color: var(--flow-color);
+      text-decoration: none;
+    }
+    .references-section a:hover {
+      text-decoration: underline;
+    }
+    .ref-tier {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 1px 6px;
+      border-radius: 2px;
+      background: var(--light-gray);
+      color: var(--gray);
+      margin-left: 4px;
+    }
+    sup a {
+      color: var(--flow-color);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    sup a:hover { text-decoration: underline; }
+
+    /* FOOTER */
+    footer {
+      background: var(--black);
+      color: #AAAAAA;
+      padding: 40px 32px;
+      text-align: center;
+    }
+    footer a { color: #AAAAAA; text-decoration: none; }
+    footer a:hover { color: var(--cream); }
+    .footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 16px; font-size: 13px; flex-wrap: wrap; }
+    .footer-copy { font-size: 12px; }
+
+    @media (max-width: 600px) {
+      nav { padding: 0 16px; }
+      .nav-links { gap: 16px; }
+      .signal-header, .article-body { padding-left: 20px; padding-right: 20px; }
+      .signal-header h1 { font-size: 30px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO IMAGE -->
+<div style="position:relative; width:100%; height:420px; overflow:hidden;">
+  <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&q=80&auto=format&fit=crop" alt="Empty corporate office with rows of vacant desks — the desk drought" style="width:100%; height:100%; object-fit:cover; filter:saturate(0.45) contrast(1.08);" loading="lazy">
+  <div style="position:absolute; bottom:0; left:0; right:0; height:120px; background:linear-gradient(transparent, rgba(0,0,0,0.55));"></div>
+  <span style="position:absolute; bottom:10px; left:16px; font-size:0.6rem; color:rgba(255,255,255,0.6); font-family:'Inter',sans-serif;">Photo: Nastuh Abootalebi / Unsplash</span>
+</div>
+
+<nav>
+  <a class="nav-logo" href="/inkluso-magazine/">IN-KluSo</a>
+  <ul class="nav-links">
+    <li><a href="/inkluso-magazine/#core">CORE</a></li>
+    <li><a href="/inkluso-magazine/#thrive">THRIVE</a></li>
+    <li><a href="/inkluso-magazine/#axis">AXIS</a></li>
+    <li><a href="/inkluso-magazine/flow/" class="active">FLOW</a></li>
+    <li><a href="/inkluso-magazine/#cities">CITIES</a></li>
+    <li><a href="/inkluso-magazine/kontrarian/">KONTRARIAN</a></li>
+    <li><a href="/inkluso-magazine/#about">ABOUT</a></li>
+    <li><a href="/inkluso-tools/">TOOLS</a></li>
+  </ul>
+</nav>
+
+<!-- SIGNAL HEADER -->
+<header class="signal-header">
+  <div class="signal-meta">
+    <span class="signal-id">FLOW-009</span>
+    <span class="section-tag">FLOW</span>
+    <span class="city-tag">United States · National</span>
+    <span class="cluster-tag">Labor Economy · Signal 9</span>
+  </div>
+
+  <h1>The Desk Drought</h1>
+  <p class="deck">He graduated in three years with a double major — finance and marketing. Now he prunes trees. The white-collar job market has entered a sustained contraction without a recession, and the generation that was told to get a degree is learning that the desk was never guaranteed.</p>
+
+  <div class="byline">
+    <div>
+      <div class="byline-text"><strong>Juan Camilo Echeverri</strong> — Executive Broker, PAK Home Realty · Rogers, AR</div>
+      <div class="publish-date">March 7, 2026 · Labor Economy · FLOW</div>
+    </div>
+  </div>
+</header>
+
+
+<!-- ARTICLE BODY -->
+<main class="article-body">
+
+  <!-- LAYER 1 -->
+  <div class="layer-label">
+    <div class="layer-num">1</div>
+    <div class="layer-name">Human Becoming</div>
+    <div class="layer-rule"></div>
+  </div>
+
+  <p>Thomas checks his phone at lunch. Then again at two. Then again before dinner. He's not scrolling — he's refreshing. Job boards. Application portals. The little bell icon on LinkedIn that used to mean something.</p>
+
+  <p>He finished his degree at the University of Delaware in three years. Double major — finance and marketing. He did everything the brochure said to do: honors courses, internship applications, networking events where people hand you warm business cards and tell you to follow up. He followed up. He followed up on the follow-ups.</p>
+
+  <p>Nothing came back.</p>
+
+  <p>So Thomas went home to Long Island and started pruning trees for his family's landscaping business. Not because he loves trees. Because the trees were there, and the desks were not.</p>
+
+  <div class="pull-quote">"I didn't fail out. I didn't stop trying. The jobs just — weren't. You apply and you hear nothing. You apply again and you hear nothing again. After a while the silence becomes the answer."</div>
+
+  <p>His friends are scattered across similar detours. One tutors middle schoolers. Another delivers packages. A third moved back in with his parents and is studying for a certification in something he'd never heard of two years ago. None of them are doing what they trained for. None of them expected this.</p>
+
+  <p>The strange part is that nothing feels broken in the way a crisis is supposed to feel. There's no crash on television. No lines outside of banks. Just a quiet absence — a room full of desks with no one being asked to sit in them.</p>
+
+  <hr class="section-break">
+
+  <!-- LAYER 2 -->
+  <div class="layer-label">
+    <div class="layer-num">2</div>
+    <div class="layer-name">Structural Read</div>
+    <div class="layer-rule"></div>
+  </div>
+
+  <p>Harvard economist Lawrence Katz calls the current labor market "virtually unprecedented" — a sustained period of slow job growth and gradually rising unemployment without a real recession.<sup><a href="#ref1" id="fn1">[1]</a></sup> That's the structural puzzle. The economy isn't contracting in the traditional sense. GDP grew 2.2% in 2025. Companies are posting profits. And yet: the economy added only 181,000 jobs in <em>all</em> of 2025 — a number so low it reads like a misprint.<sup><a href="#ref2" id="fn2">[2]</a></sup></p>
+
+  <p>February 2026 made it worse. The economy shed 92,000 jobs in a single month — one of the largest declines since the pandemic. Unemployment edged to 4.4%.<sup><a href="#ref2">[2]</a></sup> But the headline number understates the specificity. This isn't a broad downturn. It's a targeted one.</p>
+
+  <div class="structural-note">
+    <strong>Mechanism</strong>
+    Post-pandemic hiring correction + AI capability growth → companies maintain or grow output with fewer knowledge workers → white-collar roles become cyclically vulnerable for the first time → new graduates face a "desk drought" → skilled workers shift to trades and manual labor → class identity disruption. The mechanism is not a recession. It's an efficiency recalibration that leaves GDP intact while hollowing out the professional-class pipeline.
+  </div>
+
+  <p>Gad Levanon of the Burning Glass Institute identifies the sectors hardest hit: finance, insurance, accounting, consulting, and technology — the industries that absorbed the most educated labor for two decades.<sup><a href="#ref3" id="fn3">[3]</a></sup> Hiring in these sectors hasn't slowed. It has stopped. The standstill is so complete that Levanon describes it not as a cycle but as a structural reset.</p>
+
+  <div class="pull-quote">"This is a social and political crisis that makes deindustrialization look trivial." — Martin Wolf, Financial Times<sup><a href="#ref4">[4]</a></sup></div>
+
+  <p>Wolf's line is not hyperbole — it's geometry. Deindustrialization displaced workers who were already economically vulnerable. The desk drought displaces workers who were told their education <em>was</em> the insurance policy. When the credential itself stops converting to employment, the social contract doesn't just weaken. It becomes illegible.</p>
+
+  <div class="structural-note">
+    <strong>Friction Point</strong>
+    Microsoft's internal research identifies 40 job categories most vulnerable to AI automation. Mustafa Suleyman, Microsoft AI CEO, projects that most professional tasks will be fully automated within 12–18 months.<sup><a href="#ref5" id="fn5">[5]</a></sup> The desk drought isn't just a post-pandemic correction. It's the leading edge of a permanent recomposition of which humans companies need to pay.
+  </div>
+
+  <hr class="section-break">
+
+  <!-- LAYER 3 -->
+  <div class="layer-label">
+    <div class="layer-num">3</div>
+    <div class="layer-name">Pattern Confirmation</div>
+    <div class="layer-rule"></div>
+  </div>
+
+  <p>The pattern is not Thomas. The pattern is what Thomas represents: a generation of credentialed workers entering a labor market that no longer needs the thing they were trained to sell.</p>
+
+  <p>The numbers confirm the shape. An economy that grew 2.2% but created fewer jobs than any non-recession year in modern memory. A February that erased 92,000 positions. White-collar unemployment rising while blue-collar trades hold steady or expand. This is not a downturn — it's a rotation, and the rotation runs against every assumption baked into the college-to-career pipeline.</p>
+
+  <p>The AI acceleration compounds the structural shift. It's tempting to frame this as speculative — <em>AI might replace these jobs someday</em>. But Suleyman's 12–18 month timeline and Microsoft's 40-role vulnerability map aren't forecasts from the margins. They're internal planning documents from the company most aggressively deploying the technology. When the builder says the building is coming down, the timeline is closer than it looks.</p>
+
+  <p>Wolf's warning — that disruption to the educated middle class is "socially far more dangerous and explosive" than deindustrialization — carries a specific historical weight. Deindustrialization happened to people who were already excluded from political and media power. The desk drought happens to people who assumed they <em>were</em> the power class. That assumption breaking doesn't produce quiet resignation. It produces volatility.</p>
+
+  <p>Thomas prunes trees now. He's fine. He'll figure it out. But the desk he trained for isn't waiting for him to come back. It may not be waiting for anyone.</p>
+
+  <hr class="section-break">
+
+  <!-- EVIDENCE BLOCK -->
+  <div class="evidence-block">
+    <h4>Evidence</h4>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>US economy added only 181,000 jobs in all of 2025 despite 2.2% GDP growth (BLS data via NYT/Salt Lake Tribune reporting).</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>February 2026: −92,000 jobs, unemployment rose to 4.4% (Bureau of Labor Statistics).</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>Hiring standstill in finance, insurance, accounting, consulting, and tech sectors (Gad Levanon, Burning Glass Institute).</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>Harvard economist Lawrence Katz describes labor pattern as "virtually unprecedented" — slow growth without recession.</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>Microsoft identifies 40 job categories most vulnerable to AI automation; Suleyman projects 12–18 month full automation timeline for most professional tasks.</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-inferred">Inferred</span>
+      <span>Characterization of white-collar displacement as more politically volatile than deindustrialization — editorial framing supported by Wolf's analysis but not yet borne out in measurable political behavior.</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-inferred">Inferred</span>
+      <span>The "desk drought" as a permanent structural shift rather than cyclical correction — mechanism is clear but duration and reversibility remain unconfirmed.</span>
+    </div>
+  </div>
+
+  <!-- UNCERTAINTY -->
+  <div class="uncertainty-block">
+    <strong>Uncertainty</strong>
+    Whether the white-collar hiring freeze is a post-pandemic correction that will normalize or a permanent structural shift driven by AI remains unresolved. Suleyman's 12–18 month automation timeline reflects internal corporate ambition, not independent verification. BLS job figures for February 2026 are preliminary and subject to revision. The causal weight of AI vs. post-pandemic overcorrection vs. federal spending contraction in explaining the desk drought cannot yet be disaggregated. Martin Wolf's comparison to deindustrialization is analytical framing, not empirical equivalence.
+  </div>
+
+  <!-- CONFIDENCE -->
+  <div class="confidence-block">
+    <div>
+      <div class="confidence-label">Signal Confidence Index</div>
+      <div class="confidence-score">0.89 · HIGH</div>
+    </div>
+    <div class="confidence-note">
+      S: 4/5 (NYT reporting, Harvard + Burning Glass + FT economists) · L: 4.5/5 (behavioral + systems + epistemological lenses deeply covered) · M: 4/5 (strong mechanism with behavioral evidence) · T: 3.5/4 (US national, time-specific, named actors). Signal level: <strong>CONFIRMED</strong>.
+    </div>
+  </div>
+
+  <!-- SIGNAL TAGS -->
+  <div class="signal-tags-section">
+    <h4>Signal Tags</h4>
+    <div class="tags">
+      <span class="tag">desk-drought</span>
+      <span class="tag">white-collar-recession</span>
+      <span class="tag">ai-displacement</span>
+      <span class="tag">labor-market</span>
+      <span class="tag">knowledge-workers</span>
+      <span class="tag">trades-shift</span>
+      <span class="tag">class-identity</span>
+      <span class="tag">hiring-freeze</span>
+      <span class="tag">new-graduates</span>
+      <span class="tag">post-pandemic-correction</span>
+    </div>
+  </div>
+
+  <!-- REFERENCES -->
+  <div class="references-section">
+    <h4>References</h4>
+    <ol>
+      <li id="ref1">New York Times / Salt Lake Tribune — Michael Steinberger, "Mass hysteria. Thousands of jobs lost. Just how bad is it going to get?" March 7, 2026. Includes interview with Lawrence Katz, Harvard economics professor. <span class="ref-tier">Tier B</span></li>
+      <li id="ref2">Bureau of Labor Statistics — Employment Situation Summary: 181,000 total jobs added in 2025; February 2026: −92,000 jobs, unemployment 4.4%. <span class="ref-tier">Tier A</span></li>
+      <li id="ref3">Gad Levanon, Burning Glass Institute — analysis of hiring standstill in finance, insurance, accounting, consulting, and technology sectors, cited in NYT, March 2026. <span class="ref-tier">Tier B</span></li>
+      <li id="ref4">Martin Wolf, Financial Times — chief economics commentator: disruption to educated middle class is "socially far more dangerous and explosive" than deindustrialization, 2026. <span class="ref-tier">Tier B</span></li>
+      <li id="ref5">Microsoft internal research — 40 job categories most vulnerable to AI. Mustafa Suleyman, Microsoft AI CEO — projection that most professional tasks fully automated within 12–18 months, cited in NYT, March 2026. <span class="ref-tier">Tier B</span></li>
+    </ol>
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-links">
+    <a href="/inkluso-magazine/">IN-KluSo Magazine</a>
+    <a href="/inkluso-magazine/flow/">Labor & Cultural Infrastructure</a>
+    <a href="/inkluso-magazine/kontrarian/">Kontrarian</a>
+    <a href="/inkluso-tools/">Tools</a>
+    <a href="/inkluso-magazine/doctrine/">Doctrine</a>
+  </div>
+  <div class="footer-copy">© 2026 IN-KluSo · Signal FLOW-009 · Published Mar 7, 2026</div>
+</footer>
+
+</body>
+</html>

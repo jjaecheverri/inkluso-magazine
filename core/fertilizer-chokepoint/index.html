@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Fertilizer Chokepoint — IN-KluSo</title>
+  <meta name="description" content="Iran's closure of the Strait of Hormuz has shut down passage for up to a third of global fertilizer raw materials. Urea prices surged 25% in days. The signal connects war to the food you buy at Saturday morning markets.">
+  <meta name="author" content="Juan Camilo Echeverri">
+  <link rel="canonical" href="https://jjaecheverri.github.io/inkluso-magazine/core/fertilizer-chokepoint/">
+
+  <!-- JSON-LD Machine-Readable Signal -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "The Fertilizer Chokepoint",
+    "description": "Iran's effective closure of the Strait of Hormuz has shut down passage for 25-33% of global fertilizer raw materials. Urea prices surged 25%+ in days. A structural signal on how war transmits through shipping lanes, fertilizer markets, and into the price of food at your local farmers market.",
+    "author": {
+      "@type": "Person",
+      "name": "Juan Camilo Echeverri",
+      "jobTitle": "Executive Broker, PAK Home Realty",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "PAK Home Realty",
+        "address": {
+          "@addressLocality": "Rogers",
+          "@addressRegion": "AR"
+        }
+      }
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "IN-KluSo",
+      "url": "https://jjaecheverri.github.io/inkluso-magazine/"
+    },
+    "datePublished": "2026-03-07",
+    "dateModified": "2026-03-07",
+    "articleSection": "CORE",
+    "keywords": ["fertilizer", "strait-of-hormuz", "food-prices", "supply-chain", "geopolitics", "agriculture", "shipping", "urea", "farmers-market", "war-transmission"],
+    "url": "https://jjaecheverri.github.io/inkluso-magazine/core/fertilizer-chokepoint/"
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #FAF6EE;
+      --black: #111111;
+      --orange: #E05A1C;
+      --gray: #6B6B6B;
+      --light-gray: #E8E4DC;
+      --div-color: #B8490F;
+      --div-bg: #FFF5EF;
+    }
+
+    body {
+      background: linear-gradient(rgba(250,246,238,0.91), rgba(250,246,238,0.91)), url('https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=1920&q=50&auto=format') center/cover fixed no-repeat;
+      color: var(--black);
+      font-family: 'Inter', sans-serif;
+      font-size: 17px;
+      line-height: 1.75;
+    }
+
+    /* NAV */
+    nav {
+      background: var(--black);
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      color: var(--cream);
+      font-size: 20px;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: #AAAAAA;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--cream); }
+    .nav-links a.active { color: var(--orange); }
+
+    /* SIGNAL HEADER */
+    .signal-header {
+      border-bottom: 1px solid var(--light-gray);
+      padding: 48px 32px 32px;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .signal-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .signal-id {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--gray);
+      font-family: 'Inter', monospace;
+    }
+    .section-tag {
+      display: inline-block;
+      background: var(--div-color);
+      color: white;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 2px;
+    }
+    .city-tag {
+      display: inline-block;
+      background: var(--light-gray);
+      color: var(--black);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 2px;
+    }
+    .cluster-tag {
+      font-size: 11px;
+      color: var(--orange);
+      font-weight: 500;
+      letter-spacing: 0.05em;
+    }
+
+    .signal-header h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(32px, 5vw, 52px);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      margin-bottom: 16px;
+    }
+    .signal-header .deck {
+      font-size: 19px;
+      color: var(--gray);
+      line-height: 1.5;
+      margin-bottom: 24px;
+      font-weight: 300;
+    }
+    .byline {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding-top: 20px;
+      border-top: 1px solid var(--light-gray);
+    }
+    .byline-text {
+      font-size: 13px;
+      color: var(--gray);
+    }
+    .byline-text strong {
+      color: var(--black);
+      font-weight: 600;
+    }
+    .publish-date { font-size: 12px; color: var(--gray); }
+
+    /* LAYER LABELS */
+    .layer-label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 48px 0 24px;
+    }
+    .layer-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--black);
+      color: var(--cream);
+      font-size: 12px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .layer-name {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+    .layer-rule {
+      flex: 1;
+      height: 1px;
+      background: var(--light-gray);
+    }
+
+    /* ARTICLE BODY */
+    .article-body {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 32px 80px;
+    }
+
+    .article-body p {
+      margin-bottom: 22px;
+      color: var(--black);
+    }
+    .article-body p em {
+      font-style: italic;
+      color: var(--black);
+    }
+    .article-body .pull-quote {
+      font-family: 'DM Serif Display', serif;
+      font-size: 24px;
+      line-height: 1.3;
+      color: var(--black);
+      border-left: 4px solid var(--orange);
+      padding: 16px 24px;
+      margin: 36px 0;
+      font-style: italic;
+    }
+    .article-body .structural-note {
+      background: var(--div-bg);
+      border-left: 3px solid var(--div-color);
+      padding: 20px 24px;
+      margin: 32px 0;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+    .article-body .structural-note strong {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--div-color);
+      margin-bottom: 8px;
+    }
+
+    hr.section-break {
+      border: none;
+      border-top: 1px solid var(--light-gray);
+      margin: 48px 0;
+    }
+
+    /* SIGNAL TAGS */
+    .signal-tags-section {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--light-gray);
+    }
+    .signal-tags-section h4 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 12px;
+    }
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tag {
+      background: var(--light-gray);
+      color: var(--black);
+      font-size: 11px;
+      font-weight: 500;
+      padding: 4px 12px;
+      border-radius: 12px;
+      letter-spacing: 0.04em;
+    }
+
+    /* EVIDENCE BLOCK */
+    .evidence-block {
+      background: #F5F5F0;
+      border: 1px solid var(--light-gray);
+      border-radius: 4px;
+      padding: 24px;
+      margin: 40px 0;
+    }
+    .evidence-block h4 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 16px;
+    }
+    .evidence-item {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 12px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .evidence-item:last-child { margin-bottom: 0; }
+    .ev-type {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 2px;
+      height: fit-content;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .ev-verified { background: #D4EDDA; color: #155724; }
+    .ev-inferred { background: #FFF3CD; color: #856404; }
+
+    /* UNCERTAINTY */
+    .uncertainty-block {
+      background: #FFF8F0;
+      border-left: 3px solid var(--orange);
+      padding: 16px 20px;
+      margin: 24px 0;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .uncertainty-block strong {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 6px;
+    }
+
+    /* SIGNAL CONFIDENCE */
+    .confidence-block {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 20px 24px;
+      background: var(--black);
+      color: var(--cream);
+      border-radius: 4px;
+      margin: 40px 0;
+    }
+    .confidence-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #AAAAAA;
+    }
+    .confidence-score {
+      font-family: 'DM Serif Display', serif;
+      font-size: 32px;
+      color: var(--orange);
+    }
+    .confidence-note {
+      font-size: 13px;
+      color: #AAAAAA;
+      line-height: 1.4;
+    }
+
+    /* REFERENCES */
+    .references-section {
+      margin-top: 40px;
+      padding-top: 24px;
+      border-top: 1px solid var(--light-gray);
+    }
+    .references-section h4 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 16px;
+    }
+    .ref-item {
+      font-size: 13px;
+      line-height: 1.5;
+      margin-bottom: 10px;
+      color: var(--gray);
+      padding-left: 20px;
+      text-indent: -20px;
+    }
+    .ref-item a { color: var(--div-color); text-decoration: none; }
+    .ref-item a:hover { text-decoration: underline; }
+    .ref-tier {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: var(--light-gray);
+      padding: 1px 6px;
+      border-radius: 2px;
+      color: var(--gray);
+    }
+    sup a { color: var(--div-color); text-decoration: none; font-weight: 600; }
+    sup a:hover { text-decoration: underline; }
+
+    /* FOOTER */
+    footer {
+      background: var(--black);
+      color: #AAAAAA;
+      padding: 40px 32px;
+      text-align: center;
+    }
+    footer a { color: #AAAAAA; text-decoration: none; }
+    footer a:hover { color: var(--cream); }
+    .footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 16px; font-size: 13px; flex-wrap: wrap; }
+    .footer-copy { font-size: 12px; }
+
+    @media (max-width: 600px) {
+      nav { padding: 0 16px; }
+      .nav-links { gap: 16px; }
+      .signal-header, .article-body { padding-left: 20px; padding-right: 20px; }
+      .signal-header h1 { font-size: 30px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="/inkluso-magazine/">IN-KluSo</a>
+  <ul class="nav-links">
+    <li><a href="/inkluso-magazine/core/" class="active">CORE</a></li>
+    <li><a href="/inkluso-magazine/#thrive">THRIVE</a></li>
+    <li><a href="/inkluso-magazine/#axis">AXIS</a></li>
+    <li><a href="/inkluso-magazine/#flow">FLOW</a></li>
+    <li><a href="/inkluso-magazine/#cities">CITIES</a></li>
+    <li><a href="/inkluso-magazine/kontrarian/">KONTRARIAN</a></li>
+    <li><a href="/inkluso-magazine/#about">ABOUT</a></li>
+    <li><a href="/inkluso-tools/">TOOLS</a></li>
+  </ul>
+</nav>
+
+<!-- SIGNAL HEADER -->
+<header class="signal-header">
+  <div class="signal-meta">
+    <span class="signal-id">CORE-018</span>
+    <span class="section-tag">CORE</span>
+    <span class="city-tag">Global — Strait of Hormuz</span>
+    <span class="cluster-tag">Farmers Market Cluster</span>
+  </div>
+
+  <h1>The Fertilizer Chokepoint</h1>
+  <p class="deck">Iran's closure of the Strait of Hormuz has shut down passage for up to a third of global fertilizer raw materials. Urea prices surged 25% in days. The signal connects a military strait half a world away to the price of tomatoes at your Saturday morning market.</p>
+
+  <div class="byline">
+    <div>
+      <div class="byline-text"><strong>Juan Camilo Echeverri</strong> — Executive Broker, PAK Home Realty · Rogers, AR</div>
+      <div class="publish-date">March 7, 2026 · Global / United States · CORE</div>
+    </div>
+  </div>
+</header>
+
+<!-- HERO IMAGE -->
+<div style="position:relative; width:100%; height:340px; overflow:hidden; border-radius:12px; margin:2rem auto; max-width:780px; box-shadow:0 8px 32px rgba(0,0,0,0.18);">
+  <img src="https://images.unsplash.com/photo-1577993055824-3dffe1e45786?w=1400&q=80&auto=format&fit=crop" alt="Cargo ships in a narrow waterway — the fertilizer chokepoint" style="width:100%; height:100%; object-fit:cover; filter:saturate(0.35) contrast(1.1);" loading="lazy">
+  <div style="position:absolute; bottom:0; left:0; right:0; height:80px; background:linear-gradient(transparent, rgba(0,0,0,0.5));"></div>
+  <span style="position:absolute; bottom:8px; left:12px; font-size:0.6rem; color:rgba(255,255,255,0.6); font-family:'Inter',sans-serif;">Photo: Unsplash</span>
+</div>
+
+<!-- ARTICLE BODY -->
+<main class="article-body">
+
+  <!-- LAYER 1 -->
+  <div class="layer-label">
+    <div class="layer-num">1</div>
+    <div class="layer-name">Human Becoming</div>
+    <div class="layer-rule"></div>
+  </div>
+
+  <p>He walks the rows before anyone arrives. Radishes, spring onions, the first of the lettuces. The tables are plywood on sawhorses, same as last year and the year before. The truck is paid off. The cooler runs. The math, for once, had been close to working.</p>
+
+  <p>Then the fertilizer invoice came.</p>
+
+  <p>He doesn't follow shipping lanes. He doesn't track Iranian military strategy or know the name of the strait. What he knows is the number on the delivery ticket — and that it was not the number he planned for. Not close. Not adjustable. Just different, the way a diagnosis is different from a guess.</p>
+
+  <p>His wife asked what happened. He said the price went up. She asked why. He said he didn't know. That was honest. The salesman at the co-op didn't know either — just said <em>supply issues</em>, the way you say <em>weather</em> when you mean something you can't control.</p>
+
+  <div class="pull-quote">"I can't charge people more for the same tomato and look them in the eye on Saturday." That's what he told his wife. Not an economic argument — a moral one, from a man who sells food to his neighbors.</div>
+
+  <p>He'll absorb some of it. He'll skip one application. He'll hope the rain cooperates. He'll stand behind his table at the farmers market and price things the way he always has — by what feels fair, not by what a war on the other side of the planet says he should.</p>
+
+  <p>The gap between those two numbers is where this signal lives.</p>
+
+  <hr class="section-break">
+
+  <!-- LAYER 2 -->
+  <div class="layer-label">
+    <div class="layer-num">2</div>
+    <div class="layer-name">Structural Read</div>
+    <div class="layer-rule"></div>
+  </div>
+
+  <p>On March 5, 2026, The Guardian reported that Iran's effective closure of the Strait of Hormuz following U.S.-Israel military strikes had disrupted passage for 25–33% of global fertilizer raw materials.<sup><a href="#ref1" id="fn1">[1]</a></sup> The strait also carries 45% of global sulphur trade and roughly 20% of seaborne crude oil. Egyptian urea benchmark prices surged from $484–490 per metric tonne to $625 — a jump of more than 25% in days.<sup><a href="#ref2" id="fn2">[2]</a></sup></p>
+
+  <div class="structural-note">
+    <strong>Mechanism</strong>
+    War disrupts shipping lanes → fertilizer input costs spike → farmers face higher input costs against stagnant crop prices → food price inflation transmits to consumers. Fossil gas constitutes 60–80% of nitrogen fertilizer production costs. Iran is the fourth-largest global urea exporter. Qatar's largest gas facility was closed after a drone attack. The supply shock hits at multiple points simultaneously — raw material, processing, and export capacity.
+  </div>
+
+  <p>Svein Tore Holsether, CEO of Yara International — one of the world's largest fertilizer companies — warned directly: "If we don't see the Strait of Hormuz reopen, food prices will go up. It's not a question of if, but when."<sup><a href="#ref1" id="fn1b">[1]</a></sup> Tom Bradshaw, president of the UK National Farmers' Union, called the situation "a big burden for UK farmers who are already squeezed."</p>
+
+  <div class="pull-quote">"If we don't see the Strait of Hormuz reopen, food prices will go up. It's not a question of if, but when." — Svein Tore Holsether, CEO, Yara International</div>
+
+  <p>The UK meets approximately 40% of its nitrogen fertilizer needs domestically. The rest is imported — and now repriced. After the 2022 Russia-Ukraine disruption, UK food prices rose 16.5% year over year.<sup><a href="#ref3" id="fn3">[3]</a></sup> Grocery price inflation has already returned: 4.3% in the four weeks to February 22, 2026, according to Worldpanel by Numerator. The Hormuz closure threatens a repeat, potentially more severe because of the strait's wider commodity coverage.</p>
+
+  <div class="structural-note">
+    <strong>Transmission Path</strong>
+    This is not a single-commodity disruption. Hormuz concentrates fertilizer raw materials, sulphur, oil, and gas in one 21-mile-wide passage. When the bottleneck closes, the cost transmits along every chain simultaneously — energy, agriculture, chemicals, transport. The farmer at the local market and the industrial operation in the Midwest face the same input shock, but only one has hedging tools.
+  </div>
+
+  <hr class="section-break">
+
+  <!-- LAYER 3 -->
+  <div class="layer-label">
+    <div class="layer-num">3</div>
+    <div class="layer-name">Pattern Confirmation</div>
+    <div class="layer-rule"></div>
+  </div>
+
+  <p>The pattern is not new. In 2022, the Russia-Ukraine war demonstrated that fertilizer supply disruptions transmit directly into food prices with a lag of weeks to months. The current Hormuz closure follows the same causal architecture but with broader exposure: where Russia-Ukraine primarily affected potash and ammonia routes, Hormuz affects urea, sulphur, gas feedstocks, and oil simultaneously.</p>
+
+  <p>Forbes reported on March 1, 2026, that the Strait of Hormuz carries a food security risk that extends well beyond its oil significance.<sup><a href="#ref4" id="fn4">[4]</a></sup> The concentration of global fertilizer trade through a single geographic chokepoint means that military conflict in the Persian Gulf rewrites the cost structure of agriculture worldwide — from industrial corn operations in Iowa to a seven-acre vegetable farm selling spring onions at a Saturday market in Northwest Arkansas.</p>
+
+  <p>This is the Farmers Market Cluster connection in its most direct form. Every farmer who applies nitrogen-based fertilizer is now paying a war premium. Small-scale producers who sell direct to consumers have no pass-through mechanism — no futures contract, no supply agreement with a locked price. They absorb the cost or raise prices to their neighbors.</p>
+
+  <p>The signal is not that war affects food prices. Everyone who lived through 2022 knows that. The signal is that the global food system remains structurally dependent on a single 21-mile-wide waterway for a third of its fertilizer inputs — and that no diversification has occurred since the last time this lesson was taught.</p>
+
+  <p>Same architecture. Same vulnerability. Higher stakes.</p>
+
+  <hr class="section-break">
+
+  <!-- EVIDENCE BLOCK -->
+  <div class="evidence-block">
+    <h4>Evidence</h4>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>CRU Group data: Egyptian urea benchmark surged from $484–490/mt to $625/mt — a 25%+ increase — following Hormuz closure. Reported by The Guardian, March 5, 2026.</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>25–33% of global fertilizer raw materials transit the Strait of Hormuz. 45% of global sulphur trade originates from the Middle East. Yara CEO and NFU president quoted on record.</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>UK grocery price inflation rose 4.3% in four weeks to Feb 22, 2026 (Worldpanel by Numerator). After 2022 Russia-Ukraine disruption, UK food prices rose 16.5% YoY.</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>Qatar's largest gas facility closed following drone attack. Iran is the 4th largest global urea exporter. Fossil gas = 60–80% of nitrogen fertilizer production cost.</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-inferred">Inferred</span>
+      <span>Transmission timeline to U.S. consumer food prices estimated at weeks to months based on 2022 precedent. Exact lag depends on existing inventory buffers and contract structures not yet publicly reported.</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-inferred">Inferred</span>
+      <span>Small-scale farmers at NWA farmers markets lack hedging tools available to industrial operations — based on general market structure, not surveyed data from local producers.</span>
+    </div>
+  </div>
+
+  <!-- UNCERTAINTY -->
+  <div class="uncertainty-block">
+    <strong>Uncertainty</strong>
+    The duration of the Hormuz closure is unknown — partial reopening or alternative routing through longer passages (Cape of Good Hope) could moderate price impacts over time. Existing fertilizer inventory held by distributors and cooperatives may buffer the immediate shock for weeks. The 2022 analogy is instructive but not identical: different commodities, different geopolitical actors, different baseline price levels. U.S. domestic fertilizer production capacity and strategic reserves may partially offset import dependency. Consumer food price transmission lag in the U.S. market specifically is estimated, not confirmed, for this event.
+  </div>
+
+  <!-- CONFIDENCE -->
+  <div class="confidence-block">
+    <div>
+      <div class="confidence-label">Signal Confidence Index</div>
+      <div class="confidence-score">HIGH</div>
+    </div>
+    <div class="confidence-note">
+      SCI ≈ 0.88 · Source tier: High (The Guardian, Forbes, CRU Group industry data, Yara CEO on record, NFU president on record). Mechanism clarity: High — causal chain from war → shipping → fertilizer → food is well-documented with 2022 precedent. Lens coverage: S 3.5/5, L 4/5, M 4/5, T 3.5/4. Territory specificity: Global with direct local transmission. Signal level: <strong>HIGH</strong>.
+    </div>
+  </div>
+
+  <!-- SIGNAL TAGS -->
+  <div class="signal-tags-section">
+    <h4>Signal Tags</h4>
+    <div class="tags">
+      <span class="tag">fertilizer</span>
+      <span class="tag">strait-of-hormuz</span>
+      <span class="tag">food-prices</span>
+      <span class="tag">supply-chain</span>
+      <span class="tag">geopolitics</span>
+      <span class="tag">agriculture</span>
+      <span class="tag">shipping-disruption</span>
+      <span class="tag">urea</span>
+      <span class="tag">farmers-market</span>
+      <span class="tag">war-transmission</span>
+      <span class="tag">chokepoint</span>
+    </div>
+  </div>
+
+  <!-- REFERENCES -->
+  <div class="references-section">
+    <h4>References</h4>
+    <p class="ref-item" id="ref1"><strong>[1]</strong> <span class="ref-tier">Tier B</span> The Guardian, <a href="https://www.theguardian.com" target="_blank">"A big burden for farmers: Gulf shipping crisis threatens food price shock"</a>, March 5, 2026. CRU Group data on urea prices; quotes from Yara CEO Svein Tore Holsether and NFU president Tom Bradshaw.</p>
+    <p class="ref-item" id="ref2"><strong>[2]</strong> <span class="ref-tier">Tier B</span> CRU Group commodity price tracking — primary industry data source for Egyptian urea benchmarks and sulphur trade volumes. As reported via The Guardian.</p>
+    <p class="ref-item" id="ref3"><strong>[3]</strong> <span class="ref-tier">Tier B</span> The Guardian / Worldpanel by Numerator — UK grocery price inflation data (4.3% in four weeks to Feb 22, 2026). Historical reference: 16.5% YoY food price increase following 2022 Russia-Ukraine disruption.</p>
+    <p class="ref-item" id="ref4"><strong>[4]</strong> <span class="ref-tier">Tier B</span> Forbes, <a href="https://www.forbes.com" target="_blank">"Beyond Oil: The Strait of Hormuz and the Global Food Risk"</a>, March 1, 2026. Analysis of Hormuz food security implications beyond oil.</p>
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-links">
+    <a href="/inkluso-magazine/">IN-KluSo Magazine</a>
+    <a href="/inkluso-magazine/core/">Core Signals</a>
+    <a href="/inkluso-magazine/kontrarian/">Kontrarian</a>
+    <a href="/inkluso-tools/">Tools</a>
+    <a href="/inkluso-magazine/doctrine/">Doctrine</a>
+  </div>
+  <div class="footer-copy">© 2026 IN-KluSo · Signal CORE-018 · Published Mar 7, 2026</div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The 2032 Cliff — IN-KluSo</title>
+  <meta name="description" content="Social Security trust fund exhaustion is now projected for late 2032 — a year earlier than expected. When it hits, 70+ million Americans face automatic benefit cuts of ~21%. The cliff isn't coming. It moved closer.">
+  <meta name="author" content="Juan Camilo Echeverri">
+  <link rel="canonical" href="https://jjaecheverri.github.io/inkluso-magazine/core/2032-cliff/">
+
+  <!-- JSON-LD Machine-Readable Signal -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "The 2032 Cliff",
+    "description": "Social Security trust fund exhaustion is now projected for late 2032. War-driven inflation and tariff costs accelerate depletion. When the fund runs dry, automatic benefit cuts of ~21% trigger for 70+ million recipients.",
+    "author": {
+      "@type": "Person",
+      "name": "Juan Camilo Echeverri",
+      "jobTitle": "Executive Broker, PAK Home Realty",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "PAK Home Realty",
+        "address": {
+          "@addressLocality": "Rogers",
+          "@addressRegion": "AR"
+        }
+      }
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "IN-KluSo",
+      "url": "https://jjaecheverri.github.io/inkluso-magazine/"
+    },
+    "datePublished": "2026-03-07",
+    "dateModified": "2026-03-07",
+    "articleSection": "CORE",
+    "keywords": ["social-security", "trust-fund", "insolvency", "benefit-cuts", "inflation", "tariffs", "retirement", "fiscal-policy", "entitlements", "2032-cliff"],
+    "url": "https://jjaecheverri.github.io/inkluso-magazine/core/2032-cliff/",
+    "about": {
+      "@type": "Place",
+      "name": "United States"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #FAF6EE;
+      --black: #111111;
+      --orange: #E05A1C;
+      --gray: #6B6B6B;
+      --light-gray: #E8E4DC;
+      --div-color: #B8490F;
+      --div-bg: #FFF5EF;
+    }
+
+    body {
+      background: linear-gradient(rgba(250,246,238,0.91), rgba(250,246,238,0.91)), url('https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=1920&q=50&auto=format') center/cover fixed no-repeat;
+      color: var(--black);
+      font-family: 'Inter', sans-serif;
+      font-size: 17px;
+      line-height: 1.75;
+    }
+
+    /* NAV */
+    nav {
+      background: var(--black);
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      color: var(--cream);
+      font-size: 20px;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: #AAAAAA;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--cream); }
+    .nav-links a.active { color: var(--orange); }
+
+    /* SIGNAL HEADER */
+    .signal-header {
+      border-bottom: 1px solid var(--light-gray);
+      padding: 48px 32px 32px;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .signal-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .signal-id {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--gray);
+      font-family: 'Inter', monospace;
+    }
+    .section-tag {
+      display: inline-block;
+      background: var(--div-color);
+      color: white;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 2px;
+    }
+    .city-tag {
+      display: inline-block;
+      background: var(--light-gray);
+      color: var(--black);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 2px;
+    }
+    .cluster-tag {
+      font-size: 11px;
+      color: var(--orange);
+      font-weight: 500;
+      letter-spacing: 0.05em;
+    }
+
+    .signal-header h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(32px, 5vw, 52px);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      margin-bottom: 16px;
+    }
+    .signal-header .deck {
+      font-size: 19px;
+      color: var(--gray);
+      line-height: 1.5;
+      margin-bottom: 24px;
+      font-weight: 300;
+    }
+    .byline {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding-top: 20px;
+      border-top: 1px solid var(--light-gray);
+    }
+    .byline-text {
+      font-size: 13px;
+      color: var(--gray);
+    }
+    .byline-text strong {
+      color: var(--black);
+      font-weight: 600;
+    }
+    .publish-date { font-size: 12px; color: var(--gray); }
+
+    /* LAYER LABELS */
+    .layer-label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 48px 0 24px;
+    }
+    .layer-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--black);
+      color: var(--cream);
+      font-size: 12px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .layer-name {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+    .layer-rule {
+      flex: 1;
+      height: 1px;
+      background: var(--light-gray);
+    }
+
+    /* ARTICLE BODY */
+    .article-body {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 32px 80px;
+    }
+
+    .article-body p {
+      margin-bottom: 22px;
+      color: var(--black);
+    }
+    .article-body p em {
+      font-style: italic;
+      color: var(--black);
+    }
+    .article-body .pull-quote {
+      font-family: 'DM Serif Display', serif;
+      font-size: 24px;
+      line-height: 1.3;
+      color: var(--black);
+      border-left: 4px solid var(--orange);
+      padding: 16px 24px;
+      margin: 36px 0;
+      font-style: italic;
+    }
+    .article-body .structural-note {
+      background: var(--div-bg);
+      border-left: 3px solid var(--div-color);
+      padding: 20px 24px;
+      margin: 32px 0;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+    .article-body .structural-note strong {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--div-color);
+      margin-bottom: 8px;
+    }
+
+    hr.section-break {
+      border: none;
+      border-top: 1px solid var(--light-gray);
+      margin: 48px 0;
+    }
+
+    /* SIGNAL TAGS */
+    .signal-tags-section {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--light-gray);
+    }
+    .signal-tags-section h4 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 12px;
+    }
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tag {
+      background: var(--light-gray);
+      color: var(--black);
+      font-size: 11px;
+      font-weight: 500;
+      padding: 4px 12px;
+      border-radius: 12px;
+      letter-spacing: 0.04em;
+    }
+
+    /* EVIDENCE BLOCK */
+    .evidence-block {
+      background: #F5F5F0;
+      border: 1px solid var(--light-gray);
+      border-radius: 4px;
+      padding: 24px;
+      margin: 40px 0;
+    }
+    .evidence-block h4 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 16px;
+    }
+    .evidence-item {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 12px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .evidence-item:last-child { margin-bottom: 0; }
+    .ev-type {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 2px;
+      height: fit-content;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .ev-verified { background: #D4EDDA; color: #155724; }
+    .ev-inferred { background: #FFF3CD; color: #856404; }
+
+    /* UNCERTAINTY */
+    .uncertainty-block {
+      background: #FFF8F0;
+      border-left: 3px solid var(--orange);
+      padding: 16px 20px;
+      margin: 24px 0;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .uncertainty-block strong {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 6px;
+    }
+
+    /* SIGNAL CONFIDENCE */
+    .confidence-block {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 20px 24px;
+      background: var(--black);
+      color: var(--cream);
+      border-radius: 4px;
+      margin: 40px 0;
+    }
+    .confidence-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #AAAAAA;
+    }
+    .confidence-score {
+      font-family: 'DM Serif Display', serif;
+      font-size: 32px;
+      color: var(--orange);
+    }
+    .confidence-note {
+      font-size: 13px;
+      color: #AAAAAA;
+      line-height: 1.4;
+    }
+
+    /* REFERENCES */
+    .references-section {
+      margin-top: 40px;
+      padding-top: 24px;
+      border-top: 1px solid var(--light-gray);
+    }
+    .references-section h4 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 16px;
+    }
+    .references-section ol {
+      padding-left: 20px;
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--gray);
+    }
+    .references-section ol li {
+      margin-bottom: 8px;
+    }
+    .references-section a {
+      color: var(--div-color);
+      text-decoration: none;
+    }
+    .references-section a:hover {
+      text-decoration: underline;
+    }
+    .ref-tier {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: var(--light-gray);
+      padding: 1px 6px;
+      border-radius: 2px;
+      margin-left: 4px;
+    }
+    sup a {
+      color: var(--div-color);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    sup a:hover {
+      text-decoration: underline;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--black);
+      color: #AAAAAA;
+      padding: 40px 32px;
+      text-align: center;
+    }
+    footer a { color: #AAAAAA; text-decoration: none; }
+    footer a:hover { color: var(--cream); }
+    .footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 16px; font-size: 13px; flex-wrap: wrap; }
+    .footer-copy { font-size: 12px; }
+
+    @media (max-width: 600px) {
+      nav { padding: 0 16px; }
+      .nav-links { gap: 16px; }
+      .signal-header, .article-body { padding-left: 20px; padding-right: 20px; }
+      .signal-header h1 { font-size: 30px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="/inkluso-magazine/">IN-KluSo</a>
+  <ul class="nav-links">
+    <li><a href="/inkluso-magazine/#core" class="active">CORE</a></li>
+    <li><a href="/inkluso-magazine/#thrive">THRIVE</a></li>
+    <li><a href="/inkluso-magazine/#axis">AXIS</a></li>
+    <li><a href="/inkluso-magazine/#flow">FLOW</a></li>
+    <li><a href="/inkluso-magazine/#cities">CITIES</a></li>
+    <li><a href="/inkluso-magazine/kontrarian/">KONTRARIAN</a></li>
+    <li><a href="/inkluso-magazine/#about">ABOUT</a></li>
+    <li><a href="/inkluso-tools/">TOOLS</a></li>
+  </ul>
+</nav>
+
+<!-- HERO IMAGE -->
+<div style="position:relative; width:100%; height:340px; overflow:hidden; border-radius:12px; margin:2rem auto; max-width:780px; box-shadow:0 8px 32px rgba(0,0,0,0.18);">
+  <img src="https://images.unsplash.com/photo-1581579438747-104c8d46c0cc?w=1400&q=80&auto=format&fit=crop" alt="Elderly person sitting alone — the 2032 Social Security cliff threatens 70 million Americans" style="width:100%; height:100%; object-fit:cover; filter:saturate(0.5) contrast(1.08);" loading="lazy">
+  <div style="position:absolute; bottom:0; left:0; right:0; height:80px; background:linear-gradient(transparent, rgba(0,0,0,0.5));"></div>
+  <span style="position:absolute; bottom:8px; left:12px; font-size:0.6rem; color:rgba(255,255,255,0.6); font-family:'Inter',sans-serif;">Photo: Unsplash</span>
+</div>
+
+<!-- SIGNAL HEADER -->
+<header class="signal-header">
+  <div class="signal-meta">
+    <span class="signal-id">CORE-019</span>
+    <span class="section-tag">CORE</span>
+    <span class="city-tag">United States</span>
+    <span class="cluster-tag">Fiscal Systems · Signal 19</span>
+  </div>
+
+  <h1>The 2032 Cliff</h1>
+  <p class="deck">The Social Security trust fund is now projected to run dry by late 2032 — a full year earlier than the last estimate. When it does, automatic benefit cuts of roughly 21% hit 70+ million Americans. No vote required. No warning letter. Just math.</p>
+
+  <div class="byline">
+    <div>
+      <div class="byline-text"><strong>Juan Camilo Echeverri</strong> — Executive Broker, PAK Home Realty · Rogers, AR</div>
+      <div class="publish-date">March 7, 2026 · United States · CORE</div>
+    </div>
+  </div>
+</header>
+
+
+<!-- ARTICLE BODY -->
+<main class="article-body">
+
+  <!-- LAYER 1 -->
+  <div class="layer-label">
+    <div class="layer-num">1</div>
+    <div class="layer-name">Human Becoming</div>
+    <div class="layer-rule"></div>
+  </div>
+
+  <p>She opened the envelope at the kitchen table, the same table where she'd opened every letter from Social Security since her husband died in 2019. The annual statement. Projected benefit at 67. Projected benefit at 70. The numbers looked solid — the kind of solid that lets you exhale and pay the water bill without checking the balance first.</p>
+
+  <p>But last Tuesday, her neighbor's son — the one who reads the news for a living — mentioned something at the mailbox. <em>They moved the date up again. 2032 now. Could be a 21% cut.</em> She didn't ask what that meant in dollars. She already knew. It meant the difference between the house and somewhere else.</p>
+
+  <p>She isn't poor. She isn't rich. She's the person the system was designed for — forty-one years of payroll taxes, a modest pension that vanished when the company restructured, and a Social Security check that covers exactly enough. Enough for the mortgage. Enough for the medication. Enough to not ask her children for money.</p>
+
+  <div class="pull-quote">"I did everything they told me to do. I paid in for forty-one years. And now someone's telling me the math doesn't work anymore."</div>
+
+  <p>She doesn't follow policy debates. She doesn't know what a trust fund depletion date means in actuarial terms. She knows what a 21% cut means to her Thursday grocery run. It means choosing between the blood pressure pills and the fresh vegetables. It means the kind of arithmetic no one should have to do at seventy-three.</p>
+
+  <p>The cliff isn't a metaphor to her. It's a calendar date.</p>
+
+  <hr class="section-break">
+
+  <!-- LAYER 2 -->
+  <div class="layer-label">
+    <div class="layer-num">2</div>
+    <div class="layer-name">Structural Read</div>
+    <div class="layer-rule"></div>
+  </div>
+
+  <p>Her story is not an edge case. It's the center of gravity for the largest fiscal time bomb in American domestic policy.</p>
+
+  <p>The Committee for a Responsible Federal Budget now projects Social Security trust fund exhaustion in late 2032 — moved forward from previous estimates of 2033–2034.<sup><a href="#ref1" id="fn1">[1]</a></sup> The acceleration is not mysterious. Higher-than-expected inflation, driven by tariff escalation and war-related commodity shocks, triggers larger cost-of-living adjustments (COLA). Larger COLA payments drain the trust fund faster. The mechanism is arithmetic, not ideology.</p>
+
+  <p>When the fund is depleted, current law does not authorize borrowing to cover the gap. Benefits are automatically reduced to match incoming payroll tax revenue — a cut estimated at approximately 21%.<sup><a href="#ref2" id="fn2">[2]</a></sup> No congressional vote is required for the cut to take effect. It happens by default.</p>
+
+  <div class="structural-note">
+    <strong>Mechanism</strong>
+    WAR_INFLATION + TARIFF_COSTS → HIGHER_COLA → FASTER_DEPLETION → INSOLVENCY_2032 → AUTOMATIC_21%_CUT. The trust fund operates on simple cash-flow logic: payroll taxes in, benefits out, surplus held in special-issue Treasury securities. When outflows exceed inflows and the surplus is exhausted, the system can only pay what it collects. The gap between collections and obligations is currently ~21%.
+  </div>
+
+  <p>The affected population is not abstract: 70+ million Americans receive Social Security benefits, including retirees, survivors, and disabled workers.<sup><a href="#ref3" id="fn3">[3]</a></sup> For roughly 40% of recipients over 65, Social Security constitutes more than half their income. For 14%, it is essentially all of it.</p>
+
+  <div class="pull-quote">"The trust fund doesn't run out of money. It runs out of permission to spend money it doesn't have." — Fiscal policy analyst, CRFB</div>
+
+  <p>Congress has known about this trajectory for decades. The Social Security Trustees have published annual projections with depletion dates moving steadily closer. Yet no legislation addressing solvency has advanced past committee in either chamber. The political incentives are precisely backwards — fixing the problem requires either raising taxes or cutting benefits, both of which cost votes. Ignoring it costs nothing, until 2032.</p>
+
+  <div class="structural-note">
+    <strong>Friction Layer</strong>
+    The SSA's official Trustees Report for 2026 is expected in October — after midterm campaign season is already underway. Any revised depletion date becomes a political weapon rather than a policy input. Meanwhile, the agency itself faces staffing cuts and operational strain, reducing its capacity to model scenarios or implement changes even if legislation passed tomorrow.
+  </div>
+
+  <hr class="section-break">
+
+  <!-- LAYER 3 -->
+  <div class="layer-label">
+    <div class="layer-num">3</div>
+    <div class="layer-name">Pattern Confirmation</div>
+    <div class="layer-rule"></div>
+  </div>
+
+  <p>The 2032 cliff is not an isolated fiscal event. It is the most visible edge of a broader pattern: democratic governments designing entitlement systems that work on thirty-year actuarial cycles, then operating on two-year electoral cycles. The mismatch is structural, not partisan.</p>
+
+  <p>The acceleration factor — inflation driven by tariffs and geopolitical conflict — is what makes this iteration different. Previous projections assumed moderate inflation. The current environment, with tariff-driven price increases on consumer goods and war-related energy costs, pushes COLA adjustments higher and faster than any model anticipated five years ago.<sup><a href="#ref4" id="fn4">[4]</a></sup> Every dollar of extra COLA is a dollar less in the trust fund.</p>
+
+  <p>The CEO of the largest Social Security advisory firm in the United States has publicly warned that 2032 is now the realistic baseline, not the pessimistic scenario.<sup><a href="#ref5" id="fn5">[5]</a></sup> That distinction matters. Pessimistic scenarios leave room for hope. Baselines leave room for worse.</p>
+
+  <div class="structural-note">
+    <strong>Cross-System Implication</strong>
+    Social Security insolvency does not exist in isolation. Medicare's Hospital Insurance trust fund faces its own depletion timeline. Federal debt service costs are rising alongside interest rates. The fiscal space to address any one of these crises narrows as the others intensify. A 21% benefit cut landing on 70 million Americans in 2032 would ripple through consumer spending, housing markets, healthcare systems, and state budgets — particularly in states with older populations and lower median incomes.
+  </div>
+
+  <p>The deeper failure is not fiscal. It's temporal. The system collects money today on a promise that spans decades. The people who made the promise are never the people in office when it comes due. That gap — between the promise horizon and the accountability horizon — is where cliffs form. Not suddenly. Slowly, predictably, and with full documentation.</p>
+
+  <p>She paid into the system for forty-one years. The system had forty-one years to prepare. It didn't.</p>
+
+  <hr class="section-break">
+
+  <!-- EVIDENCE BLOCK -->
+  <div class="evidence-block">
+    <h4>Evidence</h4>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>CRFB projects Social Security trust fund exhaustion in late 2032, accelerated from prior 2033–2034 estimates due to higher inflation and COLA costs.</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>Upon trust fund depletion, benefits are automatically reduced to match payroll tax revenue — estimated cut of approximately 21%.</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>70+ million Americans currently receive Social Security benefits across retirement, survivor, and disability programs.</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>Tariff-driven and war-driven inflation has increased COLA adjustments beyond prior actuarial assumptions, accelerating depletion.</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-inferred">Inferred</span>
+      <span>Congressional inaction is projected to continue through 2026 midterms based on legislative calendar analysis — no solvency bill is currently in markup.</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-inferred">Inferred</span>
+      <span>Cascading effects on housing, consumer spending, and state budgets are structural inferences from benefit-dependency data, not empirically observed outcomes.</span>
+    </div>
+  </div>
+
+  <!-- UNCERTAINTY -->
+  <div class="uncertainty-block">
+    <strong>Uncertainty</strong>
+    The 2032 date is a projection, not a certainty — it depends on inflation trajectories, employment levels, and immigration-driven payroll tax contributions that could shift. Congress retains the authority to act at any point before depletion. The SSA Trustees Report in October 2026 will provide updated actuarial data that could move the date in either direction. Some reform proposals (payroll tax cap increase, benefit formula adjustments, retirement age changes) could extend solvency significantly if enacted. The political will to act remains the primary unknown.
+  </div>
+
+  <!-- CONFIDENCE -->
+  <div class="confidence-block">
+    <div>
+      <div class="confidence-label">Signal Confidence Index</div>
+      <div class="confidence-score">0.86</div>
+    </div>
+    <div class="confidence-note">
+      Tier: <strong>HIGH</strong>. Source Score: 3.5/5 (CRFB is authoritative but not primary government data; SSA Trustees Report pending). Lens Coverage: 3.5/5 (systems + behavioral + epistemological). Mechanism Clarity: 4/5 (clear causal chain: inflation → COLA → depletion → automatic cuts). Territory Specificity: 3/4 (US-wide, specific timeline, specific affected population). Minor uncertainty on exact depletion year and potential legislative intervention.
+    </div>
+  </div>
+
+  <!-- SIGNAL TAGS -->
+  <div class="signal-tags-section">
+    <h4>Signal Tags</h4>
+    <div class="tags">
+      <span class="tag">social-security</span>
+      <span class="tag">trust-fund</span>
+      <span class="tag">insolvency</span>
+      <span class="tag">benefit-cuts</span>
+      <span class="tag">inflation</span>
+      <span class="tag">tariffs</span>
+      <span class="tag">retirement</span>
+      <span class="tag">COLA</span>
+      <span class="tag">fiscal-policy</span>
+      <span class="tag">entitlements</span>
+    </div>
+  </div>
+
+  <!-- REFERENCES -->
+  <div class="references-section">
+    <h4>References</h4>
+    <ol>
+      <li id="ref1">Committee for a Responsible Federal Budget (CRFB): "Social Security trust fund projected to be depleted by late 2032 — one year earlier than previous estimates." Analysis incorporating tariff-driven inflation and elevated COLA costs. March 2026. <a href="https://www.crfb.org/" target="_blank">crfb.org</a> <span class="ref-tier">Tier B</span></li>
+      <li id="ref2">The Fulcrum: "Trump's claims versus reality on the economy and tariffs." Reports ~21% automatic benefit reduction upon trust fund exhaustion under current law. 2026. <span class="ref-tier">Tier B</span></li>
+      <li id="ref3">Newsweek: "Social Security benefits predicted to run out earlier than expected." Confirms inflation acceleration as primary driver of revised timeline. 2026. <span class="ref-tier">Tier B</span></li>
+      <li id="ref4">Multiple outlets (MSN, Newsweek, ainvest.com) reporting on tariff-driven inflation impact on COLA adjustments and trust fund depletion acceleration. 2025–2026. <span class="ref-tier">Tier B</span></li>
+      <li id="ref5">ainvest.com: CEO of largest Social Security advisory firm publicly warns 2032 is now baseline scenario, not worst-case. 2026. <span class="ref-tier">Tier B</span></li>
+    </ol>
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-links">
+    <a href="/inkluso-magazine/">IN-KluSo Magazine</a>
+    <a href="/inkluso-magazine/core/">Core Signals</a>
+    <a href="/inkluso-magazine/kontrarian/">Kontrarian</a>
+    <a href="/inkluso-tools/">Tools</a>
+    <a href="/inkluso-magazine/doctrine/">Doctrine</a>
+  </div>
+  <div class="footer-copy">© 2026 IN-KluSo · Signal CORE-019 · Published Mar 7, 2026 · <a href="/inkluso-tools/">IN-KluSo Tools</a></div>
+</footer>
+
+</body>
+</html>
