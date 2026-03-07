@@ -6,218 +6,46 @@
   <title>Listen — IN-KluSo Audio Library</title>
   <meta name="description" content="Listen to IN-KluSo articles on your commute. Audio versions of every signal, story, and dispatch.">
   <link rel="canonical" href="https://jjaecheverri.github.io/inkluso-magazine/audio/">
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --cream: #FAF6EE;
-      --black: #111111;
-      --orange: #E05A1C;
-      --gray: #6B6B6B;
-      --light-gray: #E8E4DC;
-    }
-
-    body {
-      background: var(--cream);
-      color: var(--black);
-      font-family: 'Inter', sans-serif;
-      font-size: 16px;
-      line-height: 1.7;
-    }
-
-    /* NAV */
-    nav {
-      background: var(--black);
-      padding: 0 32px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 56px;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    .nav-logo {
-      color: var(--cream);
-      text-decoration: none;
-      font-family: 'DM Serif Display', serif;
-      font-size: 20px;
-      letter-spacing: 0.04em;
-    }
-    .nav-links {
-      list-style: none;
-      display: flex;
-      gap: 24px;
-    }
-    .nav-links a {
-      color: #AAAAAA;
-      text-decoration: none;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-    }
+    :root { --cream: #FAF6EE; --black: #111111; --orange: #E05A1C; --gray: #6B6B6B; --light-gray: #E8E4DC; }
+    body { background: var(--cream); color: var(--black); font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.7; }
+    nav { background: var(--black); padding: 0 32px; display: flex; align-items: center; justify-content: space-between; height: 56px; position: sticky; top: 0; z-index: 100; }
+    .nav-logo { color: var(--cream); text-decoration: none; font-family: 'DM Serif Display', serif; font-size: 20px; letter-spacing: 0.04em; }
+    .nav-links { list-style: none; display: flex; gap: 24px; }
+    .nav-links a { color: #AAAAAA; text-decoration: none; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; }
     .nav-links a:hover, .nav-links a.active { color: var(--cream); }
-
-    /* HERO */
-    .listen-hero {
-      background: var(--black);
-      color: var(--cream);
-      padding: 80px 32px 60px;
-      text-align: center;
-    }
-    .listen-hero .eyebrow {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--orange);
-      margin-bottom: 16px;
-    }
-    .listen-hero h1 {
-      font-family: 'DM Serif Display', serif;
-      font-size: 56px;
-      line-height: 1.1;
-      margin-bottom: 20px;
-    }
-    .listen-hero p {
-      font-size: 17px;
-      color: #AAAAAA;
-      max-width: 560px;
-      margin: 0 auto;
-      line-height: 1.6;
-    }
-    .listen-hero .count-badge {
-      display: inline-block;
-      margin-top: 28px;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 100px;
-      padding: 6px 20px;
-      font-size: 13px;
-      color: #CCCCCC;
-    }
+    .listen-hero { background: var(--black); color: var(--cream); padding: 80px 32px 60px; text-align: center; }
+    .listen-hero .eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--orange); margin-bottom: 16px; }
+    .listen-hero h1 { font-family: 'DM Serif Display', serif; font-size: 56px; line-height: 1.1; margin-bottom: 20px; }
+    .listen-hero p { font-size: 17px; color: #AAAAAA; max-width: 560px; margin: 0 auto; line-height: 1.6; }
+    .listen-hero .count-badge { display: inline-block; margin-top: 28px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 100px; padding: 6px 20px; font-size: 13px; color: #CCCCCC; }
     .listen-hero .count-badge strong { color: var(--orange); }
-
-    /* MAIN */
-    .library-main {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 60px 32px 80px;
-    }
-
-    /* SECTION BLOCK */
-    .section-block {
-      margin-bottom: 56px;
-    }
-    .section-header {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      margin-bottom: 24px;
-    }
-    .section-tag {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--orange);
-      flex-shrink: 0;
-    }
-    .section-line {
-      flex: 1;
-      height: 1px;
-      background: var(--light-gray);
-    }
-
-    /* ARTICLES GRID */
-    .articles-grid {
-      display: grid;
-      gap: 16px;
-    }
-
-    .article-card {
-      background: white;
-      border: 1px solid var(--light-gray);
-      border-radius: 8px;
-      padding: 20px 24px;
-      transition: box-shadow 0.2s ease;
-    }
-    .article-card:hover {
-      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-    }
-    .card-title {
-      display: block;
-      font-family: 'DM Serif Display', serif;
-      font-size: 19px;
-      color: var(--black);
-      text-decoration: none;
-      margin-bottom: 4px;
-      line-height: 1.3;
-    }
+    .library-main { max-width: 900px; margin: 0 auto; padding: 60px 32px 80px; }
+    .section-block { margin-bottom: 56px; }
+    .section-header { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; }
+    .section-tag { font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--orange); flex-shrink: 0; }
+    .section-line { flex: 1; height: 1px; background: var(--light-gray); }
+    .articles-grid { display: grid; gap: 16px; }
+    .article-card { background: white; border: 1px solid var(--light-gray); border-radius: 8px; padding: 20px 24px; transition: box-shadow 0.2s ease; }
+    .article-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+    .card-title { display: block; font-family: 'DM Serif Display', serif; font-size: 19px; color: var(--black); text-decoration: none; margin-bottom: 4px; line-height: 1.3; }
     .card-title:hover { color: var(--orange); }
-    .card-meta {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--gray);
-      margin-bottom: 14px;
-    }
-    .card-audio {
-      width: 100%;
-      height: 36px;
-      accent-color: var(--orange);
-      display: block;
-    }
-
-    /* COMING SOON */
-    .coming-soon {
-      background: #F5F0F7;
-      border: 1px dashed #C5A8D8;
-      border-radius: 8px;
-      padding: 24px;
-      text-align: center;
-      color: var(--gray);
-      font-size: 14px;
-    }
-    .coming-soon strong {
-      display: block;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: #7B4FA6;
-      margin-bottom: 6px;
-    }
-
-    /* FOOTER */
-    footer {
-      background: var(--black);
-      color: #AAAAAA;
-      padding: 40px 32px;
-      text-align: center;
-    }
+    .card-meta { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray); margin-bottom: 14px; }
+    .card-audio { width: 100%; height: 36px; accent-color: var(--orange); display: block; }
+    .coming-soon { background: #F5F0F7; border: 1px dashed #C5A8D8; border-radius: 8px; padding: 24px; text-align: center; color: var(--gray); font-size: 14px; }
+    .coming-soon strong { display: block; font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #7B4FA6; margin-bottom: 6px; }
+    footer { background: var(--black); color: #AAAAAA; padding: 40px 32px; text-align: center; }
     footer a { color: #AAAAAA; text-decoration: none; }
     footer a:hover { color: var(--cream); }
     .footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 16px; font-size: 13px; flex-wrap: wrap; }
     .footer-copy { font-size: 12px; }
-
-    @media (max-width: 600px) {
-      nav { padding: 0 16px; }
-      .nav-links { gap: 14px; }
-      .listen-hero { padding: 60px 20px 40px; }
-      .listen-hero h1 { font-size: 38px; }
-      .library-main { padding: 40px 20px 60px; }
-    }
+    @media (max-width: 600px) { nav { padding: 0 16px; } .nav-links { gap: 14px; } .listen-hero { padding: 60px 20px 40px; } .listen-hero h1 { font-size: 38px; } .library-main { padding: 40px 20px 60px; } }
   </style>
 </head>
 <body>
-
 <nav>
   <a class="nav-logo" href="/inkluso-magazine/">IN-KluSo</a>
   <ul class="nav-links">
@@ -230,16 +58,14 @@
     <li><a href="/inkluso-magazine/audio/" class="active">LISTEN</a></li>
   </ul>
 </nav>
-
 <div class="listen-hero">
   <div class="eyebrow">Audio Library</div>
   <h1>Listen to IN-KluSo</h1>
   <p>Every signal, story, and dispatch — now available to hear on your commute, run, or quiet hour.</p>
   <div class="count-badge">
-    <strong>10 articles</strong> available now &nbsp;·&nbsp; More added daily
+    <strong>11 articles</strong> available now &nbsp;·&nbsp; More added daily
   </div>
 </div>
-
 <main class="library-main">
 
   <div class="section-block">
@@ -281,6 +107,13 @@
         <div class="card-meta">AXIS</div>
         <audio controls class="card-audio">
           <source src="/inkluso-magazine/axis/white-collar-recession/audio.mp3" type="audio/mpeg">
+        </audio>
+      </div>
+      <div class="article-card">
+        <a href="/inkluso-magazine/axis/company-kill/" class="card-title">The Company Kill</a>
+        <div class="card-meta">AXIS</div>
+        <audio controls class="card-audio">
+          <source src="/inkluso-magazine/axis/company-kill/audio.mp3" type="audio/mpeg">
         </audio>
       </div>
     </div>
@@ -332,10 +165,9 @@
 
   <div class="coming-soon">
     <strong>More coming soon</strong>
-    New audio episodes are added daily as the library grows. Check back tomorrow.
+    42 more articles are being converted. New audio episodes are added daily.
   </div>
 </main>
-
 <footer>
   <div class="footer-links">
     <a href="/inkluso-magazine/">Home</a>
@@ -347,6 +179,5 @@
   </div>
   <p class="footer-copy">© 2026 IN-KluSo · Built in Northwest Arkansas</p>
 </footer>
-
 </body>
 </html>
