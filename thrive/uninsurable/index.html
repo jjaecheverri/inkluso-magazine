@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Uninsurable — IN-KluSo</title>
+  <meta name="description" content="Climate risk is making homeownership a gamble without a safety net. When insurers exit, the cascade begins: no coverage, no mortgage, no sale, no value.">
+  <meta name="author" content="Juan Camilo Echeverri">
+  <link rel="canonical" href="https://jjaecheverri.github.io/inkluso-magazine/thrive/uninsurable/">
+
+  <!-- JSON-LD Machine-Readable Signal -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Uninsurable",
+    "description": "Climate risk is making homeownership a gamble without a safety net. When insurers exit, the cascade begins: no coverage, no mortgage, no sale, no value.",
+    "author": {
+      "@type": "Person",
+      "name": "Juan Camilo Echeverri",
+      "jobTitle": "Executive Broker, PAK Home Realty",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "PAK Home Realty",
+        "address": {
+          "@addressLocality": "Rogers",
+          "@addressRegion": "AR"
+        }
+      }
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "IN-KluSo",
+      "url": "https://jjaecheverri.github.io/inkluso-magazine/"
+    },
+    "datePublished": "2026-03-07",
+    "dateModified": "2026-03-07",
+    "articleSection": "THRIVE",
+    "keywords": ["climate risk", "homeowner insurance", "uninsurability", "State Farm", "California", "FAIR Plan", "property values", "wealth destruction", "OECD", "catastrophic risk"],
+    "url": "https://jjaecheverri.github.io/inkluso-magazine/thrive/uninsurable/"
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #FAF6EE;
+      --black: #111111;
+      --orange: #E05A1C;
+      --gray: #6B6B6B;
+      --light-gray: #E8E4DC;
+      --div-color: #1B6B4A;
+      --div-bg: #F0F7F4;
+    }
+
+    body {
+      background: linear-gradient(rgba(250,246,238,0.91), rgba(250,246,238,0.91)), url('https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=1920&q=50&auto=format') center/cover fixed no-repeat;
+      color: var(--black);
+      font-family: 'Inter', sans-serif;
+      font-size: 17px;
+      line-height: 1.75;
+    }
+
+    /* HERO */
+    .hero-image {
+      position: relative;
+      width: 100%;
+      height: 420px;
+      overflow: hidden;
+    }
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(0.6) contrast(1.08);
+    }
+    .hero-image .hero-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 120px;
+      background: linear-gradient(transparent, rgba(0,0,0,0.55));
+    }
+    .hero-image .hero-credit {
+      position: absolute;
+      bottom: 8px;
+      left: 12px;
+      font-size: 0.6rem;
+      color: rgba(255,255,255,0.6);
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* NAV */
+    nav {
+      background: var(--black);
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      color: var(--cream);
+      font-size: 20px;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: #AAAAAA;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--cream); }
+    .nav-links a.active { color: var(--div-color); }
+
+    /* SIGNAL HEADER */
+    .signal-header {
+      border-bottom: 1px solid var(--light-gray);
+      padding: 48px 32px 32px;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .signal-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .signal-id {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--gray);
+      font-family: 'Inter', monospace;
+    }
+    .section-tag {
+      display: inline-block;
+      background: var(--div-color);
+      color: white;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 2px;
+    }
+    .city-tag {
+      display: inline-block;
+      background: var(--light-gray);
+      color: var(--black);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 2px;
+    }
+    .cluster-tag {
+      font-size: 11px;
+      color: var(--orange);
+      font-weight: 500;
+      letter-spacing: 0.05em;
+    }
+
+    .signal-header h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(32px, 5vw, 52px);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      margin-bottom: 16px;
+    }
+    .signal-header .deck {
+      font-size: 19px;
+      color: var(--gray);
+      line-height: 1.5;
+      margin-bottom: 24px;
+      font-weight: 300;
+    }
+    .byline {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding-top: 20px;
+      border-top: 1px solid var(--light-gray);
+    }
+    .byline-text {
+      font-size: 13px;
+      color: var(--gray);
+    }
+    .byline-text strong {
+      color: var(--black);
+      font-weight: 600;
+    }
+    .publish-date { font-size: 12px; color: var(--gray); }
+
+    /* LAYER LABELS */
+    .layer-label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 48px 0 24px;
+    }
+    .layer-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--black);
+      color: var(--cream);
+      font-size: 12px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .layer-name {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+    .layer-rule {
+      flex: 1;
+      height: 1px;
+      background: var(--light-gray);
+    }
+
+    /* ARTICLE BODY */
+    .article-body {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 32px 80px;
+    }
+
+    .article-body p {
+      margin-bottom: 22px;
+      color: var(--black);
+    }
+    .article-body p em {
+      font-style: italic;
+      color: var(--black);
+    }
+    .article-body .pull-quote {
+      font-family: 'DM Serif Display', serif;
+      font-size: 24px;
+      line-height: 1.3;
+      color: var(--black);
+      border-left: 4px solid var(--orange);
+      padding: 16px 24px;
+      margin: 36px 0;
+      font-style: italic;
+    }
+    .article-body .structural-note {
+      background: var(--div-bg);
+      border-left: 3px solid var(--div-color);
+      padding: 20px 24px;
+      margin: 32px 0;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+    .article-body .structural-note strong {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--div-color);
+      margin-bottom: 8px;
+    }
+
+    hr.section-break {
+      border: none;
+      border-top: 1px solid var(--light-gray);
+      margin: 48px 0;
+    }
+
+    /* SIGNAL TAGS */
+    .signal-tags-section {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--light-gray);
+    }
+    .signal-tags-section h4 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 12px;
+    }
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tag {
+      background: var(--light-gray);
+      color: var(--black);
+      font-size: 11px;
+      font-weight: 500;
+      padding: 4px 12px;
+      border-radius: 12px;
+      letter-spacing: 0.04em;
+    }
+
+    /* EVIDENCE BLOCK */
+    .evidence-block {
+      background: #F5F5F0;
+      border: 1px solid var(--light-gray);
+      border-radius: 4px;
+      padding: 24px;
+      margin: 40px 0;
+    }
+    .evidence-block h4 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 16px;
+    }
+    .evidence-item {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 12px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .evidence-item:last-child { margin-bottom: 0; }
+    .ev-type {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 2px;
+      height: fit-content;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .ev-verified { background: #D4EDDA; color: #155724; }
+    .ev-inferred { background: #FFF3CD; color: #856404; }
+
+    /* UNCERTAINTY */
+    .uncertainty-block {
+      background: #FFF8F0;
+      border-left: 3px solid var(--orange);
+      padding: 16px 20px;
+      margin: 24px 0;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .uncertainty-block strong {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 6px;
+    }
+
+    /* SIGNAL CONFIDENCE */
+    .confidence-block {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 20px 24px;
+      background: var(--black);
+      color: var(--cream);
+      border-radius: 4px;
+      margin: 40px 0;
+    }
+    .confidence-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #AAAAAA;
+    }
+    .confidence-score {
+      font-family: 'DM Serif Display', serif;
+      font-size: 32px;
+      color: var(--orange);
+    }
+    .confidence-note {
+      font-size: 13px;
+      color: #AAAAAA;
+      line-height: 1.4;
+    }
+
+    /* REFERENCES */
+    .references-section {
+      margin-top: 40px;
+      padding-top: 24px;
+      border-top: 1px solid var(--light-gray);
+    }
+    .references-section h4 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 16px;
+    }
+    .references-section ol {
+      padding-left: 20px;
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--gray);
+    }
+    .references-section ol li {
+      margin-bottom: 8px;
+    }
+    .references-section a {
+      color: var(--div-color);
+      text-decoration: none;
+    }
+    .references-section a:hover {
+      text-decoration: underline;
+    }
+    .ref-tier {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: var(--light-gray);
+      padding: 1px 6px;
+      border-radius: 2px;
+      color: var(--gray);
+      margin-left: 4px;
+    }
+    sup a {
+      color: var(--div-color);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    sup a:hover {
+      text-decoration: underline;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--black);
+      color: #AAAAAA;
+      padding: 40px 32px;
+      text-align: center;
+    }
+    footer a { color: #AAAAAA; text-decoration: none; }
+    footer a:hover { color: var(--cream); }
+    .footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 16px; font-size: 13px; flex-wrap: wrap; }
+    .footer-copy { font-size: 12px; }
+
+    @media (max-width: 600px) {
+      nav { padding: 0 16px; }
+      .nav-links { gap: 16px; }
+      .signal-header, .article-body { padding-left: 20px; padding-right: 20px; }
+      .signal-header h1 { font-size: 30px; }
+      .hero-image { height: 260px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO IMAGE -->
+<div class="hero-image">
+  <img src="https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?w=1920&q=80&auto=format&fit=crop" alt="Suburban houses aerial view — climate insurance crisis signal" loading="eager">
+  <div class="hero-overlay"></div>
+  <span class="hero-credit">Photo: Unsplash</span>
+</div>
+
+<nav>
+  <a class="nav-logo" href="../../">IN-KluSo</a>
+  <ul class="nav-links">
+    <li><a href="../../core/">CORE</a></li>
+    <li><a href="../" class="active">THRIVE</a></li>
+    <li><a href="../../axis/">AXIS</a></li>
+    <li><a href="../../flow/">FLOW</a></li>
+    <li><a href="../../cities/">CITIES</a></li>
+    <li><a href="../../kontrarian/">KONTRARIAN</a></li>
+    <li><a href="../../#about">ABOUT</a></li>
+    <li><a href="/inkluso-tools/">TOOLS</a></li>
+  </ul>
+</nav>
+
+<!-- SIGNAL HEADER -->
+<header class="signal-header">
+  <div class="signal-meta">
+    <span class="signal-id">THRIVE-011</span>
+    <span class="section-tag">THRIVE</span>
+    <span class="city-tag">United States · California</span>
+    <span class="cluster-tag">Health, Food &amp; Human Systems</span>
+  </div>
+
+  <h1>Uninsurable</h1>
+  <p class="deck">Climate risk is making homeownership a gamble without a safety net. When the companies whose entire business is pricing risk decide the risk is too high, they're not being greedy. They're being honest. The question is whether America can handle that honesty.</p>
+
+  <div class="byline">
+    <div>
+      <div class="byline-text"><strong>Juan Camilo Echeverri</strong> — Executive Broker · PAK Home Realty · Rogers, AR</div>
+      <div class="publish-date">March 7, 2026 · United States · THRIVE</div>
+    </div>
+  </div>
+</header>
+
+<!-- ARTICLE BODY -->
+<main class="article-body">
+
+  <!-- LAYER 1 -->
+  <div class="layer-label">
+    <div class="layer-num">1</div>
+    <div class="layer-name">Human Becoming</div>
+    <div class="layer-rule"></div>
+  </div>
+
+  <p>You find the letter in the mailbox between a grocery flyer and a credit card offer.</p>
+
+  <p>It's from your insurance company. Not a bill — you know what bills feel like. This is thicker. One page of corporate language that takes you three readings to understand. Your homeowner's policy will not be renewed. Effective sixty days from the date printed at the top. Thank you for being a valued customer.</p>
+
+  <p>You've lived in this house for nine years. You painted the kitchen yourself, twice — once the wrong color, once the right one. The kids learned to ride bikes on the driveway. The mortgage is current. The yard is kept. You did everything the way you were told to do it.</p>
+
+  <div class="pull-quote">"You did everything right. The letter doesn't care. It's not personal — and that's exactly why it's terrifying."</div>
+
+  <p>You call your agent. She's kind, and tired. She says she's made forty of these calls this month. She gives you a list of other carriers. You call four. Two don't write in your zip code anymore. One quotes you triple what you were paying. The fourth doesn't call back.</p>
+
+  <p>Your neighbor got the same letter. So did the family at the end of the cul-de-sac. Nobody talks about it at the block party. It feels like something you're not supposed to say out loud — that the house you worked your whole life to buy might be the thing that breaks you.</p>
+
+  <p>The house hasn't changed. The street hasn't changed. But something underneath all of it has shifted, and you can feel it the way you feel weather pressure before a storm.</p>
+
+  <hr class="section-break">
+
+  <!-- LAYER 2 -->
+  <div class="layer-label">
+    <div class="layer-num">2</div>
+    <div class="layer-name">Structural Read</div>
+    <div class="layer-rule"></div>
+  </div>
+
+  <p>The letter wasn't random. It was arithmetic.</p>
+
+  <p>State Farm canceled approximately 72,000 homeowner policies in California in 2024 — including roughly 1,600 in designated fire zones. Allstate exited high-risk areas. Seven of the twelve largest California insurers paused or restricted new policies in 2023.<sup><a href="#ref1" id="fn1">[1]</a></sup> This wasn't a single company's decision. It was an industry drawing the same conclusion at the same time.</p>
+
+  <div class="structural-note">
+    <strong>Mechanism</strong>
+    CLIMATE INTENSIFICATION → WILDFIRE/HURRICANE FREQUENCY ↑ → INSURER LOSS ACCUMULATION → RATE INCREASE REQUESTS → REGULATORY CAPS (PROP 103) → INSURER EXIT → COVERAGE GAP → FAIR PLAN OVERLOAD → HOMEOWNER EXPOSURE → MORTGAGE CONFLICT → PROPERTY VALUE COLLAPSE → WEALTH DESTRUCTION<br><br>
+    California's Proposition 103, passed in 1988, prohibits insurers from using current or future fire risk — or reinsurance costs — in their pricing models. The regulation was designed to protect consumers. It now prevents insurers from charging rates that reflect actual risk, which means they leave instead.
+  </div>
+
+  <p>Julia Cartwright's analysis for AIER's <em>Daily Economy</em> describes the market dynamic plainly: insurers are not choosing to leave profitable markets. They are leaving markets where regulation makes profitability impossible given the current risk landscape.<sup><a href="#ref2" id="fn2">[2]</a></sup> The incentive structure is producing exactly the outcome nobody wanted. That's not irony. That's systems.</p>
+
+  <div class="pull-quote">"When insurers exit, the cascade begins: no coverage, no mortgage, no sale, no value. The house is still standing. The wealth inside it is not." — Julia Cartwright, AIER / Daily Economy</div>
+
+  <p>As private carriers withdraw, the California FAIR Plan — the insurer of last resort — has seen policies surge. The FAIR Plan was never designed to carry this volume. It offers limited coverage at higher cost. It is a backstop being asked to become a foundation.<sup><a href="#ref3" id="fn3">[3]</a></sup></p>
+
+  <div class="structural-note">
+    <strong>Cascading Effect</strong>
+    The withdrawal creates a chain that extends well beyond insurance. Mortgage lenders require homeowner coverage. No insurance means no new mortgage approval. Existing homeowners who lose coverage risk triggering loan covenants. Buyers disappear. Without buyers, property values decline. Without property values, household wealth erodes. The home — the single largest asset for most American families — becomes an anchor instead of a foundation.
+  </div>
+
+  <p>This is not a California story. Florida and Louisiana are further along the same curve. Homeowner insurance costs are rising at double digits annually across every disaster-prone state. The mechanism is identical — climate risk exceeds what regulators allow carriers to price, so carriers leave.</p>
+
+  <hr class="section-break">
+
+  <!-- LAYER 3 -->
+  <div class="layer-label">
+    <div class="layer-num">3</div>
+    <div class="layer-name">Pattern Confirmation</div>
+    <div class="layer-rule"></div>
+  </div>
+
+  <p>The OECD's March 2026 report on financial protection against catastrophic risks confirms that this is not a regional anomaly. It is a global pattern.<sup><a href="#ref4" id="fn4">[4]</a></sup> Climate-related insured losses have exceeded $100 billion globally for the fourth consecutive year. The financial architectures designed to distribute and absorb catastrophic risk are reaching their limits.</p>
+
+  <p>The American version of this story has a specific cruelty to it. The dream was always "own a home." The fine print nobody read said "and insure it." Homeownership was the wealth-building mechanism for the middle class — not through income, but through equity. When insurance becomes unavailable, the equity mechanism doesn't slow down. It reverses.<sup><a href="#ref5" id="fn5">[5]</a></sup></p>
+
+  <p>Property values in areas where coverage is contracting are already softening. Not crashing — softening. The kind of decline that doesn't make headlines but shows up in appraisals, in refinancing rejections, in listing prices that sit longer and sell lower. Communities don't dissolve overnight. They thin out. Younger families stop moving in. Maintenance slips. The tax base narrows. Services contract.</p>
+
+  <p>The insurance industry isn't creating this problem. It's measuring it — and then declining to absorb it. The question that remains is structural: if private insurance cannot price the risk, and public backstops cannot carry the volume, who holds the loss? The answer, for now, is the homeowner. Standing in the kitchen they painted twice, holding a letter that thanks them for being valued.</p>
+
+  <hr class="section-break">
+
+  <!-- EVIDENCE BLOCK -->
+  <div class="evidence-block">
+    <h4>Evidence</h4>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>State Farm canceled ~72,000 homeowner policies in California in 2024, including ~1,600 in fire zones — San Francisco Chronicle, CBS News reporting (Tier B).</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>7 of 12 largest California insurers paused or restricted new policies in 2023 — Daily Economy / industry data (Tier B).</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>California Proposition 103 (1988) prohibits use of current/future fire risk or reinsurance costs in pricing — statutory record (Tier A).</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>Climate-related insured losses exceeded $100 billion globally for 4th consecutive year — OECD catastrophic risk report, March 2026 (Tier B).</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>FAIR Plan policy volume surging as private market exits — California Department of Insurance data (Tier B).</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-inferred">Inferred</span>
+      <span>Insurance withdrawal creates cascading effect: no insurance → no mortgage → no sale → property value collapse — structurally logical chain, synthesized from multiple sources.</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-inferred">Inferred</span>
+      <span>Community dissolution pattern (tax base narrowing, service contraction) — extrapolated from economic mechanism, not yet empirically documented at scale.</span>
+    </div>
+  </div>
+
+  <!-- UNCERTAINTY -->
+  <div class="uncertainty-block">
+    <strong>Uncertainty</strong>
+    California's regulatory framework may change — the state has signaled potential Prop 103 reform that could allow forward-looking risk pricing, which might slow insurer exits. FAIR Plan capacity limits are not publicly documented with precision. Property value impacts vary significantly by micromarket — some high-risk areas retain demand due to desirability. Florida and Louisiana patterns are cited as parallel but operate under different regulatory structures. The OECD report addresses global patterns; direct application to US zip-code-level dynamics involves editorial synthesis. Homeowner insurance cost increases ("double digits annually") reflect national averages that flatten regional variation. Reinsurance market stabilization could change carrier behavior.
+  </div>
+
+  <!-- CONFIDENCE -->
+  <div class="confidence-block">
+    <div>
+      <div class="confidence-label">Signal Confidence Index</div>
+      <div class="confidence-score">0.87 HIGH</div>
+    </div>
+    <div class="confidence-note">
+      Source: 4.0/5 — OECD (strong Tier B) + AIER + San Francisco Chronicle + industry data. Lens: 3/3 — Economic, systems, and behavioral coverage. Mechanism: 4.0/5 — Clear chain from climate to wealth destruction. Territory: 3.5/4 — California anchor with national pattern. Signal level: <strong>HIGH</strong>.
+    </div>
+  </div>
+
+  <!-- SIGNAL TAGS -->
+  <div class="signal-tags-section">
+    <h4>Signal Tags</h4>
+    <div class="tags">
+      <span class="tag">climate-risk</span>
+      <span class="tag">homeowner-insurance</span>
+      <span class="tag">uninsurability</span>
+      <span class="tag">State-Farm</span>
+      <span class="tag">California</span>
+      <span class="tag">FAIR-Plan</span>
+      <span class="tag">Prop-103</span>
+      <span class="tag">property-values</span>
+      <span class="tag">wealth-destruction</span>
+      <span class="tag">OECD</span>
+      <span class="tag">catastrophic-risk</span>
+    </div>
+  </div>
+
+  <!-- REFERENCES -->
+  <div class="references-section">
+    <h4>References</h4>
+    <ol>
+      <li id="ref1">San Francisco Chronicle — State Farm cancels 72,000 California homeowner policies in 2024; CBS News — housing market impact analysis. <span class="ref-tier">Tier B</span></li>
+      <li id="ref2">Julia Cartwright, AIER / Daily Economy — Insurance market analysis: regulatory-driven insurer exits, March 2026. <span class="ref-tier">Tier B</span></li>
+      <li id="ref3">Daily Economy Research Reports — FAIR Plan surge and California insurer restriction data, 2023–2024. <span class="ref-tier">Tier B</span></li>
+      <li id="ref4">OECD, "Financial Protection Against Catastrophic Risks" — March 2026. Global warning on systemic uninsurability and climate-related loss accumulation. <span class="ref-tier">Tier B</span></li>
+      <li id="ref5">Rainforest Action Network / advocacy reporting — Insurance industry climate exposure and homeowner wealth impact analysis. <span class="ref-tier">Tier B</span></li>
+    </ol>
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-links">
+    <a href="../../">IN-KluSo Magazine</a>
+    <a href="../">THRIVE</a>
+    <a href="../../kontrarian/">Kontrarian</a>
+    <a href="/inkluso-tools/">Tools</a>
+    <a href="../../doctrine/">Doctrine</a>
+  </div>
+  <div class="footer-copy">© 2026 IN-KluSo · Signal THRIVE-011 · Published Mar 7, 2026</div>
+</footer>
+
+</body>
+</html>

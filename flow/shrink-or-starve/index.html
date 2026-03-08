@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shrink or Starve — IN-KluSo</title>
+  <meta name="description" content="One in eight American adults now takes GLP-1 medication. The $418 billion fast food industry is restructuring around people who eat less. A pill is doing what decades of nutrition education couldn't — and the economic ripple has barely begun.">
+  <meta name="author" content="Juan Camilo Echeverri">
+  <link rel="canonical" href="https://jjaecheverri.github.io/inkluso-magazine/flow/shrink-or-starve/">
+
+  <!-- JSON-LD Machine-Readable Signal -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Shrink or Starve",
+    "description": "GLP-1 drugs are rewriting the American food economy. One in eight adults now takes appetite-suppressing medication, forcing a $418 billion industry to restructure around people who eat less. The mechanism isn't consciousness — it's chemistry.",
+    "author": {
+      "@type": "Person",
+      "name": "Juan Camilo Echeverri",
+      "jobTitle": "Executive Broker, PAK Home Realty",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "PAK Home Realty",
+        "address": {
+          "@addressLocality": "Rogers",
+          "@addressRegion": "AR"
+        }
+      }
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "IN-KluSo",
+      "url": "https://jjaecheverri.github.io/inkluso-magazine/"
+    },
+    "datePublished": "2026-03-07",
+    "dateModified": "2026-03-07",
+    "articleSection": "FLOW",
+    "keywords": ["GLP-1", "food economy", "appetite suppression", "fast food", "Ozempic", "shrinkflation", "portion size", "consumer behavior", "pharmaceutical disruption", "food industry"],
+    "url": "https://jjaecheverri.github.io/inkluso-magazine/flow/shrink-or-starve/"
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #FAF6EE;
+      --black: #111111;
+      --orange: #E05A1C;
+      --gray: #6B6B6B;
+      --light-gray: #E8E4DC;
+      --flow-color: #1B4A6B;
+      --flow-bg: #F0F4F7;
+    }
+
+    body {
+      background: linear-gradient(rgba(250,246,238,0.91), rgba(250,246,238,0.91)), url('https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=1920&q=50&auto=format') center/cover fixed no-repeat;
+      color: var(--black);
+      font-family: 'Inter', sans-serif;
+      font-size: 17px;
+      line-height: 1.75;
+    }
+
+    /* NAV */
+    nav {
+      background: var(--black);
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      color: var(--cream);
+      font-size: 20px;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: #AAAAAA;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--cream); }
+    .nav-links a.active { color: var(--orange); }
+
+    /* SIGNAL HEADER */
+    .signal-header {
+      border-bottom: 1px solid var(--light-gray);
+      padding: 48px 32px 32px;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .signal-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .signal-id {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--gray);
+      font-family: 'Inter', monospace;
+    }
+    .section-tag {
+      display: inline-block;
+      background: var(--flow-color);
+      color: white;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 2px;
+    }
+    .city-tag {
+      display: inline-block;
+      background: var(--light-gray);
+      color: var(--black);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 2px;
+    }
+    .cluster-tag {
+      font-size: 11px;
+      color: var(--orange);
+      font-weight: 500;
+      letter-spacing: 0.05em;
+    }
+
+    .signal-header h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(32px, 5vw, 52px);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      margin-bottom: 16px;
+    }
+    .signal-header .deck {
+      font-size: 19px;
+      color: var(--gray);
+      line-height: 1.5;
+      margin-bottom: 24px;
+      font-weight: 300;
+    }
+    .byline {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding-top: 20px;
+      border-top: 1px solid var(--light-gray);
+    }
+    .byline-text {
+      font-size: 13px;
+      color: var(--gray);
+    }
+    .byline-text strong {
+      color: var(--black);
+      font-weight: 600;
+    }
+    .publish-date { font-size: 12px; color: var(--gray); }
+
+    /* LAYER LABELS */
+    .layer-label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 48px 0 24px;
+    }
+    .layer-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--black);
+      color: var(--cream);
+      font-size: 12px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .layer-name {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+    .layer-rule {
+      flex: 1;
+      height: 1px;
+      background: var(--light-gray);
+    }
+
+    /* ARTICLE BODY */
+    .article-body {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 32px 80px;
+    }
+
+    .article-body p {
+      margin-bottom: 22px;
+      color: var(--black);
+    }
+    .article-body p em {
+      font-style: italic;
+      color: var(--black);
+    }
+    .article-body .pull-quote {
+      font-family: 'DM Serif Display', serif;
+      font-size: 24px;
+      line-height: 1.3;
+      color: var(--black);
+      border-left: 4px solid var(--orange);
+      padding: 16px 24px;
+      margin: 36px 0;
+      font-style: italic;
+    }
+    .article-body .structural-note {
+      background: var(--flow-bg);
+      border-left: 3px solid var(--flow-color);
+      padding: 20px 24px;
+      margin: 32px 0;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+    .article-body .structural-note strong {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--flow-color);
+      margin-bottom: 8px;
+    }
+
+    hr.section-break {
+      border: none;
+      border-top: 1px solid var(--light-gray);
+      margin: 48px 0;
+    }
+
+    /* SIGNAL TAGS */
+    .signal-tags-section {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--light-gray);
+    }
+    .signal-tags-section h4 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 12px;
+    }
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tag {
+      background: var(--light-gray);
+      color: var(--black);
+      font-size: 11px;
+      font-weight: 500;
+      padding: 4px 12px;
+      border-radius: 12px;
+      letter-spacing: 0.04em;
+    }
+
+    /* EVIDENCE BLOCK */
+    .evidence-block {
+      background: #F5F5F0;
+      border: 1px solid var(--light-gray);
+      border-radius: 4px;
+      padding: 24px;
+      margin: 40px 0;
+    }
+    .evidence-block h4 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 16px;
+    }
+    .evidence-item {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 12px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .evidence-item:last-child { margin-bottom: 0; }
+    .ev-type {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 2px;
+      height: fit-content;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .ev-verified { background: #D4EDDA; color: #155724; }
+    .ev-inferred { background: #FFF3CD; color: #856404; }
+
+    /* UNCERTAINTY */
+    .uncertainty-block {
+      background: #FFF8F0;
+      border-left: 3px solid var(--orange);
+      padding: 16px 20px;
+      margin: 24px 0;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .uncertainty-block strong {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 6px;
+    }
+
+    /* SIGNAL CONFIDENCE */
+    .confidence-block {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 20px 24px;
+      background: var(--black);
+      color: var(--cream);
+      border-radius: 4px;
+      margin: 40px 0;
+    }
+    .confidence-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #AAAAAA;
+    }
+    .confidence-score {
+      font-family: 'DM Serif Display', serif;
+      font-size: 32px;
+      color: var(--orange);
+    }
+    .confidence-note {
+      font-size: 13px;
+      color: #AAAAAA;
+      line-height: 1.4;
+    }
+
+    /* REFERENCES */
+    .references-section {
+      margin-top: 40px;
+      padding-top: 24px;
+      border-top: 1px solid var(--light-gray);
+    }
+    .references-section h4 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 16px;
+    }
+    .references-section ol {
+      padding-left: 20px;
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--gray);
+    }
+    .references-section li {
+      margin-bottom: 8px;
+    }
+    .references-section a {
+      color: var(--flow-color);
+      text-decoration: none;
+    }
+    .references-section a:hover {
+      text-decoration: underline;
+    }
+    .ref-tier {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 1px 6px;
+      border-radius: 2px;
+      background: var(--light-gray);
+      color: var(--gray);
+      margin-left: 4px;
+    }
+    sup a {
+      color: var(--flow-color);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    sup a:hover { text-decoration: underline; }
+
+    /* FOOTER */
+    footer {
+      background: var(--black);
+      color: #AAAAAA;
+      padding: 40px 32px;
+      text-align: center;
+    }
+    footer a { color: #AAAAAA; text-decoration: none; }
+    footer a:hover { color: var(--cream); }
+    .footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 16px; font-size: 13px; flex-wrap: wrap; }
+    .footer-copy { font-size: 12px; }
+
+    @media (max-width: 600px) {
+      nav { padding: 0 16px; }
+      .nav-links { gap: 16px; }
+      .signal-header, .article-body { padding-left: 20px; padding-right: 20px; }
+      .signal-header h1 { font-size: 30px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO IMAGE -->
+<div style="position:relative; width:100%; height:420px; overflow:hidden;">
+  <img src="https://images.unsplash.com/photo-1561758033-d89a9ad46330?w=1920&q=80&auto=format&fit=crop" alt="Fast food restaurant counter — shrink or starve" style="width:100%; height:100%; object-fit:cover; filter:saturate(0.45) contrast(1.08);" loading="lazy">
+  <div style="position:absolute; bottom:0; left:0; right:0; height:120px; background:linear-gradient(transparent, rgba(0,0,0,0.55));"></div>
+  <span style="position:absolute; bottom:10px; left:16px; font-size:0.6rem; color:rgba(255,255,255,0.6); font-family:'Inter',sans-serif;">Photo: Unsplash</span>
+</div>
+
+<nav>
+  <a class="nav-logo" href="/inkluso-magazine/">IN-KluSo</a>
+  <ul class="nav-links">
+    <li><a href="/inkluso-magazine/#core">CORE</a></li>
+    <li><a href="/inkluso-magazine/#thrive">THRIVE</a></li>
+    <li><a href="/inkluso-magazine/#axis">AXIS</a></li>
+    <li><a href="/inkluso-magazine/flow/" class="active">FLOW</a></li>
+    <li><a href="/inkluso-magazine/#cities">CITIES</a></li>
+    <li><a href="/inkluso-magazine/kontrarian/">KONTRARIAN</a></li>
+    <li><a href="/inkluso-magazine/#about">ABOUT</a></li>
+    <li><a href="/inkluso-tools/">TOOLS</a></li>
+  </ul>
+</nav>
+
+<!-- SIGNAL HEADER -->
+<header class="signal-header">
+  <div class="signal-meta">
+    <span class="signal-id">FLOW-010</span>
+    <span class="section-tag">FLOW</span>
+    <span class="city-tag">United States · National</span>
+    <span class="cluster-tag">Economic Drift · Signal 10</span>
+  </div>
+
+  <h1>Shrink or Starve</h1>
+  <p class="deck">One in eight American adults now takes GLP-1 medication. Chipotle launches a protein cup. Shake Shack debuts a "Good Fit" menu. These aren't health trends — they're survival pivots. The $418 billion fast food industry is restructuring around people who eat less, and the ripple hasn't reached the farms yet.</p>
+
+  <div class="byline">
+    <div>
+      <div class="byline-text"><strong>Juan Camilo Echeverri</strong> — Executive Broker, PAK Home Realty · Rogers, AR</div>
+      <div class="publish-date">March 7, 2026 · Economic Drift · FLOW</div>
+    </div>
+  </div>
+</header>
+
+
+<!-- ARTICLE BODY -->
+<main class="article-body">
+
+  <!-- LAYER 1 -->
+  <div class="layer-label">
+    <div class="layer-num">1</div>
+    <div class="layer-name">Human Becoming</div>
+    <div class="layer-rule"></div>
+  </div>
+
+  <p>Maria orders a chicken bowl at Chipotle on her lunch break. Half portion. No rice. She stares at the counter where the new $3.80 protein cup sits in its little branded sleeve, and she thinks: <em>That's me now.</em></p>
+
+  <p>She started Ozempic in September. Not for vanity — her doctor said her A1C was creeping. Insurance covered it after two appeals. The shot changed things she didn't expect. Not just hunger. The entire architecture of her day. She used to plan meals. Think about meals. Reward herself with meals. Now she eats because the clock says to. The craving isn't gone — it was never there. It was replaced by nothing, which is a different kind of silence.</p>
+
+  <p>Her coworker Daniela takes the same shot. Different brand. They don't talk about it much, but they notice each other's trays getting smaller. The break room that used to smell like reheated takeout is quieter at noon. Not because people left. Because less food came through the door.</p>
+
+  <div class="pull-quote">"I didn't stop liking food. I stopped needing it the way I used to. And now everywhere I go, the menu looks like it was designed for someone I'm not anymore."</div>
+
+  <p>She drove past the Smoothie King on Walnut Street last week. New banner in the window: <em>GLP-1 Support Menu.</em> She didn't know whether to feel seen or sold. Probably both. The industry isn't adapting to her health — it's adapting to her appetite. And that distinction matters more than she has language for.</p>
+
+  <hr class="section-break">
+
+  <!-- LAYER 2 -->
+  <div class="layer-label">
+    <div class="layer-num">2</div>
+    <div class="layer-name">Structural Read</div>
+    <div class="layer-rule"></div>
+  </div>
+
+  <p>The numbers explain what Maria feels. GLP-1 drug adoption in the US doubled from 6% of adults in May 2024 to 12% by November 2025, according to the Kaiser Family Foundation.<sup><a href="#ref1" id="fn1">[1]</a></sup> That's roughly one in eight American adults. The speed of adoption has no modern precedent in consumer pharmaceuticals — not statins, not SSRIs, not even Viagra in its first wave.</p>
+
+  <p>Bain &amp; Company found that GLP-1 users spend 5% less on fast food and groceries.<sup><a href="#ref2" id="fn2">[2]</a></sup> Five percent sounds modest. But apply it across tens of millions of households and you get a demand contraction that the food industry hasn't seen outside of a recession. Data Essential's 2025 survey confirms the paradox: 97% of GLP-1 users still eat out monthly, and 76% eat restaurant food weekly.<sup><a href="#ref3" id="fn3">[3]</a></sup> They didn't stop going. They stopped ordering as much.</p>
+
+  <div class="structural-note">
+    <strong>Mechanism</strong>
+    Pharmaceutical intervention at population scale → appetite suppression → aggregate food demand contraction → fast food revenue pressure → menu and portion restructuring → grocery spending decline → supply chain ripple toward agriculture. The mechanism is chemical, not cultural. The food industry isn't getting healthier. It's getting smaller.
+  </div>
+
+  <p>The corporate response is already visible. Chipotle launched a $3.80 protein cup — essentially a deconstructed bowl stripped to its caloric minimum. Smoothie King debuted a "GLP-1 Support Menu." Shake Shack rolled out a "Good Fit Menu." These aren't innovations. They're contractions dressed as choice. Chipotle's footfall fell for the fourth consecutive quarter.</p>
+
+  <div class="pull-quote">"Fifty-nine percent of all consumers now want flexible, customizable portions. Among GLP-1 users, it's seventy-three percent." — Industry survey, Data Essential 2025<sup><a href="#ref3">[3]</a></sup></div>
+
+  <p>Novo Nordisk's GLP-1 revenue tells the supply-side story: $11.9 billion in 2022, $31.1 billion in 2024.<sup><a href="#ref4" id="fn4">[4]</a></sup> Nearly tripled in two years. JPMorgan projects the GLP-1 market could reach $150 billion by 2030, with more than 30 million US users.<sup><a href="#ref5" id="fn5">[5]</a></sup> AFS Law estimates that by then, GLP-1 user households could account for 35% of all food and beverage units sold in the country.<sup><a href="#ref6" id="fn6">[6]</a></sup></p>
+
+  <div class="structural-note">
+    <strong>Friction Point</strong>
+    The food industry spent decades engineering portion sizes upward — supersizing, value meals, bottomless refills. The entire profit model of fast food depends on caloric volume. GLP-1 drugs invert the incentive. When a third of your customer base eats less per visit, the math that built the drive-through breaks. You either shrink the menu or starve the margin.
+  </div>
+
+  <hr class="section-break">
+
+  <!-- LAYER 3 -->
+  <div class="layer-label">
+    <div class="layer-num">3</div>
+    <div class="layer-name">Pattern Confirmation</div>
+    <div class="layer-rule"></div>
+  </div>
+
+  <p>The pattern isn't Maria's protein cup. The pattern is what the protein cup represents: a $418 billion industry restructuring its physical product around a pharmaceutical side effect. Not around consumer preference. Not around a cultural shift. Around a chemical one.</p>
+
+  <p>A pill is doing what decades of nutrition education, documentary filmmaking, and Michelle Obama's garden couldn't: actually changing what America eats. But the mechanism isn't consciousness — it's chemistry. And that distinction carries a specific economic weight. Conscious consumers make new choices. Chemically suppressed consumers make <em>fewer</em> choices. The first creates new markets. The second shrinks existing ones.</p>
+
+  <p>The ripple hasn't fully arrived. Grocery spending is already declining among GLP-1 households. Portion-dependent supply chains — from meat processors to packaging companies to agricultural producers — face a demand contraction that isn't cyclical. It won't reverse when confidence recovers, because the mechanism isn't confidence. It's semaglutide.</p>
+
+  <p>The food industry sees it coming. That's why Chipotle sells a protein cup now. That's why Smoothie King put "GLP-1" on a banner. They're not leading the change. They're chasing the chemistry. And the chemistry doesn't negotiate.</p>
+
+  <hr class="section-break">
+
+  <!-- EVIDENCE BLOCK -->
+  <div class="evidence-block">
+    <h4>Evidence</h4>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>GLP-1 adoption doubled from 6% to 12% of US adults between May 2024 and November 2025 (KFF health tracking poll).</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>GLP-1 users spend 5% less on fast food and groceries (Bain &amp; Company consumer spending analysis).</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>97% of GLP-1 users still eat out monthly; 76% eat restaurant food weekly (Data Essential 2025).</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>Novo Nordisk GLP-1 revenue: $31.1 billion in 2024, up from $11.9 billion in 2022 (Pew Research).</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-verified">Verified</span>
+      <span>Chipotle, Smoothie King, and Shake Shack launched GLP-1-oriented menu items in 2025–2026 (industry reporting).</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-inferred">Inferred</span>
+      <span>JPMorgan projection of $150 billion market and 30+ million users by 2030 — directionally supported but depends on insurance coverage, pricing, and regulatory trajectory.</span>
+    </div>
+    <div class="evidence-item">
+      <span class="ev-type ev-inferred">Inferred</span>
+      <span>Agricultural and supply chain contraction as a downstream effect — mechanism is clear but magnitude and timeline remain unconfirmed.</span>
+    </div>
+  </div>
+
+  <!-- UNCERTAINTY -->
+  <div class="uncertainty-block">
+    <strong>Uncertainty</strong>
+    GLP-1 adherence rates over time remain uncertain — many users discontinue after 12 months, and weight regain upon cessation is well-documented. JPMorgan's 2030 projections assume continued insurance expansion and price reductions that are not guaranteed. The 5% spending decline (Bain) is an average across user demographics; the actual distribution may be uneven across income bands. Whether the food industry's menu restructuring represents permanent adaptation or temporary trend-chasing is not yet distinguishable. Agricultural downstream effects are mechanistically sound but empirically unquantified.
+  </div>
+
+  <!-- CONFIDENCE -->
+  <div class="confidence-block">
+    <div>
+      <div class="confidence-label">Signal Confidence Index</div>
+      <div class="confidence-score">0.88 · HIGH</div>
+    </div>
+    <div class="confidence-note">
+      S: 4.2/5 (strong Tier B cluster — KFF, Pew, JPMorgan, Bain, Data Essential) · L: 3/3 (economic + behavioral + systems lenses covered) · M: 4.5/5 (clear causal chain with quantified data) · T: 3/4 (US national, multi-sector, time-specific). Signal level: <strong>CONFIRMED</strong>.
+    </div>
+  </div>
+
+  <!-- SIGNAL TAGS -->
+  <div class="signal-tags-section">
+    <h4>Signal Tags</h4>
+    <div class="tags">
+      <span class="tag">GLP-1</span>
+      <span class="tag">food-economy</span>
+      <span class="tag">appetite-suppression</span>
+      <span class="tag">fast-food</span>
+      <span class="tag">portion-restructuring</span>
+      <span class="tag">consumer-behavior</span>
+      <span class="tag">pharmaceutical-disruption</span>
+      <span class="tag">demand-contraction</span>
+      <span class="tag">supply-chain-ripple</span>
+      <span class="tag">Ozempic-economy</span>
+    </div>
+  </div>
+
+  <!-- REFERENCES -->
+  <div class="references-section">
+    <h4>References</h4>
+    <ol>
+      <li id="ref1">Kaiser Family Foundation — KFF Health Tracking Poll: GLP-1 drug adoption among US adults, May 2024–November 2025. Prevalence doubled from 6% to 12%. <span class="ref-tier">Tier B</span></li>
+      <li id="ref2">Bain &amp; Company — Consumer spending analysis: GLP-1 users spend 5% less on fast food and groceries, 2025. <span class="ref-tier">Tier B</span></li>
+      <li id="ref3">Data Essential / ReFED — Dining behavior report 2025: 97% of GLP-1 users eat out monthly, 76% weekly; 59% of all consumers want customizable portions, 73% among GLP-1 users. <span class="ref-tier">Tier B</span></li>
+      <li id="ref4">Pew Research Center — Novo Nordisk GLP-1 revenue data: $11.9 billion (2022), $31.1 billion (2024). <span class="ref-tier">Tier B</span></li>
+      <li id="ref5">JPMorgan Research — GLP-1 market projection: $150 billion by 2030, 30+ million US users. <span class="ref-tier">Tier B</span></li>
+      <li id="ref6">AFS Law — Food industry analysis: GLP-1 user households projected to account for 35% of all food/beverage units sold by 2030. <span class="ref-tier">Tier B</span></li>
+      <li id="ref7">The Independent / AOL — Comprehensive industry analysis of fast food menu restructuring in response to GLP-1 adoption, February 2026. <span class="ref-tier">Tier B</span></li>
+    </ol>
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-links">
+    <a href="/inkluso-magazine/">IN-KluSo Magazine</a>
+    <a href="/inkluso-magazine/flow/">Economic Drift & Behavioral Shifts</a>
+    <a href="/inkluso-magazine/kontrarian/">Kontrarian</a>
+    <a href="/inkluso-tools/">Tools</a>
+    <a href="/inkluso-magazine/doctrine/">Doctrine</a>
+  </div>
+  <div class="footer-copy">© 2026 IN-KluSo · Signal FLOW-010 · Published Mar 7, 2026</div>
+</footer>
+
+</body>
+</html>
