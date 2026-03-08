@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About · IN-KluSo</title>
+  <meta name="description" content="IN-KluSo is a structured, repeatable, human-verified cultural intelligence dataset presented in editorial form. Meet the people behind it."/>
+  <link rel="canonical" href="https://jjaecheverri.github.io/inkluso-magazine/about/"/>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": "About IN-KluSo",
+    "url": "https://jjaecheverri.github.io/inkluso-magazine/about/",
+    "description": "IN-KluSo is a structured, repeatable, human-verified cultural intelligence dataset presented in editorial form.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "IN-KluSo",
+      "url": "https://jjaecheverri.github.io/inkluso-magazine/",
+      "parentOrganization": { "@type": "Organization", "name": "Xtatik" }
+    },
+    "author": [
+      {
+        "@type": "Person",
+        "name": "Juan Camilo Echeverri",
+        "jobTitle": "Editorial Director",
+        "worksFor": { "@type": "Organization", "name": "PAK Home Realty" },
+        "address": { "@type": "PostalAddress", "addressLocality": "Rogers", "addressRegion": "AR" },
+        "email": "jjaecheverri@gmail.com",
+        "url": "https://jjaecheverri.github.io/inkluso-magazine/about/"
+      },
+      {
+        "@type": "Person",
+        "name": "Camilo Osorio",
+        "jobTitle": "Creative Director",
+        "address": { "@type": "PostalAddress", "addressLocality": "Madrid", "addressRegion": "Spain" }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:   #FAF6EE;
+      --orange:  #E8602C;
+      --black:   #111111;
+      --blue:    #2D6BE4;
+      --magenta: #C4317A;
+      --green:   #2E9B6F;
+      --gold:    #C9A84C;
+      --bg:      #0D0C0A;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--cream);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Graffiti wallpaper — 9% opacity */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1578301978018-3005759f48f7?w=1920&q=60&auto=format');
+      background-size: cover; background-position: center;
+      opacity: 0.09; mix-blend-mode: multiply; filter: grayscale(40%);
+      pointer-events: none; z-index: 0;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(13,12,10,0.88);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(250,246,238,0.07);
+      padding: 0 48px; height: 56px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-brand {
+      font-family: 'DM Serif Display', serif;
+      font-size: 18px; color: var(--cream);
+      text-decoration: none; letter-spacing: -0.02em;
+    }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a {
+      font-size: 12px; font-weight: 500;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: rgba(250,246,238,0.4); text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--cream); }
+    .nav-hamburger { display: none; }
+
+    /* ── PAGE GRID ── */
+    .page { position: relative; z-index: 1; max-width: 1000px; margin: 0 auto; padding: 0 48px; }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative; z-index: 1;
+      padding: 96px 48px 80px;
+      max-width: 1000px; margin: 0 auto;
+    }
+
+    .hero-rule {
+      width: 48px; height: 3px;
+      background: var(--orange);
+      margin-bottom: 28px;
+      animation: expandRule 0.6s ease both;
+    }
+
+    @keyframes expandRule { from{width:0} to{width:48px} }
+
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(52px, 8vw, 96px);
+      line-height: 0.95; letter-spacing: -0.03em;
+      color: var(--cream); margin-bottom: 28px;
+      animation: fadeUp 0.6s 0.1s ease both;
+    }
+    .hero h1 em { font-style: italic; color: var(--orange); }
+
+    .hero-lede {
+      font-size: 18px; font-weight: 300; line-height: 1.65;
+      color: rgba(250,246,238,0.55); max-width: 580px;
+      animation: fadeUp 0.6s 0.18s ease both;
+    }
+
+    .hero-meta {
+      display: flex; gap: 32px; margin-top: 40px; flex-wrap: wrap;
+      animation: fadeUp 0.6s 0.24s ease both;
+    }
+
+    .hero-meta-item { display: flex; flex-direction: column; gap: 4px; }
+    .hero-meta-val {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px; font-weight: 600; color: var(--orange);
+    }
+    .hero-meta-label {
+      font-size: 11px; font-weight: 500; letter-spacing: 0.08em;
+      text-transform: uppercase; color: rgba(250,246,238,0.25);
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      position: relative; z-index: 1;
+      border: none; border-top: 1px solid rgba(250,246,238,0.06);
+      margin: 0;
+    }
+
+    /* ── SECTION HEADER ── */
+    .section-header {
+      position: relative; z-index: 1;
+      padding: 64px 48px 48px;
+      max-width: 1000px; margin: 0 auto;
+    }
+
+    .section-eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px; font-weight: 600;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--orange); margin-bottom: 16px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .section-eyebrow::before {
+      content: ''; display: block;
+      width: 24px; height: 1px; background: var(--orange);
+    }
+
+    .section-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(32px, 4vw, 52px);
+      letter-spacing: -0.02em; color: var(--cream);
+      line-height: 1.05;
+    }
+    .section-title em { font-style: italic; color: rgba(250,246,238,0.4); }
+
+    /* ── PERSON CARDS ── */
+    .people {
+      position: relative; z-index: 1;
+      max-width: 1000px; margin: 0 auto;
+      padding: 0 48px 80px;
+      display: flex; flex-direction: column; gap: 2px;
+    }
+
+    .person-card {
+      background: rgba(250,246,238,0.03);
+      border: 1px solid rgba(250,246,238,0.07);
+      border-radius: 16px; overflow: hidden;
+      animation: fadeUp 0.5s ease both;
+    }
+
+    .person-card:nth-child(1) { animation-delay: 0.05s; }
+    .person-card:nth-child(2) { animation-delay: 0.12s; }
+
+    .person-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 420px;
+    }
+
+    /* Left: identity */
+    .person-identity {
+      padding: 48px 44px;
+      border-right: 1px solid rgba(250,246,238,0.06);
+      display: flex; flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .person-tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: rgba(250,246,238,0.35);
+      margin-bottom: 28px;
+    }
+
+    .person-tag-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .person-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(32px, 3.5vw, 52px);
+      letter-spacing: -0.02em; line-height: 1.05;
+      color: var(--cream); margin-bottom: 6px;
+    }
+
+    .person-title {
+      font-size: 14px; font-weight: 500;
+      color: rgba(250,246,238,0.45);
+      margin-bottom: 24px; line-height: 1.4;
+    }
+
+    .person-location {
+      display: flex; align-items: center; gap: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px; color: rgba(250,246,238,0.25);
+    }
+
+    .person-location::before {
+      content: '◎'; font-size: 10px;
+      color: var(--orange);
+    }
+
+    .person-contact {
+      margin-top: auto; padding-top: 32px;
+    }
+
+    .person-contact a {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px; color: rgba(250,246,238,0.3);
+      text-decoration: none;
+      border: 1px solid rgba(250,246,238,0.1);
+      padding: 9px 16px; border-radius: 7px;
+      transition: color 0.15s, border-color 0.15s;
+    }
+    .person-contact a:hover { color: var(--cream); border-color: rgba(250,246,238,0.3); }
+
+    /* Right: bio */
+    .person-bio {
+      padding: 48px 44px;
+      display: flex; flex-direction: column; gap: 20px;
+    }
+
+    .person-bio p {
+      font-size: 15px; font-weight: 300; line-height: 1.75;
+      color: rgba(250,246,238,0.6);
+    }
+
+    .person-bio p strong {
+      font-weight: 600; color: rgba(250,246,238,0.85);
+    }
+
+    .person-stats {
+      display: flex; gap: 28px; flex-wrap: wrap;
+      padding-top: 8px; margin-top: auto;
+      border-top: 1px solid rgba(250,246,238,0.06);
+      padding-top: 20px;
+    }
+
+    .person-stat { display: flex; flex-direction: column; gap: 3px; }
+    .person-stat-val {
+      font-family: 'DM Serif Display', serif;
+      font-size: 22px; color: var(--orange); line-height: 1;
+    }
+    .person-stat-label {
+      font-size: 10px; font-weight: 500; letter-spacing: 0.06em;
+      text-transform: uppercase; color: rgba(250,246,238,0.25);
+    }
+
+    /* ── METHODOLOGY DECLARATION ── */
+    .methodology {
+      position: relative; z-index: 1;
+      max-width: 1000px; margin: 0 auto;
+      padding: 0 48px 80px;
+    }
+
+    .method-header {
+      border-left: 3px solid var(--orange);
+      padding-left: 24px; margin-bottom: 48px;
+    }
+
+    .method-header h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 36px; letter-spacing: -0.02em;
+      color: var(--cream); margin-bottom: 10px;
+    }
+
+    .method-header p {
+      font-size: 14px; font-weight: 300;
+      color: rgba(250,246,238,0.4); line-height: 1.5;
+    }
+
+    .method-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+    }
+
+    .method-block {
+      background: rgba(250,246,238,0.03);
+      border: 1px solid rgba(250,246,238,0.07);
+      border-radius: 12px; padding: 32px 36px;
+      animation: fadeUp 0.5s ease both;
+    }
+
+    .method-block:nth-child(1){ animation-delay:0.05s; }
+    .method-block:nth-child(2){ animation-delay:0.10s; }
+    .method-block:nth-child(3){ animation-delay:0.15s; }
+    .method-block:nth-child(4){ animation-delay:0.20s; }
+    .method-block:nth-child(5){ animation-delay:0.25s; grid-column: 1 / -1; }
+
+    .method-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.1em; color: var(--orange);
+      margin-bottom: 12px;
+    }
+
+    .method-block h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 22px; letter-spacing: -0.01em;
+      color: var(--cream); margin-bottom: 12px; line-height: 1.15;
+    }
+
+    .method-block p {
+      font-size: 14px; font-weight: 300;
+      color: rgba(250,246,238,0.5); line-height: 1.7;
+    }
+
+    .method-block p strong {
+      color: rgba(250,246,238,0.75); font-weight: 500;
+    }
+
+    /* SCI formula block */
+    .method-formula {
+      margin-top: 16px; padding: 14px 18px;
+      background: rgba(0,0,0,0.3);
+      border-radius: 8px; border: 1px solid rgba(250,246,238,0.06);
+    }
+
+    .method-formula code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px; color: var(--orange); letter-spacing: 0.02em;
+    }
+
+    .method-formula-note {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px; color: rgba(250,246,238,0.2);
+      margin-top: 8px; line-height: 1.5;
+    }
+
+    /* ── 10 LAWS ── */
+    .laws {
+      position: relative; z-index: 1;
+      max-width: 1000px; margin: 0 auto;
+      padding: 0 48px 80px;
+    }
+
+    .laws-intro {
+      margin-bottom: 36px;
+    }
+
+    .laws-intro h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 36px; letter-spacing: -0.02em;
+      color: var(--cream); margin-bottom: 10px;
+    }
+
+    .laws-intro p {
+      font-size: 14px; font-weight: 300;
+      color: rgba(250,246,238,0.4); max-width: 560px; line-height: 1.6;
+    }
+
+    .laws-list { display: flex; flex-direction: column; gap: 1px; }
+
+    .law-item {
+      display: grid; grid-template-columns: 52px 1fr;
+      gap: 20px; align-items: start;
+      padding: 20px 24px;
+      background: rgba(250,246,238,0.02);
+      border: 1px solid rgba(250,246,238,0.05);
+      border-radius: 8px;
+      animation: fadeUp 0.4s ease both;
+    }
+
+    .law-item:nth-child(odd) { background: rgba(250,246,238,0.03); }
+
+    .law-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.08em; color: var(--orange);
+      padding-top: 3px; text-align: right;
+    }
+
+    .law-body {}
+
+    .law-title {
+      font-size: 14px; font-weight: 600;
+      color: rgba(250,246,238,0.8); margin-bottom: 4px;
+    }
+
+    .law-desc {
+      font-size: 13px; font-weight: 300;
+      color: rgba(250,246,238,0.4); line-height: 1.55;
+    }
+
+    /* ── CONTACT STRIP ── */
+    .contact-strip {
+      position: relative; z-index: 1;
+      background: rgba(232,96,44,0.06);
+      border-top: 1px solid rgba(232,96,44,0.15);
+      border-bottom: 1px solid rgba(232,96,44,0.15);
+      padding: 56px 48px;
+    }
+
+    .contact-inner {
+      max-width: 1000px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 32px; flex-wrap: wrap;
+    }
+
+    .contact-text {}
+
+    .contact-text h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 32px; letter-spacing: -0.02em;
+      color: var(--cream); margin-bottom: 8px;
+    }
+
+    .contact-text p {
+      font-size: 14px; font-weight: 300;
+      color: rgba(250,246,238,0.45); max-width: 420px; line-height: 1.6;
+    }
+
+    .contact-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    .contact-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 13px; font-weight: 600;
+      padding: 12px 24px; border-radius: 9px; border: none;
+      text-decoration: none; cursor: pointer;
+      transition: transform 0.12s, box-shadow 0.12s;
+    }
+    .contact-btn:hover { transform: translateY(-1px); }
+
+    .contact-btn-primary {
+      background: var(--orange); color: #fff;
+    }
+    .contact-btn-primary:hover { box-shadow: 0 6px 20px rgba(232,96,44,0.35); }
+
+    .contact-btn-secondary {
+      background: rgba(250,246,238,0.07);
+      color: rgba(250,246,238,0.6);
+      border: 1px solid rgba(250,246,238,0.1);
+    }
+    .contact-btn-secondary:hover { color: var(--cream); border-color: rgba(250,246,238,0.25); }
+
+    /* ── FOOTER ── */
+    footer {
+      position: relative; z-index: 1;
+      border-top: 1px solid rgba(250,246,238,0.06);
+      padding: 28px 48px;
+      display: flex; align-items: center;
+      justify-content: space-between; flex-wrap: wrap; gap: 16px;
+    }
+    .footer-brand {
+      font-family: 'DM Serif Display', serif;
+      font-size: 16px; color: rgba(250,246,238,0.4);
+      text-decoration: none;
+    }
+    .footer-links { display: flex; gap: 24px; list-style: none; }
+    .footer-links a {
+      font-size: 12px; font-weight: 500;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      color: rgba(250,246,238,0.2); text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: rgba(250,246,238,0.6); }
+    .footer-legal { font-size: 11px; color: rgba(250,246,238,0.15); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:translateY(0)} }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 0 24px; }
+      .nav-links { display: none; }
+      .hero { padding: 64px 24px 56px; }
+      .section-header, .people, .methodology, .laws { padding-left: 24px; padding-right: 24px; }
+      .person-inner { grid-template-columns: 1fr; }
+      .person-identity { border-right: none; border-bottom: 1px solid rgba(250,246,238,0.06); }
+      .method-grid { grid-template-columns: 1fr; }
+      .method-block:nth-child(5) { grid-column: 1; }
+      .contact-strip { padding: 40px 24px; }
+      .contact-inner { flex-direction: column; align-items: flex-start; }
+      footer { padding: 20px 24px; flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ── NAV ── -->
+  <nav>
+    <a class="nav-brand" href="https://jjaecheverri.github.io/inkluso-magazine/">IN-KluSo</a>
+    <ul class="nav-links">
+      <li><a href="https://jjaecheverri.github.io/inkluso-magazine/core/">Core</a></li>
+      <li><a href="https://jjaecheverri.github.io/inkluso-magazine/signal-model/">SCI Model</a></li>
+      <li><a href="https://jjaecheverri.github.io/inkluso-magazine/humanklu/">HumanKlu™</a></li>
+      <li><a href="https://jjaecheverri.github.io/inkluso-magazine/about/" class="active">About</a></li>
+      <li><a href="https://jjaecheverri.github.io/inkluso-magazine/subscribe/">Subscribe</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <div class="hero">
+    <div class="hero-rule"></div>
+    <h1>Who<br/>builds<br/><em>the signal.</em></h1>
+    <p class="hero-lede">IN-KluSo is a structured, repeatable, human-verified cultural intelligence dataset presented in editorial form. Two people. One methodology. No filler.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <span class="hero-meta-val">Feb 2026</span>
+        <span class="hero-meta-label">Founded</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-val">60</span>
+        <span class="hero-meta-label">Signals published</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-val">~0.90</span>
+        <span class="hero-meta-label">Avg SCI score</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-val">Xtatik</span>
+        <span class="hero-meta-label">Parent brand</span>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider"/>
+
+  <!-- ── PEOPLE SECTION ── -->
+  <div class="section-header">
+    <div class="section-eyebrow">The Team</div>
+    <h2 class="section-title">The humans<br/><em>behind the scores.</em></h2>
+  </div>
+
+  <div class="people">
+
+    <!-- JUAN -->
+    <div class="person-card">
+      <div class="person-inner">
+        <div class="person-identity">
+          <div>
+            <div class="person-tag">
+              <div class="person-tag-dot" style="background:#E8602C;"></div>
+              Editorial Director · GROUND · Cluster 1
+            </div>
+            <h2 class="person-name">Juan Camilo<br/>Echeverri</h2>
+            <p class="person-title">Executive Broker · PAK Home Realty<br/>Northwest Arkansas</p>
+            <div class="person-location">Rogers, Arkansas · United States</div>
+          </div>
+          <div class="person-contact">
+            <a href="/cdn-cgi/l/email-protection#056f6f6460666d60736077776c456268646c692b666a68"><span class="__cf_email__" data-cfemail="7f15151e1a1c171a091a0d0d163f18121e1613511c1012">[email&#160;protected]</span> →</a>
+          </div>
+        </div>
+        <div class="person-bio">
+          <p>Juan Camilo Echeverri is the founder and Editorial Director of IN-KluSo. He leads all signal production, the SCI scoring methodology, and the Farmers Market intelligence cluster — the publication's anchor research thread.</p>
+          <p>By day, he is an Executive Broker at <strong>PAK Home Realty in Rogers, Arkansas</strong>, operating across the Northwest Arkansas commercial and residential market with over $25M in transactions. His work in real estate gave him what most media operators lack: pattern recognition at infrastructure depth — the ability to read a market not from headlines but from permit filings, capital flows, and behavioral shifts on the ground.</p>
+          <p>That same pattern recognition is the engine behind IN-KluSo. Every signal article he produces follows the same discipline he applies to a commercial assessment: source it, mechanism it, territory it, score it. No filler, no speculation dressed as analysis.</p>
+          <p>He built the Signal Confidence Index from scratch as a publishing gate — not a style guide but an actual mathematical threshold. <strong>If it doesn't score 0.65 composite, it doesn't publish.</strong> That standard is why 85% of published signals rate HIGH confidence.</p>
+          <div class="person-stats">
+            <div class="person-stat">
+              <span class="person-stat-val">0.976</span>
+              <span class="person-stat-label">Personal SCI record</span>
+            </div>
+            <div class="person-stat">
+              <span class="person-stat-val">11+</span>
+              <span class="person-stat-label">Cluster 1 signals</span>
+            </div>
+            <div class="person-stat">
+              <span class="person-stat-val">$25M+</span>
+              <span class="person-stat-label">RE transactions</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CAMILO -->
+    <div class="person-card">
+      <div class="person-inner">
+        <div class="person-identity">
+          <div>
+            <div class="person-tag">
+              <div class="person-tag-dot" style="background:#C9A84C;"></div>
+              Creative Director · Cluster 2 Author
+            </div>
+            <h2 class="person-name">Camilo<br/>Osorio</h2>
+            <p class="person-title">Strategy &amp; Brand Transformation<br/>Specialist</p>
+            <div class="person-location">Madrid, Spain</div>
+          </div>
+          <div class="person-contact">
+            <a href="https://jjaecheverri.github.io/inkluso-magazine/kontrarian/">Kontrarian · Madrid →</a>
+          </div>
+        </div>
+        <div class="person-bio">
+          <p>Camilo Osorio is IN-KluSo's Creative Director and the lead author on Cluster 2, currently in formation. He is the strategic and visual intelligence behind the brand's identity — and the reason IN-KluSo looks like a real editorial operation and not a template.</p>
+          <p>Based in Madrid, Camilo brings a graduate training in design from the <strong>Universidad de Madrid</strong> and a Master's in Branding &amp; Visual Identity, with additional formation in Dirección y Gestión de Comunicación, Marketing y Publicidad. His work spans brand transformation for organizations that need to shift not just their look but their entire positioning logic.</p>
+          <p>At IN-KluSo, Camilo's contribution is twofold. On the design side, he holds the visual system — the cream/orange/serif DNA, the graffiti aesthetic, the design integrity doctrine that keeps the publication's presentation as rigorous as its content. On the editorial side, he is the embedded city intelligence node for <strong>Madrid and Southern Europe</strong>, producing ground-level analysis that national media consistently misses.</p>
+          <p>Kontrarian — the sister publication that publishes what the mainstream narrative gets wrong about a place — is, in significant part, his lens. Insiders looking out. Not tourists looking in.</p>
+          <div class="person-stats">
+            <div class="person-stat">
+              <span class="person-stat-val">Madrid</span>
+              <span class="person-stat-label">Ground node</span>
+            </div>
+            <div class="person-stat">
+              <span class="person-stat-val">2</span>
+              <span class="person-stat-label">Active cluster (forming)</span>
+            </div>
+            <div class="person-stat">
+              <span class="person-stat-val">M.Sc.</span>
+              <span class="person-stat-label">Branding &amp; Visual Identity</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /people -->
+
+  <hr class="divider"/>
+
+  <!-- ── METHODOLOGY DECLARATION ── -->
+  <div class="section-header">
+    <div class="section-eyebrow">Methodology Declaration</div>
+    <h2 class="section-title">How the signal<br/><em>gets made.</em></h2>
+  </div>
+
+  <div class="methodology">
+
+    <div class="method-header">
+      <h2>The Signal Confidence Index</h2>
+      <p>A mathematical publishing gate applied to every piece before it goes live. Not a style rubric. Not a gut check. A score.</p>
+    </div>
+
+    <div class="method-grid">
+
+      <div class="method-block">
+        <div class="method-num">DIMENSION 01</div>
+        <h3>Source Quality<br/><span style="color:rgba(250,246,238,0.35);font-style:italic;">35% weight</span></h3>
+        <p>Every source classified as <strong>Tier A</strong> (primary — institutional reports, filings, court records, peer-reviewed research), <strong>Tier B</strong> (secondary — major publications citing primary data accurately), or <strong>Tier C</strong> (commentary — blogs, newsletters, opinion). Tier C sources are color only. They never support numeric claims.<br/><br/>
+        Hard cap: zero Tier A sources and fewer than 2 Tier B sources → SCI ceiling of 0.55. No HIGH rating without primary sourcing.</p>
+      </div>
+
+      <div class="method-block">
+        <div class="method-num">DIMENSION 02</div>
+        <h3>Lens Coverage<br/><span style="color:rgba(250,246,238,0.35);font-style:italic;">30% weight</span></h3>
+        <p>Every signal must address three analytical lenses — <strong>Epistemological</strong> (how we know what we claim to know), <strong>Systems</strong> (the structural forces driving the signal), and <strong>Behavioral</strong> (how affected actors are actually responding). Lens weights vary by division: CORE weights epistemology and systems equally; GROUND weights epistemology and behavioral equally. A signal that only describes outcomes without mechanisms scores low here regardless of source quality.</p>
+      </div>
+
+      <div class="method-block">
+        <div class="method-num">DIMENSION 03</div>
+        <h3>Mechanism Clarity<br/><span style="color:rgba(250,246,238,0.35);font-style:italic;">25% weight</span></h3>
+        <p>Scored 1–5 on causal chain completeness. Score 1: outcome described, no mechanism. Score 5: full causal chain, mechanism named, evidence complete. The difference between journalism and intelligence is mechanism. Anyone can report that something happened. The question is <strong>why it happened and what structural force made it inevitable.</strong> We publish WHY.</p>
+        <div class="method-formula">
+          <code>M = (score − 1) / 4 → normalized 0.0–1.0</code>
+        </div>
+      </div>
+
+      <div class="method-block">
+        <div class="method-num">DIMENSION 04</div>
+        <h3>Territory Specificity<br/><span style="color:rgba(250,246,238,0.35);font-style:italic;">10% weight</span></h3>
+        <p>Four binary criteria: city or neighborhood named (not "urban areas"), time window specified (month + year minimum), actor or institution identified, observable behavior documented (not inferred). Vague claims about broad geographies and unspecified time windows are the hallmark of content — not intelligence. <strong>We publish intelligence.</strong></p>
+      </div>
+
+      <div class="method-block">
+        <div class="method-num">FORMULA</div>
+        <h3>The Composite Score</h3>
+        <p>Components weighted, summed, and classified into four confidence tiers. The publication threshold is <strong>SCI ≥ 0.65 composite</strong>. Below that, the piece publishes as a CRUMB (minimum publishable unit) or does not publish at all. There is no editorial override for a weak SCI score. The math is the gate.</p>
+        <div class="method-formula">
+          <code>SCI = (S × 0.35) + (L × 0.30) + (M × 0.25) + (T × 0.10)</code>
+          <div class="method-formula-note">
+            HIGH: 0.80–1.00 · MODERATE: 0.60–0.79 · LOW: 0.40–0.59 · MINIMAL: &lt;0.40<br/>
+            Record: 0.976 — CORE-002: The 5x Trap · Average (all scored): ~0.90
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <hr class="divider"/>
+
+  <!-- ── 10 CANONICAL LAWS ── -->
+  <div class="laws">
+    <div class="laws-intro">
+      <h2>10 Canonical Laws</h2>
+      <p>The standing rules that govern every editorial decision. They do not bend for deadlines, trending topics, or social pressure. If a piece violates any of them, it does not publish under this masthead.</p>
+    </div>
+
+    <div class="laws-list">
+      <div class="law-item" style="animation-delay:0.02s">
+        <div class="law-num">LAW 01</div>
+        <div class="law-body">
+          <div class="law-title">Eight mandatory sections per signal</div>
+          <div class="law-desc">Signal Header · Micro-Incident · Mechanism · Cultural Consequence · Alternative Explanations · Evidence (VERIFIED/INFERRED separated) · Uncertainty · Signal Tags. Missing any one section = do not publish.</div>
+        </div>
+      </div>
+      <div class="law-item" style="animation-delay:0.04s">
+        <div class="law-num">LAW 02</div>
+        <div class="law-body">
+          <div class="law-title">Source minimum: 1 Tier A or 2 independent Tier B</div>
+          <div class="law-desc">No load-bearing claim rests on commentary alone. Tier C sources provide color. They do not prove things.</div>
+        </div>
+      </div>
+      <div class="law-item" style="animation-delay:0.06s">
+        <div class="law-num">LAW 03</div>
+        <div class="law-body">
+          <div class="law-title">Cluster cap: maximum 3 active simultaneously</div>
+          <div class="law-desc">10 signals each, 3-month coverage window, 2 monitoring updates per cluster. Depth builds authority. Breadth diffuses it.</div>
+        </div>
+      </div>
+      <div class="law-item" style="animation-delay:0.08s">
+        <div class="law-num">LAW 04</div>
+        <div class="law-body">
+          <div class="law-title">Cadence is signal-driven, not calendar-driven</div>
+          <div class="law-desc">Publish when the piece holds up, not when the schedule demands it. 2 signals/month + 4–8 CRUMBS/month + 1 methodology note/quarter is the production floor, not a constraint.</div>
+        </div>
+      </div>
+      <div class="law-item" style="animation-delay:0.10s">
+        <div class="law-num">LAW 05</div>
+        <div class="law-body">
+          <div class="law-title">Machine-readable on every article</div>
+          <div class="law-desc">JSON-LD schema, stable canonical URLs, semantic H2/H3 hierarchy, consistent author slugs. Every article. No exceptions. Intelligence that can't be retrieved isn't intelligence — it's noise.</div>
+        </div>
+      </div>
+      <div class="law-item" style="animation-delay:0.12s">
+        <div class="law-num">LAW 06</div>
+        <div class="law-body">
+          <div class="law-title">30-day retrieval audit</div>
+          <div class="law-desc">Every 30 days: simulate real-world prompts, measure AI retrievability of published signals. The publication must be findable by the systems that serve information to operators. If it isn't, the system is broken and must be fixed.</div>
+        </div>
+      </div>
+      <div class="law-item" style="animation-delay:0.14s">
+        <div class="law-num">LAW 07</div>
+        <div class="law-body">
+          <div class="law-title">Human signature on every piece</div>
+          <div class="law-desc">Real author, bio page, methodological declaration, public contact. The credibility of the publication rests on identifiable, accountable humans — not anonymous editorial voices.</div>
+        </div>
+      </div>
+      <div class="law-item" style="animation-delay:0.16s">
+        <div class="law-num">LAW 08</div>
+        <div class="law-body">
+          <div class="law-title">Forbidden drift — four categories</div>
+          <div class="law-desc">No unsourced speculation. No abstract political commentary. No AI-generated unverified content published under the masthead. No mechanism inflation (claiming causal force you haven't evidenced).</div>
+        </div>
+      </div>
+      <div class="law-item" style="animation-delay:0.18s">
+        <div class="law-num">LAW 09</div>
+        <div class="law-body">
+          <div class="law-title">Authority targets: 10 backlinks, 10 citations, 3 newsletter mentions, 1 academic reference — per 6 months</div>
+          <div class="law-desc">These are not vanity metrics. They are the operational proof that the intelligence is being used by people who matter to the audience IN-KluSo serves.</div>
+        </div>
+      </div>
+      <div class="law-item" style="animation-delay:0.20s">
+        <div class="law-num">LAW 10</div>
+        <div class="law-body">
+          <div class="law-title">Depth over breadth — always</div>
+          <div class="law-desc">Depth builds authority. Breadth diffuses it. When forced to choose between covering one more geography and going deeper on an existing one, the answer is always depth.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── CONTACT ── -->
+  <div class="contact-strip">
+    <div class="contact-inner">
+      <div class="contact-text">
+        <h2>Work with the signal.</h2>
+        <p>Commissions, HumanKlu™ certifications, CI Tool reports, contributor inquiries, and editorial partnerships. One address. Real response times.</p>
+      </div>
+      <div class="contact-actions">
+        <a class="contact-btn contact-btn-primary" href="/cdn-cgi/l/email-protection#3b51515a5e58535e4d5e4949527b5c565a525715585456">
+          Contact Juan →
+        </a>
+        <a class="contact-btn contact-btn-secondary" href="https://jjaecheverri.github.io/inkluso-magazine/humanklu/submit/">
+          HumanKlu™ Certification
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <a class="footer-brand" href="https://jjaecheverri.github.io/inkluso-magazine/">IN-KluSo</a>
+    <ul class="footer-links">
+      <li><a href="https://jjaecheverri.github.io/inkluso-magazine/">Magazine</a></li>
+      <li><a href="https://jjaecheverri.github.io/inkluso-magazine/signal-model/">SCI Model</a></li>
+      <li><a href="https://jjaecheverri.github.io/inkluso-magazine/humanklu/">HumanKlu™</a></li>
+      <li><a href="https://jjaecheverri.github.io/inkluso-magazine/subscribe/">Subscribe</a></li>
+      <li><a href="https:/

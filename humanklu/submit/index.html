@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Submit Content · HumanKlu™ · IN-KluSo</title>
+  <meta name="description" content="Submit your content for HumanKlu™ certification. Five-dimension HCI scoring. Badge issued within 48–72 hours."/>
+  <link rel="canonical" href="https://jjaecheverri.github.io/inkluso-magazine/humanklu/submit/"/>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:   #FAF6EE;
+      --orange:  #E8602C;
+      --black:   #111111;
+      --green:   #2E9B6F;
+      --blue:    #2D6BE4;
+      --gold:    #C9A84C;
+      --card-shadow: 0 2px 20px rgba(17,17,17,0.07), 0 1px 4px rgba(17,17,17,0.04);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--black);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+      position: relative;
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1578301978018-3005759f48f7?w=1920&q=60&auto=format');
+      background-size: cover; background-position: center;
+      opacity: 0.09; mix-blend-mode: multiply; filter: grayscale(40%);
+      pointer-events: none; z-index: 0;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(250,246,238,0.88);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(17,17,17,0.08);
+      padding: 0 40px; height: 56px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-brand { font-family: 'DM Serif Display', serif; font-size: 18px; color: var(--black); text-decoration: none; letter-spacing: -0.02em; }
+    .nav-back { display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 500; color: rgba(17,17,17,0.5); text-decoration: none; transition: color 0.15s; }
+    .nav-back:hover { color: var(--black); }
+
+    /* ── LAYOUT ── */
+    .page-wrap {
+      position: relative; z-index: 1;
+      max-width: 1000px; margin: 0 auto;
+      padding: 64px 40px 80px;
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 48px;
+      align-items: start;
+    }
+
+    /* ── FORM COLUMN ── */
+    .form-col {}
+
+    .form-eyebrow {
+      font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 600;
+      letter-spacing: 0.14em; text-transform: uppercase; color: var(--orange); margin-bottom: 10px;
+    }
+
+    .form-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(36px, 5vw, 56px);
+      letter-spacing: -0.03em; line-height: 1.0;
+      color: var(--black); margin-bottom: 16px;
+    }
+    .form-title em { font-style: italic; color: var(--orange); }
+
+    .form-sub {
+      font-size: 15px; font-weight: 300;
+      color: rgba(17,17,17,0.55); line-height: 1.55;
+      margin-bottom: 40px; max-width: 480px;
+    }
+
+    /* ── FORM CARD ── */
+    .form-card {
+      background: #fff; border-radius: 16px;
+      padding: 40px 36px; box-shadow: var(--card-shadow);
+    }
+
+    /* Progress bar */
+    .progress-bar {
+      display: flex; gap: 4px; margin-bottom: 36px;
+    }
+    .progress-step {
+      flex: 1; height: 3px; border-radius: 2px;
+      background: rgba(17,17,17,0.08);
+      transition: background 0.3s;
+    }
+    .progress-step.active { background: var(--orange); }
+    .progress-step.done   { background: var(--green); }
+
+    /* Field groups */
+    .field-group {
+      display: flex; flex-direction: column; gap: 6px;
+      margin-bottom: 24px;
+    }
+
+    .field-label {
+      font-size: 12px; font-weight: 600;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      color: rgba(17,17,17,0.55);
+    }
+
+    .field-label span {
+      font-weight: 400; text-transform: none; letter-spacing: 0;
+      color: rgba(17,17,17,0.35); font-size: 11px; margin-left: 4px;
+    }
+
+    .field-input, .field-select, .field-textarea {
+      width: 100%; padding: 13px 16px;
+      border: 1.5px solid rgba(17,17,17,0.12);
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px; color: var(--black);
+      background: var(--cream);
+      outline: none;
+      transition: border-color 0.15s, background 0.15s;
+      appearance: none;
+    }
+
+    .field-input:focus, .field-select:focus, .field-textarea:focus {
+      border-color: var(--orange);
+      background: #fff;
+    }
+
+    .field-input::placeholder, .field-textarea::placeholder { color: rgba(17,17,17,0.25); }
+
+    .field-textarea { resize: vertical; min-height: 100px; line-height: 1.5; }
+
+    /* Select wrapper */
+    .select-wrap { position: relative; }
+    .select-wrap::after {
+      content: '⌄'; position: absolute; right: 14px; top: 50%;
+      transform: translateY(-50%); color: rgba(17,17,17,0.35);
+      pointer-events: none; font-size: 16px;
+    }
+    .field-select { cursor: pointer; padding-right: 36px; }
+
+    /* Pill toggle (urgency) */
+    .pill-toggle {
+      display: flex; gap: 4px;
+    }
+    .pill-option {
+      flex: 1; position: relative;
+    }
+    .pill-option input[type="radio"] {
+      position: absolute; opacity: 0; width: 0; height: 0;
+    }
+    .pill-label {
+      display: flex; flex-direction: column; gap: 2px;
+      padding: 14px 16px; border-radius: 8px;
+      border: 1.5px solid rgba(17,17,17,0.12);
+      cursor: pointer; transition: border-color 0.15s, background 0.15s;
+      text-align: center;
+    }
+    .pill-option input:checked + .pill-label {
+      border-color: var(--orange);
+      background: rgba(232,96,44,0.05);
+    }
+    .pill-name {
+      font-size: 14px; font-weight: 600; color: var(--black);
+    }
+    .pill-time {
+      font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--orange);
+    }
+    .pill-note {
+      font-size: 11px; font-weight: 300; color: rgba(17,17,17,0.4);
+    }
+
+    /* Word count helper */
+    .field-row-2 {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+    }
+
+    /* Form divider */
+    .form-divider {
+      border: none; border-top: 1px solid rgba(17,17,17,0.07);
+      margin: 28px 0;
+    }
+
+    .form-section-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+      color: rgba(17,17,17,0.3); margin-bottom: 20px;
+    }
+
+    /* Submit button */
+    .btn-form-submit {
+      width: 100%; padding: 16px;
+      background: var(--orange); color: #fff;
+      border: none; border-radius: 8px;
+      font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 600;
+      cursor: pointer; transition: transform 0.15s, box-shadow 0.15s;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      margin-top: 8px;
+    }
+    .btn-form-submit:hover { transform: translateY(-1px); box-shadow: 0 6px 24px rgba(232,96,44,0.35); }
+    .btn-form-submit:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+    .form-legal {
+      font-size: 11px; color: rgba(17,17,17,0.3);
+      text-align: center; margin-top: 12px; line-height: 1.5;
+    }
+
+    /* Error state */
+    .field-error {
+      font-size: 11px; color: #d63031; font-weight: 500; display: none;
+    }
+    .field-input.error, .field-select.error, .field-textarea.error {
+      border-color: #d63031;
+    }
+
+    /* ── SUCCESS STATE ── */
+    .form-success {
+      display: none; text-align: center;
+      padding: 48px 20px;
+    }
+    .success-icon {
+      width: 64px; height: 64px; border-radius: 50%;
+      background: rgba(46,155,111,0.1); border: 2px solid var(--green);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 28px; margin: 0 auto 20px;
+    }
+    .success-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 28px; letter-spacing: -0.02em; color: var(--black); margin-bottom: 10px;
+    }
+    .success-body {
+      font-size: 14px; font-weight: 300; color: rgba(17,17,17,0.55);
+      line-height: 1.6; max-width: 360px; margin: 0 auto 28px;
+    }
+    .success-ref {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace; font-size: 12px;
+      background: rgba(17,17,17,0.05); border: 1px solid rgba(17,17,17,0.1);
+      padding: 8px 16px; border-radius: 6px; color: rgba(17,17,17,0.5);
+      margin-bottom: 24px;
+    }
+    .btn-back-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 14px; font-weight: 600; color: var(--orange); text-decoration: none;
+    }
+
+    /* ── SIDEBAR ── */
+    .sidebar { position: sticky; top: 80px; }
+
+    .sidebar-card {
+      background: var(--black); border-radius: 14px;
+      padding: 28px; margin-bottom: 12px;
+    }
+
+    .sidebar-eyebrow {
+      font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase; color: var(--orange); margin-bottom: 12px;
+    }
+    .sidebar-title {
+      font-family: 'DM Serif Display', serif; font-size: 20px;
+      letter-spacing: -0.01em; color: var(--cream); margin-bottom: 10px; line-height: 1.2;
+    }
+    .sidebar-body {
+      font-size: 13px; font-weight: 300; color: rgba(250,246,238,0.5); line-height: 1.55;
+    }
+
+    .sidebar-dims {
+      background: #fff; border-radius: 14px; padding: 24px;
+      margin-bottom: 12px; box-shadow: var(--card-shadow);
+    }
+    .sidebar-dims-title {
+      font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase; color: rgba(17,17,17,0.4);
+      margin-bottom: 16px;
+    }
+    .dim-row {
+      display: flex; align-items: center; gap: 10px;
+      padding: 8px 0; border-bottom: 1px solid rgba(17,17,17,0.06);
+    }
+    .dim-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .dim-row-code {
+      font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 600;
+      letter-spacing: 0.06em; padding: 3px 8px; border-radius: 4px; min-width: 46px; text-align: center;
+    }
+    .dim-row-name { font-size: 13px; font-weight: 500; color: var(--black); flex: 1; }
+    .dim-row-weight {
+      font-family: 'JetBrains Mono', monospace; font-size: 11px; color: rgba(17,17,17,0.3);
+    }
+
+    .sidebar-levels {
+      background: #fff; border-radius: 14px; padding: 24px;
+      box-shadow: var(--card-shadow);
+    }
+    .level-row {
+      display: flex; align-items: center; gap: 10px; padding: 7px 0;
+      border-bottom: 1px solid rgba(17,17,17,0.06); font-size: 13px;
+    }
+    .level-row:last-child { border-bottom: none; }
+    .level-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .l1 { background: rgba(17,17,17,0.2); }
+    .l2 { background: var(--blue); }
+    .l3 { background: var(--orange); }
+    .l4 { background: var(--green); }
+    .level-row-name { font-weight: 600; color: var(--black); flex: 1; }
+    .level-row-range { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: rgba(17,17,17,0.4); }
+
+    /* ── FOOTER ── */
+    footer {
+      position: relative; z-index: 1;
+      background: var(--cream); border-top: 1px solid rgba(17,17,17,0.08);
+      padding: 28px 40px; display: flex; align-items: center;
+      justify-content: space-between; flex-wrap: wrap; gap: 16px;
+    }
+    .footer-brand { font-family: 'DM Serif Display', serif; font-size: 16px; color: var(--black); text-decoration: none; }
+    .footer-legal { font-size: 11px; color: rgba(17,17,17,0.3); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .form-col { animation: fadeUp 0.5s ease both; }
+    .sidebar  { animation: fadeUp 0.5s 0.1s ease both; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 860px) {
+      .page-wrap { grid-template-columns: 1fr; }
+      .sidebar { position: static; }
+    }
+    @media (max-width: 640px) {
+      nav { padding: 0 20px; }
+      .page-wrap { padding: 40px 20px 60px; }
+      .form-card { padding: 28px 20px; }
+      .field-row-2 { grid-template-columns: 1fr; }
+      .pill-toggle { flex-direction: column; }
+      footer { padding: 20px; flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ── NAV ── -->
+  <nav>
+    <a class="nav-brand" href="https://jjaecheverri.github.io/inkluso-magazine/">IN-KluSo</a>
+    <a class="nav-back" href="https://jjaecheverri.github.io/inkluso-magazine/humanklu/">← HumanKlu™</a>
+  </nav>
+
+  <!-- ── PAGE WRAP ── -->
+  <div class="page-wrap">
+
+    <!-- ── FORM COLUMN ── -->
+    <div class="form-col">
+      <div class="form-eyebrow">HumanKlu™ Certification</div>
+      <h1 class="form-title">Submit your<br/><em>content.</em></h1>
+      <p class="form-sub">
+        Fill out the form below. We'll score your content across all five HCI dimensions and return a full scorecard within 48–72 hours. Badge issued for content scoring ≥ 0.60.
+      </p>
+
+      <div class="form-card">
+        <!-- Progress -->
+        <div class="progress-bar" id="progress-bar">
+          <div class="progress-step active" id="step-1"></div>
+          <div class="progress-step" id="step-2"></div>
+          <div class="progress-step" id="step-3"></div>
+        </div>
+
+        <!-- ── FORM ── -->
+        <form id="hk-form" novalidate>
+
+          <!-- Section 1: About you -->
+          <div class="form-section-label">01 — About you</div>
+
+          <div class="field-row-2">
+            <div class="field-group">
+              <label class="field-label" for="f-org">Organization <span>required</span></label>
+              <input class="field-input" type="text" id="f-org" name="org" placeholder="Your organization or outlet" autocomplete="organization"/>
+              <span class="field-error" id="err-org">Organization is required</span>
+            </div>
+            <div class="field-group">
+              <label class="field-label" for="f-email">Contact email <span>required</span></label>
+              <input class="field-input" type="email" id="f-email" name="email" placeholder="you@organization.com" autocomplete="email"/>
+              <span class="field-error" id="err-email">A valid email is required</span>
+            </div>
+          </div>
+
+          <hr class="form-divider"/>
+
+          <!-- Section 2: About the content -->
+          <div class="form-section-label">02 — About the content</div>
+
+          <div class="field-row-2">
+            <div class="field-group">
+              <label class="field-label" for="f-type">Content type <span>required</span></label>
+              <div class="select-wrap">
+                <select class="field-select" id="f-type" name="type">
+                  <option value="" disabled selected>Select type</option>
+                  <option value="article">Article / Editorial</option>
+                  <option value="report">Research Report</option>
+                  <option value="press-release">Press Release</option>
+                  <option value="white-paper">White Paper</option>
+                  <option value="policy-brief">Policy Brief</option>
+                  <option value="newsletter">Newsletter</option>
+                  <option value="social">Social / Short-form</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <span class="field-error" id="err-type">Please select a content type</span>
+            </div>
+            <div class="field-group">
+              <label class="field-label" for="f-wordcount">Approximate word count <span>optional</span></label>
+              <input class="field-input" type="number" id="f-wordcount" name="wordcount" placeholder="e.g. 1200" min="1"/>
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label" for="f-url">Content URL <span>paste a link or describe below</span></label>
+            <input class="field-input" type="url" id="f-url" name="url" placeholder="https://yoursite.com/article-slug"/>
+            <span class="field-error" id="err-url">Please enter a valid URL or describe the content below</span>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label" for="f-audience">Intended audience &amp; use case <span>required</span></label>
+            <textarea class="field-textarea" id="f-audience" name="audience" rows="3"
+              placeholder="Who is this content for? What decision, action, or understanding is it meant to support?"></textarea>
+            <span class="field-error" id="err-audience">Please describe the intended audience</span>
+          </div>
+
+          <hr class="form-divider"/>
+
+          <!-- Section 3: Urgency -->
+          <div class="form-section-label">03 — Turnaround</div>
+
+          <div class="field-group">
+            <label class="field-label">Urgency level <span>required</span></label>
+            <div class="pill-toggle">
+              <label class="pill-option">
+                <input type="radio" name="urgency" value="standard" checked/>
+                <div class="pill-label">
+                  <span class="pill-name">Standard</span>
+                  <span class="pill-time">48–72 hours</span>
+                  <span class="pill-note">All certification levels</span>
+                </div>
+              </label>
+              <label class="pill-option">
+                <input type="radio" name="urgency" value="priority"/>
+                <div class="pill-label">
+                  <span class="pill-name">Priority</span>
+                  <span class="pill-time">Same day</span>
+                  <span class="pill-note">Time-sensitive releases</span>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label" for="f-notes">Additional context <span>optional</span></label>
+            <textarea class="field-textarea" id="f-notes" name="notes" rows="2"
+              placeholder="Anything we should know before scoring — sensitivity flags, context, specific concerns about any dimension."></textarea>
+          </div>
+
+          <button type="submit" class="btn-form-submit" id="btn-submit">
+            <span id="btn-text">Submit for certification →</span>
+          </button>
+          <p class="form-legal">
+            Submissions are reviewed by the IN-KluSo editorial team.<br/>
+            No content is published without your permission.
+          </p>
+
+        </form>
+
+        <!-- ── SUCCESS ── -->
+        <div class="form-success" id="form-success">
+          <div class="success-icon">✓</div>
+          <h2 class="success-title">Submission received.</h2>
+          <p class="success-body">
+            We'll review your content across all five HCI dimensions and return your scorecard within the requested turnaround window.
+          </p>
+          <div class="success-ref" id="success-ref">REF-LOADING</div>
+          <p style="font-size:13px; color:rgba(17,17,17,0.45); margin-bottom:20px;">
+            Check <strong id="success-email"></strong> for confirmation and your scorecard.
+          </p>
+          <a class="btn-back-link" href="https://jjaecheverri.github.io/inkluso-magazine/humanklu/">← Back to HumanKlu™</a>
+        </div>
+
+      </div><!-- /form-card -->
+    </div><!-- /form-col -->
+
+    <!-- ── SIDEBAR ── -->
+    <aside class="sidebar">
+
+      <div class="sidebar-card">
+        <div class="sidebar-eyebrow">What you'll receive</div>
+        <h3 class="sidebar-title">Full HCI scorecard — no hedging.</h3>
+        <p class="sidebar-body">Composite score, dimension breakdown, specific notes on what holds up and what doesn't. Badge issued for scores ≥ 0.60. Embeddable HTML + PNG.</p>
+      </div>
+
+      <div class="sidebar-dims">
+        <div class="sidebar-dims-title">Five HCI Dimensions</div>
+        <div class="dim-row">
+          <span class="dim-row-code" style="background:rgba(45,107,228,0.1);color:#2D6BE4;">EVID</span>
+          <span class="dim-row-name">Evidence Quality</span>
+          <span class="dim-row-weight">35%</span>
+        </div>
+        <div class="dim-row">
+          <span class="dim-row-code" style="background:rgba(232,96,44,0.1);color:#E8602C;">MECH</span>
+          <span class="dim-row-name">Mechanism Clarity</span>
+          <span class="dim-row-weight">25%</span>
+        </div>
+        <div class="dim-row">
+          <span class="dim-row-code" style="background:rgba(196,49,122,0.1);color:#C4317A;">INC</span>
+          <span class="dim-row-name">Inclusivity of Perspective</span>
+          <span class="dim-row-weight">20%</span>
+        </div>
+        <div class="dim-row">
+          <span class="dim-row-code" style="background:rgba(201,168,76,0.15);color:#C9A84C;">RISK</span>
+          <span class="dim-row-name">Risk Disclosure</span>
+          <span class="dim-row-weight">10%</span>
+        </div>
+        <div class="dim-row">
+          <span class="dim-row-code" style="background:rgba(46,155,111,0.1);color:#2E9B6F;">SPEC</span>
+          <span class="dim-row-name">Specificity</span>
+          <span class="dim-row-weight">10%</span>
+        </div>
+      </div>
+
+      <div class="sidebar-levels">
+        <div class="sidebar-dims-title">Certification Levels</div>
+        <div class="level-row">
+          <span class="level-dot l4"></span>
+          <span class="level-row-name">Distinguished</span>
+          <span class="level-row-range">0.90–1.00</span>
+        </div>
+        <div class="level-row">
+          <span class="level-dot l3"></span>
+          <span class="level-row-name">Verified</span>
+          <span class="level-row-range">0.75–0.89</span>
+        </div>
+        <div class="level-row">
+          <span class="level-dot l2"></span>
+          <span class="level-row-name">Certified</span>
+          <span class="level-row-range">0.60–0.74</span>
+        </div>
+        <div class="level-row">
+          <span class="level-dot l1"></span>
+          <span class="level-row-name">Reviewed</span>
+          <span class="level-row-range">0.40–0.59</span>
+        </div>
+      </div>
+
+    </aside>
+
+  </div><!-- /page-wrap -->
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <a class="footer-brand" href="https://jjaecheverri.github.io/inkluso-magazine/">IN-KluSo</a>
+    <span class="footer-legal">© 2026 IN-KluSo · Xtatik · HCI Standard v1.0.0</span>
+  </footer>
+
+  <script>
+    // ── PROGRESS TRACKING ──
+    function updateProgress(filled) {
+      const steps = document.querySelectorAll('.progress-step');
+      steps.forEach((s, i) => {
+        s.classList.remove('active', 'done');
+        if (i < filled - 1) s.classList.add('done');
+        else if (i === filled - 1) s.classList.add('active');
+      });
+    }
+
+    const section1Fields = ['f-org', 'f-email'];
+    const section2Fields = ['f-type', 'f-audience'];
+
+    function checkProgress() {
+      const s1 = section1Fields.every(id => document.getElementById(id)?.value.trim());
+      const s2 = section2Fields.every(id => document.getElementById(id)?.value.trim());
+      const s3 = document.querySelector('input[name="urgency"]:checked');
+      if (s1 && s2 && s3) updateProgress(3);
+      else if (s1) updateProgress(2);
+      else updateProgress(1);
+    }
+
+    document.querySelectorAll('.field-input, .field-select, .field-textarea')
+      .forEach(el => el.addEventListener('input', checkProgress));
+
+    // ── VALIDATION ──
+    function validateForm() {
+      let valid = true;
+
+      const required = [
+        { id: 'f-org',      errId: 'err-org',      check: v => v.trim() !== '' },
+        { id: 'f-email',    errId: 'err-email',     check: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) },
+        { id: 'f-type',     errId: 'err-type',      check: v => v !== '' },
+        { id: 'f-audience', errId: 'err-audience',  check: v => v.trim().length >= 10 },
+      ];
+
+      required.forEach(({ id, errId, check }) => {
+        const el = document.getElementById(id);
+        const err = document.getElementById(errId);
+        const val = el?.value || '';
+        if (!check(val)) {
+          el?.classList.add('error');
+          if (err) err.style.display = 'block';
+          valid = false;
+        } else {
+          el?.classList.remove('error');
+          if (err) err.style.display = 'none';
+        }
+      });
+
+      // URL: optional but must be valid if provided
+      const urlEl = document.getElementById('f-url');
+      const urlErr = document.getElementById('err-url');
+      const urlVal = urlEl?.value.trim();
+      const audienceVal = document.getElementById('f-audience')?.value.trim();
+      if (urlVal && !urlVal.startsWith('http')) {
+        urlEl.classList.add('error');
+        urlErr.style.display = 'block';
+        valid = false;
+      } else {
+        urlEl?.classList.remove('error');
+        urlErr.style.display = 'none';
+      }
+
+      return valid;
+    }
+
+    // ── GENERATE REF ID ──
+    function genRef() {
+      const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+      let ref = 'HK-';
+      for (let i = 0; i < 6; i++) ref += chars[Math.floor(Math.random() * chars.length)];
+      return ref;
+    }
+
+    // ── SUBMIT ──
+    document.getElementById('hk-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      if (!validateForm()) return;
+
+      const btn = document.getElementById('btn-submit');
+      const btnText = document.getElementById('btn-text');
+      btn.disabled = true;
+      btnText.textContent = 'Submitting…';
+
+      const submission = {
+        ref: genRef(),
+        ts: new Date().toISOString(),
+        org: document.getElementById('f-org').value.trim(),
+        email: document.getElementById('f-email').value.trim(),
+        type: document.getElementById('f-type').value,
+        wordcount: document.getElementById('f-wordcount').value || null,
+        url: document.getElementById('f-url').value.trim() || null,
+        audience: document.getElementById('f-audience').value.trim(),
+        urgency: document.querySelector('input[name="urgency"]:checked')?.value || 'standard',
+        notes: document.getElementById('f-notes').value.trim() || null,
+        status: 'pending'
+      };
+
+      // ── STORE LOCALLY ──
+      // TODO: Replace with POST to backend (Formspree, Airtable, etc.)
+      // Example Formspree: fetch('https://formspree.io/f/YOUR_ID', { method:'POST', body: JSON.stringify(submission), headers:{'Content-Type':'application/json'} })
+      const queue = JSON.parse(localStorage.getItem('hk_submissions') || '[]');
+      queue.push(submission);
+      localStorage.setItem('hk_submissions', JSON.stringify(queue));
+
+      // ── SHOW SUCCESS ──
+      setTimeout(() => {
+        document.getElementById('hk-form').style.display = 'none';
+        const success = document.getElementById('form-success');
+        success.style.display = 'flex';
+        success.style.flexDirection = 'column';
+        success.style.alignItems = 'center';
+        document.getElementById('success-ref').textContent = submission.ref;
+        document.getElementById('success-email').textContent = submission.email;
+        updateProgress(3);
+        document.querySelector('.progress-step:last-child').classList.add('done');
+      }, 800);
+    });
+
+    // ── CLEAR ERRORS ON INPUT ──
+    document.querySelectorAll('.field-input, .field-select, .field-textarea').forEach(el => {
+      el.addEventListener('input', () => {
+        el.classList.remove('error');
+        const errId = 'err-' + el.id.replace('f-', '');
+        const err = document.getElementById(errId);
+        if (err) err.style.display = 'none';
+      });
+    });
+  </script>
+
+</body>
+</html>

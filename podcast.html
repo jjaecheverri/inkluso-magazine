@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>IN-KluSo · Podcast</title>
+  <meta name="description" content="Signal intelligence for operators and analysts. Human-verified. SCI-scored. Free on your commute."/>
+  <link rel="canonical" href="https://jjaecheverri.github.io/inkluso-magazine/podcast.html"/>
+  <link rel="alternate" type="application/rss+xml" title="IN-KluSo Podcast" href="https://jjaecheverri.github.io/inkluso-magazine/podcast.xml"/>
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "PodcastSeries",
+    "name": "IN-KluSo",
+    "description": "Signal intelligence for operators, analysts, and culturally literate professionals. Human-verified. SCI-scored. No noise.",
+    "url": "https://jjaecheverri.github.io/inkluso-magazine/podcast.html",
+    "author": {
+      "@type": "Person",
+      "name": "Juan Camilo Echeverri",
+      "url": "https://jjaecheverri.github.io/inkluso-magazine/about/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "IN-KluSo · Xtatik"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:      #FAF6EE;
+      --orange:     #E8602C;
+      --black:      #111111;
+      --gold:       #C9A84C;
+      --blue:       #2D6BE4;
+      --magenta:    #C4317A;
+      --green:      #2E9B6F;
+      --orange-dim: rgba(232,96,44,0.12);
+      --card-shadow: 0 2px 24px rgba(17,17,17,0.08), 0 1px 4px rgba(17,17,17,0.04);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--black);
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      line-height: 1.6;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Graffiti wallpaper — 9% opacity */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1578301978018-3005759f48f7?w=1920&q=60&auto=format');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.09;
+      mix-blend-mode: multiply;
+      filter: grayscale(40%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(250,246,238,0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(17,17,17,0.08);
+      padding: 0 32px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-brand {
+      font-family: 'DM Serif Display', serif;
+      font-size: 18px;
+      color: var(--black);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--black);
+      text-decoration: none;
+      opacity: 0.6;
+      transition: opacity 0.2s;
+    }
+
+    .nav-links a:hover { opacity: 1; }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      z-index: 1;
+      padding: 100px 32px 80px;
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--orange);
+      background: var(--orange-dim);
+      border: 1px solid rgba(232,96,44,0.2);
+      padding: 6px 14px;
+      border-radius: 100px;
+      margin-bottom: 32px;
+      animation: fadeUp 0.6s ease both;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--orange);
+      border-radius: 50%;
+      animation: pulse 2s ease infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.8); }
+    }
+
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(52px, 9vw, 96px);
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      color: var(--black);
+      margin-bottom: 24px;
+      animation: fadeUp 0.6s 0.1s ease both;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--orange);
+    }
+
+    .hero-sub {
+      font-size: 18px;
+      font-weight: 300;
+      color: rgba(17,17,17,0.6);
+      max-width: 540px;
+      margin: 0 auto 48px;
+      line-height: 1.5;
+      animation: fadeUp 0.6s 0.2s ease both;
+    }
+
+    /* ── SUBSCRIBE BUTTONS ── */
+    .subscribe-row {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+      animation: fadeUp 0.6s 0.3s ease both;
+    }
+
+    .btn-platform {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 24px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-platform:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(17,17,17,0.15);
+    }
+
+    .btn-platform:active { transform: translateY(0); }
+
+    .btn-spotify {
+      background: #1DB954;
+      color: #fff;
+    }
+
+    .btn-apple {
+      background: var(--black);
+      color: #fff;
+    }
+
+    .btn-rss {
+      background: var(--orange);
+      color: #fff;
+    }
+
+    .btn-platform svg {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+    }
+
+    /* RSS copy row */
+    .rss-copy-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      justify-content: center;
+      margin-bottom: 64px;
+      animation: fadeUp 0.6s 0.35s ease both;
+    }
+
+    .rss-url-field {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: rgba(17,17,17,0.5);
+      background: rgba(17,17,17,0.04);
+      border: 1px solid rgba(17,17,17,0.1);
+      padding: 8px 14px;
+      border-radius: 6px;
+      letter-spacing: 0.02em;
+      cursor: text;
+      user-select: all;
+    }
+
+    .btn-copy {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      background: transparent;
+      border: 1px solid rgba(17,17,17,0.2);
+      color: var(--black);
+      padding: 8px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s, border-color 0.15s;
+    }
+
+    .btn-copy:hover {
+      background: var(--black);
+      color: var(--cream);
+      border-color: var(--black);
+    }
+
+    .btn-copy.copied {
+      background: var(--green);
+      color: #fff;
+      border-color: var(--green);
+    }
+
+    /* ── DIVIDER ── */
+    .torn-divider {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+      margin: 0;
+    }
+
+    .torn-divider svg { display: block; width: 100%; }
+
+    /* ── STATS BAR ── */
+    .stats-bar {
+      background: var(--black);
+      position: relative;
+      z-index: 1;
+      padding: 40px 32px;
+    }
+
+    .stats-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      gap: 48px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 40px;
+      line-height: 1;
+      color: var(--orange);
+      margin-bottom: 4px;
+    }
+
+    .stat-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(250,246,238,0.5);
+    }
+
+    /* ── EPISODES ── */
+    .episodes-section {
+      position: relative;
+      z-index: 1;
+      padding: 80px 32px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+
+    .section-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 32px;
+      letter-spacing: -0.02em;
+      color: var(--black);
+    }
+
+    .section-count {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: rgba(17,17,17,0.4);
+    }
+
+    .episodes-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .episode-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 24px 28px;
+      display: grid;
+      grid-template-columns: 48px 1fr auto;
+      gap: 20px;
+      align-items: center;
+      box-shadow: var(--card-shadow);
+      transition: transform 0.15s, box-shadow 0.15s;
+      text-decoration: none;
+      color: inherit;
+      animation: fadeUp 0.5s ease both;
+    }
+
+    .episode-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(17,17,17,0.12);
+    }
+
+    .ep-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(17,17,17,0.25);
+      text-align: center;
+    }
+
+    .ep-body {}
+
+    .ep-division {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 4px;
+      margin-bottom: 6px;
+    }
+
+    .div-core    { background: rgba(45,107,228,0.1); color: var(--blue); }
+    .div-axis    { background: rgba(196,49,122,0.1); color: var(--magenta); }
+    .div-flow    { background: rgba(196,49,122,0.1); color: var(--magenta); }
+    .div-thrive  { background: rgba(45,107,228,0.1); color: var(--blue); }
+    .div-ground  { background: rgba(46,155,111,0.1); color: var(--green); }
+
+    .ep-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 18px;
+      letter-spacing: -0.01em;
+      color: var(--black);
+      line-height: 1.2;
+      margin-bottom: 4px;
+    }
+
+    .ep-desc {
+      font-size: 13px;
+      color: rgba(17,17,17,0.55);
+      line-height: 1.4;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .ep-meta {
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    .ep-sci {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--orange);
+      margin-bottom: 4px;
+    }
+
+    .ep-sci-badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      padding: 2px 7px;
+      border-radius: 4px;
+      background: rgba(46,155,111,0.1);
+      color: var(--green);
+    }
+
+    /* ── HOW TO SUBMIT ── */
+    .submit-section {
+      position: relative;
+      z-index: 1;
+      background: var(--black);
+      padding: 80px 32px;
+    }
+
+    .submit-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .submit-copy h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 36px;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--cream);
+      margin-bottom: 16px;
+    }
+
+    .submit-copy h2 em {
+      font-style: italic;
+      color: var(--orange);
+    }
+
+    .submit-copy p {
+      font-size: 15px;
+      font-weight: 300;
+      color: rgba(250,246,238,0.6);
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+
+    .submit-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .submit-step {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .step-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--orange);
+      background: rgba(232,96,44,0.12);
+      border: 1px solid rgba(232,96,44,0.2);
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .step-text {
+      font-size: 14px;
+      color: rgba(250,246,238,0.75);
+      line-height: 1.5;
+    }
+
+    .step-text strong {
+      color: var(--cream);
+      font-weight: 600;
+    }
+
+    .step-text code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      background: rgba(250,246,238,0.08);
+      padding: 1px 6px;
+      border-radius: 4px;
+      color: var(--orange);
+    }
+
+    .submit-cta {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .submit-cta .btn-platform {
+      width: 100%;
+      justify-content: center;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      position: relative;
+      z-index: 1;
+      background: var(--cream);
+      border-top: 1px solid rgba(17,17,17,0.08);
+      padding: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: gap;
+      gap: 16px;
+    }
+
+    .footer-brand {
+      font-family: 'DM Serif Display', serif;
+      font-size: 16px;
+      color: var(--black);
+      text-decoration: none;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .footer-links a {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(17,17,17,0.5);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--black); }
+
+    .footer-legal {
+      font-size: 11px;
+      color: rgba(17,17,17,0.35);
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Staggered episode cards */
+    .episode-card:nth-child(1)  { animation-delay: 0.0s; }
+    .episode-card:nth-child(2)  { animation-delay: 0.05s; }
+    .episode-card:nth-child(3)  { animation-delay: 0.10s; }
+    .episode-card:nth-child(4)  { animation-delay: 0.15s; }
+    .episode-card:nth-child(5)  { animation-delay: 0.20s; }
+    .episode-card:nth-child(6)  { animation-delay: 0.25s; }
+    .episode-card:nth-child(7)  { animation-delay: 0.30s; }
+    .episode-card:nth-child(8)  { animation-delay: 0.35s; }
+    .episode-card:nth-child(9)  { animation-delay: 0.40s; }
+    .episode-card:nth-child(10) { animation-delay: 0.45s; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .hero { padding: 64px 20px 48px; }
+      .episodes-section { padding: 48px 20px; }
+      .episode-card {
+        grid-template-columns: 32px 1fr;
+        gap: 12px;
+      }
+      .ep-meta { display: none; }
+      .submit-inner {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .stats-inner { gap: 32px; }
+      footer { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ── NAV ── -->
+  <nav>
+    <a class="nav-brand" href="https://jjaecheverri.github.io/inkluso-magazine/">IN-KluSo</a>
+    <ul class="nav-links">
+      <li><a href="https://jjaecheverri.github.io/inkluso-magazine/core/">Core</a></li>
+      <li><a href="https://jjaecheverri.github.io/inkluso-magazine/cities/">Cities</a></li>
+      <li><a href="https://jjaecheverri.github.io/inkluso-magazine/kontrarian/">Kontrarian</a></li>
+      <li><a href="https://jjaecheverri.github.io/inkluso-magazine/humanklu/">HumanKlu™</a></li>
+      <li><a href="https://jjaecheverri.github.io/inkluso-tools/">Tools</a></li>
+      <li><a href="https://jjaecheverri.github.io/inkluso-magazine/audio/">Audio Library</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section class="hero">
+    <div class="hero-eyebrow">Now on Spotify &amp; Apple Podcasts</div>
+
+    <h1>IN-KluSo<br/><em>Signal.</em></h1>
+
+    <p class="hero-sub">
+      Human-verified intelligence for operators, analysts, and culturally literate professionals.
+      SCI-scored. Sourced. No noise. Free on your commute.
+    </p>
+
+    <div class="subscribe-row">
+      <!-- Spotify — deeplink to show search; replace with direct show URL after submission -->
+      <a class="btn-platform btn-spotify"
+         href="https://open.spotify.com/search/IN-KluSo%20Signal%20Intelligence"
+         target="_blank" rel="noopener">
+        <!-- Spotify icon -->
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.516 17.322a.748.748 0 01-1.03.25c-2.819-1.723-6.365-2.112-10.542-1.158a.748.748 0 11-.334-1.458c4.568-1.045 8.488-.596 11.655 1.337a.748.748 0 01.251 1.029zm1.472-3.274a.937.937 0 01-1.288.308C14.85 12.408 10.74 11.906 7.6 12.83a.938.938 0 01-.578-1.787c3.603-1.066 8.07-.55 11.156 1.717a.937.937 0 01.31 1.288zm.126-3.408c-3.44-2.044-9.12-2.232-12.408-1.234a1.124 1.124 0 11-.652-2.152c3.772-1.144 10.044-.922 14.005 1.428a1.124 1.124 0 01-1.131 1.947l.186-.01z"/>
+        </svg>
+        Listen on Spotify
+      </a>
+
+      <!-- Apple Podcasts — deeplink to search; replace with direct show URL after submission -->
+      <a class="btn-platform btn-apple"
+         href="https://podcasts.apple.com/search?term=IN-KluSo"
+         target="_blank" rel="noopener">
+        <!-- Apple Podcasts icon -->
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M5.34 0A5.328 5.328 0 000 5.34v13.32A5.328 5.328 0 005.34 24h13.32A5.328 5.328 0 0024 18.66V5.34A5.328 5.328 0 0018.66 0zm6.525 2.568c2.336 0 4.448.902 6.056 2.587 1.241 1.302 1.982 2.989 2.109 4.803.019.25.024.498.024.747a9.14 9.14 0 01-.139 1.588 6.645 6.645 0 01-.29 1.059c-.276.786-1.268.957-1.787.362a.965.965 0 01-.237-.524 8.013 8.013 0 00-.145-.863 5.085 5.085 0 00-.195-.663 5.33 5.33 0 00-.194-.487 3.498 3.498 0 00-.25-.476 5.15 5.15 0 00-3.126-2.312 5.07 5.07 0 00-1.32-.173 5.075 5.075 0 00-4.415 2.587 5.074 5.074 0 00-.473 1.218 3.52 3.52 0 00-.114.637c-.046.315-.056.637-.086.956a1.012 1.012 0 01-.283.616c-.52.536-1.43.381-1.726-.3a6.708 6.708 0 01-.315-1.049 9.131 9.131 0 01-.14-1.595 9.39 9.39 0 012.065-5.826A8.979 8.979 0 0111.865 2.568zm.027 3.874a4.755 4.755 0 014.756 4.756 4.755 4.755 0 01-4.756 4.755 4.755 4.755 0 01-4.756-4.755 4.755 4.755 0 014.756-4.756zm0 1.915a2.84 2.84 0 00-2.84 2.84 2.84 2.84 0 002.84 2.842 2.84 2.84 0 002.842-2.841 2.84 2.84 0 00-2.842-2.84zm0 1.434a1.407 1.407 0 110 2.814 1.407 1.407 0 010-2.814zm-1.12 7.167a1.41 1.41 0 011.12.558v3.285a1.407 1.407 0 01-2.814 0v-3.285a1.41 1.41 0 011.694-.558z"/>
+        </svg>
+        Listen on Apple
+      </a>
+
+      <!-- Direct RSS -->
+      <a class="btn-platform btn-rss"
+         href="https://jjaecheverri.github.io/inkluso-magazine/podcast.xml"
+         target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M6.18 15.64a2.18 2.18 0 010 4.36 2.18 2.18 0 010-4.36M4 4.44A15.56 15.56 0 0119.56 20h-2.83A12.73 12.73 0 004 7.27V4.44m0 5.66a9.9 9.9 0 019.9 9.9h-2.83A7.07 7.07 0 004 12.93V10.1z"/>
+        </svg>
+        RSS Feed
+      </a>
+    </div>
+
+    <div class="rss-copy-row">
+      <span class="rss-url-field" id="rss-url">https://jjaecheverri.github.io/inkluso-magazine/podcast.xml</span>
+      <button class="btn-copy" id="copy-btn" onclick="copyRSS()">Copy URL</button>
+    </div>
+  </section>
+
+  <!-- ── TORN DIVIDER ── -->
+  <div class="torn-divider">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 40" preserveAspectRatio="none" height="40">
+      <path d="M0,0 L0,20 Q80,38 160,22 Q240,8 320,28 Q400,42 480,18 Q560,0 640,24 Q720,40 800,16 Q880,0 960,30 Q1040,42 1120,20 Q1200,4 1280,26 Q1360,38 1440,14 L1440,0 Z" fill="#111111"/>
+    </svg>
+  </div>
+
+  <!-- ── STATS BAR ── -->
+  <div class="stats-bar">
+    <div class="stats-inner">
+      <div class="stat-item">
+        <div class="stat-num">60</div>
+        <div class="stat-label">Published Signals</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">51</div>
+        <div class="stat-label">HIGH Confidence</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">0.90</div>
+        <div class="stat-label">Average SCI Score</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">5</div>
+        <div class="stat-label">Editorial Divisions</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">8+</div>
+        <div class="stat-label">Cities Covered</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── TORN DIVIDER (reversed) ── -->
+  <div class="torn-divider" style="transform: scaleY(-1); margin-bottom: -1px;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 40" preserveAspectRatio="none" height="40">
+      <path d="M0,0 L0,30 Q120,42 240,18 Q360,0 480,28 Q600,42 720,12 Q840,0 960,32 Q1080,42 1200,16 Q1320,4 1440,24 L1440,0 Z" fill="#111111"/>
+    </svg>
+  </div>
+
+  <!-- ── EPISODES ── -->
+  <section class="episodes-section">
+    <div class="section-header">
+      <h2 class="section-title">Latest Episodes</h2>
+      <span class="section-count">10 episodes · More queued daily</span>
+    </div>
+
+    <div class="episodes-list">
+
+      <a class="episode-card" href="https://jjaecheverri.github.io/inkluso-magazine/core/the-5x-trap/">
+        <div class="ep-num">01</div>
+        <div class="ep-body">
+          <span class="ep-division div-core">CORE</span>
+          <div class="ep-title">The 5x Trap</div>
+          <div class="ep-desc">The structural trap in five-times leverage plays — why operators keep falling into the same capital destruction pattern and the mechanism that makes it invisible until it isn't.</div>
+        </div>
+        <div class="ep-meta">
+          <div class="ep-sci">0.976</div>
+          <span class="ep-sci-badge">HIGH</span>
+        </div>
+      </a>
+
+      <a class="episode-card" href="https://jjaecheverri.github.io/inkluso-magazine/axis/the-human-authorship-seal/">
+        <div class="ep-num">02</div>
+        <div class="ep-body">
+          <span class="ep-division div-axis">AXIS</span>
+          <div class="ep-title">The Human Authorship Seal</div>
+          <div class="ep-desc">How the collapse of AI content trust is creating a new premium layer for verified human authorship — and who is positioned to certify it.</div>
+        </div>
+        <div class="ep-meta">
+          <div class="ep-sci">0.952</div>
+          <span class="ep-sci-badge">HIGH</span>
+        </div>
+      </a>
+
+      <a class="episode-card" href="https://jjaecheverri.github.io/inkluso-magazine/core/the-trillion-dollar-line-item/">
+        <div class="ep-num">03</div>
+        <div class="ep-body">
+          <span class="ep-division div-core">CORE</span>
+          <div class="ep-title">The Trillion-Dollar Line Item</div>
+          <div class="ep-desc">The infrastructure spending category that doesn't appear on any public budget — and the capital flows moving through it regardless.</div>
+        </div>
+        <div class="ep-meta">
+          <div class="ep-sci">0.950</div>
+          <span class="ep-sci-badge">HIGH</span>
+        </div>
+      </a>
+
+      <a class="episode-card" href="https://jjaecheverri.github.io/inkluso-magazine/axis/the-robot-wage/">
+        <div class="ep-num">04</div>
+        <div class="ep-body">
+          <span class="ep-division div-axis">AXIS</span>
+          <div class="ep-title">The Robot Wage</div>
+          <div class="ep-desc">The wage floor set by automation cost — and why human wages in certain categories are now structurally capped at the price of replacing the role with a machine.</div>
+        </div>
+        <div class="ep-meta">
+          <div class="ep-sci">0.940</div>
+          <span class="ep-sci-badge">HIGH</span>
+        </div>
+      </a>
+
+      <a class="episode-card" href="https://jjaecheverri.github.io/inkluso-magazine/cities/nwa/the-number-one-metro/">
+        <div class="ep-num">05</div>
+        <div class="ep-body">
+          <span class="ep-division div-ground">GROUND</span>
+          <div class="ep-title">The #1 Metro</div>
+          <div class="ep-desc">Northwest Arkansas ranked the #1 metro in the United States — the structural signals behind the ranking and what operators need to understand before the next move.</div>
+        </div>
+        <div class="ep-meta">
+          <div class="ep-sci">0.940</div>
+          <span class="ep-sci-badge">HIGH</span>
+        </div>
+      </a>
+
+      <a class="episode-card" href="https://jjaecheverri.github.io/inkluso-magazine/core/the-extraction-playbook/">
+        <div class="ep-num">06</div>
+        <div class="ep-body">
+          <span class="ep-division div-core">CORE</span>
+          <div class="ep-title">The Extraction Playbook</div>
+          <div class="ep-desc">The repeating structural pattern behind resource extraction in emerging corridor economies — and the three signals that appear before the cycle turns.</div>
+        </div>
+        <div class="ep-meta">
+          <div class="ep-sci">0.920</div>
+          <span class="ep-sci-badge">HIGH</span>
+        </div>
+      </a>
+
+      <a class="episode-card" href="https://jjaecheverri.github.io/inkluso-magazine/core/the-triple-break/">
+        <div class="ep-num">07</div>
+        <div class="ep-body">
+          <span class="ep-division div-core">CORE</span>
+          <div class="ep-title">The Triple Break</div>
+          <div class="ep-desc">Three simultaneous structural fractures in the US labor market — and why the conventional read misses all three mechanisms.</div>
+        </div>
+        <div class="ep-meta">
+          <div class="ep-sci">0.908</div>
+          <span class="ep-sci-badge">HIGH</span>
+        </div>
+      </a>
+
+      <a class="episode-card" href="https://jjaecheverri.github.io/inkluso-magazine/flow/the-last-masthead/">
+        <div class="ep-num">08</div>
+        <div class="ep-body">
+          <span class="ep-division div-flow">FLOW</span>
+          <div class="ep-title">The Last Masthead</div>
+          <div class="ep-desc">The structural collapse of legacy media editorial infrastructure — and what the surviving mastheads have in common that has nothing to do with journalism quality.</div>
+        </div>
+        <div class="ep-meta">
+          <div class="ep-sci">0.910</div>
+          <span class="ep-sci-badge">HIGH</span>
+        </div>
+      </a>
+
+      <a class="episode-card" href="https://jjaecheverri.github.io/inkluso-magazine/thrive/the-credential-collapse/">
+        <div class="ep-num">09</div>
+        <div class="ep-body">
+          <span class="ep-division div-thrive">THRIVE</span>
+          <div class="ep-title">The Credential Collapse</div>
+          <div class="ep-desc">The four-year degree as job qualifier is unwinding — the mechanism behind employer defection from credential requirements and what replaces it structurally.</div>
+        </div>
+        <div class="ep-meta">
+          <div class="ep-sci">0.900</div>
+          <span class="ep-sci-badge">HIGH</span>
+        </div>
+      </a>
+
+      <a class="episode-card" href="https://jjaecheverri.github.io/inkluso-magazine/cities/madrid/the-neighbors-veto/">
+        <div class="ep-num">10</div>
+        <div class="ep-body">
+          <span class="ep-division div-ground">GROUND</span>
+          <div class="ep-title">The Neighbor's Veto</div>
+          <div class="ep-desc">Madrid's community governance mechanism that blocks urban development — the structural legal layer most operators entering the market don't see until it's too late.</div>
+        </div>
+        <div class="ep-meta">
+          <div class="ep-sci">0.900</div>
+          <span class="ep-sci-badge">HIGH</span>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ── SUBMIT TO PLATFORMS ── -->
+  <section class="submit-section">
+    <div class="submit-inner">
+      <div class="submit-copy">
+        <h2>Add IN-KluSo to your <em>app of choice.</em></h2>
+        <p>The RSS feed is live. Submit it directly to Spotify for Podcasters and Apple Podcast Connect. Takes under 5 minutes. No new content required — the feed auto-updates as new audio is processed.</p>
+        <div class="submit-steps">
+          <div class="submit-step">
+            <div class="step-num">01</div>
+            <div class="step-text">Copy the RSS URL: <code>podcast.xml</code></div>
+          </div>
+          <div class="submit-step">
+            <div class="step-num">02</div>
+            <div class="step-text"><strong>Spotify:</strong> Go to <code>podcasters.spotify.com</code> → Add Podcast → paste URL</div>
+          </div>
+          <div class="submit-step">
+            <div class="step-num">03</div>
+            <div class="step-text"><strong>Apple:</strong> Go to <code>podcastsconnect.apple.com</code> → Add Show → paste URL</div>
+          </div>
+          <div class="submit-step">
+            <div class="step-num">04</div>
+            <div class="step-text">Verify ownership via email at <code><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="5b31313a3e38333e2d3e2929321b3c363a323775383436">[email&#160;protected]</a></code> — both platforms send a code</div>
+          </div>
+          <div class="submit-step">
+            <div class="step-num">05</div>
+            <div class="step-text">Upload a <strong>3000×3000px podcast cover</strong> to <code>/assets/podcast-cover.jpg</code> in the repo. Required by Apple and Spotify before approval.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="submit-cta">
+        <a class="btn-platform btn-spotify" href="https://podcasters.spotify.com" target="_blank" rel="noopener" style="width:100%;justify-content:center;">
+          <svg viewBox="0 0 24 24" fill="currentColor" style="width:20px;height:20px;">
+            <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.516 17.322a.748.748 0 01-1.03.25c-2.819-1.723-6.365-2.112-10.542-1.158a.748.748 0 11-.334-1.458c4.568-1.045 8.488-.596 11.655 1.337a.748.748 0 01.251 1.029zm1.472-3.274a.937.937 0 01-1.288.308C14.85 12.408 10.74 11.906 7.6 12.83a.938.938 0 01-.578-1.787c3.603-1.066 8.07-.55 11.156 1.717a.937.937 0 01.31 1.288zm.126-3.408c-3.44-2.044-9.12-2.232-12.408-1.234a1.124 1.124 0 11-.652-2.152c3.772-1.144 10.044-.922 14.005 1.428a1.124 1.124 0 01-1.131 1.947l.186-.01z"/>
+          </svg>
+          Spotify for Podcasters
+        </a>
+        <a class="btn-platform btn-apple" href="https://podcastsconnect.apple.com" target="_blank" rel="noopener" style="width:100%;justify-content:center;">
+          <svg viewBox="0 0 24 24" fill="currentColor" style="width:20px;height:20px;">
+            <path d="M5.34 0A5.328 5.328 0 000 5.34v13.32A5.328 5.328 0 005.34 24h13.32A5.328 5.328 0 0024 18.66V5.34A5.328 5.328 0 0018.66 0zm6.525 2.568c2.336 0 4.448.902 6.056 2.587 1.241 1.302 1.982 2.989 2.109 4.803.019.25.024.498.024.747a9.14 9.14 0 01-.139 1.588 6.645 6.645 0 01-.29 1.059c-.276.786-1.268.957-1.787.362a.965.965 0 01-.237-.524 8.013 8.013 0 00-.145-.863 5.085 5.085 0 00-.195-.663 5.33 5.33 0 00-.194-.487 3.498 3.498 0 00-.25-.476 5.15 5.15 0 00-3.126-2.312 5.07 5.07 0 00-1.32-.173 5.075 5.075 0 00-4.415 2.587 5.074 5.074 0 00-.473 1.218 3.52 3.52 0 00-.114.637c-.046.315-.056.637-.086.956a1.012 1.012 0 01-.283.616c-.52.536-1.43.381-1.726-.3a6.708 6.708 0 01-.315-1.049 9.131 9.131 0 01-.14-1.595 9.39 9.39 0 012.065-5.826A8.979 8.979 0 0111.865 2.568zm.027 3.874a4.755 4.755 0 014.756 4.756 4.755 4.755 0 01-4.756 4.755 4.755 4.755 0 01-4.756-4.755 4.755 4.755 0 014.756-4.756zm0 1.915a2.84 2.84 0 00-2.84 2.84 2.84 2.84 0 002.84 2.842 2.84 2.84 0 002.842-2.841 2.84 2.84 0 00-2.842-2.84zm0 1.434a1.407 1.407 0 110 2.814 1.407 1.407 0 010-2.814zm-1.12 7.167a1.41 1.41 0 011.12.558v3.285a1.407 1.407 0 01-2.814 0v-3.285a1.41 1.41 0 011.694-.558z"/>
+          </svg>
+          Apple Podcast Connect
+        </a>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(250,246,238,0.35);text-align:center;width:100%;padding-top:8px;">
+          RSS · podcast.xml · GitHub Pages
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <a class="footer-brand" href="https://jjaecheverri.github.io/inkluso-magazine/">IN-KluSo</a>
+    <ul class="footer-links">
+      <li><a href="https://jjaecheverri.github.io/inkluso-magazine/">Magazine</a></li>
+      <li><a href="https://jjaecheverri.github.io/inkluso-magazine/audio/">Audio Library</a></li>
+      <li><a href="https://jjaecheverri.github.io/inkluso-magazine/humanklu/">HumanKlu™</a></li>
+      <li><a href="https://jjaecheverri.github.io/inkluso-tools/">Tools</a></li>
+    </ul>
+    <span class="footer-legal">© 2026 IN-KluSo · Xtatik. All rights reserved.</span>
+  </footer>
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    function copyRSS() {
+      const url = 'https://jjaecheverri.github.io/inkluso-magazine/podcast.xml';
+      const btn = document.getElementById('copy-btn');
+      navigator.clipboard.writeText(url).then(() => {
+        btn.text

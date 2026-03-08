@@ -1,183 +1,738 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Listen — IN-KluSo Audio Library</title>
-  <meta name="description" content="Listen to IN-KluSo articles on your commute. Audio versions of every signal, story, and dispatch.">
-  <link rel="canonical" href="https://jjaecheverri.github.io/inkluso-magazine/audio/">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Audio Library · IN-KluSo</title>
+  <meta name="description" content="Every IN-KluSo signal article, voiced by division characters. Free on your commute. No ads."/>
+  <link rel="canonical" href="https://jjaecheverri.github.io/inkluso-magazine/audio/"/>
+  <link rel="alternate" type="application/rss+xml" title="IN-KluSo Podcast" href="https://jjaecheverri.github.io/inkluso-magazine/podcast.xml"/>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root { --cream: #FAF6EE; --black: #111111; --orange: #E05A1C; --gray: #6B6B6B; --light-gray: #E8E4DC; }
-    body { background: var(--cream); color: var(--black); font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.7; }
-    nav { background: var(--black); padding: 0 32px; display: flex; align-items: center; justify-content: space-between; height: 56px; position: sticky; top: 0; z-index: 100; }
-    .nav-logo { color: var(--cream); text-decoration: none; font-family: 'DM Serif Display', serif; font-size: 20px; letter-spacing: 0.04em; }
-    .nav-links { list-style: none; display: flex; gap: 24px; }
-    .nav-links a { color: #AAAAAA; text-decoration: none; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; }
-    .nav-links a:hover, .nav-links a.active { color: var(--cream); }
-    .listen-hero { background: var(--black); color: var(--cream); padding: 80px 32px 60px; text-align: center; }
-    .listen-hero .eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--orange); margin-bottom: 16px; }
-    .listen-hero h1 { font-family: 'DM Serif Display', serif; font-size: 56px; line-height: 1.1; margin-bottom: 20px; }
-    .listen-hero p { font-size: 17px; color: #AAAAAA; max-width: 560px; margin: 0 auto; line-height: 1.6; }
-    .listen-hero .count-badge { display: inline-block; margin-top: 28px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 100px; padding: 6px 20px; font-size: 13px; color: #CCCCCC; }
-    .listen-hero .count-badge strong { color: var(--orange); }
-    .library-main { max-width: 900px; margin: 0 auto; padding: 60px 32px 80px; }
-    .section-block { margin-bottom: 56px; }
-    .section-header { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; }
-    .section-tag { font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--orange); flex-shrink: 0; }
-    .section-line { flex: 1; height: 1px; background: var(--light-gray); }
-    .articles-grid { display: grid; gap: 16px; }
-    .article-card { background: white; border: 1px solid var(--light-gray); border-radius: 8px; padding: 20px 24px; transition: box-shadow 0.2s ease; }
-    .article-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
-    .card-title { display: block; font-family: 'DM Serif Display', serif; font-size: 19px; color: var(--black); text-decoration: none; margin-bottom: 4px; line-height: 1.3; }
-    .card-title:hover { color: var(--orange); }
-    .card-meta { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray); margin-bottom: 14px; }
-    .card-audio { width: 100%; height: 36px; accent-color: var(--orange); display: block; }
-    .coming-soon { background: #F5F0F7; border: 1px dashed #C5A8D8; border-radius: 8px; padding: 24px; text-align: center; color: var(--gray); font-size: 14px; }
-    .coming-soon strong { display: block; font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #7B4FA6; margin-bottom: 6px; }
-    footer { background: var(--black); color: #AAAAAA; padding: 40px 32px; text-align: center; }
-    footer a { color: #AAAAAA; text-decoration: none; }
-    footer a:hover { color: var(--cream); }
-    .footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 16px; font-size: 13px; flex-wrap: wrap; }
-    .footer-copy { font-size: 12px; }
-    @media (max-width: 600px) { nav { padding: 0 16px; } .nav-links { gap: 14px; } .listen-hero { padding: 60px 20px 40px; } .listen-hero h1 { font-size: 38px; } .library-main { padding: 40px 20px 60px; } }
+
+    :root {
+      --cream:    #FAF6EE;
+      --orange:   #E8602C;
+      --black:    #111111;
+      --blue:     #2D6BE4;
+      --magenta:  #C4317A;
+      --green:    #2E9B6F;
+      --gold:     #C9A84C;
+      --card-shadow: 0 2px 20px rgba(17,17,17,0.07), 0 1px 4px rgba(17,17,17,0.04);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--black);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1578301978018-3005759f48f7?w=1920&q=60&auto=format');
+      background-size: cover; background-position: center;
+      opacity: 0.09; mix-blend-mode: multiply; filter: grayscale(40%);
+      pointer-events: none; z-index: 0;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(250,246,238,0.88);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(17,17,17,0.08);
+      padding: 0 40px; height: 56px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-brand { font-family: 'DM Serif Display', serif; font-size: 18px; color: var(--black); text-decoration: none; letter-spacing: -0.02em; }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a { font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--black); text-decoration: none; opacity: 0.5; transition: opacity 0.2s; }
+    .nav-links a:hover, .nav-links a.active { opacity: 1; }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative; z-index: 1;
+      background: var(--black);
+      padding: 72px 40px 64px;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute; top: -40px; right: -40px;
+      width: 400px; height: 400px;
+      background: var(--orange);
+      opacity: 0.05;
+      clip-path: polygon(30% 0%, 100% 0%, 100% 100%, 0% 70%);
+    }
+
+    .hero-inner { max-width: 900px; margin: 0 auto; position: relative; }
+
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--orange);
+      background: rgba(232,96,44,0.1); border: 1px solid rgba(232,96,44,0.2);
+      padding: 5px 14px; border-radius: 100px; margin-bottom: 24px;
+      animation: fadeUp 0.5s ease both;
+    }
+
+    .hero-eyebrow::before {
+      content: ''; width: 6px; height: 6px; border-radius: 50%;
+      background: var(--orange); animation: pulse 2s ease infinite;
+    }
+
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.7)} }
+
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(44px, 7vw, 80px);
+      line-height: 0.95; letter-spacing: -0.03em;
+      color: var(--cream); margin-bottom: 20px;
+      animation: fadeUp 0.5s 0.08s ease both;
+    }
+    .hero h1 em { font-style: italic; color: var(--orange); }
+
+    .hero-sub {
+      font-size: 17px; font-weight: 300;
+      color: rgba(250,246,238,0.5); max-width: 500px;
+      line-height: 1.55; margin-bottom: 36px;
+      animation: fadeUp 0.5s 0.14s ease both;
+    }
+
+    .hero-stats {
+      display: flex; gap: 32px; flex-wrap: wrap;
+      animation: fadeUp 0.5s 0.2s ease both;
+    }
+
+    .hero-stat { display: flex; flex-direction: column; gap: 3px; }
+    .hero-stat-val { font-family: 'DM Serif Display', serif; font-size: 28px; color: var(--orange); line-height: 1; }
+    .hero-stat-label { font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(250,246,238,0.35); }
+
+    .hero-podcast-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 13px; font-weight: 600;
+      color: rgba(250,246,238,0.5);
+      text-decoration: none; margin-left: auto;
+      border: 1px solid rgba(250,246,238,0.12);
+      padding: 8px 16px; border-radius: 8px;
+      transition: color 0.15s, border-color 0.15s;
+      align-self: flex-end;
+    }
+    .hero-podcast-link:hover { color: var(--cream); border-color: rgba(250,246,238,0.3); }
+
+    /* ── TORN ── */
+    .torn { position: relative; z-index: 1; width: 100%; overflow: hidden; line-height: 0; }
+    .torn svg { display: block; width: 100%; }
+
+    /* ── FILTERS ── */
+    .filters-bar {
+      position: relative; z-index: 1;
+      padding: 28px 40px 0;
+      max-width: 940px; margin: 0 auto;
+    }
+
+    .filters-inner {
+      display: flex; gap: 8px; flex-wrap: wrap; align-items: center;
+    }
+
+    .filter-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+      color: rgba(17,17,17,0.35); margin-right: 4px;
+    }
+
+    .filter-btn {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px; font-weight: 600;
+      letter-spacing: 0.04em; text-transform: uppercase;
+      padding: 7px 14px; border-radius: 8px; border: none; cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+      background: rgba(17,17,17,0.06); color: rgba(17,17,17,0.5);
+    }
+
+    .filter-btn:hover { background: rgba(17,17,17,0.1); color: var(--black); }
+
+    .filter-btn.active { color: #fff; }
+    .filter-btn[data-div="all"].active  { background: var(--black); }
+    .filter-btn[data-div="core"].active { background: var(--blue); }
+    .filter-btn[data-div="axis"].active { background: var(--magenta); }
+    .filter-btn[data-div="flow"].active { background: var(--magenta); }
+    .filter-btn[data-div="thrive"].active { background: var(--blue); }
+    .filter-btn[data-div="ground"].active { background: var(--green); }
+    .filter-btn[data-div="crumbs"].active { background: var(--orange); }
+
+    /* ── EPISODE GRID ── */
+    .episodes-wrap {
+      position: relative; z-index: 1;
+      max-width: 940px; margin: 0 auto;
+      padding: 24px 40px 80px;
+    }
+
+    .episodes-count {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px; color: rgba(17,17,17,0.35);
+      margin-bottom: 20px; letter-spacing: 0.04em;
+    }
+
+    .episodes-grid {
+      display: flex; flex-direction: column; gap: 3px;
+    }
+
+    .episode-card {
+      background: #fff; border-radius: 13px;
+      padding: 22px 26px;
+      display: grid;
+      grid-template-columns: 48px 1fr auto;
+      gap: 20px; align-items: center;
+      box-shadow: var(--card-shadow);
+      text-decoration: none; color: inherit;
+      transition: transform 0.15s, box-shadow 0.15s;
+      animation: fadeUp 0.4s ease both;
+    }
+
+    .episode-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(17,17,17,0.11);
+    }
+
+    .ep-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px; font-weight: 500;
+      color: rgba(17,17,17,0.2); text-align: center;
+    }
+
+    .ep-body {}
+
+    .ep-top { display: flex; align-items: center; gap: 8px; margin-bottom: 5px; flex-wrap: wrap; }
+
+    .ep-div-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 3px 8px; border-radius: 4px;
+    }
+
+    .tag-core   { background: rgba(45,107,228,0.1);  color: var(--blue); }
+    .tag-axis   { background: rgba(196,49,122,0.1);  color: var(--magenta); }
+    .tag-flow   { background: rgba(196,49,122,0.1);  color: var(--magenta); }
+    .tag-thrive { background: rgba(45,107,228,0.1);  color: var(--blue); }
+    .tag-ground { background: rgba(46,155,111,0.1);  color: var(--green); }
+    .tag-crumbs { background: rgba(232,96,44,0.1);   color: var(--orange); }
+
+    .ep-voice-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px; color: rgba(17,17,17,0.3); letter-spacing: 0.04em;
+    }
+
+    .ep-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 19px; letter-spacing: -0.01em;
+      color: var(--black); line-height: 1.2; margin-bottom: 4px;
+    }
+
+    .ep-desc {
+      font-size: 13px; font-weight: 300; color: rgba(17,17,17,0.5);
+      line-height: 1.4;
+      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+    }
+
+    .ep-right { text-align: right; flex-shrink: 0; }
+
+    .ep-sci {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px; font-weight: 600; color: var(--orange); margin-bottom: 4px;
+    }
+
+    .ep-badge {
+      display: inline-block; font-size: 9px; font-weight: 600; letter-spacing: 0.06em;
+      padding: 2px 7px; border-radius: 4px;
+      background: rgba(46,155,111,0.1); color: var(--green);
+    }
+
+    .ep-audio-inline {
+      width: 100%; margin-top: 10px;
+      accent-color: var(--orange);
+      height: 28px;
+    }
+
+    /* Pending card */
+    .episode-card.pending {
+      opacity: 0.5; pointer-events: none;
+    }
+    .pending-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px; font-weight: 600; letter-spacing: 0.08em;
+      padding: 2px 7px; border-radius: 4px;
+      background: rgba(17,17,17,0.06); color: rgba(17,17,17,0.3);
+    }
+
+    /* ── VOICE CHARACTERS STRIP ── */
+    .voices-strip {
+      position: relative; z-index: 1;
+      background: var(--black); padding: 48px 40px;
+    }
+    .voices-inner { max-width: 940px; margin: 0 auto; }
+    .voices-title {
+      font-family: 'DM Serif Display', serif; font-size: 28px;
+      letter-spacing: -0.02em; color: var(--cream); margin-bottom: 8px;
+    }
+    .voices-sub { font-size: 13px; font-weight: 300; color: rgba(250,246,238,0.4); margin-bottom: 28px; }
+
+    .voice-cards { display: flex; gap: 3px; flex-wrap: wrap; }
+
+    .voice-card {
+      flex: 1; min-width: 140px;
+      background: rgba(250,246,238,0.04);
+      border: 1px solid rgba(250,246,238,0.07);
+      border-radius: 12px; padding: 20px 16px;
+      text-align: center;
+    }
+
+    .voice-name {
+      font-family: 'DM Serif Display', serif; font-size: 20px;
+      color: var(--orange); margin-bottom: 4px; letter-spacing: -0.01em;
+    }
+    .voice-division { font-family: 'JetBrains Mono', monospace; font-size: 9px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(250,246,238,0.3); margin-bottom: 6px; }
+    .voice-role { font-size: 12px; font-weight: 300; color: rgba(250,246,238,0.45); line-height: 1.3; }
+
+    .voices-demo-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      margin-top: 24px; font-size: 13px; font-weight: 600;
+      color: rgba(250,246,238,0.4); text-decoration: none;
+      border: 1px solid rgba(250,246,238,0.1); padding: 9px 18px; border-radius: 8px;
+      transition: color 0.15s, border-color 0.15s;
+    }
+    .voices-demo-link:hover { color: var(--cream); border-color: rgba(250,246,238,0.3); }
+
+    /* ── FOOTER ── */
+    footer {
+      position: relative; z-index: 1;
+      background: var(--cream); border-top: 1px solid rgba(17,17,17,0.08);
+      padding: 28px 40px; display: flex; align-items: center;
+      justify-content: space-between; flex-wrap: wrap; gap: 16px;
+    }
+    .footer-brand { font-family: 'DM Serif Display', serif; font-size: 16px; color: var(--black); text-decoration: none; }
+    .footer-links { display: flex; gap: 24px; list-style: none; }
+    .footer-links a { font-size: 12px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(17,17,17,0.45); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--black); }
+    .footer-legal { font-size: 11px; color: rgba(17,17,17,0.3); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
+    .episode-card:nth-child(1){animation-delay:0.00s}
+    .episode-card:nth-child(2){animation-delay:0.04s}
+    .episode-card:nth-child(3){animation-delay:0.08s}
+    .episode-card:nth-child(4){animation-delay:0.12s}
+    .episode-card:nth-child(5){animation-delay:0.16s}
+    .episode-card:nth-child(6){animation-delay:0.20s}
+    .episode-card:nth-child(7){animation-delay:0.24s}
+    .episode-card:nth-child(8){animation-delay:0.28s}
+    .episode-card:nth-child(9){animation-delay:0.32s}
+    .episode-card:nth-child(10){animation-delay:0.36s}
+
+    /* ── RESPONSIVE ── */
+    @media (max-width:768px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .hero { padding: 48px 20px 48px; }
+      .filters-bar, .episodes-wrap { padding-left: 20px; padding-right: 20px; }
+      .episode-card { grid-template-columns: 36px 1fr; }
+      .ep-right { display: none; }
+      .voices-strip { padding: 40px 20px; }
+      footer { padding: 20px; flex-direction: column; align-items: flex-start; }
+    }
   </style>
 </head>
+
 <body>
-<nav>
-  <a class="nav-logo" href="/inkluso-magazine/">IN-KluSo</a>
-  <ul class="nav-links">
-    <li><a href="/inkluso-magazine/#core">CORE</a></li>
-    <li><a href="/inkluso-magazine/#thrive">THRIVE</a></li>
-    <li><a href="/inkluso-magazine/axis/">AXIS</a></li>
-    <li><a href="/inkluso-magazine/#flow">FLOW</a></li>
-    <li><a href="/inkluso-magazine/#cities">CITIES</a></li>
-    <li><a href="/inkluso-magazine/kontrarian/">KONTRARIAN</a></li>
-    <li><a href="/inkluso-magazine/audio/" class="active">LISTEN</a></li>
-  </ul>
-</nav>
-<div class="listen-hero">
-  <div class="eyebrow">Audio Library</div>
-  <h1>Listen to IN-KluSo</h1>
-  <p>Every signal, story, and dispatch — now available to hear on your commute, run, or quiet hour.</p>
-  <div class="count-badge">
-    <strong>11 articles</strong> available now &nbsp;·&nbsp; More added daily
-  </div>
-</div>
-<main class="library-main">
 
-  <div class="section-block">
-    <div class="section-header">
-      <span class="section-tag">AXIS</span>
-      <div class="section-line"></div>
-    </div>
-    <div class="articles-grid">
-      <div class="article-card">
-        <a href="/inkluso-magazine/axis/1-6t-backbone/" class="card-title">The $1.6T Backbone</a>
-        <div class="card-meta">AXIS</div>
-        <audio controls class="card-audio">
-          <source src="/inkluso-magazine/axis/1-6t-backbone/audio.mp3" type="audio/mpeg">
-        </audio>
-      </div>
-      <div class="article-card">
-        <a href="/inkluso-magazine/axis/anticipation-layoff/" class="card-title">The Anticipation Layoff</a>
-        <div class="card-meta">AXIS</div>
-        <audio controls class="card-audio">
-          <source src="/inkluso-magazine/axis/anticipation-layoff/audio.mp3" type="audio/mpeg">
-        </audio>
-      </div>
-      <div class="article-card">
-        <a href="/inkluso-magazine/axis/closed-wing/" class="card-title">The Closed Wing</a>
-        <div class="card-meta">AXIS</div>
-        <audio controls class="card-audio">
-          <source src="/inkluso-magazine/axis/closed-wing/audio.mp3" type="audio/mpeg">
-        </audio>
-      </div>
-      <div class="article-card">
-        <a href="/inkluso-magazine/axis/robot-wage/" class="card-title">The Robot Wage</a>
-        <div class="card-meta">AXIS</div>
-        <audio controls class="card-audio">
-          <source src="/inkluso-magazine/axis/robot-wage/audio.mp3" type="audio/mpeg">
-        </audio>
-      </div>
-      <div class="article-card">
-        <a href="/inkluso-magazine/axis/white-collar-recession/" class="card-title">The White-Collar Recession</a>
-        <div class="card-meta">AXIS</div>
-        <audio controls class="card-audio">
-          <source src="/inkluso-magazine/axis/white-collar-recession/audio.mp3" type="audio/mpeg">
-        </audio>
-      </div>
-      <div class="article-card">
-        <a href="/inkluso-magazine/axis/company-kill/" class="card-title">The Company Kill</a>
-        <div class="card-meta">AXIS</div>
-        <audio controls class="card-audio">
-          <source src="/inkluso-magazine/axis/company-kill/audio.mp3" type="audio/mpeg">
-        </audio>
+  <!-- ── NAV ── -->
+  <nav>
+    <a class="nav-brand" href="https://jjaecheverri.github.io/inkluso-magazine/">IN-KluSo</a>
+    <ul class="nav-links">
+      <li><a href="https://jjaecheverri.github.io/inkluso-magazine/core/">Core</a></li>
+      <li><a href="https://jjaecheverri.github.io/inkluso-magazine/audio/" class="active">Audio</a></li>
+      <li><a href="https://jjaecheverri.github.io/inkluso-magazine/podcast.html">Podcast</a></li>
+      <li><a href="https://jjaecheverri.github.io/inkluso-magazine/humanklu/">HumanKlu™</a></li>
+      <li><a href="https://jjaecheverri.github.io/inkluso-magazine/subscribe/">Subscribe</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">Audio Library</div>
+      <h1>Signal.<br/><em>Voiced.</em></h1>
+      <p class="hero-sub">Every IN-KluSo article read by a dedicated division voice. Free on your commute. No ads. New audio added daily.</p>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-val" id="stat-done">10</div>
+          <div class="hero-stat-label">Audio ready</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-val">5</div>
+          <div class="hero-stat-label">Voice characters</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-val">60</div>
+          <div class="hero-stat-label">Total signals</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-val">~4d</div>
+          <div class="hero-stat-label">To full library</div>
+        </div>
+        <a class="hero-podcast-link" href="https://jjaecheverri.github.io/inkluso-magazine/podcast.html">
+          Subscribe via podcast app →
+        </a>
       </div>
     </div>
   </div>
 
-  <div class="section-block">
-    <div class="section-header">
-      <span class="section-tag">CORE</span>
-      <div class="section-line"></div>
-    </div>
-    <div class="articles-grid">
-      <div class="article-card">
-        <a href="/inkluso-magazine/core/172-billion-absence/" class="card-title">The $172 Billion Absence</a>
-        <div class="card-meta">CORE</div>
-        <audio controls class="card-audio">
-          <source src="/inkluso-magazine/core/172-billion-absence/audio.mp3" type="audio/mpeg">
-        </audio>
-      </div>
-      <div class="article-card">
-        <a href="/inkluso-magazine/core/1c-price-tag/" class="card-title">The 1°C Price Tag</a>
-        <div class="card-meta">CORE</div>
-        <audio controls class="card-audio">
-          <source src="/inkluso-magazine/core/1c-price-tag/audio.mp3" type="audio/mpeg">
-        </audio>
-      </div>
-      <div class="article-card">
-        <a href="/inkluso-magazine/core/200b-floor/" class="card-title">The $200B Floor</a>
-        <div class="card-meta">CORE</div>
-        <audio controls class="card-audio">
-          <source src="/inkluso-magazine/core/200b-floor/audio.mp3" type="audio/mpeg">
-        </audio>
-      </div>
-      <div class="article-card">
-        <a href="/inkluso-magazine/core/2t-hole/" class="card-title">The $2T Hole</a>
-        <div class="card-meta">CORE</div>
-        <audio controls class="card-audio">
-          <source src="/inkluso-magazine/core/2t-hole/audio.mp3" type="audio/mpeg">
-        </audio>
-      </div>
-      <div class="article-card">
-        <a href="/inkluso-magazine/core/90-barrel/" class="card-title">The $90 Barrel</a>
-        <div class="card-meta">CORE</div>
-        <audio controls class="card-audio">
-          <source src="/inkluso-magazine/core/90-barrel/audio.mp3" type="audio/mpeg">
-        </audio>
-      </div>
+  <!-- ── TORN ── -->
+  <div class="torn" style="transform:scaleY(-1); margin-bottom:-1px;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 40" preserveAspectRatio="none" height="40">
+      <path d="M0,0 L0,26 Q120,42 240,14 Q360,0 480,28 Q600,42 720,12 Q840,0 960,30 Q1080,42 1200,18 Q1320,4 1440,22 L1440,0 Z" fill="#111111"/>
+    </svg>
+  </div>
+
+  <!-- ── FILTERS ── -->
+  <div class="filters-bar">
+    <div class="filters-inner">
+      <span class="filter-label">Filter</span>
+      <button class="filter-btn active" data-div="all" onclick="filterEpisodes('all', this)">All</button>
+      <button class="filter-btn" data-div="core" onclick="filterEpisodes('core', this)">Core</button>
+      <button class="filter-btn" data-div="axis" onclick="filterEpisodes('axis', this)">Axis</button>
+      <button class="filter-btn" data-div="flow" onclick="filterEpisodes('flow', this)">Flow</button>
+      <button class="filter-btn" data-div="thrive" onclick="filterEpisodes('thrive', this)">Thrive</button>
+      <button class="filter-btn" data-div="ground" onclick="filterEpisodes('ground', this)">Ground</button>
+      <button class="filter-btn" data-div="crumbs" onclick="filterEpisodes('crumbs', this)">Crumbs</button>
     </div>
   </div>
 
-  <div class="coming-soon">
-    <strong>More coming soon</strong>
-    42 more articles are being converted. New audio episodes are added daily.
+  <!-- ── EPISODES ── -->
+  <div class="episodes-wrap">
+    <div class="episodes-count" id="ep-count">Showing 10 of 60 episodes — 50 queued for audio</div>
+
+    <div class="episodes-grid" id="episodes-grid">
+
+      <!-- ── DONE EPISODES ── -->
+
+      <a class="episode-card" data-div="core"
+         href="https://jjaecheverri.github.io/inkluso-magazine/core/the-5x-trap/">
+        <div class="ep-num">01</div>
+        <div class="ep-body">
+          <div class="ep-top">
+            <span class="ep-div-tag tag-core">CORE</span>
+            <span class="ep-voice-tag">Kore · Business Analyst</span>
+          </div>
+          <div class="ep-title">The 5x Trap</div>
+          <div class="ep-desc">The structural trap in five-times leverage plays — why operators keep falling into the same capital destruction pattern.</div>
+          <audio class="ep-audio-inline" controls preload="none" onclick="event.stopPropagation()">
+            <source src="https://jjaecheverri.github.io/inkluso-magazine/core/the-5x-trap/audio.mp3" type="audio/mpeg"/>
+          </audio>
+        </div>
+        <div class="ep-right">
+          <div class="ep-sci">0.976</div>
+          <span class="ep-badge">HIGH</span>
+        </div>
+      </a>
+
+      <a class="episode-card" data-div="axis"
+         href="https://jjaecheverri.github.io/inkluso-magazine/axis/the-human-authorship-seal/">
+        <div class="ep-num">02</div>
+        <div class="ep-body">
+          <div class="ep-top">
+            <span class="ep-div-tag tag-axis">AXIS</span>
+            <span class="ep-voice-tag">Charon · Geopolitics Analyst</span>
+          </div>
+          <div class="ep-title">The Human Authorship Seal</div>
+          <div class="ep-desc">How the collapse of AI content trust is creating a new premium layer for verified human authorship.</div>
+          <audio class="ep-audio-inline" controls preload="none" onclick="event.stopPropagation()">
+            <source src="https://jjaecheverri.github.io/inkluso-magazine/axis/the-human-authorship-seal/audio.mp3" type="audio/mpeg"/>
+          </audio>
+        </div>
+        <div class="ep-right">
+          <div class="ep-sci">0.952</div>
+          <span class="ep-badge">HIGH</span>
+        </div>
+      </a>
+
+      <a class="episode-card" data-div="core"
+         href="https://jjaecheverri.github.io/inkluso-magazine/core/the-trillion-dollar-line-item/">
+        <div class="ep-num">03</div>
+        <div class="ep-body">
+          <div class="ep-top">
+            <span class="ep-div-tag tag-core">CORE</span>
+            <span class="ep-voice-tag">Kore · Business Analyst</span>
+          </div>
+          <div class="ep-title">The Trillion-Dollar Line Item</div>
+          <div class="ep-desc">The infrastructure spending category that doesn't appear on any public budget — and the capital flows moving through it regardless.</div>
+          <audio class="ep-audio-inline" controls preload="none" onclick="event.stopPropagation()">
+            <source src="https://jjaecheverri.github.io/inkluso-magazine/core/the-trillion-dollar-line-item/audio.mp3" type="audio/mpeg"/>
+          </audio>
+        </div>
+        <div class="ep-right">
+          <div class="ep-sci">0.950</div>
+          <span class="ep-badge">HIGH</span>
+        </div>
+      </a>
+
+      <a class="episode-card" data-div="axis"
+         href="https://jjaecheverri.github.io/inkluso-magazine/axis/the-robot-wage/">
+        <div class="ep-num">04</div>
+        <div class="ep-body">
+          <div class="ep-top">
+            <span class="ep-div-tag tag-axis">AXIS</span>
+            <span class="ep-voice-tag">Charon · Geopolitics Analyst</span>
+          </div>
+          <div class="ep-title">The Robot Wage</div>
+          <div class="ep-desc">The wage floor set by automation cost — and why human wages in certain categories are now structurally capped at the price of replacing the role.</div>
+          <audio class="ep-audio-inline" controls preload="none" onclick="event.stopPropagation()">
+            <source src="https://jjaecheverri.github.io/inkluso-magazine/axis/the-robot-wage/audio.mp3" type="audio/mpeg"/>
+          </audio>
+        </div>
+        <div class="ep-right">
+          <div class="ep-sci">0.940</div>
+          <span class="ep-badge">HIGH</span>
+        </div>
+      </a>
+
+      <a class="episode-card" data-div="ground"
+         href="https://jjaecheverri.github.io/inkluso-magazine/cities/nwa/the-number-one-metro/">
+        <div class="ep-num">05</div>
+        <div class="ep-body">
+          <div class="ep-top">
+            <span class="ep-div-tag tag-ground">GROUND</span>
+            <span class="ep-voice-tag">Aoede · City Correspondent</span>
+          </div>
+          <div class="ep-title">The #1 Metro</div>
+          <div class="ep-desc">Northwest Arkansas ranked #1 metro in the United States — the structural signals behind the ranking and what operators need to understand.</div>
+          <audio class="ep-audio-inline" controls preload="none" onclick="event.stopPropagation()">
+            <source src="https://jjaecheverri.github.io/inkluso-magazine/cities/nwa/the-number-one-metro/audio.mp3" type="audio/mpeg"/>
+          </audio>
+        </div>
+        <div class="ep-right">
+          <div class="ep-sci">0.940</div>
+          <span class="ep-badge">HIGH</span>
+        </div>
+      </a>
+
+      <a class="episode-card" data-div="core"
+         href="https://jjaecheverri.github.io/inkluso-magazine/core/the-extraction-playbook/">
+        <div class="ep-num">06</div>
+        <div class="ep-body">
+          <div class="ep-top">
+            <span class="ep-div-tag tag-core">CORE</span>
+            <span class="ep-voice-tag">Kore · Business Analyst</span>
+          </div>
+          <div class="ep-title">The Extraction Playbook</div>
+          <div class="ep-desc">The repeating structural pattern behind resource extraction in emerging corridor economies.</div>
+          <audio class="ep-audio-inline" controls preload="none" onclick="event.stopPropagation()">
+            <source src="https://jjaecheverri.github.io/inkluso-magazine/core/the-extraction-playbook/audio.mp3" type="audio/mpeg"/>
+          </audio>
+        </div>
+        <div class="ep-right">
+          <div class="ep-sci">0.920</div>
+          <span class="ep-badge">HIGH</span>
+        </div>
+      </a>
+
+      <a class="episode-card" data-div="flow"
+         href="https://jjaecheverri.github.io/inkluso-magazine/flow/the-last-masthead/">
+        <div class="ep-num">07</div>
+        <div class="ep-body">
+          <div class="ep-top">
+            <span class="ep-div-tag tag-flow">FLOW</span>
+            <span class="ep-voice-tag">Puck · Culture &amp; Lifestyle</span>
+          </div>
+          <div class="ep-title">The Last Masthead</div>
+          <div class="ep-desc">The structural collapse of legacy media editorial infrastructure — and what the surviving mastheads have in common.</div>
+          <audio class="ep-audio-inline" controls preload="none" onclick="event.stopPropagation()">
+            <source src="https://jjaecheverri.github.io/inkluso-magazine/flow/the-last-masthead/audio.mp3" type="audio/mpeg"/>
+          </audio>
+        </div>
+        <div class="ep-right">
+          <div class="ep-sci">0.910</div>
+          <span class="ep-badge">HIGH</span>
+        </div>
+      </a>
+
+      <a class="episode-card" data-div="core"
+         href="https://jjaecheverri.github.io/inkluso-magazine/core/the-triple-break/">
+        <div class="ep-num">08</div>
+        <div class="ep-body">
+          <div class="ep-top">
+            <span class="ep-div-tag tag-core">CORE</span>
+            <span class="ep-voice-tag">Kore · Business Analyst</span>
+          </div>
+          <div class="ep-title">The Triple Break</div>
+          <div class="ep-desc">Three simultaneous structural fractures in the US labor market — and why the conventional read misses all three mechanisms.</div>
+          <audio class="ep-audio-inline" controls preload="none" onclick="event.stopPropagation()">
+            <source src="https://jjaecheverri.github.io/inkluso-magazine/core/the-triple-break/audio.mp3" type="audio/mpeg"/>
+          </audio>
+        </div>
+        <div class="ep-right">
+          <div class="ep-sci">0.908</div>
+          <span class="ep-badge">HIGH</span>
+        </div>
+      </a>
+
+      <a class="episode-card" data-div="thrive"
+         href="https://jjaecheverri.github.io/inkluso-magazine/thrive/the-credential-collapse/">
+        <div class="ep-num">09</div>
+        <div class="ep-body">
+          <div class="ep-top">
+            <span class="ep-div-tag tag-thrive">THRIVE</span>
+            <span class="ep-voice-tag">Aoede · Wellness Guide</span>
+          </div>
+          <div class="ep-title">The Credential Collapse</div>
+          <div class="ep-desc">The four-year degree as job qualifier is unwinding — the mechanism behind employer defection from credential requirements.</div>
+          <audio class="ep-audio-inline" controls preload="none" onclick="event.stopPropagation()">
+            <source src="https://jjaecheverri.github.io/inkluso-magazine/thrive/the-credential-collapse/audio.mp3" type="audio/mpeg"/>
+          </audio>
+        </div>
+        <div class="ep-right">
+          <div class="ep-sci">0.900</div>
+          <span class="ep-badge">HIGH</span>
+        </div>
+      </a>
+
+      <a class="episode-card" data-div="ground"
+         href="https://jjaecheverri.github.io/inkluso-magazine/cities/madrid/the-neighbors-veto/">
+        <div class="ep-num">10</div>
+        <div class="ep-body">
+          <div class="ep-top">
+            <span class="ep-div-tag tag-ground">GROUND</span>
+            <span class="ep-voice-tag">Aoede · City Correspondent</span>
+          </div>
+          <div class="ep-title">The Neighbor's Veto</div>
+          <div class="ep-desc">Madrid's community governance mechanism that blocks urban development — the structural legal layer most operators entering the market don't see.</div>
+          <audio class="ep-audio-inline" controls preload="none" onclick="event.stopPropagation()">
+            <source src="https://jjaecheverri.github.io/inkluso-magazine/cities/madrid/the-neighbors-veto/audio.mp3" type="audio/mpeg"/>
+          </audio>
+        </div>
+        <div class="ep-right">
+          <div class="ep-sci">0.900</div>
+          <span class="ep-badge">HIGH</span>
+        </div>
+      </a>
+
+      <!-- ── PENDING EPISODES (sample) ── -->
+      <div class="episode-card pending" data-div="core">
+        <div class="ep-num">11</div>
+        <div class="ep-body">
+          <div class="ep-top">
+            <span class="ep-div-tag tag-core">CORE</span>
+            <span class="pending-badge">Audio queued</span>
+          </div>
+          <div class="ep-title">The Slow Climb</div>
+          <div class="ep-desc">CORE-015 · SCI 0.950</div>
+        </div>
+        <div class="ep-right">
+          <div class="ep-sci">0.950</div>
+          <span class="ep-badge" style="background:rgba(17,17,17,0.06);color:rgba(17,17,17,0.3);">QUEUED</span>
+        </div>
+      </div>
+
+      <div class="episode-card pending" data-div="axis">
+        <div class="ep-num">12</div>
+        <div class="ep-body">
+          <div class="ep-top">
+            <span class="ep-div-tag tag-axis">AXIS</span>
+            <span class="pending-badge">Audio queued</span>
+          </div>
+          <div class="ep-title">The White-Collar Recession</div>
+          <div class="ep-desc">AXIS-006 · SCI 0.920</div>
+        </div>
+        <div class="ep-right">
+          <div class="ep-sci">0.920</div>
+          <span class="ep-badge" style="background:rgba(17,17,17,0.06);color:rgba(17,17,17,0.3);">QUEUED</span>
+        </div>
+      </div>
+
+    </div>
   </div>
-</main>
-<footer>
-  <div class="footer-links">
-    <a href="/inkluso-magazine/">Home</a>
-    <a href="/inkluso-magazine/axis/">AXIS</a>
-    <a href="/inkluso-magazine/#core">CORE</a>
-    <a href="/inkluso-magazine/#flow">FLOW</a>
-    <a href="/inkluso-magazine/kontrarian/">KONTRARIAN</a>
-    <a href="/inkluso-magazine/audio/">LISTEN</a>
+
+  <!-- ── VOICE CHARACTERS ── -->
+  <div class="voices-strip">
+    <div class="voices-inner">
+      <h2 class="voices-title">Five voices. Five divisions.</h2>
+      <p class="voices-sub">Each division has a dedicated character. One voice per beat — so you always know who's talking.</p>
+      <div class="voice-cards">
+        <div class="voice-card">
+          <div class="voice-name">Kore</div>
+          <div class="voice-division">Core · Signals</div>
+          <div class="voice-role">Business Analyst — crisp, authoritative, precise</div>
+        </div>
+        <div class="voice-card">
+          <div class="voice-name">Charon</div>
+          <div class="voice-division">Axis</div>
+          <div class="voice-role">Geopolitics Analyst — deep, commanding, unsparing</div>
+        </div>
+        <div class="voice-card">
+          <div class="voice-name">Puck</div>
+          <div class="voice-division">Flow · Crumbs</div>
+          <div class="voice-role">Culture &amp; Lifestyle — vibrant, energetic, knowing</div>
+        </div>
+        <div class="voice-card">
+          <div class="voice-name">Aoede</div>
+          <div class="voice-division">Cities · Thrive</div>
+          <div class="voice-role">City Correspondent — warm, curious, grounded</div>
+        </div>
+        <div class="voice-card">
+          <div class="voice-name">Fenrir</div>
+          <div class="voice-division">Kontrarian</div>
+          <div class="voice-role">The Contrarian — bold, edgy, confrontational</div>
+        </div>
+      </div>
+      <a class="voices-demo-link" href="https://jjaecheverri.github.io/inkluso-magazine/audio/voices/">
+        Hear all five voices →
+      </a>
+    </div>
   </div>
-  <p class="footer-copy">© 2026 IN-KluSo · Built in Northwest Arkansas</p>
-</footer>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <a class="footer-brand" href="https://jjaecheverri.github.io/inkluso-magazine/">IN-KluSo</a>
+    <ul class="footer-links">
+      <li><a href="https://jjaecheverri.github.io/inkluso-magazine/">Magazine</a></li>
+      <li><a href="https://jjaecheverri.github.io/inkluso-magazine/podcast.html">Podcast RSS</a></li>
+      <li><a href="https://jjaecheverri.github.io/inkluso-magazine/subscribe/">Subscribe</a></li>
+      <li><a href="https://jjaecheverri.github.io/inkluso-tools/">Tools</a></li>
+    </ul>
+    <span class="footer-legal">© 2026 IN-KluSo · Xtatik. Free on your commute. No ads.</span>
+  </footer>
+
+  <script>
+    function filterEpisodes(div, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const cards = document.querySelectorAll('.episode-card');
+      let shown = 0;
+      cards.forEach(card => {
+        const match = div === 'all' || card.dataset.div === div;
+        card.style.display = match ? 'grid' : 'none';
+        if (match && !card.classList.contains('pending')) shown++;
+      });
+
+      const total = div === 'all' ? 60 : { core:20, axis:9, flow:11, thrive:11, ground:9, crumbs:24 }[div] || 60;
+      document.getElementById('ep-count').textContent =
+        'Showing ' + shown + ' audio-ready' + (div !== 'all' ? ' ' + div.toUpperCase() : '') + ' episodes · ' + (total - shown) + ' queued';
+    }
+  </script>
+
 </body>
 </html>

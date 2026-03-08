@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+  xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
+  xmlns:podcast="https://podcastindex.org/namespace/1.0"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/">
+
+  <channel>
+    <title>IN-KluSo</title>
+    <link>https://jjaecheverri.github.io/inkluso-magazine/</link>
+    <language>en</language>
+    <description>Signal intelligence for operators, analysts, and culturally literate professionals. Human-verified. SCI-scored. No noise. Free on your commute.</description>
+    <itunes:summary>Signal intelligence for operators, analysts, and culturally literate professionals. Human-verified. SCI-scored. No noise. Free on your commute.</itunes:summary>
+    <itunes:author>Juan Camilo Echeverri · IN-KluSo</itunes:author>
+    <itunes:owner>
+      <itunes:name>Juan Camilo Echeverri</itunes:name>
+      <itunes:email>jjaecheverri@gmail.com</itunes:email>
+    </itunes:owner>
+    <itunes:image href="https://jjaecheverri.github.io/inkluso-magazine/assets/podcast-cover.jpg"/>
+    <image>
+      <url>https://jjaecheverri.github.io/inkluso-magazine/assets/podcast-cover.jpg</url>
+      <title>IN-KluSo</title>
+      <link>https://jjaecheverri.github.io/inkluso-magazine/</link>
+    </image>
+    <itunes:category text="News">
+      <itunes:category text="Daily News"/>
+    </itunes:category>
+    <itunes:category text="Business">
+      <itunes:category text="Investing"/>
+    </itunes:category>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:type>episodic</itunes:type>
+    <copyright>© 2026 IN-KluSo · Xtatik. All rights reserved.</copyright>
+    <managingEditor>jjaecheverri@gmail.com (Juan Camilo Echeverri)</managingEditor>
+    <webMaster>jjaecheverri@gmail.com</webMaster>
+    <lastBuildDate>Sat, 07 Mar 2026 12:00:00 +0000</lastBuildDate>
+
+    <!-- Podcast 2.0 namespace tags -->
+    <podcast:locked>no</podcast:locked>
+    <podcast:guid>inkluso-magazine-signal-intelligence-2026</podcast:guid>
+
+    <!-- Self-referencing atom link — required by Spotify and Apple -->
+    <atom:link href="https://jjaecheverri.github.io/inkluso-magazine/podcast.xml" rel="self" type="application/rss+xml"/>
+
+    <!-- ═══════════════════════════════════════════════════
+         EPISODES — ALL ~10 DONE ARTICLES
+         Seeded in reverse-chronological order (newest first)
+         Audio URLs follow repo pattern: /{section}/{slug}/audio.mp3
+         Durations are estimated — update with actual values post-generation
+         ═══════════════════════════════════════════════════ -->
+
+    <!-- EPISODE 1 — CORE-002 · SCI Record 0.976 -->
+    <item>
+      <title>The 5x Trap · CORE-002</title>
+      <link>https://jjaecheverri.github.io/inkluso-magazine/core/the-5x-trap/</link>
+      <guid isPermaLink="false">inkluso-core-002-the-5x-trap</guid>
+      <pubDate>Sat, 07 Mar 2026 08:00:00 +0000</pubDate>
+      <description>SCI 0.976 · HIGH · The structural trap in five-times leverage plays — why operators keep falling into the same capital destruction pattern and the mechanism that makes it invisible until it isn't.</description>
+      <itunes:summary>SCI 0.976 · HIGH · The structural trap in five-times leverage plays — why operators keep falling into the same capital destruction pattern and the mechanism that makes it invisible until it isn't.</itunes:summary>
+      <itunes:author>Juan Camilo Echeverri</itunes:author>
+      <itunes:duration>00:12:00</itunes:duration>
+      <itunes:explicit>false</itunes:explicit>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>1</itunes:season>
+      <itunes:episode>1</itunes:episode>
+      <itunes:image href="https://jjaecheverri.github.io/inkluso-magazine/core/the-5x-trap/hero.jpg"/>
+      <enclosure
+        url="https://jjaecheverri.github.io/inkluso-magazine/core/the-5x-trap/audio.mp3"
+        length="11520000"
+        type="audio/mpeg"/>
+      <category>CORE</category>
+    </item>
+
+    <!-- EPISODE 2 — CORE-001 · SCI 0.908 -->
+    <item>
+      <title>The Triple Break · CORE-001</title>
+      <link>https://jjaecheverri.github.io/inkluso-magazine/core/the-triple-break/</link>
+      <guid isPermaLink="false">inkluso-core-001-the-triple-break</guid>
+      <pubDate>Fri, 06 Mar 2026 08:00:00 +0000</pubDate>
+      <description>SCI 0.908 · HIGH · Three simultaneous structural fractures in the US labor market — and why the conventional read misses all three mechanisms.</description>
+      <itunes:summary>SCI 0.908 · HIGH · Three simultaneous structural fractures in the US labor market — and why the conventional read misses all three mechanisms.</itunes:summary>
+      <itunes:author>Juan Camilo Echeverri</itunes:author>
+      <itunes:duration>00:11:00</itunes:duration>
+      <itunes:explicit>false</itunes:explicit>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>1</itunes:season>
+      <itunes:episode>2</itunes:episode>
+      <enclosure
+        url="https://jjaecheverri.github.io/inkluso-magazine/core/the-triple-break/audio.mp3"
+        length="10560000"
+        type="audio/mpeg"/>
+      <category>CORE</category>
+    </item>
+
+    <!-- EPISODE 3 — AXIS-002 · SCI 0.952 -->
+    <item>
+      <title>The Human Authorship Seal · AXIS-002</title>
+      <link>https://jjaecheverri.github.io/inkluso-magazine/axis/the-human-authorship-seal/</link>
+      <guid isPermaLink="false">inkluso-axis-002-the-human-authorship-seal</guid>
+      <pubDate>Thu, 05 Mar 2026 08:00:00 +0000</pubDate>
+      <description>SCI 0.952 · HIGH · How the collapse of AI content trust is creating a new premium layer for verified human authorship — and who is positioned to certify it.</description>
+      <itunes:summary>SCI 0.952 · HIGH · How the collapse of AI content trust is creating a new premium layer for verified human authorship — and who is positioned to certify it.</itunes:summary>
+      <itunes:author>Juan Camilo Echeverri</itunes:author>
+      <itunes:duration>00:13:00</itunes:duration>
+      <itunes:explicit>false</itunes:explicit>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>1</itunes:season>
+      <itunes:episode>3</itunes:episode>
+      <enclosure
+        url="https://jjaecheverri.github.io/inkluso-magazine/axis/the-human-authorship-seal/audio.mp3"
+        length="12480000"
+        type="audio/mpeg"/>
+      <category>AXIS</category>
+    </item>
+
+    <!-- EPISODE 4 — CORE-008 · SCI 0.95 -->
+    <item>
+      <title>The Trillion-Dollar Line Item · CORE-008</title>
+      <link>https://jjaecheverri.github.io/inkluso-magazine/core/the-trillion-dollar-line-item/</link>
+      <guid isPermaLink="false">inkluso-core-008-the-trillion-dollar-line-item</guid>
+      <pubDate>Wed, 04 Mar 2026 08:00:00 +0000</pubDate>
+      <description>SCI 0.95 · HIGH · The infrastructure spending category that doesn't appear on any public budget — and the capital flows moving through it regardless.</description>
+      <itunes:summary>SCI 0.95 · HIGH · The infrastructure spending category that doesn't appear on any public budget — and the capital flows moving through it regardless.</itunes:summary>
+      <itunes:author>Juan Camilo Echeverri</itunes:author>
+      <itunes:duration>00:14:00</itunes:duration>
+      <itunes:explicit>false</itunes:explicit>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>1</itunes:season>
+      <itunes:episode>4</itunes:episode>
+      <enclosure
+        url="https://jjaecheverri.github.io/inkluso-magazine/core/the-trillion-dollar-line-item/audio.mp3"
+        length="13440000"
+        type="audio/mpeg"/>
+      <category>CORE</category>
+    </item>
+
+    <!-- EPISODE 5 — AXIS-005 · SCI 0.94 -->
+    <item>
+      <title>The Robot Wage · AXIS-005</title>
+      <link>https://jjaecheverri.github.io/inkluso-magazine/axis/the-robot-wage/</link>
+      <guid isPermaLink="false">inkluso-axis-005-the-robot-wage</guid>
+      <pubDate>Tue, 03 Mar 2026 08:00:00 +0000</pubDate>
+      <description>SCI 0.94 · HIGH · The wage floor set by automation cost — and why human wages in certain categories are now structurally capped at the price of replacing the role with a machine.</description>
+      <itunes:summary>SCI 0.94 · HIGH · The wage floor set by automation cost — and why human wages in certain categories are now structurally capped at the price of replacing the role with a machine.</itunes:summary>
+      <itunes:author>Juan Camilo Echeverri</itunes:author>
+      <itunes:duration>00:12:30</itunes:duration>
+      <itunes:explicit>false</itunes:explicit>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>1</itunes:season>
+      <itunes:episode>5</itunes:episode>
+      <enclosure
+        url="https://jjaecheverri.github.io/inkluso-magazine/axis/the-robot-wage/audio.mp3"
+        length="12000000"
+        type="audio/mpeg"/>
+      <category>AXIS</category>
+    </item>
+
+    <!-- EPISODE 6 — NWA-GROUND-006 · SCI 0.94 -->
+    <item>
+      <title>The #1 Metro · NWA-GROUND-006</title>
+      <link>https://jjaecheverri.github.io/inkluso-magazine/cities/nwa/the-number-one-metro/</link>
+      <guid isPermaLink="false">inkluso-nwa-ground-006-the-number-one-metro</guid>
+      <pubDate>Mon, 02 Mar 2026 08:00:00 +0000</pubDate>
+      <description>SCI 0.94 · HIGH · Northwest Arkansas ranked the #1 metro in the United States — the structural signals behind the ranking and what operators need to understand before the next move.</description>
+      <itunes:summary>SCI 0.94 · HIGH · Northwest Arkansas ranked the #1 metro in the United States — the structural signals behind the ranking and what operators need to understand before the next move.</itunes:summary>
+      <itunes:author>Juan Camilo Echeverri</itunes:author>
+      <itunes:duration>00:11:30</itunes:duration>
+      <itunes:explicit>false</itunes:explicit>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>1</itunes:season>
+      <itunes:episode>6</itunes:episode>
+      <enclosure
+        url="https://jjaecheverri.github.io/inkluso-magazine/cities/nwa/the-number-one-metro/audio.mp3"
+        length="11040000"
+        type="audio/mpeg"/>
+      <category>GROUND</category>
+    </item>
+
+    <!-- EPISODE 7 — FLOW-003 · SCI 0.91 -->
+    <item>
+      <title>The Last Masthead · FLOW-003</title>
+      <link>https://jjaecheverri.github.io/inkluso-magazine/flow/the-last-masthead/</link>
+      <guid isPermaLink="false">inkluso-flow-003-the-last-masthead</guid>
+      <pubDate>Sun, 01 Mar 2026 08:00:00 +0000</pubDate>
+      <description>SCI 0.91 · HIGH · The structural collapse of legacy media editorial infrastructure — and what the surviving mastheads have in common that has nothing to do with journalism quality.</description>
+      <itunes:summary>SCI 0.91 · HIGH · The structural collapse of legacy media editorial infrastructure — and what the surviving mastheads have in common that has nothing to do with journalism quality.</itunes:summary>
+      <itunes:author>Juan Camilo Echeverri</itunes:author>
+      <itunes:duration>00:12:00</itunes:duration>
+      <itunes:explicit>false</itunes:explicit>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>1</itunes:season>
+      <itunes:episode>7</itunes:episode>
+      <enclosure
+        url="https://jjaecheverri.github.io/inkluso-magazine/flow/the-last-masthead/audio.mp3"
+        length="11520000"
+        type="audio/mpeg"/>
+      <category>FLOW</category>
+    </item>
+
+    <!-- EPISODE 8 — THRIVE-003 · SCI 0.90 -->
+    <item>
+      <title>The Credential Collapse · THRIVE-003</title>
+      <link>https://jjaecheverri.github.io/inkluso-magazine/thrive/the-credential-collapse/</link>
+      <guid isPermaLink="false">inkluso-thrive-003-the-credential-collapse</guid>
+      <pubDate>Sat, 28 Feb 2026 08:00:00 +0000</pubDate>
+      <description>SCI 0.90 · HIGH · The four-year degree as job qualifier is unwinding — the mechanism behind employer defection from credential requirements and what replaces it structurally.</description>
+      <itunes:summary>SCI 0.90 · HIGH · The four-year degree as job qualifier is unwinding — the mechanism behind employer defection from credential requirements and what replaces it structurally.</itunes:summary>
+      <itunes:author>Juan Camilo Echeverri</itunes:author>
+      <itunes:duration>00:11:00</itunes:duration>
+      <itunes:explicit>false</itunes:explicit>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>1</itunes:season>
+      <itunes:episode>8</itunes:episode>
+      <enclosure
+        url="https://jjaecheverri.github.io/inkluso-magazine/thrive/the-credential-collapse/audio.mp3"
+        length="10560000"
+        type="audio/mpeg"/>
+      <category>THRIVE</category>
+    </item>
+
+    <!-- EPISODE 9 — CORE-003 · SCI 0.92 -->
+    <item>
+      <title>The Extraction Playbook · CORE-003</title>
+      <link>https://jjaecheverri.github.io/inkluso-magazine/core/the-extraction-playbook/</link>
+      <guid isPermaLink="false">inkluso-core-003-the-extraction-playbook</guid>
+      <pubDate>Fri, 27 Feb 2026 08:00:00 +0000</pubDate>
+      <description>SCI 0.92 · HIGH · The repeating structural pattern behind resource extraction in emerging corridor economies — and the three signals that appear before the cycle turns.</description>
+      <itunes:summary>SCI 0.92 · HIGH · The repeating structural pattern behind resource extraction in emerging corridor economies — and the three signals that appear before the cycle turns.</itunes:summary>
+      <itunes:author>Juan Camilo Echeverri</itunes:author>
+      <itunes:duration>00:13:30</itunes:duration>
+      <itunes:explicit>false</itunes:explicit>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>1</itunes:season>
+      <itunes:episode>9</itunes:episode>
+      <enclosure
+        url="https://jjaecheverri.github.io/inkluso-magazine/core/the-extraction-playbook/audio.mp3"
+        length="12960000"
+        type="audio/mpeg"/>
+      <category>CORE</category>
+    </item>
+
+    <!-- EPISODE 10 — MADRID-GROUND-002 · SCI 0.90 -->
+    <item>
+      <title>The Neighbor's Veto · MADRID-GROUND-002</title>
+      <link>https://jjaecheverri.github.io/inkluso-magazine/cities/madrid/the-neighbors-veto/</link>
+      <guid isPermaLink="false">inkluso-madrid-ground-002-the-neighbors-veto</guid>
+      <pubDate>Thu, 26 Feb 2026 08:00:00 +0000</pubDate>
+      <description>SCI 0.90 · HIGH · Madrid's community governance mechanism that blocks urban development — the structural legal layer most operators entering the market don't see until it's too late.</description>
+      <itunes:summary>SCI 0.90 · HIGH · Madrid's community governance mechanism that blocks urban development — the structural legal layer most operators entering the market don't see until it's too late.</itunes:summary>
+      <itunes:author>Juan Camilo Echeverri</itunes:author>
+      <itunes:duration>00:11:30</itunes:duration>
+      <itunes:explicit>false</itunes:explicit>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>1</itunes:season>
+      <itunes:episode>10</itunes:episode>
+      <enclosure
+        url="https://jjaecheverri.github.io/inkluso-magazine/cities/madrid/the-neighbors-veto/audio.mp3"
+        length="11040000"
+        type="audio/mpeg"/>
+      <category>GROUND</category>
+    </item>
+
+  </channel>
+</rss>

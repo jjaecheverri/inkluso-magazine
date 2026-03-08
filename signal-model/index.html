@@ -1,828 +1,1137 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Signal Confidence Model — IN-KluSo</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --cream: #FAF6EE;
-    --ink: #1A1A1A;
-    --orange: #E8521A;
-    --gray: #8A8070;
-    --light: #F0EBE1;
-    --dark: #111111;
-    --high: #2D7A3A;
-    --moderate: #B8860B;
-    --low: #C0392B;
-    --minimal: #666;
-    --mono: 'JetBrains Mono', monospace;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { background: var(--cream); color: var(--ink); font-family: 'Inter', sans-serif; }
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Signal Confidence Index · IN-KluSo</title>
+  <meta name="description" content="The SCI is IN-KluSo's proprietary scoring system that determines whether a signal publishes. Five dimensions. One standard. No guesswork."/>
+  <link rel="canonical" href="https://jjaecheverri.github.io/inkluso-magazine/signal-model/"/>
 
-  header {
-    background: var(--dark);
-    padding: 20px 40px;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    border-bottom: 3px solid var(--orange);
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Signal Confidence Index · IN-KluSo",
+    "description": "The SCI is IN-KluSo's proprietary editorial scoring methodology. Five dimensions. One publication threshold. Every signal scored before it publishes.",
+    "url": "https://jjaecheverri.github.io/inkluso-magazine/signal-model/",
+    "publisher": {
+      "@type": "Organization",
+      "name": "IN-KluSo · Xtatik",
+      "url": "https://jjaecheverri.github.io/inkluso-magazine/"
+    },
+    "author": {
+      "@type": "Person",
+      "name": "Juan Camilo Echeverri"
+    }
   }
-  .logo { color: white; font-family: 'DM Serif Display', serif; font-size: 1.4rem; letter-spacing: 0.05em; }
-  .logo span { color: var(--orange); }
-  .badge {
-    background: #222;
-    color: #888;
-    font-family: var(--mono);
-    font-size: 0.7rem;
-    padding: 3px 10px;
-    border: 1px solid #333;
-    letter-spacing: 0.1em;
-  }
-  nav { margin-left: auto; display: flex; gap: 24px; }
-  nav a { color: #888; text-decoration: none; font-size: 0.8rem; letter-spacing: 0.08em; transition: color 0.2s; }
-  nav a:hover { color: white; }
+  </script>
 
-  .hero {
-    background: var(--dark);
-    padding: 60px 40px 40px;
-    border-bottom: 1px solid #222;
-  }
-  .hero-label {
-    font-family: var(--mono);
-    font-size: 0.7rem;
-    color: var(--orange);
-    letter-spacing: 0.15em;
-    margin-bottom: 16px;
-  }
-  .hero h1 {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(2rem, 5vw, 3.5rem);
-    color: white;
-    line-height: 1.1;
-    max-width: 700px;
-    margin-bottom: 20px;
-  }
-  .hero p {
-    color: #999;
-    font-size: 1rem;
-    max-width: 600px;
-    line-height: 1.7;
-  }
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
 
-  /* Math formula display */
-  .formula-band {
-    background: #0D0D0D;
-    border-top: 1px solid #222;
-    border-bottom: 1px solid #333;
-    padding: 32px 40px;
-    overflow-x: auto;
-  }
-  .formula-label {
-    font-family: var(--mono);
-    font-size: 0.65rem;
-    color: #555;
-    letter-spacing: 0.12em;
-    margin-bottom: 16px;
-  }
-  .formula-main {
-    font-family: var(--mono);
-    font-size: clamp(0.85rem, 2vw, 1.1rem);
-    color: #E8E0D0;
-    line-height: 2.2;
-    white-space: nowrap;
-  }
-  .formula-main .var { color: var(--orange); }
-  .formula-main .weight { color: #7EB8D4; }
-  .formula-main .label { color: #888; font-size: 0.8em; }
-  .formula-sub {
-    margin-top: 24px;
-    display: flex;
-    gap: 40px;
-    flex-wrap: wrap;
-  }
-  .formula-sub-item { font-family: var(--mono); font-size: 0.8rem; color: #666; line-height: 1.8; }
-  .formula-sub-item .k { color: #AAA; }
-  .formula-sub-item .v { color: var(--orange); }
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  /* Main layout */
-  .layout {
-    display: grid;
-    grid-template-columns: 1fr 380px;
-    gap: 0;
-    min-height: calc(100vh - 300px);
-  }
+    :root {
+      --cream:       #FAF6EE;
+      --orange:      #E8602C;
+      --black:       #111111;
+      --gold:        #C9A84C;
+      --blue:        #2D6BE4;
+      --magenta:     #C4317A;
+      --green:       #2E9B6F;
+      --ground-dark: #2D5016;
+      --card-shadow: 0 2px 20px rgba(17,17,17,0.07), 0 1px 4px rgba(17,17,17,0.04);
+    }
 
-  /* Input panel */
-  .input-panel {
-    padding: 40px;
-    border-right: 1px solid #DDD5C8;
-  }
-  .section-label {
-    font-family: var(--mono);
-    font-size: 0.65rem;
-    color: var(--orange);
-    letter-spacing: 0.15em;
-    margin-bottom: 12px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .section-label::after { content: ''; flex: 1; height: 1px; background: #DDD5C8; }
-  .input-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 32px; }
-  .input-full { grid-column: 1 / -1; }
+    html { scroll-behavior: smooth; }
 
-  label { display: block; font-size: 0.75rem; color: var(--gray); letter-spacing: 0.06em; margin-bottom: 6px; font-weight: 500; }
-  input[type="text"], select, input[type="number"] {
-    width: 100%;
-    background: white;
-    border: 1px solid #DDD5C8;
-    padding: 10px 12px;
-    font-size: 0.9rem;
-    font-family: 'Inter', sans-serif;
-    color: var(--ink);
-    outline: none;
-    transition: border-color 0.2s;
-  }
-  input:focus, select:focus { border-color: var(--orange); }
+    body {
+      background: var(--cream);
+      color: var(--black);
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      line-height: 1.6;
+      overflow-x: hidden;
+      position: relative;
+    }
 
-  /* Slider inputs */
-  .slider-group { margin-bottom: 24px; }
-  .slider-row {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 12px;
-  }
-  .slider-row label { min-width: 140px; margin: 0; }
-  .slider-row input[type="range"] {
-    flex: 1; padding: 0; border: none; background: none;
-    accent-color: var(--orange);
-    cursor: pointer;
-  }
-  .slider-val {
-    font-family: var(--mono);
-    font-size: 0.85rem;
-    color: var(--orange);
-    min-width: 36px;
-    text-align: right;
-  }
-  .lens-weight {
-    font-family: var(--mono);
-    font-size: 0.7rem;
-    color: #999;
-    min-width: 50px;
-    text-align: right;
-  }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1578301978018-3005759f48f7?w=1920&q=60&auto=format');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.09;
+      mix-blend-mode: multiply;
+      filter: grayscale(40%);
+      pointer-events: none;
+      z-index: 0;
+    }
 
-  /* Checkboxes */
-  .check-group { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 32px; }
-  .check-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    background: white;
-    border: 1px solid #DDD5C8;
-    padding: 10px 14px;
-    cursor: pointer;
-    transition: border-color 0.2s, background 0.2s;
-  }
-  .check-item:hover { border-color: var(--orange); }
-  .check-item.checked { border-color: var(--orange); background: #FFF8F5; }
-  .check-item input { display: none; }
-  .check-box {
-    width: 16px; height: 16px;
-    border: 2px solid #CCC;
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
-  }
-  .check-item.checked .check-box { border-color: var(--orange); background: var(--orange); }
-  .check-item.checked .check-box::after { content: '✓'; color: white; font-size: 10px; font-weight: bold; }
-  .check-label { font-size: 0.82rem; color: var(--ink); line-height: 1.3; }
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(250,246,238,0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(17,17,17,0.08);
+      padding: 0 40px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
 
-  .run-btn {
-    width: 100%;
-    background: var(--orange);
-    color: white;
-    border: none;
-    padding: 16px;
-    font-size: 0.9rem;
-    font-family: 'Inter', sans-serif;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    cursor: pointer;
-    transition: background 0.2s;
-  }
-  .run-btn:hover { background: #C8441A; }
+    .nav-brand {
+      font-family: 'DM Serif Display', serif;
+      font-size: 18px;
+      color: var(--black);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
 
-  /* Result panel */
-  .result-panel {
-    background: var(--dark);
-    padding: 40px;
-    position: sticky;
-    top: 0;
-    height: fit-content;
-    min-height: 100%;
-  }
-  .result-empty {
-    color: #444;
-    font-size: 0.9rem;
-    line-height: 1.7;
-    font-family: var(--mono);
-    padding-top: 20px;
-  }
-  .result-output { display: none; }
-  .result-output.visible { display: block; }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
 
-  .sci-display {
-    text-align: center;
-    margin-bottom: 32px;
-    padding: 32px 20px;
-    border: 1px solid #222;
-  }
-  .sci-label {
-    font-family: var(--mono);
-    font-size: 0.65rem;
-    color: #555;
-    letter-spacing: 0.15em;
-    margin-bottom: 12px;
-  }
-  .sci-number {
-    font-family: var(--mono);
-    font-size: 4rem;
-    font-weight: 600;
-    line-height: 1;
-    margin-bottom: 8px;
-  }
-  .sci-tier {
-    font-family: var(--mono);
-    font-size: 0.9rem;
-    letter-spacing: 0.15em;
-    font-weight: 600;
-    margin-bottom: 4px;
-  }
-  .sci-pub {
-    font-size: 0.75rem;
-    color: #666;
-    letter-spacing: 0.05em;
-  }
-  .tier-HIGH .sci-number, .tier-HIGH .sci-tier { color: #4CAF50; }
-  .tier-MODERATE .sci-number, .tier-MODERATE .sci-tier { color: #FFB700; }
-  .tier-LOW .sci-number, .tier-LOW .sci-tier { color: #E74C3C; }
-  .tier-MINIMAL .sci-number, .tier-MINIMAL .sci-tier { color: #666; }
+    .nav-links a {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--black);
+      text-decoration: none;
+      opacity: 0.5;
+      transition: opacity 0.2s;
+    }
 
-  .component-breakdown {
-    margin-bottom: 24px;
-  }
-  .component-row {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 8px;
-  }
-  .comp-name {
-    font-family: var(--mono);
-    font-size: 0.7rem;
-    color: #666;
-    width: 70px;
-    flex-shrink: 0;
-  }
-  .comp-bar-wrap {
-    flex: 1;
-    height: 6px;
-    background: #222;
-    overflow: hidden;
-  }
-  .comp-bar { height: 100%; background: var(--orange); transition: width 0.4s; }
-  .comp-val {
-    font-family: var(--mono);
-    font-size: 0.72rem;
-    color: #AAA;
-    width: 50px;
-    text-align: right;
-    flex-shrink: 0;
-  }
+    .nav-links a:hover, .nav-links a.active { opacity: 1; }
 
-  .result-notes {
-    border-top: 1px solid #222;
-    padding-top: 16px;
-    margin-top: 8px;
-  }
-  .note-item {
-    font-family: var(--mono);
-    font-size: 0.72rem;
-    color: #FFB700;
-    line-height: 1.5;
-    margin-bottom: 8px;
-    padding-left: 16px;
-    position: relative;
-  }
-  .note-item::before { content: '⚠'; position: absolute; left: 0; }
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      z-index: 1;
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 96px 40px 80px;
+    }
 
-  .cluster-bar {
-    margin-top: 24px;
-    border-top: 1px solid #222;
-    padding-top: 20px;
-  }
-  .cluster-progress {
-    font-family: var(--mono);
-    font-size: 0.7rem;
-    color: #555;
-    letter-spacing: 0.1em;
-    margin-bottom: 8px;
-  }
-  .progress-track {
-    display: flex;
-    gap: 4px;
-    margin-top: 8px;
-  }
-  .progress-pip {
-    width: 20px; height: 8px;
-    background: #222;
-    transition: background 0.3s;
-  }
-  .progress-pip.filled { background: var(--orange); }
+    .hero-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 28px;
+      animation: fadeUp 0.5s ease both;
+    }
 
-  /* Math section below */
-  .math-section {
-    padding: 60px 40px;
-    border-top: 1px solid #DDD5C8;
-    background: white;
-  }
-  .math-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 24px;
-    margin-top: 32px;
-  }
-  .math-card {
-    background: var(--cream);
-    border: 1px solid #DDD5C8;
-    padding: 24px;
-  }
-  .math-card h3 {
-    font-family: var(--mono);
-    font-size: 0.7rem;
-    color: var(--orange);
-    letter-spacing: 0.12em;
-    margin-bottom: 16px;
-  }
-  .math-table { width: 100%; border-collapse: collapse; }
-  .math-table td {
-    font-family: var(--mono);
-    font-size: 0.78rem;
-    padding: 6px 0;
-    border-bottom: 1px solid #EEE;
-    color: var(--ink);
-  }
-  .math-table td:last-child { text-align: right; color: var(--orange); }
+    .hero-label::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--orange);
+    }
 
-  footer {
-    background: var(--dark);
-    padding: 32px 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-top: 1px solid #222;
-    margin-top: 60px;
-  }
-  footer p { color: #555; font-size: 0.8rem; }
-  footer a { color: #666; text-decoration: none; }
-  footer a:hover { color: white; }
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(44px, 7vw, 80px);
+      line-height: 1.0;
+      letter-spacing: -0.03em;
+      color: var(--black);
+      margin-bottom: 28px;
+      animation: fadeUp 0.5s 0.08s ease both;
+    }
 
-  @media (max-width: 900px) {
-    .layout { grid-template-columns: 1fr; }
-    .result-panel { position: static; }
-    .formula-sub { gap: 20px; }
-  }
-</style>
+    .hero h1 em {
+      font-style: italic;
+      color: var(--orange);
+    }
+
+    .hero-intro {
+      font-size: 19px;
+      font-weight: 300;
+      color: rgba(17,17,17,0.65);
+      max-width: 600px;
+      line-height: 1.55;
+      margin-bottom: 48px;
+      animation: fadeUp 0.5s 0.16s ease both;
+    }
+
+    /* Diagonal orange stripe accent */
+    .hero-stripe {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 6px;
+      height: 100%;
+      background: var(--orange);
+      opacity: 0.15;
+      clip-path: polygon(0 0, 100% 5%, 100% 100%, 0 95%);
+    }
+
+    /* ── QUICK-READ BANNER ── */
+    .quick-banner {
+      position: relative;
+      z-index: 1;
+      background: var(--black);
+      padding: 32px 40px;
+      animation: fadeUp 0.5s 0.22s ease both;
+    }
+
+    .quick-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+    }
+
+    .quick-item {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .quick-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 36px;
+      color: var(--orange);
+      line-height: 1;
+    }
+
+    .quick-label {
+      font-size: 13px;
+      font-weight: 400;
+      color: rgba(250,246,238,0.6);
+      line-height: 1.4;
+    }
+
+    /* ── SECTION WRAPPERS ── */
+    .section {
+      position: relative;
+      z-index: 1;
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 72px 40px;
+    }
+
+    .section + .section {
+      padding-top: 0;
+    }
+
+    .section-eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(28px, 4vw, 40px);
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      color: var(--black);
+      margin-bottom: 16px;
+    }
+
+    .section-body {
+      font-size: 16px;
+      font-weight: 300;
+      color: rgba(17,17,17,0.65);
+      line-height: 1.65;
+      max-width: 600px;
+      margin-bottom: 48px;
+    }
+
+    /* ── DIMENSION CARDS ── */
+    .dimensions-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .dim-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 28px 32px;
+      display: grid;
+      grid-template-columns: 72px 1fr;
+      gap: 28px;
+      align-items: start;
+      box-shadow: var(--card-shadow);
+      transition: transform 0.15s, box-shadow 0.15s;
+      animation: fadeUp 0.5s ease both;
+    }
+
+    .dim-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(17,17,17,0.10);
+    }
+
+    .dim-card:nth-child(1) { animation-delay: 0.0s; }
+    .dim-card:nth-child(2) { animation-delay: 0.06s; }
+    .dim-card:nth-child(3) { animation-delay: 0.12s; }
+    .dim-card:nth-child(4) { animation-delay: 0.18s; }
+    .dim-card:nth-child(5) { animation-delay: 0.24s; }
+
+    .dim-badge {
+      width: 72px;
+      height: 72px;
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      flex-shrink: 0;
+    }
+
+    .dim-badge-code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    .dim-badge-weight {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      opacity: 0.7;
+    }
+
+    .dim-evid  { background: rgba(45,107,228,0.10); color: var(--blue); }
+    .dim-mech  { background: rgba(232,96,44,0.10);  color: var(--orange); }
+    .dim-lens  { background: rgba(196,49,122,0.10); color: var(--magenta); }
+    .dim-risk  { background: rgba(201,168,76,0.15); color: var(--gold); }
+    .dim-terr  { background: rgba(46,155,111,0.10); color: var(--green); }
+
+    .dim-body {}
+
+    .dim-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 20px;
+      letter-spacing: -0.01em;
+      color: var(--black);
+      margin-bottom: 6px;
+      line-height: 1.2;
+    }
+
+    .dim-desc {
+      font-size: 14px;
+      color: rgba(17,17,17,0.6);
+      line-height: 1.55;
+      margin-bottom: 14px;
+    }
+
+    .dim-asks {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .dim-ask {
+      font-size: 12px;
+      font-weight: 500;
+      color: rgba(17,17,17,0.55);
+      background: rgba(17,17,17,0.04);
+      border: 1px solid rgba(17,17,17,0.08);
+      padding: 4px 10px;
+      border-radius: 100px;
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* ── TIER TABLE ── */
+    .tier-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 3px;
+      margin-top: 40px;
+    }
+
+    .tier-card {
+      border-radius: 12px;
+      padding: 24px 20px;
+      box-shadow: var(--card-shadow);
+    }
+
+    .tier-high   { background: rgba(46,155,111,0.08);  border: 1px solid rgba(46,155,111,0.2); }
+    .tier-mod    { background: rgba(45,107,228,0.06);  border: 1px solid rgba(45,107,228,0.15); }
+    .tier-low    { background: rgba(201,168,76,0.08);  border: 1px solid rgba(201,168,76,0.2); }
+    .tier-min    { background: rgba(17,17,17,0.03);    border: 1px solid rgba(17,17,17,0.1); }
+
+    .tier-range {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 22px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      line-height: 1;
+    }
+
+    .tier-high .tier-range   { color: var(--green); }
+    .tier-mod  .tier-range   { color: var(--blue); }
+    .tier-low  .tier-range   { color: var(--gold); }
+    .tier-min  .tier-range   { color: rgba(17,17,17,0.35); }
+
+    .tier-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 18px;
+      letter-spacing: -0.01em;
+      margin-bottom: 8px;
+    }
+
+    .tier-high .tier-name { color: var(--green); }
+    .tier-mod  .tier-name { color: var(--blue); }
+    .tier-low  .tier-name { color: var(--gold); }
+    .tier-min  .tier-name { color: rgba(17,17,17,0.4); }
+
+    .tier-action {
+      font-size: 13px;
+      color: rgba(17,17,17,0.55);
+      line-height: 1.4;
+    }
+
+    /* ── SOURCE TIERS ── */
+    .source-list {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      margin-top: 40px;
+    }
+
+    .source-row {
+      background: #fff;
+      border-radius: 10px;
+      padding: 20px 24px;
+      display: grid;
+      grid-template-columns: 80px 1fr auto;
+      gap: 20px;
+      align-items: center;
+      box-shadow: var(--card-shadow);
+    }
+
+    .source-tier-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      padding: 6px 12px;
+      border-radius: 6px;
+      text-align: center;
+    }
+
+    .tier-a { background: rgba(46,155,111,0.12); color: var(--green); }
+    .tier-b { background: rgba(45,107,228,0.10); color: var(--blue); }
+    .tier-c { background: rgba(17,17,17,0.06);   color: rgba(17,17,17,0.45); }
+
+    .source-desc {
+      font-size: 14px;
+      color: rgba(17,17,17,0.7);
+      line-height: 1.4;
+    }
+
+    .source-desc strong {
+      color: var(--black);
+      font-weight: 600;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .source-use {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: rgba(17,17,17,0.4);
+      white-space: nowrap;
+    }
+
+    /* ── HARD CAP BOX ── */
+    .hardcap-box {
+      background: rgba(232,96,44,0.06);
+      border: 1px solid rgba(232,96,44,0.2);
+      border-left: 4px solid var(--orange);
+      border-radius: 10px;
+      padding: 20px 24px;
+      margin-top: 16px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .hardcap-icon {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: var(--orange);
+      background: rgba(232,96,44,0.1);
+      padding: 4px 8px;
+      border-radius: 4px;
+      white-space: nowrap;
+      margin-top: 2px;
+    }
+
+    .hardcap-text {
+      font-size: 14px;
+      color: rgba(17,17,17,0.7);
+      line-height: 1.5;
+    }
+
+    .hardcap-text strong { color: var(--black); font-weight: 600; }
+
+    /* ── TORN DIVIDER ── */
+    .torn {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+    }
+
+    .torn svg { display: block; width: 100%; }
+
+    /* ── RECORD STRIP ── */
+    .record-strip {
+      position: relative;
+      z-index: 1;
+      background: var(--black);
+      padding: 56px 40px;
+      overflow: hidden;
+    }
+
+    .record-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .record-left {}
+
+    .record-eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 12px;
+    }
+
+    .record-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 36px;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: var(--cream);
+      margin-bottom: 16px;
+    }
+
+    .record-title em { font-style: italic; color: var(--orange); }
+
+    .record-body {
+      font-size: 15px;
+      font-weight: 300;
+      color: rgba(250,246,238,0.55);
+      line-height: 1.6;
+    }
+
+    .record-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3px;
+    }
+
+    .record-stat {
+      background: rgba(250,246,238,0.04);
+      border: 1px solid rgba(250,246,238,0.08);
+      border-radius: 10px;
+      padding: 20px;
+    }
+
+    .record-stat-val {
+      font-family: 'DM Serif Display', serif;
+      font-size: 32px;
+      color: var(--orange);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .record-stat-label {
+      font-size: 12px;
+      font-weight: 400;
+      color: rgba(250,246,238,0.45);
+      letter-spacing: 0.04em;
+    }
+
+    /* ── HUMANKLU CTA ── */
+    .humanklu-section {
+      position: relative;
+      z-index: 1;
+      background: var(--cream);
+    }
+
+    .humanklu-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 80px 40px;
+    }
+
+    .humanklu-card {
+      background: var(--black);
+      border-radius: 16px;
+      padding: 56px 48px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Diagonal orange stripe on card */
+    .humanklu-card::before {
+      content: '';
+      position: absolute;
+      top: -20px;
+      right: -20px;
+      width: 200px;
+      height: 200px;
+      background: var(--orange);
+      opacity: 0.06;
+      clip-path: polygon(30% 0%, 100% 0%, 100% 100%, 0% 70%);
+    }
+
+    .hk-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--orange);
+      background: rgba(232,96,44,0.12);
+      border: 1px solid rgba(232,96,44,0.2);
+      padding: 6px 14px;
+      border-radius: 100px;
+      margin-bottom: 24px;
+    }
+
+    .hk-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: var(--cream);
+      margin-bottom: 16px;
+    }
+
+    .hk-title em { font-style: italic; color: var(--orange); }
+
+    .hk-body {
+      font-size: 16px;
+      font-weight: 300;
+      color: rgba(250,246,238,0.6);
+      line-height: 1.6;
+      max-width: 560px;
+      margin-bottom: 36px;
+    }
+
+    .hk-dimensions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+
+    .hk-dim {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--cream);
+      background: rgba(250,246,238,0.08);
+      border: 1px solid rgba(250,246,238,0.12);
+      padding: 6px 14px;
+      border-radius: 6px;
+    }
+
+    .hk-cta-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--orange);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 14px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(232,96,44,0.35);
+    }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: rgba(250,246,238,0.6);
+      font-size: 14px;
+      font-weight: 500;
+      padding: 14px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      border: 1px solid rgba(250,246,238,0.15);
+      transition: color 0.15s, border-color 0.15s;
+    }
+
+    .btn-ghost:hover {
+      color: var(--cream);
+      border-color: rgba(250,246,238,0.35);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      position: relative;
+      z-index: 1;
+      background: var(--cream);
+      border-top: 1px solid rgba(17,17,17,0.08);
+      padding: 32px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-brand {
+      font-family: 'DM Serif Display', serif;
+      font-size: 16px;
+      color: var(--black);
+      text-decoration: none;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .footer-links a {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(17,17,17,0.45);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--black); }
+
+    .footer-legal {
+      font-size: 11px;
+      color: rgba(17,17,17,0.3);
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── DIVIDER LINE ── */
+    .rule {
+      position: relative;
+      z-index: 1;
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    .rule hr {
+      border: none;
+      border-top: 1px solid rgba(17,17,17,0.08);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .hero, .section, .humanklu-inner { padding-left: 20px; padding-right: 20px; }
+      .quick-banner { padding: 28px 20px; }
+      .quick-inner { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+      .dim-card { grid-template-columns: 1fr; gap: 16px; }
+      .dim-badge { width: 56px; height: 56px; }
+      .tier-grid { grid-template-columns: 1fr 1fr; }
+      .source-row { grid-template-columns: 1fr; gap: 8px; }
+      .source-use { display: none; }
+      .record-inner { grid-template-columns: 1fr; gap: 32px; }
+      .humanklu-card { padding: 36px 28px; }
+      .hk-cta-row { flex-direction: column; align-items: flex-start; }
+      .rule { padding: 0 20px; }
+      footer { padding: 24px 20px; flex-direction: column; align-items: flex-start; }
+    }
+  </style>
 </head>
+
 <body>
 
-<header>
-  <div class="logo">IN<span>-</span>KluSo</div>
-  <div class="badge">SIGNAL MODEL v1.0.0</div>
+  <!-- ── NAV ── -->
   <nav>
-    <a href="../">← Magazine</a>
-    <a href="../doctrine/">Doctrine</a>
-    <a href="https://jjaecheverri.github.io/inkluso-tools/" target="_blank">Tools</a>
+    <a class="nav-brand" href="https://jjaecheverri.github.io/inkluso-magazine/">IN-KluSo</a>
+    <ul class="nav-links">
+      <li><a href="https://jjaecheverri.github.io/inkluso-magazine/core/">Core</a></li>
+      <li><a href="https://jjaecheverri.github.io/inkluso-magazine/cities/">Cities</a></li>
+      <li><a href="https://jjaecheverri.github.io/inkluso-magazine/kontrarian/">Kontrarian</a></li>
+      <li><a href="https://jjaecheverri.github.io/inkluso-magazine/humanklu/">HumanKlu™</a></li>
+      <li><a href="https://jjaecheverri.github.io/inkluso-magazine/signal-model/" class="active">SCI</a></li>
+      <li><a href="https://jjaecheverri.github.io/inkluso-tools/">Tools</a></li>
+    </ul>
   </nav>
-</header>
 
-<div class="hero">
-  <div class="hero-label">CRUMBS SIGNAL ENGINE / CONFIDENCE CALCULATOR</div>
-  <h1>Signal Confidence<br><em>Model</em></h1>
-  <p>Every signal IN-KluSo publishes is scored against this model. Source quality, lens coverage, mechanism clarity, and territory specificity combine into a single verifiable index. MODERATE or HIGH = publishable. LOW = more evidence needed.</p>
-</div>
+  <!-- ── HERO ── -->
+  <section class="hero">
+    <div class="hero-stripe"></div>
+    <div class="hero-label">Editorial Methodology</div>
+    <h1>The Signal<br/>Confidence<br/><em>Index.</em></h1>
+    <p class="hero-intro">
+      Every signal IN-KluSo publishes is scored before it goes live. The SCI is the methodology behind that score — five dimensions, one publication threshold, no shortcuts.
+    </p>
+  </section>
 
-<!-- Master formula display -->
-<div class="formula-band">
-  <div class="formula-label">CANONICAL FORMULA — SCI v1.0.0</div>
-  <div class="formula-main">
-    <span class="var">SCI</span> = (<span class="var">S</span> × <span class="weight">0.35</span>) + (<span class="var">L</span> × <span class="weight">0.30</span>) + (<span class="var">M</span> × <span class="weight">0.25</span>) + (<span class="var">T</span> × <span class="weight">0.10</span>)
-  </div>
-  <div class="formula-sub">
-    <div class="formula-sub-item">
-      <div><span class="k">S</span> = Source Score</div>
-      <div><span class="k">w</span> = <span class="v">0.35</span> — load-bearing</div>
-    </div>
-    <div class="formula-sub-item">
-      <div><span class="k">L</span> = Lens Coverage</div>
-      <div><span class="k">w</span> = <span class="v">0.30</span> — three-lens weighted</div>
-    </div>
-    <div class="formula-sub-item">
-      <div><span class="k">M</span> = Mechanism Clarity</div>
-      <div><span class="k">w</span> = <span class="v">0.25</span> — causal chain</div>
-    </div>
-    <div class="formula-sub-item">
-      <div><span class="k">T</span> = Territory Specificity</div>
-      <div><span class="k">w</span> = <span class="v">0.10</span> — traceable</div>
+  <!-- ── QUICK STATS ── -->
+  <div class="quick-banner">
+    <div class="quick-inner">
+      <div class="quick-item">
+        <div class="quick-num">5</div>
+        <div class="quick-label">scoring dimensions, each measuring a different kind of rigor</div>
+      </div>
+      <div class="quick-item">
+        <div class="quick-num">0.65</div>
+        <div class="quick-label">minimum composite score to publish — below this, it doesn't run</div>
+      </div>
+      <div class="quick-item">
+        <div class="quick-num">0.976</div>
+        <div class="quick-label">highest SCI score on record — CORE-002: The 5x Trap</div>
+      </div>
     </div>
   </div>
-</div>
 
-<div class="layout">
+  <!-- ── WHY THIS EXISTS ── -->
+  <section class="section">
+    <div class="section-eyebrow">The Problem We're Solving</div>
+    <h2 class="section-title">Most intelligence fails<br/>before it reaches you.</h2>
+    <p class="section-body">
+      Not because the analysis is wrong — because the analysis was never grounded in the first place. Sources weren't named. Mechanisms were implied. Alternatives were ignored. Uncertainty was buried. The SCI exists to make those failures visible and preventable, before anything is published.
+    </p>
+  </section>
 
-  <!-- INPUT PANEL -->
-  <div class="input-panel">
+  <div class="rule"><hr/></div>
 
-    <!-- Signal metadata -->
-    <div class="section-label">01 — SIGNAL METADATA</div>
-    <div class="input-grid">
-      <div class="input-full">
-        <label>Signal Title</label>
-        <input type="text" id="signalTitle" placeholder="e.g. The New Booth in Bella Vista" value="The New Booth in Bella Vista">
-      </div>
-      <div>
-        <label>Signal ID</label>
-        <input type="text" id="signalId" placeholder="NWA-GROUND-001" value="NWA-GROUND-001">
-      </div>
-      <div>
-        <label>Division</label>
-        <select id="division">
-          <option value="GROUND" selected>GROUND</option>
-          <option value="CORE">CORE</option>
-          <option value="THRIVE">THRIVE</option>
-          <option value="AXIS">AXIS</option>
-          <option value="FLOW">FLOW</option>
-        </select>
-      </div>
-    </div>
+  <!-- ── FIVE DIMENSIONS ── -->
+  <section class="section">
+    <div class="section-eyebrow">The Five Dimensions</div>
+    <h2 class="section-title">What we score,<br/>and why it matters.</h2>
+    <p class="section-body">
+      Each dimension targets a specific failure mode in intelligence reporting. A signal can score perfectly on four and collapse on one — which is why all five are required.
+    </p>
 
-    <!-- Sources -->
-    <div class="section-label">02 — SOURCE BUNDLE</div>
-    <div class="input-grid" style="margin-bottom:32px">
-      <div>
-        <label>Tier A sources (primary)</label>
-        <input type="number" id="tierA" min="0" max="10" value="0">
-      </div>
-      <div>
-        <label>Tier B sources (secondary)</label>
-        <input type="number" id="tierB" min="0" max="10" value="2">
-      </div>
-      <div>
-        <label>Tier C sources (color only)</label>
-        <input type="number" id="tierC" min="0" max="10" value="1">
-      </div>
-      <div style="display:flex;align-items:flex-end;padding-bottom:2px">
-        <div id="sourceCapWarning" style="font-family:var(--mono);font-size:0.7rem;color:#E74C3C;display:none;">
-          ⚠ Hard cap applies (no A + &lt;2 B)
+    <div class="dimensions-grid">
+
+      <!-- EVID -->
+      <div class="dim-card">
+        <div class="dim-badge dim-evid">
+          <span class="dim-badge-code">EVID</span>
+          <span class="dim-badge-weight">35%</span>
         </div>
-      </div>
-    </div>
-
-    <!-- Lens scores -->
-    <div class="section-label">03 — THREE-LENS ANALYSIS</div>
-    <div id="lensWeightsDisplay" style="font-family:var(--mono);font-size:0.72rem;color:#888;margin-bottom:16px;"></div>
-    <div class="slider-group">
-      <div class="slider-row">
-        <label>Epistemology</label>
-        <input type="range" id="epistemology" min="0" max="1" step="0.05" value="0.70" oninput="updateSlider('epistemology')">
-        <span class="slider-val" id="epistemologyVal">0.70</span>
-        <span class="lens-weight" id="epistemologyW"></span>
-      </div>
-      <div class="slider-row">
-        <label>Systems</label>
-        <input type="range" id="systems" min="0" max="1" step="0.05" value="0.50" oninput="updateSlider('systems')">
-        <span class="slider-val" id="systemsVal">0.50</span>
-        <span class="lens-weight" id="systemsW"></span>
-      </div>
-      <div class="slider-row">
-        <label>Behavioral</label>
-        <input type="range" id="behavioral" min="0" max="1" step="0.05" value="0.90" oninput="updateSlider('behavioral')">
-        <span class="slider-val" id="behavioralVal">0.90</span>
-        <span class="lens-weight" id="behavioralW"></span>
-      </div>
-    </div>
-
-    <!-- Mechanism -->
-    <div class="section-label">04 — MECHANISM CLARITY</div>
-    <div style="margin-bottom:32px">
-      <div class="slider-row" style="margin-bottom:8px">
-        <label>Causal chain score (1–5)</label>
-        <input type="range" id="mechanism" min="1" max="5" step="1" value="3" oninput="updateSlider('mechanism')">
-        <span class="slider-val" id="mechanismVal">3</span>
-      </div>
-      <div id="mechanismLabel" style="font-family:var(--mono);font-size:0.72rem;color:#888;margin-left:0;margin-top:4px;"></div>
-    </div>
-
-    <!-- Territory -->
-    <div class="section-label">05 — TERRITORY SPECIFICITY</div>
-    <div class="check-group">
-      <div class="check-item checked" id="chk_city" onclick="toggleCheck('city')">
-        <div class="check-box"></div>
-        <div class="check-label">City / neighborhood named</div>
-      </div>
-      <div class="check-item checked" id="chk_time" onclick="toggleCheck('time')">
-        <div class="check-box"></div>
-        <div class="check-label">Time window specified</div>
-      </div>
-      <div class="check-item checked" id="chk_actor" onclick="toggleCheck('actor')">
-        <div class="check-box"></div>
-        <div class="check-label">Actor or institution named</div>
-      </div>
-      <div class="check-item checked" id="chk_behavior" onclick="toggleCheck('behavior')">
-        <div class="check-box"></div>
-        <div class="check-label">Behavior documented</div>
-      </div>
-    </div>
-
-    <button class="run-btn" onclick="runModel()">RUN SIGNAL CONFIDENCE MODEL →</button>
-  </div>
-
-  <!-- RESULT PANEL -->
-  <div class="result-panel">
-    <div class="section-label" style="color:#444;">RESULT OUTPUT</div>
-
-    <div class="result-empty" id="resultEmpty">
-      — Run the model to see<br>the signal confidence score —<br><br>
-      SCI range: 0.000 → 1.000<br>
-      HIGH ≥ 0.80<br>
-      MODERATE ≥ 0.55<br>
-      LOW ≥ 0.30<br>
-      MINIMAL &lt; 0.30
-    </div>
-
-    <div class="result-output" id="resultOutput">
-      <div class="sci-display" id="sciDisplay">
-        <div class="sci-label">SIGNAL CONFIDENCE INDEX</div>
-        <div class="sci-number" id="sciNumber">—</div>
-        <div class="sci-tier" id="sciTier">—</div>
-        <div class="sci-pub" id="sciPub">—</div>
-      </div>
-
-      <div class="component-breakdown">
-        <div class="section-label" style="color:#444;font-size:0.6rem;margin-bottom:12px;">COMPONENT BREAKDOWN</div>
-        <div class="component-row">
-          <div class="comp-name">SOURCE</div>
-          <div class="comp-bar-wrap"><div class="comp-bar" id="barS" style="width:0%"></div></div>
-          <div class="comp-val" id="valS">—</div>
-        </div>
-        <div class="component-row">
-          <div class="comp-name">LENS</div>
-          <div class="comp-bar-wrap"><div class="comp-bar" id="barL" style="width:0%"></div></div>
-          <div class="comp-val" id="valL">—</div>
-        </div>
-        <div class="component-row">
-          <div class="comp-name">MECHANISM</div>
-          <div class="comp-bar-wrap"><div class="comp-bar" id="barM" style="width:0%"></div></div>
-          <div class="comp-val" id="valM">—</div>
-        </div>
-        <div class="component-row">
-          <div class="comp-name">TERRITORY</div>
-          <div class="comp-bar-wrap"><div class="comp-bar" id="barT" style="width:0%"></div></div>
-          <div class="comp-val" id="valT">—</div>
+        <div class="dim-body">
+          <div class="dim-title">Evidence Quality</div>
+          <div class="dim-desc">
+            The weight of the claim is only as strong as what's behind it. EVID scores the quality and independence of sources — primary documents, institutional data, and verified records carry the most weight. Commentary and opinion carry almost none. This dimension carries the highest weight in the composite score because without it, everything else is speculation presented as analysis.
+          </div>
+          <div class="dim-asks">
+            <span class="dim-ask">Who said this?</span>
+            <span class="dim-ask">Can it be verified independently?</span>
+            <span class="dim-ask">Is this primary or derived?</span>
+            <span class="dim-ask">What's the source's institutional standing?</span>
+          </div>
         </div>
       </div>
 
-      <div class="result-notes" id="resultNotes"></div>
+      <!-- MECH -->
+      <div class="dim-card">
+        <div class="dim-badge dim-mech">
+          <span class="dim-badge-code">MECH</span>
+          <span class="dim-badge-weight">25%</span>
+        </div>
+        <div class="dim-body">
+          <div class="dim-title">Mechanism Clarity</div>
+          <div class="dim-desc">
+            The difference between a signal and a headline is a mechanism. A headline tells you what happened. A signal tells you why — with a named, traceable causal chain from event to consequence. MECH scores whether that chain is complete, evidenced, and free of logical gaps. Partial chains score partially. Descriptions of outcomes with no mechanism score near zero.
+          </div>
+          <div class="dim-asks">
+            <span class="dim-ask">Why did this happen?</span>
+            <span class="dim-ask">What caused what?</span>
+            <span class="dim-ask">Is the causal chain complete?</span>
+            <span class="dim-ask">Can the mechanism be named?</span>
+          </div>
+        </div>
+      </div>
 
-      <div class="cluster-bar">
-        <div class="cluster-progress">FARMERS MARKET CLUSTER · US</div>
-        <div style="font-family:var(--mono);font-size:0.7rem;color:#555;" id="clusterCount">1 / 10 signals</div>
-        <div class="progress-track" id="progressPips"></div>
+      <!-- LENS -->
+      <div class="dim-card">
+        <div class="dim-badge dim-lens">
+          <span class="dim-badge-code">LENS</span>
+          <span class="dim-badge-weight">30%</span>
+        </div>
+        <div class="dim-body">
+          <div class="dim-title">Lens Coverage</div>
+          <div class="dim-desc">
+            Every signal is examined through three lenses: epistemological (how do we know what we know), systems (what structural forces are at play), and behavioral (how are actors actually responding). The weight of each lens shifts by division — CORE weights epistemology and systems equally; GROUND weights behavioral observation more heavily. A signal that sees through only one lens is incomplete by design.
+          </div>
+          <div class="dim-asks">
+            <span class="dim-ask">How was this knowledge produced?</span>
+            <span class="dim-ask">What system is operating here?</span>
+            <span class="dim-ask">What are people actually doing?</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- RISK -->
+      <div class="dim-card">
+        <div class="dim-badge dim-risk">
+          <span class="dim-badge-code">RISK</span>
+          <span class="dim-badge-weight">—</span>
+        </div>
+        <div class="dim-body">
+          <div class="dim-title">Uncertainty Disclosure</div>
+          <div class="dim-desc">
+            Every analysis has limits. RISK scores how honestly those limits are named. It is not a penalty — a signal that clearly separates what is verified from what is inferred, and explicitly states what it cannot confirm, scores better than one that implies false certainty. IN-KluSo treats uncertainty as editorial integrity, not weakness.
+          </div>
+          <div class="dim-asks">
+            <span class="dim-ask">What does this analysis not know?</span>
+            <span class="dim-ask">What is verified vs. inferred?</span>
+            <span class="dim-ask">What would change the conclusion?</span>
+            <span class="dim-ask">Are alternative explanations presented?</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- TERR -->
+      <div class="dim-card">
+        <div class="dim-badge dim-terr">
+          <span class="dim-badge-code">TERR</span>
+          <span class="dim-badge-weight">10%</span>
+        </div>
+        <div class="dim-body">
+          <div class="dim-title">Territory Specificity</div>
+          <div class="dim-desc">
+            Signals without territory are press releases. TERR scores the geographic and temporal precision of a piece — city named, time window stated, actors identified, observable behavior documented. Vague geographic language ("urban areas," "major metros") scores near zero. A street, a permit, a month, a named institution — those score at the top.
+          </div>
+          <div class="dim-asks">
+            <span class="dim-ask">Which city? Which neighborhood?</span>
+            <span class="dim-ask">When — month and year at minimum?</span>
+            <span class="dim-ask">Who is the named actor or institution?</span>
+            <span class="dim-ask">What behavior was observed directly?</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="rule"><hr/></div>
+
+  <!-- ── SOURCE TIERS ── -->
+  <section class="section">
+    <div class="section-eyebrow">Evidence Quality — Source Tiers</div>
+    <h2 class="section-title">Not all sources<br/>are created equal.</h2>
+    <p class="section-body">
+      The EVID dimension runs on a three-tier source hierarchy. Tier determines how much a source contributes to the composite score. No exceptions.
+    </p>
+
+    <div class="source-list">
+      <div class="source-row">
+        <span class="source-tier-badge tier-a">Tier A</span>
+        <div class="source-desc">
+          <strong>Primary Sources</strong>
+          Institutional reports, regulatory filings, court records, peer-reviewed research, government data, company disclosures. Load-bearing claims require at least one Tier A source.
+        </div>
+        <span class="source-use">Full weight</span>
+      </div>
+      <div class="source-row">
+        <span class="source-tier-badge tier-b">Tier B</span>
+        <div class="source-desc">
+          <strong>Secondary Sources</strong>
+          Major publications accurately citing primary data with clear methodology. Acceptable for numeric claims when Tier A is unavailable — never as the only citation.
+        </div>
+        <span class="source-use">60% weight</span>
+      </div>
+      <div class="source-row">
+        <span class="source-tier-badge tier-c">Tier C</span>
+        <div class="source-desc">
+          <strong>Commentary</strong>
+          Blogs, newsletters, LinkedIn posts, opinion pieces, anonymous sources. Used for color and context only. Never cited for numeric or load-bearing claims.
+        </div>
+        <span class="source-use">Color only</span>
+      </div>
+    </div>
+
+    <div class="hardcap-box">
+      <span class="hardcap-icon">HARD CAP</span>
+      <p class="hardcap-text">
+        <strong>Zero Tier A sources and fewer than two independent Tier B sources → SCI ceiling of 0.55.</strong> No signal can achieve HIGH confidence without primary sourcing. This rule has no override.
+      </p>
+    </div>
+  </section>
+
+  <div class="rule"><hr/></div>
+
+  <!-- ── CONFIDENCE TIERS ── -->
+  <section class="section">
+    <div class="section-eyebrow">Publication Tiers</div>
+    <h2 class="section-title">What the score<br/>determines.</h2>
+    <p class="section-body">
+      The SCI composite produces a confidence tier. The tier determines whether and how a signal publishes. There is no editorial override.
+    </p>
+
+    <div class="tier-grid">
+      <div class="tier-card tier-high">
+        <div class="tier-range">0.80–1.00</div>
+        <div class="tier-name">HIGH</div>
+        <div class="tier-action">Publishes as anchor signal. Flagged in division index. Available for audio and distribution.</div>
+      </div>
+      <div class="tier-card tier-mod">
+        <div class="tier-range">0.60–0.79</div>
+        <div class="tier-name">MODERATE</div>
+        <div class="tier-action">Publishes with explicit uncertainty disclosure. Gaps noted in-line. Monitoring recommended.</div>
+      </div>
+      <div class="tier-card tier-low">
+        <div class="tier-range">0.40–0.59</div>
+        <div class="tier-name">LOW</div>
+        <div class="tier-action">CRUMB only. Published as a minimum unit. Requires additional sourcing before full signal treatment.</div>
+      </div>
+      <div class="tier-card tier-min">
+        <div class="tier-range">0.00–0.39</div>
+        <div class="tier-name">MINIMAL</div>
+        <div class="tier-action">Does not publish. Archived for monitoring. Returns if new primary sourcing becomes available.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── TORN DIVIDER ── -->
+  <div class="torn">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 44" preserveAspectRatio="none" height="44">
+      <path d="M0,0 L0,24 Q90,42 180,20 Q270,4 360,32 Q450,44 540,16 Q630,0 720,28 Q810,44 900,18 Q990,2 1080,34 Q1170,44 1260,22 Q1350,6 1440,26 L1440,0 Z" fill="#111111"/>
+    </svg>
+  </div>
+
+  <!-- ── RECORD STRIP ── -->
+  <div class="record-strip">
+    <div class="record-inner">
+      <div class="record-left">
+        <div class="record-eyebrow">In Practice</div>
+        <h2 class="record-title">60 signals.<br/>51 <em>HIGH</em> confidence.<br/>The system works.</h2>
+        <p class="record-body">
+          Every published signal in the IN-KluSo archive carries its SCI score at the top of the article. The methodology is not a marketing claim — it's the filter everything passes through before it reaches you.
+        </p>
+      </div>
+      <div class="record-stats">
+        <div class="record-stat">
+          <div class="record-stat-val">60</div>
+          <div class="record-stat-label">Published signals</div>
+        </div>
+        <div class="record-stat">
+          <div class="record-stat-val">85%</div>
+          <div class="record-stat-label">HIGH confidence rate</div>
+        </div>
+        <div class="record-stat">
+          <div class="record-stat-val">~0.90</div>
+          <div class="record-stat-label">Average SCI score</div>
+        </div>
+        <div class="record-stat">
+          <div class="record-stat-val">0.976</div>
+          <div class="record-stat-label">Record — The 5x Trap</div>
+        </div>
       </div>
     </div>
   </div>
 
-</div>
-
-<!-- Math reference section -->
-<div class="math-section">
-  <div class="section-label" style="font-family:var(--mono);font-size:0.65rem;color:var(--orange);letter-spacing:0.15em;">REFERENCE — COMPLETE MODEL PARAMETERS</div>
-  <div class="math-grid">
-    <div class="math-card">
-      <h3>SOURCE TIER WEIGHTS</h3>
-      <table class="math-table">
-        <tr><td>Tier A — Primary sources</td><td>1.00</td></tr>
-        <tr><td>Tier B — Reputable secondary</td><td>0.60</td></tr>
-        <tr><td>Tier C — Commentary / color</td><td>0.15</td></tr>
-        <tr><td>Decay per additional same-tier</td><td>× 0.60</td></tr>
-        <tr><td>Hard cap trigger</td><td>A=0 + B&lt;2</td></tr>
-      </table>
-    </div>
-    <div class="math-card">
-      <h3>LENS WEIGHTS BY DIVISION</h3>
-      <table class="math-table">
-        <tr><td>CORE — Epist / Sys / Behav</td><td>0.40 / 0.40 / 0.20</td></tr>
-        <tr><td>THRIVE — Epist / Sys / Behav</td><td>0.33 / 0.33 / 0.34</td></tr>
-        <tr><td>AXIS — Epist / Sys / Behav</td><td>0.20 / 0.40 / 0.40</td></tr>
-        <tr><td>FLOW — Epist / Sys / Behav</td><td>0.20 / 0.40 / 0.40</td></tr>
-        <tr><td>GROUND — Epist / Sys / Behav</td><td>0.40 / 0.20 / 0.40</td></tr>
-      </table>
-    </div>
-    <div class="math-card">
-      <h3>MECHANISM CLARITY SCALE</h3>
-      <table class="math-table">
-        <tr><td>1 — No causal chain</td><td>0.00</td></tr>
-        <tr><td>2 — Direction stated, not evidenced</td><td>0.25</td></tr>
-        <tr><td>3 — Partial chain, gaps acknowledged</td><td>0.50</td></tr>
-        <tr><td>4 — Full chain, partial evidence</td><td>0.75</td></tr>
-        <tr><td>5 — Full chain + named mechanism</td><td>1.00</td></tr>
-      </table>
-    </div>
-    <div class="math-card">
-      <h3>CONFIDENCE TIERS</h3>
-      <table class="math-table">
-        <tr><td>HIGH — Fully verifiable</td><td>≥ 0.80</td></tr>
-        <tr><td>MODERATE — Uncertainty disclosed</td><td>≥ 0.55</td></tr>
-        <tr><td>LOW — Not publishable</td><td>≥ 0.30</td></tr>
-        <tr><td>MINIMAL — Archive only</td><td>&lt; 0.30</td></tr>
-      </table>
-    </div>
-    <div class="math-card">
-      <h3>GLOBAL WEIGHTS</h3>
-      <table class="math-table">
-        <tr><td>Source Score (S)</td><td>0.35</td></tr>
-        <tr><td>Lens Coverage (L)</td><td>0.30</td></tr>
-        <tr><td>Mechanism Clarity (M)</td><td>0.25</td></tr>
-        <tr><td>Territory Specificity (T)</td><td>0.10</td></tr>
-        <tr><td>Total</td><td>1.00</td></tr>
-      </table>
-    </div>
-    <div class="math-card">
-      <h3>CLUSTER DOCTRINE</h3>
-      <table class="math-table">
-        <tr><td>Maximum active clusters</td><td>3</td></tr>
-        <tr><td>Signals to activate</td><td>10 min</td></tr>
-        <tr><td>Coverage window required</td><td>3 months</td></tr>
-        <tr><td>Monitoring updates needed</td><td>2</td></tr>
-        <tr><td>Current cluster (Juan)</td><td>1 / 10</td></tr>
-      </table>
-    </div>
+  <!-- ── TORN DIVIDER (reversed) ── -->
+  <div class="torn" style="transform:scaleY(-1); margin-bottom:-1px;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 44" preserveAspectRatio="none" height="44">
+      <path d="M0,0 L0,30 Q100,44 200,18 Q300,0 400,32 Q500,44 600,14 Q700,0 800,30 Q900,44 1000,16 Q1100,4 1200,28 Q1320,42 1440,20 L1440,0 Z" fill="#111111"/>
+    </svg>
   </div>
-</div>
 
-<footer>
-  <p>IN-KluSo Signal Confidence Model v1.0.0 — Canonical scoring doctrine</p>
-  <div style="display:flex;gap:24px;">
-    <a href="../">Magazine</a>
-    <a href="../doctrine/">Doctrine</a>
-    <a href="https://jjaecheverri.github.io/inkluso-tools/">Tools</a>
-  </div>
-</footer>
+  <!-- ── HUMANKLU CTA ── -->
+  <section class="humanklu-section">
+    <div class="humanklu-inner">
+      <div class="humanklu-card">
+        <div class="hk-eyebrow">↗ HumanKlu™</div>
+        <h2 class="hk-title">The same standard,<br/>applied to <em>your</em> content.</h2>
+        <p class="hk-body">
+          HumanKlu™ is the external certification standard built on the same five SCI dimensions. Organizations submit content for scoring — and certified content earns the HumanKlu™ badge: a visible, verifiable signal that the work was produced to a documented human standard, not generated and published unchecked.
+        </p>
+        <div class="hk-dimensions">
+          <span class="hk-dim">EVID</span>
+          <span class="hk-dim">MECH</span>
+          <span class="hk-dim">LENS</span>
+          <span class="hk-dim">RISK</span>
+          <span class="hk-dim">TERR</span>
+        </div>
+        <div class="hk-cta-row">
+          <a class="btn-primary" href="https://jjaecheverri.github.io/inkluso-magazine/humanklu/">
+            Learn about HumanKlu™ →
+          </a>
+          <a class="btn-ghost" href="https://jjaecheverri.github.io/inkluso-magazine/humanklu/#submit">
+            Submit content for certification
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<script>
-const LENS_WEIGHTS = {
-  CORE:   { epistemology: 0.40, systems: 0.40, behavioral: 0.20 },
-  THRIVE: { epistemology: 0.33, systems: 0.33, behavioral: 0.34 },
-  AXIS:   { epistemology: 0.20, systems: 0.40, behavioral: 0.40 },
-  FLOW:   { epistemology: 0.20, systems: 0.40, behavioral: 0.40 },
-  GROUND: { epistemology: 0.40, systems: 0.20, behavioral: 0.40 },
-};
+  <!-- ── FOOTER ── -->
+  <footer>
+    <a class="footer-brand" href="https://jjaecheverri.github.io/inkluso-magazine/">IN-KluSo</a>
+    <ul class="footer-links">
+      <li><a href="https://jjaecheverri.github.io/inkluso-magazine/">Magazine</a></li>
+      <li><a href="https://jjaecheverri.github.io/inkluso-magazine/signal-model/">SCI</a></li>
+      <li><a href="https://jjaecheverri.github.io/inkluso-magazine/humanklu/">HumanKlu™</a></li>
+      <li><a href="https://jjaecheverri.github.io/inkluso-magazine/audio/">Audio</a></li>
+      <li><a href="https://jjaecheverri.github.io/inkluso-tools/">Tools</a></li>
+    </ul>
+    <span class="footer-legal">© 2026 IN-KluSo · Xtatik. Methodology version 1.0.0</span>
+  </footer>
 
-const MECHANISM_LABELS = {
-  1: 'No causal chain identified',
-  2: 'Direction stated — not evidenced',
-  3: 'Partial chain — gaps acknowledged',
-  4: 'Full chain — partial evidence',
-  5: 'Full chain + mechanism named',
-};
-
-const checks = { city: true, time: true, actor: true, behavior: true };
-
-function toggleCheck(id) {
-  checks[id] = !checks[id];
-  const el = document.getElementById('chk_' + id);
-  el.classList.toggle('checked', checks[id]);
-  updateCapWarning();
-}
-
-function updateSlider(id) {
-  const val = parseFloat(document.getElementById(id).value);
-  const display = id === 'mechanism' ? val.toString() : val.toFixed(2);
-  document.getElementById(id + 'Val').textContent = display;
-  if (id === 'mechanism') {
-    document.getElementById('mechanismLabel').textContent = MECHANISM_LABELS[val];
-  }
-  updateCapWarning();
-}
-
-function updateCapWarning() {
-  const a = parseInt(document.getElementById('tierA').value) || 0;
-  const b = parseInt(document.getElementById('tierB').value) || 0;
-  document.getElementById('sourceCapWarning').style.display = (a === 0 && b < 2) ? 'block' : 'none';
-}
-
-function updateLensWeights() {
-  const div = document.getElementById('division').value;
-  const w = LENS_WEIGHTS[div];
-  document.getElementById('lensWeightsDisplay').textContent =
-    `${div} weights → Epist: ${w.epistemology.toFixed(2)}  Sys: ${w.systems.toFixed(2)}  Behav: ${w.behavioral.toFixed(2)}`;
-  document.getElementById('epistemologyW').textContent = `w=${w.epistemology.toFixed(2)}`;
-  document.getElementById('systemsW').textContent = `w=${w.systems.toFixed(2)}`;
-  document.getElementById('behavioralW').textContent = `w=${w.behavioral.toFixed(2)}`;
-}
-
-document.getElementById('division').addEventListener('change', updateLensWeights);
-updateLensWeights();
-updateSlider('mechanism');
-
-function sourceScore(a, b, c) {
-  function contrib(count, w) {
-    let t = 0;
-    for (let i = 1; i <= count; i++) t += w * Math.pow(0.6, i-1);
-    return t;
-  }
-  const raw = contrib(a, 1.00) + contrib(b, 0.60) + contrib(c, 0.15);
-  return Math.min(raw, 1.0);
-}
-
-function runModel() {
-  const div = document.getElementById('division').value;
-  const a = parseInt(document.getElementById('tierA').value) || 0;
-  const b = parseInt(document.getElementById('tierB').value) || 0;
-  const c = parseInt(document.getElementById('tierC').value) || 0;
-
-  const epi = parseFloat(document.getElementById('epistemology').value);
-  const sys = parseFloat(document.getElementById('systems').value);
-  const beh = parseFloat(document.getElementById('behavioral').value);
-  const mech = parseInt(document.getElementById('mechanism').value);
-
-  const lw = LENS_WEIGHTS[div];
-
-  // Scores
-  const S = sourceScore(a, b, c);
-  const L = epi * lw.epistemology + sys * lw.systems + beh * lw.behavioral;
-  const M = (mech - 1) / 4;
-  const T = Object.values(checks).filter(Boolean).length / 4;
-
-  let SCI = S * 0.35 + L * 0.30 + M * 0.25 + T * 0.10;
-  const hardCap = (a === 0 && b < 2);
-  if (hardCap) SCI = Math.min(SCI, 0.55);
-
-  const tier = SCI >= 0.80 ? 'HIGH' : SCI >= 0.55 ? 'MODERATE' : SCI >= 0.30 ? 'LOW' : 'MINIMAL';
-  const publishable = tier === 'HIGH' || tier === 'MODERATE';
-
-  // Render
-  document.getElementById('resultEmpty').style.display = 'none';
-  const out = document.getElementById('resultOutput');
-  out.classList.add('visible');
-
-  const sci = document.getElementById('sciDisplay');
-  sci.className = 'sci-display tier-' + tier;
-  document.getElementById('sciNumber').textContent = SCI.toFixed(4);
-  document.getElementById('sciTier').textContent = tier;
-  document.getElementById('sciPub').textContent = publishable ? '✓ Publishable' : '✗ Needs more evidence';
-
-  // Bars
-  function setBar(id, score, weighted) {
-    document.getElementById('bar' + id).style.width = (score * 100) + '%';
-    document.getElementById('val' + id).textContent = score.toFixed(3) + ' → ' + weighted.toFixed(3);
-  }
-  setBar('S', S, S * 0.35);
-  setBar('L', L, L * 0.30);
-  setBar('M', M, M * 0.25);
-  setBar('T', T, T * 0.10);
-
-  // Notes
-  const notes = [];
-  if (hardCap) notes.push('No Tier A + <2 Tier B → SCI capped at 0.55');
-  if (epi === 0 && lw.epistemology >= 0.33) notes.push(`Epistemology = 0 but weighted ${lw.epistemology} in ${div}`);
-  if (sys === 0 && lw.systems >= 0.33) notes.push(`Systems = 0 but weighted ${lw.systems} in ${div}`);
-  if (beh === 0 && lw.behavioral >= 0.33) notes.push(`Behavioral = 0 but weighted ${lw.behavioral} in ${div}`);
-  if (mech <= 2) notes.push(`Mechanism ${mech}/5 — causal chain not evidenced`);
-
-  const notesEl = document.getElementById('resultNotes');
-  notesEl.innerHTML = notes.length
-    ? notes.map(n => `<div class="note-item">${n}</div>`).join('')
-    : '<div style="font-family:var(--mono);font-size:0.72rem;color:#444;padding-top:4px;">No warnings — clean signal.</div>';
-
-  // Progress pips (1 existing + this one if publishable)
-  const total = 1 + (publishable ? 1 : 0);
-  const pips = document.getElementById('progressPips');
-  pips.innerHTML = Array.from({length: 10}, (_, i) =>
-    `<div class="progress-pip ${i < total ? 'filled' : ''}"></div>`
-  ).join('');
-  document.getElementById('clusterCount').textContent = `${total} / 10 signals`;
-}
-
-// Initialize source cap watcher
-document.getElementById('tierA').addEventListener('input', updateCapWarning);
-document.getElementById('tierB').addEventListener('input', updateCapWarning);
-updateCapWarning();
-</script>
 </body>
 </html>

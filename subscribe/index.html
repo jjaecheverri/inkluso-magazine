@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Subscribe · IN-KluSo</title>
+  <meta name="description" content="Signal intelligence for operators, analysts, and culturally literate professionals. Three tiers. No noise."/>
+  <link rel="canonical" href="https://jjaecheverri.github.io/inkluso-magazine/subscribe/"/>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Subscribe · IN-KluSo",
+    "description": "Signal intelligence for operators, analysts, and culturally literate professionals. Three tiers. No noise.",
+    "url": "https://jjaecheverri.github.io/inkluso-magazine/subscribe/",
+    "publisher": { "@type": "Organization", "name": "IN-KluSo · Xtatik" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:      #FAF6EE;
+      --orange:     #E8602C;
+      --black:      #111111;
+      --gold:       #C9A84C;
+      --blue:       #2D6BE4;
+      --magenta:    #C4317A;
+      --green:      #2E9B6F;
+      --card-shadow: 0 2px 24px rgba(17,17,17,0.07), 0 1px 4px rgba(17,17,17,0.04);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--black);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1578301978018-3005759f48f7?w=1920&q=60&auto=format');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.09;
+      mix-blend-mode: multiply;
+      filter: grayscale(40%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(250,246,238,0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(17,17,17,0.08);
+      padding: 0 40px; height: 56px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+
+    .nav-brand {
+      font-family: 'DM Serif Display', serif;
+      font-size: 18px; color: var(--black);
+      text-decoration: none; letter-spacing: -0.02em;
+    }
+
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+
+    .nav-links a {
+      font-size: 12px; font-weight: 500;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--black); text-decoration: none;
+      opacity: 0.5; transition: opacity 0.2s;
+    }
+
+    .nav-links a:hover, .nav-links a.active { opacity: 1; }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative; z-index: 1;
+      max-width: 860px; margin: 0 auto;
+      padding: 96px 40px 72px;
+      text-align: center;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--orange);
+      background: rgba(232,96,44,0.08);
+      border: 1px solid rgba(232,96,44,0.18);
+      padding: 6px 16px; border-radius: 100px;
+      margin-bottom: 28px;
+      animation: fadeUp 0.5s ease both;
+    }
+
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(44px, 7vw, 80px);
+      line-height: 1.0; letter-spacing: -0.03em;
+      color: var(--black); margin-bottom: 24px;
+      animation: fadeUp 0.5s 0.08s ease both;
+    }
+
+    .hero h1 em { font-style: italic; color: var(--orange); }
+
+    .hero-sub {
+      font-size: 18px; font-weight: 300;
+      color: rgba(17,17,17,0.6);
+      max-width: 520px; margin: 0 auto 16px;
+      line-height: 1.55;
+      animation: fadeUp 0.5s 0.14s ease both;
+    }
+
+    .hero-note {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px; color: rgba(17,17,17,0.35);
+      letter-spacing: 0.06em;
+      animation: fadeUp 0.5s 0.18s ease both;
+    }
+
+    /* ── TIERS ── */
+    .tiers-wrap {
+      position: relative; z-index: 1;
+      max-width: 980px; margin: 0 auto;
+      padding: 0 40px 80px;
+    }
+
+    .tiers-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3px;
+      animation: fadeUp 0.5s 0.22s ease both;
+    }
+
+    .tier-card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 36px 32px;
+      display: flex; flex-direction: column;
+      box-shadow: var(--card-shadow);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .tier-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(17,17,17,0.11);
+    }
+
+    /* Featured tier */
+    .tier-card.featured {
+      background: var(--black);
+      border: 1.5px solid rgba(232,96,44,0.4);
+    }
+
+    .tier-card.featured::before {
+      content: '';
+      position: absolute; top: 0; right: 0;
+      width: 120px; height: 120px;
+      background: var(--orange);
+      opacity: 0.07;
+      clip-path: polygon(30% 0%, 100% 0%, 100% 100%, 0% 70%);
+    }
+
+    .tier-featured-badge {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--orange);
+      background: rgba(232,96,44,0.12);
+      border: 1px solid rgba(232,96,44,0.25);
+      padding: 4px 10px; border-radius: 4px;
+      margin-bottom: 20px;
+      align-self: flex-start;
+    }
+
+    .tier-name {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px; font-weight: 600;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(17,17,17,0.4);
+      margin-bottom: 8px;
+    }
+
+    .tier-card.featured .tier-name { color: rgba(250,246,238,0.4); }
+
+    .tier-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 28px; letter-spacing: -0.02em;
+      line-height: 1.1; color: var(--black);
+      margin-bottom: 12px;
+    }
+
+    .tier-card.featured .tier-title { color: var(--cream); }
+
+    .tier-desc {
+      font-size: 14px; font-weight: 300;
+      color: rgba(17,17,17,0.55);
+      line-height: 1.5; margin-bottom: 28px;
+    }
+
+    .tier-card.featured .tier-desc { color: rgba(250,246,238,0.55); }
+
+    .tier-divider {
+      border: none; border-top: 1px solid rgba(17,17,17,0.07);
+      margin-bottom: 24px;
+    }
+
+    .tier-card.featured .tier-divider { border-color: rgba(250,246,238,0.08); }
+
+    .tier-features {
+      list-style: none; display: flex;
+      flex-direction: column; gap: 10px;
+      flex: 1; margin-bottom: 32px;
+    }
+
+    .tier-feature {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 13px; color: rgba(17,17,17,0.65);
+      line-height: 1.4;
+    }
+
+    .tier-card.featured .tier-feature { color: rgba(250,246,238,0.65); }
+
+    .feature-check {
+      width: 16px; height: 16px;
+      border-radius: 4px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; margin-top: 1px;
+      font-size: 10px;
+    }
+
+    .check-free    { background: rgba(17,17,17,0.06); color: rgba(17,17,17,0.4); }
+    .check-reader  { background: rgba(45,107,228,0.1); color: var(--blue); }
+    .check-operator{ background: rgba(232,96,44,0.15); color: var(--orange); }
+
+    .tier-feature.locked {
+      opacity: 0.3;
+    }
+
+    .tier-feature.locked .feature-check {
+      background: rgba(17,17,17,0.04);
+      color: transparent;
+    }
+
+    /* CTA button */
+    .tier-cta {
+      display: flex; flex-direction: column; gap: 8px;
+    }
+
+    .btn-tier {
+      display: block; width: 100%;
+      padding: 13px 20px;
+      border-radius: 8px;
+      font-size: 14px; font-weight: 600;
+      text-align: center;
+      text-decoration: none;
+      border: none; cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.15s, background 0.15s;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .btn-tier:hover { transform: translateY(-1px); }
+
+    .btn-free {
+      background: rgba(17,17,17,0.06);
+      color: var(--black);
+      border: 1px solid rgba(17,17,17,0.12);
+    }
+
+    .btn-free:hover { background: rgba(17,17,17,0.1); }
+
+    .btn-reader {
+      background: var(--black);
+      color: var(--cream);
+    }
+
+    .btn-reader:hover { box-shadow: 0 6px 20px rgba(17,17,17,0.2); }
+
+    .btn-operator {
+      background: var(--orange);
+      color: #fff;
+    }
+
+    .btn-operator:hover { box-shadow: 0 6px 20px rgba(232,96,44,0.35); }
+
+    .btn-note {
+      font-size: 11px; color: rgba(17,17,17,0.35);
+      text-align: center; font-weight: 400;
+    }
+
+    .tier-card.featured .btn-note { color: rgba(250,246,238,0.3); }
+
+    /* ── EMAIL MODAL ── */
+    .modal-overlay {
+      position: fixed; inset: 0; z-index: 200;
+      background: rgba(17,17,17,0.6);
+      backdrop-filter: blur(6px);
+      display: flex; align-items: center; justify-content: center;
+      padding: 20px;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+
+    .modal-overlay.open {
+      opacity: 1; pointer-events: all;
+    }
+
+    .modal {
+      background: var(--cream);
+      border-radius: 16px;
+      padding: 48px 40px;
+      max-width: 480px; width: 100%;
+      box-shadow: 0 24px 80px rgba(17,17,17,0.25);
+      transform: translateY(20px);
+      transition: transform 0.25s ease;
+      position: relative;
+    }
+
+    .modal-overlay.open .modal { transform: translateY(0); }
+
+    .modal-close {
+      position: absolute; top: 16px; right: 16px;
+      width: 32px; height: 32px;
+      background: rgba(17,17,17,0.06);
+      border: none; border-radius: 6px;
+      cursor: pointer; font-size: 16px;
+      color: rgba(17,17,17,0.5);
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.15s;
+    }
+
+    .modal-close:hover { background: rgba(17,17,17,0.1); }
+
+    .modal-tier-badge {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 5px 12px; border-radius: 5px;
+      margin-bottom: 20px;
+    }
+
+    .badge-free     { background: rgba(17,17,17,0.06); color: rgba(17,17,17,0.5); }
+    .badge-reader   { background: rgba(45,107,228,0.1); color: var(--blue); }
+    .badge-operator { background: rgba(232,96,44,0.1); color: var(--orange); }
+
+    .modal h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 28px; letter-spacing: -0.02em;
+      color: var(--black); margin-bottom: 10px;
+      line-height: 1.15;
+    }
+
+    .modal-sub {
+      font-size: 14px; font-weight: 300;
+      color: rgba(17,17,17,0.55);
+      line-height: 1.5; margin-bottom: 28px;
+    }
+
+    .modal-input-wrap {
+      display: flex; flex-direction: column; gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .modal-input {
+      width: 100%;
+      padding: 13px 16px;
+      border: 1.5px solid rgba(17,17,17,0.15);
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px; color: var(--black);
+      background: #fff;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+
+    .modal-input:focus { border-color: var(--orange); }
+
+    .modal-input::placeholder { color: rgba(17,17,17,0.3); }
+
+    .btn-submit {
+      width: 100%; padding: 14px;
+      border: none; border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px; font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+
+    .btn-submit:hover { transform: translateY(-1px); }
+
+    .submit-free     { background: var(--black); color: var(--cream); }
+    .submit-reader   { background: var(--black); color: var(--cream); }
+    .submit-operator { background: var(--orange); color: #fff; }
+
+    .submit-reader:hover, .submit-free:hover {
+      box-shadow: 0 6px 20px rgba(17,17,17,0.2);
+    }
+
+    .submit-operator:hover {
+      box-shadow: 0 6px 20px rgba(232,96,44,0.35);
+    }
+
+    .modal-legal {
+      font-size: 11px; color: rgba(17,17,17,0.3);
+      text-align: center; margin-top: 12px;
+      line-height: 1.4;
+    }
+
+    /* Success state */
+    .modal-success {
+      text-align: center;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 0;
+    }
+
+    .success-icon {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: rgba(46,155,111,0.1);
+      border: 2px solid var(--green);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px;
+    }
+
+    .modal-success h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 24px; letter-spacing: -0.02em;
+      color: var(--black);
+    }
+
+    .modal-success p {
+      font-size: 14px; font-weight: 300;
+      color: rgba(17,17,17,0.55);
+      line-height: 1.5; max-width: 320px;
+    }
+
+    /* ── SOCIAL PROOF ── */
+    .proof-strip {
+      position: relative; z-index: 1;
+      background: var(--black);
+      padding: 48px 40px;
+    }
+
+    .proof-inner {
+      max-width: 860px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+    }
+
+    .proof-item { text-align: center; }
+
+    .proof-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 36px; color: var(--orange);
+      line-height: 1; margin-bottom: 6px;
+    }
+
+    .proof-label {
+      font-size: 12px; font-weight: 400;
+      color: rgba(250,246,238,0.45);
+      letter-spacing: 0.04em; line-height: 1.4;
+    }
+
+    /* ── TORN DIVIDER ── */
+    .torn { position: relative; z-index: 1; width: 100%; overflow: hidden; line-height: 0; }
+    .torn svg { display: block; width: 100%; }
+
+    /* ── FAQ ── */
+    .faq-section {
+      position: relative; z-index: 1;
+      max-width: 680px; margin: 0 auto;
+      padding: 72px 40px;
+    }
+
+    .faq-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 32px; letter-spacing: -0.02em;
+      color: var(--black); margin-bottom: 40px;
+      text-align: center;
+    }
+
+    .faq-list { display: flex; flex-direction: column; gap: 2px; }
+
+    .faq-item {
+      background: #fff; border-radius: 10px;
+      overflow: hidden; box-shadow: var(--card-shadow);
+    }
+
+    .faq-q {
+      display: flex; justify-content: space-between;
+      align-items: center; gap: 16px;
+      padding: 20px 24px;
+      cursor: pointer;
+      font-size: 15px; font-weight: 500;
+      color: var(--black);
+      user-select: none;
+      transition: background 0.15s;
+    }
+
+    .faq-q:hover { background: rgba(17,17,17,0.02); }
+
+    .faq-chevron {
+      font-size: 18px; color: rgba(17,17,17,0.3);
+      transition: transform 0.2s; flex-shrink: 0;
+    }
+
+    .faq-item.open .faq-chevron { transform: rotate(180deg); }
+
+    .faq-a {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+      font-size: 14px; font-weight: 300;
+      color: rgba(17,17,17,0.6);
+      line-height: 1.6;
+      padding: 0 24px;
+    }
+
+    .faq-item.open .faq-a {
+      max-height: 200px;
+      padding: 0 24px 20px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      position: relative; z-index: 1;
+      background: var(--cream);
+      border-top: 1px solid rgba(17,17,17,0.08);
+      padding: 32px 40px;
+      display: flex; align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap; gap: 16px;
+    }
+
+    .footer-brand {
+      font-family: 'DM Serif Display', serif;
+      font-size: 16px; color: var(--black); text-decoration: none;
+    }
+
+    .footer-links { display: flex; gap: 24px; list-style: none; }
+
+    .footer-links a {
+      font-size: 12px; font-weight: 500;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      color: rgba(17,17,17,0.45); text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--black); }
+
+    .footer-legal { font-size: 11px; color: rgba(17,17,17,0.3); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .tiers-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+      .proof-inner { grid-template-columns: repeat(2,1fr); }
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .hero { padding: 64px 20px 48px; }
+      .tiers-wrap { padding: 0 20px 60px; }
+      .faq-section { padding: 48px 20px; }
+      .proof-strip { padding: 40px 20px; }
+      footer { padding: 24px 20px; flex-direction: column; align-items: flex-start; }
+      .modal { padding: 36px 24px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ── NAV ── -->
+  <nav>
+    <a class="nav-brand" href="https://jjaecheverri.github.io/inkluso-magazine/">IN-KluSo</a>
+    <ul class="nav-links">
+      <li><a href="https://jjaecheverri.github.io/inkluso-magazine/core/">Core</a></li>
+      <li><a href="https://jjaecheverri.github.io/inkluso-magazine/cities/">Cities</a></li>
+      <li><a href="https://jjaecheverri.github.io/inkluso-magazine/humanklu/">HumanKlu™</a></li>
+      <li><a href="https://jjaecheverri.github.io/inkluso-magazine/signal-model/">SCI</a></li>
+      <li><a href="https://jjaecheverri.github.io/inkluso-magazine/subscribe/" class="active">Subscribe</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section class="hero">
+    <div class="hero-eyebrow">Access tiers now open</div>
+    <h1>Intelligence<br/>that <em>holds up.</em></h1>
+    <p class="hero-sub">
+      Signal over noise. Three tiers built for different depths of access. Join the waitlist for your tier — no obligations, no commitments.
+    </p>
+    <p class="hero-note">Free. Unsubscribe anytime. We don't sell data.</p>
+  </section>
+
+  <!-- ── TIER CARDS ── -->
+  <div class="tiers-wrap">
+    <div class="tiers-grid">
+
+      <!-- FREE -->
+      <div class="tier-card">
+        <div class="tier-name">Tier 01</div>
+        <div class="tier-title">Signal</div>
+        <div class="tier-desc">The open layer. CRUMBS, early signals, and select full articles — enough to understand what IN-KluSo is and why the standard matters.</div>
+        <hr class="tier-divider"/>
+        <ul class="tier-features">
+          <li class="tier-feature">
+            <span class="feature-check check-free">✓</span>
+            All CRUMBS — 24 published, ongoing
+          </li>
+          <li class="tier-feature">
+            <span class="feature-check check-free">✓</span>
+            2 full signal articles per month
+          </li>
+          <li class="tier-feature">
+            <span class="feature-check check-free">✓</span>
+            Audio library access
+          </li>
+          <li class="tier-feature">
+            <span class="feature-check check-free">✓</span>
+            XT:RELAY daily puzzle
+          </li>
+          <li class="tier-feature locked">
+            <span class="feature-check">—</span>
+            Full magazine archive
+          </li>
+          <li class="tier-feature locked">
+            <span class="feature-check">—</span>
+            Tools / CI + OPS Lab
+          </li>
+          <li class="tier-feature locked">
+            <span class="feature-check">—</span>
+            Signal alerts
+          </li>
+        </ul>
+        <div class="tier-cta">
+          <button class="btn-tier btn-free" onclick="openModal('free')">Get free access</button>
+          <span class="btn-note">Always free. No card.</span>
+        </div>
+      </div>
+
+      <!-- READER — FEATURED -->
+      <div class="tier-card featured">
+        <div class="tier-featured-badge">Most popular</div>
+        <div class="tier-name" style="color:rgba(250,246,238,0.4);">Tier 02</div>
+        <div class="tier-title">Reader</div>
+        <div class="tier-desc" style="color:rgba(250,246,238,0.55);">Full archive. Every signal, every division, every CRUMB. For professionals who need the complete picture, not the preview.</div>
+        <hr class="tier-divider"/>
+        <ul class="tier-features">
+          <li class="tier-feature">
+            <span class="feature-check check-reader">✓</span>
+            Everything in Signal
+          </li>
+          <li class="tier-feature">
+            <span class="feature-check check-reader">✓</span>
+            Full magazine archive — all 60 signals
+          </li>
+          <li class="tier-feature">
+            <span class="feature-check check-reader">✓</span>
+            All future signals on publish
+          </li>
+          <li class="tier-feature">
+            <span class="feature-check check-reader">✓</span>
+            Division landing pages + SCI scores
+          </li>
+          <li class="tier-feature">
+            <span class="feature-check check-reader">✓</span>
+            Kontrarian full access
+          </li>
+          <li class="tier-feature locked">
+            <span class="feature-check">—</span>
+            Tools / CI + OPS Lab
+          </li>
+          <li class="tier-feature locked">
+            <span class="feature-check">—</span>
+            Signal alerts + priority HumanKlu™
+          </li>
+        </ul>
+        <div class="tier-cta">
+          <button class="btn-tier btn-reader" onclick="openModal('reader')">Join Reader waitlist</button>
+          <span class="btn-note" style="color:rgba(250,246,238,0.3);">Launching soon. Lock your spot.</span>
+        </div>
+      </div>
+
+      <!-- OPERATOR -->
+      <div class="tier-card">
+        <div class="tier-name">Tier 03</div>
+        <div class="tier-title">Operator</div>
+        <div class="tier-desc">For operators, analysts, and institutions who use intelligence to make decisions. Full access plus the tools layer and direct signal routing.</div>
+        <hr class="tier-divider"/>
+        <ul class="tier-features">
+          <li class="tier-feature">
+            <span class="feature-check check-operator">✓</span>
+            Everything in Reader
+          </li>
+          <li class="tier-feature">
+            <span class="feature-check check-operator">✓</span>
+            CI Tool + OPS Lab reports
+          </li>
+          <li class="tier-feature">
+            <span class="feature-check check-operator">✓</span>
+            Priority HumanKlu™ certification turnaround
+          </li>
+          <li class="tier-feature">
+            <span class="feature-check check-operator">✓</span>
+            Direct signal alerts — email or Slack
+          </li>
+          <li class="tier-feature">
+            <span class="feature-check check-operator">✓</span>
+            Early access to new signals before public
+          </li>
+          <li class="tier-feature">
+            <span class="feature-check check-operator">✓</span>
+            Quarterly CI briefing — your corridors
+          </li>
+          <li class="tier-feature">
+            <span class="feature-check check-operator">✓</span>
+            Direct line to editorial team
+          </li>
+        </ul>
+        <div class="tier-cta">
+          <button class="btn-tier btn-operator" onclick="openModal('operator')">Join Operator waitlist</button>
+          <span class="btn-note">Limited spots. Serious operators only.</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── TORN DIVIDER ── -->
+  <div class="torn">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 44" preserveAspectRatio="none" height="44">
+      <path d="M0,0 L0,22 Q90,42 200,16 Q310,0 420,30 Q530,44 640,14 Q750,0 860,28 Q970,44 1080,18 Q1190,4 1300,26 Q1380,38 1440,20 L1440,0 Z" fill="#111111"/>
+    </svg>
+  </div>
+
+  <!-- ── PROOF STRIP ── -->
+  <div class="proof-strip">
+    <div class="proof-inner">
+      <div class="proof-item">
+        <div class="proof-num">60</div>
+        <div class="proof-label">Signals published and scored</div>
+      </div>
+      <div class="proof-item">
+        <div class="proof-num">85%</div>
+        <div class="proof-label">HIGH confidence rate across archive</div>
+      </div>
+      <div class="proof-item">
+        <div class="proof-num">8+</div>
+        <div class="proof-label">Cities with active coverage</div>
+      </div>
+      <div class="proof-item">
+        <div class="proof-num">0.976</div>
+        <div class="proof-label">Highest SCI score on record</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── TORN DIVIDER (reversed) ── -->
+  <div class="torn" style="transform:scaleY(-1); margin-bottom:-1px;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 44" preserveAspectRatio="none" height="44">
+      <path d="M0,0 L0,30 Q120,44 240,16 Q360,0 480,32 Q600,44 720,12 Q840,0 960,34 Q1080,44 1200,18 Q1320,6 1440,24 L1440,0 Z" fill="#111111"/>
+    </svg>
+  </div>
+
+  <!-- ── FAQ ── -->
+  <section class="faq-section">
+    <h2 class="faq-title">Questions.</h2>
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFAQ(this)">
+          What is the SCI and why does it appear on every article?
+          <span class="faq-chevron">⌄</span>
+        </div>
+        <div class="faq-a">The Signal Confidence Index is IN-KluSo's proprietary editorial scoring system. Every signal is scored across five dimensions before it publishes — evidence quality, mechanism clarity, lens coverage, uncertainty disclosure, and territory specificity. The score appears at the top of every article because credibility should be visible, not implied. Pieces below 0.65 don't run.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFAQ(this)">
+          What are CRUMBS?
+          <span class="faq-chevron">⌄</span>
+        </div>
+        <div class="faq-a">CRUMBS are minimum publishable units — data points, early signals, and fragments that are triangulated and mechanism-tested but not yet developed into full signal articles. They're always free. Think of them as the signal layer before the analysis layer.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFAQ(this)">
+          What is the CI Tool and OPS Lab?
+          <span class="faq-chevron">⌄</span>
+        </div>
+        <div class="faq-a">The CI Tool delivers Cultural Intelligence reports on specific cities and corridors — structural reads on a place before you enter or expand. OPS Lab produces operational briefings for specific business types and market contexts. Both are on-demand, delivered within 48–72 hours, and available to Operator tier members.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFAQ(this)">
+          What is HumanKlu™?
+          <span class="faq-chevron">⌄</span>
+        </div>
+        <div class="faq-a">HumanKlu™ is IN-KluSo's external content certification standard. Organizations submit content for scoring across the same five SCI dimensions — certified content earns the HumanKlu™ badge, a visible signal that the work meets a documented human standard. Operator members receive priority turnaround on certification submissions.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFAQ(this)">
+          When do paid tiers launch?
+          <span class="faq-chevron">⌄</span>
+        </div>
+        <div class="faq-a">Reader and Operator tiers are in final prep. Joining the waitlist locks your spot and gets you notified first — before public launch. No payment is collected at signup.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <a class="footer-brand" href="https://jjaecheverri.github.io/inkluso-magazine/">IN-KluSo</a>
+    <ul class="footer-links">
+      <li><a href="https://jjaecheverri.github.io/inkluso-magazine/">Magazine</a></li>
+      <li><a href="https://jjaecheverri.github.io/inkluso-magazine/signal-model/">SCI</a></li>
+      <li><a href="https://jjaecheverri.github.io/inkluso-magazine/humanklu/">HumanKlu™</a></li>
+      <li><a href="https://jjaecheverri.github.io/inkluso-tools/">Tools</a></li>
+      <li><a href="https://jjaecheverri.github.io/inkluso-magazine/podcast.html">Podcast</a></li>
+    </ul>
+    <span class="footer-legal">© 2026 IN-KluSo · Xtatik. All rights reserved.</span>
+  </footer>
+
+  <!-- ── EMAIL MODAL ── -->
+  <div class="modal-overlay" id="modal-overlay" onclick="closeModalOutside(event)">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+
+      <!-- Form state -->
+      <div id="modal-form">
+        <div class="modal-tier-badge" id="modal-badge">Signal</div>
+        <h2 id="modal-title">Get free access</h2>
+        <p class="modal-sub" id="modal-sub">Enter your email and we'll set up your Signal access immediately.</p>
+        <div class="modal-input-wrap">
+          <input class="modal-input" type="text" id="input-name" placeholder="Your name" autocomplete="name"/>
+          <input class="modal-input" type="email" id="input-email" placeholder="your@email.com" autocomplete="email"/>
+        </div>
+        <button class="btn-submit" id="btn-submit" onclick="handleSubmit()">Get access</button>
+        <p class="modal-legal">No spam. No commitments. Unsubscribe anytime.<br/>We don't sell or share your data.</p>
+      </div>
+
+      <!-- Success state -->
+      <div class="modal-success" id="modal-success">
+        <div class="success-icon">✓</div>
+        <h3 id="success-title">You're on the list.</h3>
+        <p id="success-body">We'll be in touch when your tier opens. In the meantime — the full CRUMBS archive and audio library are live now.</p>
+        <a href="https://jjaecheverri.github.io/inkluso-magazine/" style="font-size:14px;font-weight:600;color:var(--orange);text-decoration:none;">
+          Read the magazine →
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ── MODAL STATE ──
+    let currentTier = 'free';
+
+    const tierConfig = {
+      free: {
+        badge: 'Signal — Free',
+        badgeClass: 'badge-free',
+        title: 'Get free access',
+        sub: 'Enter your email and we\'ll activate your Signal access immediately.',
+        btnText: 'Get free access',
+        btnClass: 'submit-free',
+        successTitle: 'Access activated.',
+        successBody: 'Your Signal access is live. The full CRUMBS archive and audio library are open now.'
+      },
+      reader: {
+        badge: 'Reader',
+        badgeClass: 'badge-reader',
+        title: 'Join the Reader waitlist',
+        sub: 'Full magazine access is launching soon. Lock your spot and we\'ll notify you first.',
+        btnText: 'Join Reader waitlist',
+        btnClass: 'submit-reader',
+        successTitle: 'You\'re on the list.',
+        successBody: 'We\'ll notify you the moment Reader launches — before anyone else. Signal access is available to you now.'
+      },
+      operator: {
+        badge: 'Operator',
+        badgeClass: 'badge-operator',
+        title: 'Join the Operator waitlist',
+        sub: 'Limited Operator spots available. We\'ll reach out personally to confirm fit and brief you on what\'s included.',
+        btnText: 'Request Operator access',
+        btnClass: 'submit-operator',
+        successTitle: 'Request received.',
+        successBody: 'Operator access is by confirmation. We\'ll reach out directly within 48 hours.'
+      }
+    };
+
+    function openModal(tier) {
+      currentTier = tier;
+      const cfg = tierConfig[tier];
+
+      // Reset to form state
+      document.getElementById('modal-form').style.display = 'block';
+      document.getElementById('modal-success').style.display = 'none';
+
+      // Populate
+      const badge = document.getElementById('modal-badge');
+      badge.textContent = cfg.badge;
+      badge.className = 'modal-tier-badge ' + cfg.badgeClass;
+      document.getElementById('modal-title').textContent = cfg.title;
+      document.getElementById('modal-sub').textContent = cfg.sub;
+      const btn = document.getElementById('btn-submit');
+      btn.textContent = cfg.btnText;
+      btn.className = 'btn-submit ' + cfg.btnClass;
+
+      document.getElementById('input-name').value = '';
+      document.getElementById('input-email').value = '';
+      document.getElementById('modal-overlay').classList.add('open');
+      setTimeout(() => document.getElementById('input-name').focus(), 300);
+    }
+
+    function closeModal() {
+      document.getElementById('modal-overlay').classList.remove('open');
+    }
+
+    function closeModalOutside(e) {
+      if (e.target === document.getElementById('modal-overlay')) closeModal();
+    }
+
+    function handleSubmit() {
+      const name  = document.getElementById('input-name').value.trim();
+      const email = document.getElementById('input-email').value.trim();
+
+      if (!name) { document.getElementById('input-name').focus(); shake('input-name'); return; }
+      if (!email || !email.includes('@')) { document.getElementById('input-email').focus(); shake('input-email'); return; }
+
+      // Store in localStorage with tier
+      const entry = { name, email, tier: currentTier, ts: Date.now() };
+      const existing = JSON.parse(localStorage.getItem('inkluso_signups') || '[]');
+      existing.push(entry);
+      localStorage.setItem('inkluso_signups', JSON.stringify(existing));
+
+      // Grant access for free tier immediately
+      if (currentTier === 'free') {
+        localStorage.setItem('inkluso_access', 'reader');
+      }
+
+      // Show success
+      const cfg = tierConfig[currentTier];
+      document.getElementById('modal-form').style.display = 'none';
+      const success = document.getElementById('modal-success');
+      success.style.display = 'flex';
+      document.getElementById('success-title').textContent = cfg.successTitle;
+      document.getElementById('success-body').textContent = cfg.successBody;
+    }
+
+    function shake(id) {
+      const el = document.getElementById(id);
+      el.style.animation = 'shake 0.3s ease';
+      setTimeout(() => el.style.animation = '', 300);
+    }
+
+    // ── FAQ TOGGLE ──
+    function toggleFAQ(el) {
+      const item = el.parentElement;
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!wasOpen) item.classList.add('open');
+    }
+
+    // ── KEYBOARD CLOSE ──
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeModal();
+      if (e.key === 'Enter' && document.getElementById('modal-overlay').classList.contains('open')) {
+        handleSubmit();
+      }
+    });
+
+    // ── CREATOR PASSTHROUGH ──
+    // ?access=creator grants full access for testing
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('access') === 'creator') {
+      localStorage.setItem('inkluso_access', 'operator');
+    }
+  </script>
+
+  <style>
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-6px); border-color: var(--orange); }
+      75% { transform: translateX(6px); border-color: var(--orange); }
+    }
+  </style>
+
+</body>
+</html>
